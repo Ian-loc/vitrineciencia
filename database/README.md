@@ -66,8 +66,9 @@ O próximo pacote executável deverá criar, sem remover tabelas atuais:
 
 - `catalog.catalog_entries`;
 - `catalog.entry_variables`;
-- `catalog.entry_evidence`;
-- `catalog.connector_profiles`.
+- `catalog.entry_evidence`.
+
+`catalog.connector_profiles` permanece **opcional** e somente deve ser criado quando existir um conector selecionado que demonstre necessidade concreta para a Instância 2. Distribuições, APIs ou endpoints existentes não justificam sua criação automática.
 
 O plano detalhado está em:
 
