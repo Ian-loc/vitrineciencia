@@ -7,6 +7,7 @@ A Vitrine Ciência organiza e apresenta fontes e produtos de dados com busca, fi
 ## Produto público
 
 - site: https://ian-loc.github.io/vitrineciencia/
+- repositório: https://github.com/Ian-loc/vitrineciencia
 - fontes: `data/data_resources.csv`
 - produtos detalhados: `data/data_products.csv`
 - distribuições de produtos: `data/product_distributions.csv`
