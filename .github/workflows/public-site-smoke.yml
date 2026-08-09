@@ -1,0 +1,79 @@
+name: Verificar Vitrine publicada
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/public-site-smoke.yml"
+      - ".github/workflows/pages.yml"
+      - "index.html"
+      - "products.html"
+      - "analytics.html"
+      - "about.html"
+      - "assets/**"
+      - "data/**"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-site-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Verificar endpoints públicos atuais
+        env:
+          SITE: https://ian-loc.github.io/vitrineciencia
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d)"
+          trap 'rm -rf "$tmp"' EXIT
+
+          fetch() {
+            local url="$1" output="$2"
+            curl --fail --silent --show-error --location \
+              --retry 5 --retry-delay 3 --retry-all-errors \
+              --connect-timeout 10 --max-time 30 \
+              "$url" -o "$output"
+          }
+
+          fetch "$SITE/" "$tmp/index.html"
+          fetch "$SITE/products.html" "$tmp/products.html"
+          fetch "$SITE/analytics.html" "$tmp/analytics.html"
+          fetch "$SITE/about.html" "$tmp/about.html"
+          fetch "$SITE/assets/app.js" "$tmp/app.js"
+          fetch "$SITE/assets/products.js" "$tmp/products.js"
+          fetch "$SITE/data/data_resources.json" "$tmp/resources.json"
+          fetch "$SITE/data/data_products.json" "$tmp/products.json"
+
+          grep -q 'Vitrine Ciência' "$tmp/index.html"
+          grep -q 'id="filters"' "$tmp/index.html"
+          grep -q 'id="product-filters"' "$tmp/products.html"
+          grep -q 'id="summary"' "$tmp/analytics.html"
+          grep -q 'id="sobre"' "$tmp/about.html"
+          grep -q 'data/data_resources.json' "$tmp/app.js"
+          grep -q 'data/data_products.json' "$tmp/products.js"
+
+          python3 - "$tmp/resources.json" "$tmp/products.json" <<'PY'
+          import json, sys
+          resources = json.load(open(sys.argv[1], encoding='utf-8'))
+          products = json.load(open(sys.argv[2], encoding='utf-8'))
+          assert isinstance(resources, list) and len(resources) == 51, len(resources)
+          assert isinstance(products, list) and len(products) > 0, len(products)
+          ids = [item['resource_id'] for item in resources]
+          assert len(ids) == len(set(ids))
+          print(f"OK: Vitrine publicada acessível — {len(resources)} fontes e {len(products)} produtos")
+          PY
+
+      - name: Confirmar fronteira pública
+        env:
+          SITE: https://ian-loc.github.io/vitrineciencia
+        run: |
+          set -euo pipefail
+          for path in explorer.html abordagens.html data/federated_layers.json; do
+            code="$(curl --silent --location --output /dev/null --write-out '%{http_code}' "$SITE/$path")"
+            test "$code" = "404"
+          done
