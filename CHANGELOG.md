@@ -4,9 +4,28 @@ Este projeto segue versionamento semântico. Alterações ainda não publicadas 
 
 ## Não lançado
 
-### Sanity pós-Marco 1
+### Separação estrutural — Vitrine Ciência × Simbiotrama — 2026-08-09
 
-- nome canônico padronizado como **Simbiotrama**;
+- o repositório foi renomeado e consolidado como **Vitrine Ciência** (`Ian-loc/vitrineciencia`);
+- a Vitrine passou a ser tratada como produto público estático independente;
+- o **Simbiotrama** passou a possuir repositório próprio em `Ian-loc/simbiotrama`;
+- PR #70 incorporado à `main` no commit `36211e96edc86fa0e2bb31c703141cd7c5df5480`;
+- URL canônica da Vitrine atualizada para `https://ian-loc.github.io/vitrineciencia/`;
+- workflow de Pages desacoplado de PostgreSQL/PostGIS e de todos os jobs da Instância 1 do Simbiotrama;
+- artefato público reduzido à superfície da Vitrine: fontes, produtos, análise, método/citação, assets e dados estáticos necessários;
+- `explorer.html`, `abordagens.html`, `data/federated_layers.json` e superfícies Simbiotrama/Simbioscópio excluídos do artefato publicado;
+- criado validador de fronteira que impede regressão da identidade pública ou reintrodução de dependência do Simbiotrama;
+- conteúdo científico das 51 fontes canônicas preservado durante a separação;
+- branches e PRs históricos/migratórios do Simbiotrama preservados temporariamente como evidência, sem autorização para merge na Vitrine;
+- documentação oficial atualizada com contrato operacional, governança e marco estrutural.
+
+### Histórico pré-separação preservado
+
+Os itens abaixo registram a evolução ocorrida antes da cisão dos repositórios. Referências a Simbiotrama/Simbioscópio nessa seção são históricas e **não** representam o escopo ativo da Vitrine.
+
+#### Sanity pós-Marco 1
+
+- nome canônico então padronizado como **Simbiotrama**;
 - criado `docs/PROJECT_STATE.md` para classificar `ACTIVE`, `BACKLOG`, `LEGACY_OPERATIONAL`, `RETIRED` e `HISTORICAL_EVIDENCE`;
 - criado roadmap canônico `docs/roadmap/SIMBIOTRAMA_IMPLEMENTATION_ROADMAP.md`;
 - caminho antigo do roadmap do Simbioscópio convertido em alias aposentado para preservar links históricos;
@@ -16,49 +35,33 @@ Este projeto segue versionamento semântico. Alterações ainda não publicadas 
 - explorador visual N0 e `data/federated_layers.json` classificados como legado operacional sem desenvolvimento analítico ativo;
 - validador científico ampliado para testar autoridade, ciclo de vida, roadmap, nomenclatura e preservação do legado N0.
 
-### Adicionado — Instância 1
+#### Adicionado — Instância 1
 
-- decisão estratégica que estabelece a **Instância 1 — Catálogo relacional científico-operacional** como foco ativo;
+- decisão estratégica que estabeleceu a **Instância 1 — Catálogo relacional científico-operacional** como foco ativo daquela frente;
 - documentação canônica da Instância 1;
 - modelo PostgreSQL/PostGIS para organizações, fontes, famílias, produtos, releases, variáveis, métodos, perfis espaciais e temporais, qualidade, distribuições, ativos, capacidades, taxonomias, citações, evidências e revisões;
-- schema de staging para migração sem perda dos CSVs atuais;
+- schema de staging para migração sem perda dos CSVs;
 - registro de problemas e bloqueios de migração;
 - workflow contínuo de curadoria produto por produto;
 - portões de migração, aprofundamento, interface e promoção do banco;
-- definição de `information_message` para explicar qual informação sobre o mundo real o produto comunica;
-- definição de `non_representations` para registrar interpretações que o produto não sustenta;
+- definição de `information_message` e `non_representations`;
 - evidência de metadados por entidade e campo.
 
-### Alterado — direção do projeto
+#### Alterado — direção do projeto naquela fase
 
-- projeto recentrado no aprofundamento do catálogo, antes de novas capacidades analíticas;
-- PostgreSQL/PostGIS definido como arquitetura canônica de destino;
-- CSVs mantidos como autoridade pública durante a transição e futura exportação do banco;
+- projeto então recentrado no aprofundamento do catálogo antes de novas capacidades analíticas;
+- PostgreSQL/PostGIS definido como arquitetura de destino do Simbiotrama;
+- CSVs mantidos como autoridade pública transitória;
 - separação normativa reforçada entre organização, fonte, família, produto, release, distribuição, ativo e variável;
-- catálogos genéricos, serviços de processamento e visualizadores deixam de ser tratados como produtos científicos;
-- README, direção científica, roadmap, modelo de produtos e dicionário de dados harmonizados com a Instância 1;
-- Instâncias 2 e 3 registradas somente como backlog;
-- política de comparabilidade e inferência mantida como guardrail futuro, sem workstream analítico ativo.
+- Instâncias 2 e 3 registradas como backlog do Simbiotrama;
+- política de comparabilidade e inferência mantida como guardrail futuro.
 
-### Preservado do desenvolvimento anterior
+#### Preservado do desenvolvimento anterior
 
-- camada pública atual de fontes, produtos e distribuições;
-- Explorador Federado como protótipo N0 e legado operacional, sem promoção a núcleo consolidado;
+- camada pública de fontes, produtos e distribuições que originou a atual Vitrine;
 - classificação territorial Brasil-primeiro;
 - Dynamic World V1 como produto piloto selecionado;
-- contratos experimentais de variáveis, comparabilidade e relações, mantidos em backlog sem promoção automática ao modelo canônico;
-- validações, governança, contribuição e política de releases;
-- separação de autoria, citação, licença e proveniência.
-
-### Corrigido
-
-- mistura entre produtos científicos, catálogos, serviços interoperáveis e infraestrutura computacional;
-- roadmap excessivamente orientado a comparabilidade, causalidade e visualização antes da consolidação dos dados;
-- ausência de releases explícitos entre produto e distribuição;
-- ausência de estrutura relacional para evidência por campo e revisão curatorial;
-- falta de distinção entre descrição do produto, mensagem científica e usos potenciais;
-- falta de estratégia executável de migração dos CSVs;
-- duplicação normativa entre checkpoints, notas, autorizações e ponteiros transitórios de execução.
+- validações, governança, contribuição, citação, licença e proveniência.
 
 ## 0.7.0 — 2026-07-18
 
