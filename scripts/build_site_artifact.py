@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Build the curated static artifact published by GitHub Pages.
+"""Build the isolated static artifact published as the Vitrine Ciência.
 
-The public website must contain only user-facing HTML, assets and catalog data.
-Operational documentation, audits, migration files, scripts and workflows remain
-available in the GitHub repository but are not copied to the Pages artifact.
+Only the public catalog surface is copied. Simbiotrama/Simbioscópio code,
+database material, operational documentation and experimental pages stay in Git
+history/source branches and are never part of the GitHub Pages artifact.
 """
 from __future__ import annotations
 
@@ -16,19 +16,25 @@ OUTPUT = ROOT / "_site"
 REQUIRED_FILES = (
     "index.html",
     "products.html",
-    "explorer.html",
-    "abordagens.html",
     "analytics.html",
     "about.html",
     "LICENSE",
     "LICENSE-DATA.md",
+    "assets/style.css",
+    "assets/accessibility.css",
+    "assets/brazil-scope.css",
+    "assets/products.css",
+    "assets/app.js",
+    "assets/products.js",
+    "assets/analytics.js",
+    "assets/quality-summary.js",
+    "assets/build-meta.js",
     "data/data_resources.csv",
     "data/data_resources.json",
     "data/data_products.csv",
     "data/data_products.json",
     "data/product_distributions.csv",
     "data/brazil_scope_priorities.json",
-    "data/federated_layers.json",
     "data/build-meta.json",
 )
 
@@ -42,7 +48,26 @@ OPTIONAL_FILES = (
     "data/product_distributions.json",
 )
 
-REQUIRED_DIRECTORIES = ("assets",)
+FORBIDDEN_PUBLIC_PATHS = (
+    "explorer.html",
+    "abordagens.html",
+    "data/federated_layers.json",
+    "assets/explorer.js",
+    "assets/explorer.css",
+    "assets/approaches.css",
+    "WORKFLOW_STATUS.md",
+    "IMPLEMENTATION_WORKFLOW.md",
+    "DOCUMENTATION_CONSISTENCY_AUDIT.md",
+    "migration",
+    "scripts",
+    ".github",
+    "audit",
+    "schema",
+    "database",
+    "docs",
+    "config",
+    "release",
+)
 
 
 def copy_file(relative_path: str, *, required: bool) -> None:
@@ -66,31 +91,14 @@ def main() -> None:
     for relative_path in OPTIONAL_FILES:
         copy_file(relative_path, required=False)
 
-    for relative_path in REQUIRED_DIRECTORIES:
-        source = ROOT / relative_path
-        if not source.is_dir():
-            raise SystemExit(f"ERRO: diretório público obrigatório ausente: {relative_path}")
-        shutil.copytree(source, OUTPUT / relative_path)
-
     (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
 
-    forbidden = (
-        "WORKFLOW_STATUS.md",
-        "IMPLEMENTATION_WORKFLOW.md",
-        "DOCUMENTATION_CONSISTENCY_AUDIT.md",
-        "migration",
-        "scripts",
-        ".github",
-        "audit",
-        "schema",
-        "release",
-    )
-    leaked = [name for name in forbidden if (OUTPUT / name).exists()]
+    leaked = [name for name in FORBIDDEN_PUBLIC_PATHS if (OUTPUT / name).exists()]
     if leaked:
-        raise SystemExit("ERRO: artefato público contém material interno: " + ", ".join(leaked))
+        raise SystemExit("ERRO: artefato da Vitrine contém material fora da fronteira: " + ", ".join(leaked))
 
     files = sum(1 for path in OUTPUT.rglob("*") if path.is_file())
-    print(f"OK: artefato público criado em {OUTPUT} com {files} arquivos")
+    print(f"OK: artefato isolado da Vitrine criado em {OUTPUT} com {files} arquivos")
 
 
 if __name__ == "__main__":
