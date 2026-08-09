@@ -49,6 +49,16 @@ EXPECTED_FIELD_STATUSES = [
     "not_found",
     "not_applicable",
 ]
+EXPECTED_RELATIONSHIP_ENTITIES = ["entry_organizations"]
+EXPECTED_STRUCTURED_TERRITORIAL_FIELDS = ["covers_brazil", "brazil_priority"]
+EXPECTED_COVERS_BRAZIL_VALUES = ["sim", "parcial", "não"]
+EXPECTED_BRAZIL_PRIORITY_VALUES = ["P0", "P1", "P2", "P3"]
+EXPECTED_ORGANIZATION_RELATIONSHIP = {
+    "cardinality": "many_to_many",
+    "relation": "entry_organizations",
+    "role_required": True,
+    "unknown_role_value": "unspecified",
+}
 
 
 def fail(message: str) -> None:
@@ -66,6 +76,9 @@ except json.JSONDecodeError as exc:
 if not isinstance(contract, dict):
     fail("contrato deve ser um objeto JSON")
 
+if contract.get("status") != "active":
+    fail("status do contrato deve descrever o estado pós-incorporação: active")
+
 if contract.get("central_unit") != "catalog_entry":
     fail("central_unit deve permanecer catalog_entry")
 
@@ -74,6 +87,21 @@ if contract.get("essential_profile_fields") != EXPECTED_ESSENTIAL_PROFILE_FIELDS
 
 if contract.get("material_granularity_differences") != EXPECTED_MATERIAL_GRANULARITY_DIFFERENCES:
     fail("critérios de diferença material de granularidade divergiram")
+
+if contract.get("relationship_entities") != EXPECTED_RELATIONSHIP_ENTITIES:
+    fail("relação mínima entrada↔organização divergiu")
+
+if contract.get("structured_territorial_fields") != EXPECTED_STRUCTURED_TERRITORIAL_FIELDS:
+    fail("campos territoriais estruturados divergiram")
+
+if contract.get("covers_brazil_values") != EXPECTED_COVERS_BRAZIL_VALUES:
+    fail("domínio covers_brazil divergiu")
+
+if contract.get("brazil_priority_values") != EXPECTED_BRAZIL_PRIORITY_VALUES:
+    fail("domínio de prioridade Brasil P0–P3 divergiu")
+
+if contract.get("organization_relationship") != EXPECTED_ORGANIZATION_RELATIONSHIP:
+    fail("contrato de atribuição institucional N:N divergiu")
 
 if contract.get("entry_curation_statuses") != EXPECTED_ENTRY_STATUSES:
     fail("domínio global de curadoria da entrada divergiu")
@@ -97,6 +125,6 @@ if contract.get("merge_requires_exact_sha_authorization") is not True:
     fail("merge deve continuar exigindo autorização do SHA exato")
 
 print(
-    "OK: ficha essencial, granularidade material, estados curatoriais e limites "
-    "do contrato mínimo da Instância 1 estão íntegros"
+    "OK: ficha essencial, atribuição institucional, cobertura territorial, granularidade material, "
+    "estados curatoriais e limites do contrato mínimo da Instância 1 estão íntegros"
 )
