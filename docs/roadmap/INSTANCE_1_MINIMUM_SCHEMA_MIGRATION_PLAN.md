@@ -48,7 +48,8 @@ Mapear registros existentes:
 5. conflitos são registrados para revisão;
 6. relações profundas não são convertidas em novas entradas sem decisão de granularidade;
 7. links são classificados por papel, sem inventário integral;
-8. valores desconhecidos permanecem desconhecidos.
+8. valores desconhecidos permanecem desconhecidos;
+9. condições materiais de acesso — cadastro, solicitação, embargo, quotas ou restrições equivalentes — permanecem explícitas em `access_conditions_text` e não são reduzidas a `access_level` ou ao booleano de autenticação.
 
 ## 5. Tabela `catalog_entries`
 
@@ -70,6 +71,7 @@ Campos iniciais propostos:
 - `temporal_resolution_text`;
 - `update_frequency_text`;
 - `access_level`;
+- `access_conditions_text`;
 - `authentication_required`;
 - `official_page_url`;
 - `metadata_url`;
@@ -84,6 +86,8 @@ Campos iniciais propostos:
 - `additional_metadata` JSONB;
 - `source_record_ids` JSONB;
 - timestamps.
+
+`access_conditions_text` preserva a condição declarada pela fonte em granularidade suficiente para a ficha pública. O campo não deve ser usado para inventariar todos os mecanismos técnicos de acesso; sua função é impedir perda semântica quando `access_level` e `authentication_required` não explicam, por si sós, requisitos como cadastro, solicitação, embargo ou quotas.
 
 ## 6. Variáveis
 
@@ -137,15 +141,3 @@ Durante a migração:
 - exportação determinística;
 - casos GEDI, DETER Cerrado, IBGE e ANA/SNIRH;
 - teste adversarial contra criação de entrada por arquivo/layer.
-
-## 11. Critério de saída
-
-O pacote executável será aceito quando:
-
-- o núcleo mínimo estiver materializado;
-- nenhum dado legado tiver sido removido;
-- os quatro casos forem representáveis;
-- o exportador produzir fichas úteis;
-- o CI estiver verde;
-- revisão não identificar expansão indevida;
-- houver autorização humana para merge.
