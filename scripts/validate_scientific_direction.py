@@ -279,7 +279,11 @@ require_tokens(
 require_tokens(
     "migration_plan",
     tuple(f"catalog.{entity}" for entity in EXPECTED_CORE_ENTITIES[1:] + EXPECTED_OPTIONAL_ENTITIES)
-    + ("migração sem perda, idempotente e reversível", "não promovido ao núcleo"),
+    + (
+        "migração sem perda, idempotente e reversível",
+        "não promovido ao núcleo",
+        "access_conditions_text",
+    ),
 )
 require_tokens(
     "golden_cases",
@@ -386,6 +390,13 @@ for schema_path in BACKLOG_SCHEMAS:
         fail(f"{schema_path.name}: draft inesperado")
     if schema["type"] != "object":
         fail(f"{schema_path.name}: raiz deve ser objeto")
+    required = schema["required"]
+    if not isinstance(required, list):
+        fail(f"{schema_path.name}: required deve ser array")
+    if any(not isinstance(field, str) for field in required):
+        fail(f"{schema_path.name}: required deve conter apenas strings")
+    if len(required) != len(set(required)):
+        fail(f"{schema_path.name}: required não pode conter duplicatas")
 
 require_tokens("roadmap_alias", ("`RETIRED_ALIAS`", "SIMBIOTRAMA_IMPLEMENTATION_ROADMAP.md"))
 require_tokens(
@@ -438,6 +449,12 @@ if milestone_status.get("project") != "Simbiotrama":
     fail("estado do Marco 1 com nome inconsistente")
 if milestone_status.get("status") != "INCORPORATED":
     fail("Marco 1 deve permanecer INCORPORATED")
+if "active_pr" in milestone_status:
+    fail("MILESTONE_STATUS não deve publicar PR transitório como ativo após incorporação")
+if milestone_status.get("transition_pr_record") != 58:
+    fail("registro de proveniência da transição deve apontar para PR #58")
+if milestone_status.get("transition_pr_role") != "scope_package_provenance":
+    fail("PR de transição deve ser registrado como proveniência, não como estado ativo")
 if milestone_status.get("instances_2_3_active") is not False:
     fail("Instâncias 2 e 3 não podem estar ativas")
 if milestone_status.get("legacy_n0_explorer_active_development") is not False:
