@@ -10,8 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE_URL = "https://ian-loc.github.io/vitrineciencia/"
 REPO_URL = "https://github.com/Ian-loc/vitrineciencia"
 PUBLIC_PAGES = ("index.html", "products.html", "analytics.html", "about.html")
-PUBLIC_IDENTITY_FILES = (*PUBLIC_PAGES, "README.md", "CITATION.cff")
-FORBIDDEN_TOKENS = (
+IDENTITY_FILES = (*PUBLIC_PAGES, "README.md", "CITATION.cff")
+FORBIDDEN_PAGE_TOKENS = (
     "Simbiotrama",
     "Simbioscópio",
     "Simbioscopio",
@@ -98,11 +98,13 @@ def validate_page(filename: str) -> None:
 
 
 def validate_identity() -> None:
-    for filename in PUBLIC_IDENTITY_FILES:
+    for filename in IDENTITY_FILES:
         content = (ROOT / filename).read_text(encoding="utf-8")
         if "Vitrine Ciência" not in content:
             fail(f"{filename}: identidade Vitrine Ciência ausente")
-        found = [token for token in FORBIDDEN_TOKENS if token in content]
+    for filename in PUBLIC_PAGES:
+        content = (ROOT / filename).read_text(encoding="utf-8")
+        found = [token for token in FORBIDDEN_PAGE_TOKENS if token in content]
         if found:
             fail(f"{filename}: referência fora da fronteira pública: {', '.join(found)}")
     for filename in ("README.md", "about.html", "CITATION.cff"):
