@@ -141,3 +141,15 @@ Durante a migração:
 - exportação determinística;
 - casos GEDI, DETER Cerrado, IBGE e ANA/SNIRH;
 - teste adversarial contra criação de entrada por arquivo/layer.
+
+## 11. Critério de saída
+
+O pacote executável será aceito quando:
+
+- o núcleo mínimo estiver materializado;
+- nenhum dado legado tiver sido removido;
+- os quatro casos forem representáveis;
+- o exportador produzir fichas úteis;
+- o CI estiver verde;
+- revisão não identificar expansão indevida;
+- houver autorização humana para merge.
