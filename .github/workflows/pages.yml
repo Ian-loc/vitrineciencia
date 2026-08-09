@@ -29,9 +29,9 @@ jobs:
           python3 scripts/build_catalog.py
           python3 scripts/audit_link_roles.py
 
-      - name: Validar interface da Vitrine
+      - name: Validar interface e fronteira da Vitrine
         run: |
-          python3 scripts/validate_frontend.py
+          python3 scripts/validate_vitrine.py
           node --check assets/app.js
           node --check assets/products.js
           node --check assets/analytics.js
@@ -60,6 +60,9 @@ jobs:
           test ! -e _site/explorer.html
           test ! -e _site/abordagens.html
           test ! -e _site/data/federated_layers.json
+          test ! -e _site/assets/explorer.js
+          test ! -e _site/assets/explorer.css
+          test ! -e _site/assets/approaches.css
           test ! -e _site/database
           test ! -e _site/scripts
           test ! -e _site/.github
@@ -84,7 +87,7 @@ jobs:
           python3 scripts/validate_product_catalog.py
           python3 scripts/build_catalog.py
           python3 scripts/audit_link_roles.py
-          python3 scripts/validate_frontend.py
+          python3 scripts/validate_vitrine.py
           python3 scripts/build_site_artifact.py
 
       - name: Configurar GitHub Pages
