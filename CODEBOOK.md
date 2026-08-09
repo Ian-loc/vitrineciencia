@@ -92,7 +92,6 @@ Campos propostos:
 
 - `entry_id`;
 - `stable_id`;
-- `organization_id`;
 - `parent_entry_id` opcional;
 - `entry_type`;
 - `official_name`;
@@ -101,11 +100,14 @@ Campos propostos:
 - `scientific_scope`;
 - `data_modalities`;
 - `geographic_coverage_text`;
+- `covers_brazil`;
+- `brazil_priority`;
 - `temporal_coverage_text`;
 - `spatial_resolution_text`;
 - `temporal_resolution_text`;
 - `update_frequency_text`;
 - `access_level`;
+- `access_conditions_text`;
 - `authentication_required`;
 - `official_page_url`;
 - `metadata_url`;
@@ -120,6 +122,30 @@ Campos propostos:
 - `additional_metadata` JSONB;
 - `source_record_ids` JSONB;
 - timestamps.
+
+`access_conditions_text` preserva condições materiais declaradas pela fonte — por exemplo cadastro, solicitação, embargo e quota — que não podem ser reduzidas com segurança a `access_level` ou `authentication_required`.
+
+`covers_brazil` preserva de forma estruturada a semântica transitória `sim`, `parcial` ou `não`; `brazil_priority` preserva a classificação curatorial `P0`–`P3` definida em `SELECTION_AND_COVERAGE_POLICY.md`. Esses campos não são derivados de `geographic_coverage_text` e existem para busca, filtro e auditoria determinísticos.
+
+### `entry_organizations`
+
+Relação estrutural N:N entre `catalog_entries` e `organizations`. Não é uma nova categoria conceitual do catálogo; existe para impedir perda de atribuição quando uma entrada possui múltiplas organizações responsáveis.
+
+Campos propostos:
+
+- `entry_id`;
+- `organization_id`;
+- `organization_role`;
+- `is_primary`;
+- timestamps.
+
+Regras:
+
+- preservar todas as relações institucionais explicitamente documentadas;
+- não escolher uma única organização quando a fonte registra múltiplas responsáveis;
+- não inventar papel institucional; usar estado não especificado quando a associação for conhecida e o papel não for;
+- filtros por organização devem consultar esta relação;
+- `is_primary` é apenas uma preferência de apresentação sustentada por evidência e não reduz as demais relações.
 
 ### `entry_type`
 
