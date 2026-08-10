@@ -1,6 +1,6 @@
 # Estado do workflow — Vitrine Ciência
 
-Última redefinição operacional: 2026-08-10, America/Sao_Paulo
+Atualização operacional: 2026-08-10, `America/Sao_Paulo`
 
 ## Direção ativa
 
@@ -14,7 +14,7 @@ A Vitrine deve crescer principalmente em **conteúdo científico e qualidade**, 
 
 - repositório: `Ian-loc/vitrineciencia`;
 - branch canônica: `main`;
-- baseline consolidado antes deste pacote: `1645df4987cd45c64c40a88cf733e9ba5c1f4a40`;
+- baseline operacional consolidado: `ba80cc44d2d2d42d7bda54bff9d84ddff97a5c18` (PR #78);
 - site: `https://ian-loc.github.io/vitrineciencia/`;
 - fontes canônicas: `data/data_resources.csv`;
 - produtos: `data/data_products.csv`;
@@ -25,7 +25,7 @@ A separação Vitrine–Simbiotrama é consolidada. PostgreSQL/PostGIS, runtime,
 
 ## Regra de materialização
 
-Uma atividade passa pelos estados:
+Uma atividade passa por:
 
 `PLANNED → EXECUTED → MATERIALIZED → VERIFIED → CONSOLIDATED`.
 
@@ -45,61 +45,106 @@ CI verde comprova estrutura e testes, **não** verdade factual externa.
 
 ### Interface pública
 
-PRs #72–#75 e #77 consolidaram:
-
-- smoke externo pós-deploy;
-- remoção de linguagem interna de QA/governança da interface pública;
-- refinamento visual;
-- correção de navegação mobile;
-- QA em Chromium real;
-- divulgação progressiva das fontes e produtos;
-- redução da rolagem excessiva;
-- proteção contra overflow horizontal.
+PRs #72–#75 e #77 consolidaram smoke externo, limpeza da linguagem pública, refinamento visual, correção mobile, QA em Chromium real e divulgação progressiva das fontes/produtos.
 
 O estado publicado pós-PR #77 foi verificado em navegador real.
 
+### Modelo operacional
+
+PR #78 consolidou a Vitrine como catálogo delimitado, com quatro classes de mudança (`DATA`, `FIX`, `RELEASE`, `INFRA`) e pipeline obrigatório por pacote.
+
 ### Catálogo
 
-O ciclo recente de interface preservou os três conjuntos canônicos; não realizou uma nova auditoria científica integral dos 51 registros.
+O ciclo recente preservou os três conjuntos canônicos, mas **não equivale a uma nova auditoria factual 51/51**.
 
 Portanto:
 
 - estrutura atual: validada;
 - interface atual: validada;
-- conteúdo científico: **requer auditoria 51/51 como próxima etapa substantiva antes de 1.0.0**.
+- modelo operacional: consolidado;
+- conteúdo científico: requer reauditoria 51/51 antes de 1.0.0.
 
-## Pendências críticas atuais
+## G0 — saneamento e autoridade
 
-### G0 — autoridade e saneamento
+### G0.1 — baseline operacional
 
-- [ ] integrar este modelo operacional no `main`;
-- [ ] auditar PRs legados #57–#69;
-- [ ] classificar cada legado como `SALVAGE`, `HISTORICAL`, `SUPERSEDED` ou `REMOVE`;
-- [ ] recuperar seletivamente metadados científicos úteis sem importar arquitetura antiga;
-- [ ] fechar PRs legados depois de preservar evidência útil;
-- [ ] auditar arquivos ativos obsoletos no repositório;
-- [ ] limpar/arquivar somente após prova de preservação;
-- [ ] reconstruir o roadmap de analytics sobre `main` atual antes de qualquer merge.
+**CONSOLIDATED.**
 
-### G1 — contrato canônico
+- PR #78 mesclado;
+- `main@ba80cc44d2d2d42d7bda54bff9d84ddff97a5c18`;
+- nenhum dado científico/frontend/analytics alterado.
 
-- [ ] congelar campos obrigatórios, recomendados e nullable-by-design para fontes;
-- [ ] congelar critério de produto materialmente distinto;
-- [ ] congelar relações e regras de distribuição/acesso;
-- [ ] adicionar testes contra duplicação semântica/IDs inválidos/orfandade.
+### G0.2 — reconciliação dos PRs #57–#69
 
-### G2 — baseline científico
+**MATERIALIZED / WAITING VALIDATION + MERGE GATE.**
 
-- [ ] auditar 51/51 fontes com evidência oficial atual;
-- [ ] auditar 11/11 produtos;
-- [ ] auditar 19/19 distribuições;
-- [ ] corrigir links/metadados somente com evidência rastreável;
-- [ ] registrar lacunas sem inferência;
-- [ ] registrar `last_verified`/equivalente de forma consistente.
+Artefatos desta etapa:
 
-### G3 — expansão de volume
+- `docs/legacy/VITRINE_LEGACY_RECONCILIATION_2026-08-10.md`;
+- `docs/legacy/VITRINE_LEGACY_SALVAGE_MANIFEST.csv`.
 
-Bloqueado até G1 e baseline inicial de G2 estarem suficientemente estáveis.
+Classificação operacional:
+
+- #57: `SALVAGE + HISTORICAL` — evidência de DETER Cerrado; nunca mesclar a arquitetura/guards;
+- #58: `HISTORICAL + SUPERSEDED` — princípios úteis já absorvidos; nunca mesclar;
+- #59: `SUPERSEDED + REMOVE` — PostgreSQL/runtime antigo; nunca mesclar;
+- #60–#69: `SALVAGE` apenas dos onze arquivos `instance1_entry_enrichment_batch01–11.json`; infraestrutura antiga nunca deve ser mesclada.
+
+Os lotes 01–11 cobrem `DR0001`–`DR0051`, mas **cobertura legada não significa verdade factual atual**.
+
+### G0.3 — salvamento científico
+
+**PLANNED / NEXT.**
+
+Fluxo obrigatório para cada registro:
+
+`registro canônico atual → payload legado → fonte oficial atual → decisão de campo → validação → próximo registro`.
+
+Nenhum valor legado será importado automaticamente.
+
+Campos sem equivalente seguro (`metadata_url`, `methodology_url`, `citation_text`, `citation_url`, `update_frequency_text`) permanecem como evidência de auditoria até decisão explícita do contrato canônico. `update_frequency_text` nunca será convertido em `temporal_resolution`.
+
+### G0.4 — fechamento/limpeza do legado
+
+Bloqueado pela preservação adequada.
+
+Após integração de G0.2:
+
+- #58 e #59 podem ser fechados como `superseded`;
+- #57 permanece aberto até DETER Cerrado ser revalidado e sua evidência útil preservada;
+- #60–#69 permanecem acessíveis até os respectivos lotes terem sido percorridos na auditoria 51/51;
+- arquivos/branches obsoletos só serão removidos/arquivados depois de prova de preservação.
+
+### G0.5 — analytics roadmap
+
+O PR #76 contém planejamento útil, mas sua branch diverge do `main` atual. Não mesclar no SHA atual.
+
+Após o saneamento legado imediato, recriar o roadmap em branch nova a partir do `main` vigente. Continuará **PLANNED / NOT IMPLEMENTED** e não autorizará tracker, cookie, beacon ou fingerprint.
+
+## G1 — contrato canônico
+
+Próximo gate estrutural antes da expansão em volume:
+
+- congelar campos obrigatórios/recomendados/nullable-by-design para fontes;
+- congelar critério de produto materialmente distinto;
+- congelar relações e regras de distribuição/acesso;
+- decidir explicitamente o destino dos metadados legados sem equivalente seguro;
+- adicionar testes contra IDs inválidos, duplicação semântica e relações órfãs.
+
+## G2 — baseline científico
+
+Após G0/G1:
+
+- auditar 51/51 fontes com evidência oficial atual;
+- auditar 11/11 produtos;
+- auditar 19/19 distribuições;
+- corrigir links/metadados somente com evidência rastreável;
+- registrar lacunas sem inferência;
+- atualizar `last_verified` somente após verificação real.
+
+## G3 — expansão de volume
+
+Bloqueada até o contrato canônico e baseline inicial estarem estáveis.
 
 Depois:
 
@@ -108,15 +153,15 @@ Depois:
 - nova fonte/produto somente quando materialmente útil;
 - sem enumeração automática de assets, tiles, bandas ou endpoints.
 
-### G4 — qualidade operacional
+## G4 — qualidade operacional
 
-- [ ] QA automático de URLs/IDs/relações;
-- [ ] acessibilidade: teclado, foco, nomes acessíveis, contraste e axe;
-- [ ] política de CI proporcional a DATA/FIX/RELEASE;
-- [ ] cobertura adicional de browser quando justificar custo;
-- [ ] manter smoke externo.
+- QA automático de URLs/IDs/relações;
+- acessibilidade: teclado, foco, nomes acessíveis, contraste e axe;
+- CI proporcional a `DATA/FIX/RELEASE`;
+- browsers adicionais quando o risco justificar o custo;
+- manter smoke externo.
 
-### G5 — release 1.0.0 e Zenodo
+## G5 — Vitrine Ciência 1.0.0 + Zenodo
 
 Bloqueado até saneamento, contrato, baseline científico e documentação ativa estarem consistentes.
 
@@ -130,13 +175,11 @@ Critérios mínimos:
 - snapshot reproduzível;
 - deploy verificado.
 
-Depois: tag → GitHub Release → snapshot → Zenodo → inspeção do DOI/metadata.
+Sequência: `tag → GitHub Release → snapshot → Zenodo → inspeção DOI/metadata`.
 
-### G6 — analytics privacy-first
+## G6 — analytics privacy-first
 
 **NOT IMPLEMENTED.**
-
-O PR #76 contém planejamento útil, mas sua branch foi criada antes do `main` atual e não deve ser mesclada no SHA atual.
 
 Sequência futura:
 
@@ -146,32 +189,14 @@ Sequência futura:
 - A3: visão interna;
 - A4: pequeno painel público agregado.
 
-Nenhum tracker/cookie/beacon/fingerprint está autorizado por este status.
-
-## Legado aberto a resolver
-
-A cadeia #57–#69 pertence ao período anterior à separação/estabilização atual.
-
-Regra:
-
-**não mesclar a cadeia como arquitetura da Vitrine.**
-
-Ela deve ser tratada como fonte potencial de:
-
-- evidência científica reutilizável;
-- decisões históricas;
-- material obsoleto/superseded.
-
-A recuperação correta é seletiva: `legacy evidence → current official verification → existing canonical field`.
-
 ## Política de concorrência
 
-- preferir um pacote de implementação ativo por vez;
+- um pacote de implementação ativo por vez;
 - PRs históricos congelados não contam como trabalho ativo;
-- DATA batches independentes podem coexistir somente quando não disputam as mesmas linhas/contratos;
 - evitar cadeias longas de PRs empilhados;
-- novos pacotes devem nascer do `main` atual;
-- qualquer mudança do head invalida autorização anterior.
+- novos pacotes nascem do `main` atual;
+- mudança do head invalida autorização anterior;
+- enquanto um PR aguarda gate humano, recorrências podem apenas fazer leitura/inventário/preparação da etapa seguinte.
 
 ## Pipeline por pacote
 
@@ -179,22 +204,20 @@ A recuperação correta é seletiva: `legacy evidence → current official verif
 
 ## Próxima ordem de execução
 
-1. **G0.1** integrar baseline operacional atual;
-2. **G0.2** triagem completa de #57–#69, sem merge;
-3. **G0.3** mapear e recuperar metadados científicos aproveitáveis do legado;
-4. **G0.4** saneamento de arquivos/branches históricos após preservação;
-5. **G0.5** reconstruir analytics roadmap sobre `main` atual e deixar apenas planejamento;
-6. **G1** contrato canônico;
-7. **G2** auditoria científica 51 + 11 + 19;
-8. **G3** crescimento contínuo do catálogo;
-9. **G4** reforços de QA e eficiência de CI;
-10. **G5** Vitrine Ciência 1.0.0 + Zenodo;
-11. **G6** analytics A0→A4, sem interferir na missão principal.
+1. **G0.2** validar e integrar a reconciliação #57–#69;
+2. fechar #58/#59 como `superseded` após a reconciliação estar em `main`;
+3. **G0.3** iniciar auditoria científica sequencial `DR0001 → DR0051`, reutilizando os lotes apenas como pistas/evidências;
+4. **G0.4** arquivar/limpar legado à medida que sua evidência for preservada;
+5. **G0.5** reconstruir o roadmap de analytics sobre `main` atual, sem implementação;
+6. **G1** consolidar contrato canônico;
+7. **G2** concluir 51 + 11 + 19;
+8. **G3** crescer continuamente o catálogo;
+9. **G4** reforçar QA/eficiência;
+10. **G5** lançar 1.0.0 e depositar no Zenodo;
+11. **G6** analytics A0→A4 quando apropriado.
 
-## Critério de longo prazo
-
-O fluxo normal deve ser:
+## Fluxo normal de longo prazo
 
 **discover → verify → curate → validate → publish → monitor → periodically release**.
 
-A expansão conceitual deixou de ser o modo normal de desenvolvimento.
+Expansão conceitual deixou de ser o modo normal de desenvolvimento.
