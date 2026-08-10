@@ -1,40 +1,42 @@
 # Vitrine Ciência — auditoria científica DR0011–DR0016
 
 Data da auditoria: 2026-08-10  
+Revisão cruzada: 2026-08-10  
 Escopo: `DR0011`–`DR0016`  
-Base canônica: `main@8367618449c735020bab94401128dc403932ad87`
+Base inicial: `main@8367618449c735020bab94401128dc403932ad87`
 
 ## Regra
 
-Esta auditoria usa a linha canônica atual como ponto de partida, o legado #63 apenas como pista e documentação oficial atual como autoridade. Nenhum valor é promovido por inferência. Fatos sem campo semanticamente adequado permanecem na trilha de auditoria.
+Esta auditoria usa a linha canônica como ponto de partida, o legado #63 apenas como pista e documentação oficial atual como autoridade. Nenhum valor é promovido por inferência. Fatos sem campo semanticamente adequado permanecem na trilha de auditoria.
 
-Prioridade de evidência: produtor/provedor oficial → documentação/metadados oficiais → serviço/API oficial → publicação primária quando necessária.
+Prioridade: produtor/provedor oficial → documentação/metadados oficiais → serviço/API oficial → publicação primária quando necessária.
+
+A revisão cruzada posterior ao primeiro fechamento do bloco detectou omissões em autenticação e semântica de campos. Essas omissões foram corrigidas antes de qualquer alteração do CSV canônico.
+
+---
 
 ## DR0011 — TerraBrasilis
 
-### Estado atual
-
-A entrada representa corretamente o TerraBrasilis como plataforma do INPE para descoberta e acesso a produtos de monitoramento da vegetação nativa, distinguindo produtos como PRODES e DETER.
-
 ### Evidência oficial atual
 
-- Catálogo GeoNetwork TerraBrasilis: https://terrabrasilis.dpi.inpe.br/geonetwork/
-- O catálogo oficial registra datasets com formatos como Shapefile, GeoPackage, GeoTIFF, CSV e outros, variando por produto.
-- Metadados oficiais registram serviços OGC, incluindo WMS/WFS, no nível de recursos/produtos.
+- plataforma: https://terrabrasilis.dpi.inpe.br/
+- FAQ: https://terrabrasilis.dpi.inpe.br/faq/
+- downloads: https://terrabrasilis.dpi.inpe.br/downloads/
+- citações/licença: https://terrabrasilis.dpi.inpe.br/citacoes-e-licenca-de-uso/
+- metadados: https://terrabrasilis.dpi.inpe.br/geonetwork/
 
-### Avaliação
+A plataforma permanece o ambiente oficial do INPE para acesso, consulta, análise e disseminação de dados de programas como PRODES e DETER. A página de downloads atual documenta Shapefile, GeoPackage e GeoTIFF, além de variação por produto; metadados também registram CSV em recursos específicos.
 
-**Conceito: coerente.**
+A FAQ estabelece uma distinção relevante de acesso: os dados públicos são acessíveis livremente respeitando licença/citação, mas **acesso antecipado aos alertas DETER exige credenciais** concedidas exclusivamente a instituições responsáveis por controle e fiscalização.
 
-Há, porém, uma mistura semântica no campo `data_formats`: `serviços OGC` não é formato de arquivo; é mecanismo/protocolo de acesso. O campo `access_protocols` já é o lugar correto para WMS/WFS.
+A página de licença fornece citação da plataforma e informa CC BY-SA 4.0 para o Programa BiomasBR, sem justificar substituir automaticamente todas as condições/citações específicas de cada produto por uma única regra no nível da plataforma.
 
-Também convém evitar tratar `GeoNetwork` como protocolo científico; ele é catálogo/serviço de metadados. A documentação de acesso atual pode continuar apontando ao GeoNetwork/API.
+### Decisão
 
-### Correção inequívoca candidata
-
-- `data_formats`: remover `serviços OGC` e manter apenas formatos efetivamente documentados, com indicação de variação por produto.
-
-Nenhuma frequência única de atualização deve ser inventada no nível da plataforma.
+- conceito da entrada: **coerente**;
+- `data_formats`: remover `serviços OGC`, que não é formato; usar apenas formatos de dados documentados e declarar variação;
+- `authentication_required`: `não` → **`parcial`**, porque coexistem acesso público e acesso antecipado restrito do DETER;
+- manter licença agregada cautelosa e remeter às condições/citações dos produtos/programas.
 
 ---
 
@@ -42,25 +44,26 @@ Nenhuma frequência única de atualização deve ser inventada no nível da plat
 
 ### Evidência oficial atual
 
-- Portal oficial: https://terrabrasilis.dpi.inpe.br/queimadas/portal/
-- FAQ oficial: https://terrabrasilis.dpi.inpe.br/queimadas/portal/informacoes/perguntas-frequentes/
-- O BDQueimadas mantém acervo histórico de focos desde 1998 e oferece produtos operacionais de fogo.
-- A documentação oficial informa atualização de focos em intervalo operacional curto e disponibilização pública/gratuita.
-- O ecossistema oferece WMS/WFS e exportações/downloads por produto.
+- portal: https://terrabrasilis.dpi.inpe.br/queimadas/portal/
+- dados abertos: https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/
+- FAQ: https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_informacoes/faq/
 
-### Avaliação
+O portal atual oferece diversos sistemas e produtos, não apenas o BDQueimadas. A página de dados abertos documenta:
 
-**Conceito: coerente.** A limitação atual — foco de calor não equivale automaticamente a incêndio ou área queimada — deve ser preservada.
+- focos: CSV/KML e atualização até tempo quase real;
+- eventos de fogo: KML;
+- área queimada: TIFF/Shapefile;
+- risco de fogo e meteorologia: produtos observados e previstos;
+- geosserviços OGC em área própria.
 
-O campo `data_formats` mistura formatos, serviços OGC e `visualização web`. Serviços e interface não são formatos.
+A FAQ mantém acesso público e sem custo aos produtos após geração.
 
-### Correção inequívoca candidata
+### Decisão
 
-- `data_formats`: manter apenas formatos de dados documentados; remover `serviços OGC` e `visualização web` do campo.
-
-WMS/WFS permanecem corretamente no domínio de `access_protocols`.
-
-Não converter a cadência operacional de atualização dos focos em `temporal_resolution`: são conceitos diferentes.
+- `data_formats`: substituir a mistura de formatos, OGC e visualização por **`CSV | KML | TIFF | Shapefile`**;
+- `data_access_url`: preferir a página de dados abertos do Programa, porque a entrada representa a família completa e o antigo URL do BDQueimadas cobre apenas um componente;
+- manter WMS/WFS em `access_protocols`, não em formatos;
+- manter a limitação de que foco de calor não é sinônimo de incêndio nem de área queimada.
 
 ---
 
@@ -68,24 +71,23 @@ Não converter a cadência operacional de atualização dos focos em `temporal_r
 
 ### Evidência oficial atual
 
-Política de compartilhamento: https://specieslink.net/data_sharing_policy
+- API: https://specieslink.net/ws/1.0/
+- política de compartilhamento: https://specieslink.net/data_sharing_policy
 
-A política oficial sustenta:
+A política oficial sustenta compartilhamento aberto, CC BY 4.0 para dados textuais e CC BY-SA 4.0 para imagens, com necessidade de preservar atribuição e eventuais condições adicionais do provedor.
 
-- acesso e compartilhamento aberto dos dados da rede;
-- CC BY 4.0 para dados textuais da rede;
-- CC BY-SA 4.0 para imagens;
-- necessidade de preservar atribuição e condições adicionais quando estabelecidas pela coleção/provedor.
+A documentação da API é explícita: o serviço web é aberto a todos, mas **cada chamada exige `apikey`**. As chamadas usam HTTP GET; respostas gerais são JSON e buscas de biodiversidade podem retornar GeoJSON. A consulta pública da rede continua distinta do acesso via API.
 
-### Avaliação
+### Correção da avaliação anterior
 
-**Linha atual coerente.** A distinção de licenças e a cautela com condições por coleção já estão corretamente representadas.
-
-A entrada também registra que a API exige chave; nenhuma modificação é aplicada nesta auditoria sem uma nova necessidade material.
+A primeira versão desta auditoria considerou `authentication_required=sim` suficientemente coerente apenas porque a própria linha já mencionava chave de API. Isso era agregado demais: a entrada representa a rede, não somente sua API.
 
 ### Decisão
 
-- nenhuma correção inequívoca imediata.
+- `authentication_required`: `sim` → **`parcial`**;
+- `data_formats`: incluir JSON/GeoJSON como formatos documentados da API;
+- `access_protocols`: retirar JSON/GeoJSON e registrar **REST API / HTTP GET / exportação tabular**;
+- preservar as licenças atuais e cautela por coleção.
 
 ---
 
@@ -93,21 +95,15 @@ A entrada também registra que a API exige chave; nenhuma modificação é aplic
 
 ### Evidência oficial atual
 
-Embora o acesso automatizado à página principal do SiBBr possa ser limitado por regras do site, fontes governamentais atuais confirmam sua função ativa:
+O domínio principal apresenta limitações para inspeção automatizada, então a verificação foi triangulada apenas com fontes governamentais atuais, incluindo a página de dados ambientais de biodiversidade do MMA e referências institucionais recentes ao uso do SiBBr.
 
-- MMA — mapas e dados de biodiversidade: https://www.gov.br/mma/pt-br/assuntos/biodiversidade-e-biomas/mapas-e-dados
-- MMA — painéis de biodiversidade: https://www.gov.br/mma/pt-br/assuntos/biodiversidade-e-biomas/painel-de-dados
-- ICMBio informa publicação/migração de dados de biodiversidade para o SiBBr: https://www.gov.br/icmbio/pt-br/assuntos/centros-de-pesquisa/biodiversidade-e-dados/portal-da-biodiversidade
-- IBGE continua usando dados disponíveis no SiBBr em avaliações nacionais de biodiversidade.
-
-### Avaliação
-
-**Linha atual deliberadamente conservadora e adequada.** Identidade, função nacional e integração de dados são sustentadas. Autenticação, APIs e uma licença única continuam variando ou sem confirmação proporcional suficiente no nível da infraestrutura.
+Essas fontes sustentam a função do SiBBr como infraestrutura nacional de integração/disponibilização de dados de biodiversidade. Não sustentam proporcionalmente uma única regra atual de autenticação, API ou licença para todos os módulos.
 
 ### Decisão
 
-- nenhuma correção inequívoca imediata;
-- não preencher `programmatic_access`, `access_protocols` ou `authentication_required` por aproximação.
+- manter a entrada conservadora;
+- não preencher `programmatic_access`, `access_protocols`, `authentication_required` ou licença por aproximação;
+- nenhuma correção inequívoca nesta rodada.
 
 ---
 
@@ -115,18 +111,17 @@ Embora o acesso automatizado à página principal do SiBBr possa ser limitado po
 
 ### Evidência oficial atual
 
-Página oficial IBGE: https://www.ibge.gov.br/geociencias/informacoes-ambientais.html
+Página técnica oficial:
+https://www.ibge.gov.br/geociencias/informacoes-ambientais/vegetacao/23382-banco-de-informacoes-ambientais.html?lang=pt-BR
 
-O IBGE descreve o Banco de Dados e Informações Ambientais como plataforma pública para informações de Geologia, Geomorfologia, Pedologia e Vegetação, com visualização e download em diferentes formatos. A documentação atual informa ciclo de atualização bienal dos conteúdos e disponibiliza documentação metodológica temática.
-
-### Avaliação
-
-**Linha atual conceitualmente coerente.** O fato de haver atualização bienal é relevante para a trilha de auditoria, mas o schema de fonte atual não possui `update_frequency`. Ele não deve ser colocado em `temporal_resolution`.
+O IBGE descreve o BDiA como sistema público na web que integra Geologia, Geomorfologia, Pedologia e Vegetação, disponibiliza downloads em formatos diversos e informa atualização **a cada dois anos**. A página reúne acesso ao BDiAWeb, notas metodológicas 2025/2023 e publicações.
 
 ### Decisão
 
-- nenhuma correção canônica obrigatória nesta rodada;
-- preservar atualização bienal como evidência até existir uso semanticamente adequado dentro do contrato atual.
+- não converter atualização bienal em `temporal_resolution`;
+- preencher `access_documentation_url` com a página técnica oficial;
+- usar a mesma página como `verification_url`, pois ela documenta identidade, escopo, acesso, método e atualização de forma mais representativa que o aplicativo isolado;
+- demais valores permanecem conservadores.
 
 ---
 
@@ -134,43 +129,57 @@ O IBGE descreve o Banco de Dados e Informações Ambientais como plataforma púb
 
 ### Evidência oficial atual
 
-- MMA — CNUC: https://www.gov.br/mma/pt-br/composicao/sbio/dap/cadastro-nacional-de-ucs/cadastro-nacional-de-ucs
-- Serviço gov.br: https://www.gov.br/pt-br/servicos/consultar-o-cadastro-nacional-de-unidades-de-conservacao-da-natureza
-- Dataset oficial: https://dados.gov.br/dados/conjuntos-dados/unidadesdeconservacao
+- serviço gov.br: https://www.gov.br/pt-br/servicos/obter-informacoes-sobre-as-unidades-de-conservacao-ambiental-nacionais
+- plataforma: https://cnuc.mma.gov.br/
+- dados abertos MMA: https://dados.mma.gov.br/dataset/unidadesdeconservacao
+- catálogo federal: https://dados.gov.br/dados/conjuntos-dados/unidadesdeconservacao
 
-A documentação atual confirma:
+A ficha oficial do serviço informa que o CNUC é a plataforma oficial das UCs do SNUC, gratuita, on-line e aberta. Para consulta pública **não é necessário cadastro nem login**. A área restrita é separada e exclusiva para gestores responsáveis por inserir/manter informações.
 
-- CNUC é a base oficial das UCs do SNUC, gerida pelo MMA em colaboração com gestores federais, estaduais e municipais;
-- consulta pública é gratuita e não exige cadastro/login;
-- o dataset oficial possui atualização de março de 2026, compatível com a linha atual;
-- relatórios e downloads públicos estão disponíveis em formatos documentados pelo serviço/dataset.
+O serviço permite relatórios em Excel/CSV/PDF e dados geoespaciais SHP/KML. O conjunto oficial também está no Portal de Dados Abertos do MMA, baseado em CKAN, com API do catálogo e recursos de download. O catálogo federal mantém recurso atualizado até março de 2026. Recursos do MMA registram licença Creative Commons Atribuição.
 
-### Avaliação
+### Correções da avaliação anterior
 
-A linha atual usa `authentication_required=não se aplica`. Para um serviço público que explicitamente não exige login, **`não` é semanticamente mais preciso**.
+A primeira versão corrigiu autenticação e documentação, mas deixou passar usos semanticamente incorretos ou desatualizados:
 
-A página gov.br também é uma boa documentação de acesso e pode preencher `access_documentation_url` sem inferência.
+- `temporal_resolution=atualização administrativa` descreve processo/frequência de manutenção, não resolução temporal;
+- `programmatic_access=não` ignora o caminho oficial via catálogo CKAN;
+- `data_access_url` apontava apenas ao catálogo federal, embora a própria plataforma CNUC seja o canal primário de consulta e relatório.
 
-A licença não deve ser alterada com base apenas na licença do conteúdo da página gov.br; licença do site e licença do dataset não são automaticamente equivalentes.
+### Decisão
 
-### Correções inequívocas candidatas
-
-- `authentication_required`: `não se aplica` → `não`;
-- `access_documentation_url`: preencher com o serviço gov.br oficial.
+- `data_access_url` → `https://cnuc.mma.gov.br/`;
+- `data_formats` → `CSV | PDF | Shapefile | KML`;
+- `authentication_required` → `não` para a consulta pública;
+- `access_conditions` → explicitar consulta pública sem login e área restrita separada para gestores;
+- `programmatic_access` → `parcial`, porque há catálogo CKAN/API e downloads HTTP, enquanto a plataforma primária permanece orientada à web;
+- `access_protocols` → `CKAN API | HTTP download`;
+- `access_documentation_url` → serviço gov.br;
+- `temporal_resolution` → `não se aplica`;
+- `verification_url` → serviço gov.br, mantendo o dataset como evidência complementar;
+- manter licença Creative Commons Atribuição já registrada.
 
 ---
 
-## Resumo do bloco
+## Resumo revisado
 
-| ID | Resultado | Correção inequívoca candidata |
+| ID | Resultado | Correções candidatas |
 |---|---|---|
-| DR0011 | coerente com ajuste semântico | remover serviço OGC de `data_formats` |
-| DR0012 | coerente com ajuste semântico | remover serviço OGC/visualização de `data_formats` |
-| DR0013 | coerente | nenhuma |
-| DR0014 | coerente/conservador | nenhuma |
-| DR0015 | coerente | nenhuma; frequência bienal permanece na auditoria |
-| DR0016 | coerente com correção de acesso | autenticação=`não`; adicionar documentação oficial de acesso |
+| DR0011 | VERIFIED_WITH_CORRECTION | data_formats; authentication_required |
+| DR0012 | VERIFIED_WITH_CORRECTION | data_formats; data_access_url |
+| DR0013 | VERIFIED_WITH_CORRECTION | authentication_required; data_formats; access_protocols |
+| DR0014 | VERIFIED_NO_CHANGE | — |
+| DR0015 | VERIFIED_WITH_CORRECTION | access_documentation_url; verification_url |
+| DR0016 | VERIFIED_WITH_CORRECTION | data_access_url; data_formats; authentication_required; access_conditions; programmatic_access; access_protocols; access_documentation_url; temporal_resolution; verification_url |
 
-## Gate científico
+## Qualidade e lição operacional
 
-As correções acima são candidatas a `AUTO-SAFE` porque não mudam escopo nem interpretação científica; elas corrigem classificação de campos ou fatos operacionais explicitamente sustentados por fonte oficial. O próximo pacote DATA deve alterar somente os campos listados na fila estruturada correspondente e verificar o diff linha a linha.
+A revisão cruzada demonstrou que **CI verde não prova completude científica da auditoria**. A partir deste bloco, a rotina deve incluir uma checagem adversarial mínima antes de consolidar uma fila:
+
+1. procurar contradição entre acesso público e autenticação de API/área restrita;
+2. verificar se formatos e protocolos foram separados corretamente;
+3. testar se `temporal_resolution` não está recebendo frequência de atualização;
+4. preferir evidência oficial representativa da entidade, não apenas de um componente;
+5. conferir se toda afirmação nova aparece explicitamente na evidência oficial atual.
+
+As correções permanecem candidatas `AUTO-SAFE` porque estão dentro do contrato congelado e são sustentadas por fontes oficiais, mas só podem tocar o CSV depois de checagem exata do valor atual e diff linha a linha.
