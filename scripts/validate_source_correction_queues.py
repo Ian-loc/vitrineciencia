@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """Cross-audit source correction queues and materialize a proposed CSV safely.
 
-The script is read-only with respect to the canonical catalog. By default it only
-validates the queues. ``--output`` may write a proposed CSV to another path; the
-canonical ``data/data_resources.csv`` is never overwritten by this script.
+Each queued cell may be in exactly one of two valid states:
+- pending: canonical value equals the queue's historical current_value;
+- applied: canonical value equals the approved candidate_value.
+
+Any third value is a conflict and fails validation. The script is read-only with
+respect to the canonical catalog and never overwrites data/data_resources.csv.
 """
 from __future__ import annotations
 
@@ -92,6 +95,8 @@ def main() -> None:
     seen_keys: set[str] = set()
     corrections: list[dict[str, str]] = []
     explicit_no_change_sources: set[str] = set()
+    pending_count = 0
+    applied_count = 0
 
     for path in queue_paths:
         _, rows = read_csv(path)
@@ -120,35 +125,45 @@ def main() -> None:
                 fail(f"correção duplicada para {key}")
             seen_keys.add(key)
 
-            current_value = row.get("current_value") or ""
+            queued_current = row.get("current_value") or ""
+            candidate = overrides.get(key, row.get("candidate_value") or "")
+            if not candidate.strip():
+                fail(f"{path.name}:{line_number}: candidato vazio para {key}")
+            if candidate == queued_current:
+                fail(f"{path.name}:{line_number}: fila não altera {key}")
+
             actual_value = index[resource_id][field]
-            if current_value != actual_value:
+            if actual_value == queued_current:
+                state = "pending"
+                pending_count += 1
+            elif actual_value == candidate:
+                state = "applied"
+                applied_count += 1
+            else:
                 fail(
-                    f"{path.name}:{line_number}: current_value diverge de main para {key}: "
-                    f"fila={current_value!r}, main={actual_value!r}"
+                    f"{path.name}:{line_number}: conflito em {key}: main={actual_value!r}; "
+                    f"esperado pendente={queued_current!r} ou aplicado={candidate!r}"
                 )
 
             evidence_url = (row.get("evidence_url") or "").strip()
             if not is_https(evidence_url):
                 fail(f"{path.name}:{line_number}: evidence_url deve ser HTTPS para {key}")
 
-            candidate = overrides.get(key, row.get("candidate_value") or "")
-            if candidate == actual_value:
-                fail(f"{path.name}:{line_number}: candidato não altera {key}")
-            if not candidate.strip():
-                fail(f"{path.name}:{line_number}: candidato vazio para {key}")
-
             corrections.append({
                 "resource_id": resource_id,
                 "field": field,
-                "current_value": actual_value,
+                "queued_current_value": queued_current,
+                "actual_value": actual_value,
                 "candidate_value": candidate,
+                "state": state,
                 "evidence_url": evidence_url,
                 "queue_file": path.name,
             })
 
     if len(corrections) != EXPECTED_CORRECTIONS:
         fail(f"esperadas {EXPECTED_CORRECTIONS} correções, encontradas {len(corrections)}")
+    if pending_count + applied_count != EXPECTED_CORRECTIONS:
+        fail("estado das correções não fecha com o total esperado")
 
     corrected_sources = {item["resource_id"] for item in corrections}
     if len(corrected_sources) != EXPECTED_CORRECTED_SOURCES:
@@ -196,14 +211,15 @@ def main() -> None:
         "authentication_required": {"sim", "parcial", "não", "desconhecido", "não se aplica"},
     }
     for item in corrections:
-        if item["field"] in url_fields and item["candidate_value"] != "não se aplica" and not is_https(item["candidate_value"]):
+        candidate = item["candidate_value"]
+        if item["field"] in url_fields and candidate != "não se aplica" and not is_https(candidate):
             fail(f"candidato de URL deve ser HTTPS: {item['resource_id']}|{item['field']}")
         allowed = enum_fields.get(item["field"])
-        if allowed and item["candidate_value"] not in allowed:
-            fail(f"valor enum inválido em {item['resource_id']}|{item['field']}: {item['candidate_value']}")
+        if allowed and candidate not in allowed:
+            fail(f"valor enum inválido em {item['resource_id']}|{item['field']}: {candidate}")
 
     date.fromisoformat(AUDIT_DATE)
-    total_cell_changes = len(corrections) + last_verified_changes
+    proposed_cell_changes = pending_count + last_verified_changes
     field_counts = Counter(item["field"] for item in corrections)
 
     summary = {
@@ -212,12 +228,14 @@ def main() -> None:
         "canonical_columns": len(header),
         "queue_files": [path.name for path in queue_paths],
         "correction_count": len(corrections),
+        "pending_correction_count": pending_count,
+        "already_applied_correction_count": applied_count,
         "corrected_source_count": len(corrected_sources),
         "no_change_source_count": len(EXPECTED_NO_CHANGE_SOURCES),
         "no_change_sources": sorted(EXPECTED_NO_CHANGE_SOURCES),
         "explicit_no_change_sources": sorted(explicit_no_change_sources),
         "last_verified_changes": last_verified_changes,
-        "total_cell_changes": total_cell_changes,
+        "proposed_cell_changes": proposed_cell_changes,
         "field_counts": dict(sorted(field_counts.items())),
         "normalization_overrides": overrides,
         "source_ids_preserved": True,
@@ -240,9 +258,9 @@ def main() -> None:
         args.summary_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     print(
-        "OK: correction queues cross-audited — "
-        f"{len(corrections)} corrections / {len(corrected_sources)} sources / "
-        f"{last_verified_changes} last_verified updates / {total_cell_changes} total cell changes"
+        "OK: correction queues guarded idempotently — "
+        f"{pending_count} pending / {applied_count} already applied / "
+        f"{last_verified_changes} last_verified updates / {proposed_cell_changes} proposed cell changes"
     )
 
 
