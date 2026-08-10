@@ -37,7 +37,7 @@ FORBIDDEN_PUBLIC_COPY = (
     "P3 —",
 )
 REQUIRED_IDS = {
-    "index.html": {"conteudo", "catalogo", "hero-search", "q", "filters", "scope", "area", "brazil", "download", "programmatic", "coverage", "format", "evidence", "sort", "clear", "list", "count"},
+    "index.html": {"conteudo", "catalogo", "hero-search", "q", "filters", "scope", "area", "brazil", "download", "programmatic", "coverage", "format", "evidence", "sort", "clear", "list", "count", "results-more", "show-more", "shown-count"},
     "products.html": {"produtos", "product-search", "product-q", "product-filters", "product-source", "product-area", "product-brazil", "product-kind", "product-format", "product-protocol", "product-auth", "product-status", "product-origin", "product-sort", "product-clear", "product-list", "product-count", "compare-bar", "compare-dialog"},
     "analytics.html": {"analise", "summary", "chart-areas", "chart-download", "chart-programmatic", "chart-brazil", "chart-evidence", "chart-formats", "chart-visualizations"},
     "about.html": {"sobre"},
@@ -166,10 +166,23 @@ def validate_visual_contract() -> None:
         ".site-nav .nav-links a{\n    display:inline-flex;\n    flex:0 0 auto;",
         ".stats-grid div:nth-child(even){border-left:1px solid var(--vr-line)}",
         ".stats-grid div:nth-last-child(-n+2){border-bottom:0}",
+        "scroll-snap-type:x proximity",
+        ".results-more[hidden]{display:none}",
     )
     missing = [rule for rule in required_rules if rule not in visual]
     if missing:
-        fail("contrato visual mobile incompleto: navegação ou grade de estatísticas pode regredir")
+        fail("contrato visual incompleto: navegação, áreas, estatísticas ou expansão de resultados pode regredir")
+
+    app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
+    progressive_rules = (
+        "const PAGE_SIZE = 12;",
+        "filtered.slice(0, visibleCount)",
+        "visibleCount = PAGE_SIZE;",
+        "visibleCount + PAGE_SIZE",
+    )
+    missing_progressive = [rule for rule in progressive_rules if rule not in app]
+    if missing_progressive:
+        fail("divulgação progressiva das fontes incompleta")
 
 
 def validate_required_assets() -> None:
