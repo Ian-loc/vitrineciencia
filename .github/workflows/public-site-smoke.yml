@@ -1,18 +1,9 @@
 name: Verificar Vitrine publicada
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - ".github/workflows/public-site-smoke.yml"
-      - ".github/workflows/pages.yml"
-      - "index.html"
-      - "products.html"
-      - "analytics.html"
-      - "about.html"
-      - "assets/**"
-      - "data/**"
-  push:
+  workflow_run:
+    workflows: ["Validar e publicar Vitrine"]
+    types: [completed]
     branches: [main]
   workflow_dispatch:
 
@@ -21,10 +12,11 @@ permissions:
 
 jobs:
   public-site-smoke:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
-      - name: Verificar endpoints públicos atuais
+      - name: Verificar endpoints públicos após deploy
         env:
           SITE: https://ian-loc.github.io/vitrineciencia
         run: |
@@ -46,6 +38,7 @@ jobs:
           fetch "$SITE/about.html" "$tmp/about.html"
           fetch "$SITE/assets/app.js" "$tmp/app.js"
           fetch "$SITE/assets/products.js" "$tmp/products.js"
+          fetch "$SITE/assets/analytics.js" "$tmp/analytics.js"
           fetch "$SITE/data/data_resources.json" "$tmp/resources.json"
           fetch "$SITE/data/data_products.json" "$tmp/products.json"
 
@@ -53,9 +46,11 @@ jobs:
           grep -q 'id="filters"' "$tmp/index.html"
           grep -q 'id="product-filters"' "$tmp/products.html"
           grep -q 'id="summary"' "$tmp/analytics.html"
+          grep -q 'assets/analytics.js' "$tmp/analytics.html"
           grep -q 'id="sobre"' "$tmp/about.html"
           grep -q 'data/data_resources.json' "$tmp/app.js"
           grep -q 'data/data_products.json' "$tmp/products.js"
+          grep -q 'data/data_resources.json' "$tmp/analytics.js"
 
           python3 - "$tmp/resources.json" "$tmp/products.json" <<'PY'
           import json, sys
