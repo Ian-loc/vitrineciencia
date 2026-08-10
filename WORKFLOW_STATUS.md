@@ -1,134 +1,125 @@
 # Estado do workflow — Vitrine Ciência
 
-Atualização operacional: 2026-08-10, `America/Sao_Paulo`
+Atualização: 2026-08-10 (`America/Sao_Paulo`)
 
 ## Direção ativa
 
 **Vitrine Ciência is a bounded scientific-data discovery catalog. Its conceptual product model is stable. Future development prioritizes data-volume growth, metadata correction, usability, maintenance and release management.**
 
-O modelo operacional completo está em `docs/VITRINE_OPERATING_MODEL.md`.
+Documentos centrais:
+- `docs/VITRINE_OPERATING_MODEL.md`;
+- `docs/VITRINE_CANONICAL_DATA_CONTRACT.md`;
+- `docs/legacy/VITRINE_LEGACY_RECONCILIATION_2026-08-10.md`.
 
-A Vitrine cresce principalmente em **conteúdo científico e qualidade**, não em profundidade arquitetural.
-
-## Autoridade atual
+## Autoridade
 
 - repositório: `Ian-loc/vitrineciencia`;
-- branch canônica: `main`;
-- baseline operacional consolidado: `ba80cc44d2d2d42d7bda54bff9d84ddff97a5c18` (PR #78);
+- branch: `main`;
+- baseline consolidado atual: `9e83ffa3fa5fa6e74865f8f2986c30c7966ec239` (PR #79);
 - site: `https://ian-loc.github.io/vitrineciencia/`;
-- fontes canônicas: `data/data_resources.csv`;
-- produtos: `data/data_products.csv`;
-- distribuições/acessos: `data/product_distributions.csv`;
-- baseline: **51 fontes, 11 produtos, 19 distribuições**.
+- dados: 51 fontes, 11 produtos, 19 distribuições.
 
-A separação Vitrine–Simbiotrama é consolidada. PostgreSQL/PostGIS e runtime/schemas do Simbiotrama não são dependências da Vitrine.
+## Gates
 
-## Regra de materialização
+- **AUTO-SAFE:** documentação/status, saneamento reversível, QA/CI, pequenas correções factuais inequívocas com evidência oficial e pequenas inclusões DATA dentro do contrato.
+- **REVIEW:** lote grande, mudança pública relevante ou ambiguidade factual material.
+- **HUMAN-DECISION:** escopo/schema incompatível, mudança destrutiva/em massa, nova infraestrutura, analytics/privacy, licença/autoria/citação oficial, `1.0.0`, Zenodo/DOI.
 
-`PLANNED → EXECUTED → MATERIALIZED → VERIFIED → CONSOLIDATED`
-
-Consolidação exige implementação, validação proporcional, diff audit, integração governada, deploy quando aplicável e verificação pós-merge/pós-deploy. CI verde comprova estrutura/testes, **não verdade factual externa**.
-
-## Gates proporcionais
-
-- **AUTO-SAFE:** documentação/status, saneamento reversível com proveniência preservada, QA/CI, pequenas correções factuais inequívocas com evidência oficial e pequenas inclusões DATA dentro do contrato. Pode integrar sem interrupção humana depois dos controles objetivos.
-- **REVIEW:** lotes grandes, mudança pública relevante ou correção materialmente ambígua. Uma autorização humana para o pacote completo.
-- **HUMAN-DECISION:** escopo/modelo conceitual, schema incompatível, destruição/em massa, nova infraestrutura, analytics/privacy, licença/autoria/citação oficial, `1.0.0` e Zenodo/DOI.
+Pipeline:
+`scope → evidence → implementation → validation → diff audit → public validation when relevant → risk classification → integration → post-merge verification → consolidation`
 
 ## Estado consolidado
 
 ### Interface
-PRs #72–#75 e #77: smoke externo, linguagem pública, visual, mobile, Chromium real e progressive disclosure consolidados.
+PRs #72–#75 e #77 consolidados e verificados.
 
-### Modelo operacional
-PR #78: catálogo delimitado e pipeline consolidado. O PR #79 atualiza a política de gates para o modelo proporcional ao risco.
+### Governança
+- PR #78: modelo operacional delimitado;
+- PR #79: reconciliação legada + gates proporcionais;
+- #58 e #59: fechados como `superseded`, sem merge e sem apagar histórico;
+- #57 e #60–#69: mantidos como fontes temporárias de evidência a ser revalidada.
 
-### Catálogo
-Estrutura e interface validadas. O ciclo recente **não equivale a auditoria factual 51/51**; reauditoria científica permanece necessária antes de 1.0.0.
+### Dados
+Os três datasets canônicos permanecem estruturalmente validados, mas ainda não concluíram a nova auditoria factual integral.
 
-## G0 — saneamento e autoridade
+## G0 — saneamento
 
 ### G0.1 baseline operacional
-**CONSOLIDATED.** `main@ba80cc44d2d2d42d7bda54bff9d84ddff97a5c18`.
+**CONSOLIDATED.**
 
 ### G0.2 reconciliação #57–#69
-**MATERIALIZED / VALIDATING — AUTO-SAFE.**
-
-Artefatos:
-- `docs/legacy/VITRINE_LEGACY_RECONCILIATION_2026-08-10.md`;
-- `docs/legacy/VITRINE_LEGACY_SALVAGE_MANIFEST.csv`.
-
-Classificação:
-- #57 `SALVAGE + HISTORICAL`;
-- #58 `HISTORICAL + SUPERSEDED`;
-- #59 `SUPERSEDED + REMOVE`;
-- #60–#69 `SALVAGE` somente dos onze `instance1_entry_enrichment_batch01–11.json`.
-
-Nenhum valor legado é autoridade atual ou pode ser importado automaticamente.
+**CONSOLIDATED.** `main@9e83ffa3fa5fa6e74865f8f2986c30c7966ec239`.
 
 ### G0.3 salvamento científico
-**NEXT.**
+**IN PROGRESS.**
 
-`registro canônico atual → payload legado → fonte oficial atual → decisão de campo → validação → próximo registro`
+Fluxo:
+`registro atual → legado útil → fonte oficial atual → decisão campo a campo → correção inequívoca → validação`.
 
-Campos legados sem equivalente seguro ficam como evidência. `update_frequency_text` nunca vira `temporal_resolution` por aproximação.
+Piloto executado em `DR0001–DR0004`; decisões em `docs/audits/VITRINE_SOURCE_AUDIT_PILOT_DR0001_DR0004_2026-08-10.md`.
 
-### G0.4 fechamento/limpeza
-Depois de G0.2 em `main`:
-- fechar #58/#59 como `superseded` é AUTO-SAFE e reversível;
-- manter #57 até DETER Cerrado ser revalidado;
-- manter #60–#69 até os lotes serem percorridos;
-- remoção destrutiva/em massa é HUMAN-DECISION.
+### G0.4 legado
+- #58/#59: **CLOSED / SUPERSEDED**;
+- #57: manter até DETER Cerrado ser revalidado;
+- #60–#69: manter até os lotes serem percorridos;
+- remoção em massa/destrutiva continua HUMAN-DECISION.
 
 ### G0.5 analytics roadmap
-PR #76 diverge do `main`; não mesclar o SHA atual. Recriar em branch nova. Planejamento é AUTO-SAFE; ativação de analytics é HUMAN-DECISION.
+PR #76 permanece obsoleto em relação ao `main`; seu conteúdo útil deverá ser recriado em branch limpa. Ativação de analytics continua HUMAN-DECISION.
 
-## G1 contrato canônico
-Congelar o contrato existente, critérios de produto e relações; adicionar testes de IDs/duplicação/orfandade. Documentar o contrato existente pode ser AUTO-SAFE; mudança incompatível é HUMAN-DECISION.
+## G1 — contrato canônico
 
-## G2 baseline científico
-Auditar 51 fontes + 11 produtos + 19 distribuições com evidência oficial atual. Pequenas correções inequívocas são AUTO-SAFE; ambiguidades relevantes sobem para REVIEW.
+**MATERIALIZED / VALIDATING — AUTO-SAFE.**
 
-## G3 expansão
-Após G1/G2 inicial: batches pequenos (normalmente 5–10), foco Brasil, granularidade material, sem enumerar assets/bandas/endpoints.
+`docs/VITRINE_CANONICAL_DATA_CONTRACT.md` congela o schema existente sem novas colunas:
+- fontes: 34 campos;
+- produtos: 24 campos;
+- distribuições: 15 campos;
+- IDs/relações e critérios de granularidade definidos;
+- informação sem campo semanticamente correto permanece na trilha de auditoria;
+- mudança de contrato durante a auditoria é HUMAN-DECISION.
 
-## G4 qualidade
-QA de URLs/IDs/relações, acessibilidade, CI proporcional, browsers quando justificado e smoke externo.
+O piloto `DR0001–DR0004` confirmou que a auditoria pode avançar sem expansão imediata do schema.
 
-## G5 1.0.0 + Zenodo
-**HUMAN-DECISION.** Requer saneamento, baseline 51+11+19, QA, versão/citação/licenças consistentes, snapshot reproduzível e deploy verificado.
+## G2 — baseline científico
 
-## G6 analytics
-**NOT IMPLEMENTED. HUMAN-DECISION PARA ATIVAÇÃO.**
+**STARTED VIA PILOT.**
 
-A0 política/provedor → A1 instrumentação → A2 agregados históricos → A3 visão interna → A4 painel público agregado.
+Piloto identificou:
+- DR0001 Clima Gerais: linha conceitualmente coerente; nenhuma correção inequívoca imediata;
+- DR0002 IDE-Sisema: homepage atual é Geoportal 3.0; WMS/WFS/WCS/CSW confirmados; documentação oficial de webservices disponível; `data_formats` mistura protocolos e formatos e precisa correção;
+- DR0003 AdaptaBrasil: termos oficiais confirmam dados públicos/abertos/gratuitos e licença CC BY-SA; licença e documentação de acesso precisam correção;
+- DR0004 SIRENE: linha conceitualmente coerente; não promover licença geral do portal a licença universal dos dados.
 
-## Política de concorrência
+Correções candidatas ainda não foram aplicadas ao CSV neste pacote documental.
 
-- um pacote de implementação ativo por vez;
-- evitar PRs empilhados;
-- branches novas partem do `main` atual;
-- AUTO-SAFE conclui sem gate humano artificial;
-- REVIEW/HUMAN-DECISION param apenas quando julgamento humano agrega proteção real;
-- recorrências podem continuar preparação/evidência segura quando houver gate real.
+Meta permanece: 51 fontes + 11 produtos + 19 distribuições.
 
-## Pipeline
+## G3 — expansão
 
-`scope → evidence → implementation → validation → diff audit → public validation when relevant → risk classification → AUTO-SAFE merge ou REVIEW/HUMAN-DECISION gate → post-merge verification → consolidation`
+Bloqueada até G1 consolidado e auditoria inicial G2 estabilizada. Depois: batches pequenos, foco Brasil e apenas entidades materialmente distintas.
 
-## Próxima ordem
+## G4 — qualidade
 
-1. concluir G0.2;
-2. fechar #58/#59;
-3. iniciar G0.3 em `DR0001 → DR0051`;
-4. limpar legado gradualmente;
-5. reconstruir roadmap analytics sem implementação;
-6. G1 contrato;
-7. G2 51 + 11 + 19;
-8. G3 crescimento;
-9. G4 QA/eficiência;
-10. G5 1.0.0 + Zenodo;
-11. G6 analytics quando apropriado.
+Pendente: QA de URLs/IDs/relações, acessibilidade, CI proporcional e browsers adicionais quando justificado.
+
+## G5 — 1.0.0 + Zenodo
+
+**HUMAN-DECISION / BLOQUEADO** até baseline científico, documentação, QA, versão/citação/licenças e snapshot estarem consolidados.
+
+## G6 — analytics
+
+**NOT IMPLEMENTED.** Ativação é HUMAN-DECISION.
+
+## Próximas ações
+
+1. integrar contrato + piloto se CI/diff estiverem verdes (`AUTO-SAFE`);
+2. aplicar correções inequívocas de DR0002/DR0003 em pacote DATA pequeno;
+3. continuar auditoria sequencial DR0001→DR0051, sem duplicar pesquisa já concluída;
+4. fechar PRs #60–#69 gradualmente depois de decidir seus lotes;
+5. reconstruir roadmap analytics em branch limpa quando não competir com a auditoria;
+6. concluir 51 + 11 + 19;
+7. iniciar expansão de volume.
 
 ## Fluxo normal
 
