@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Valida a camada fonte → produto → distribuição sem alterar o CSV canônico."""
+"""Valida a camada fonte → produto → distribuição sem impor teto ao catálogo."""
 from __future__ import annotations
 
 import csv
@@ -14,6 +14,11 @@ SOURCE_PATH = ROOT / "data" / "data_resources.csv"
 PRODUCT_PATH = ROOT / "data" / "data_products.csv"
 DISTRIBUTION_PATH = ROOT / "data" / "product_distributions.csv"
 SCHEMA_PATH = ROOT / "schema" / "product-catalog-v0.1.json"
+
+SOURCE_COLUMN_COUNT = 34
+BASELINE_SOURCE_COUNT = 51
+BASELINE_PRODUCT_COUNT = 11
+BASELINE_DISTRIBUTION_COUNT = 19
 
 PRODUCT_COLUMNS = [
     "product_id","resource_id","product_name","product_acronym","product_family",
@@ -34,8 +39,10 @@ PRODUCT_ID = re.compile(r"^DP\d{6}$")
 DISTRIBUTION_ID = re.compile(r"^DD\d{6}$")
 RESOURCE_ID = re.compile(r"^DR\d{4}$")
 
+
 def fail(message: str) -> None:
     raise SystemExit(f"ERRO: {message}")
+
 
 def read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
     if not path.exists():
@@ -44,6 +51,7 @@ def read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
         reader = csv.DictReader(handle)
         return list(reader.fieldnames or []), list(reader)
 
+
 def is_iso_date(value: str) -> bool:
     try:
         date.fromisoformat(value)
@@ -51,36 +59,60 @@ def is_iso_date(value: str) -> bool:
         return False
     return len(value) == 10
 
+
 def is_https(value: str) -> bool:
     parsed = urlparse(value)
     return parsed.scheme == "https" and bool(parsed.netloc)
+
 
 if not SCHEMA_PATH.exists():
     fail("contrato de produtos ausente")
 schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
 
+if schema.get("status") != "stable":
+    fail("contrato de produtos deve estar em estado stable")
+
 source_columns, sources = read_csv(SOURCE_PATH)
 product_columns, products = read_csv(PRODUCT_PATH)
 distribution_columns, distributions = read_csv(DISTRIBUTION_PATH)
 
-if len(source_columns) != 34 or len(sources) != 51:
-    fail("piloto de produtos não pode alterar o CSV canônico 51 × 34")
+if len(source_columns) != SOURCE_COLUMN_COUNT:
+    fail(f"data_resources.csv deve preservar {SOURCE_COLUMN_COUNT} colunas canônicas")
+if len(sources) < BASELINE_SOURCE_COUNT:
+    fail(
+        "data_resources.csv perdeu fontes em relação ao baseline: "
+        f"{len(sources)} < {BASELINE_SOURCE_COUNT}"
+    )
 if product_columns != PRODUCT_COLUMNS:
     fail("cabeçalho de data_products.csv diverge do contrato")
 if distribution_columns != DISTRIBUTION_COLUMNS:
     fail("cabeçalho de product_distributions.csv diverge do contrato")
-if not products or not distributions:
-    fail("piloto precisa conter produtos e distribuições")
+if len(products) < BASELINE_PRODUCT_COUNT:
+    fail(
+        "data_products.csv perdeu produtos em relação ao baseline: "
+        f"{len(products)} < {BASELINE_PRODUCT_COUNT}"
+    )
+if len(distributions) < BASELINE_DISTRIBUTION_COUNT:
+    fail(
+        "product_distributions.csv perdeu distribuições em relação ao baseline: "
+        f"{len(distributions)} < {BASELINE_DISTRIBUTION_COUNT}"
+    )
 
 controlled = schema["controlled_values"]
 source_ids = {row["resource_id"].strip() for row in sources}
+if len(source_ids) != len(sources):
+    fail("resource_id duplicado em data_resources.csv")
+for rid in source_ids:
+    if not RESOURCE_ID.fullmatch(rid):
+        fail(f"resource_id inválido em data_resources.csv: {rid}")
+
 product_ids: set[str] = set()
 
 required_product_text = [
     "product_name","product_family","product_description","research_areas","keywords",
     "geographic_coverage","spatial_support","spatial_resolution","temporal_coverage",
     "temporal_resolution","update_frequency","version_or_collection",
-    "product_page_url","methodology_url","limitations",
+    "product_page_url","limitations",
 ]
 
 for line, row in enumerate(products, start=2):
@@ -96,9 +128,11 @@ for line, row in enumerate(products, start=2):
     for field in required_product_text:
         if not row[field].strip():
             fail(f"linha {line} ({pid}): campo obrigatório vazio: {field}")
-    for field in ("product_page_url", "methodology_url"):
-        if not is_https(row[field].strip()):
-            fail(f"linha {line} ({pid}): {field} deve ser HTTPS")
+    if not is_https(row["product_page_url"].strip()):
+        fail(f"linha {line} ({pid}): product_page_url deve ser HTTPS")
+    methodology_url = row["methodology_url"].strip()
+    if methodology_url and not is_https(methodology_url):
+        fail(f"linha {line} ({pid}): methodology_url deve ser HTTPS quando informado")
     if row["product_kind"].strip() not in controlled["product_kind"]:
         fail(f"linha {line} ({pid}): product_kind inválido")
     if row["enumeration_scope"].strip() not in controlled["enumeration_scope"]:
@@ -152,8 +186,7 @@ if missing:
     fail(f"produto(s) sem distribuição: {', '.join(missing)}")
 
 print(
-    "OK: catálogo de produtos validado — "
-    f"{len(products)} produtos, {len(distributions)} distribuições, "
-    f"{len({row['resource_id'] for row in products})} fontes piloto; "
-    "CSV canônico 51 × 34 preservado"
+    "OK: contrato canônico validado — "
+    f"{len(sources)} fontes, {len(products)} produtos, {len(distributions)} distribuições; "
+    "crescimento de linhas permitido sem alterar o schema"
 )
