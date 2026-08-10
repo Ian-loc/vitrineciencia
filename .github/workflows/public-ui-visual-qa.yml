@@ -91,13 +91,15 @@ jobs:
                     continue;
                   }
 
-                  if (name === 'home') await page.waitForSelector('.card');
+                  if (name === 'home') await page.waitForSelector('#list .card');
+                  if (name === 'products') await page.waitForSelector('#product-list .card');
                   await page.screenshot({ path: `visual-qa/${target}-${mode}-${name}.png`, fullPage: true });
                   const metrics = await page.evaluate(() => {
                     const links = [...document.querySelectorAll('.nav-links a')];
                     const visibleNav = links.filter((el) => getComputedStyle(el).display !== 'none').map((el) => (el.textContent || '').trim());
                     const areaGrid = document.querySelector('#area-links');
-                    const showMore = document.querySelector('#show-more');
+                    const sourceShowMore = document.querySelector('#show-more');
+                    const productShowMore = document.querySelector('#product-show-more');
                     return {
                       title: document.title,
                       viewportWidth: window.innerWidth,
@@ -106,8 +108,10 @@ jobs:
                       visibleNav,
                       h1: (document.querySelector('h1')?.textContent || '').trim(),
                       hasMain: Boolean(document.querySelector('main')),
-                      renderedCards: document.querySelectorAll('#list .card').length,
-                      showMoreVisible: Boolean(showMore && !showMore.closest('[hidden]')),
+                      sourceCards: document.querySelectorAll('#list .card').length,
+                      productCards: document.querySelectorAll('#product-list .card').length,
+                      sourceShowMoreVisible: Boolean(sourceShowMore && !sourceShowMore.closest('[hidden]')),
+                      productShowMoreVisible: Boolean(productShowMore && !productShowMore.closest('[hidden]')),
                       areaDisplay: areaGrid ? getComputedStyle(areaGrid).display : null,
                       areaClientWidth: areaGrid?.clientWidth || 0,
                       areaScrollWidth: areaGrid?.scrollWidth || 0,
@@ -127,8 +131,8 @@ jobs:
                   }
 
                   if (target === 'candidate' && name === 'home') {
-                    if (metrics.renderedCards !== 12 || !metrics.showMoreVisible) {
-                      console.error(`Divulgação progressiva inválida: ${mode}: cards=${metrics.renderedCards}, showMore=${metrics.showMoreVisible}`);
+                    if (metrics.sourceCards !== 12 || !metrics.sourceShowMoreVisible) {
+                      console.error(`Divulgação progressiva de fontes inválida: ${mode}: cards=${metrics.sourceCards}, showMore=${metrics.sourceShowMoreVisible}`);
                       failed = true;
                     }
                     if (mode === 'mobile' && (metrics.areaDisplay !== 'flex' || metrics.areaScrollWidth <= metrics.areaClientWidth)) {
@@ -138,7 +142,20 @@ jobs:
                     await page.locator('#show-more').click();
                     const expanded = await page.locator('#list .card').count();
                     if (expanded !== 24) {
-                      console.error(`Expansão inválida: ${mode}: ${expanded} cards após clique`);
+                      console.error(`Expansão de fontes inválida: ${mode}: ${expanded} cards após clique`);
+                      failed = true;
+                    }
+                  }
+
+                  if (target === 'candidate' && name === 'products') {
+                    if (metrics.productCards !== 6 || !metrics.productShowMoreVisible) {
+                      console.error(`Divulgação progressiva de produtos inválida: ${mode}: cards=${metrics.productCards}, showMore=${metrics.productShowMoreVisible}`);
+                      failed = true;
+                    }
+                    await page.locator('#product-show-more').click();
+                    const expanded = await page.locator('#product-list .card').count();
+                    if (expanded !== 11) {
+                      console.error(`Expansão de produtos inválida: ${mode}: ${expanded} cards após clique`);
                       failed = true;
                     }
                   }
