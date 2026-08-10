@@ -1,0 +1,114 @@
+name: Capturar QA visual da Vitrine publicada
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/public-ui-visual-qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture-public-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Instalar navegador de QA
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Capturar página publicada e validar layout básico
+        env:
+          BASE_URL: https://ian-loc.github.io/vitrineciencia/
+        run: |
+          mkdir -p visual-qa
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+
+          const base = process.env.BASE_URL;
+          const pages = [
+            ['home', ''],
+            ['products', 'products.html'],
+            ['catalog-overview', 'analytics.html'],
+            ['method', 'about.html'],
+          ];
+          const viewports = [
+            ['desktop', { width: 1440, height: 1100 }],
+            ['mobile', { width: 390, height: 844 }],
+          ];
+
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const report = [];
+            let failed = false;
+
+            for (const [mode, viewport] of viewports) {
+              const context = await browser.newContext({ viewport });
+              for (const [name, path] of pages) {
+                const page = await context.newPage();
+                const url = base + path;
+                const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
+                if (!response || !response.ok()) {
+                  console.error(`HTTP inválido: ${url} -> ${response && response.status()}`);
+                  failed = true;
+                  await page.close();
+                  continue;
+                }
+
+                await page.screenshot({ path: `visual-qa/${mode}-${name}.png`, fullPage: true });
+                const metrics = await page.evaluate(() => {
+                  const links = [...document.querySelectorAll('.nav-links a')];
+                  const visibleNav = links.filter((el) => getComputedStyle(el).display !== 'none').map((el) => (el.textContent || '').trim());
+                  return {
+                    title: document.title,
+                    viewportWidth: window.innerWidth,
+                    documentWidth: document.documentElement.scrollWidth,
+                    visibleNav,
+                    h1: (document.querySelector('h1')?.textContent || '').trim(),
+                    hasMain: Boolean(document.querySelector('main')),
+                  };
+                });
+                metrics.mode = mode;
+                metrics.page = name;
+                metrics.url = url;
+                report.push(metrics);
+
+                if (!metrics.hasMain || !metrics.h1) failed = true;
+                if (metrics.documentWidth > metrics.viewportWidth + 2) {
+                  console.error(`Overflow horizontal: ${mode}/${name}: ${metrics.documentWidth} > ${metrics.viewportWidth}`);
+                  failed = true;
+                }
+                if (mode === 'mobile' && metrics.visibleNav.length < 5) {
+                  console.error(`Navegação mobile incompleta em ${name}: ${metrics.visibleNav.join(' | ')}`);
+                  failed = true;
+                }
+                await page.close();
+              }
+              await context.close();
+            }
+
+            await browser.close();
+            fs.writeFileSync('visual-qa/report.json', JSON.stringify(report, null, 2));
+            console.log(JSON.stringify(report, null, 2));
+            if (failed) process.exit(1);
+          })();
+          NODE
+
+      - name: Publicar evidência visual
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitrine-public-ui-visual-qa
+          path: visual-qa/
+          if-no-files-found: error
+          retention-days: 14
