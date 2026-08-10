@@ -30,8 +30,7 @@ const SEARCH_FIELDS = [
   "resource_name", "acronym", "official_identity", "description", "research_areas",
   "keywords", "data_product_types", "data_formats", "visualization_types",
   "geographic_coverage", "data_sources", "access_protocols", "access_conditions",
-  "license", "owner_or_manager", "academic_uses", "limitations", "academic_evidence_note",
-  "_scope_search"
+  "license", "owner_or_manager", "academic_uses", "limitations", "_scope_search"
 ];
 
 const ENUM_ORDER = ["sim", "parcial", "não", "desconhecido", "não se aplica"];
@@ -85,7 +84,7 @@ function attachScope(resources, registry) {
     return {
       ...resource,
       _scope: scope,
-      _scope_search: `${SCOPE_LABELS[scope.brazil_scope_class] || scope.display_label} ${scope.description} ${scope.source_origin}`
+      _scope_search: `${SCOPE_LABELS[scope.brazil_scope_class] || scope.display_label} ${scope.source_origin}`
     };
   });
 }
@@ -209,7 +208,6 @@ function card(resource) {
     detail("Uso em pesquisa", resource.academic_uses) +
     detail("Palavras-chave", resource.keywords) +
     detail("Tipo de documentação", resource.academic_evidence_type) +
-    detail("Nota de documentação", resource.academic_evidence_note) +
     detail("Limitações", resource.limitations) +
     detail("Responsável", resource.owner_or_manager) +
     detail("Tipo de instituição", resource.institutional_status) +
