@@ -54,15 +54,19 @@ jobs:
           test -s _site/assets/analytics.js
           test -s _site/data/data_resources.csv
           test -s _site/data/data_resources.json
+          test -s _site/data/data_products.csv
           test -s _site/data/data_products.json
+          test -s _site/data/product_distributions.csv
           test -s _site/data/brazil_scope_priorities.json
-          test -s _site/data/build-meta.json
           test ! -e _site/explorer.html
           test ! -e _site/abordagens.html
           test ! -e _site/data/federated_layers.json
+          test ! -e _site/data/build-meta.json
           test ! -e _site/assets/explorer.js
           test ! -e _site/assets/explorer.css
           test ! -e _site/assets/approaches.css
+          test ! -e _site/assets/quality-summary.js
+          test ! -e _site/assets/build-meta.js
           test ! -e _site/database
           test ! -e _site/scripts
           test ! -e _site/.github
