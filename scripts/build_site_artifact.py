@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Build the isolated static artifact published as the Vitrine Ciência.
 
-Only the public catalog surface is copied. Simbiotrama/Simbioscópio code,
-database material, operational documentation and experimental pages stay in Git
-history/source branches and are never part of the GitHub Pages artifact.
+Only files required by the public discovery interface are copied. Development,
+QA, build metadata, database material and operational documentation remain in
+the repository and are not shipped in the GitHub Pages artifact.
 """
 from __future__ import annotations
 
@@ -27,15 +27,12 @@ REQUIRED_FILES = (
     "assets/app.js",
     "assets/products.js",
     "assets/analytics.js",
-    "assets/quality-summary.js",
-    "assets/build-meta.js",
     "data/data_resources.csv",
     "data/data_resources.json",
     "data/data_products.csv",
     "data/data_products.json",
     "data/product_distributions.csv",
     "data/brazil_scope_priorities.json",
-    "data/build-meta.json",
 )
 
 OPTIONAL_FILES = (
@@ -52,9 +49,12 @@ FORBIDDEN_PUBLIC_PATHS = (
     "explorer.html",
     "abordagens.html",
     "data/federated_layers.json",
+    "data/build-meta.json",
     "assets/explorer.js",
     "assets/explorer.css",
     "assets/approaches.css",
+    "assets/quality-summary.js",
+    "assets/build-meta.js",
     "WORKFLOW_STATUS.md",
     "IMPLEMENTATION_WORKFLOW.md",
     "DOCUMENTATION_CONSISTENCY_AUDIT.md",
@@ -98,7 +98,7 @@ def main() -> None:
         raise SystemExit("ERRO: artefato da Vitrine contém material fora da fronteira: " + ", ".join(leaked))
 
     files = sum(1 for path in OUTPUT.rglob("*") if path.is_file())
-    print(f"OK: artefato isolado da Vitrine criado em {OUTPUT} com {files} arquivos")
+    print(f"OK: artefato público da Vitrine criado em {OUTPUT} com {files} arquivos")
 
 
 if __name__ == "__main__":
