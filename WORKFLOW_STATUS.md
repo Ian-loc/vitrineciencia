@@ -1,6 +1,6 @@
 # Estado do workflow — Vitrine Ciência
 
-Última redefinição operacional: 2026-08-10, America/Sao_Paulo
+Atualização operacional: 2026-08-10, `America/Sao_Paulo`
 
 ## Direção ativa
 
@@ -8,193 +8,128 @@
 
 O modelo operacional completo está em `docs/VITRINE_OPERATING_MODEL.md`.
 
-A Vitrine deve crescer principalmente em **conteúdo científico e qualidade**, não em profundidade arquitetural.
+A Vitrine cresce principalmente em **conteúdo científico e qualidade**, não em profundidade arquitetural.
 
 ## Autoridade atual
 
 - repositório: `Ian-loc/vitrineciencia`;
 - branch canônica: `main`;
-- baseline consolidado antes deste pacote: `1645df4987cd45c64c40a88cf733e9ba5c1f4a40`;
+- baseline operacional consolidado: `ba80cc44d2d2d42d7bda54bff9d84ddff97a5c18` (PR #78);
 - site: `https://ian-loc.github.io/vitrineciencia/`;
 - fontes canônicas: `data/data_resources.csv`;
 - produtos: `data/data_products.csv`;
 - distribuições/acessos: `data/product_distributions.csv`;
-- baseline de dados: **51 fontes, 11 produtos, 19 distribuições**.
+- baseline: **51 fontes, 11 produtos, 19 distribuições**.
 
-A separação Vitrine–Simbiotrama é consolidada. PostgreSQL/PostGIS, runtime, schemas relacionais e pipelines do Simbiotrama não são dependências da Vitrine.
+A separação Vitrine–Simbiotrama é consolidada. PostgreSQL/PostGIS e runtime/schemas do Simbiotrama não são dependências da Vitrine.
 
 ## Regra de materialização
 
-Uma atividade passa pelos estados:
+`PLANNED → EXECUTED → MATERIALIZED → VERIFIED → CONSOLIDATED`
 
-`PLANNED → EXECUTED → MATERIALIZED → VERIFIED → CONSOLIDATED`.
+Consolidação exige implementação, validação proporcional, diff audit, integração governada, deploy quando aplicável e verificação pós-merge/pós-deploy. CI verde comprova estrutura/testes, **não verdade factual externa**.
 
-Um pacote só é `CONSOLIDATED` depois de:
+## Gates proporcionais
 
-1. implementação materializada em branch/PR;
-2. validação apropriada ao delta;
-3. auditoria do diff;
-4. gate humano quando aplicável;
-5. merge em `main`;
-6. deploy quando houver efeito público;
-7. verificação pós-merge/pós-deploy.
+- **AUTO-SAFE:** documentação/status, saneamento reversível com proveniência preservada, QA/CI, pequenas correções factuais inequívocas com evidência oficial e pequenas inclusões DATA dentro do contrato. Pode integrar sem interrupção humana depois dos controles objetivos.
+- **REVIEW:** lotes grandes, mudança pública relevante ou correção materialmente ambígua. Uma autorização humana para o pacote completo.
+- **HUMAN-DECISION:** escopo/modelo conceitual, schema incompatível, destruição/em massa, nova infraestrutura, analytics/privacy, licença/autoria/citação oficial, `1.0.0` e Zenodo/DOI.
 
-CI verde comprova estrutura e testes, **não** verdade factual externa.
+## Estado consolidado
 
-## Estado técnico consolidado
+### Interface
+PRs #72–#75 e #77: smoke externo, linguagem pública, visual, mobile, Chromium real e progressive disclosure consolidados.
 
-### Interface pública
-
-PRs #72–#75 e #77 consolidaram:
-
-- smoke externo pós-deploy;
-- remoção de linguagem interna de QA/governança da interface pública;
-- refinamento visual;
-- correção de navegação mobile;
-- QA em Chromium real;
-- divulgação progressiva das fontes e produtos;
-- redução da rolagem excessiva;
-- proteção contra overflow horizontal.
-
-O estado publicado pós-PR #77 foi verificado em navegador real.
+### Modelo operacional
+PR #78: catálogo delimitado e pipeline consolidado. O PR #79 atualiza a política de gates para o modelo proporcional ao risco.
 
 ### Catálogo
+Estrutura e interface validadas. O ciclo recente **não equivale a auditoria factual 51/51**; reauditoria científica permanece necessária antes de 1.0.0.
 
-O ciclo recente de interface preservou os três conjuntos canônicos; não realizou uma nova auditoria científica integral dos 51 registros.
+## G0 — saneamento e autoridade
 
-Portanto:
+### G0.1 baseline operacional
+**CONSOLIDATED.** `main@ba80cc44d2d2d42d7bda54bff9d84ddff97a5c18`.
 
-- estrutura atual: validada;
-- interface atual: validada;
-- conteúdo científico: **requer auditoria 51/51 como próxima etapa substantiva antes de 1.0.0**.
+### G0.2 reconciliação #57–#69
+**MATERIALIZED / VALIDATING — AUTO-SAFE.**
 
-## Pendências críticas atuais
+Artefatos:
+- `docs/legacy/VITRINE_LEGACY_RECONCILIATION_2026-08-10.md`;
+- `docs/legacy/VITRINE_LEGACY_SALVAGE_MANIFEST.csv`.
 
-### G0 — autoridade e saneamento
+Classificação:
+- #57 `SALVAGE + HISTORICAL`;
+- #58 `HISTORICAL + SUPERSEDED`;
+- #59 `SUPERSEDED + REMOVE`;
+- #60–#69 `SALVAGE` somente dos onze `instance1_entry_enrichment_batch01–11.json`.
 
-- [ ] integrar este modelo operacional no `main`;
-- [ ] auditar PRs legados #57–#69;
-- [ ] classificar cada legado como `SALVAGE`, `HISTORICAL`, `SUPERSEDED` ou `REMOVE`;
-- [ ] recuperar seletivamente metadados científicos úteis sem importar arquitetura antiga;
-- [ ] fechar PRs legados depois de preservar evidência útil;
-- [ ] auditar arquivos ativos obsoletos no repositório;
-- [ ] limpar/arquivar somente após prova de preservação;
-- [ ] reconstruir o roadmap de analytics sobre `main` atual antes de qualquer merge.
+Nenhum valor legado é autoridade atual ou pode ser importado automaticamente.
 
-### G1 — contrato canônico
+### G0.3 salvamento científico
+**NEXT.**
 
-- [ ] congelar campos obrigatórios, recomendados e nullable-by-design para fontes;
-- [ ] congelar critério de produto materialmente distinto;
-- [ ] congelar relações e regras de distribuição/acesso;
-- [ ] adicionar testes contra duplicação semântica/IDs inválidos/orfandade.
+`registro canônico atual → payload legado → fonte oficial atual → decisão de campo → validação → próximo registro`
 
-### G2 — baseline científico
+Campos legados sem equivalente seguro ficam como evidência. `update_frequency_text` nunca vira `temporal_resolution` por aproximação.
 
-- [ ] auditar 51/51 fontes com evidência oficial atual;
-- [ ] auditar 11/11 produtos;
-- [ ] auditar 19/19 distribuições;
-- [ ] corrigir links/metadados somente com evidência rastreável;
-- [ ] registrar lacunas sem inferência;
-- [ ] registrar `last_verified`/equivalente de forma consistente.
+### G0.4 fechamento/limpeza
+Depois de G0.2 em `main`:
+- fechar #58/#59 como `superseded` é AUTO-SAFE e reversível;
+- manter #57 até DETER Cerrado ser revalidado;
+- manter #60–#69 até os lotes serem percorridos;
+- remoção destrutiva/em massa é HUMAN-DECISION.
 
-### G3 — expansão de volume
+### G0.5 analytics roadmap
+PR #76 diverge do `main`; não mesclar o SHA atual. Recriar em branch nova. Planejamento é AUTO-SAFE; ativação de analytics é HUMAN-DECISION.
 
-Bloqueado até G1 e baseline inicial de G2 estarem suficientemente estáveis.
+## G1 contrato canônico
+Congelar o contrato existente, critérios de produto e relações; adicionar testes de IDs/duplicação/orfandade. Documentar o contrato existente pode ser AUTO-SAFE; mudança incompatível é HUMAN-DECISION.
 
-Depois:
+## G2 baseline científico
+Auditar 51 fontes + 11 produtos + 19 distribuições com evidência oficial atual. Pequenas correções inequívocas são AUTO-SAFE; ambiguidades relevantes sobem para REVIEW.
 
-- batches de 5–10 entradas coerentes;
-- foco Brasil;
-- nova fonte/produto somente quando materialmente útil;
-- sem enumeração automática de assets, tiles, bandas ou endpoints.
+## G3 expansão
+Após G1/G2 inicial: batches pequenos (normalmente 5–10), foco Brasil, granularidade material, sem enumerar assets/bandas/endpoints.
 
-### G4 — qualidade operacional
+## G4 qualidade
+QA de URLs/IDs/relações, acessibilidade, CI proporcional, browsers quando justificado e smoke externo.
 
-- [ ] QA automático de URLs/IDs/relações;
-- [ ] acessibilidade: teclado, foco, nomes acessíveis, contraste e axe;
-- [ ] política de CI proporcional a DATA/FIX/RELEASE;
-- [ ] cobertura adicional de browser quando justificar custo;
-- [ ] manter smoke externo.
+## G5 1.0.0 + Zenodo
+**HUMAN-DECISION.** Requer saneamento, baseline 51+11+19, QA, versão/citação/licenças consistentes, snapshot reproduzível e deploy verificado.
 
-### G5 — release 1.0.0 e Zenodo
+## G6 analytics
+**NOT IMPLEMENTED. HUMAN-DECISION PARA ATIVAÇÃO.**
 
-Bloqueado até saneamento, contrato, baseline científico e documentação ativa estarem consistentes.
-
-Critérios mínimos:
-
-- repositório saneado;
-- 51 fontes auditadas;
-- 11 produtos e 19 distribuições auditados;
-- QA integral verde;
-- versão/citação/licenças consistentes;
-- snapshot reproduzível;
-- deploy verificado.
-
-Depois: tag → GitHub Release → snapshot → Zenodo → inspeção do DOI/metadata.
-
-### G6 — analytics privacy-first
-
-**NOT IMPLEMENTED.**
-
-O PR #76 contém planejamento útil, mas sua branch foi criada antes do `main` atual e não deve ser mesclada no SHA atual.
-
-Sequência futura:
-
-- A0: política de coleta e seleção do provedor;
-- A1: instrumentação mínima/reversível;
-- A2: histórico durável apenas de agregados;
-- A3: visão interna;
-- A4: pequeno painel público agregado.
-
-Nenhum tracker/cookie/beacon/fingerprint está autorizado por este status.
-
-## Legado aberto a resolver
-
-A cadeia #57–#69 pertence ao período anterior à separação/estabilização atual.
-
-Regra:
-
-**não mesclar a cadeia como arquitetura da Vitrine.**
-
-Ela deve ser tratada como fonte potencial de:
-
-- evidência científica reutilizável;
-- decisões históricas;
-- material obsoleto/superseded.
-
-A recuperação correta é seletiva: `legacy evidence → current official verification → existing canonical field`.
+A0 política/provedor → A1 instrumentação → A2 agregados históricos → A3 visão interna → A4 painel público agregado.
 
 ## Política de concorrência
 
-- preferir um pacote de implementação ativo por vez;
-- PRs históricos congelados não contam como trabalho ativo;
-- DATA batches independentes podem coexistir somente quando não disputam as mesmas linhas/contratos;
-- evitar cadeias longas de PRs empilhados;
-- novos pacotes devem nascer do `main` atual;
-- qualquer mudança do head invalida autorização anterior.
+- um pacote de implementação ativo por vez;
+- evitar PRs empilhados;
+- branches novas partem do `main` atual;
+- AUTO-SAFE conclui sem gate humano artificial;
+- REVIEW/HUMAN-DECISION param apenas quando julgamento humano agrega proteção real;
+- recorrências podem continuar preparação/evidência segura quando houver gate real.
 
-## Pipeline por pacote
+## Pipeline
 
-`scope → evidence → implementation → automated validation → diff audit → rendered/public validation when relevant → frozen SHA → human gate → merge/deploy → post-merge verification → consolidation`
+`scope → evidence → implementation → validation → diff audit → public validation when relevant → risk classification → AUTO-SAFE merge ou REVIEW/HUMAN-DECISION gate → post-merge verification → consolidation`
 
-## Próxima ordem de execução
+## Próxima ordem
 
-1. **G0.1** integrar baseline operacional atual;
-2. **G0.2** triagem completa de #57–#69, sem merge;
-3. **G0.3** mapear e recuperar metadados científicos aproveitáveis do legado;
-4. **G0.4** saneamento de arquivos/branches históricos após preservação;
-5. **G0.5** reconstruir analytics roadmap sobre `main` atual e deixar apenas planejamento;
-6. **G1** contrato canônico;
-7. **G2** auditoria científica 51 + 11 + 19;
-8. **G3** crescimento contínuo do catálogo;
-9. **G4** reforços de QA e eficiência de CI;
-10. **G5** Vitrine Ciência 1.0.0 + Zenodo;
-11. **G6** analytics A0→A4, sem interferir na missão principal.
+1. concluir G0.2;
+2. fechar #58/#59;
+3. iniciar G0.3 em `DR0001 → DR0051`;
+4. limpar legado gradualmente;
+5. reconstruir roadmap analytics sem implementação;
+6. G1 contrato;
+7. G2 51 + 11 + 19;
+8. G3 crescimento;
+9. G4 QA/eficiência;
+10. G5 1.0.0 + Zenodo;
+11. G6 analytics quando apropriado.
 
-## Critério de longo prazo
-
-O fluxo normal deve ser:
+## Fluxo normal
 
 **discover → verify → curate → validate → publish → monitor → periodically release**.
-
-A expansão conceitual deixou de ser o modo normal de desenvolvimento.
