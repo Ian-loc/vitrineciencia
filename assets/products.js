@@ -20,6 +20,9 @@ const els = {
   advancedCount: $("#product-advanced-count"),
   searchForm: $("#product-search"),
   catalogHeading: $("#product-catalog-heading"),
+  resultsMore: $("#product-results-more"),
+  showMore: $("#product-show-more"),
+  shownCount: $("#product-shown-count"),
   compareBar: $("#compare-bar"),
   compareCount: $("#compare-count"),
   compareStatus: $("#compare-status"),
@@ -30,6 +33,8 @@ const els = {
 let all = [];
 let filtered = [];
 const selected = new Set();
+const PAGE_SIZE = 6;
+let visibleCount = PAGE_SIZE;
 
 const ENUM_ORDER = ["sim", "parcial", "não", "desconhecido", "não se aplica"];
 const ENUM_LABELS = {
@@ -279,9 +284,17 @@ function sortResults(query) {
 
 function render() {
   els.list.setAttribute("aria-busy", "true");
-  els.list.innerHTML = filtered.map(productCard).join("");
+  const shown = filtered.slice(0, visibleCount);
+  els.list.innerHTML = shown.map(productCard).join("");
   els.empty.hidden = filtered.length > 0;
-  els.count.textContent = `${filtered.length} ${filtered.length === 1 ? "produto encontrado" : "produtos encontrados"} · ${all.length} no catálogo`;
+  const catalogContext = filtered.length === all.length ? "" : ` · ${all.length} no catálogo`;
+  els.count.textContent = `${filtered.length} ${filtered.length === 1 ? "produto encontrado" : "produtos encontrados"}${catalogContext}`;
+
+  const hasMore = shown.length < filtered.length;
+  els.resultsMore.hidden = !hasMore;
+  els.shownCount.textContent = hasMore ? `${shown.length} de ${filtered.length} exibidos` : "";
+  els.showMore.setAttribute("aria-label", hasMore ? `Mostrar mais produtos; ${shown.length} de ${filtered.length} exibidos` : "Todos os produtos filtrados estão exibidos");
+
   els.list.setAttribute("aria-busy", "false");
   els.list.querySelectorAll("[data-compare]").forEach(input => input.addEventListener("change", handleCompareChange));
 }
@@ -379,6 +392,7 @@ function filter(syncUrl = true) {
     (!els.origin.value || product.primary_or_derived === els.origin.value)
   );
   sortResults(query);
+  visibleCount = PAGE_SIZE;
   render();
   renderActiveFilters();
   if (syncUrl) writeUrl();
@@ -487,6 +501,10 @@ async function init() {
       .forEach(element => element.addEventListener(element === els.q ? "input" : "change", () => filter()));
     els.searchForm.addEventListener("submit", event => { event.preventDefault(); filter(); goToCatalog(); });
     document.querySelectorAll("[data-product-query]").forEach(button => button.addEventListener("click", () => setQuery(button.dataset.productQuery)));
+    els.showMore.addEventListener("click", () => {
+      visibleCount = Math.min(filtered.length, visibleCount + PAGE_SIZE);
+      render();
+    });
     $("#product-clear").addEventListener("click", () => {
       $("#product-filters").reset();
       els.q.value = "";
@@ -512,6 +530,7 @@ async function init() {
     els.list.setAttribute("aria-busy", "false");
     els.count.textContent = "Falha ao carregar os produtos";
     els.list.innerHTML = `<div class="empty"><h3>Falha ao carregar os produtos</h3><p>${esc(error.message)}</p></div>`;
+    els.resultsMore.hidden = true;
   }
 }
 
