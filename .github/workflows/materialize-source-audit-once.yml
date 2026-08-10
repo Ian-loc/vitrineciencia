@@ -1,0 +1,73 @@
+name: Materializar correções 51/51 na branch de review
+
+on:
+  push:
+    branches:
+      - "data/apply-source-audit-51of51"
+    paths:
+      - ".github/workflows/materialize-source-audit-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.ref_name == 'data/apply-source-audit-51of51'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: data/apply-source-audit-51of51
+          fetch-depth: 0
+
+      - name: Gerar proposta deterministicamente
+        run: |
+          python3 scripts/validate_source_correction_queues.py \
+            --output /tmp/data_resources.corrected.csv \
+            --summary-json /tmp/source-correction-summary.json
+          cat /tmp/source-correction-summary.json
+
+      - name: Validar em cópia temporária e gerar derivado versionado
+        run: |
+          mkdir -p /tmp/vitrine-materialized
+          tar --exclude=.git -cf - . | (cd /tmp/vitrine-materialized && tar -xf -)
+          cp /tmp/data_resources.corrected.csv /tmp/vitrine-materialized/data/data_resources.csv
+          cd /tmp/vitrine-materialized
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/audit_link_roles.py
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+
+      - name: Copiar somente os dois artefatos autorizados
+        run: |
+          cp /tmp/data_resources.corrected.csv data/data_resources.csv
+          cp /tmp/vitrine-materialized/data/link_role_audit.json data/link_role_audit.json
+          python3 scripts/validate_source_correction_queues.py \
+            --output /tmp/postapply.csv \
+            --summary-json /tmp/postapply-summary.json
+          python3 - <<'PY'
+          import json
+          s=json.load(open('/tmp/postapply-summary.json', encoding='utf-8'))
+          assert s['pending_correction_count'] == 0, s
+          assert s['already_applied_correction_count'] == 119, s
+          assert s['last_verified_changes'] == 0, s
+          assert s['proposed_cell_changes'] == 0, s
+          print('OK: aplicação idempotente confirmada — 119/119 já aplicadas; zero delta residual')
+          PY
+
+      - name: Provar delta e commitar somente dados autorizados
+        run: |
+          mapfile -t changed < <(git diff --name-only | sort)
+          printf '%s\n' "${changed[@]}"
+          test "${#changed[@]}" -eq 2
+          test "${changed[0]}" = "data/data_resources.csv"
+          test "${changed[1]}" = "data/link_role_audit.json"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/data_resources.csv data/link_role_audit.json
+          git commit -m "Aplicar correções auditadas 51/51 ao catálogo de fontes"
+          git push origin HEAD:data/apply-source-audit-51of51
