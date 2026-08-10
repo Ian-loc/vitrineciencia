@@ -24,6 +24,7 @@ REQUIRED_FILES = (
     "assets/accessibility.css",
     "assets/brazil-scope.css",
     "assets/products.css",
+    "assets/visual-refinement.css",
     "assets/app.js",
     "assets/products.js",
     "assets/analytics.js",
