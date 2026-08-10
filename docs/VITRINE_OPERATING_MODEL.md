@@ -120,7 +120,7 @@ Uma mudança que cruza categorias assume o nível de risco mais alto aplicável.
 5. **Diff audit** — confirmar arquivos alterados e ausência de efeitos incidentais.
 6. **Rendered/public validation** — quando interface ou artefato público puder mudar.
 7. **Risk classification** — `AUTO-SAFE`, `REVIEW` ou `HUMAN-DECISION`.
-8. **Integration decision** — AUTO-SAFE pode integrar após gates objetivos; REVIEW/HUMAN-DECISION aguardam autorização humana aplicável.
+8. **Integration decision** — AUTO-SAFE integra quando todos os gates objetivos passam; REVIEW/HUMAN-DECISION aguardam autorização humana aplicável.
 9. **Merge/deploy** — integrar por método governado e publicar quando aplicável.
 10. **Post-merge verification** — comprovar que `main`, deploy e comportamento correspondem ao pacote validado.
 11. **Consolidation** — somente então registrar o pacote como concluído.
