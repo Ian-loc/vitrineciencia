@@ -160,6 +160,18 @@ def validate_public_copy() -> None:
             fail(f"{filename}: asset interno não deve ser carregado publicamente: {', '.join(found)}")
 
 
+def validate_visual_contract() -> None:
+    visual = (ROOT / "assets" / "visual-refinement.css").read_text(encoding="utf-8")
+    required_rules = (
+        ".site-nav .nav-links a{\n    display:inline-flex;\n    flex:0 0 auto;",
+        ".stats-grid div:nth-child(even){border-left:1px solid var(--vr-line)}",
+        ".stats-grid div:nth-last-child(-n+2){border-bottom:0}",
+    )
+    missing = [rule for rule in required_rules if rule not in visual]
+    if missing:
+        fail("contrato visual mobile incompleto: navegação ou grade de estatísticas pode regredir")
+
+
 def validate_required_assets() -> None:
     required = (
         "assets/style.css", "assets/accessibility.css", "assets/brazil-scope.css", "assets/products.css",
@@ -177,5 +189,6 @@ for page in PUBLIC_PAGES:
     validate_page(page)
 validate_identity()
 validate_public_copy()
+validate_visual_contract()
 validate_required_assets()
 print("OK: Vitrine independente, navegável e com superfície pública limpa")

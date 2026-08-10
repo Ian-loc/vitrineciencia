@@ -249,13 +249,29 @@ footer{margin-top:1.5rem}
 @media(max-width:720px){
   .wrap{width:min(100% - 1.25rem,1220px)}
   .site-nav{position:relative}
+  .nav-links{
+    gap:.35rem;
+    overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+  .site-nav .nav-links a{
+    display:inline-flex;
+    flex:0 0 auto;
+  }
   .hero-grid{padding:3.4rem 0 3.2rem}
   .hero h1{font-size:clamp(2.35rem,11vw,3.5rem)}
   .hero-tool{padding:1rem}
   .search-row{grid-template-columns:1fr}
   .stats{width:calc(100% - 1.25rem);margin-top:-.7rem}
   .stats-grid{grid-template-columns:1fr 1fr}
-  .stats-grid div{padding:1rem;border-bottom:1px solid var(--vr-line)}
+  .stats-grid div{
+    padding:1rem;
+    border-left:0;
+    border-bottom:1px solid var(--vr-line);
+  }
+  .stats-grid div:nth-child(even){border-left:1px solid var(--vr-line)}
+  .stats-grid div:last-child{border-right:0}
+  .stats-grid div:nth-last-child(-n+2){border-bottom:0}
   .areas-section{padding-top:4rem}
   .area-grid{grid-template-columns:1fr}
   .area-card{min-height:106px}
