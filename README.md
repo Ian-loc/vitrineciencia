@@ -27,6 +27,8 @@ Durante a migração protegida, materiais históricos do Simbiotrama podem conti
 Documentos de governança:
 
 - `docs/VITRINE_BOUNDARY.md` — fronteira operacional e contrato de disponibilidade;
+- `docs/VITRINE_OPERATING_MODEL.md` — modelo conceitual estável, pipeline de manutenção e critérios de crescimento;
+- `WORKFLOW_STATUS.md` — estado operacional e ordem de execução corrente;
 - `docs/STRUCTURAL_SEPARATION_MILESTONE_2026-08-09.md` — registro do marco estrutural e de governança.
 
 ## Uso
@@ -35,15 +37,20 @@ A Vitrine apoia descoberta e triagem inicial. Antes de usar um dataset, confirme
 
 ## Manutenção
 
+**A Vitrine é um catálogo delimitado de descoberta de dados científicos. Seu modelo conceitual é estável. O desenvolvimento futuro prioriza aumento do volume de dados, correção de metadados, usabilidade, manutenção e gestão de releases.**
+
 Mudanças em `main` devem preservar:
 
 1. geração determinística dos dados públicos;
 2. integridade de HTML/CSS/JavaScript;
 3. funcionamento de busca, filtros, comparação e análise;
 4. isolamento do artefato `_site`;
-5. independência total do runtime/CI do Simbiotrama.
+5. independência total do runtime/CI do Simbiotrama;
+6. granularidade mínima suficiente — novas fontes/produtos devem representar diferenças materialmente úteis, não arquivos, bandas, tiles ou endpoints por padrão.
 
 A disponibilidade externa do GitHub Pages é verificada após deployments; o CI protege a integridade do artefato, mas não substitui a verificação do estado externo de hospedagem.
+
+O workflow operacional completo está documentado em `docs/VITRINE_OPERATING_MODEL.md`.
 
 ## Citação
 
