@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the independent public Vitrine surface."""
+"""Validate the independent, user-facing Vitrine surface."""
 from __future__ import annotations
 
 from html.parser import HTMLParser
@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE_URL = "https://ian-loc.github.io/vitrineciencia/"
 REPO_URL = "https://github.com/Ian-loc/vitrineciencia"
 PUBLIC_PAGES = ("index.html", "products.html", "analytics.html", "about.html")
+PUBLIC_RENDER_FILES = (*PUBLIC_PAGES, "assets/app.js", "assets/products.js")
 IDENTITY_FILES = (*PUBLIC_PAGES, "README.md", "CITATION.cff")
 FORBIDDEN_PAGE_TOKENS = (
     "Simbiotrama",
@@ -19,6 +20,20 @@ FORBIDDEN_PAGE_TOKENS = (
     "abordagens.html",
     "Ian-loc/ScienceDataSourcesCatalog",
     "github.io/ScienceDataSourcesCatalog",
+)
+FORBIDDEN_PUBLIC_COPY = (
+    "Transparência de qualidade",
+    "Cobertura e estado dos metadados",
+    "no piloto",
+    "Escopo de enumeração",
+    "Identificador interno",
+    "Avaliação e governança",
+    "data-build-meta",
+    "Build:",
+    "P0 —",
+    "P1 —",
+    "P2 —",
+    "P3 —",
 )
 REQUIRED_IDS = {
     "index.html": {"conteudo", "catalogo", "hero-search", "q", "filters", "scope", "area", "brazil", "download", "programmatic", "coverage", "format", "evidence", "sort", "clear", "list", "count"},
@@ -115,6 +130,26 @@ def validate_identity() -> None:
             fail(f"{filename}: URL canônica do repositório ausente")
 
 
+def validate_public_copy() -> None:
+    leaks: list[str] = []
+    for filename in PUBLIC_RENDER_FILES:
+        content = (ROOT / filename).read_text(encoding="utf-8")
+        for token in FORBIDDEN_PUBLIC_COPY:
+            if token in content:
+                leaks.append(f"{filename}: {token}")
+    if leaks:
+        fail("linguagem interna/de desenvolvimento exposta na superfície pública: " + "; ".join(leaks))
+
+    index = (ROOT / "index.html").read_text(encoding="utf-8")
+    products = (ROOT / "products.html").read_text(encoding="utf-8")
+    about = (ROOT / "about.html").read_text(encoding="utf-8")
+    forbidden_assets = ("assets/quality-summary.js", "assets/build-meta.js")
+    for filename, content in (("index.html", index), ("products.html", products), ("about.html", about)):
+        found = [asset for asset in forbidden_assets if asset in content]
+        if found:
+            fail(f"{filename}: asset interno não deve ser carregado publicamente: {', '.join(found)}")
+
+
 def validate_required_assets() -> None:
     required = (
         "assets/style.css", "assets/accessibility.css", "assets/brazil-scope.css", "assets/products.css",
@@ -130,5 +165,6 @@ def validate_required_assets() -> None:
 for page in PUBLIC_PAGES:
     validate_page(page)
 validate_identity()
+validate_public_copy()
 validate_required_assets()
-print("OK: Vitrine independente, navegável e sem dependências públicas do Simbiotrama")
+print("OK: Vitrine independente, navegável e com superfície pública limpa")
