@@ -141,6 +141,13 @@ def validate_public_copy() -> None:
     if leaks:
         fail("linguagem interna/de desenvolvimento exposta na superfície pública: " + "; ".join(leaks))
 
+    app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
+    products_js = (ROOT / "assets" / "products.js").read_text(encoding="utf-8")
+    if "academic_evidence_note" in app:
+        fail("assets/app.js não deve renderizar nem indexar academic_evidence_note")
+    if "distribution.notes" in products_js:
+        fail("assets/products.js não deve renderizar nem indexar distribution.notes")
+
     index = (ROOT / "index.html").read_text(encoding="utf-8")
     products = (ROOT / "products.html").read_text(encoding="utf-8")
     about = (ROOT / "about.html").read_text(encoding="utf-8")
