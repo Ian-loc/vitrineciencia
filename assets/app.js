@@ -19,12 +19,18 @@ const els = {
   advancedCount: $("#advanced-count"),
   areaLinks: $("#area-links"),
   heroSearch: $("#hero-search"),
-  catalogHeading: $("#catalog-heading")
+  catalogHeading: $("#catalog-heading"),
+  resultsMore: $("#results-more"),
+  showMore: $("#show-more"),
+  shownCount: $("#shown-count")
 };
 
 let all = [];
 let filtered = [];
 let scopeRegistry = null;
+
+const PAGE_SIZE = 12;
+let visibleCount = PAGE_SIZE;
 
 const SEARCH_FIELDS = [
   "resource_name", "acronym", "official_identity", "description", "research_areas",
@@ -271,10 +277,20 @@ function sortResults(query) {
 
 function render() {
   els.list.setAttribute("aria-busy", "true");
-  els.list.innerHTML = filtered.map(card).join("");
+  const shown = filtered.slice(0, visibleCount);
+  els.list.innerHTML = shown.map(card).join("");
   els.empty.hidden = filtered.length > 0;
+
   const brazilianCount = filtered.filter(resource => resource._scope.brazil_scope_class === "fonte_brasileira").length;
-  els.count.textContent = `${filtered.length} ${filtered.length === 1 ? "fonte encontrada" : "fontes encontradas"} · ${brazilianCount} ${brazilianCount === 1 ? "fonte brasileira" : "fontes brasileiras"} · ${all.length} no catálogo`;
+  const foundLabel = `${filtered.length} ${filtered.length === 1 ? "fonte encontrada" : "fontes encontradas"}`;
+  const brazilianLabel = `${brazilianCount} ${brazilianCount === 1 ? "brasileira" : "brasileiras"}`;
+  const catalogContext = filtered.length === all.length ? "" : ` · ${all.length} no catálogo`;
+  els.count.textContent = `${foundLabel} · ${brazilianLabel}${catalogContext}`;
+
+  const hasMore = shown.length < filtered.length;
+  els.resultsMore.hidden = !hasMore;
+  els.shownCount.textContent = hasMore ? `${shown.length} de ${filtered.length} exibidas` : "";
+  els.showMore.setAttribute("aria-label", hasMore ? `Mostrar mais fontes; ${shown.length} de ${filtered.length} exibidas` : "Todas as fontes filtradas estão exibidas");
   els.list.setAttribute("aria-busy", "false");
 }
 
@@ -374,6 +390,7 @@ function filter(syncUrl = true) {
     (!els.evidence.value || resource.academic_evidence_type === els.evidence.value)
   );
   sortResults(query);
+  visibleCount = PAGE_SIZE;
   render();
   renderActiveFilters();
   if (syncUrl) writeUrl();
@@ -442,6 +459,10 @@ async function init() {
     els.heroSearch.addEventListener("submit", event => { event.preventDefault(); filter(); goToCatalog(); });
     document.querySelectorAll("[data-query]").forEach(button => button.addEventListener("click", () => setQuery(button.dataset.query)));
     document.querySelectorAll("[data-scope]").forEach(button => button.addEventListener("click", () => setScope(button.dataset.scope)));
+    els.showMore.addEventListener("click", () => {
+      visibleCount = Math.min(filtered.length, visibleCount + PAGE_SIZE);
+      render();
+    });
     $("#clear").addEventListener("click", () => {
       $("#filters").reset();
       els.q.value = "";
@@ -463,6 +484,7 @@ async function init() {
     els.list.setAttribute("aria-busy", "false");
     els.count.textContent = "Falha ao carregar o catálogo";
     els.list.innerHTML = `<div class="empty"><h3>Falha ao carregar o catálogo</h3><p>${esc(error.message)}</p></div>`;
+    els.resultsMore.hidden = true;
   }
 }
 
