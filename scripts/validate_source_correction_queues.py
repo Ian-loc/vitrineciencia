@@ -26,6 +26,10 @@ EXPECTED_CORRECTIONS = 119
 EXPECTED_CORRECTED_SOURCES = 43
 EXPECTED_TOTAL_SOURCES = 51
 EXPECTED_COLUMNS = 34
+EXPECTED_NO_CHANGE_SOURCES = {
+    "DR0001", "DR0004", "DR0007", "DR0009",
+    "DR0014", "DR0029", "DR0035", "DR0039",
+}
 
 
 def fail(message: str) -> None:
@@ -87,7 +91,7 @@ def main() -> None:
     overrides = load_overrides()
     seen_keys: set[str] = set()
     corrections: list[dict[str, str]] = []
-    no_change_sources: set[str] = set()
+    explicit_no_change_sources: set[str] = set()
 
     for path in queue_paths:
         _, rows = read_csv(path)
@@ -101,7 +105,7 @@ def main() -> None:
             if decision == "no_change" or not field:
                 if decision != "no_change":
                     fail(f"{path.name}:{line_number}: campo vazio sem decisão no_change")
-                no_change_sources.add(resource_id)
+                explicit_no_change_sources.add(resource_id)
                 continue
 
             if decision not in {"apply", "apply_after_exact_row_check"}:
@@ -128,8 +132,7 @@ def main() -> None:
             if not is_https(evidence_url):
                 fail(f"{path.name}:{line_number}: evidence_url deve ser HTTPS para {key}")
 
-            candidate = row.get("candidate_value") or ""
-            candidate = overrides.get(key, candidate)
+            candidate = overrides.get(key, row.get("candidate_value") or "")
             if candidate == actual_value:
                 fail(f"{path.name}:{line_number}: candidato não altera {key}")
             if not candidate.strip():
@@ -155,17 +158,21 @@ def main() -> None:
         )
 
     expected_no_change = set(ids) - corrected_sources
-    if no_change_sources != expected_no_change:
+    if expected_no_change != EXPECTED_NO_CHANGE_SOURCES:
         fail(
-            "conjunto explícito no_change não corresponde às 8 fontes sem correção: "
-            f"esperado={sorted(expected_no_change)}, observado={sorted(no_change_sources)}"
+            "complemento das fontes corrigidas não corresponde ao baseline sem correção: "
+            f"esperado={sorted(EXPECTED_NO_CHANGE_SOURCES)}, observado={sorted(expected_no_change)}"
+        )
+    if not explicit_no_change_sources.issubset(EXPECTED_NO_CHANGE_SOURCES):
+        fail(
+            "fila marcou no_change para fonte que possui correção: "
+            f"{sorted(explicit_no_change_sources - EXPECTED_NO_CHANGE_SOURCES)}"
         )
 
     unused_overrides = sorted(set(overrides) - seen_keys)
     if unused_overrides:
         fail("overrides sem correção correspondente: " + ", ".join(unused_overrides))
 
-    # Materialize only in memory first.
     proposed_rows = [dict(row) for row in canonical_rows]
     proposed_index = {row["resource_id"]: row for row in proposed_rows}
     for item in corrections:
@@ -182,7 +189,6 @@ def main() -> None:
     if len(proposed_rows) != EXPECTED_TOTAL_SOURCES:
         fail("aplicação proposta alterou número de fontes")
 
-    # Structural sanity for URL/date/enums directly affected by known field classes.
     url_fields = {"homepage_url", "data_access_url", "access_documentation_url", "verification_url"}
     enum_fields = {
         "free_download": {"sim", "parcial", "não", "desconhecido", "não se aplica"},
@@ -207,8 +213,9 @@ def main() -> None:
         "queue_files": [path.name for path in queue_paths],
         "correction_count": len(corrections),
         "corrected_source_count": len(corrected_sources),
-        "no_change_source_count": len(no_change_sources),
-        "no_change_sources": sorted(no_change_sources),
+        "no_change_source_count": len(EXPECTED_NO_CHANGE_SOURCES),
+        "no_change_sources": sorted(EXPECTED_NO_CHANGE_SOURCES),
+        "explicit_no_change_sources": sorted(explicit_no_change_sources),
         "last_verified_changes": last_verified_changes,
         "total_cell_changes": total_cell_changes,
         "field_counts": dict(sorted(field_counts.items())),
