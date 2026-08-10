@@ -1,6 +1,6 @@
 {
   "schema_version": "product-catalog-v0.1",
-  "status": "pilot",
+  "status": "stable",
   "purpose": "Representar produtos e formas de acesso sem duplicar a unidade fonte do catálogo principal.",
   "entities": {
     "source": {
@@ -40,6 +40,34 @@
         "primary_or_derived",
         "limitations",
         "last_verified"
+      ],
+      "required_fields": [
+        "product_id",
+        "resource_id",
+        "product_name",
+        "product_family",
+        "product_kind",
+        "product_description",
+        "research_areas",
+        "keywords",
+        "geographic_coverage",
+        "covers_brazil",
+        "spatial_support",
+        "spatial_resolution",
+        "temporal_coverage",
+        "temporal_resolution",
+        "update_frequency",
+        "product_status",
+        "version_or_collection",
+        "enumeration_scope",
+        "product_page_url",
+        "primary_or_derived",
+        "limitations",
+        "last_verified"
+      ],
+      "nullable_by_design": [
+        "product_acronym",
+        "methodology_url"
       ]
     },
     "distribution": {
@@ -146,7 +174,8 @@
     "every_distribution_must_reference_an_existing_product",
     "every_product_must_reference_an_existing_source",
     "license_is_recorded_at_the_lowest_verified_level",
-    "last_verified_uses_iso_date"
+    "last_verified_uses_iso_date",
+    "missing_methodology_is_preserved_when_no_product_level_methodology_exists"
   ],
   "search_index": {
     "recommended_fields": [
@@ -177,13 +206,13 @@
       "product_status"
     ]
   },
-  "migration_policy": {
-    "pilot_sources": [
-      "DR0011",
-      "DR0019"
-    ],
+  "growth_policy": {
+    "baseline_source_count": 51,
+    "baseline_product_count": 11,
+    "baseline_distribution_count": 19,
+    "source_count_is_not_capped": true,
     "does_not_replace_source_csv": true,
     "does_not_enumerate_every_dataset_in_mega_catalogs": true,
-    "future_site_integration_required": true
+    "public_site_integration": "active"
   }
 }
