@@ -105,6 +105,8 @@ def validate_page(filename: str) -> None:
     missing = sorted(REQUIRED_IDS[filename].difference(parser.ids))
     if missing:
         fail(f"{filename}: IDs obrigatórios ausentes: {', '.join(missing)}")
+    if "assets/visual-refinement.css" not in content:
+        fail(f"{filename}: camada visual refinada ausente")
     for ref in parser.local_refs:
         target = (path.parent / ref).resolve()
         if ROOT not in target.parents and target != ROOT:
@@ -161,7 +163,8 @@ def validate_public_copy() -> None:
 def validate_required_assets() -> None:
     required = (
         "assets/style.css", "assets/accessibility.css", "assets/brazil-scope.css", "assets/products.css",
-        "assets/app.js", "assets/products.js", "assets/analytics.js", "assets/quality-summary.js", "assets/build-meta.js",
+        "assets/visual-refinement.css", "assets/app.js", "assets/products.js", "assets/analytics.js",
+        "assets/quality-summary.js", "assets/build-meta.js",
         "data/data_resources.csv", "data/data_resources.json", "data/data_products.csv", "data/data_products.json",
         "data/product_distributions.csv", "data/brazil_scope_priorities.json", "data/build-meta.json",
     )
