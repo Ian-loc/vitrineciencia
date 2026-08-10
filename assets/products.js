@@ -102,7 +102,7 @@ function searchableText(product) {
     ...product.distributions.flatMap(distribution => [
       distribution.distribution_name, distribution.format, distribution.access_protocol,
       distribution.access_tool, distribution.access_conditions, distribution.license,
-      distribution.subset_support, distribution.notes
+      distribution.subset_support
     ])
   ].join(" "));
   const expansions = SYNONYM_GROUPS
