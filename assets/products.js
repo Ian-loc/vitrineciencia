@@ -143,7 +143,7 @@ function statusBadge(label, value) {
   return `<div class="status-badge ${statusClass(value)}" role="group" aria-label="${esc(label)}: ${esc(readable)}"><span class="status-symbol" aria-hidden="true">${statusSymbol(value)}</span><span><small>${esc(label)}</small><strong>${esc(readable)}</strong></span></div>`;
 }
 
-function distributionCard(distribution) {
+function accessCard(distribution) {
   return `<article class="distribution">
     <header><h5>${esc(distribution.distribution_name)}</h5>${actionLink("Abrir acesso", distribution.access_url)}</header>
     <div class="distribution-grid">
@@ -152,11 +152,10 @@ function distributionCard(distribution) {
       ${detail("Ferramenta", distribution.access_tool)}
       ${detail("Download gratuito", distribution.free_download)}
       ${detail("Autenticação", distribution.authentication_required)}
-      ${detail("Recorte", distribution.subset_support)}
+      ${detail("Recorte disponível", distribution.subset_support)}
       ${detail("Licença", distribution.license)}
       ${detail("Condições", distribution.access_conditions)}
     </div>
-    <p>${esc(distribution.notes)}</p>
   </article>`;
 }
 
@@ -170,21 +169,20 @@ function productCard(product) {
   const checked = selected.has(product.product_id) ? " checked" : "";
   const acronym = product.product_acronym ? `<span class="acronym">${esc(product.product_acronym)}</span>` : "";
 
-  return `<article class="card product-card" role="listitem" aria-labelledby="${cardId}" aria-describedby="${descriptionId}">
+  return `<article class="card product-card" data-product-id="${esc(product.product_id)}" role="listitem" aria-labelledby="${cardId}" aria-describedby="${descriptionId}">
     <header class="card-header">
       <div class="card-title">
         <p class="product-source"><a href="index.html?q=${encodeURIComponent(product.source.resource_name)}#catalogo">${esc(product.source.resource_name)}</a></p>
         <div class="title-line"><h3 id="${cardId}">${esc(product.product_name)}</h3>${acronym}</div>
         <p class="identity">${esc(product.product_family)} · ${esc(KIND_LABELS[product.product_kind] || product.product_kind)}</p>
       </div>
-      <span class="verified-date">Registro revisado em ${esc(product.last_verified)}</span>
     </header>
     <p class="description" id="${descriptionId}">${esc(product.product_description)}</p>
     <div class="chips" aria-label="Áreas de pesquisa">${areas.map(area => `<span class="chip">${esc(area)}</span>`).join("")}</div>
     <div class="status-grid" aria-label="Resumo do produto">
       ${statusBadge("Dados para o Brasil", product.covers_brazil)}
-      ${statusBadge("Algum download gratuito", free)}
-      ${statusBadge("Alguma rota exige autenticação", auth)}
+      ${statusBadge("Download gratuito", free)}
+      ${statusBadge("Autenticação em algum acesso", auth)}
     </div>
     <div class="product-meta-grid">
       ${detail("Suporte espacial", product.spatial_support)}
@@ -192,7 +190,6 @@ function productCard(product) {
       ${detail("Resolução temporal", product.temporal_resolution)}
       ${detail("Versão ou coleção", product.version_or_collection)}
     </div>
-    <div class="highlight limitation product-limitation"><span>Principal limitação</span><p>${esc(product.limitations)}</p></div>
     <div class="chips product-format-chips" aria-label="Formatos e modalidades">${formats.map(format => `<span class="chip">${esc(format)}</span>`).join("")}</div>
     <div class="card-actions">
       ${actionLink("Página do produto", product.product_page_url, "action-primary")}
@@ -202,17 +199,17 @@ function productCard(product) {
     <details class="card-details">
       <summary aria-label="Ver detalhes e formas de acesso de ${esc(product.product_name)}">Ver detalhes e formas de acesso (${product.distributions.length})</summary>
       <div class="detail-groups">
-        <section class="detail-group"><h4>Produto</h4><div class="detail-grid">
+        <section class="detail-group"><h4>Detalhes do produto</h4><div class="detail-grid">
           ${detail("Cobertura geográfica", product.geographic_coverage)}
           ${detail("Cobertura temporal", product.temporal_coverage)}
           ${detail("Atualização", product.update_frequency)}
           ${detail("Estado", product.product_status)}
           ${detail("Origem", ORIGIN_LABELS[product.primary_or_derived] || product.primary_or_derived)}
-          ${detail("Escopo de enumeração", product.enumeration_scope)}
           ${detail("Palavras-chave", product.keywords)}
-          ${detail("Identificador", product.product_id)}
+          ${detail("Limitações", product.limitations)}
+          ${detail("Registro revisado em", product.last_verified)}
         </div></section>
-        <section class="detail-group"><h4>Distribuições e acesso</h4><div class="product-distributions">${product.distributions.map(distributionCard).join("")}</div></section>
+        <section class="detail-group"><h4>Formas de acesso</h4><div class="product-distributions">${product.distributions.map(accessCard).join("")}</div></section>
       </div>
     </details>
   </article>`;
@@ -284,7 +281,7 @@ function render() {
   els.list.setAttribute("aria-busy", "true");
   els.list.innerHTML = filtered.map(productCard).join("");
   els.empty.hidden = filtered.length > 0;
-  els.count.textContent = `${filtered.length} ${filtered.length === 1 ? "produto encontrado" : "produtos encontrados"} · ${all.length} no piloto`;
+  els.count.textContent = `${filtered.length} ${filtered.length === 1 ? "produto encontrado" : "produtos encontrados"} · ${all.length} no catálogo`;
   els.list.setAttribute("aria-busy", "false");
   els.list.querySelectorAll("[data-compare]").forEach(input => input.addEventListener("change", handleCompareChange));
 }
@@ -462,7 +459,7 @@ function openComparison() {
     ["Suporte e resolução espacial", "spatial"], ["Cobertura e resolução temporal", "temporal"],
     ["Atualização", "update"], ["Versão ou coleção", "version"], ["Origem", "origin"],
     ["Formatos", "formats"], ["Protocolos", "protocols"], ["Download gratuito", "free"],
-    ["Autenticação", "auth"], ["Limitações", "limitations"], ["Verificação", "verified"]
+    ["Autenticação", "auth"], ["Limitações", "limitations"], ["Registro revisado em", "verified"]
   ];
   els.compareContent.innerHTML = `<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th scope="col">Dimensão</th>${products.map(product => `<th scope="col">${esc(product.product_name)}</th>`).join("")}</tr></thead><tbody>${rows.map(([label, key]) => `<tr><th scope="row">${esc(label)}</th>${products.map(product => `<td>${esc(comparisonValue(product, key))}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
   if (typeof els.compareDialog.showModal === "function") els.compareDialog.showModal();
