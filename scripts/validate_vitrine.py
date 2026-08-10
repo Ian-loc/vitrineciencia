@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE_URL = "https://ian-loc.github.io/vitrineciencia/"
 REPO_URL = "https://github.com/Ian-loc/vitrineciencia"
 PUBLIC_PAGES = ("index.html", "products.html", "analytics.html", "about.html")
+INTERACTIVE_PAGES = {"index.html", "products.html", "analytics.html"}
 PUBLIC_RENDER_FILES = (*PUBLIC_PAGES, "assets/app.js", "assets/products.js")
 IDENTITY_FILES = (*PUBLIC_PAGES, "README.md", "CITATION.cff")
 FORBIDDEN_PAGE_TOKENS = (
@@ -94,8 +95,8 @@ def validate_page(filename: str) -> None:
         fail(f"{filename}: viewport/skip-link ausente")
     if parser.tags.count("main") != 1 or parser.tags.count("h1") != 1:
         fail(f"{filename}: deve ter exatamente um main e um h1")
-    if "noscript" not in parser.tags:
-        fail(f"{filename}: fallback noscript ausente")
+    if filename in INTERACTIVE_PAGES and "noscript" not in parser.tags:
+        fail(f"{filename}: fallback noscript ausente para página interativa")
     if parser.external_assets:
         fail(f"{filename}: dependência externa não permitida: {', '.join(parser.external_assets)}")
     duplicates = sorted({item for item in parser.ids if parser.ids.count(item) > 1})
