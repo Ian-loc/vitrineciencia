@@ -38,7 +38,7 @@ FORBIDDEN_PUBLIC_COPY = (
 )
 REQUIRED_IDS = {
     "index.html": {"conteudo", "catalogo", "hero-search", "q", "filters", "scope", "area", "brazil", "download", "programmatic", "coverage", "format", "evidence", "sort", "clear", "list", "count", "results-more", "show-more", "shown-count"},
-    "products.html": {"produtos", "product-search", "product-q", "product-filters", "product-source", "product-area", "product-brazil", "product-kind", "product-format", "product-protocol", "product-auth", "product-status", "product-origin", "product-sort", "product-clear", "product-list", "product-count", "compare-bar", "compare-dialog"},
+    "products.html": {"produtos", "product-search", "product-q", "product-filters", "product-source", "product-area", "product-brazil", "product-kind", "product-format", "product-protocol", "product-auth", "product-status", "product-origin", "product-sort", "product-clear", "product-list", "product-count", "product-results-more", "product-show-more", "product-shown-count", "compare-bar", "compare-dialog"},
     "analytics.html": {"analise", "summary", "chart-areas", "chart-download", "chart-programmatic", "chart-brazil", "chart-evidence", "chart-formats", "chart-visualizations"},
     "about.html": {"sobre"},
 }
@@ -173,16 +173,25 @@ def validate_visual_contract() -> None:
     if missing:
         fail("contrato visual incompleto: navegação, áreas, estatísticas ou expansão de resultados pode regredir")
 
-    app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
-    progressive_rules = (
-        "const PAGE_SIZE = 12;",
-        "filtered.slice(0, visibleCount)",
-        "visibleCount = PAGE_SIZE;",
-        "visibleCount + PAGE_SIZE",
-    )
-    missing_progressive = [rule for rule in progressive_rules if rule not in app]
-    if missing_progressive:
-        fail("divulgação progressiva das fontes incompleta")
+    progressive_contracts = {
+        "assets/app.js": (
+            "const PAGE_SIZE = 12;",
+            "filtered.slice(0, visibleCount)",
+            "visibleCount = PAGE_SIZE;",
+            "visibleCount + PAGE_SIZE",
+        ),
+        "assets/products.js": (
+            "const PAGE_SIZE = 6;",
+            "filtered.slice(0, visibleCount)",
+            "visibleCount = PAGE_SIZE;",
+            "visibleCount + PAGE_SIZE",
+        ),
+    }
+    for filename, rules in progressive_contracts.items():
+        content = (ROOT / filename).read_text(encoding="utf-8")
+        missing_progressive = [rule for rule in rules if rule not in content]
+        if missing_progressive:
+            fail(f"divulgação progressiva incompleta em {filename}")
 
 
 def validate_required_assets() -> None:
