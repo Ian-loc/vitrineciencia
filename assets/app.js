@@ -30,8 +30,7 @@ const SEARCH_FIELDS = [
   "resource_name", "acronym", "official_identity", "description", "research_areas",
   "keywords", "data_product_types", "data_formats", "visualization_types",
   "geographic_coverage", "data_sources", "access_protocols", "access_conditions",
-  "license", "owner_or_manager", "academic_uses", "limitations", "academic_evidence_note",
-  "_scope_search"
+  "license", "owner_or_manager", "academic_uses", "limitations", "_scope_search"
 ];
 
 const ENUM_ORDER = ["sim", "parcial", "não", "desconhecido", "não se aplica"];
@@ -41,6 +40,12 @@ const ENUM_LABELS = {
   "não": "Não",
   "desconhecido": "Desconhecido",
   "não se aplica": "Não se aplica"
+};
+const SCOPE_LABELS = {
+  fonte_brasileira: "Fonte brasileira",
+  cobertura_brasil_sistematica: "Dados do Brasil",
+  cobertura_brasil_parcial: "Cobertura parcial",
+  referencia_sem_cobertura_brasil: "Referência comparativa"
 };
 const IGNORED_FORMATS = new Set(["formatos variados", "varia", "visualização web"]);
 
@@ -75,11 +80,11 @@ function attachScope(resources, registry) {
   const index = buildScopeIndex(registry);
   return resources.map(resource => {
     const scope = index.get(resource.resource_id);
-    if (!scope) throw Error(`Prioridade Brasil ausente para ${resource.resource_id}.`);
+    if (!scope) throw Error(`Classificação territorial ausente para ${resource.resource_id}.`);
     return {
       ...resource,
       _scope: scope,
-      _scope_search: `${scope.display_label} ${scope.description} ${scope.source_origin} ${scope.inclusion_role}`
+      _scope_search: `${SCOPE_LABELS[scope.brazil_scope_class] || scope.display_label} ${scope.source_origin}`
     };
   });
 }
@@ -115,9 +120,12 @@ function statusBadge(label, value) {
   return `<div class="status-badge ${statusClass(value)}" role="group" aria-label="${esc(label)}: ${esc(readable)}"><span class="status-symbol" aria-hidden="true">${statusSymbol(value)}</span><span><small>${esc(label)}</small><strong>${esc(readable)}</strong></span></div>`;
 }
 
+function scopePublicLabel(resource) {
+  return SCOPE_LABELS[resource._scope.brazil_scope_class] || resource._scope.display_label || "Cobertura não classificada";
+}
+
 function scopeBadge(resource) {
-  const scope = resource._scope;
-  return `<span class="scope-badge scope-${esc(scope.priority_tier.toLowerCase())}" title="${esc(scope.description)}">${esc(scope.display_label)}</span>`;
+  return `<span class="scope-badge scope-${esc(resource._scope.priority_tier.toLowerCase())}">${esc(scopePublicLabel(resource))}</span>`;
 }
 
 function detailGroup(title, content, links = "") {
@@ -179,9 +187,7 @@ function card(resource) {
 
   const coverageGroup = detailGroup(
     "Cobertura",
-    detail("Prioridade no escopo Brasil", `${resource._scope.priority_tier} — ${resource._scope.display_label}`) +
-    detail("Origem da fonte", resource._scope.source_origin) +
-    detail("Papel no catálogo", resource._scope.inclusion_role) +
+    detail("Tipo de cobertura", scopePublicLabel(resource)) +
     detail("Cobertura geográfica", resource.geographic_coverage) +
     detail("Dados para o Brasil", resource.covers_brazil) +
     detail("Resolução espacial", resource.spatial_resolution) +
@@ -197,35 +203,23 @@ function card(resource) {
     detail("Origem dos dados", resource.data_sources)
   );
 
-  const academicGroup = detailGroup(
-    "Uso acadêmico",
-    detail("Utilidade acadêmica", resource.academic_uses) +
-    detail("Áreas de pesquisa", resource.research_areas) +
-    detail("Palavras-chave", resource.keywords)
-  );
-
-  const evidenceGroup = detailGroup(
-    "Evidências",
-    detail("Tipo de evidência", resource.academic_evidence_type) +
-    detail("Síntese da evidência", resource.academic_evidence_note),
-    actionLink("Evidência acadêmica ou técnica", resource.academic_evidence_url) +
-    actionLink("Evidência oficial", resource.verification_url)
-  );
-
-  const evaluationGroup = detailGroup(
-    "Avaliação e governança",
+  const documentationGroup = detailGroup(
+    "Uso, documentação e limitações",
+    detail("Uso em pesquisa", resource.academic_uses) +
+    detail("Palavras-chave", resource.keywords) +
+    detail("Tipo de documentação", resource.academic_evidence_type) +
     detail("Limitações", resource.limitations) +
     detail("Responsável", resource.owner_or_manager) +
     detail("Tipo de instituição", resource.institutional_status) +
     detail("Licença", resource.license) +
-    detail("Registro revisado em", resource.last_verified) +
-    detail("Identificador interno", resource.resource_id)
+    detail("Registro revisado em", resource.last_verified),
+    actionLink("Referência acadêmica ou técnica", resource.academic_evidence_url) +
+    actionLink("Documentação oficial", resource.verification_url)
   );
 
-  return `<article class="card" role="listitem" aria-labelledby="${cardId}" aria-describedby="${descriptionId}">
+  return `<article class="card" data-resource-id="${esc(resource.resource_id)}" role="listitem" aria-labelledby="${cardId}" aria-describedby="${descriptionId}">
     <header class="card-header">
       <div class="card-title"><div class="scope-line">${scopeBadge(resource)}</div><div class="title-line"><h3 id="${cardId}">${esc(resource.resource_name)}</h3>${acronym}</div><p class="identity">${esc(resource.official_identity)}</p></div>
-      <span class="verified-date">Registro revisado em ${esc(resource.last_verified)}</span>
     </header>
     <p class="description" id="${descriptionId}">${esc(resource.description)}</p>
     <div class="chips" aria-label="Áreas de pesquisa">${areaChips}</div>
@@ -234,17 +228,13 @@ function card(resource) {
       ${statusBadge("API ou acesso automatizado", resource.programmatic_access)}
       ${statusBadge("Dados para o Brasil", resource.covers_brazil)}
     </div>
-    <div class="card-highlights">
-      <div class="highlight academic-use"><span>Mais indicada para</span><p>${esc(resource.academic_uses)}</p></div>
-      <div class="highlight limitation"><span>Principal limitação</span><p>${esc(resource.limitations)}</p></div>
-    </div>
     <div class="card-actions">
       ${actionLink("Acessar dados", resource.data_access_url, "action-primary")}
       ${actionLink("Site oficial", resource.homepage_url)}
     </div>
     <details class="card-details">
-      <summary aria-label="Ver detalhes técnicos, evidências e avaliação de ${esc(resource.resource_name)}">Ver detalhes técnicos, evidências e avaliação</summary>
-      <div class="detail-groups">${accessGroup}${coverageGroup}${productsGroup}${academicGroup}${evidenceGroup}${evaluationGroup}</div>
+      <summary aria-label="Ver detalhes técnicos e documentação de ${esc(resource.resource_name)}">Ver detalhes técnicos e documentação</summary>
+      <div class="detail-groups">${accessGroup}${coverageGroup}${productsGroup}${documentationGroup}</div>
     </details>
   </article>`;
 }
@@ -283,8 +273,8 @@ function render() {
   els.list.setAttribute("aria-busy", "true");
   els.list.innerHTML = filtered.map(card).join("");
   els.empty.hidden = filtered.length > 0;
-  const coreCount = filtered.filter(resource => resource._scope.priority_tier === "P0").length;
-  els.count.textContent = `${filtered.length} ${filtered.length === 1 ? "fonte encontrada" : "fontes encontradas"} · ${coreCount} ${coreCount === 1 ? "fonte brasileira" : "fontes brasileiras"} · ${all.length} no catálogo`;
+  const brazilianCount = filtered.filter(resource => resource._scope.brazil_scope_class === "fonte_brasileira").length;
+  els.count.textContent = `${filtered.length} ${filtered.length === 1 ? "fonte encontrada" : "fontes encontradas"} · ${brazilianCount} ${brazilianCount === 1 ? "fonte brasileira" : "fontes brasileiras"} · ${all.length} no catálogo`;
   els.list.setAttribute("aria-busy", "false");
 }
 
@@ -293,14 +283,14 @@ function renderActiveFilters() {
   if (els.q.value.trim()) items.push({key: "q", label: `Busca: ${els.q.value.trim()}`});
 
   [
-    ["scope", "Escopo", els.scope],
+    ["scope", "Cobertura", els.scope],
     ["area", "Área", els.area],
     ["brazil", "Brasil", els.brazil],
     ["download", "Download", els.download],
     ["programmatic", "API", els.programmatic],
-    ["coverage", "Cobertura", els.coverage],
+    ["coverage", "Geografia", els.coverage],
     ["format", "Formato", els.format],
-    ["evidence", "Evidência", els.evidence]
+    ["evidence", "Documentação", els.evidence]
   ].forEach(([key, label, element]) => {
     if (element.value) items.push({key, label: `${label}: ${optionLabel(element)}`});
   });
@@ -423,8 +413,7 @@ function renderAreas() {
 
 function populateFilters() {
   const scopeOrder = scopeRegistry.tiers.map(tier => tier.brazil_scope_class);
-  const scopeLabels = Object.fromEntries(scopeRegistry.tiers.map(tier => [tier.brazil_scope_class, `${tier.priority_tier} — ${tier.display_label}`]));
-  populateSelect(els.scope, all.map(resource => resource._scope.brazil_scope_class), "Todas as prioridades", scopeOrder, scopeLabels);
+  populateSelect(els.scope, all.map(resource => resource._scope.brazil_scope_class), "Todos os tipos", scopeOrder, SCOPE_LABELS);
   populateSelect(els.area, all.flatMap(resource => split(resource.research_areas)), "Todas as áreas");
   populateSelect(els.brazil, all.map(resource => resource.covers_brazil), "Qualquer situação", ENUM_ORDER, ENUM_LABELS);
   populateSelect(els.download, all.map(resource => resource.free_download), "Qualquer situação", ENUM_ORDER, ENUM_LABELS);
@@ -441,7 +430,7 @@ async function init() {
       fetch("data/brazil_scope_priorities.json")
     ]);
     if (!resourcesResponse.ok) throw Error("Não foi possível carregar os dados.");
-    if (!scopeResponse.ok) throw Error("Não foi possível carregar a política de prioridade Brasil.");
+    if (!scopeResponse.ok) throw Error("Não foi possível carregar a classificação de cobertura.");
 
     scopeRegistry = await scopeResponse.json();
     all = attachScope(await resourcesResponse.json(), scopeRegistry);
@@ -464,9 +453,9 @@ async function init() {
     window.addEventListener("popstate", () => { readUrl(); filter(false); });
 
     $("#n-total").textContent = all.length;
-    $("#n-brazilian").textContent = all.filter(resource => resource._scope.priority_tier === "P0").length;
-    $("#n-intl-br").textContent = all.filter(resource => resource._scope.priority_tier === "P1").length;
-    $("#n-secondary").textContent = all.filter(resource => ["P2", "P3"].includes(resource._scope.priority_tier)).length;
+    $("#n-brazilian").textContent = all.filter(resource => resource._scope.brazil_scope_class === "fonte_brasileira").length;
+    $("#n-intl-br").textContent = all.filter(resource => resource._scope.brazil_scope_class === "cobertura_brasil_sistematica").length;
+    $("#n-secondary").textContent = all.filter(resource => ["cobertura_brasil_parcial", "referencia_sem_cobertura_brasil"].includes(resource._scope.brazil_scope_class)).length;
     $("#updated").textContent = all.map(resource => resource.last_verified).filter(Boolean).sort().at(-1) || "não informada";
     filter(false);
   } catch (error) {
