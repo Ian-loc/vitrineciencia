@@ -1,0 +1,183 @@
+name: Capturar QA visual da Vitrine publicada
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/public-ui-visual-qa.yml"
+      - "index.html"
+      - "products.html"
+      - "analytics.html"
+      - "about.html"
+      - "assets/**"
+      - "data/**"
+      - "scripts/build_catalog.py"
+      - "scripts/validate_vitrine.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture-public-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Preparar versão candidata
+        run: |
+          python3 scripts/build_catalog.py
+          python3 scripts/validate_vitrine.py
+          python3 -m http.server 8000 > /tmp/vitrine-http.log 2>&1 &
+          echo $! > /tmp/vitrine-http.pid
+          for attempt in {1..20}; do
+            if curl -fsS http://127.0.0.1:8000/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/vitrine-http.log
+          exit 1
+
+      - name: Instalar navegador de QA
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Capturar publicada e candidata e validar layout
+        env:
+          LIVE_URL: https://ian-loc.github.io/vitrineciencia/
+          CANDIDATE_URL: http://127.0.0.1:8000/
+        run: |
+          mkdir -p visual-qa
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+
+          const targets = [
+            ['live', process.env.LIVE_URL],
+            ['candidate', process.env.CANDIDATE_URL],
+          ];
+          const pages = [
+            ['home', ''],
+            ['products', 'products.html'],
+            ['catalog-overview', 'analytics.html'],
+            ['method', 'about.html'],
+          ];
+          const viewports = [
+            ['desktop', { width: 1440, height: 1100 }],
+            ['mobile', { width: 390, height: 844 }],
+          ];
+
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const report = [];
+            let failed = false;
+
+            for (const [target, base] of targets) {
+              for (const [mode, viewport] of viewports) {
+                const context = await browser.newContext({ viewport });
+                for (const [name, path] of pages) {
+                  const page = await context.newPage();
+                  const url = base + path;
+                  const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
+                  if (!response || !response.ok()) {
+                    console.error(`HTTP inválido: ${url} -> ${response && response.status()}`);
+                    failed = true;
+                    await page.close();
+                    continue;
+                  }
+
+                  if (name === 'home') await page.waitForSelector('#list .card');
+                  if (name === 'products') await page.waitForSelector('#product-list .card');
+                  await page.screenshot({ path: `visual-qa/${target}-${mode}-${name}.png`, fullPage: true });
+                  const metrics = await page.evaluate(() => {
+                    const links = [...document.querySelectorAll('.nav-links a')];
+                    const visibleNav = links.filter((el) => getComputedStyle(el).display !== 'none').map((el) => (el.textContent || '').trim());
+                    const areaGrid = document.querySelector('#area-links');
+                    const sourceShowMore = document.querySelector('#show-more');
+                    const productShowMore = document.querySelector('#product-show-more');
+                    return {
+                      title: document.title,
+                      viewportWidth: window.innerWidth,
+                      documentWidth: document.documentElement.scrollWidth,
+                      documentHeight: document.documentElement.scrollHeight,
+                      visibleNav,
+                      h1: (document.querySelector('h1')?.textContent || '').trim(),
+                      hasMain: Boolean(document.querySelector('main')),
+                      sourceCards: document.querySelectorAll('#list .card').length,
+                      productCards: document.querySelectorAll('#product-list .card').length,
+                      sourceShowMoreVisible: Boolean(sourceShowMore && !sourceShowMore.closest('[hidden]')),
+                      productShowMoreVisible: Boolean(productShowMore && !productShowMore.closest('[hidden]')),
+                      areaDisplay: areaGrid ? getComputedStyle(areaGrid).display : null,
+                      areaClientWidth: areaGrid?.clientWidth || 0,
+                      areaScrollWidth: areaGrid?.scrollWidth || 0,
+                    };
+                  });
+                  Object.assign(metrics, {target, mode, page: name, url});
+                  report.push(metrics);
+
+                  if (!metrics.hasMain || !metrics.h1) failed = true;
+                  if (metrics.documentWidth > metrics.viewportWidth + 2) {
+                    console.error(`Overflow horizontal: ${target}/${mode}/${name}: ${metrics.documentWidth} > ${metrics.viewportWidth}`);
+                    failed = true;
+                  }
+                  if (mode === 'mobile' && metrics.visibleNav.length < 5) {
+                    console.error(`Navegação mobile incompleta em ${target}/${name}: ${metrics.visibleNav.join(' | ')}`);
+                    failed = true;
+                  }
+
+                  if (target === 'candidate' && name === 'home') {
+                    if (metrics.sourceCards !== 12 || !metrics.sourceShowMoreVisible) {
+                      console.error(`Divulgação progressiva de fontes inválida: ${mode}: cards=${metrics.sourceCards}, showMore=${metrics.sourceShowMoreVisible}`);
+                      failed = true;
+                    }
+                    if (mode === 'mobile' && (metrics.areaDisplay !== 'flex' || metrics.areaScrollWidth <= metrics.areaClientWidth)) {
+                      console.error(`Faixa temática mobile inválida: display=${metrics.areaDisplay}, ${metrics.areaScrollWidth} <= ${metrics.areaClientWidth}`);
+                      failed = true;
+                    }
+                    await page.locator('#show-more').click();
+                    const expanded = await page.locator('#list .card').count();
+                    if (expanded !== 24) {
+                      console.error(`Expansão de fontes inválida: ${mode}: ${expanded} cards após clique`);
+                      failed = true;
+                    }
+                  }
+
+                  if (target === 'candidate' && name === 'products') {
+                    if (metrics.productCards !== 6 || !metrics.productShowMoreVisible) {
+                      console.error(`Divulgação progressiva de produtos inválida: ${mode}: cards=${metrics.productCards}, showMore=${metrics.productShowMoreVisible}`);
+                      failed = true;
+                    }
+                    await page.locator('#product-show-more').click();
+                    const expanded = await page.locator('#product-list .card').count();
+                    if (expanded !== 11) {
+                      console.error(`Expansão de produtos inválida: ${mode}: ${expanded} cards após clique`);
+                      failed = true;
+                    }
+                  }
+
+                  await page.close();
+                }
+                await context.close();
+              }
+            }
+
+            await browser.close();
+            fs.writeFileSync('visual-qa/report.json', JSON.stringify(report, null, 2));
+            console.log(JSON.stringify(report, null, 2));
+            if (failed) process.exit(1);
+          })();
+          NODE
+
+      - name: Publicar evidência visual
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitrine-public-ui-visual-qa
+          path: visual-qa/
+          if-no-files-found: error
+          retention-days: 14
