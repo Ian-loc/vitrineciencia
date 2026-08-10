@@ -1,0 +1,16 @@
+resource_id,field,current_value,candidate_value,evidence_url,status
+DR0002,homepage_url,https://idesisema.meioambiente.mg.gov.br/,https://geoportal.meioambiente.mg.gov.br/,https://geoportal.meioambiente.mg.gov.br/,READY
+DR0002,data_formats,WMS | WFS | formatos geoespaciais variados,formatos geoespaciais variados; consultar metadados por recurso,https://geoportal.meioambiente.mg.gov.br/webservices,READY
+DR0002,access_protocols,WMS | WFS,WMS | WFS | WCS | CSW,https://geoportal.meioambiente.mg.gov.br/webservices,READY
+DR0002,access_documentation_url,,https://geoportal.meioambiente.mg.gov.br/webservices,https://geoportal.meioambiente.mg.gov.br/webservices,READY
+DR0002,verification_url,https://idesisema.meioambiente.mg.gov.br/,https://geoportal.meioambiente.mg.gov.br/,https://geoportal.meioambiente.mg.gov.br/,READY
+DR0003,access_documentation_url,,https://adaptabrasil.mcti.gov.br/sobre/termos-de-uso,https://adaptabrasil.mcti.gov.br/sobre/termos-de-uso,READY
+DR0003,license,não localizada,CC BY-SA; versão não especificada na página oficial consultada,https://adaptabrasil.mcti.gov.br/sobre/termos-de-uso,READY
+DR0005,limitations,"A homepage institucional reúne produtos diferentes; disponibilidade, controle de qualidade e método precisam ser avaliados por produto.","Disponibilidade, método e condições de uso variam por produto; dados brutos da rede disponibilizados no Mapa Interativo podem não ter passado por tratamento e podem conter inconsistências.",https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/boletim-de-impactos-de-extremos-de-origem-hidro-geo-climatico-em-atividades-estrategicas-para-o-brasil/copy_of_boletim-de-impactos-de-extremos-de-origem-hidro-geo-climatico-em-atividades-estrategicas-para-o-brasil-09-04-2026-ano-09-no-89,READY
+DR0006,data_formats,visualização web | formatos variados,formatos geoespaciais e tabulares variados,https://panorama.sipam.gov.br/geonetwork/srv/search?type=dataset,READY
+DR0006,verification_url,https://panorama.sipam.gov.br/api/meteorologia/v1,https://panorama.sipam.gov.br/,https://panorama.sipam.gov.br/,READY
+DR0008,official_identity,Portal Brasileiro de Dados Abertos,Portal Brasileiro de Dados Abertos e Catálogo Nacional de Dados,https://dados.gov.br/,READY
+DR0008,authentication_required,não,parcial,https://dados.gov.br/dados/conjuntos-dados,READY
+DR0008,access_conditions,aberto,dados abertos; catálogo web pode exigir login gov.br,https://dados.gov.br/dados/conjuntos-dados,READY
+DR0010,access_documentation_url,,https://brasil.mapbiomas.org/downloads/,https://brasil.mapbiomas.org/downloads/,READY
+DR0010,license,licença MapBiomas; consultar produto,CC BY; atribuição da fonte obrigatória,https://brasil.mapbiomas.org/termos-de-uso/,READY
