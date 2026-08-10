@@ -206,4 +206,6 @@ Nenhum pacote downstream deve contornar o gate do predecessor.
 
 **PLANNED / NOT IMPLEMENTED.**
 
+O pré-requisito visual foi satisfeito em 2026-08-10: o PR #77 foi incorporado ao `main` no commit `1645df4987cd45c64c40a88cf733e9ba5c1f4a40`, e a versão pública foi verificada em Chromium real com a mesma renderização da candidata em desktop e mobile. A homepage publicada inicia com 12 fontes e Produtos com 6 itens, sem overflow horizontal.
+
 Este documento registra a inclusão do analytics no workflow planejado. Ele não autoriza ativação, coleta ou publicação de métricas antes dos gates definidos acima.
