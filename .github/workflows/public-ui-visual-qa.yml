@@ -5,6 +5,14 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/public-ui-visual-qa.yml"
+      - "index.html"
+      - "products.html"
+      - "analytics.html"
+      - "about.html"
+      - "assets/**"
+      - "data/**"
+      - "scripts/build_catalog.py"
+      - "scripts/validate_vitrine.py"
   workflow_dispatch:
 
 permissions:
@@ -21,21 +29,38 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Preparar versão candidata
+        run: |
+          python3 scripts/build_catalog.py
+          python3 scripts/validate_vitrine.py
+          python3 -m http.server 8000 > /tmp/vitrine-http.log 2>&1 &
+          echo $! > /tmp/vitrine-http.pid
+          for attempt in {1..20}; do
+            if curl -fsS http://127.0.0.1:8000/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/vitrine-http.log
+          exit 1
+
       - name: Instalar navegador de QA
         run: |
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
 
-      - name: Capturar página publicada e validar layout básico
+      - name: Capturar publicada e candidata e validar layout
         env:
-          BASE_URL: https://ian-loc.github.io/vitrineciencia/
+          LIVE_URL: https://ian-loc.github.io/vitrineciencia/
+          CANDIDATE_URL: http://127.0.0.1:8000/
         run: |
           mkdir -p visual-qa
           node <<'NODE'
           const { chromium } = require('playwright');
           const fs = require('fs');
 
-          const base = process.env.BASE_URL;
+          const targets = [
+            ['live', process.env.LIVE_URL],
+            ['candidate', process.env.CANDIDATE_URL],
+          ];
           const pages = [
             ['home', ''],
             ['products', 'products.html'],
@@ -52,49 +77,76 @@ jobs:
             const report = [];
             let failed = false;
 
-            for (const [mode, viewport] of viewports) {
-              const context = await browser.newContext({ viewport });
-              for (const [name, path] of pages) {
-                const page = await context.newPage();
-                const url = base + path;
-                const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
-                if (!response || !response.ok()) {
-                  console.error(`HTTP inválido: ${url} -> ${response && response.status()}`);
-                  failed = true;
+            for (const [target, base] of targets) {
+              for (const [mode, viewport] of viewports) {
+                const context = await browser.newContext({ viewport });
+                for (const [name, path] of pages) {
+                  const page = await context.newPage();
+                  const url = base + path;
+                  const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
+                  if (!response || !response.ok()) {
+                    console.error(`HTTP inválido: ${url} -> ${response && response.status()}`);
+                    failed = true;
+                    await page.close();
+                    continue;
+                  }
+
+                  if (name === 'home') await page.waitForSelector('.card');
+                  await page.screenshot({ path: `visual-qa/${target}-${mode}-${name}.png`, fullPage: true });
+                  const metrics = await page.evaluate(() => {
+                    const links = [...document.querySelectorAll('.nav-links a')];
+                    const visibleNav = links.filter((el) => getComputedStyle(el).display !== 'none').map((el) => (el.textContent || '').trim());
+                    const areaGrid = document.querySelector('#area-links');
+                    const showMore = document.querySelector('#show-more');
+                    return {
+                      title: document.title,
+                      viewportWidth: window.innerWidth,
+                      documentWidth: document.documentElement.scrollWidth,
+                      documentHeight: document.documentElement.scrollHeight,
+                      visibleNav,
+                      h1: (document.querySelector('h1')?.textContent || '').trim(),
+                      hasMain: Boolean(document.querySelector('main')),
+                      renderedCards: document.querySelectorAll('#list .card').length,
+                      showMoreVisible: Boolean(showMore && !showMore.closest('[hidden]')),
+                      areaDisplay: areaGrid ? getComputedStyle(areaGrid).display : null,
+                      areaClientWidth: areaGrid?.clientWidth || 0,
+                      areaScrollWidth: areaGrid?.scrollWidth || 0,
+                    };
+                  });
+                  Object.assign(metrics, {target, mode, page: name, url});
+                  report.push(metrics);
+
+                  if (!metrics.hasMain || !metrics.h1) failed = true;
+                  if (metrics.documentWidth > metrics.viewportWidth + 2) {
+                    console.error(`Overflow horizontal: ${target}/${mode}/${name}: ${metrics.documentWidth} > ${metrics.viewportWidth}`);
+                    failed = true;
+                  }
+                  if (mode === 'mobile' && metrics.visibleNav.length < 5) {
+                    console.error(`Navegação mobile incompleta em ${target}/${name}: ${metrics.visibleNav.join(' | ')}`);
+                    failed = true;
+                  }
+
+                  if (target === 'candidate' && name === 'home') {
+                    if (metrics.renderedCards !== 12 || !metrics.showMoreVisible) {
+                      console.error(`Divulgação progressiva inválida: ${mode}: cards=${metrics.renderedCards}, showMore=${metrics.showMoreVisible}`);
+                      failed = true;
+                    }
+                    if (mode === 'mobile' && (metrics.areaDisplay !== 'flex' || metrics.areaScrollWidth <= metrics.areaClientWidth)) {
+                      console.error(`Faixa temática mobile inválida: display=${metrics.areaDisplay}, ${metrics.areaScrollWidth} <= ${metrics.areaClientWidth}`);
+                      failed = true;
+                    }
+                    await page.locator('#show-more').click();
+                    const expanded = await page.locator('#list .card').count();
+                    if (expanded !== 24) {
+                      console.error(`Expansão inválida: ${mode}: ${expanded} cards após clique`);
+                      failed = true;
+                    }
+                  }
+
                   await page.close();
-                  continue;
                 }
-
-                await page.screenshot({ path: `visual-qa/${mode}-${name}.png`, fullPage: true });
-                const metrics = await page.evaluate(() => {
-                  const links = [...document.querySelectorAll('.nav-links a')];
-                  const visibleNav = links.filter((el) => getComputedStyle(el).display !== 'none').map((el) => (el.textContent || '').trim());
-                  return {
-                    title: document.title,
-                    viewportWidth: window.innerWidth,
-                    documentWidth: document.documentElement.scrollWidth,
-                    visibleNav,
-                    h1: (document.querySelector('h1')?.textContent || '').trim(),
-                    hasMain: Boolean(document.querySelector('main')),
-                  };
-                });
-                metrics.mode = mode;
-                metrics.page = name;
-                metrics.url = url;
-                report.push(metrics);
-
-                if (!metrics.hasMain || !metrics.h1) failed = true;
-                if (metrics.documentWidth > metrics.viewportWidth + 2) {
-                  console.error(`Overflow horizontal: ${mode}/${name}: ${metrics.documentWidth} > ${metrics.viewportWidth}`);
-                  failed = true;
-                }
-                if (mode === 'mobile' && metrics.visibleNav.length < 5) {
-                  console.error(`Navegação mobile incompleta em ${name}: ${metrics.visibleNav.join(' | ')}`);
-                  failed = true;
-                }
-                await page.close();
+                await context.close();
               }
-              await context.close();
             }
 
             await browser.close();
