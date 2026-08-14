@@ -1,0 +1,39 @@
+name: Patch source validator growth
+
+on:
+  push:
+    branches:
+      - data/ibge-oics-batch-2
+    paths:
+      - ".github/workflows/patch-source-validator-growth.yml"
+      - "scripts/patch_source_validator_growth.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: data/ibge-oics-batch-2
+          fetch-depth: 0
+      - name: Ajustar e testar validador
+        run: |
+          python3 scripts/patch_source_validator_growth.py
+          python3 -m py_compile scripts/validate_source_correction_queues.py
+          python3 scripts/validate_source_correction_queues.py --output /tmp/data_resources.corrected.csv --summary-json /tmp/source-correction-summary.json
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/validate_vitrine.py
+          cat /tmp/source-correction-summary.json
+      - name: Commitar somente o validador
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/validate_source_correction_queues.py
+          git commit -m "Permitir crescimento além do baseline auditado de 51 fontes"
+          git push origin HEAD:data/ibge-oics-batch-2
