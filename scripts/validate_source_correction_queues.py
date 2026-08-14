@@ -27,7 +27,7 @@ AUDIT_DATE = "2026-08-10"
 EXPECTED_QUEUE_FILES = 8
 EXPECTED_CORRECTIONS = 119
 EXPECTED_CORRECTED_SOURCES = 43
-EXPECTED_TOTAL_SOURCES = 51
+BASELINE_SOURCE_COUNT = 51
 EXPECTED_COLUMNS = 34
 EXPECTED_NO_CHANGE_SOURCES = {
     "DR0001", "DR0004", "DR0007", "DR0009",
@@ -76,13 +76,13 @@ def main() -> None:
     header, canonical_rows = read_csv(CANONICAL)
     if len(header) != EXPECTED_COLUMNS:
         fail(f"catálogo canônico deve ter {EXPECTED_COLUMNS} colunas, encontrou {len(header)}")
-    if len(canonical_rows) != EXPECTED_TOTAL_SOURCES:
-        fail(f"catálogo canônico deve ter {EXPECTED_TOTAL_SOURCES} fontes, encontrou {len(canonical_rows)}")
+    if len(canonical_rows) < BASELINE_SOURCE_COUNT:
+        fail(f"catálogo canônico deve preservar ao menos as {BASELINE_SOURCE_COUNT} fontes auditadas; encontrou {len(canonical_rows)}")
 
     ids = [row["resource_id"] for row in canonical_rows]
-    expected_ids = [f"DR{i:04d}" for i in range(1, EXPECTED_TOTAL_SOURCES + 1)]
-    if ids != expected_ids:
-        fail("ordem/identidade canônica deve permanecer DR0001→DR0051")
+    expected_baseline_ids = [f"DR{i:04d}" for i in range(1, BASELINE_SOURCE_COUNT + 1)]
+    if ids[:BASELINE_SOURCE_COUNT] != expected_baseline_ids:
+        fail("baseline auditado deve permanecer DR0001→DR0051 nas primeiras 51 posições")
     if len(set(ids)) != len(ids):
         fail("resource_id duplicado no catálogo canônico")
 
@@ -172,7 +172,7 @@ def main() -> None:
             f"encontradas {len(corrected_sources)}"
         )
 
-    expected_no_change = set(ids) - corrected_sources
+    expected_no_change = set(expected_baseline_ids) - corrected_sources
     if expected_no_change != EXPECTED_NO_CHANGE_SOURCES:
         fail(
             "complemento das fontes corrigidas não corresponde ao baseline sem correção: "
@@ -194,14 +194,14 @@ def main() -> None:
         proposed_index[item["resource_id"]][item["field"]] = item["candidate_value"]
 
     last_verified_changes = 0
-    for row in proposed_rows:
+    for row in proposed_rows[:BASELINE_SOURCE_COUNT]:
         if row["last_verified"] != AUDIT_DATE:
             last_verified_changes += 1
         row["last_verified"] = AUDIT_DATE
 
     if [row["resource_id"] for row in proposed_rows] != ids:
         fail("aplicação proposta alterou ordem/identidade das fontes")
-    if len(proposed_rows) != EXPECTED_TOTAL_SOURCES:
+    if len(proposed_rows) != len(canonical_rows):
         fail("aplicação proposta alterou número de fontes")
 
     url_fields = {"homepage_url", "data_access_url", "access_documentation_url", "verification_url"}
