@@ -11,6 +11,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CANONICAL = ROOT / "data" / "data_resources.csv"
 REGISTRY = ROOT / "data" / "brazil_scope_priorities.json"
+MINIMUM_BASELINE_SOURCES = 51
+EXPECTED_COLUMNS = 34
 
 EXPECTED_TIER_ORDER = ["P0", "P1", "P2", "P3"]
 EXPECTED = {
@@ -60,11 +62,16 @@ if not REGISTRY.exists():
     fail("registro de prioridade Brasil ausente")
 
 header, rows = read_csv(CANONICAL)
-if len(header) != 34 or len(rows) != 51:
-    fail("CSV canônico deve permanecer em 51 fontes × 34 campos")
+if len(header) != EXPECTED_COLUMNS:
+    fail(f"CSV canônico deve preservar {EXPECTED_COLUMNS} campos; encontrou {len(header)}")
+if len(rows) < MINIMUM_BASELINE_SOURCES:
+    fail(f"CSV canônico deve preservar ao menos o baseline de {MINIMUM_BASELINE_SOURCES} fontes; encontrou {len(rows)}")
 canonical = {row["resource_id"].strip(): row for row in rows}
-if len(canonical) != 51:
+if len(canonical) != len(rows):
     fail("resource_id duplicado no CSV canônico")
+expected_ids = [f"DR{i:04d}" for i in range(1, len(rows) + 1)]
+if [row["resource_id"].strip() for row in rows] != expected_ids:
+    fail("resource_ids devem permanecer únicos, sequenciais e ordenados")
 
 registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
 if registry.get("registry_version") != "1.0.0":
@@ -126,5 +133,5 @@ if counts["P0"] < counts["P3"]:
 print(
     "OK: prioridade Brasil validada — "
     + ", ".join(f"{tier}={counts[tier]}" for tier in EXPECTED_TIER_ORDER)
-    + "; 51 IDs cobertos; CSV 51 × 34 preservado"
+    + f"; {len(rows)} IDs cobertos; CSV {len(rows)} × {len(header)} preservado"
 )
