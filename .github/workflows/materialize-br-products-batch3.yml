@@ -23,6 +23,7 @@ jobs:
           fetch-depth: 0
       - name: Materializar e validar
         run: |
+          sed -i 's/"product_status":"provisório"/"product_status":"experimental"/' scripts/materialize_br_products_batch3.py
           python3 scripts/materialize_br_products_batch3.py
           python3 scripts/validate_brazil_scope.py
           python3 scripts/validate_product_catalog.py
