@@ -1,0 +1,34 @@
+name: Materializar lote biodiversidade e observações 5
+on:
+  push:
+    branches: [data/br-biodiv-observations-batch-5]
+    paths:
+      - 'scripts/materialize_br_biodiv_observations_batch5.py'
+      - '.github/workflows/materialize-br-biodiv-observations-batch5.yml'
+permissions:
+  contents: write
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: data/br-biodiv-observations-batch-5
+      - name: Materializar e validar
+        run: |
+          python scripts/materialize_br_biodiv_observations_batch5.py
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py
+          python scripts/validate_vitrine.py
+          git diff --check
+      - name: Commitar delta canônico
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/link_role_audit.json data/brazil_scope_priorities.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'Materializar lote 5 biodiversidade e séries observacionais'
+            git push origin HEAD:data/br-biodiv-observations-batch-5
+          fi
