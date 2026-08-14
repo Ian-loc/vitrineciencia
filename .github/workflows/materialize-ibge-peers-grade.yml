@@ -14,6 +14,8 @@ jobs:
           fetch-depth: 0
       - name: Materializar e validar
         run: |
+          sed -i "s/'product_kind':'survey_results'/'product_kind':'dataset'/" scripts/materialize_ibge_peers_grade.py
+          sed -i "s/'product_kind':'integrated_grid'/'product_kind':'dataset'/" scripts/materialize_ibge_peers_grade.py
           python3 scripts/materialize_ibge_peers_grade.py
           python3 scripts/update_scope_peers_grade.py
           python3 scripts/validate_brazil_scope.py
