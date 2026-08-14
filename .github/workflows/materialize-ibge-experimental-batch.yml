@@ -1,0 +1,30 @@
+name: Materializar lote IBGE experimental
+on:
+  push:
+    branches: [audit/ibge-experimental-ecosystem-batch]
+permissions:
+  contents: write
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/ibge-experimental-ecosystem-batch
+          fetch-depth: 0
+      - name: Materializar e validar
+        run: |
+          python3 scripts/materialize_ibge_experimental_batch.py
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py
+          python3 scripts/validate_vitrine.py
+          git diff --check
+      - name: Commitar lote
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/link_role_audit.json
+          git commit -m "Materializar produtos IBGE experimentais e contas de ecossistemas" || exit 0
+          git push origin HEAD:audit/ibge-experimental-ecosystem-batch
