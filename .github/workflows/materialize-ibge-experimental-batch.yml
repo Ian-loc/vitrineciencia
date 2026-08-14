@@ -19,6 +19,7 @@ jobs:
           python3 scripts/validate_brazil_scope.py
           python3 scripts/validate_product_catalog.py
           python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
           python3 scripts/audit_link_roles.py
           python3 scripts/validate_vitrine.py
           git diff --check
