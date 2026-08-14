@@ -9,5 +9,5 @@ for tier in obj['tiers']:
             if rid not in ids:
                 ids.append(rid)
         ids.sort()
-obj['reviewed_at'] = '2026-08-15'
+obj['reviewed_at'] = '2026-08-14'
 p.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
