@@ -7,8 +7,8 @@
     "not_applicable": "Usado quando o recurso não oferece dados para consulta ou download, como software de publicação."
   },
   "counts": {
-    "separate_destinations": 34,
-    "same_destination_pending_review": 16,
+    "separate_destinations": 35,
+    "same_destination_pending_review": 15,
     "data_access_not_applicable": 1
   },
   "records_requiring_review": [
@@ -95,13 +95,6 @@
       "status": "same_destination_pending_review",
       "homepage_url": "https://climatedataguide.ucar.edu/",
       "data_access_url": "https://climatedataguide.ucar.edu/"
-    },
-    {
-      "resource_id": "DR0036",
-      "resource_name": "Fine-Root Ecology Database",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://roots.ornl.gov/",
-      "data_access_url": "https://roots.ornl.gov/"
     },
     {
       "resource_id": "DR0038",
