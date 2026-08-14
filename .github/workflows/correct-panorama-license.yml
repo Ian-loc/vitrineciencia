@@ -1,0 +1,30 @@
+name: Corrigir licença PANORAMA
+on:
+  push:
+    branches: [audit/correct-panorama-license]
+permissions:
+  contents: write
+jobs:
+  correct:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/correct-panorama-license
+          fetch-depth: 0
+      - name: Corrigir e validar
+        run: |
+          python3 scripts/correct_panorama_license.py
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py
+          python3 scripts/validate_vitrine.py
+          git diff --check
+      - name: Commitar delta canônico
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/product_distributions.csv data/link_role_audit.json
+          git commit -m "Corrigir interpretação de licença PANORAMA" || exit 0
+          git push origin HEAD:audit/correct-panorama-license
