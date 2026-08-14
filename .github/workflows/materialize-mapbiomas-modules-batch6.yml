@@ -33,3 +33,4 @@ jobs:
             git commit -m 'Materializar módulos MapBiomas Água Urbano e Degradação'
             git push origin HEAD:data/mapbiomas-modules-batch-6
           fi
+# trigger 2026-08-14
