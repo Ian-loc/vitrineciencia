@@ -23,7 +23,11 @@ jobs:
           s=p.read_text(encoding='utf-8')
           old=',beta,Coleção 3 beta,'
           assert s.count(old)==1, s.count(old)
-          p.write_text(s.replace(old, ',experimental,Coleção 3 beta,'), encoding='utf-8')
+          s=s.replace(old, ',experimental,Coleção 3 beta,')
+          old2=',modelado,"O produto é preditivo'
+          assert s.count(old2)==1, s.count(old2)
+          s=s.replace(old2, ',derivado,"O produto é preditivo')
+          p.write_text(s, encoding='utf-8')
           PY
           python scripts/validate_brazil_scope.py
           python scripts/validate_product_catalog.py
@@ -40,4 +44,4 @@ jobs:
             git commit -m 'Materializar lote 5 biodiversidade e séries observacionais'
             git push origin HEAD:data/br-biodiv-observations-batch-5
           fi
-# trigger: 2026-08-14-3
+# trigger: 2026-08-14-4
