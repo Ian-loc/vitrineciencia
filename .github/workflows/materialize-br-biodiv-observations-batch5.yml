@@ -32,3 +32,4 @@ jobs:
             git commit -m 'Materializar lote 5 biodiversidade e séries observacionais'
             git push origin HEAD:data/br-biodiv-observations-batch-5
           fi
+# trigger: 2026-08-14
