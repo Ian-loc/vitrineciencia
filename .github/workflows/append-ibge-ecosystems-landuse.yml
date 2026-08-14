@@ -28,3 +28,4 @@ jobs:
           git add data/data_products.csv data/product_distributions.csv data/link_role_audit.json
           git commit -m "Expandir lote IBGE ecossistemas e uso da terra" || exit 0
           git push origin HEAD:audit/ibge-batch-ecosystems-landuse
+# rerun after duplicate guard refinement
