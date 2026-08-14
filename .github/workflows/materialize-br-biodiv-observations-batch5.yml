@@ -23,8 +23,6 @@ jobs:
           p=Path('data/data_products.csv')
           lines=p.read_text(encoding='utf-8').splitlines(True)
           fields=next(csv.reader([lines[0].rstrip('\n')]))
-          idx_status=fields.index('product_status')
-          idx_origin=fields.index('primary_or_derived')
           fixes={
               'DP000052': {'product_status':'experimental','primary_or_derived':'derivado'},
               'DP000056': {'product_status':'experimental'},
@@ -44,6 +42,7 @@ jobs:
           python scripts/validate_brazil_scope.py
           python scripts/validate_product_catalog.py
           python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
           python scripts/audit_link_roles.py
           python scripts/validate_vitrine.py
           git diff --check
@@ -56,4 +55,4 @@ jobs:
             git commit -m 'Materializar lote 5 biodiversidade e séries observacionais'
             git push origin HEAD:data/br-biodiv-observations-batch-5
           fi
-# trigger: 2026-08-14-6
+# trigger: 2026-08-14-7
