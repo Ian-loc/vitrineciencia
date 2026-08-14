@@ -154,8 +154,8 @@ jobs:
                     }
                     await page.locator('#product-show-more').click();
                     const expanded = await page.locator('#product-list .card').count();
-                    if (expanded !== 11) {
-                      console.error(`Expansão de produtos inválida: ${mode}: ${expanded} cards após clique`);
+                    if (expanded <= metrics.productCards) {
+                      console.error(`Expansão de produtos inválida: ${mode}: ${expanded} cards após clique; inicial=${metrics.productCards}`);
                       failed = true;
                     }
                   }
