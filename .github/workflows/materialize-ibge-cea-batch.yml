@@ -33,7 +33,6 @@ jobs:
                       lines[i] = buf.getvalue()
               path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
-          # Normalizar apenas novas linhas contra os vocabulários já consolidados.
           patch_csv_line(
               Path('data/data_products.csv'), 'product_id',
               {'DP000091','DP000092','DP000093','DP000094'},
@@ -44,7 +43,6 @@ jobs:
               {'research_areas':'Ciências Ambientais e Ecologia | Recursos Hídricos e Oceanografia | Planejamento Territorial e Políticas Públicas'}
           )
 
-          # Toda nova fonte brasileira deve integrar explicitamente o registro P0.
           p = Path('data/brazil_scope_priorities.json')
           obj = json.loads(p.read_text(encoding='utf-8'))
           p0 = next(x for x in obj['tiers'] if x['priority_tier'] == 'P0')
@@ -56,6 +54,7 @@ jobs:
           python3 scripts/validate_brazil_scope.py
           python3 scripts/validate_product_catalog.py
           python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
           python3 scripts/audit_link_roles.py
           python3 scripts/validate_vitrine.py
           git diff --check
