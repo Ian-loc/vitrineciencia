@@ -10426,5 +10426,182 @@
     "available_protocols": [
       "HTTP download"
     ]
+  },
+  {
+    "product_id": "DP000175",
+    "resource_id": "DR0082",
+    "product_name": "Favelas e Comunidades Urbanas — Censo Demográfico 2022 — 2ª edição",
+    "product_acronym": "Favelas e Comunidades Urbanas 2022",
+    "product_family": "Tipologias do Território — assentamentos urbanos e desigualdade socioespacial",
+    "product_kind": "dataset",
+    "product_description": "Resultados geográficos e estatísticos do Censo Demográfico 2022 para Favelas e Comunidades Urbanas, com polígonos, setores, população e domicílios, divulgados pelo IBGE sob nomenclatura e critérios metodológicos próprios.",
+    "research_areas": "Urban geography | Regional science | Territorial planning | Socioeconomic geography",
+    "keywords": "favelas | comunidades urbanas | Censo 2022 | desigualdade socioespacial | habitação | setores censitários | IBGE",
+    "geographic_coverage": "Brasil — Favelas e Comunidades Urbanas identificadas no Censo Demográfico 2022",
+    "covers_brazil": "sim",
+    "spatial_support": "polígonos de Favelas e Comunidades Urbanas | setores censitários | concentrações urbanas | tabelas estatísticas",
+    "spatial_resolution": "intramunicipal; unidades territoriais e setores censitários definidos para a operação do Censo 2022",
+    "temporal_coverage": "Censo Demográfico 2022; período de referência censitário conforme metadados da pesquisa",
+    "temporal_resolution": "edição censitária",
+    "update_frequency": "por ciclo censitário e revisões/correções publicadas",
+    "product_status": "ativo",
+    "version_or_collection": "Censo 2022 — 2ª edição dos resultados; publicação 2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/15788-favelas-e-comunidades-urbanas.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/15788-favelas-e-comunidades-urbanas.html?edicao=38944&t=o-que-e",
+    "primary_or_derived": "derivado",
+    "limitations": "A categoria Favelas e Comunidades Urbanas segue critérios específicos do IBGE e não deve ser tratada como sinônimo universal de informalidade, pobreza ou risco ambiental. A 2ª edição corrige pequenas inconsistências de sincronização entre bases geográficas e estatísticas sem alterar a classificação nem o número de territórios; comparações históricas exigem considerar mudanças de nomenclatura, critérios, cobertura e operação censitária.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0082",
+      "resource_name": "Tipologias do Território — IBGE",
+      "acronym": "Tipologias do Território IBGE",
+      "official_identity": "Tema institucional de Tipologias do Território da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000193",
+        "product_id": "DP000175",
+        "distribution_name": "Favelas e Comunidades Urbanas 2022 — vetores, setores e tabelas",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/15788-favelas-e-comunidades-urbanas.html",
+        "format": "SHP | KML | XLSX | ODS | SIDRA | publicação digital",
+        "access_protocol": "HTTP download | aplicação web | SIDRA",
+        "access_tool": "navegador web | SIG | planilha | SIDRA | PGI",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e downloads públicos conforme componente",
+        "license": "licença específica não inferida no nível do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "por território | setor | nível geográfico conforme distribuição",
+        "notes": "A página oficial disponibiliza polígonos, cartograma, concentrações urbanas, áreas não setorizadas, arquivo de setores e tabelas SIDRA. Preservar a 2ª edição/correções publicadas e os critérios metodológicos do Censo 2022.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "SHP | KML | XLSX | ODS | SIDRA | publicação digital"
+    ],
+    "available_protocols": [
+      "HTTP download | aplicação web | SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000176",
+    "resource_id": "DR0082",
+    "product_name": "Aglomerados Subnormais — resultados preliminares 2019",
+    "product_acronym": "Aglomerados Subnormais 2019",
+    "product_family": "Tipologias do Território — assentamentos urbanos e desigualdade socioespacial",
+    "product_kind": "dataset",
+    "product_description": "Mapeamento preliminar divulgado pelo IBGE em 2020 para apoiar o enfrentamento à Covid-19, com delimitação de Aglomerados Subnormais atualizada até dezembro de 2019 e estimativas preliminares de domicílios ocupados.",
+    "research_areas": "Urban geography | Regional science | Territorial planning | Socioeconomic geography",
+    "keywords": "aglomerados subnormais | 2019 | Covid-19 | domicílios | vulnerabilidade urbana | mapeamento preliminar | IBGE",
+    "geographic_coverage": "Brasil — 13.152 Aglomerados Subnormais em 734 municípios, conforme a divulgação preliminar de 2019",
+    "covers_brazil": "sim",
+    "spatial_support": "polígonos de Aglomerados Subnormais | base tabular | municípios",
+    "spatial_resolution": "intramunicipal; delimitações preliminares com atualização heterogênea por área",
+    "temporal_coverage": "situação preliminar atualizada até dezembro de 2019; estimativas divulgadas em 2020",
+    "temporal_resolution": "snapshot preliminar",
+    "update_frequency": "produto histórico sem atualização corrente",
+    "product_status": "arquivado",
+    "version_or_collection": "2019 — resultados preliminares para enfrentamento à Covid-19",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/15788-aglomerados-subnormais.html?edicao=27720&t=acesso-ao-produto",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/15788-aglomerados-subnormais.html?edicao=27720&t=acesso-ao-produto",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto explicitamente preliminar. As estimativas de domicílios partiram do Censo 2010 e tiveram atualização de campo desigual; o próprio IBGE informa que não são comparáveis diretamente aos resultados do Censo 2010 nem a outras fontes. Não usar como substituto dos resultados definitivos do Censo 2022 ou como série harmonizada com Favelas e Comunidades Urbanas.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0082",
+      "resource_name": "Tipologias do Território — IBGE",
+      "acronym": "Tipologias do Território IBGE",
+      "official_identity": "Tema institucional de Tipologias do Território da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000194",
+        "product_id": "DP000176",
+        "distribution_name": "Aglomerados Subnormais 2019 — bases preliminares e painel",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/15788-aglomerados-subnormais.html?edicao=27720&t=acesso-ao-produto",
+        "format": "base tabular | base gráfica | documentação | aplicação web",
+        "access_protocol": "HTTP download | aplicação web",
+        "access_tool": "navegador web | SIG | planilha | ArcGIS Web Application",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos e painel conforme página histórica",
+        "license": "licença específica não inferida no nível do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "por aglomerado | município conforme componente",
+        "notes": "Resultados preliminares atualizados até dezembro de 2019 e divulgados para resposta à Covid-19. As estimativas de domicílios não são comparáveis diretamente ao Censo 2010; usar como snapshot histórico preliminar.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "base tabular | base gráfica | documentação | aplicação web"
+    ],
+    "available_protocols": [
+      "HTTP download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000177",
+    "resource_id": "DR0082",
+    "product_name": "Aglomerados Subnormais — Censo Demográfico 2010 — primeiros resultados",
+    "product_acronym": "Aglomerados Subnormais 2010",
+    "product_family": "Tipologias do Território — assentamentos urbanos e desigualdade socioespacial",
+    "product_kind": "dataset",
+    "product_description": "Resultados do Censo Demográfico 2010 para Aglomerados Subnormais, com limites de 6.329 aglomerados, setores censitários componentes, população residente, domicílios ocupados e indicadores selecionados.",
+    "research_areas": "Urban geography | Regional science | Territorial planning | Socioeconomic geography",
+    "keywords": "aglomerados subnormais | Censo 2010 | setores censitários | população | domicílios | vulnerabilidade urbana | IBGE",
+    "geographic_coverage": "Brasil — 6.329 Aglomerados Subnormais identificados no Censo Demográfico 2010",
+    "covers_brazil": "sim",
+    "spatial_support": "polígonos de Aglomerados Subnormais | setores censitários | tabelas estatísticas",
+    "spatial_resolution": "intramunicipal; limites externos e setores censitários classificados no Censo 2010",
+    "temporal_coverage": "Censo Demográfico 2010",
+    "temporal_resolution": "edição censitária",
+    "update_frequency": "produto histórico substituído por ciclos censitários posteriores",
+    "product_status": "arquivado",
+    "version_or_collection": "2010 — primeiros resultados",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/15788-favelas-e-comunidades-urbanas.html?edicao=16119",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/15788-favelas-e-comunidades-urbanas.html?edicao=16119",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto histórico baseado no conceito e nos critérios de Aglomerado Subnormal vigentes no Censo 2010. Não deve ser tratado como equivalente metodológico direto à categoria Favelas e Comunidades Urbanas do Censo 2022 sem harmonização conceitual e espacial; mudanças de setores, critérios, cobertura e identificação afetam comparações temporais.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0082",
+      "resource_name": "Tipologias do Território — IBGE",
+      "acronym": "Tipologias do Território IBGE",
+      "official_identity": "Tema institucional de Tipologias do Território da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000195",
+        "product_id": "DP000177",
+        "distribution_name": "Aglomerados Subnormais 2010 — limites, setores e tabelas",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/15788-favelas-e-comunidades-urbanas.html?edicao=16119",
+        "format": "SHP | KMZ | XLS | publicação digital",
+        "access_protocol": "HTTP download",
+        "access_tool": "navegador web | SIG | planilha | Google Earth",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos conforme componente histórico",
+        "license": "licença específica não inferida no nível do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "por aglomerado | setor censitário | UF conforme arquivo",
+        "notes": "Inclui limites externos dos 6.329 Aglomerados Subnormais, 15.868 setores censitários classificados e tabelas associadas. Produto histórico sob critérios de 2010; não comparar diretamente com 2022 sem harmonização.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "SHP | KMZ | XLS | publicação digital"
+    ],
+    "available_protocols": [
+      "HTTP download"
+    ]
   }
 ]
