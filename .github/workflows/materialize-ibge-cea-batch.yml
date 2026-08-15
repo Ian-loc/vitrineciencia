@@ -16,8 +16,25 @@ jobs:
         run: |
           python3 scripts/materialize_ibge_cea_batch.py
           python3 - <<'PY'
-          import json
           from pathlib import Path
+          import csv, io, json
+
+          # Corrigir somente as novas linhas para o vocabulário controlado do contrato.
+          p = Path('data/data_products.csv')
+          lines = p.read_text(encoding='utf-8').splitlines()
+          header = next(csv.reader([lines[0]]))
+          idx = {name: i for i, name in enumerate(header)}
+          targets = {'DP000091','DP000092','DP000093','DP000094'}
+          for i, line in enumerate(lines[1:], start=1):
+              row = next(csv.reader([line]))
+              if row and row[idx['product_id']] in targets:
+                  row[idx['product_status']] = 'ativo'
+                  buf = io.StringIO()
+                  csv.writer(buf, lineterminator='').writerow(row)
+                  lines[i] = buf.getvalue()
+          p.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+
+          # Toda nova fonte brasileira deve integrar explicitamente o registro P0.
           p = Path('data/brazil_scope_priorities.json')
           obj = json.loads(p.read_text(encoding='utf-8'))
           p0 = next(x for x in obj['tiers'] if x['priority_tier'] == 'P0')
