@@ -1,5 +1,5 @@
 {
-  "records": 64,
+  "records": 65,
   "standard": {
     "homepage_url": "Página institucional principal ou página oficial sobre a fonte.",
     "data_access_url": "Página onde os dados podem ser pesquisados, visualizados, solicitados ou baixados.",
@@ -8,7 +8,7 @@
   },
   "counts": {
     "separate_destinations": 43,
-    "same_destination_pending_review": 20,
+    "same_destination_pending_review": 21,
     "data_access_not_applicable": 1
   },
   "records_requiring_review": [
@@ -151,6 +151,13 @@
       "status": "same_destination_pending_review",
       "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/28920-contas-de-ecossistemas.html",
       "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/28920-contas-de-ecossistemas.html"
+    },
+    {
+      "resource_id": "DR0065",
+      "resource_name": "Contas Econômicas Ambientais — IBGE",
+      "status": "same_destination_pending_review",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/20207-contas-economicas-ambientais-da-agua-brasil.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/20207-contas-economicas-ambientais-da-agua-brasil.html"
     }
   ],
   "interpretation": "A igualdade entre os dois links não prova erro, mas indica que os papéis institucional e de acesso ainda não foram demonstrados separadamente."
