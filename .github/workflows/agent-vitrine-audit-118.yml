@@ -1,0 +1,64 @@
+name: Agent Vitrine Audit 118
+
+on:
+  push:
+    branches: ["agent/vitrine-audit-118"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize-and-validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/vitrine-audit-118
+          fetch-depth: 0
+
+      - name: Materialize audited products
+        run: python3 scripts/agent_materialize_vitrine_118.py
+
+      - name: Validate canonical catalog and Vitrine
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Confirm expected counts and new relations
+        run: |
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+          root=Path('.')
+          def rows(p):
+              with open(p, encoding='utf-8-sig', newline='') as f: return list(csv.DictReader(f))
+          s=rows('data/data_resources.csv'); p=rows('data/data_products.csv'); d=rows('data/product_distributions.csv')
+          assert len(s)==74, len(s)
+          assert len(p)==124, len(p)
+          assert len(d)==140, len(d)
+          pids={r['product_id'] for r in p}; dids={r['distribution_id'] for r in d}
+          assert {f'DP{i:06d}' for i in range(119,125)} <= pids
+          assert {f'DD{i:06d}' for i in range(135,141)} <= dids
+          assert all(r['resource_id'] in {x['resource_id'] for x in s} for r in p)
+          assert all(r['product_id'] in pids for r in d)
+          print(f'OK counts: {len(s)} sources, {len(p)} products, {len(d)} distributions')
+          PY
+
+      - name: Commit only materialized canonical changes
+        run: |
+          rm -f scripts/agent_materialize_vitrine_118.py .github/workflows/agent-vitrine-audit-118.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/data_products.csv data/product_distributions.csv data/link_role_audit.json scripts/agent_materialize_vitrine_118.py .github/workflows/agent-vitrine-audit-118.yml
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Expand IBGE hydrogeology and thematic map products"
+            git push origin HEAD:agent/vitrine-audit-118
+          fi
