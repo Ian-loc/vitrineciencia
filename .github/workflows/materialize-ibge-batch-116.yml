@@ -1,0 +1,44 @@
+name: Materialize IBGE batch 116
+
+on:
+  push:
+    branches:
+      - audit/ibge-geography-vegetation-fauna-20260815
+    paths:
+      - scripts/materialize_ibge_batch_116.py
+      - .github/workflows/materialize-ibge-batch-116.yml
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/ibge-geography-vegetation-fauna-20260815
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Materialize append-only batch
+        run: python scripts/materialize_ibge_batch_116.py
+      - name: Validate canonical catalog
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/audit_link_roles.py
+          python scripts/validate_vitrine.py
+          git diff --check
+      - name: Remove one-shot helpers and commit materialized data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm scripts/materialize_ibge_batch_116.py .github/workflows/materialize-ibge-batch-116.yml
+          git add data/data_products.csv data/product_distributions.csv data/link_role_audit.json || true
+          git diff --cached --check
+          git commit -m "data: materialize IBGE geography vegetation and fauna batch"
+          git push origin HEAD:audit/ibge-geography-vegetation-fauna-20260815
