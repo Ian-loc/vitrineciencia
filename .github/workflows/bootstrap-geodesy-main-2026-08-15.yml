@@ -48,11 +48,11 @@ jobs:
               assert pid in pids and sum(d['product_id']==pid for d in ds)>=1
           print(f'sources={len(src)} products={len(ps)} distributions={len(ds)}')
           PY
-      - name: Commit materialized data
+      - name: Commit materialized data to validation branch
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/data_products.csv data/product_distributions.csv data/data_products.json data/data_quality_report.json data/link_role_audit.json
           git diff --cached --check
           git commit -m 'Expand IBGE geodetic networks catalog'
-          git push origin HEAD:main
+          git push --force-with-lease origin HEAD:agent/vitrine-geodesy-materialized-2026-08-15
