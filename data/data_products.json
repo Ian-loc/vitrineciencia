@@ -10131,5 +10131,300 @@
     "available_protocols": [
       "HTTP download | geosserviço"
     ]
+  },
+  {
+    "product_id": "DP000170",
+    "resource_id": "DR0070",
+    "product_name": "Área de Atuação da SUFRAMA — edição 2025",
+    "product_acronym": "SUFRAMA 2025",
+    "product_family": "Estrutura Territorial — recortes legais e institucionais",
+    "product_kind": "dataset",
+    "product_description": "Recorte territorial divulgado pelo IBGE para a área de atuação da Superintendência da Zona Franca de Manaus, incluindo a Zona Franca de Manaus e Áreas de Livre Comércio legalmente instituídas na Amazônia Ocidental e no Amapá.",
+    "research_areas": "Regional science | Territorial planning | Political geography | Socioeconomic geography",
+    "keywords": "SUFRAMA | Zona Franca de Manaus | Áreas de Livre Comércio | Amazônia Ocidental | recorte legal | municípios | IBGE",
+    "geographic_coverage": "Amazônia Ocidental e municípios do Amapá abrangidos pelas áreas legalmente administradas pela SUFRAMA, conforme edição 2025",
+    "covers_brazil": "sim",
+    "spatial_support": "municípios | recorte legal/institucional",
+    "spatial_resolution": "municipal; não é superfície econômica ou ambiental contínua",
+    "temporal_coverage": "situação normativa representada na edição 2025; inclui alteração legal de 2025 relativa a Pacaraima (RR)",
+    "temporal_resolution": "edição territorial",
+    "update_frequency": "conforme alterações legais e territoriais",
+    "product_status": "ativo",
+    "version_or_collection": "2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/37409-suframa.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/37409-suframa.html",
+    "primary_or_derived": "derivado",
+    "limitations": "O IBGE disponibiliza o recorte, mas a delimitação decorre de legislação federal e da área administrativa da SUFRAMA. Não interpretar o produto como medida de atividade econômica, intensidade de incentivos fiscais ou cobertura ambiental. A edição 2025 incorpora a inclusão de Pacaraima (RR) na Área de Livre Comércio de Boa Vista pela Lei nº 15.273/2025.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0070",
+      "resource_name": "Estrutura Territorial — IBGE",
+      "acronym": "Estrutura Territorial IBGE",
+      "official_identity": "Tema institucional do IBGE sobre a estrutura territorial legal brasileira e sua divisão político-administrativa",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/2225-np-areas-dos-municipios/15761-areas-dos-municipios.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000188",
+        "product_id": "DP000170",
+        "distribution_name": "Área de Atuação da SUFRAMA 2025 — tabelas e geosserviços",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/37409-suframa.html",
+        "format": "ODS | XLS | geosserviços conforme página/Quadro Geográfico",
+        "access_protocol": "HTTP download | geosserviço",
+        "access_tool": "navegador web | Plataforma Geográfica Interativa",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e downloads públicos conforme componente",
+        "license": "licença específica não inferida no nível do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "por lista/agregado/edição",
+        "notes": "Recorte legal e administrativo; registrar a edição e a base normativa usada. A edição 2025 incorpora alteração legislativa relativa a Pacaraima (RR).",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "ODS | XLS | geosserviços conforme página/Quadro Geográfico"
+    ],
+    "available_protocols": [
+      "HTTP download | geosserviço"
+    ]
+  },
+  {
+    "product_id": "DP000171",
+    "resource_id": "DR0070",
+    "product_name": "Alterações Toponímicas Municipais — edição 2025",
+    "product_acronym": "Toponímias Municipais 2025",
+    "product_family": "Estrutura Territorial — nomenclatura municipal",
+    "product_kind": "dataset_series",
+    "product_description": "Série de tabelas do IBGE que registra municípios com alterações legais de nome ou de grafia, mantendo a denominação municipal conforme legislação estadual ou municipal aceita nos termos dos procedimentos institucionais.",
+    "research_areas": "Regional science | Territorial planning | Political geography | Socioeconomic geography",
+    "keywords": "toponímia | nomes municipais | grafia | municípios | legislação territorial | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "municípios | registros tabulares de alteração de nome ou grafia",
+    "spatial_resolution": "municipal; informação nominal/tabular, não geométrica",
+    "temporal_coverage": "edições históricas disponíveis desde pelo menos 2016; edição corrente 2025",
+    "temporal_resolution": "por alteração registrada e edição anual",
+    "update_frequency": "anual nas edições recentes",
+    "product_status": "ativo",
+    "version_or_collection": "2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/27336-alteracoes-toponimicas-municipais.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/27336-alteracoes-toponimicas-municipais.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Alteração de nome e alteração de grafia são categorias distintas. O IBGE não altera arbitrariamente topônimos: a atualização segue legislação estadual, delegação legal aos municípios ou correção de inconsistência após avaliação oficial. Não usar a série como genealogia completa de criação, extinção ou mudança de limites municipais.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0070",
+      "resource_name": "Estrutura Territorial — IBGE",
+      "acronym": "Estrutura Territorial IBGE",
+      "official_identity": "Tema institucional do IBGE sobre a estrutura territorial legal brasileira e sua divisão político-administrativa",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/2225-np-areas-dos-municipios/15761-areas-dos-municipios.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000189",
+        "product_id": "DP000171",
+        "distribution_name": "Alterações Toponímicas Municipais 2025 — planilhas",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/27336-alteracoes-toponimicas-municipais.html",
+        "format": "XLS | ODS",
+        "access_protocol": "HTTP download",
+        "access_tool": "navegador web | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos na página oficial",
+        "license": "licença específica não inferida no nível do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "por edição/planilha",
+        "notes": "A partir da edição 2025 o IBGE disponibiliza XLS e ODS; edições anteriores eram publicadas apenas em XLS. Distinguir alteração de nome de correção de grafia.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS"
+    ],
+    "available_protocols": [
+      "HTTP download"
+    ]
+  },
+  {
+    "product_id": "DP000172",
+    "resource_id": "DR0070",
+    "product_name": "MATOPIBA — recorte territorial de referência",
+    "product_acronym": "MATOPIBA",
+    "product_family": "Estrutura Territorial — recortes legais e institucionais",
+    "product_kind": "dataset",
+    "product_description": "Recorte territorial de municípios de Maranhão, Tocantins, Piauí e Bahia associado ao Plano de Desenvolvimento Agropecuário e Agroindustrial do MATOPIBA e mantido pelo IBGE para divulgação estatística e planejamento.",
+    "research_areas": "Regional science | Territorial planning | Political geography | Socioeconomic geography",
+    "keywords": "MATOPIBA | Maranhão | Tocantins | Piauí | Bahia | agricultura | recorte territorial | IBGE",
+    "geographic_coverage": "municípios abrangidos pelo recorte MATOPIBA nos estados do Maranhão, Tocantins, Piauí e Bahia",
+    "covers_brazil": "sim",
+    "spatial_support": "municípios | recorte legal/institucional",
+    "spatial_resolution": "municipal; não é uma região natural ou bioma",
+    "temporal_coverage": "delimitação original definida em 2015; contexto normativo alterado em 2020 e 2023",
+    "temporal_resolution": "edição territorial",
+    "update_frequency": "atualização quando houver mudança normativa e ajuste territorial anual do IBGE",
+    "product_status": "ativo",
+    "version_or_collection": "recorte original de 2015 mantido operacionalmente até nova delimitação",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/34329-matopiba.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/34329-matopiba.html",
+    "primary_or_derived": "derivado",
+    "limitations": "O IBGE não é responsável pela delimitação do MATOPIBA. O recorte original foi definido pela Portaria nº 244/2015; o plano foi revogado em 2020 e recriado em 2023 sem nova delimitação territorial, razão pela qual o IBGE mantém operacionalmente a área original até definição posterior. Não confundir com bioma, fronteira agrícola observada ou região homogênea.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0070",
+      "resource_name": "Estrutura Territorial — IBGE",
+      "acronym": "Estrutura Territorial IBGE",
+      "official_identity": "Tema institucional do IBGE sobre a estrutura territorial legal brasileira e sua divisão político-administrativa",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/2225-np-areas-dos-municipios/15761-areas-dos-municipios.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000190",
+        "product_id": "DP000172",
+        "distribution_name": "MATOPIBA — tabelas e geosserviços",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/34329-matopiba.html",
+        "format": "ODS | XLS | geosserviços",
+        "access_protocol": "HTTP download | geosserviço",
+        "access_tool": "navegador web | Plataforma Geográfica Interativa",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e downloads públicos",
+        "license": "licença específica não inferida no nível do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela/geosserviço",
+        "notes": "O recorte territorial disponível mantém a delimitação original até que nova área seja formalmente definida; verificar legislação antes de análises normativas.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "ODS | XLS | geosserviços"
+    ],
+    "available_protocols": [
+      "HTTP download | geosserviço"
+    ]
+  },
+  {
+    "product_id": "DP000173",
+    "resource_id": "DR0070",
+    "product_name": "Localidades do Brasil — Censo Demográfico 2022",
+    "product_acronym": "Localidades do Brasil 2022",
+    "product_family": "Estrutura Territorial — localidades e assentamentos",
+    "product_kind": "dataset",
+    "product_description": "Mapeamento nacional das localidades identificadas pelo IBGE no Censo Demográfico 2022, com localização, denominação, categorização e subordinação político-administrativa em classes urbanas, rurais, indígenas, quilombolas e outras.",
+    "research_areas": "Urban geography | Regional science | Territorial planning | Socioeconomic geography",
+    "keywords": "localidades | cidades | vilas | povoados | lugarejos | localidades indígenas | localidades quilombolas | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "pontos/localizações e arquivos vetoriais de localidades | consulta nominal",
+    "spatial_resolution": "localidade individual; representação vetorial e coordenadas conforme arquivo",
+    "temporal_coverage": "Censo Demográfico 2022, com análise de transformações em relação a 2010",
+    "temporal_resolution": "edição censitária",
+    "update_frequency": "por ciclo censitário/edição",
+    "product_status": "ativo",
+    "version_or_collection": "Censo Demográfico 2022 — publicação 2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/multidominio/ciencia-tecnologia-e-inovacao/27385-localidades.html?lang=pt-BR",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/multidominio/ciencia-tecnologia-e-inovacao/27385-localidades.html?lang=pt-BR",
+    "primary_or_derived": "primário",
+    "limitations": "Localidade é categoria operacional/conceitual do IBGE e não equivale automaticamente a município, área urbana legal ou assentamento formal. Categorias e regras metodológicas devem ser preservadas; comparações 2010–2022 exigem considerar mudanças de classificação e mapeamento.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0070",
+      "resource_name": "Estrutura Territorial — IBGE",
+      "acronym": "Estrutura Territorial IBGE",
+      "official_identity": "Tema institucional do IBGE sobre a estrutura territorial legal brasileira e sua divisão político-administrativa",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/2225-np-areas-dos-municipios/15761-areas-dos-municipios.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000191",
+        "product_id": "DP000173",
+        "distribution_name": "Localidades do Brasil 2022 — vetores e busca",
+        "access_url": "https://www.ibge.gov.br/estatisticas/multidominio/ciencia-tecnologia-e-inovacao/27385-localidades.html?lang=pt-BR",
+        "format": "SHP | GPKG | KML | consulta web",
+        "access_protocol": "HTTP download | aplicação web",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "arquivos nacionais e por UF em SHP/GPKG; KML por município; busca pública de localidades",
+        "license": "licença específica não inferida no nível do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | UF | município conforme formato",
+        "notes": "Os arquivos vetoriais e a ferramenta de busca representam localidades e seus atributos; preservar categoria e subordinação político-administrativa da edição 2022.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "SHP | GPKG | KML | consulta web"
+    ],
+    "available_protocols": [
+      "HTTP download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000174",
+    "resource_id": "DR0070",
+    "product_name": "Evolução da Divisão Territorial do Brasil — 1872–2010",
+    "product_acronym": "EDTB 1872–2010",
+    "product_family": "Estrutura Territorial — evolução histórica político-administrativa",
+    "product_kind": "dataset_series",
+    "product_description": "Estudo histórico do IBGE sobre a evolução da divisão político-administrativa brasileira de 1872 a 2010, com mapas, malhas estaduais e municipais, genealogia municipal, alterações de toponímia/grafia e valores populacionais por anos censitários.",
+    "research_areas": "Regional science | Territorial planning | Political geography | Socioeconomic geography",
+    "keywords": "divisão territorial | municípios | estados | genealogia municipal | limites históricos | censos | 1872-2010 | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "malhas históricas estaduais e municipais | pontos | tabelas genealógicas",
+    "spatial_resolution": "escala e precisão histórica variáveis; malhas reconstruídas não possuem precisão cartográfica cadastral",
+    "temporal_coverage": "1872–2010",
+    "temporal_resolution": "por ano censitário/recorte histórico",
+    "update_frequency": "produto histórico, sem periodicidade corrente inferida",
+    "product_status": "arquivado",
+    "version_or_collection": "1872–2010 — publicação 2011",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/15771-evolucao-da-divisao-territorial-do-brasil.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/15771-evolucao-da-divisao-territorial-do-brasil.html",
+    "primary_or_derived": "derivado",
+    "limitations": "As malhas históricas foram produzidas para reconstrução da evolução territorial e o próprio IBGE informa que não possuem precisão cartográfica. Não usar como limites cadastrais nem pressupor comparabilidade geométrica direta entre anos sem considerar a metodologia de reconstrução, emancipações, desmembramentos e mudanças de nomenclatura.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0070",
+      "resource_name": "Estrutura Territorial — IBGE",
+      "acronym": "Estrutura Territorial IBGE",
+      "official_identity": "Tema institucional do IBGE sobre a estrutura territorial legal brasileira e sua divisão político-administrativa",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/2225-np-areas-dos-municipios/15761-areas-dos-municipios.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000192",
+        "product_id": "DP000174",
+        "distribution_name": "Evolução da Divisão Territorial do Brasil 1872–2010 — malhas, tabelas e publicação",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/15771-evolucao-da-divisao-territorial-do-brasil.html",
+        "format": "SHP | planilha eletrônica | publicação digital",
+        "access_protocol": "HTTP download",
+        "access_tool": "navegador web | SIG | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos conforme componente do estudo",
+        "license": "licença específica não inferida no nível do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano histórico/componente",
+        "notes": "As malhas históricas não possuem precisão cartográfica; usar a metodologia e a genealogia municipal para interpretar mudanças entre anos.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "SHP | planilha eletrônica | publicação digital"
+    ],
+    "available_protocols": [
+      "HTTP download"
+    ]
   }
 ]
