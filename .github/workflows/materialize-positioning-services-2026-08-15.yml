@@ -1,0 +1,166 @@
+name: One-shot IBGE positioning services materialization
+
+on:
+  push:
+    branches: [agent/vitrine-positioning-services-2026-08-15]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/vitrine-positioning-services-2026-08-15
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Append verified IBGE positioning-services batch
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+
+          verified='2026-08-15'
+          resource_path=Path('data/data_resources.csv')
+          product_path=Path('data/data_products.csv')
+          dist_path=Path('data/product_distributions.csv')
+          priority_path=Path('data/brazil_scope_priorities.json')
+
+          def append_dicts(path, rows):
+              with path.open(encoding='utf-8-sig', newline='') as f:
+                  reader=csv.DictReader(f)
+                  fields=reader.fieldnames
+                  existing=list(reader)
+              key=fields[0]
+              ids={r[key] for r in existing}
+              for row in rows:
+                  assert set(row)==set(fields), (path, set(fields)-set(row), set(row)-set(fields))
+                  assert row[key] not in ids, f'duplicate {row[key]}'
+              with path.open('a', encoding='utf-8', newline='') as f:
+                  w=csv.DictWriter(f, fieldnames=fields, lineterminator='\n')
+                  for row in rows: w.writerow(row)
+
+          source={
+            'resource_id':'DR0076','resource_name':'Serviços para Posicionamento Geodésico — IBGE','acronym':'Serviços de Posicionamento IBGE',
+            'official_identity':'Tema institucional de serviços e modelos para posicionamento geodésico do Sistema Geodésico Brasileiro — IBGE',
+            'description':'Família institucional de serviços e modelos do IBGE usados para obter, transformar ou converter coordenadas e altitudes no contexto do Sistema Geodésico Brasileiro, incluindo IBGE-PPP, ProGriD e hgeoHNOR.',
+            'homepage_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html',
+            'data_access_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html',
+            'research_areas':'Geociências, Solos e Geografia Física | Sensoriamento Remoto e Geoinformação',
+            'keywords':'geodésia | GNSS | SIRGAS2000 | transformação de coordenadas | altitude normal | PPP | ProGriD | hgeoHNOR | IBGE',
+            'data_product_types':'serviços de pós-processamento GNSS | transformação de coordenadas | modelos de conversão de altitudes | documentação técnica',
+            'data_formats':'RINEX | TXT | CSV | grades digitais | relatórios | formatos variáveis conforme serviço',
+            'visualization_types':'formulários web | relatórios de processamento | resultados tabulares',
+            'geographic_coverage':'Brasil; alguns serviços aceitam coordenadas ou observações fora do território conforme documentação do produto',
+            'covers_brazil':'sim','spatial_resolution':'não se aplica de forma única; depende do serviço, modelo e observação de entrada',
+            'temporal_coverage':'serviços operacionais correntes e modelos versionados; depende do produto',
+            'temporal_resolution':'não se aplica de forma única; processamento ou versão conforme produto',
+            'data_sources':'observações GNSS | referenciais geodésicos oficiais | redes geodésicas | modelos gravimétricos e altimétricos conforme produto',
+            'free_download':'parcial','access_conditions':'serviços e downloads públicos conforme produto; requisitos de formato e processamento próprios',
+            'programmatic_access':'desconhecido','access_protocols':'HTTPS web | HTTP download; varia conforme produto','authentication_required':'não',
+            'access_documentation_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html',
+            'license':'licença específica deve ser verificada por produto/distribuição; não inferida da página temática',
+            'institutional_status':'público','owner_or_manager':'IBGE — Diretoria de Geociências / Coordenação de Geodésia',
+            'academic_uses':'Georreferenciamento, pós-processamento GNSS, harmonização de referenciais, conversão vertical e apoio a análises geoespaciais que exigem referência geodésica explícita.',
+            'limitations':'Os serviços têm funções, referenciais, versões, entradas e precisões distintas; não tratar PPP, transformação de referenciais e conversão vertical como procedimentos equivalentes nem assumir precisão fixa sem consultar a documentação vigente.',
+            'academic_evidence_type':'documentação técnica oficial','academic_evidence_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html',
+            'academic_evidence_note':'A página temática oficial distingue IBGE-PPP, ProGriD, modelo para conversão de altitudes, BDG e RBMC-IP como produtos/serviços diferentes.',
+            'verification_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html','last_verified':verified
+          }
+
+          products=[
+          {
+            'product_id':'DP000138','resource_id':'DR0076','product_name':'IBGE-PPP — Serviço online para pós-processamento de dados GNSS','product_acronym':'IBGE-PPP',
+            'product_family':'Serviços para Posicionamento Geodésico — pós-processamento GNSS','product_kind':'data_service',
+            'product_description':'Serviço online gratuito do IBGE para pós-processamento de observações GNSS por Posicionamento por Ponto Preciso, usando o CSRS-PPP do NRCan e fornecendo coordenadas referidas ao SIRGAS2000 e ao ITRF conforme a configuração vigente.',
+            'research_areas':'Geodesy | GNSS | Surveying | Geospatial information science','keywords':'IBGE-PPP | PPP | GNSS | GPS | GLONASS | RINEX | SIRGAS2000 | ITRF2020 | pós-processamento',
+            'geographic_coverage':'Brasil como referencial e uso institucional prioritário; processamento de observações GNSS conforme cobertura e condições do serviço','covers_brazil':'sim',
+            'spatial_support':'ponto ou trajetória GNSS processada a partir de observações do usuário','spatial_resolution':'não é resolução raster; precisão depende de observações, equipamento, duração, órbitas e processamento',
+            'temporal_coverage':'serviço lançado em 2009; operação corrente; parâmetros e referenciais de processamento são atualizados','temporal_resolution':'por sessão/arquivo GNSS submetido',
+            'update_frequency':'serviço operacional com atualizações metodológicas e de referenciais quando necessárias','product_status':'ativo','version_or_collection':'referencial IGc20/ITRF2020-u2024 adotado nas órbitas precisas a partir de 2026-01-11',
+            'enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico/16334-servico-online-para-pos-processamento-de-dados-gnss-ibge-ppp.html',
+            'methodology_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico/16334-servico-online-para-pos-processamento-de-dados-gnss-ibge-ppp.html',
+            'primary_or_derived':'serviço','limitations':'Resultados dependem da qualidade/duração das observações, receptor, geometria GNSS, produtos orbitais e parâmetros vigentes. Processamentos de dados coletados a partir de 11/01/2026 usam IGc20/ITRF2020-u2024 e novos parâmetros de transformação para SIRGAS2000; registrar época e configuração ao reproduzir resultados.','last_verified':verified
+          },
+          {
+            'product_id':'DP000139','resource_id':'DR0076','product_name':'ProGriD Online — Transformação de Coordenadas entre Sistemas de Referência Oficiais','product_acronym':'ProGriD Online',
+            'product_family':'Serviços para Posicionamento Geodésico — transformação de referenciais','product_kind':'data_service',
+            'product_description':'Aplicação web do IBGE para transformar coordenadas entre sistemas de referência oficiais usados no Brasil, incluindo conversões envolvendo Córrego Alegre, SAD69 e SIRGAS2000 conforme regras e grades do serviço.',
+            'research_areas':'Geodesy | Cartography | Geospatial information science | Surveying','keywords':'ProGriD | SIRGAS2000 | SAD69 | Córrego Alegre | transformação de coordenadas | referencial geodésico | IBGE',
+            'geographic_coverage':'Brasil — transformação entre referenciais geodésicos oficiais aplicáveis ao território nacional','covers_brazil':'sim','spatial_support':'coordenadas pontuais ou arquivos de coordenadas submetidos pelo usuário',
+            'spatial_resolution':'não se aplica como resolução espacial; exatidão depende do referencial, transformação e dados de entrada','temporal_coverage':'serviço online lançado em 2022, sucedendo o aplicativo desktop de 2009; operação corrente','temporal_resolution':'por transformação submetida',
+            'update_frequency':'atualização conforme manutenção do serviço, referenciais e regras oficiais','product_status':'ativo','version_or_collection':'ProGriD Online — serviço corrente',
+            'enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico/16312-progrid.html',
+            'methodology_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico/16312-progrid.html',
+            'primary_or_derived':'serviço','limitations':'Transformação de coordenadas não corrige erros do levantamento original nem torna referenciais históricos equivalentes em qualidade. O usuário deve informar corretamente referencial e tipo de coordenadas de entrada/saída e preservar a transformação aplicada.','last_verified':verified
+          },
+          {
+            'product_id':'DP000140','resource_id':'DR0076','product_name':'hgeoHNOR2020 — modelo para conversão de altitudes geométricas em altitudes normais','product_acronym':'hgeoHNOR2020',
+            'product_family':'Serviços para Posicionamento Geodésico — conversão vertical','product_kind':'data_service',
+            'product_description':'Modelo digital e serviço de cálculo do IBGE que fornece fatores de conversão e incertezas para converter altitudes geométricas referidas ao SIRGAS2000 em altitudes normais compatíveis com as Referências de Nível do SGB e o REALT2018.',
+            'research_areas':'Geodesy | Geophysics | Geospatial information science | Earth sciences','keywords':'hgeoHNOR2020 | altitude normal | altitude geométrica | SIRGAS2000 | REALT2018 | GNSS | datum vertical | IBGE',
+            'geographic_coverage':'Brasil — área de validade do modelo conforme grade/polígono oficial','covers_brazil':'sim','spatial_support':'grade/modelo digital e cálculo em coordenadas geodésicas',
+            'spatial_resolution':'resolução da grade oficial do modelo; consultar arquivos e documentação técnica, não inferida como precisão do resultado','temporal_coverage':'modelo hgeoHNOR2020 publicado em 2021; relatório metodológico em 2ª edição em 2023','temporal_resolution':'modelo estático versionado; cálculo por ponto/arquivo',
+            'update_frequency':'por versão do modelo; sem periodicidade fixa inferida','product_status':'ativo','version_or_collection':'hgeoHNOR2020; relatório metodológico 2ª edição 2023',
+            'enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico/31283-hgeohnor2020-modeloconversaoaltitudesgeometricasgnss-datumverticalsgb.html',
+            'methodology_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico/31283-hgeohnor2020-modeloconversaoaltitudesgeometricasgnss-datumverticalsgb.html',
+            'primary_or_derived':'derivado','limitations':'O fator de conversão não é uma altitude observada nem um modelo de terreno. As coordenadas de entrada devem estar referidas ao SIRGAS2000; o resultado produz altitude normal compatível com REALT2018. Não tratar a resolução da grade como incerteza ou precisão do valor convertido.','last_verified':verified
+          }]
+
+          dists=[
+          {'distribution_id':'DD000154','product_id':'DP000138','distribution_name':'IBGE-PPP — processamento online de arquivos GNSS','access_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico/16334-servico-online-para-pos-processamento-de-dados-gnss-ibge-ppp.html','format':'RINEX e formatos compactados aceitos pelo serviço; relatórios de resultado','access_protocol':'HTTPS web','access_tool':'formulário web IBGE-PPP','free_download':'sim','authentication_required':'não','access_conditions':'serviço gratuito; arquivos devem respeitar formatos, tamanho e requisitos de observação documentados','license':'condições de uso do serviço e dados de entrada/saída devem ser verificadas na documentação; licença de dataset não inferida','provider_attribution_required':'sim','subset_support':'por arquivo/sessão GNSS submetida','notes':'A partir de 11/01/2026 o processamento de dados coletados desde essa data usa órbitas no referencial IGc20/ITRF2020-u2024 e parâmetros atualizados para transformação ao SIRGAS2000.','last_verified':verified},
+          {'distribution_id':'DD000155','product_id':'DP000139','distribution_name':'ProGriD Online — transformação web de coordenadas','access_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico/16312-progrid.html','format':'entrada manual | TXT | CSV; saída conforme serviço','access_protocol':'HTTPS web','access_tool':'formulário ProGriD Online','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; requer seleção explícita de referenciais e formatos de coordenadas','license':'condições de uso do serviço; licença específica de dataset não se aplica/inferida','provider_attribution_required':'sim','subset_support':'por ponto ou arquivo de coordenadas','notes':'Serviço de transformação entre referenciais; não deve ser confundido com reprojeção cartográfica genérica nem com correção da qualidade posicional original.','last_verified':verified},
+          {'distribution_id':'DD000156','product_id':'DP000140','distribution_name':'hgeoHNOR2020 — serviço de cálculo e grades do modelo','access_url':'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico/31283-hgeohnor2020-modeloconversaoaltitudesgeometricasgnss-datumverticalsgb.html','format':'serviço web | TXT de coordenadas | grades digitais e arquivos técnicos em download','access_protocol':'HTTPS web | HTTP download','access_tool':'interpolador web e downloads IBGE','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; coordenadas devem ser fornecidas nos formatos aceitos e referidas ao SIRGAS2000','license':'licença específica dos arquivos deve ser verificada na distribuição oficial; não inferida nesta auditoria','provider_attribution_required':'sim','subset_support':'por ponto/arquivo no serviço; downloads de grades/modelo completos','notes':'O serviço retorna fator de conversão η e incerteza para HN = h − η; grades do modelo também são disponibilizadas para cálculo pelo usuário.','last_verified':verified}
+          ]
+
+          append_dicts(resource_path,[source])
+          append_dicts(product_path,products)
+          append_dicts(dist_path,dists)
+
+          reg=json.loads(priority_path.read_text(encoding='utf-8'))
+          p0=next(t for t in reg['tiers'] if t['priority_tier']=='P0')
+          assert 'DR0076' not in p0['resource_ids']
+          p0['resource_ids'].append('DR0076')
+          reg['reviewed_at']=verified
+          priority_path.write_text(json.dumps(reg, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+          print('Appended DR0076, DP000138-DP000140, DD000154-DD000156')
+          PY
+      - name: Validate, rebuild and read back
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/audit_link_roles.py
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          rs=list(csv.DictReader(Path('data/data_resources.csv').open(encoding='utf-8-sig')))
+          ps=list(csv.DictReader(Path('data/data_products.csv').open(encoding='utf-8-sig')))
+          ds=list(csv.DictReader(Path('data/product_distributions.csv').open(encoding='utf-8-sig')))
+          rids={r['resource_id'] for r in rs}; pids={p['product_id'] for p in ps}; dids={d['distribution_id'] for d in ds}
+          assert len(rids)==len(rs) and len(pids)==len(ps) and len(dids)==len(ds)
+          assert all(p['resource_id'] in rids for p in ps)
+          assert all(d['product_id'] in pids for d in ds)
+          assert 'DR0076' in rids
+          for n in range(138,141): assert f'DP{n:06d}' in pids
+          for n in range(154,157): assert f'DD{n:06d}' in dids
+          assert all(sum(d['product_id']==f'DP{n:06d}' for d in ds)>=1 for n in range(138,141))
+          print(f'sources={len(rs)} products={len(ps)} distributions={len(ds)}')
+          PY
+      - name: Commit materialized batch and remove one-shot workflow
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/materialize-positioning-services-2026-08-15.yml
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          git diff --cached --check
+          git commit -m 'Expand IBGE positioning services catalog'
+          git push origin HEAD:agent/vitrine-positioning-services-2026-08-15
