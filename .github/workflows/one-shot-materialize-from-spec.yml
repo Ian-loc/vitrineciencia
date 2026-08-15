@@ -1,0 +1,48 @@
+name: One-shot materialize IBGE batch from spec
+on:
+  push:
+    branches:
+      - agent/vitrine-ibge-networks-clean-20260815
+permissions:
+  contents: write
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/vitrine-ibge-networks-clean-20260815
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute audited materialization specification
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import textwrap
+          s=Path('.github/workflows/one-shot-ibge-networks-clean.yml').read_text()
+          a=s.index('      - name: Materialize audited IBGE batch')
+          b=s.index('      - name: Run repository validators', a)
+          block=s[a:b]
+          marker='        run: |\n'
+          body=block.split(marker,1)[1]
+          Path('/tmp/materialize.sh').write_text(textwrap.dedent(body))
+          PY
+          bash /tmp/materialize.sh
+      - name: Re-run consolidated validators
+        run: |
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Commit tracked materialized delta
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -u
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv
+          git commit -m 'Expand IBGE urban networks and territorial typologies'
+          git push origin HEAD:agent/vitrine-ibge-networks-clean-20260815
