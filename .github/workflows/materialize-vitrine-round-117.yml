@@ -44,3 +44,5 @@ jobs:
           fi
           git commit -m "expandir catálogo IBGE com lote ambiental"
           git push origin HEAD:agent/vitrine-audit-117
+
+# trigger: 2026-08-15
