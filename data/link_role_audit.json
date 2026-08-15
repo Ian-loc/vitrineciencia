@@ -1,5 +1,5 @@
 {
-  "records": 71,
+  "records": 73,
   "standard": {
     "homepage_url": "Página institucional principal ou página oficial sobre a fonte.",
     "data_access_url": "Página onde os dados podem ser pesquisados, visualizados, solicitados ou baixados.",
@@ -8,7 +8,7 @@
   },
   "counts": {
     "separate_destinations": 45,
-    "same_destination_pending_review": 25,
+    "same_destination_pending_review": 27,
     "data_access_not_applicable": 1
   },
   "records_requiring_review": [
@@ -186,6 +186,20 @@
       "status": "same_destination_pending_review",
       "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional.html",
       "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional.html"
+    },
+    {
+      "resource_id": "DR0072",
+      "resource_name": "Estatísticas e Indicadores Ambientais — IBGE",
+      "status": "same_destination_pending_review",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais.html"
+    },
+    {
+      "resource_id": "DR0073",
+      "resource_name": "Estudos Ambientais — IBGE",
+      "status": "same_destination_pending_review",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais.html"
     }
   ],
   "interpretation": "A igualdade entre os dois links não prova erro, mas indica que os papéis institucional e de acesso ainda não foram demonstrados separadamente."
