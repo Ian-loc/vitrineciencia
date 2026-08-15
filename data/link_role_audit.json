@@ -1,5 +1,5 @@
 {
-  "records": 82,
+  "records": 83,
   "standard": {
     "homepage_url": "Página institucional principal ou página oficial sobre a fonte.",
     "data_access_url": "Página onde os dados podem ser pesquisados, visualizados, solicitados ou baixados.",
@@ -8,7 +8,7 @@
   },
   "counts": {
     "separate_destinations": 47,
-    "same_destination_pending_review": 34,
+    "same_destination_pending_review": 35,
     "data_access_not_applicable": 1
   },
   "records_requiring_review": [
@@ -249,6 +249,13 @@
       "status": "same_destination_pending_review",
       "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html",
       "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html"
+    },
+    {
+      "resource_id": "DR0083",
+      "resource_name": "Mapas de Sociedade e Economia — IBGE",
+      "status": "same_destination_pending_review",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia.html"
     }
   ],
   "interpretation": "A igualdade entre os dois links não prova erro, mas indica que os papéis institucional e de acesso ainda não foram demonstrados separadamente."
