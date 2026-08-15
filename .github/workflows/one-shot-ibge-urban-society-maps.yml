@@ -1,0 +1,144 @@
+name: One-shot IBGE urban and society-map audit
+on:
+  push:
+    branches:
+      - automation/ibge-urban-society-maps-20260815
+permissions:
+  contents: write
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Materialize curated batch
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, io, json
+          from pathlib import Path
+
+          VERIFIED='2026-08-15'
+
+          def csv_line(header, row):
+              sio=io.StringIO()
+              w=csv.DictWriter(sio, fieldnames=header, lineterminator='\n')
+              w.writerow({k: row.get(k,'') for k in header})
+              return sio.getvalue().rstrip('\n')
+
+          def mutate_csv(path, replacements, appends):
+              p=Path(path)
+              text=p.read_text(encoding='utf-8')
+              lines=text.splitlines()
+              header=next(csv.reader([lines[0]]))
+              first=header[0]
+              out=[lines[0]]
+              seen=set()
+              for line in lines[1:]:
+                  rid=next(csv.reader([line]))[0]
+                  if rid in replacements:
+                      out.append(csv_line(header,replacements[rid])); seen.add(rid)
+                  else:
+                      out.append(line)
+              missing=set(replacements)-seen
+              if missing: raise SystemExit(f'missing replacement ids in {path}: {sorted(missing)}')
+              existing={next(csv.reader([x]))[0] for x in out[1:]}
+              for row in appends:
+                  rid=row[first]
+                  if rid in existing: raise SystemExit(f'duplicate append id {rid} in {path}')
+                  out.append(csv_line(header,row)); existing.add(rid)
+              p.write_text('\n'.join(out)+'\n',encoding='utf-8')
+
+          source={
+            'resource_id':'DR0083','resource_name':'Mapas de Sociedade e Economia — IBGE','acronym':'Sociedade e Economia IBGE','official_identity':'Tema institucional de mapas de Sociedade e Economia da Diretoria de Geociências do IBGE',
+            'description':'Família de mapas temáticos derivados de análises geográficas dos Censos Demográfico e Agropecuário e de outras informações demográficas, econômicas e sociais, disseminados pelo IBGE como produtos cartográficos de síntese.',
+            'homepage_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia.html','data_access_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia.html',
+            'research_areas':'Planejamento Territorial e Políticas Públicas | Sensoriamento Remoto e Geoinformação','keywords':'sociedade | economia | censos | população | densidade demográfica | raça | saneamento | mapas temáticos | IBGE',
+            'data_product_types':'mapas temáticos | mapas murais | coleções cartográficas','data_formats':'PDF | formatos variáveis conforme produto','visualization_types':'mapas | documentos cartográficos',
+            'geographic_coverage':'Brasil; cobertura nacional ou estadual conforme produto','covers_brazil':'sim','spatial_resolution':'varia por produto; preservar escala cartográfica e unidade estatística de origem',
+            'temporal_coverage':'edições históricas conforme Censos e estudos temáticos','temporal_resolution':'por edição cartográfica','data_sources':'Censos Demográfico e Agropecuário | bases cartográficas e outras estatísticas oficiais conforme produto',
+            'free_download':'sim','access_conditions':'consulta e downloads públicos conforme produto','programmatic_access':'não','access_protocols':'HTTPS web | HTTP download','authentication_required':'não',
+            'access_documentation_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia.html','license':'licença específica deve ser verificada por produto/arquivo; não inferida da página temática','institutional_status':'público','owner_or_manager':'IBGE — Diretoria de Geociências',
+            'academic_uses':'Geografia da população, desigualdades socioespaciais, saneamento, análise territorial, contextualização histórica e ensino.','limitations':'A família agrega mapas de épocas, escalas, variáveis e métodos distintos; produtos cartográficos derivados não substituem microdados ou bases estatísticas atuais e não formam série temporal harmonizada automaticamente.',
+            'academic_evidence_type':'documentação técnica oficial','academic_evidence_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia.html','academic_evidence_note':'A página oficial define o tema como mapas oriundos de análises geográficas dos Censos e de outras informações demográficas, econômicas e sociais e lista seus produtos principais.',
+            'verification_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia.html','last_verified':VERIFIED
+          }
+          mutate_csv('data/data_resources.csv',{},[source])
+
+          dp102={
+            'product_id':'DP000102','resource_id':'DR0071','product_name':'Recortes Metropolitanos e Aglomerações Urbanas — atualização 2026','product_acronym':'Recortes Metropolitanos 2026','product_family':'Recortes Metropolitanos e Aglomerações Urbanas','product_kind':'dataset_series',
+            'product_description':'Cadastro e recortes territoriais de Regiões Metropolitanas, RIDEs, Aglomerações Urbanas e categorias metropolitanas, atualizado pelo IBGE conforme legislação e pesquisa institucional; atualização mais recente confirmada em 16/06/2026.',
+            'research_areas':'Urban studies | Territorial planning | Population geography | GIS','keywords':'regiões metropolitanas | RIDE | aglomerações urbanas | 2026 | municípios | IBGE','geographic_coverage':'Brasil; recortes metropolitanos e unidades relacionadas conforme legislação vigente','covers_brazil':'sim',
+            'spatial_support':'listas/agregados de municípios | recortes vetoriais em geosserviços','spatial_resolution':'municípios e agregados metropolitanos','temporal_coverage':'atualização divulgada em 16/06/2026; edições anteriores preservadas','temporal_resolution':'edição/atualização','update_frequency':'atualizações conforme pesquisa e mudanças legais','product_status':'ativo','version_or_collection':'atualização 2026','enumeration_scope':'complete',
+            'product_page_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/18354-recortes-metropolitanos-e-aglomeracoes-urbanas.html','methodology_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/18354-recortes-metropolitanos-e-aglomeracoes-urbanas.html','primary_or_derived':'derivado',
+            'limitations':'Recortes refletem instrumentos legais e classificações territoriais vigentes; composição pode mudar entre edições. Região Metropolitana, Aglomeração Urbana e RIDE são categorias distintas. Preservar a data/edição efetivamente usada; a atualização de 2026 não torna edições anteriores retroativamente equivalentes.','last_verified':VERIFIED
+          }
+          products=[
+            {'product_id':'DP000178','resource_id':'DR0082','product_name':'Características Urbanísticas do Entorno dos Domicílios — Censo Demográfico 2022','product_acronym':'Entorno dos Domicílios 2022','product_family':'Tipologias do Território — infraestrutura urbana e entorno','product_kind':'dataset',
+             'product_description':'Resultados do Censo Demográfico 2022 sobre características urbanísticas do entorno dos domicílios, incluindo condições de circulação, pavimentação, drenagem, iluminação, transporte, infraestrutura cicloviária, calçadas, acessibilidade e arborização, com resultados estatísticos e geoespaciais.',
+             'research_areas':'Urban geography | Regional science | Territorial planning | Socioeconomic geography','keywords':'Censo 2022 | entorno dos domicílios | infraestrutura urbana | arborização | calçadas | acessibilidade | drenagem | setores censitários | IBGE','geographic_coverage':'Brasil — resultados para País, Grandes Regiões, Unidades da Federação, municípios e níveis territoriais disponíveis; dados geoespaciais por setor censitário','covers_brazil':'sim','spatial_support':'setores censitários | municípios | tabelas estatísticas | vetor GeoPackage','spatial_resolution':'intramunicipal por setor censitário nos arquivos geoespaciais; outros níveis no SIDRA','temporal_coverage':'Censo Demográfico 2022; resultados divulgados em 2025','temporal_resolution':'edição censitária','update_frequency':'por ciclo censitário e revisões publicadas','product_status':'ativo','version_or_collection':'Censo Demográfico 2022 — divulgação 2025; dados percentuais incluídos 12/12/2025','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/24702-caracteristicas-urbanisticas-do-entorno-dos-domicilios.html','methodology_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/24702-caracteristicas-urbanisticas-do-entorno-dos-domicilios.html','primary_or_derived':'primário',
+             'limitations':'Os quesitos e procedimentos pertencem à Pesquisa Urbanística do Entorno dos Domicílios do Censo 2022 e não devem ser tratados como equivalentes automáticos ao levantamento de 2010. A presença/ausência registrada descreve o entorno pesquisado e não mede diretamente qualidade, funcionamento ou adequação normativa de cada infraestrutura. Revisões do Censo devem ser preservadas.','last_verified':VERIFIED},
+            {'product_id':'DP000179','resource_id':'DR0083','product_name':'Densidade Demográfica do Brasil — Censo 2010 — 1:5.000.000','product_acronym':'Densidade Demográfica 2010','product_family':'Sociedade e Economia — mapas demográficos','product_kind':'map_layer_collection','product_description':'Mapa mural nacional do IBGE que representa a distribuição espacial dos habitantes por quilômetro quadrado a partir do Censo Demográfico 2010, juntamente com principais sistemas de transporte.','research_areas':'Population geography | Spatial statistics | GIS | Public policy','keywords':'densidade demográfica | Censo 2010 | população | mapa mural | setores censitários | IBGE','geographic_coverage':'Brasil','covers_brazil':'sim','spatial_support':'mapa temático nacional derivado de unidades censitárias','spatial_resolution':'escala cartográfica 1:5.000.000; síntese em 10 classes de densidade','temporal_coverage':'Censo Demográfico 2010; mapa lançado em 2013','temporal_resolution':'snapshot censitário','update_frequency':'produto histórico; sem atualização corrente inferida','product_status':'arquivado','version_or_collection':'2010 — 1:5.000.000','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia/15955-densidade-demografica.html','methodology_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia/15955-densidade-demografica.html','primary_or_derived':'derivado','limitations':'Produto cartográfico histórico baseado no Censo 2010. Não representa densidade populacional atual e sua escala 1:5.000.000 não suporta interpretação local/cadastral; para análise quantitativa usar a base estatística/censitária apropriada e preservar a unidade territorial.','last_verified':VERIFIED},
+            {'product_id':'DP000180','resource_id':'DR0083','product_name':'Distribuição Espacial da População Segundo Cor ou Raça — Pretos e Pardos — Censo 2010','product_acronym':'Pretos e Pardos 2010','product_family':'Sociedade e Economia — mapas demográficos','product_kind':'map_layer_collection','product_description':'Mapa temático nacional do IBGE que retrata a distribuição espacial da população preta e parda segundo o quesito cor ou raça do Censo Demográfico 2010, elaborado a partir da desagregação por setores censitários urbanos e rurais.','research_areas':'Population geography | Spatial statistics | Territorial analysis | Socioeconomic geography','keywords':'cor ou raça | população preta | população parda | Censo 2010 | desigualdade racial | setores censitários | IBGE','geographic_coverage':'Brasil','covers_brazil':'sim','spatial_support':'setores censitários sintetizados em mapa temático nacional','spatial_resolution':'escala cartográfica 1:5.000.000; fonte estatística desagregada nos setores censitários do Censo 2010','temporal_coverage':'Censo Demográfico 2010; mapa lançado em 2013','temporal_resolution':'snapshot censitário','update_frequency':'produto histórico; sem atualização corrente inferida','product_status':'arquivado','version_or_collection':'2010 — 1:5.000.000','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia/15963-distribuicao-espacial-da-populacao-segundo-cor-ou-raca-pretos-e-pardos.html','methodology_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia/15963-distribuicao-espacial-da-populacao-segundo-cor-ou-raca-pretos-e-pardos.html','primary_or_derived':'derivado','limitations':'Produto histórico do Censo 2010 e de pequena escala. Cor ou raça é variável censitária autodeclarada segundo categorias e procedimentos da operação; o mapa não representa população atual, identidade individual, território étnico nem causalidade socioambiental.','last_verified':VERIFIED},
+            {'product_id':'DP000181','resource_id':'DR0083','product_name':'Densidade Demográfica e Rede Coletora de Esgoto — 2005 — 1:5.000.000','product_acronym':'Densidade e Esgoto 2005','product_family':'Sociedade e Economia — mapas socioambientais','product_kind':'map_layer_collection','product_description':'Mapa temático do IBGE que combina densidade populacional, existência de rede coletora de esgoto, Unidades de Conservação, Terras Indígenas e limites de biomas; encarte associa níveis de insuficiência do sistema de esgoto às principais bacias hidrográficas.','research_areas':'Population geography | Environmental health | Territorial analysis | GIS','keywords':'densidade demográfica | esgotamento sanitário | rede coletora de esgoto | bacias hidrográficas | unidades de conservação | terras indígenas | biomas | IBGE','geographic_coverage':'Brasil','covers_brazil':'sim','spatial_support':'mapa temático nacional | encarte por principais bacias','spatial_resolution':'escala cartográfica 1:5.000.000','temporal_coverage':'edição publicada em 2005; anos de referência dos insumos devem ser preservados conforme documentação do produto','temporal_resolution':'síntese cartográfica histórica','update_frequency':'produto histórico; sem atualização corrente inferida','product_status':'arquivado','version_or_collection':'2005 — 1:5.000.000','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia/15959-densidade-demografica-e-rede-coletora-de-esgoto.html','methodology_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia/15959-densidade-demografica-e-rede-coletora-de-esgoto.html','primary_or_derived':'derivado','limitations':'Produto de síntese histórico e multitemático. Não interpretar a edição 2005 como situação atual de saneamento, população, áreas protegidas ou terras indígenas; os componentes têm significados e referências próprias e o mapa não fornece causalidade entre densidade, saneamento e proteção territorial.','last_verified':VERIFIED},
+            {'product_id':'DP000182','resource_id':'DR0083','product_name':'Distribuição Espacial da População — mapas estaduais de Densidade Demográfica 2010','product_acronym':'Densidade Estadual 2010','product_family':'Sociedade e Economia — mapas demográficos','product_kind':'map_layer_collection','product_description':'Coleção de 27 mapas estaduais do IBGE que representa a densidade demográfica do Censo 2010 por setores censitários e a relaciona com elementos geográficos estruturantes, como relevo, hidrografia, transportes, limites e localidades.','research_areas':'Population geography | Spatial statistics | Territorial analysis | GIS','keywords':'densidade demográfica | Censo 2010 | mapas estaduais | setores censitários | população | infraestrutura | IBGE','geographic_coverage':'Brasil — 27 Unidades da Federação','covers_brazil':'sim','spatial_support':'setores censitários | mapas estaduais | feições cartográficas de contexto','spatial_resolution':'316.574 setores censitários como unidade de densidade na operação 2010; escala gráfica varia por mapa estadual','temporal_coverage':'Censo Demográfico 2010; coleção divulgada em 2015; insumos cartográficos incluem BCIM 2010 e atualizações específicas posteriores','temporal_resolution':'snapshot censitário com camadas contextuais de anos distintos','update_frequency':'produto histórico; sem atualização corrente inferida','product_status':'arquivado','version_or_collection':'Censo 2010 — coleção estadual divulgada em 2015','enumeration_scope':'complete','product_page_url':'https://agenciadenoticias.ibge.gov.br/agencia-sala-de-imprensa/2013-agencia-de-noticias/releases/9590-ibge-divulga-mapas-estaduais-de-densidade-demografica','methodology_url':'https://agenciadenoticias.ibge.gov.br/agencia-sala-de-imprensa/2013-agencia-de-noticias/releases/9590-ibge-divulga-mapas-estaduais-de-densidade-demografica','primary_or_derived':'derivado','limitations':'Coleção histórica baseada no Censo 2010 e em camadas cartográficas de referência de anos distintos. Não usar como retrato populacional atual nem pressupor homogeneidade temporal entre densidade, limites, infraestrutura, unidades de conservação e outros elementos de contexto.','last_verified':VERIFIED}
+          ]
+          mutate_csv('data/data_products.csv',{'DP000102':dp102},products)
+
+          dd118={'distribution_id':'DD000118','product_id':'DP000102','distribution_name':'Recortes Metropolitanos 2026 — tabelas e geosserviços','access_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/18354-recortes-metropolitanos-e-aglomeracoes-urbanas.html','format':'XLS | XLSX | ODS | geosserviços conforme recorte','access_protocol':'HTTP download | geosserviço','access_tool':'navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'downloads e geosserviços públicos','license':'licença específica dos arquivos não localizada nesta auditoria','provider_attribution_required':'sim','subset_support':'por tipo de recorte e composição municipal','notes':'Preservar o tipo jurídico/territorial e a edição efetivamente usada; composição de RMs, RIDEs e aglomerações pode mudar entre atualizações.','last_verified':VERIFIED}
+          dists=[
+            {'distribution_id':'DD000196','product_id':'DP000178','distribution_name':'Entorno dos Domicílios 2022 — SIDRA, tabelas e dados geoespaciais','access_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/24702-caracteristicas-urbanisticas-do-entorno-dos-domicilios.html','format':'SIDRA | CSV | GPKG | publicações','access_protocol':'HTTP web | download','access_tool':'navegador web | SIDRA | SIG','free_download':'sim','authentication_required':'não','access_conditions':'consulta e downloads públicos; selecionar nível territorial e conjunto absoluto/percentual pertinente','license':'licença específica dos arquivos não localizada nesta auditoria; observar termos de uso do IBGE','provider_attribution_required':'sim','subset_support':'por tabela SIDRA e níveis territoriais; dados percentuais por setor em CSV/GPKG','notes':'Os dados percentuais em CSV e GPKG foram incluídos em 12/12/2025; preservar revisão, nível territorial, unidade e definição de cada quesito.','last_verified':VERIFIED},
+            {'distribution_id':'DD000197','product_id':'DP000179','distribution_name':'Densidade Demográfica 2010 — mapa nacional','access_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia/15955-densidade-demografica.html','format':'PDF','access_protocol':'HTTP web | download','access_tool':'navegador web | leitor PDF','free_download':'sim','authentication_required':'não','access_conditions':'consulta pública','license':'licença específica do arquivo não localizada nesta auditoria','provider_attribution_required':'sim','subset_support':'não; mapa nacional','notes':'Mapa mural 1:5.000.000 baseado no Censo 2010; não substituir bases censitárias quantitativas de maior granularidade.','last_verified':VERIFIED},
+            {'distribution_id':'DD000198','product_id':'DP000180','distribution_name':'Pretos e Pardos 2010 — mapa nacional','access_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia/15963-distribuicao-espacial-da-populacao-segundo-cor-ou-raca-pretos-e-pardos.html','format':'PDF','access_protocol':'HTTP web | download','access_tool':'navegador web | leitor PDF','free_download':'sim','authentication_required':'não','access_conditions':'consulta pública','license':'licença específica do arquivo não localizada nesta auditoria','provider_attribution_required':'sim','subset_support':'não; mapa nacional','notes':'Mapa 1:5.000.000 derivado do Censo 2010; preservar conceito censitário de cor ou raça e referência temporal.','last_verified':VERIFIED},
+            {'distribution_id':'DD000199','product_id':'DP000181','distribution_name':'Densidade Demográfica e Rede Coletora de Esgoto 2005 — mapa nacional','access_url':'https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia/15959-densidade-demografica-e-rede-coletora-de-esgoto.html','format':'PDF','access_protocol':'HTTP web | download','access_tool':'navegador web | leitor PDF','free_download':'sim','authentication_required':'não','access_conditions':'consulta pública','license':'licença específica do arquivo não localizada nesta auditoria','provider_attribution_required':'sim','subset_support':'não; mapa nacional com encarte temático','notes':'Síntese multitemática histórica 1:5.000.000; não tratar componentes como observações contemporâneas ou temporalmente homogêneas.','last_verified':VERIFIED},
+            {'distribution_id':'DD000200','product_id':'DP000182','distribution_name':'Mapas estaduais de Densidade Demográfica 2010 — coleção','access_url':'https://agenciadenoticias.ibge.gov.br/agencia-sala-de-imprensa/2013-agencia-de-noticias/releases/9590-ibge-divulga-mapas-estaduais-de-densidade-demografica','format':'mapas cartográficos; formato de arquivo deve ser verificado no diretório oficial correspondente','access_protocol':'HTTP web | download','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'consulta pública; selecionar Unidade da Federação','license':'licença específica dos arquivos não localizada nesta auditoria','provider_attribution_required':'sim','subset_support':'por Unidade da Federação','notes':'Coleção de 27 mapas estaduais divulgada em 2015 com densidade do Censo 2010; não inferir formato atual além do documentado no ponto de acesso.','last_verified':VERIFIED}
+          ]
+          mutate_csv('data/product_distributions.csv',{'DD000118':dd118},dists)
+
+          p=Path('data/brazil_scope_priorities.json')
+          registry=json.loads(p.read_text(encoding='utf-8'))
+          p0=next(x for x in registry['tiers'] if x['priority_tier']=='P0')
+          if 'DR0083' not in p0['resource_ids']:
+              p0['resource_ids'].append('DR0083')
+          registry['reviewed_at']=VERIFIED
+          p.write_text(json.dumps(registry,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          rm -rf /tmp/vitrine-public
+          python scripts/build_site_artifact.py --output /tmp/vitrine-public
+          git diff --check
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          def rows(p):
+              with open(p,newline='',encoding='utf-8') as f: return list(csv.DictReader(f))
+          r=rows('data/data_resources.csv'); p=rows('data/data_products.csv'); d=rows('data/product_distributions.csv')
+          assert len({x['resource_id'] for x in r})==len(r)
+          assert len({x['product_id'] for x in p})==len(p)
+          assert len({x['distribution_id'] for x in d})==len(d)
+          rids={x['resource_id'] for x in r}; pids={x['product_id'] for x in p}
+          assert all(x['resource_id'] in rids for x in p)
+          assert all(x['product_id'] in pids for x in d)
+          assert {f'DP{i:06d}' for i in range(178,183)} <= pids
+          assert {f'DD{i:06d}' for i in range(196,201)} <= {x['distribution_id'] for x in d}
+          assert next(x for x in p if x['product_id']=='DP000102')['version_or_collection']=='atualização 2026'
+          assert next(x for x in d if x['distribution_id']=='DD000118')['distribution_name'].startswith('Recortes Metropolitanos 2026')
+          print(f'READBACK resources={len(r)} products={len(p)} distributions={len(d)}')
+          PY
+
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          git rm .github/workflows/one-shot-ibge-urban-society-maps.yml
+          git commit -m "Curate IBGE urban and society map products"
+          git push origin HEAD
