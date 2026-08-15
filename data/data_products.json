@@ -8559,5 +8559,241 @@
     "available_protocols": [
       "HTTPS web | HTTP download"
     ]
+  },
+  {
+    "product_id": "DP000141",
+    "resource_id": "DR0076",
+    "product_name": "Homologar marcos geodésicos — serviço de integração ao SGB",
+    "product_acronym": "Homologação de Marcos",
+    "product_family": "Serviços para Posicionamento Geodésico — homologação de estações",
+    "product_kind": "data_service",
+    "product_description": "Serviço do IBGE para avaliar levantamentos GNSS de marcos implantados por terceiros, determinar coordenadas precisas e, quando homologados, integrar os marcos ao Sistema Geodésico Brasileiro e ao Banco de Dados Geodésicos.",
+    "research_areas": "Geodesy | GNSS | Surveying | Geospatial information science",
+    "keywords": "homologação | marco geodésico | GNSS | SGB | BDG | coordenadas | IBGE",
+    "geographic_coverage": "Brasil; marcos submetidos conforme requisitos do serviço",
+    "covers_brazil": "sim",
+    "spatial_support": "marco geodésico pontual | documentação e observações GNSS",
+    "spatial_resolution": "pontual por marco; não se aplica como resolução raster",
+    "temporal_coverage": "serviço corrente; data depende de cada solicitação e levantamento",
+    "temporal_resolution": "por solicitação e sessão GNSS",
+    "update_frequency": "serviço operacional conforme demanda",
+    "product_status": "ativo",
+    "version_or_collection": "serviço corrente via gov.br",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico/16468-servico-homologar-marcos-geodesicos.html?lang=pt-BR",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico/16468-servico-homologar-marcos-geodesicos.html?lang=pt-BR",
+    "primary_or_derived": "serviço",
+    "limitations": "A homologação depende da qualidade e completude das observações GNSS, relatórios, fotografias e demais requisitos. Integração ao SGB ocorre após avaliação do IBGE; submissão não implica homologação automática.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0076",
+      "resource_name": "Serviços para Posicionamento Geodésico — IBGE",
+      "acronym": "Serviços de Posicionamento IBGE",
+      "official_identity": "Tema institucional de serviços e modelos para posicionamento geodésico do Sistema Geodésico Brasileiro — IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000157",
+        "product_id": "DP000141",
+        "distribution_name": "Homologação de marcos geodésicos — solicitação gov.br",
+        "access_url": "https://www.gov.br/pt-br/servicos/homologar-marcos-geodesicos",
+        "format": "formulário/serviço web | upload de observações GNSS e documentação",
+        "access_protocol": "HTTPS web",
+        "access_tool": "gov.br",
+        "free_download": "não",
+        "authentication_required": "sim",
+        "access_conditions": "solicitação requer identificação e envio dos arquivos e documentos definidos pelo serviço",
+        "license": "condições de uso do serviço público; licença de dados resultantes deve ser verificada no BDG/saída correspondente",
+        "provider_attribution_required": "não",
+        "subset_support": "por solicitação/marco",
+        "notes": "O serviço exige número de marcos, arquivos de observações GNSS, relatórios de descrição e ocupação, fotografias e termo de compromisso. O marco só integra o SGB após avaliação e homologação pelo IBGE.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "formulário/serviço web | upload de observações GNSS e documentação"
+    ],
+    "available_protocols": [
+      "HTTPS web"
+    ]
+  },
+  {
+    "product_id": "DP000142",
+    "resource_id": "DR0077",
+    "product_name": "Ortomosaicos — fotografias aéreas e imagens de satélite ortorretificadas",
+    "product_acronym": "Ortomosaicos IBGE",
+    "product_family": "Imagens Corrigidas — ortomosaicos",
+    "product_kind": "map_layer_collection",
+    "product_description": "Coleção de mosaicos de fotografias aéreas ou imagens de satélite ortorretificadas e realçadas para homogeneizar a aparência, disponibilizada pelo IBGE em projetos e recortes territoriais distintos.",
+    "research_areas": "Remote sensing | Cartography | Geospatial information science",
+    "keywords": "ortomosaico | ortofoto | ortorretificação | satélite | fotografia aérea | GeoTIFF | IBGE",
+    "geographic_coverage": "Brasil — cobertura parcial conforme projeto, estado e folha disponível",
+    "covers_brazil": "parcial",
+    "spatial_support": "célula raster | mosaico por folha ou projeto",
+    "spatial_resolution": "varia conforme projeto e sensor; exemplos oficiais incluem imagens de 10 m e recortes cartográficos 1:100.000",
+    "temporal_coverage": "aquisições e edições variáveis; acervo inclui projetos dos anos 2010",
+    "temporal_resolution": "por aquisição/mosaico",
+    "update_frequency": "irregular por projeto",
+    "product_status": "ativo",
+    "version_or_collection": "coleção histórica e corrente conforme diretórios de download",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10852-ortomosaicos.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10852-ortomosaicos.html",
+    "primary_or_derived": "derivado",
+    "limitations": "A coleção é heterogênea em sensor, data, resolução, cobertura e projeto. Ortomosaico não deve ser tratado como série temporal nacional homogênea; registrar folha/projeto, sensor, aquisição, resolução e edição usados.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0077",
+      "resource_name": "Imagens Corrigidas — IBGE",
+      "acronym": "Imagens Corrigidas IBGE",
+      "official_identity": "Tema institucional de Imagens Corrigidas da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10852-ortomosaicos.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000158",
+        "product_id": "DP000142",
+        "distribution_name": "Ortomosaicos — downloads IBGE",
+        "access_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10852-ortomosaicos.html",
+        "format": "GeoTIFF e outros formatos conforme projeto",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web / diretório de downloads IBGE",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público; selecionar projeto, folha ou recorte disponível",
+        "license": "licença específica do arquivo deve ser verificada no download/metadado; não inferida da página temática",
+        "provider_attribution_required": "sim",
+        "subset_support": "por projeto/folha/arquivo",
+        "notes": "Arquivos são organizados por projetos e recortes distintos. Exemplo oficial BC100 usa GeoTIFF; não generalizar esse formato, resolução ou data a toda a coleção.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "GeoTIFF e outros formatos conforme projeto"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000143",
+    "resource_id": "DR0077",
+    "product_name": "Cartas imagem — recortes do Mapeamento Topográfico Sistemático Terrestre",
+    "product_acronym": "Cartas Imagem IBGE",
+    "product_family": "Imagens Corrigidas — cartas imagem",
+    "product_kind": "map_layer_collection",
+    "product_description": "Representações cartográficas formadas por mosaicos de fotografias aéreas ou imagens de satélite ortorretificadas, acrescidas de nomes geográficos e informações marginais e recortadas segundo folhas do Mapeamento Topográfico Sistemático Terrestre.",
+    "research_areas": "Remote sensing | Cartography | Geospatial information science",
+    "keywords": "carta imagem | ortorretificação | folha topográfica | BC100 | AVNIR-2 | IBGE",
+    "geographic_coverage": "Brasil — cobertura parcial conforme folhas e projetos publicados",
+    "covers_brazil": "parcial",
+    "spatial_support": "folha cartográfica | mosaico de imagem | representação raster/PDF",
+    "spatial_resolution": "varia por edição; coleção inclui cartas 1:100.000 produzidas com imagens de 10 m em projetos BC100",
+    "temporal_coverage": "aquisições e edições variáveis; exemplos oficiais usam imagens 2006–2010 e divulgações posteriores",
+    "temporal_resolution": "por folha/edição",
+    "update_frequency": "irregular por projeto",
+    "product_status": "ativo",
+    "version_or_collection": "coleção por folhas; edições e escalas próprias",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10853-cartas-imagem.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10853-cartas-imagem.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Cartas imagem seguem recortes do mapeamento sistemático e não equivalem a folhas topográficas completas. Escala, sensor, aquisição, cobertura e atualização variam por folha/projeto e devem ser preservados.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0077",
+      "resource_name": "Imagens Corrigidas — IBGE",
+      "acronym": "Imagens Corrigidas IBGE",
+      "official_identity": "Tema institucional de Imagens Corrigidas da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10852-ortomosaicos.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000159",
+        "product_id": "DP000143",
+        "distribution_name": "Cartas imagem — downloads IBGE",
+        "access_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10853-cartas-imagem.html",
+        "format": "PDF | formatos adicionais conforme edição",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web / diretório de downloads IBGE",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público por edição, escala e folha disponível",
+        "license": "licença específica do arquivo deve ser verificada no download/metadado; não inferida da página temática",
+        "provider_attribution_required": "sim",
+        "subset_support": "por edição/folha",
+        "notes": "A página reúne edições e downloads por folha. Exemplos BC100 são PDF em 1:100.000, mas a coleção também contém outras edições; preservar escala e edição específicas.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "PDF | formatos adicionais conforme edição"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000144",
+    "resource_id": "DR0077",
+    "product_name": "Mapas imagem — recortes territoriais de interesse",
+    "product_acronym": "Mapas Imagem IBGE",
+    "product_family": "Imagens Corrigidas — mapas imagem",
+    "product_kind": "map_layer_collection",
+    "product_description": "Representações cartográficas constituídas por mosaicos de fotografias aéreas ou imagens de satélite ortorretificadas, com nomes geográficos e informações marginais, organizadas por recortes de interesse como municípios e bacias hidrográficas.",
+    "research_areas": "Remote sensing | Cartography | Geospatial information science | Territorial analysis",
+    "keywords": "mapa imagem | ortorretificação | município | bacia hidrográfica | mosaico | IBGE",
+    "geographic_coverage": "Brasil — recortes específicos conforme produto disponível",
+    "covers_brazil": "parcial",
+    "spatial_support": "recorte territorial de interesse | mosaico de imagem | mapa",
+    "spatial_resolution": "varia conforme produto e recorte; a página oficial exemplifica Mapa Imagem do Distrito Federal 1:100.000",
+    "temporal_coverage": "varia conforme produto e imagens de origem",
+    "temporal_resolution": "por produto/edição",
+    "update_frequency": "irregular",
+    "product_status": "ativo",
+    "version_or_collection": "coleção de mapas imagem por recortes específicos",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10854-mapas-imagem.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10854-mapas-imagem.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Mapas imagem seguem recortes de interesse e não o recorte sistemático das cartas imagem. Cobertura, escala, sensor e data variam; não generalizar o exemplo do Distrito Federal para toda a coleção.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0077",
+      "resource_name": "Imagens Corrigidas — IBGE",
+      "acronym": "Imagens Corrigidas IBGE",
+      "official_identity": "Tema institucional de Imagens Corrigidas da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10852-ortomosaicos.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000160",
+        "product_id": "DP000144",
+        "distribution_name": "Mapas imagem — downloads IBGE",
+        "access_url": "https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10854-mapas-imagem.html",
+        "format": "mapa digital | formatos conforme produto",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web / diretório de downloads IBGE",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público conforme recorte disponível",
+        "license": "licença específica do arquivo deve ser verificada no download/metadado; não inferida da página temática",
+        "provider_attribution_required": "sim",
+        "subset_support": "por produto/recorte",
+        "notes": "Os mapas imagem são organizados por recortes de interesse. Formato, escala e cobertura devem ser confirmados no item baixado; não inferir características de um exemplo para os demais.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "mapa digital | formatos conforme produto"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
   }
 ]
