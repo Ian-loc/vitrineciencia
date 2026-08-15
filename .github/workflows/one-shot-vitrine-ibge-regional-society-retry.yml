@@ -1,0 +1,56 @@
+name: One-shot Vitrine IBGE regional and society retry
+
+on:
+  push:
+    branches:
+      - agent/vitrine-ibge-regional-society-batch
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/vitrine-ibge-regional-society-batch
+          fetch-depth: 0
+      - name: Reuse validated materialization block
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('.github/workflows/one-shot-vitrine-ibge-regional-society.yml')
+          text = p.read_text(encoding='utf-8')
+          start_marker = "          python - <<'PY'\n"
+          end_marker = "          PY\n"
+          start = text.index(start_marker) + len(start_marker)
+          end = text.index(end_marker, start)
+          lines = text[start:end].splitlines()
+          code = '\n'.join(line[10:] if line.startswith('          ') else line for line in lines) + '\n'
+          Path('/tmp/materialize.py').write_text(code, encoding='utf-8')
+          PY
+          python /tmp/materialize.py
+      - name: Validate catalog
+        run: |
+          python scripts/validate_product_catalog.py
+          python scripts/validate_brazil_scope.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Commit all tracked material changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -u
+          git add data/data_products.csv data/product_distributions.csv
+          if git diff --cached --quiet; then
+            echo 'No material changes to commit'
+            exit 1
+          fi
+          git commit -m 'Expand verified IBGE regional and society catalog'
+          git push origin HEAD:agent/vitrine-ibge-regional-society-batch
