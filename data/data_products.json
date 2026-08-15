@@ -9423,5 +9423,300 @@
     "available_protocols": [
       "HTTP download | aplicação web"
     ]
+  },
+  {
+    "product_id": "DP000158",
+    "resource_id": "DR0081",
+    "product_name": "Logística dos Transportes — edição 2024",
+    "product_acronym": "Logística dos Transportes 2024",
+    "product_family": "Redes e Fluxos Geográficos — logística e fluxos de cargas",
+    "product_kind": "dataset",
+    "product_description": "Estudo do IBGE que integra bases de infraestrutura dos modais rodoviário, ferroviário, aquaviário, aéreo e dutoviário com fluxos de cargas para representar a logística brasileira e suas conexões territoriais.",
+    "research_areas": "Regional science | Territorial planning | Spatial networks | Socioeconomic networks",
+    "keywords": "logística | transportes | cargas | rodovias | ferrovias | portos | aeroportos | dutovias | IBGE",
+    "geographic_coverage": "Brasil; inclui fluxos de carga nacionais e conexões internacionais conforme base temática",
+    "covers_brazil": "sim",
+    "spatial_support": "infraestruturas de transporte | municípios | origens e destinos | fluxos em rede",
+    "spatial_resolution": "varia por modal e base de origem; não é uma superfície espacial homogênea",
+    "temporal_coverage": "edição de referência 2024; bases de infraestrutura e fluxos possuem anos próprios, incluindo registros de 2023 e 2024 conforme modal",
+    "temporal_resolution": "snapshot/edição com referências temporais próprias por base",
+    "update_frequency": "irregular; edição anterior cartográfica em 2014",
+    "product_status": "ativo",
+    "version_or_collection": "2024 — divulgado em 13/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/redes-geograficas/15793-logistica-dos-transportes.html?edicao=47536&t=acesso-ao-produto",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/redes-geograficas/15793-logistica-dos-transportes.html?edicao=47536&t=acesso-ao-produto",
+    "primary_or_derived": "derivado",
+    "limitations": "Integra registros administrativos e bases geográficas produzidos por instituições e anos distintos. Infraestrutura, fluxo de cargas e acessibilidade são objetos diferentes; preservar modal, fonte, ano, unidade e definição do fluxo. Não interpretar a edição como rede observacional homogênea ou em tempo real.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0081",
+      "resource_name": "Redes e Fluxos Geográficos — IBGE",
+      "acronym": "Redes e Fluxos IBGE",
+      "official_identity": "Tema institucional de Redes e Fluxos Geográficos da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000176",
+        "product_id": "DP000158",
+        "distribution_name": "Logística dos Transportes 2024 — dados, mapas e PGI",
+        "access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/redes-geograficas/15793-logistica-dos-transportes.html?edicao=47536&t=acesso-ao-produto",
+        "format": "dados tabulares e geoespaciais em formatos disponibilizados pela edição | PDF | aplicação PGI",
+        "access_protocol": "HTTP download | aplicação web",
+        "access_tool": "navegador web | SIG | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e downloads públicos conforme base/modal na página oficial e PGI",
+        "license": "licença específica dos arquivos não inferida; verificar termos do IBGE e metadados de cada base",
+        "provider_attribution_required": "sim",
+        "subset_support": "por modal | produto/fluxo | origem | destino | mapa temático",
+        "notes": "A edição 2024 reúne infraestrutura e fluxos de cargas de múltiplas fontes e produziu 32 mapas temáticos; preservar modal, fonte, ano e definição do arquivo efetivamente utilizado.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "dados tabulares e geoespaciais em formatos disponibilizados pela edição | PDF | aplicação PGI"
+    ],
+    "available_protocols": [
+      "HTTP download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000159",
+    "resource_id": "DR0081",
+    "product_name": "Gestão do Território — edição 2024",
+    "product_acronym": "Gestão do Território 2024",
+    "product_family": "Redes e Fluxos Geográficos — centralidade e fluxos de gestão",
+    "product_kind": "dataset",
+    "product_description": "Estudo nacional que identifica Centros de Gestão e relações de comando da rede urbana a partir da presença e articulação territorial de instituições públicas selecionadas e empresas multilocalizadas.",
+    "research_areas": "Urban geography | Regional science | Territorial planning | Socioeconomic networks",
+    "keywords": "gestão do território | centralidade | gestão pública | gestão empresarial | fluxos de comando | municípios | IBGE",
+    "geographic_coverage": "Brasil — universo das 5.570 municipalidades da divisão político-administrativa vigente em 2024",
+    "covers_brazil": "sim",
+    "spatial_support": "municípios | pares de municípios | centros de gestão | ligações em rede",
+    "spatial_resolution": "municipal e relações entre pares; não é superfície contínua",
+    "temporal_coverage": "ano de referência 2024; publicação em 2025",
+    "temporal_resolution": "edição/levantamento",
+    "update_frequency": "irregular; edição anterior em 2014",
+    "product_status": "ativo",
+    "version_or_collection": "2024",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/15795-gestao-do-territorio.html?lang=pt-BR",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/15795-gestao-do-territorio.html?lang=pt-BR",
+    "primary_or_derived": "derivado",
+    "limitations": "Centralidade de gestão é uma dimensão analítica específica e apenas um dos insumos usados pela REGIC; não equivale à hierarquia urbana da REGIC. Os fluxos refletem o universo de instituições públicas selecionadas e empresas multilocalizadas definido na metodologia e o quadro municipal de 2024.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0081",
+      "resource_name": "Redes e Fluxos Geográficos — IBGE",
+      "acronym": "Redes e Fluxos IBGE",
+      "official_identity": "Tema institucional de Redes e Fluxos Geográficos da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000177",
+        "product_id": "DP000159",
+        "distribution_name": "Gestão do Território 2024 — bases, notas técnicas e PGI",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/15795-gestao-do-territorio.html?lang=pt-BR",
+        "format": "XLSX | ODS | PDF | aplicação PGI",
+        "access_protocol": "HTTP download | aplicação web",
+        "access_tool": "navegador web | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos na página oficial",
+        "license": "licença específica dos arquivos não inferida; verificar termos do IBGE e metadados do produto",
+        "provider_attribution_required": "sim",
+        "subset_support": "por município | par de municípios | tabela/base",
+        "notes": "A página oficial oferece duas bases distintas: ligações de gestão entre pares de municípios e dados de gestão por município, além de notas técnicas e mapa interativo.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | PDF | aplicação PGI"
+    ],
+    "available_protocols": [
+      "HTTP download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000160",
+    "resource_id": "DR0081",
+    "product_name": "Ligações Aéreas — 2019–2020",
+    "product_acronym": "Ligações Aéreas 2019–2020",
+    "product_family": "Redes e Fluxos Geográficos — transporte aéreo",
+    "product_kind": "dataset",
+    "product_description": "Estudo do IBGE sobre fluxos de passageiros e cargas, estrutura da rede aérea, acessibilidades e acesso regional a aeroportos com serviço regular, comparando os anos de 2019 e 2020.",
+    "research_areas": "Urban geography | Regional science | Territorial planning | Spatial networks",
+    "keywords": "ligações aéreas | passageiros | cargas | aeroportos | acessibilidade | origem-destino | rede aérea | IBGE",
+    "geographic_coverage": "Brasil — cidades e aeroportos com relações nacionais e conexões pertinentes às bases do estudo",
+    "covers_brazil": "sim",
+    "spatial_support": "cidades | pares de cidades | aeroportos | trechos de voo | fluxos em rede",
+    "spatial_resolution": "cidade, aeroporto e ligação; não é grade espacial contínua",
+    "temporal_coverage": "2019–2020; publicação em 2021",
+    "temporal_resolution": "anual para os dois anos de referência e por ligação/base",
+    "update_frequency": "irregular; edição anterior referida a 2010",
+    "product_status": "ativo",
+    "version_or_collection": "2019–2020",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/15797-ligacoes-aereas.html?edicao=32508&t=acesso-ao-produto",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/15797-ligacoes-aereas.html?edicao=32508&t=acesso-ao-produto",
+    "primary_or_derived": "derivado",
+    "limitations": "As bases distinguem movimentação aérea, estrutura da rede, acessibilidades e acesso aos aeroportos. O ano de 2020 foi fortemente afetado pela pandemia de Covid-19; diferenças 2019–2020 não devem ser projetadas como tendência estrutural nem tratadas como rede aérea atual.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0081",
+      "resource_name": "Redes e Fluxos Geográficos — IBGE",
+      "acronym": "Redes e Fluxos IBGE",
+      "official_identity": "Tema institucional de Redes e Fluxos Geográficos da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000178",
+        "product_id": "DP000160",
+        "distribution_name": "Ligações Aéreas 2019–2020 — bases e PGI",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/15797-ligacoes-aereas.html?edicao=32508&t=acesso-ao-produto",
+        "format": "XLSX | ODS | PDF | aplicação PGI",
+        "access_protocol": "HTTP download | aplicação web",
+        "access_tool": "navegador web | planilha | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos na página oficial",
+        "license": "licença específica dos arquivos não inferida; verificar termos do IBGE e metadados do produto",
+        "provider_attribution_required": "sim",
+        "subset_support": "por base | cidade | ligação | aeroporto | acessibilidade",
+        "notes": "As bases oficiais separam movimentação por cidades e ligações, rede/acessibilidades e acesso aos aeroportos. Preservar 2019 e 2020 separadamente quando a variável permitir.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | PDF | aplicação PGI"
+    ],
+    "available_protocols": [
+      "HTTP download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000161",
+    "resource_id": "DR0081",
+    "product_name": "Ligações Rodoviárias e Hidroviárias — 2016",
+    "product_acronym": "Ligações Rodoviárias e Hidroviárias 2016",
+    "product_family": "Redes e Fluxos Geográficos — transporte interurbano de passageiros",
+    "product_kind": "dataset",
+    "product_description": "Levantamento primário nacional do IBGE sobre oferta de transporte público coletivo interurbano rodoviário e hidroviário entre aglomerações urbanas, caracterizando frequência, tipo de veículo, tempo e preço das ligações.",
+    "research_areas": "Urban geography | Regional science | Territorial planning | Spatial networks",
+    "keywords": "ligações rodoviárias | ligações hidroviárias | transporte interurbano | passageiros | frequência | acessibilidade | IBGE",
+    "geographic_coverage": "Brasil — levantamento em todo o conjunto dos municípios; inclui ligações nacionais e internacionais documentadas",
+    "covers_brazil": "sim",
+    "spatial_support": "pares de aglomerações urbanas | sedes municipais | arranjos populacionais | ligações em rede",
+    "spatial_resolution": "par de localidades/aglomerações urbanas; não representa geometria da infraestrutura viária",
+    "temporal_coverage": "levantamento de referência 2016; publicação em 2017",
+    "temporal_resolution": "levantamento/ligação",
+    "update_frequency": "irregular",
+    "product_status": "ativo",
+    "version_or_collection": "2016",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/15794-rodoviarias-e-hidroviarias.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/15794-rodoviarias-e-hidroviarias.html",
+    "primary_or_derived": "primário",
+    "limitations": "A pesquisa mede oferta de transporte interurbano de passageiros e não contém a rede física de estradas do País. As ligações são pares de localidades; frequência, custo e tempo são atributos da ligação, com custo e tempo parametrizados pelos mínimos observados entre as opções levantadas.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0081",
+      "resource_name": "Redes e Fluxos Geográficos — IBGE",
+      "acronym": "Redes e Fluxos IBGE",
+      "official_identity": "Tema institucional de Redes e Fluxos Geográficos da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000179",
+        "product_id": "DP000161",
+        "distribution_name": "Ligações Rodoviárias e Hidroviárias 2016 — base, publicação e aplicativo",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/15794-rodoviarias-e-hidroviarias.html",
+        "format": "base de dados | tabelas | PDF | aplicação web; formatos conforme arquivos oficiais",
+        "access_protocol": "HTTP download | aplicação web",
+        "access_tool": "navegador web | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads e aplicativo públicos na página oficial",
+        "license": "licença específica dos arquivos não inferida; verificar termos do IBGE e metadados do produto",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ligação/par de localidades e atributos do levantamento",
+        "notes": "O levantamento cobre transporte público coletivo interurbano de passageiros; não confundir seus pares de ligações com a geometria da rede de rodovias ou hidrovias.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "base de dados | tabelas | PDF | aplicação web; formatos conforme arquivos oficiais"
+    ],
+    "available_protocols": [
+      "HTTP download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000162",
+    "resource_id": "DR0081",
+    "product_name": "Logística de Energia — edição 2015",
+    "product_acronym": "Logística de Energia 2015",
+    "product_family": "Redes e Fluxos Geográficos — sistemas de energia",
+    "product_kind": "dataset",
+    "product_description": "Estudo territorial que integra informações sobre produção, circulação, armazenamento, distribuição e consumo de petróleo, gás, biocombustíveis e energia elétrica, com bases municipais, dados não padronizados e mapa de síntese.",
+    "research_areas": "Regional science | Territorial planning | Spatial networks | Socioeconomic networks",
+    "keywords": "logística de energia | petróleo | gás natural | biocombustíveis | eletricidade | infraestrutura | municípios | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "municípios | infraestruturas pontuais e lineares | pares de municípios | sistemas energéticos",
+    "spatial_resolution": "varia por base; mapa mural de síntese em 1:5.000.000",
+    "temporal_coverage": "edição 2015 publicada em 2016; anos de referência variam entre fontes; base municipal corrigida em 31/10/2019",
+    "temporal_resolution": "snapshot/edição com referências próprias por variável",
+    "update_frequency": "irregular",
+    "product_status": "ativo",
+    "version_or_collection": "2015 — arquivos municipais corrigidos em 31/10/2019",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/redes-geograficas/15792-logistica-de-energia.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/redes-geograficas/15792-logistica-de-energia.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Integra fontes externas e do IBGE com objetos, datas e escalas distintas. A base municipal publicada originalmente omitia Porto Rico do Maranhão e foi substituída em 31/10/2019; usar os arquivos corrigidos. Não tratar infraestrutura, produção, circulação e consumo como uma única variável homogênea.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0081",
+      "resource_name": "Redes e Fluxos Geográficos — IBGE",
+      "acronym": "Redes e Fluxos IBGE",
+      "official_identity": "Tema institucional de Redes e Fluxos Geográficos da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000180",
+        "product_id": "DP000162",
+        "distribution_name": "Logística de Energia 2015 — bases municipais e não padronizadas corrigidas",
+        "access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/redes-geograficas/15792-logistica-de-energia.html",
+        "format": "XLS | ODS | mapa | publicação",
+        "access_protocol": "HTTP download | aplicação web",
+        "access_tool": "navegador web | planilha | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos na página oficial",
+        "license": "licença específica dos arquivos não inferida; verificar termos do IBGE e metadados do produto",
+        "provider_attribution_required": "sim",
+        "subset_support": "por município | infraestrutura/registro não municipal | ligação entre pares de municípios",
+        "notes": "Usar os arquivos municipais substituídos em 31/10/2019, que corrigem a omissão de Porto Rico do Maranhão. A base não padronizada contém objetos não atribuíveis a um único município e ligações entre pares.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS | mapa | publicação"
+    ],
+    "available_protocols": [
+      "HTTP download | aplicação web"
+    ]
   }
 ]
