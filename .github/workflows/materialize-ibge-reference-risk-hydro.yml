@@ -13,7 +13,9 @@ jobs:
           ref: audit/ibge-reference-risk-hydro-batch-20260815
           fetch-depth: 0
       - name: Materializar lote
-        run: python3 scripts/materialize_ibge_reference_risk_hydro_batch.py
+        run: |
+          python3 scripts/materialize_ibge_reference_risk_hydro_batch.py
+          python3 scripts/normalize_ibge_batch_line_endings.py
       - name: Validar catálogo
         run: |
           python3 scripts/validate_brazil_scope.py
