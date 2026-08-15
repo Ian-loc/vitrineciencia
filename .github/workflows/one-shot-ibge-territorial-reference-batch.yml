@@ -49,3 +49,5 @@ jobs:
           fi
           git commit -m "Materialize IBGE territorial reference batch"
           git push origin HEAD:agent/ibge-territorial-reference-batch-20260815
+
+# one-shot trigger: 2026-08-15
