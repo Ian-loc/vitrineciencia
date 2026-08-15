@@ -1,0 +1,75 @@
+name: Retry Vitrine territorial audit batch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/retry-vitrine-territorial-batch-2026-08-15.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reuse verified batch payload
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text=Path('.github/workflows/bootstrap-vitrine-territorial-batch-2026-08-15.yml').read_text()
+          marker="          python - <<'PY'\n"
+          start=text.index(marker)+len(marker)
+          end=text.index("\n          PY", start)
+          payload='\n'.join(line[10:] if line.startswith('          ') else line for line in text[start:end].splitlines())
+          Path('/tmp/materialize.py').write_text(payload)
+          PY
+          python /tmp/materialize.py
+      - name: Validate rebuild and regenerate audits
+        run: |
+          python scripts/validate_product_catalog.py
+          python scripts/validate_brazil_scope.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/audit_link_roles.py
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Consolidated relational read-back
+        run: |
+          python - <<'PY'
+          import csv,json
+          from pathlib import Path
+          def read(p):
+              with Path(p).open(encoding='utf-8-sig',newline='') as f:return list(csv.DictReader(f))
+          src=read('data/data_resources.csv'); ps=read('data/data_products.csv'); ds=read('data/product_distributions.csv')
+          assert (len(src),len(ps),len(ds))==(80,152,170)
+          sids={r['resource_id'] for r in src}; pids={r['product_id'] for r in ps}; dids={r['distribution_id'] for r in ds}
+          assert len(sids)==80 and len(pids)==152 and len(dids)==170
+          assert all(r['resource_id'] in sids for r in ps)
+          assert all(r['product_id'] in pids for r in ds)
+          for pid in ('DP000149','DP000150','DP000151','DP000152'):
+              assert sum(p['product_id']==pid for p in ps)==1
+              assert sum(d['product_id']==pid for d in ds)==1
+          reg=json.loads(Path('data/brazil_scope_priorities.json').read_text())
+          p0=next(t for t in reg['tiers'] if t['priority_tier']=='P0')
+          assert 'DR0080' in p0['resource_ids'] and len(p0['resource_ids'])==46
+          print('OK sources=80 products=152 distributions=170 P0=46')
+          PY
+      - name: Commit data and remove one-shot helpers
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm .github/workflows/bootstrap-vitrine-territorial-batch-2026-08-15.yml .github/workflows/retry-vitrine-territorial-batch-2026-08-15.yml
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json data/data_products.json data/data_quality_report.json data/link_role_audit.json .github/workflows/bootstrap-vitrine-territorial-batch-2026-08-15.yml .github/workflows/retry-vitrine-territorial-batch-2026-08-15.yml
+          git diff --cached --check
+          git commit -m 'Expand IBGE census and municipal cartography catalog'
+          git push origin HEAD:main
