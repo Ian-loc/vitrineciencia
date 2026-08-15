@@ -1,0 +1,99 @@
+name: Materialize IBGE imagery batch 2026-08-15
+
+on:
+  push:
+    branches:
+      - agent/vitrine-ibge-imagery-2026-08-15
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Create validation branch
+        run: git checkout -b agent/vitrine-ibge-imagery-materialized-2026-08-15
+      - name: Append verified source, products and distributions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+
+          source = ['DR0077', 'Imagens Corrigidas — IBGE', 'Imagens Corrigidas IBGE', 'Tema institucional de Imagens Corrigidas da Diretoria de Geociências do IBGE', 'Família de produtos de imagem do território corrigidos geometricamente, incluindo ortomosaicos, cartas imagem e mapas imagem produzidos a partir de fotografias aéreas ou imagens de satélite.', 'https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas.html', 'https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10852-ortomosaicos.html', 'Sensoriamento Remoto e Geoinformação | Planejamento Territorial e Políticas Públicas', 'ortomosaicos | cartas imagem | mapas imagem | ortorretificação | imagens de satélite | fotografias aéreas | IBGE', 'imagens ortorretificadas | ortomosaicos | cartas imagem | mapas imagem', 'GeoTIFF | PDF | formatos variáveis conforme produto', 'imagens raster | mapas derivados | arquivos para SIG', 'Brasil — cobertura parcial e heterogênea conforme projeto, estado, folha ou recorte', 'sim', 'varia conforme produto, projeto e sensor; exemplos oficiais incluem 10 m e escalas cartográficas 1:100.000', 'varia conforme aquisição e edição; acervos históricos e projetos regionais', 'por aquisição, folha, mosaico ou edição', 'fotografias aéreas | imagens de satélite | ortorretificação | cartografia de referência', 'sim', 'downloads públicos conforme produto e diretório geográfico', 'não', 'HTTPS download | página web', 'não', 'https://www.ibge.gov.br/geociencias/downloads-geociencias.html', 'licença específica dos arquivos deve ser verificada por produto; arquivos disponibilizados publicamente pelo IBGE', 'público', 'IBGE — Diretoria de Geociências', 'Cartografia, sensoriamento remoto, SIG, interpretação territorial, apoio a mapeamento e análises ambientais.', 'A família reúne produtos de diferentes épocas, sensores, resoluções, escalas e coberturas; não tratá-los como mosaico nacional homogêneo nem como série temporal comparável sem harmonização.', 'documentação técnica oficial', 'https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10852-ortomosaicos.html', 'A documentação oficial distingue ortomosaicos, cartas imagem e mapas imagem e disponibiliza arquivos por projetos e recortes próprios.', 'https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10852-ortomosaicos.html', '2026-08-15']
+          products = [
+            ['DP000141','DR0076','Homologar marcos geodésicos — serviço de integração ao SGB','Homologação de Marcos','Serviços para Posicionamento Geodésico — homologação de estações','data_service','Serviço do IBGE para avaliar levantamentos GNSS de marcos implantados por terceiros, determinar coordenadas precisas e, quando homologados, integrar os marcos ao Sistema Geodésico Brasileiro e ao Banco de Dados Geodésicos.','Geodesy | GNSS | Surveying | Geospatial information science','homologação | marco geodésico | GNSS | SGB | BDG | coordenadas | IBGE','Brasil; marcos submetidos conforme requisitos do serviço','sim','marco geodésico pontual | documentação e observações GNSS','pontual por marco; não se aplica como resolução raster','serviço corrente; data depende de cada solicitação e levantamento','por solicitação e sessão GNSS','serviço operacional conforme demanda','ativo','serviço corrente via gov.br','complete','https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico/16468-servico-homologar-marcos-geodesicos.html?lang=pt-BR','https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico/16468-servico-homologar-marcos-geodesicos.html?lang=pt-BR','serviço','A homologação depende da qualidade e completude das observações GNSS, relatórios, fotografias e demais requisitos. Integração ao SGB ocorre após avaliação do IBGE; submissão não implica homologação automática.','2026-08-15'],
+            ['DP000142','DR0077','Ortomosaicos — fotografias aéreas e imagens de satélite ortorretificadas','Ortomosaicos IBGE','Imagens Corrigidas — ortomosaicos','map_layer_collection','Coleção de mosaicos de fotografias aéreas ou imagens de satélite ortorretificadas e realçadas para homogeneizar a aparência, disponibilizada pelo IBGE em projetos e recortes territoriais distintos.','Remote sensing | Cartography | Geospatial information science','ortomosaico | ortofoto | ortorretificação | satélite | fotografia aérea | GeoTIFF | IBGE','Brasil — cobertura parcial conforme projeto, estado e folha disponível','parcial','célula raster | mosaico por folha ou projeto','varia conforme projeto e sensor; exemplos oficiais incluem imagens de 10 m e recortes cartográficos 1:100.000','aquisições e edições variáveis; acervo inclui projetos dos anos 2010','por aquisição/mosaico','irregular por projeto','ativo','coleção histórica e corrente conforme diretórios de download','family_level','https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10852-ortomosaicos.html','https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10852-ortomosaicos.html','derivado','A coleção é heterogênea em sensor, data, resolução, cobertura e projeto. Ortomosaico não deve ser tratado como série temporal nacional homogênea; registrar folha/projeto, sensor, aquisição, resolução e edição usados.','2026-08-15'],
+            ['DP000143','DR0077','Cartas imagem — recortes do Mapeamento Topográfico Sistemático Terrestre','Cartas Imagem IBGE','Imagens Corrigidas — cartas imagem','map_layer_collection','Representações cartográficas formadas por mosaicos de fotografias aéreas ou imagens de satélite ortorretificadas, acrescidas de nomes geográficos e informações marginais e recortadas segundo folhas do Mapeamento Topográfico Sistemático Terrestre.','Remote sensing | Cartography | Geospatial information science','carta imagem | ortorretificação | folha topográfica | BC100 | AVNIR-2 | IBGE','Brasil — cobertura parcial conforme folhas e projetos publicados','parcial','folha cartográfica | mosaico de imagem | representação raster/PDF','varia por edição; coleção inclui cartas 1:100.000 produzidas com imagens de 10 m em projetos BC100','aquisições e edições variáveis; exemplos oficiais usam imagens 2006–2010 e divulgações posteriores','por folha/edição','irregular por projeto','ativo','coleção por folhas; edições e escalas próprias','family_level','https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10853-cartas-imagem.html','https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10853-cartas-imagem.html','derivado','Cartas imagem seguem recortes do mapeamento sistemático e não equivalem a folhas topográficas completas. Escala, sensor, aquisição, cobertura e atualização variam por folha/projeto e devem ser preservados.','2026-08-15'],
+            ['DP000144','DR0077','Mapas imagem — recortes territoriais de interesse','Mapas Imagem IBGE','Imagens Corrigidas — mapas imagem','map_layer_collection','Representações cartográficas constituídas por mosaicos de fotografias aéreas ou imagens de satélite ortorretificadas, com nomes geográficos e informações marginais, organizadas por recortes de interesse como municípios e bacias hidrográficas.','Remote sensing | Cartography | Geospatial information science | Territorial analysis','mapa imagem | ortorretificação | município | bacia hidrográfica | mosaico | IBGE','Brasil — recortes específicos conforme produto disponível','parcial','recorte territorial de interesse | mosaico de imagem | mapa','varia conforme produto e recorte; a página oficial exemplifica Mapa Imagem do Distrito Federal 1:100.000','varia conforme produto e imagens de origem','por produto/edição','irregular','ativo','coleção de mapas imagem por recortes específicos','family_level','https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10854-mapas-imagem.html','https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10854-mapas-imagem.html','derivado','Mapas imagem seguem recortes de interesse e não o recorte sistemático das cartas imagem. Cobertura, escala, sensor e data variam; não generalizar o exemplo do Distrito Federal para toda a coleção.','2026-08-15']
+          ]
+          distributions = [
+            ['DD000157','DP000141','Homologação de marcos geodésicos — solicitação gov.br','https://www.gov.br/pt-br/servicos/homologar-marcos-geodesicos','formulário/serviço web | upload de observações GNSS e documentação','HTTPS web','gov.br','não','sim','solicitação requer identificação e envio dos arquivos e documentos definidos pelo serviço','condições de uso do serviço público; licença de dados resultantes deve ser verificada no BDG/saída correspondente','não','por solicitação/marco','O serviço exige número de marcos, arquivos de observações GNSS, relatórios de descrição e ocupação, fotografias e termo de compromisso. O marco só integra o SGB após avaliação e homologação pelo IBGE.','2026-08-15'],
+            ['DD000158','DP000142','Ortomosaicos — downloads IBGE','https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10852-ortomosaicos.html','GeoTIFF e outros formatos conforme projeto','HTTPS download','navegador web / diretório de downloads IBGE','sim','não','download público; selecionar projeto, folha ou recorte disponível','licença específica do arquivo deve ser verificada no download/metadado; não inferida da página temática','sim','por projeto/folha/arquivo','Arquivos são organizados por projetos e recortes distintos. Exemplo oficial BC100 usa GeoTIFF; não generalizar esse formato, resolução ou data a toda a coleção.','2026-08-15'],
+            ['DD000159','DP000143','Cartas imagem — downloads IBGE','https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10853-cartas-imagem.html','PDF | formatos adicionais conforme edição','HTTPS download','navegador web / diretório de downloads IBGE','sim','não','download público por edição, escala e folha disponível','licença específica do arquivo deve ser verificada no download/metadado; não inferida da página temática','sim','por edição/folha','A página reúne edições e downloads por folha. Exemplos BC100 são PDF em 1:100.000, mas a coleção também contém outras edições; preservar escala e edição específicas.','2026-08-15'],
+            ['DD000160','DP000144','Mapas imagem — downloads IBGE','https://www.ibge.gov.br/geociencias/imagens-do-territorio/imagens-corrigidas/10854-mapas-imagem.html','mapa digital | formatos conforme produto','HTTPS download','navegador web / diretório de downloads IBGE','sim','não','download público conforme recorte disponível','licença específica do arquivo deve ser verificada no download/metadado; não inferida da página temática','sim','por produto/recorte','Os mapas imagem são organizados por recortes de interesse. Formato, escala e cobertura devem ser confirmados no item baixado; não inferir características de um exemplo para os demais.','2026-08-15']
+          ]
+
+          src_path=Path('data/data_resources.csv')
+          prod_path=Path('data/data_products.csv')
+          dist_path=Path('data/product_distributions.csv')
+          prio_path=Path('data/brazil_scope_priorities.json')
+
+          def ids(path,key):
+              with path.open(encoding='utf-8-sig', newline='') as f:
+                  return {r[key] for r in csv.DictReader(f)}
+
+          sids=ids(src_path,'resource_id'); pids=ids(prod_path,'product_id'); dids=ids(dist_path,'distribution_id')
+          assert source[0] not in sids, f"source exists: {source[0]}"
+          assert not any(r[0] in pids for r in products), 'product id collision'
+          assert not any(r[0] in dids for r in distributions), 'distribution id collision'
+
+          with src_path.open('a',encoding='utf-8',newline='') as f:
+              csv.writer(f,lineterminator='\n').writerow(source)
+          with prod_path.open('a',encoding='utf-8',newline='') as f:
+              csv.writer(f,lineterminator='\n').writerows(products)
+          with dist_path.open('a',encoding='utf-8',newline='') as f:
+              csv.writer(f,lineterminator='\n').writerows(distributions)
+
+          reg=json.loads(prio_path.read_text(encoding='utf-8'))
+          p0=next(t for t in reg['tiers'] if t['priority_tier']=='P0')
+          assert source[0] not in p0['resource_ids']
+          p0['resource_ids'].append(source[0])
+          reg['reviewed_at']='2026-08-15'
+          prio_path.write_text(json.dumps(reg,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          sids=ids(src_path,'resource_id'); pids=ids(prod_path,'product_id')
+          with dist_path.open(encoding='utf-8-sig',newline='') as f:
+              ds=list(csv.DictReader(f))
+          for pid in [r[0] for r in products]:
+              assert pid in pids and sum(x['product_id']==pid for x in ds)>=1
+          assert source[0] in sids
+          print(f'sources={len(sids)} products={len(pids)} distributions={len(ds)}')
+          PY
+      - name: Validate and rebuild catalog
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/audit_link_roles.py
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Commit validated materialization
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/brazil_scope_priorities.json data/data_resources.csv data/data_products.csv data/product_distributions.csv data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          git diff --cached --check
+          git commit -m 'Expand IBGE imagery and geodetic services catalog'
+          git push origin HEAD:agent/vitrine-ibge-imagery-materialized-2026-08-15
