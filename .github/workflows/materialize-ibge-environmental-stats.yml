@@ -91,7 +91,7 @@ jobs:
           PY
 
       - name: Remove one-shot helpers
-        run: git rm scripts/materialize_ibge_environmental_stats_batch.py .github/workflows/materialize-ibge-environmental-stats.yml
+        run: git rm -f scripts/materialize_ibge_environmental_stats_batch.py .github/workflows/materialize-ibge-environmental-stats.yml
 
       - name: Commit materialized batch
         run: |
