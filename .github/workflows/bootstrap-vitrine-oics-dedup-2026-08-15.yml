@@ -1,0 +1,156 @@
+name: One-shot Vitrine OICS deduplication audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bootstrap-vitrine-oics-dedup-2026-08-15.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Remove duplicate OICS products and distributions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          resources_path = Path('data/data_resources.csv')
+          products_path = Path('data/data_products.csv')
+          distributions_path = Path('data/product_distributions.csv')
+
+          def rows(path):
+              with path.open(encoding='utf-8-sig', newline='') as f:
+                  return list(csv.DictReader(f))
+
+          resources = rows(resources_path)
+          products = rows(products_path)
+          distributions = rows(distributions_path)
+          assert (len(resources), len(products), len(distributions)) == (80, 152, 170), (len(resources), len(products), len(distributions))
+
+          p = {r['product_id']: r for r in products}
+          d = {r['distribution_id']: r for r in distributions}
+
+          pairs = [
+              ('DP000022', 'DP000070', 'https://oics.cgee.org.br/solucoes-e-casos/solucoes'),
+              ('DP000023', 'DP000071', 'https://oics.cgee.org.br/solucoes-e-casos/casos'),
+              ('DP000024', 'DP000072', 'https://oics.cgee.org.br/mapa-interativo'),
+          ]
+          for keep, remove, url in pairs:
+              assert keep in p and remove in p
+              assert p[keep]['resource_id'] == p[remove]['resource_id'] == 'DR0055'
+              assert p[keep]['product_page_url'] == p[remove]['product_page_url'] == url
+
+          dist_pairs = [
+              ('DD000030', 'DD000086', 'DP000022', 'DP000070', 'https://oics.cgee.org.br/solucoes-e-casos/solucoes'),
+              ('DD000031', 'DD000087', 'DP000023', 'DP000071', 'https://oics.cgee.org.br/solucoes-e-casos/casos'),
+              ('DD000032', 'DD000088', 'DP000024', 'DP000072', 'https://oics.cgee.org.br/mapa-interativo'),
+          ]
+          for keep, remove, keep_product, remove_product, url in dist_pairs:
+              assert keep in d and remove in d
+              assert d[keep]['product_id'] == keep_product
+              assert d[remove]['product_id'] == remove_product
+              assert d[keep]['access_url'] == d[remove]['access_url'] == url
+
+          def remove_records_raw(path, prefixes):
+              text = path.read_text(encoding='utf-8')
+              lines = text.splitlines(keepends=True)
+              removed = []
+              kept = []
+              for line in lines:
+                  if any(line.startswith(prefix + ',') for prefix in prefixes):
+                      removed.append(line)
+                  else:
+                      kept.append(line)
+              assert len(removed) == len(prefixes), (path, len(removed), prefixes)
+              path.write_text(''.join(kept), encoding='utf-8')
+
+          remove_records_raw(products_path, {'DP000070', 'DP000071', 'DP000072'})
+          remove_records_raw(distributions_path, {'DD000086', 'DD000087', 'DD000088'})
+
+          products2 = rows(products_path)
+          distributions2 = rows(distributions_path)
+          assert len(products2) == 149
+          assert len(distributions2) == 167
+
+          product_ids = [r['product_id'] for r in products2]
+          distribution_ids = [r['distribution_id'] for r in distributions2]
+          resource_ids = {r['resource_id'] for r in resources}
+          assert len(product_ids) == len(set(product_ids))
+          assert len(distribution_ids) == len(set(distribution_ids))
+          assert {'DP000070', 'DP000071', 'DP000072'}.isdisjoint(product_ids)
+          assert {'DD000086', 'DD000087', 'DD000088'}.isdisjoint(distribution_ids)
+          assert all(r['resource_id'] in resource_ids for r in products2)
+          product_id_set = set(product_ids)
+          assert all(r['product_id'] in product_id_set for r in distributions2)
+
+          # Canonical OICS entities must now occur once each at the product/access-URL level.
+          expected = {
+              'https://oics.cgee.org.br/solucoes-e-casos/solucoes': 'DP000022',
+              'https://oics.cgee.org.br/solucoes-e-casos/casos': 'DP000023',
+              'https://oics.cgee.org.br/mapa-interativo': 'DP000024',
+          }
+          for url, pid in expected.items():
+              matches = [r for r in products2 if r['resource_id'] == 'DR0055' and r['product_page_url'] == url]
+              assert len(matches) == 1 and matches[0]['product_id'] == pid, (url, matches)
+          PY
+
+      - name: Validate canonical catalog and rebuild derived artifacts
+        shell: bash
+        run: |
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          git diff --check
+
+      - name: Consolidated read-back
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          def rows(path):
+              with Path(path).open(encoding='utf-8-sig', newline='') as f:
+                  return list(csv.DictReader(f))
+
+          resources = rows('data/data_resources.csv')
+          products = rows('data/data_products.csv')
+          distributions = rows('data/product_distributions.csv')
+          assert (len(resources), len(products), len(distributions)) == (80, 149, 167)
+
+          resource_ids = {r['resource_id'] for r in resources}
+          product_ids = {r['product_id'] for r in products}
+          assert len(product_ids) == len(products)
+          assert len({r['distribution_id'] for r in distributions}) == len(distributions)
+          assert all(r['resource_id'] in resource_ids for r in products)
+          assert all(r['product_id'] in product_ids for r in distributions)
+          assert not ({'DP000070','DP000071','DP000072'} & product_ids)
+          assert not ({'DD000086','DD000087','DD000088'} & {r['distribution_id'] for r in distributions})
+          print('READBACK_OK resources=80 products=149 distributions=167')
+          PY
+
+      - name: Commit materialized correction and remove one-shot workflow
+        shell: bash
+        run: |
+          rm -f .github/workflows/bootstrap-vitrine-oics-dedup-2026-08-15.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --check
+          git commit -m 'Deduplicate OICS catalog products'
+          git push origin main
