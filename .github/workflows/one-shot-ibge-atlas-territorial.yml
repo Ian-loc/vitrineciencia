@@ -1,0 +1,132 @@
+name: One-shot IBGE atlas territorial batch
+
+on:
+  push:
+    branches: ["audit/ibge-atlas-territorial-20260816"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/ibge-atlas-territorial-20260816
+          fetch-depth: 0
+
+      - name: Append verified IBGE records
+        shell: python
+        run: |
+          import csv, json
+          from pathlib import Path
+
+          root = Path('.')
+          verified = '2026-08-16'
+
+          def append_dicts(path, rows, key):
+              with path.open(encoding='utf-8-sig', newline='') as f:
+                  reader = csv.DictReader(f)
+                  fields = reader.fieldnames
+                  existing = list(reader)
+              existing_ids = {r[key] for r in existing}
+              collisions = existing_ids.intersection(r[key] for r in rows)
+              if collisions:
+                  raise SystemExit(f'ID collision in {path}: {sorted(collisions)}')
+              with path.open('a', encoding='utf-8', newline='') as f:
+                  writer = csv.DictWriter(f, fieldnames=fields, lineterminator='\n')
+                  for row in rows:
+                      missing = set(fields) - set(row)
+                      extra = set(row) - set(fields)
+                      if missing or extra:
+                          raise SystemExit(f'Field mismatch {path}: missing={missing}, extra={extra}')
+                      writer.writerow(row)
+
+          resources = [
+            {
+              'resource_id':'DR0084','resource_name':'Análises do Território — IBGE','acronym':'Análises do Território IBGE','official_identity':'Tema institucional de Análises do Território da Diretoria de Geociências do IBGE','description':'Família de estudos geográficos integrados que combinam estatísticas, cartografia, pesquisa de campo e análise territorial para interpretar processos de organização e transformação do território brasileiro.','homepage_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/analises-do-territorio/18939-a-geografia-da-cana-de-acucar.html','data_access_url':'https://www.ibge.gov.br/geociencias/todos-os-produtos-geociencias.html','research_areas':'Planejamento Territorial e Políticas Públicas | Sensoriamento Remoto e Geoinformação | Geografia Econômica','keywords':'análises do território | dinâmica territorial | produção agropecuária | café | cana-de-açúcar | IBGE','data_product_types':'estudos territoriais | publicações | mapas interativos | aplicações PGI','data_formats':'PDF | aplicação web | formatos variáveis por produto','visualization_types':'mapas | Plataforma Geográfica Interativa | gráficos | textos analíticos','geographic_coverage':'Brasil; recortes subnacionais conforme produto','covers_brazil':'sim','spatial_resolution':'varia conforme produto, fonte estatística e cartografia utilizada','temporal_coverage':'varia conforme estudo; séries históricas e snapshots temáticos','temporal_resolution':'varia conforme produto','data_sources':'PAM | Censo Agropecuário | CEMPRE | Pesquisa de Estoques | outras estatísticas oficiais | pesquisa de campo e bibliográfica','free_download':'sim','access_conditions':'consulta e downloads públicos conforme produto','programmatic_access':'desconhecido','access_protocols':'HTTPS web | aplicações web | downloads','authentication_required':'não','access_documentation_url':'https://www.ibge.gov.br/geociencias/todos-os-produtos-geociencias.html','license':'licença específica deve ser verificada por produto/distribuição; não inferida nesta auditoria','institutional_status':'público','owner_or_manager':'IBGE — Diretoria de Geociências','academic_uses':'Análise da dinâmica territorial da agropecuária, cadeias produtivas, reestruturação do espaço rural, desenvolvimento regional e relações campo-cidade.','limitations':'A família reúne estudos de síntese com fontes, períodos, escalas e métodos diferentes; não deve ser tratada como série estatística homogênea nem como mapeamento direto de cobertura da terra.','academic_evidence_type':'documentação técnica oficial','academic_evidence_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/analises-do-territorio/18939-a-geografia-da-cana-de-acucar.html','academic_evidence_note':'A navegação oficial do IBGE mantém Análises do Território como tema da Organização do Território; os produtos Café e Cana documentam combinação de análise estatística espacial, fontes oficiais, campo e bibliografia.','verification_url':'https://www.ibge.gov.br/geociencias/todos-os-produtos-geociencias.html','last_verified':verified
+            },
+            {
+              'resource_id':'DR0085','resource_name':'Atlas — IBGE','acronym':'Atlas IBGE','official_identity':'Família institucional de atlas nacionais e temáticos da Diretoria de Geociências do IBGE','description':'Família de atlas geográficos do IBGE que integra mapas, estatísticas, gráficos, textos e análises para sínteses nacionais ou temáticas, com produtos digitais, publicações e aplicações interativas.','homepage_url':'https://www.ibge.gov.br/geociencias/atlas/nacional/16360-atlas-nacional-do-brasil.html','data_access_url':'https://geoftp.ibge.gov.br/atlas/','research_areas':'Planejamento Territorial e Políticas Públicas | Sensoriamento Remoto e Geoinformação | Ciências Ambientais e Ecologia','keywords':'atlas | geografia | território | espaço rural | mapas | PGI | IBGE','data_product_types':'atlas | publicações | mapas | aplicações interativas | sínteses geográficas','data_formats':'PDF | aplicação web | arquivos cartográficos e tabulares conforme produto','visualization_types':'atlas digital | mapas | gráficos | Plataforma Geográfica Interativa','geographic_coverage':'Brasil; recortes temáticos e subnacionais conforme produto','covers_brazil':'sim','spatial_resolution':'heterogênea; depende de cada mapa, camada e edição','temporal_coverage':'edições históricas e contemporâneas conforme atlas','temporal_resolution':'por edição e por camada','data_sources':'IBGE | outras instituições públicas | Censos | pesquisas agropecuárias | bases geocientíficas e territoriais','free_download':'sim','access_conditions':'consulta e downloads públicos conforme produto','programmatic_access':'desconhecido','access_protocols':'HTTPS web | HTTP download | aplicações web','authentication_required':'não','access_documentation_url':'https://www.ibge.gov.br/geociencias/atlas/nacional/16360-atlas-nacional-do-brasil.html','license':'licença específica deve ser verificada por produto/distribuição; não inferida nesta auditoria','institutional_status':'público','owner_or_manager':'IBGE — Diretoria de Geociências','academic_uses':'Síntese territorial, ensino, contextualização geográfica, planejamento, análise do espaço rural e integração temática de estatísticas e geociências.','limitations':'Atlas agregam camadas e análises com escalas, datas, métodos e instituições produtoras diferentes; a presença em um atlas não torna os componentes temporal ou metodologicamente homogêneos.','academic_evidence_type':'documentação técnica oficial','academic_evidence_url':'https://www.ibge.gov.br/geociencias/atlas/nacional/16360-atlas-nacional-do-brasil.html','academic_evidence_note':'O IBGE define o Atlas Nacional como coletânea de mapas e análises geográficas e mantém diretórios próprios para atlas nacionais e temáticos.','verification_url':'https://geoftp.ibge.gov.br/atlas/','last_verified':verified
+            }
+          ]
+
+          products = [
+            {
+              'product_id':'DP000188','resource_id':'DR0084','product_name':'A Geografia do Café — 2016','product_acronym':'Geografia do Café 2016','product_family':'Dinâmica Territorial da Produção Agropecuária','product_kind':'catalog','product_description':'Primeiro volume da série Dinâmica Territorial da Produção Agropecuária, integrando análise espacial de estatísticas, cartografia, pesquisa de campo e bibliografia para descrever a trajetória geográfica e a organização territorial da cafeicultura no Brasil.','research_areas':'Agricultural geography | Rural geography | Economic geography | Territorial analysis','keywords':'café | cafeicultura | dinâmica territorial | PAM | Censo Agropecuário | CEMPRE | exportações | IBGE','geographic_coverage':'Brasil','covers_brazil':'sim','spatial_support':'municípios | regiões produtoras | mapas e análises territoriais','spatial_resolution':'variável conforme mapa e base; não inferir resolução única','temporal_coverage':'PAM 1975–2013; Censo Agropecuário 2006; Pesquisa de Estoques e CEMPRE 2013; outras fontes conforme capítulo','temporal_resolution':'séries e snapshots heterogêneos','update_frequency':'por edição da série','product_status':'arquivado','version_or_collection':'2016; publicação substituída/corrigida em 02/02/2018 no Quadro 4','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/analises-do-territorio/15784-a-geografia-do-cafe.html?lang=pt-BR','methodology_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/analises-do-territorio/15784-a-geografia-do-cafe.html?lang=pt-BR','primary_or_derived':'derivado','limitations':'Estudo de síntese histórica e territorial, não footprint atual de cafezais. Os períodos e unidades variam entre PAM, Censo Agropecuário, CEMPRE, estoques e comércio exterior; usar a publicação corrigida disponibilizada pelo IBGE após 02/02/2018.','last_verified':verified
+            },
+            {
+              'product_id':'DP000189','resource_id':'DR0084','product_name':'A Geografia da Cana-de-Açúcar — 2017','product_acronym':'Geografia da Cana 2017','product_family':'Dinâmica Territorial da Produção Agropecuária','product_kind':'catalog','product_description':'Estudo territorial do IBGE sobre a cadeia da cana-de-açúcar que combina análise espacial de estatísticas oficiais, pesquisa de campo e bibliografia para examinar cultivo, processamento, circulação e comercialização no território brasileiro.','research_areas':'Agricultural geography | Rural geography | Economic geography | Territorial analysis','keywords':'cana-de-açúcar | agroindústria | dinâmica territorial | PAM | CEMPRE | cadeia produtiva | IBGE','geographic_coverage':'Brasil','covers_brazil':'sim','spatial_support':'municípios | regiões produtoras | mapas e análises territoriais','spatial_resolution':'variável conforme mapa e base; não inferir resolução única','temporal_coverage':'múltiplas séries e anos conforme fontes estatísticas e capítulos da edição 2017','temporal_resolution':'séries e snapshots heterogêneos','update_frequency':'por edição da série; objetivo declarado de acompanhamento em intervalos de cinco anos','product_status':'arquivado','version_or_collection':'2017','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/analises-do-territorio/18939-a-geografia-da-cana-de-acucar.html','methodology_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/analises-do-territorio/18939-a-geografia-da-cana-de-acucar.html','primary_or_derived':'derivado','limitations':'Síntese territorial multifuente, não mapa atual contínuo de área cultivada. Cultivo, unidades de transformação, fluxos e outros componentes usam fontes e referências temporais distintas; não devem ser fundidos em uma única superfície ou ano implícito.','last_verified':verified
+            },
+            {
+              'product_id':'DP000190','resource_id':'DR0085','product_name':'Atlas do Espaço Rural Brasileiro — 2ª edição 2020','product_acronym':'Atlas Rural 2020','product_family':'Atlas temáticos — espaço rural','product_kind':'catalog','product_description':'Segunda edição do atlas temático do IBGE que integra o Censo Agropecuário 2017 e outras pesquisas estatísticas, geográficas, ambientais e econômicas para uma síntese do espaço rural brasileiro em 11 capítulos temáticos.','research_areas':'Rural geography | Agricultural geography | Socioecological systems | Territorial analysis','keywords':'espaço rural | Censo Agropecuário 2017 | agricultura | ambiente | território | atlas | PGI | IBGE','geographic_coverage':'Brasil','covers_brazil':'sim','spatial_support':'mapas | tabelas | gráficos | recortes territoriais diversos conforme tema','spatial_resolution':'heterogênea conforme capítulo, camada e fonte','temporal_coverage':'Censo Agropecuário 2017 e outras pesquisas/recortes com anos próprios','temporal_resolution':'heterogênea por fonte','update_frequency':'após a realização do Censo Agropecuário','product_status':'ativo','version_or_collection':'2020 — 2ª edição','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/geociencias/atlas/tematicos/16362-atlas-do-espaco-rural-brasileiro.html?edicao=29531&t=acesso-ao-produto','methodology_url':'https://www.ibge.gov.br/geociencias/atlas/tematicos/16362-atlas-do-espaco-rural-brasileiro.html?edicao=29531&t=acesso-ao-produto','primary_or_derived':'derivado','limitations':'Atlas integrador, não dataset observacional único. Indicadores e mapas herdam unidades, anos, métodos e limitações das fontes originais; cruzamentos na PGI não eliminam incompatibilidades de escala ou referência temporal.','last_verified':verified
+            },
+            {
+              'product_id':'DP000191','resource_id':'DR0085','product_name':'Atlas Nacional Digital do Brasil — 2022','product_acronym':'Atlas Nacional Digital 2022','product_family':'Atlas Nacional do Brasil Milton Santos','product_kind':'catalog','product_description':'Edição digital 2022 do Atlas Nacional do Brasil Milton Santos, com síntese geográfica nacional organizada em quatro eixos — Brasil no mundo, Território e meio ambiente, Sociedade e economia e Redes geográficas — e disseminada por mapas e análises na PGI.','research_areas':'Geography | Territorial analysis | Environmental science | Socioeconomic geography','keywords':'atlas nacional | território | meio ambiente | sociedade | economia | redes geográficas | PGI | IBGE','geographic_coverage':'Brasil; inclui comparações e inserção internacional conforme tema','covers_brazil':'sim','spatial_support':'186 pranchas | 566 mapas | 120 gráficos | textos e fotografias; unidades variam por tema','spatial_resolution':'heterogênea conforme mapa e camada','temporal_coverage':'múltiplos anos conforme mapa; edição publicada em 2022','temporal_resolution':'heterogênea por componente','update_frequency':'série digital com atualizações por edição; página oficial confirma edição 2022','product_status':'ativo','version_or_collection':'2022 — edição digital','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/geociencias/atlas/nacional/16360-atlas-nacional-do-brasil.html?lang=pt-BR','methodology_url':'https://www.ibge.gov.br/geociencias/atlas/nacional/16360-atlas-nacional-do-brasil.html?lang=pt-BR','primary_or_derived':'derivado','limitations':'Atlas de síntese multitemática e multifuente; os 566 mapas não constituem uma série homogênea. Ano, escala, produtor e metodologia devem ser verificados por mapa/camada antes de análise quantitativa ou comparação temporal.','last_verified':verified
+            }
+          ]
+
+          distributions = [
+            {'distribution_id':'DD000206','product_id':'DP000188','distribution_name':'A Geografia do Café 2016 — publicação','access_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/analises-do-territorio/15784-a-geografia-do-cafe.html?lang=pt-BR','format':'PDF / publicação digital','access_protocol':'HTTPS web | download','access_tool':'navegador web | leitor PDF','free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos; usar a versão corrigida/substituída pelo IBGE','license':'licença específica do arquivo não localizada nesta auditoria; observar termos de uso do IBGE','provider_attribution_required':'sim','subset_support':'não; publicação integral','notes':'A página oficial registra substituição da publicação completa em 02/02/2018 por correção no Quadro 4; preservar essa versão.','last_verified':verified},
+            {'distribution_id':'DD000207','product_id':'DP000188','distribution_name':'A Geografia do Café 2016 — mapa interativo','access_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/analises-do-territorio/15784-a-geografia-do-cafe.html?lang=pt-BR','format':'aplicação web / mapa interativo','access_protocol':'HTTPS web','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'aplicação pública indicada na página oficial','license':'licença específica das camadas não localizada nesta auditoria','provider_attribution_required':'sim','subset_support':'interativo; capacidade de download/subset deve ser verificada na aplicação','notes':'A aplicação é distribuição do estudo e não deve ser confundida com uma base raster contínua de cafezais.','last_verified':verified},
+            {'distribution_id':'DD000208','product_id':'DP000189','distribution_name':'A Geografia da Cana-de-Açúcar 2017 — publicação','access_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/analises-do-territorio/18939-a-geografia-da-cana-de-acucar.html','format':'PDF / publicação digital','access_protocol':'HTTPS web | download','access_tool':'navegador web | leitor PDF','free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos','license':'licença específica do arquivo não localizada nesta auditoria; observar termos de uso do IBGE','provider_attribution_required':'sim','subset_support':'não; publicação integral','notes':'Publicação de síntese territorial com múltiplas fontes; não interpretar os mapas como uma camada única de uso da terra.','last_verified':verified},
+            {'distribution_id':'DD000209','product_id':'DP000189','distribution_name':'A Geografia da Cana-de-Açúcar 2017 — Plataforma Geográfica Interativa','access_url':'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/analises-do-territorio/18939-a-geografia-da-cana-de-acucar.html','format':'aplicação web / PGI','access_protocol':'HTTPS web','access_tool':'navegador web | PGI','free_download':'sim','authentication_required':'não','access_conditions':'aplicação pública indicada na página oficial','license':'licença específica das camadas não localizada nesta auditoria','provider_attribution_required':'sim','subset_support':'interativo; download e formatos dependem das funções disponíveis na PGI','notes':'A PGI permite explorar o estudo; escalas, anos e fontes permanecem específicos de cada camada.','last_verified':verified},
+            {'distribution_id':'DD000210','product_id':'DP000190','distribution_name':'Atlas do Espaço Rural Brasileiro 2020 — publicação','access_url':'https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&id=2101773','format':'PDF / livro digital','access_protocol':'HTTPS web | download','access_tool':'navegador web | leitor PDF','free_download':'sim','authentication_required':'não','access_conditions':'download público na Biblioteca IBGE','license':'licença específica do arquivo não localizada nesta auditoria; observar termos de uso do IBGE','provider_attribution_required':'sim','subset_support':'não; publicação integral','notes':'Segunda edição, 2020; 302 páginas; ISBN 9786587201375 conforme catálogo oficial.','last_verified':verified},
+            {'distribution_id':'DD000211','product_id':'DP000190','distribution_name':'Atlas do Espaço Rural Brasileiro 2020 — Plataforma Geográfica Interativa','access_url':'https://www.ibge.gov.br/geociencias/atlas/tematicos/16362-atlas-do-espaco-rural-brasileiro.html?edicao=29531&t=acesso-ao-produto','format':'aplicação web / PGI','access_protocol':'HTTPS web','access_tool':'navegador web | PGI','free_download':'sim','authentication_required':'não','access_conditions':'aplicação pública indicada pela página oficial','license':'licença específica das camadas não localizada nesta auditoria','provider_attribution_required':'sim','subset_support':'sim; a documentação oficial informa cruzamento de dados, criação de mapas e download de tabelas/projetos em diversos formatos','notes':'Recursos interativos não tornam homogêneas as diferentes fontes, datas e unidades dos capítulos do Atlas.','last_verified':verified},
+            {'distribution_id':'DD000212','product_id':'DP000191','distribution_name':'Atlas Nacional Digital do Brasil 2022 — aplicação digital','access_url':'https://www.ibge.gov.br/apps/atlas_nacional/#/home','format':'aplicação web / atlas digital','access_protocol':'HTTPS web','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'acesso público','license':'licença específica das camadas não localizada nesta auditoria; observar termos de uso do IBGE e dos provedores originais','provider_attribution_required':'sim','subset_support':'interativo; capacidades variam por mapa/camada','notes':'Edição 2022 integra 186 pranchas, 566 mapas, 120 gráficos, 37 fotos e 12 textos; verificar metadados do componente antes de uso quantitativo.','last_verified':verified}
+          ]
+
+          append_dicts(root/'data/data_resources.csv', resources, 'resource_id')
+          append_dicts(root/'data/data_products.csv', products, 'product_id')
+          append_dicts(root/'data/product_distributions.csv', distributions, 'distribution_id')
+
+          p = root/'data/brazil_scope_priorities.json'
+          data = json.loads(p.read_text(encoding='utf-8'))
+          p0 = next(t for t in data['tiers'] if t['priority_tier']=='P0')
+          for rid in ('DR0084','DR0085'):
+              if rid not in p0['resource_ids']:
+                  p0['resource_ids'].append(rid)
+          p0['resource_ids'] = sorted(p0['resource_ids'])
+          data['reviewed_at'] = verified
+          p.write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+
+      - name: Validate and rebuild
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Consolidated read-back
+        shell: python
+        run: |
+          import csv
+          from pathlib import Path
+          def read(path):
+              with Path(path).open(encoding='utf-8-sig', newline='') as f:
+                  return list(csv.DictReader(f))
+          r=read('data/data_resources.csv'); p=read('data/data_products.csv'); d=read('data/product_distributions.csv')
+          assert len({x['resource_id'] for x in r})==len(r)
+          assert len({x['product_id'] for x in p})==len(p)
+          assert len({x['distribution_id'] for x in d})==len(d)
+          rids={x['resource_id'] for x in r}; pids={x['product_id'] for x in p}
+          assert all(x['resource_id'] in rids for x in p)
+          assert all(x['product_id'] in pids for x in d)
+          for rid in ('DR0084','DR0085'): assert rid in rids
+          for pid in ('DP000188','DP000189','DP000190','DP000191'): assert pid in pids
+          for did in ('DD000206','DD000207','DD000208','DD000209','DD000210','DD000211','DD000212'): assert did in {x['distribution_id'] for x in d}
+          print(f'READBACK resources={len(r)} products={len(p)} distributions={len(d)}')
+
+      - name: Remove one-shot workflow and commit materialized batch
+        run: |
+          rm -f .github/workflows/one-shot-ibge-atlas-territorial.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Expand verified IBGE territorial analyses and atlases"
+          git push origin HEAD:audit/ibge-atlas-territorial-20260816
