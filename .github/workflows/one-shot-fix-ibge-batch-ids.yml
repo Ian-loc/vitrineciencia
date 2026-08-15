@@ -1,0 +1,32 @@
+name: Fix one-shot IBGE batch IDs
+on:
+  push:
+    branches:
+      - agent/vitrine-ibge-urban-networks-20260815
+permissions:
+  contents: write
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/vitrine-ibge-urban-networks-20260815
+      - name: Fix distribution IDs and self-remove
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('.github/workflows/one-shot-ibge-urban-networks.yml')
+          s=p.read_text()
+          for a,b in [('DD000172','DD000175'),('DD000171','DD000174'),('DD000170','DD000173'),('DD000169','DD000172'),('DD000168','DD000171')]:
+              s=s.replace(a,b)
+          p.write_text(s)
+          PY
+          rm .github/workflows/one-shot-fix-ibge-batch-ids.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/workflows/one-shot-ibge-urban-networks.yml .github/workflows/one-shot-fix-ibge-batch-ids.yml
+          git commit -m 'Fix IBGE batch distribution IDs'
+          git push origin HEAD:agent/vitrine-ibge-urban-networks-20260815
