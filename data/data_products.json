@@ -9128,5 +9128,300 @@
     "available_protocols": [
       "HTTPS download"
     ]
+  },
+  {
+    "product_id": "DP000153",
+    "resource_id": "DR0081",
+    "product_name": "REGIC — Regiões de Influência das Cidades 2018 — resultados definitivos",
+    "product_acronym": "REGIC 2018",
+    "product_family": "Redes e Fluxos Geográficos — rede urbana",
+    "product_kind": "dataset",
+    "product_description": "Quinta edição da pesquisa sobre a rede urbana brasileira, definindo hierarquia dos centros urbanos, ligações entre cidades e regiões de influência a partir de pesquisa específica, registros administrativos e outras pesquisas do IBGE.",
+    "research_areas": "Urban geography | Regional science | Territorial planning | Socioeconomic networks",
+    "keywords": "REGIC | rede urbana | hierarquia urbana | regiões de influência | fluxos | cidades | IBGE",
+    "geographic_coverage": "Brasil; inclui relações internacionais específicas documentadas na edição",
+    "covers_brazil": "sim",
+    "spatial_support": "cidades | municípios | arranjos populacionais | ligações em rede | regiões de influência",
+    "spatial_resolution": "unidades urbanas e ligações; não é uma grade espacial contínua",
+    "temporal_coverage": "ano de referência 2018; publicação dos resultados definitivos em 2020; arquivos complementares atualizados até 2023",
+    "temporal_resolution": "edição/levantamento",
+    "update_frequency": "irregular; linha histórica com edições anteriores",
+    "product_status": "ativo",
+    "version_or_collection": "2018 — resultados definitivos",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/redes-geograficas/15798-regioes-de-influencia-das-cidades.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/redes-geograficas/15798-regioes-de-influencia-das-cidades.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Hierarquia e regiões de influência são resultados de uma pesquisa e metodologia específicas para 2018. Não representam fluxos em tempo real nem devem ser transportadas automaticamente para anos posteriores. Bases corrigidas e complementadas após a divulgação exigem registrar o arquivo/versão efetivamente usado.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0081",
+      "resource_name": "Redes e Fluxos Geográficos — IBGE",
+      "acronym": "Redes e Fluxos IBGE",
+      "official_identity": "Tema institucional de Redes e Fluxos Geográficos da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000171",
+        "product_id": "DP000153",
+        "distribution_name": "REGIC 2018 — bases tabulares, vetoriais e documentação",
+        "access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/redes-geograficas/15798-regioes-de-influencia-das-cidades.html",
+        "format": "XLS | ODS | base vetorial | PDF | aplicação web",
+        "access_protocol": "HTTP download | aplicação web",
+        "access_tool": "navegador web | SIG | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos na página oficial e diretórios de Geociências",
+        "license": "licença específica dos arquivos não inferida; verificar termos do IBGE e metadados do produto",
+        "provider_attribution_required": "sim",
+        "subset_support": "por base temática, cidade, ligação e arquivo",
+        "notes": "A página oferece bases de cidades, ligações, matriz de regiões de influência, arranjos, fluxos agropecuários, vetores e distâncias. Preservar o arquivo e sua data de atualização; correções oficiais ocorreram após a divulgação.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS | base vetorial | PDF | aplicação web"
+    ],
+    "available_protocols": [
+      "HTTP download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000154",
+    "resource_id": "DR0081",
+    "product_name": "Arranjos Populacionais e Concentrações Urbanas do Brasil — 2016",
+    "product_acronym": "Arranjos Populacionais 2016",
+    "product_family": "Redes e Fluxos Geográficos — integração urbana",
+    "product_kind": "dataset",
+    "product_description": "Quadro de referência da urbanização brasileira que identifica arranjos populacionais a partir da integração entre municípios medida por deslocamentos pendulares para trabalho/estudo e/ou contiguidade da mancha urbanizada.",
+    "research_areas": "Urban geography | Population geography | Territorial planning | Regional science",
+    "keywords": "arranjos populacionais | concentrações urbanas | deslocamento pendular | contiguidade urbana | municípios | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "agrupamentos de municípios | municípios | concentrações urbanas",
+    "spatial_resolution": "unidades municipais e arranjos; recortes construídos a partir de integração funcional/contiguidade",
+    "temporal_coverage": "dados de referência principalmente 2010–2011; publicação/2ª edição em 2016",
+    "temporal_resolution": "edição de estudo",
+    "update_frequency": "irregular",
+    "product_status": "ativo",
+    "version_or_collection": "2016 — 2ª edição",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional/15782-arranjos-populacionais-e-concentracoes-urbanas-do-brasil.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional/15782-arranjos-populacionais-e-concentracoes-urbanas-do-brasil.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Os 294 arranjos identificados e seus recortes refletem critérios e dados de referência da edição; não constituem delimitação administrativa permanente nem retrato atual automático da integração urbana.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0081",
+      "resource_name": "Redes e Fluxos Geográficos — IBGE",
+      "acronym": "Redes e Fluxos IBGE",
+      "official_identity": "Tema institucional de Redes e Fluxos Geográficos da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000172",
+        "product_id": "DP000154",
+        "distribution_name": "Arranjos Populacionais 2016 — bases e tabelas",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional/15782-arranjos-populacionais-e-concentracoes-urbanas-do-brasil.html",
+        "format": "XLS | ODS | base de dados | PDF | aplicação web",
+        "access_protocol": "HTTP download | aplicação web",
+        "access_tool": "navegador web | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos na página oficial",
+        "license": "licença específica dos arquivos não inferida; verificar termos do IBGE e metadados do produto",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela/base e unidade territorial",
+        "notes": "As tabelas documentam composição dos arranjos, características populacionais, deslocamentos, PIB e concentrações urbanas; registrar a edição usada.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS | base de dados | PDF | aplicação web"
+    ],
+    "available_protocols": [
+      "HTTP download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000155",
+    "resource_id": "DR0081",
+    "product_name": "Divisão Urbano-Regional do Brasil — 2ª edição 2021",
+    "product_acronym": "Divisão Urbano-Regional 2021",
+    "product_family": "Redes e Fluxos Geográficos — regionalização funcional",
+    "product_kind": "dataset",
+    "product_description": "Modelo de regionalização funcional baseado na estrutura da rede urbana, derivado da REGIC 2018 e dos Arranjos Populacionais, com Regiões de Articulação Urbana em níveis ampliado, intermediário e imediato e identificação de subnúcleos.",
+    "research_areas": "Regional science | Urban geography | Territorial planning | Spatial networks",
+    "keywords": "divisão urbano-regional | regiões de articulação urbana | REGIC | regionalização | rede urbana | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "regiões ampliadas | regiões intermediárias | regiões imediatas | municípios | subnúcleos",
+    "spatial_resolution": "recortes regionais funcionais e unidades municipais; base vetorial disponível",
+    "temporal_coverage": "2ª edição publicada em 2021, derivada principalmente da REGIC 2018",
+    "temporal_resolution": "edição de regionalização",
+    "update_frequency": "irregular; edição anterior em 2013",
+    "product_status": "ativo",
+    "version_or_collection": "2021 — 2ª edição",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/redes-geograficas/15777-divisao-urbano-regional.html?lang=pt-BR",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/redes-geograficas/15777-divisao-urbano-regional.html?lang=pt-BR",
+    "primary_or_derived": "derivado",
+    "limitations": "É uma regionalização analítica baseada na rede urbana e em dados de referência específicos; não equivale às Regiões Geográficas Imediatas/Intermediárias de outras classificações nem a limites político-administrativos.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0081",
+      "resource_name": "Redes e Fluxos Geográficos — IBGE",
+      "acronym": "Redes e Fluxos IBGE",
+      "official_identity": "Tema institucional de Redes e Fluxos Geográficos da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000173",
+        "product_id": "DP000155",
+        "distribution_name": "Divisão Urbano-Regional 2021 — bases tabulares, vetoriais, mapas e PGI",
+        "access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/redes-geograficas/15777-divisao-urbano-regional.html?lang=pt-BR",
+        "format": "GeoPackage | SHP | tabelas | PDF | aplicação PGI",
+        "access_protocol": "HTTP download | aplicação web",
+        "access_tool": "navegador web | SIG | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos e Plataforma Geográfica Interativa",
+        "license": "licença específica dos arquivos não inferida; verificar termos do IBGE e metadados do produto",
+        "provider_attribution_required": "sim",
+        "subset_support": "por nível regional, tabela, vetor e mapa",
+        "notes": "A edição 2021 disponibiliza bases tabulares, GeoPackage, Shapefiles, dicionário vetorial, mapas PDF e PGI. Não confundir estes recortes com outras divisões regionais oficiais.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "GeoPackage | SHP | tabelas | PDF | aplicação PGI"
+    ],
+    "available_protocols": [
+      "HTTP download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000156",
+    "resource_id": "DR0082",
+    "product_name": "Tipologia Intraurbana — espaços de diferenciação socioeconômica nas Concentrações Urbanas do Brasil — 2017",
+    "product_acronym": "Tipologia Intraurbana 2017",
+    "product_family": "Tipologias do Território — diferenciação intraurbana",
+    "product_kind": "dataset",
+    "product_description": "Tipologia das condições de vida intraurbanas baseada em análises de agrupamentos de temas de adequação da moradia e condições socioeconômicas, aplicada às maiores Concentrações Urbanas e a Palmas e Boa Vista.",
+    "research_areas": "Urban geography | Socioeconomic inequality | Territorial planning | Spatial analysis",
+    "keywords": "tipologia intraurbana | condições de vida | desigualdade socioespacial | concentração urbana | Censo 2010 | IBGE",
+    "geographic_coverage": "63 maiores Concentrações Urbanas do Brasil, mais Palmas e Boa Vista; 435 municípios analisados",
+    "covers_brazil": "sim",
+    "spatial_support": "unidades intraurbanas | concentrações urbanas | municípios",
+    "spatial_resolution": "submunicipal/intraurbana; escala de detalhe maior que o município",
+    "temporal_coverage": "dados de referência do Censo Demográfico 2010; publicação em 2017",
+    "temporal_resolution": "edição de estudo",
+    "update_frequency": "não documentada como série regular",
+    "product_status": "ativo",
+    "version_or_collection": "2017",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/17530-tipologia-intraurbana-espacos-de-diferenciacao-socioeconomica-nas-concentracoes-urbanas-do-brasil.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/17530-tipologia-intraurbana-espacos-de-diferenciacao-socioeconomica-nas-concentracoes-urbanas-do-brasil.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Os 11 tipos são construções analíticas baseadas em dados do Censo 2010 e cobertura urbana selecionada. Não constituem medição atual de renda, vulnerabilidade ou qualidade ambiental e não cobrem homogeneamente todos os municípios brasileiros.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0082",
+      "resource_name": "Tipologias do Território — IBGE",
+      "acronym": "Tipologias do Território IBGE",
+      "official_identity": "Tema institucional de Tipologias do Território da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000174",
+        "product_id": "DP000156",
+        "distribution_name": "Tipologia Intraurbana 2017 — tabelas, mapas e publicação",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/17530-tipologia-intraurbana-espacos-de-diferenciacao-socioeconomica-nas-concentracoes-urbanas-do-brasil.html",
+        "format": "XLS | ODS | PDF | mapas/aplicação web",
+        "access_protocol": "HTTP download | aplicação web",
+        "access_tool": "navegador web | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos na página oficial",
+        "license": "licença específica dos arquivos não inferida; verificar termos do IBGE e metadados do produto",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela, subtipo/tipologia e material cartográfico",
+        "notes": "Inclui estatísticas de ocupação por subtipo e tipologia, dicionário da base, publicação e apêndices cartográficos. Cobertura é seletiva e baseada no Censo 2010.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS | PDF | mapas/aplicação web"
+    ],
+    "available_protocols": [
+      "HTTP download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000157",
+    "resource_id": "DR0082",
+    "product_name": "Classificação e Caracterização dos Espaços Rurais e Urbanos do Brasil — primeira aproximação 2017",
+    "product_acronym": "Classificação Rural-Urbana 2017",
+    "product_family": "Tipologias do Território — rural e urbano",
+    "product_kind": "dataset",
+    "product_description": "Proposta de classificação municipal dos espaços rurais e urbanos com critérios comuns nacionais, baseada em densidade demográfica, localização em relação aos principais centros urbanos e tamanho da população.",
+    "research_areas": "Rural geography | Urban geography | Territorial planning | Population geography",
+    "keywords": "rural | urbano | tipologia municipal | densidade demográfica | acessibilidade | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "municípios | classes territoriais",
+    "spatial_resolution": "municipal na primeira aproximação de 2017",
+    "temporal_coverage": "dados de referência associados ao Censo 2010; publicação em 2017",
+    "temporal_resolution": "edição de estudo",
+    "update_frequency": "irregular",
+    "product_status": "experimental",
+    "version_or_collection": "2017 — primeira aproximação",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/15790-classificacao-e-caracterizacao-dos-espacos-rurais-e-urbanos-do-brasil.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/15790-classificacao-e-caracterizacao-dos-espacos-rurais-e-urbanos-do-brasil.html",
+    "primary_or_derived": "derivado",
+    "limitations": "A edição é explicitamente uma primeira aproximação/proposta metodológica e usa dados de referência do período censitário anterior. Não deve ser tratada como definição legal de urbano/rural nem como classificação contemporânea sem verificar edições posteriores.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0082",
+      "resource_name": "Tipologias do Território — IBGE",
+      "acronym": "Tipologias do Território IBGE",
+      "official_identity": "Tema institucional de Tipologias do Território da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000175",
+        "product_id": "DP000157",
+        "distribution_name": "Classificação Rural-Urbana 2017 — shapefiles e publicação",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio/15790-classificacao-e-caracterizacao-dos-espacos-rurais-e-urbanos-do-brasil.html",
+        "format": "SHP | PDF | aplicação web",
+        "access_protocol": "HTTP download | aplicação web",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos na página oficial",
+        "license": "licença específica dos arquivos não inferida; verificar termos do IBGE e metadados do produto",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/base nacional",
+        "notes": "A página oficial informa shapefiles e publicação. A classificação é uma primeira aproximação metodológica e não uma definição legal de áreas urbanas e rurais.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "SHP | PDF | aplicação web"
+    ],
+    "available_protocols": [
+      "HTTP download | aplicação web"
+    ]
   }
 ]

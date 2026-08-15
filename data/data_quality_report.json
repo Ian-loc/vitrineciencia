@@ -1,17 +1,17 @@
 {
-  "records": 80,
-  "official_documentation_records": 40,
+  "records": 82,
+  "official_documentation_records": 42,
   "peer_reviewed_evidence_records": 38,
-  "access_uncertainty_records": 43,
+  "access_uncertainty_records": 45,
   "license_uncertainty_records": 34,
-  "brazil_applicable_records": 77,
+  "brazil_applicable_records": 79,
   "verification_date_min": "2026-08-10",
   "verification_date_max": "2026-08-15",
   "evidence_type_counts": {
     "artigo revisado por pares": 38,
     "artigo técnico": 2,
     "documentação oficial": 4,
-    "documentação técnica oficial": 36
+    "documentação técnica oficial": 38
   },
   "unknown_or_variable_by_field": {
     "academic_evidence_note": 0,
@@ -20,7 +20,7 @@
     "academic_uses": 0,
     "access_conditions": 0,
     "access_documentation_url": 0,
-    "access_protocols": 8,
+    "access_protocols": 9,
     "authentication_required": 6,
     "covers_brazil": 0,
     "data_access_url": 0,
@@ -38,10 +38,10 @@
     "limitations": 0,
     "official_identity": 0,
     "owner_or_manager": 0,
-    "programmatic_access": 19,
+    "programmatic_access": 21,
     "research_areas": 0,
     "spatial_resolution": 41,
-    "temporal_coverage": 36,
+    "temporal_coverage": 37,
     "temporal_resolution": 21,
     "verification_url": 0,
     "visualization_types": 1
