@@ -8087,5 +8087,300 @@
     "available_protocols": [
       "HTTPS web | download"
     ]
+  },
+  {
+    "product_id": "DP000133",
+    "resource_id": "DR0075",
+    "product_name": "Rede Altimétrica de Alta Precisão — RAAP",
+    "product_acronym": "RAAP",
+    "product_family": "Redes Geodésicas — componente altimétrica",
+    "product_kind": "dataset_series",
+    "product_description": "Rede de Referências de Nível do Sistema Geodésico Brasileiro, estabelecida por nivelamento geométrico de alta precisão para materializar a componente altimétrica oficial e fornecer altitudes físicas de referência.",
+    "research_areas": "Geodesy | Geospatial information science | Earth sciences",
+    "keywords": "RAAP | referência de nível | RRNN | altitude normal | nivelamento geométrico | SGB | IBGE",
+    "geographic_coverage": "Brasil — referências de nível distribuídas ao longo da rede altimétrica nacional",
+    "covers_brazil": "sim",
+    "spatial_support": "estações geodésicas pontuais | linhas de nivelamento",
+    "spatial_resolution": "pontual por referência de nível; densidade espacial varia conforme a rede",
+    "temporal_coverage": "estabelecimento desde 1945; valores recalculados periodicamente conforme novos levantamentos e ajustamentos",
+    "temporal_resolution": "por campanha/ajustamento; observação pontual por estação",
+    "update_frequency": "atualização conforme expansão e reajustamento da rede",
+    "product_status": "ativo",
+    "version_or_collection": "RAAP / altitudes vigentes no SGB; REALT-2018 como referência para altitudes normais atuais",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica/16283-rede-altimetrica.html?lang=pt-BR",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica/16283-rede-altimetrica.html?lang=pt-BR",
+    "primary_or_derived": "primário",
+    "limitations": "As RRNN são pontos discretos e podem sofrer manutenção, destruição ou atualização de altitude após novos ajustamentos. Consultar o BDG antes do uso e registrar estação, datum vertical, época e valor vigente; não interpolar uma superfície altimétrica sem método apropriado.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0075",
+      "resource_name": "Redes Geodésicas — IBGE",
+      "acronym": "Redes Geodésicas IBGE",
+      "official_identity": "Tema institucional de Redes Geodésicas do Sistema Geodésico Brasileiro — IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000149",
+        "product_id": "DP000133",
+        "distribution_name": "Rede Altimétrica — consulta e acesso via BDG",
+        "access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica/16283-rede-altimetrica.html?lang=pt-BR",
+        "format": "consulta web | arquivos e relatórios conforme estação",
+        "access_protocol": "HTTPS web",
+        "access_tool": "página oficial + Banco de Dados Geodésicos",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; selecionar e verificar a referência de nível/estação usada",
+        "license": "licença específica dos registros deve ser verificada no produto/extração; não inferida da página temática",
+        "provider_attribution_required": "sim",
+        "subset_support": "por estação/referência de nível",
+        "notes": "A página oficial encaminha o acesso ao Banco de Dados Geodésicos. Preservar identificador e metadados da RRNN e realizar nova consulta antes do uso.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "consulta web | arquivos e relatórios conforme estação"
+    ],
+    "available_protocols": [
+      "HTTPS web"
+    ]
+  },
+  {
+    "product_id": "DP000134",
+    "resource_id": "DR0075",
+    "product_name": "Rede Gravimétrica — IBGE",
+    "product_acronym": "Rede Gravimétrica",
+    "product_family": "Redes Geodésicas — componente gravimétrica",
+    "product_kind": "dataset_series",
+    "product_description": "Conjunto de estações gravimétricas do Sistema Geodésico Brasileiro com informações sobre aceleração da gravidade e características das estações, usado em geodésia, geofísica, geologia e determinação de altitudes físicas.",
+    "research_areas": "Geodesy | Geophysics | Earth sciences | Geospatial information science",
+    "keywords": "gravimetria | aceleração da gravidade | estação gravimétrica | geoide | SGB | IBGE",
+    "geographic_coverage": "Brasil — cobertura por estações gravimétricas, com densidade espacial heterogênea",
+    "covers_brazil": "sim",
+    "spatial_support": "estações geodésicas pontuais",
+    "spatial_resolution": "pontual por estação; densidade espacial heterogênea",
+    "temporal_coverage": "levantamentos desde a década de 1950; cobertura sistemática ampliada a partir de 1990",
+    "temporal_resolution": "por levantamento/estação",
+    "update_frequency": "atualização conforme campanhas gravimétricas e processamento",
+    "product_status": "ativo",
+    "version_or_collection": "Rede Gravimétrica do SGB — consulta corrente no BDG",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica/16286-rede-gravimetrica.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica/16286-rede-gravimetrica.html",
+    "primary_or_derived": "primário",
+    "limitations": "A distribuição de estações não é espacialmente homogênea e observações podem pertencer a campanhas, instrumentos e épocas distintas. Não tratar pontos gravimétricos como raster contínuo sem modelagem e documentação adequadas.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0075",
+      "resource_name": "Redes Geodésicas — IBGE",
+      "acronym": "Redes Geodésicas IBGE",
+      "official_identity": "Tema institucional de Redes Geodésicas do Sistema Geodésico Brasileiro — IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000150",
+        "product_id": "DP000134",
+        "distribution_name": "Rede Gravimétrica — consulta e acesso via BDG",
+        "access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica/16286-rede-gravimetrica.html",
+        "format": "consulta web | arquivos e relatórios conforme estação",
+        "access_protocol": "HTTPS web",
+        "access_tool": "página oficial + Banco de Dados Geodésicos",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; dados e metadados dependem da estação e levantamento",
+        "license": "licença específica dos registros deve ser verificada no produto/extração; não inferida da página temática",
+        "provider_attribution_required": "sim",
+        "subset_support": "por estação gravimétrica",
+        "notes": "O acesso oficial é mediado pelo BDG e por downloads associados. Não inferir cobertura espacial contínua a partir do catálogo de pontos.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "consulta web | arquivos e relatórios conforme estação"
+    ],
+    "available_protocols": [
+      "HTTPS web"
+    ]
+  },
+  {
+    "product_id": "DP000135",
+    "resource_id": "DR0075",
+    "product_name": "Rede Planialtimétrica — IBGE",
+    "product_acronym": "Rede Planialtimétrica",
+    "product_family": "Redes Geodésicas — componentes planimétrica e planialtimétrica",
+    "product_kind": "dataset_series",
+    "product_description": "Conjunto de estações SAT, Doppler, poligonais e vértices de triangulação que materializam componentes planimétricas e planialtimétricas do Sistema Geodésico Brasileiro e preservam a infraestrutura histórica de referência espacial.",
+    "research_areas": "Geodesy | GNSS | Geospatial information science",
+    "keywords": "rede planialtimétrica | SAT | Doppler | triangulação | poligonação | SIRGAS2000 | SGB | IBGE",
+    "geographic_coverage": "Brasil — estações geodésicas conforme o Banco de Dados Geodésicos",
+    "covers_brazil": "sim",
+    "spatial_support": "estações geodésicas pontuais | redes clássicas e espaciais",
+    "spatial_resolution": "pontual por estação; densidade e técnica variam historicamente",
+    "temporal_coverage": "levantamentos geodésicos desde 1939; estabelecimento sistemático da rede planimétrica a partir de 1944",
+    "temporal_resolution": "por estação/campanha; sem passo temporal uniforme",
+    "update_frequency": "atualização conforme levantamentos, ajustamentos e manutenção cadastral",
+    "product_status": "ativo",
+    "version_or_collection": "Rede Planialtimétrica do SGB — consulta corrente no BDG",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica/16284-rede-planialtimetrica.html?lang=pt-BR",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica/16284-rede-planialtimetrica.html?lang=pt-BR",
+    "primary_or_derived": "primário",
+    "limitations": "A rede agrega técnicas e épocas distintas. Coordenadas históricas podem ter sido ajustadas ou transformadas para referenciais posteriores; consultar metadados e situação da estação no BDG antes de reutilizar valores.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0075",
+      "resource_name": "Redes Geodésicas — IBGE",
+      "acronym": "Redes Geodésicas IBGE",
+      "official_identity": "Tema institucional de Redes Geodésicas do Sistema Geodésico Brasileiro — IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000151",
+        "product_id": "DP000135",
+        "distribution_name": "Rede Planialtimétrica — consulta e acesso via BDG",
+        "access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica/16284-rede-planialtimetrica.html?lang=pt-BR",
+        "format": "consulta web | relatórios e cartogramas | metadados de estação",
+        "access_protocol": "HTTPS web",
+        "access_tool": "página oficial + Banco de Dados Geodésicos",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; selecionar estação e conferir técnica/referencial",
+        "license": "licença específica dos registros deve ser verificada no produto/extração; não inferida da página temática",
+        "provider_attribution_required": "sim",
+        "subset_support": "por estação/tipo de marco",
+        "notes": "A página oficial oferece acesso ao BDG, INDE e cartogramas. Valores históricos precisam ser interpretados com o referencial e o ajustamento correspondentes.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "consulta web | relatórios e cartogramas | metadados de estação"
+    ],
+    "available_protocols": [
+      "HTTPS web"
+    ]
+  },
+  {
+    "product_id": "DP000136",
+    "resource_id": "DR0075",
+    "product_name": "BDG — Banco de Dados Geodésicos do IBGE",
+    "product_acronym": "BDG",
+    "product_family": "Redes Geodésicas — catálogo de estações do SGB",
+    "product_kind": "catalog",
+    "product_description": "Aplicativo e catálogo oficial para consulta das estações geodésicas do Sistema Geodésico Brasileiro, integrando informações das redes altimétrica, planialtimétrica e gravimétrica e respectivos metadados de estação.",
+    "research_areas": "Geodesy | Geospatial information science | Data infrastructure",
+    "keywords": "BDG | banco de dados geodésicos | RRNN | SAT | estação gravimétrica | SGB | IBGE",
+    "geographic_coverage": "Brasil — estações registradas no Sistema Geodésico Brasileiro",
+    "covers_brazil": "sim",
+    "spatial_support": "catálogo de estações geodésicas pontuais e metadados",
+    "spatial_resolution": "herdada das redes e estações consultadas",
+    "temporal_coverage": "conteúdo histórico e corrente conforme rede e estação",
+    "temporal_resolution": "por registro/estação",
+    "update_frequency": "atualização contínua ou periódica conforme manutenção das redes",
+    "product_status": "ativo",
+    "version_or_collection": "Banco de Dados Geodésicos — consulta corrente",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica/16327-banco-de-dados-geodesicos.html?lang=pt-BR",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica/16327-banco-de-dados-geodesicos.html?lang=pt-BR",
+    "primary_or_derived": "agregador",
+    "limitations": "O BDG agrega redes com técnicas, datas, referenciais e estados operacionais diferentes. O próprio IBGE recomenda nova consulta antes de cada trabalho; resultados extraídos devem preservar identificador, tipo de estação, referencial, data e metadados vigentes.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0075",
+      "resource_name": "Redes Geodésicas — IBGE",
+      "acronym": "Redes Geodésicas IBGE",
+      "official_identity": "Tema institucional de Redes Geodésicas do Sistema Geodésico Brasileiro — IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000152",
+        "product_id": "DP000136",
+        "distribution_name": "BDG — aplicativo de consulta",
+        "access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica/16327-banco-de-dados-geodesicos.html?lang=pt-BR",
+        "format": "aplicativo web | registros e relatórios de estações",
+        "access_protocol": "HTTPS web",
+        "access_tool": "Banco de Dados Geodésicos",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; conteúdo varia por rede, estação e estado cadastral",
+        "license": "licença específica deve ser verificada no registro/saída utilizada; não inferida da página do aplicativo",
+        "provider_attribution_required": "sim",
+        "subset_support": "por rede, tipo e estação conforme aplicativo",
+        "notes": "Catálogo agregador. O IBGE recomenda consulta rotineira ao BDG antes da realização de trabalhos para obter informações atualizadas.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "aplicativo web | registros e relatórios de estações"
+    ],
+    "available_protocols": [
+      "HTTPS web"
+    ]
+  },
+  {
+    "product_id": "DP000137",
+    "resource_id": "DR0075",
+    "product_name": "Mapa das Redes do Sistema Geodésico Brasileiro — 2021",
+    "product_acronym": "Mapa das Redes SGB 2021",
+    "product_family": "Redes Geodésicas — síntese cartográfica",
+    "product_kind": "map_layer_collection",
+    "product_description": "Representação cartográfica mural da distribuição das redes planialtimétrica, altimétrica e gravimétrica e das redes ativas RMPG e RBMC, elaborada a partir do BDG de setembro de 2021 e da BCIM 2016.",
+    "research_areas": "Geodesy | Cartography | Geospatial information science",
+    "keywords": "mapa geodésico | rede altimétrica | rede gravimétrica | rede planialtimétrica | RBMC | RMPG | SGB | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "mapa mural | representação de estações e redes",
+    "spatial_resolution": "1:22.000.000 nos três mapas nacionais; destaques locais em escalas próprias",
+    "temporal_coverage": "instantâneo de setembro de 2021 para o BDG; base cartográfica BCIM 2016",
+    "temporal_resolution": "instantâneo cartográfico",
+    "update_frequency": "por edição; periodicidade não inferida",
+    "product_status": "ativo",
+    "version_or_collection": "edição 2021",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/brasil-redes-geodesicas/29614-mapa-das-redes-do-sistema-geodesico-brasileiro.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/brasil-redes-geodesicas/29614-mapa-das-redes-do-sistema-geodesico-brasileiro.html",
+    "primary_or_derived": "derivado",
+    "limitations": "É uma síntese cartográfica de 2021, não inventário operacional corrente das estações. Para situação, coordenadas ou disponibilidade atuais, consultar as redes e o BDG. A escala nacional não suporta uso cadastral ou inspeção local.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0075",
+      "resource_name": "Redes Geodésicas — IBGE",
+      "acronym": "Redes Geodésicas IBGE",
+      "official_identity": "Tema institucional de Redes Geodésicas do Sistema Geodésico Brasileiro — IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000153",
+        "product_id": "DP000137",
+        "distribution_name": "Mapa das Redes do SGB — edição 2021 e downloads",
+        "access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/brasil-redes-geodesicas/29614-mapa-das-redes-do-sistema-geodesico-brasileiro.html",
+        "format": "mapa cartográfico | PDF e arquivos conforme seção de downloads",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público na página oficial",
+        "license": "licença específica do arquivo deve ser verificada no download; não inferida da página temática",
+        "provider_attribution_required": "sim",
+        "subset_support": "por edição/download",
+        "notes": "Mapa baseado no BDG de setembro de 2021 e BCIM 2016; não substitui consulta ao cadastro corrente das redes.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "mapa cartográfico | PDF e arquivos conforme seção de downloads"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
   }
 ]
