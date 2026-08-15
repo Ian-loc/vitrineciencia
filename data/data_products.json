@@ -5873,11 +5873,11 @@
     "last_verified": "2026-08-15",
     "source": {
       "resource_id": "DR0066",
-      "resource_name": "Bases Cartográficas Contínuas — Brasil — IBGE",
-      "acronym": "BC Brasil",
-      "official_identity": "Bases cartográficas contínuas do Brasil do IBGE",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas/15759-brasil.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas/15759-brasil.html"
+      "resource_name": "Bases Cartográficas Contínuas — IBGE",
+      "acronym": "BC IBGE",
+      "official_identity": "Bases cartográficas contínuas do Brasil e dos Estados — IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas.html"
     },
     "distributions": [
       {
@@ -8794,6 +8794,280 @@
     ],
     "available_protocols": [
       "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000145",
+    "resource_id": "DR0066",
+    "product_name": "Bases Cartográficas Contínuas — Estados — IBGE",
+    "product_acronym": "BC Estados",
+    "product_family": "Bases Cartográficas Contínuas — Estados",
+    "product_kind": "dataset_series",
+    "product_description": "Coleção de bases cartográficas vetoriais contínuas estaduais do IBGE, produzidas em escalas e versões próprias para unidades da federação, com modelagem ET-EDGV e insumos documentados por edição.",
+    "research_areas": "Geospatial information science | Cartography | Territorial analysis",
+    "keywords": "BC100 | BC25 | bases estaduais | ET-EDGV | cartografia | IBGE",
+    "geographic_coverage": "unidades da federação com bases publicadas; cobertura não simultânea nem homogênea",
+    "covers_brazil": "parcial",
+    "spatial_support": "base vetorial contínua | feições cartográficas",
+    "spatial_resolution": "varia por estado e edição; exemplos oficiais incluem 1:100.000 e 1:25.000",
+    "temporal_coverage": "edições estaduais distintas; Acre 2023 e outras versões verificadas no portal",
+    "temporal_resolution": "por edição cartográfica",
+    "update_frequency": "irregular por estado",
+    "product_status": "ativo",
+    "version_or_collection": "coleção estadual corrente; versões próprias por UF",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas/15807-estados.html?lang=pt-BR",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas/15807-estados.html?lang=pt-BR",
+    "primary_or_derived": "derivado",
+    "limitations": "Escala, data, cobertura, fontes e versão da ET-EDGV variam por estado. Não mosaicar as bases como se fossem uma edição nacional homogênea sem harmonização.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0066",
+      "resource_name": "Bases Cartográficas Contínuas — IBGE",
+      "acronym": "BC IBGE",
+      "official_identity": "Bases cartográficas contínuas do Brasil e dos Estados — IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000161",
+        "product_id": "DP000145",
+        "distribution_name": "Bases contínuas estaduais — portal, PGI e downloads por edição",
+        "access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas/15807-estados.html?lang=pt-BR",
+        "format": "formatos vetoriais variam por edição; páginas oficiais documentam Shapefile, GeoPackage e dump PostGIS em edições verificadas",
+        "access_protocol": "HTTP download | plataforma geográfica interativa",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "seleção por estado/edição; consultar documentação específica",
+        "license": "licença específica dos arquivos não localizada nesta auditoria; observar termos e metadados do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por estado e edição",
+        "notes": "A coleção é heterogênea; registrar escala, versão, ET-EDGV e pacote efetivamente baixado.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "formatos vetoriais variam por edição; páginas oficiais documentam Shapefile, GeoPackage e dump PostGIS em edições verificadas"
+    ],
+    "available_protocols": [
+      "HTTP download | plataforma geográfica interativa"
+    ]
+  },
+  {
+    "product_id": "DP000146",
+    "resource_id": "DR0078",
+    "product_name": "Folhas Topográficas — Mapeamento Sistemático Terrestre — IBGE",
+    "product_acronym": "Folhas Topográficas",
+    "product_family": "Mapeamento Topográfico Sistemático Terrestre",
+    "product_kind": "dataset_series",
+    "product_description": "Acervo de folhas topográficas do IBGE que representa elementos naturais e artificiais e respectivos nomes conforme o recorte do Mapeamento Topográfico Sistemático Terrestre do Brasil, distribuído em grupos editorados, fotolitos e vetoriais.",
+    "research_areas": "Cartography | Geospatial information science | Territorial analysis",
+    "keywords": "folhas topográficas | cartografia | 1:25000 | 1:50000 | 1:100000 | 1:250000 | 1:1000000 | IBGE",
+    "geographic_coverage": "Brasil conforme folhas produzidas e disponíveis",
+    "covers_brazil": "sim",
+    "spatial_support": "folhas cartográficas | vetores | imagens digitalizadas",
+    "spatial_resolution": "escalas 1:25.000, 1:50.000, 1:100.000, 1:250.000 e 1:1.000.000 conforme série",
+    "temporal_coverage": "acervo de diferentes épocas de produção",
+    "temporal_resolution": "por folha/edição",
+    "update_frequency": "irregular",
+    "product_status": "ativo",
+    "version_or_collection": "acervo corrente do Mapeamento Topográfico Sistemático",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/folhas-topograficas/15809-folhas-da-carta-do-brasil.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/folhas-topograficas/15809-folhas-da-carta-do-brasil.html",
+    "primary_or_derived": "derivado",
+    "limitations": "O acervo é heterogêneo em data, escala e modo de produção; folhas históricas não representam necessariamente a situação territorial atual e devem ser citadas individualmente.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0078",
+      "resource_name": "Folhas Topográficas — IBGE",
+      "acronym": "Folhas Topográficas IBGE",
+      "official_identity": "Folhas topográficas do Mapeamento Topográfico Sistemático Terrestre do Brasil — IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/folhas-topograficas.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/folhas-topograficas/15809-folhas-da-carta-do-brasil.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000162",
+        "product_id": "DP000146",
+        "distribution_name": "Folhas Topográficas — editoradas, fotolitos e vetoriais",
+        "access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/folhas-topograficas/15809-folhas-da-carta-do-brasil.html",
+        "format": "PDF | JPG | PNG para editoradas; TIFF para fotolitos; formatos vetoriais variam conforme folha",
+        "access_protocol": "HTTP/FTP conforme links oficiais",
+        "access_tool": "navegador web | SIG | CAD",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "seleção por escala, grupo e folha",
+        "license": "licença específica dos arquivos não localizada nesta auditoria; observar termos e metadados do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por escala e folha",
+        "notes": "Editoradas, fotolitos e vetoriais são representações diferentes; não tratar formatos ou conteúdo como equivalentes sem verificar a folha.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "PDF | JPG | PNG para editoradas; TIFF para fotolitos; formatos vetoriais variam conforme folha"
+    ],
+    "available_protocols": [
+      "HTTP/FTP conforme links oficiais"
+    ]
+  },
+  {
+    "product_id": "DP000147",
+    "resource_id": "DR0078",
+    "product_name": "Mapa Índice Digital — 5ª edição — 2021",
+    "product_acronym": "MID 2021",
+    "product_family": "Mapa Índice Digital",
+    "product_kind": "catalog",
+    "product_description": "Base de dados georreferenciada de referência ao acervo cartográfico do IBGE, reunindo abrangência espacial e metadados de produtos como folhas topográficas, bases contínuas, cartas imagem, ortoimagens, mapas e modelos digitais de elevação.",
+    "research_areas": "Cartography | Geospatial information science | Data discovery",
+    "keywords": "Mapa Índice Digital | catálogo cartográfico | GeoPackage | metadados | IBGE",
+    "geographic_coverage": "Brasil; abrangência espacial por produto indexado",
+    "covers_brazil": "sim",
+    "spatial_support": "índice georreferenciado | footprints e atributos de produtos cartográficos",
+    "spatial_resolution": "não se aplica como resolução única; registra escalas e abrangências dos produtos indexados",
+    "temporal_coverage": "5ª edição publicada em 2021; indexa produtos de diferentes épocas",
+    "temporal_resolution": "por edição do índice",
+    "update_frequency": "por edição",
+    "product_status": "ativo",
+    "version_or_collection": "5ª edição — 2021",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/folhas-topograficas/31409-mapa-indice-digital.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/folhas-topograficas/31409-mapa-indice-digital.html",
+    "primary_or_derived": "agregador",
+    "limitations": "O MID é índice/catálogo do acervo, não substitui os dados cartográficos indexados. Escala, data, precisão, licença e metodologia devem ser verificadas no produto de origem.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0078",
+      "resource_name": "Folhas Topográficas — IBGE",
+      "acronym": "Folhas Topográficas IBGE",
+      "official_identity": "Folhas topográficas do Mapeamento Topográfico Sistemático Terrestre do Brasil — IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/folhas-topograficas.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/folhas-topograficas/15809-folhas-da-carta-do-brasil.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000163",
+        "product_id": "DP000147",
+        "distribution_name": "Mapa Índice Digital 2021 — download GeoPackage",
+        "access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/folhas-topograficas/31409-mapa-indice-digital.html",
+        "format": "GeoPackage",
+        "access_protocol": "HTTP download",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público da 5ª edição",
+        "license": "licença específica do arquivo não localizada nesta auditoria; observar termos do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "consulta por registros e abrangência espacial após download",
+        "notes": "O GeoPackage indexa produtos e seus metadados/abrangências; não contém necessariamente os datasets cartográficos de origem.",
+        "last_verified": "2026-08-15"
+      },
+      {
+        "distribution_id": "DD000164",
+        "product_id": "DP000147",
+        "distribution_name": "Mapa Índice Digital — Plataforma Geográfica Interativa",
+        "access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/folhas-topograficas/31409-mapa-indice-digital.html",
+        "format": "visualização e consulta web",
+        "access_protocol": "web",
+        "access_tool": "Plataforma Geográfica Interativa",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública",
+        "license": "licença específica dos dados não inferida; observar termos do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "consulta espacial e por atributos conforme plataforma",
+        "notes": "Distribuição de descoberta/consulta; links do índice remetem aos produtos e metadados de origem.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "GeoPackage",
+      "visualização e consulta web"
+    ],
+    "available_protocols": [
+      "HTTP download",
+      "web"
+    ]
+  },
+  {
+    "product_id": "DP000148",
+    "resource_id": "DR0079",
+    "product_name": "Banco de Nomes Geográficos do Brasil",
+    "product_acronym": "BNGB",
+    "product_family": "Banco de Nomes Geográficos do Brasil",
+    "product_kind": "catalog",
+    "product_description": "Banco oficial de nomes geográficos das categorias hidrografia, relevo, limites e localidades, com filtros por nome, categoria/classe, escala, status de validação, UF, município e recorte espacial, acessível por aplicação web e API.",
+    "research_areas": "Toponymy | Cartography | Geospatial information science | Territorial analysis",
+    "keywords": "BNGB | nomes geográficos | topônimos | hidrografia | relevo | localidades | API | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "feições geográficas e atributos nominais provenientes principalmente de bases cartográficas vetoriais contínuas",
+    "spatial_resolution": "varia conforme a base e escala de origem da feição",
+    "temporal_coverage": "conteúdo proveniente de múltiplas versões de bases; portal atual lançado em 2024",
+    "temporal_resolution": "não se aplica como série temporal homogênea",
+    "update_frequency": "não documentado de forma suficiente para inferência",
+    "product_status": "ativo",
+    "version_or_collection": "portal e manual de uso 2024; conteúdo corrente",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/metodos-e-outros-documentos-de-referencia/vocabulario-e-glossarios/42080-banco-de-nomes-geograficos-do-brasil.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/metodos-e-outros-documentos-de-referencia/vocabulario-e-glossarios/42080-banco-de-nomes-geograficos-do-brasil.html",
+    "primary_or_derived": "agregador",
+    "limitations": "Os registros possuem origem, escala e status de validação distintos. Não assumir que todo nome esteja validado, atualizado ou posicionalmente equivalente entre fontes cartográficas.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0079",
+      "resource_name": "Banco de Nomes Geográficos do Brasil — IBGE",
+      "acronym": "BNGB",
+      "official_identity": "Banco de Nomes Geográficos do Brasil — IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/metodos-e-outros-documentos-de-referencia/vocabulario-e-glossarios/42080-banco-de-nomes-geograficos-do-brasil.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/metodos-e-outros-documentos-de-referencia/vocabulario-e-glossarios/42080-banco-de-nomes-geograficos-do-brasil.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000165",
+        "product_id": "DP000148",
+        "distribution_name": "BNGB — aplicação web",
+        "access_url": "https://www.ibge.gov.br/geociencias/metodos-e-outros-documentos-de-referencia/vocabulario-e-glossarios/42080-banco-de-nomes-geograficos-do-brasil.html",
+        "format": "aplicação web",
+        "access_protocol": "web",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "desconhecido",
+        "access_conditions": "consulta por nome, categoria/classe, escala, status de validação e recortes territoriais/espaciais",
+        "license": "licença específica dos dados não localizada nesta auditoria; observar termos e documentação do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "sim — filtros e recorte espacial",
+        "notes": "Aplicação de consulta; status de validação deve ser preservado na interpretação dos registros.",
+        "last_verified": "2026-08-15"
+      },
+      {
+        "distribution_id": "DD000166",
+        "product_id": "DP000148",
+        "distribution_name": "BNGB — API oficial",
+        "access_url": "https://www.ibge.gov.br/geociencias/metodos-e-outros-documentos-de-referencia/vocabulario-e-glossarios/42080-banco-de-nomes-geograficos-do-brasil.html",
+        "format": "API; formato de resposta deve ser confirmado na documentação do endpoint",
+        "access_protocol": "API HTTP",
+        "access_tool": "cliente HTTP | código",
+        "free_download": "parcial",
+        "authentication_required": "desconhecido",
+        "access_conditions": "serviço de dados oficial; parâmetros e limites devem ser verificados na documentação corrente",
+        "license": "licença específica da API/dados não localizada nesta auditoria; observar termos e documentação do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "sim — conforme parâmetros da API",
+        "notes": "A existência da API é documentada oficialmente; não foram inferidos esquema de resposta, autenticação ou limites sem leitura do endpoint/documentação específica.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "API; formato de resposta deve ser confirmado na documentação do endpoint",
+      "aplicação web"
+    ],
+    "available_protocols": [
+      "API HTTP",
+      "web"
     ]
   }
 ]
