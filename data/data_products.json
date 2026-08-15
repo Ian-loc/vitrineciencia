@@ -9069,5 +9069,241 @@
       "API HTTP",
       "web"
     ]
+  },
+  {
+    "product_id": "DP000149",
+    "resource_id": "DR0069",
+    "product_name": "Malha de Setores Censitários — Censo 2022",
+    "product_acronym": "Malha Censitária 2022",
+    "product_family": "Malhas Territoriais — Setores Censitários",
+    "product_kind": "dataset",
+    "product_description": "Malha vetorial definitiva dos Setores Censitários do Censo Demográfico 2022, com recortes associados de Municípios, Distritos, Subdistritos e Bairros e materiais de comparabilidade com 2010.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Sensoriamento Remoto e Geoinformação",
+    "keywords": "setor censitário | malha censitária | Censo 2022 | geocódigo | bairro | distrito | subdistrito | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "polígonos vetoriais de setores e demais recortes intramunicipais",
+    "spatial_resolution": "compatível com escalas entre 1:5.000 e 1:250.000 conforme critérios técnicos do produto; não equivale a precisão cadastral",
+    "temporal_coverage": "situação territorial do Censo 2022; descrições de limites atualizadas posteriormente em arquivos auxiliares",
+    "temporal_resolution": "recorte censitário/edição",
+    "update_frequency": "divulgação anual desde 2019; versões censitárias podem ter estágio preliminar e definitivo",
+    "product_status": "ativo",
+    "version_or_collection": "2022 — Malha Censitária definitiva",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/26565-malhas-de-setores-censitarios-divisoes-intramunicipais.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/26565-malhas-de-setores-censitarios-divisoes-intramunicipais.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Setores são unidades operacionais de coleta/divulgação e podem mudar entre censos e edições. A comparabilidade 2010–2022 exige usar o histórico de formação; não assumir persistência espacial ou equivalência direta entre setores de anos distintos.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0069",
+      "resource_name": "Malhas Territoriais — IBGE",
+      "acronym": "Malhas IBGE",
+      "official_identity": "Tema institucional de malhas territoriais da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000167",
+        "product_id": "DP000149",
+        "distribution_name": "Malha de Setores Censitários 2022 — arquivos vetoriais e documentação",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/26565-malhas-de-setores-censitarios-divisoes-intramunicipais.html",
+        "format": "SHP | GeoPackage | KML por UF; XLSX | ODS | PDF auxiliares",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos; arquivos nacionais e por UF conforme recorte",
+        "license": "licença específica dos arquivos deve ser verificada no download/metadados; não inferida da página temática",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil e por UF; recortes de setor, distrito, subdistrito e bairro conforme formato",
+        "notes": "A página oficial também publica histórico de formação 2010–2022 e notas de comparabilidade; usar esses materiais quando houver análise longitudinal.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "SHP | GeoPackage | KML por UF; XLSX | ODS | PDF auxiliares"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000150",
+    "resource_id": "DR0080",
+    "product_name": "Coleção de Mapas Municipais — edição 2022",
+    "product_acronym": "Mapas Municipais 2022",
+    "product_family": "Mapas Municipais — coleção nacional",
+    "product_kind": "map_layer_collection",
+    "product_description": "Coleção nacional de mapas dos municípios brasileiros, do Distrito Federal e do Distrito Estadual de Fernando de Noronha, produzida a partir da Malha Municipal Digital e das estruturas territoriais vigentes em 2022.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Sensoriamento Remoto e Geoinformação",
+    "keywords": "mapa municipal | GeoPDF | limites municipais | distritos | subdistritos | Malha Municipal Digital | IBGE",
+    "geographic_coverage": "Brasil — todos os municípios, Distrito Federal e Distrito Estadual de Fernando de Noronha na edição 2022",
+    "covers_brazil": "sim",
+    "spatial_support": "mapa municipal georreferenciado por unidade territorial",
+    "spatial_resolution": "escala varia conforme o município e o enquadramento cartográfico",
+    "temporal_coverage": "situação da divisão político-administrativa incorporando atualizações comunicadas ao IBGE até 31/07/2022",
+    "temporal_resolution": "por edição municipal",
+    "update_frequency": "por edição; coleção-base complementada por atualizações anuais",
+    "product_status": "ativo",
+    "version_or_collection": "2022",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-estatisticos/31452-colecao-de-mapas-municipais.html?lang=pt-BR",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-estatisticos/31452-colecao-de-mapas-municipais.html?lang=pt-BR",
+    "primary_or_derived": "derivado",
+    "limitations": "Os mapas são produtos cartográficos derivados da Malha Municipal Digital e não constituem documentos legais de definição de limites. Escala e detalhe variam entre municípios; a edição 2022 deve ser distinguida das atualizações anuais posteriores.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0080",
+      "resource_name": "Mapas Municipais e Estatísticos — IBGE",
+      "acronym": "Mapas Municipais IBGE",
+      "official_identity": "Tema institucional de mapas municipais e mapas para fins estatísticos do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000168",
+        "product_id": "DP000150",
+        "distribution_name": "Coleção de Mapas Municipais 2022 — GeoPDF por UF",
+        "access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-estatisticos/31452-colecao-de-mapas-municipais.html?lang=pt-BR",
+        "format": "GeoPDF",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | software SIG compatível com GeoPDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos organizados por Unidade da Federação",
+        "license": "licença específica do arquivo deve ser verificada no download; não inferida da página do produto",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e município",
+        "notes": "Os GeoPDFs são mapas derivados e georreferenciados; registrar a edição 2022 e o município utilizado.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "GeoPDF"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000151",
+    "resource_id": "DR0080",
+    "product_name": "Atualização dos Mapas Municipais — edição 2025",
+    "product_acronym": "Mapas Municipais 2025",
+    "product_family": "Mapas Municipais — atualizações anuais",
+    "product_kind": "map_layer_collection",
+    "product_description": "Conjunto de mapas municipais atualizados em 2025 apenas para municípios cujos limites sofreram alterações incorporadas à Malha Municipal Digital 2025.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Sensoriamento Remoto e Geoinformação",
+    "keywords": "mapa municipal | atualização territorial | limites municipais | divisão político-administrativa | 2025 | IBGE",
+    "geographic_coverage": "Brasil — somente municípios atualizados na edição 2025; 784 municípios distribuídos em 13 UFs",
+    "covers_brazil": "parcial",
+    "spatial_support": "mapas municipais georreferenciados por município",
+    "spatial_resolution": "escala varia conforme o município e o enquadramento cartográfico",
+    "temporal_coverage": "alterações encaminhadas ao IBGE entre 01/05/2024 e 30/04/2025 e incorporadas à Malha Municipal Digital 2025",
+    "temporal_resolution": "por edição anual",
+    "update_frequency": "anual para municípios com alteração territorial",
+    "product_status": "ativo",
+    "version_or_collection": "2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais/27437-atualizacao-dos-mapas-municipais.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais/27437-atualizacao-dos-mapas-municipais.html",
+    "primary_or_derived": "derivado",
+    "limitations": "A edição 2025 não cobre todos os municípios: contempla apenas os que tiveram mapas atualizados. O próprio IBGE informa finalidade ligada a coleta e tabulação estatística; não usar como substituto de documentação legal de limites ou de uma coleção nacional homogênea.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0080",
+      "resource_name": "Mapas Municipais e Estatísticos — IBGE",
+      "acronym": "Mapas Municipais IBGE",
+      "official_identity": "Tema institucional de mapas municipais e mapas para fins estatísticos do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000169",
+        "product_id": "DP000151",
+        "distribution_name": "Atualização dos Mapas Municipais 2025 — arquivos por UF",
+        "access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais/27437-atualizacao-dos-mapas-municipais.html",
+        "format": "mapas cartográficos; formato conforme arquivo oficial",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos por Unidade da Federação; apenas municípios atualizados",
+        "license": "licença específica do arquivo deve ser verificada no download; não inferida da página do produto",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e município atualizado",
+        "notes": "A edição 2025 contém 784 municípios atualizados, não uma nova coleção completa de todos os municípios brasileiros.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "mapas cartográficos; formato conforme arquivo oficial"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000152",
+    "resource_id": "DR0080",
+    "product_name": "Mapas para Fins Estatísticos — Censo 2022",
+    "product_acronym": "Mapas Estatísticos 2022",
+    "product_family": "Mapas para Fins Estatísticos",
+    "product_kind": "map_layer_collection",
+    "product_description": "Mapas produzidos para apoiar coleta, apuração, tabulação, análise e divulgação das operações estatísticas do IBGE, representando limites de Setores Censitários e estruturas territoriais associadas; a edição consultada inclui Mapas Urbanos Estatísticos do Censo 2022.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Sensoriamento Remoto e Geoinformação",
+    "keywords": "mapas estatísticos | Censo 2022 | setores censitários | mapas urbanos | coleta censitária | IBGE",
+    "geographic_coverage": "Brasil — cobertura conforme tipo de mapa e arquivos publicados por Unidade da Federação",
+    "covers_brazil": "sim",
+    "spatial_support": "mapas cartográficos de apoio estatístico | representação de setores censitários",
+    "spatial_resolution": "escala varia por mapa e área representada",
+    "temporal_coverage": "Censo Demográfico 2022; estruturas territoriais vigentes usadas na operação",
+    "temporal_resolution": "por edição/operação censitária",
+    "update_frequency": "por operação ou edição; sem periodicidade uniforme inferida",
+    "product_status": "ativo",
+    "version_or_collection": "Censo 2022 — Mapas Urbanos Estatísticos",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais/27440-mapas-municipais-para-fins-estatisticos.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais/27440-mapas-municipais-para-fins-estatisticos.html",
+    "primary_or_derived": "derivado",
+    "limitations": "São instrumentos cartográficos das operações estatísticas e não equivalem à Malha de Setores Censitários vetorial. Escala, cobertura e conteúdo variam por tipo de mapa; não utilizar como definição legal autônoma de limites.",
+    "last_verified": "2026-08-15",
+    "source": {
+      "resource_id": "DR0080",
+      "resource_name": "Mapas Municipais e Estatísticos — IBGE",
+      "acronym": "Mapas Municipais IBGE",
+      "official_identity": "Tema institucional de mapas municipais e mapas para fins estatísticos do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000170",
+        "product_id": "DP000152",
+        "distribution_name": "Mapas para Fins Estatísticos — Censo 2022 por UF",
+        "access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais/27440-mapas-municipais-para-fins-estatisticos.html",
+        "format": "mapas cartográficos; formatos conforme edição",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos por Unidade da Federação conforme edição/tipo de mapa",
+        "license": "licença específica do arquivo deve ser verificada no download; não inferida da página do produto",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e mapa publicado",
+        "notes": "A edição consultada disponibiliza Mapas Urbanos Estatísticos 2022; conteúdo e escala devem ser verificados no mapa efetivamente usado.",
+        "last_verified": "2026-08-15"
+      }
+    ],
+    "available_formats": [
+      "mapas cartográficos; formatos conforme edição"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
   }
 ]
