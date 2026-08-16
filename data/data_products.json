@@ -11899,5 +11899,300 @@
     "available_protocols": [
       "HTTPS web | download"
     ]
+  },
+  {
+    "product_id": "DP000199",
+    "resource_id": "DR0069",
+    "product_name": "Base de Faces de Logradouros do Brasil — Censo Demográfico 2022 — resultados preliminares",
+    "product_acronym": "Base de Faces 2022",
+    "product_family": "Malhas territoriais — faces de logradouros",
+    "product_kind": "dataset",
+    "product_description": "Base geoespacial vetorial do IBGE que representa faces de logradouros e associa atributos de toponímia, estrutura de setores censitários e informações do CNEFE atualizadas durante a coleta do Censo Demográfico 2022.",
+    "research_areas": "Spatial analysis | Urban studies | GIS | Territorial analysis",
+    "keywords": "faces de logradouros | arruamento | CNEFE | setores censitários | SIRGAS2000 | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "segmentos lineares por face de logradouro | organização por UF e município",
+    "spatial_resolution": "escala cadastral compatível com os insumos de construção; precisão posicional heterogênea",
+    "temporal_coverage": "referência territorial da noite de 31/07 para 01/08/2022; versão divulgada como resultados preliminares",
+    "temporal_resolution": "snapshot censitário com processamento/revisão posterior",
+    "update_frequency": "atualização integral a cada Censo e contínua entre censos",
+    "product_status": "ativo",
+    "version_or_collection": "2022 — resultados preliminares; versão incorpora parcialmente atualizações da coleta",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/28971-base-de-faces-de-logradouros-do-brasil.html",
+    "methodology_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/28971-base-de-faces-de-logradouros-do-brasil.html",
+    "primary_or_derived": "primário",
+    "limitations": "A versão 2022 é explicitamente preliminar e não incorpora integralmente todos os tracks capturados em campo. Podem existir imperfeições geométricas, posicionais, topológicas e de toponímia; não tratar como rede viária cadastral exata ou atual nem extrapolar precisão uniforme em todo o território.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0069",
+      "resource_name": "Malhas Territoriais — IBGE",
+      "acronym": "Malhas IBGE",
+      "official_identity": "Tema institucional de malhas territoriais da Diretoria de Geociências do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000220",
+        "product_id": "DP000199",
+        "distribution_name": "Base de Faces de Logradouros 2022 — downloads por UF/município",
+        "access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/28971-base-de-faces-de-logradouros-do-brasil.html",
+        "format": "SHP | JSON",
+        "access_protocol": "HTTPS web | download",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos por UF/município na página oficial",
+        "license": "licença específica dos arquivos não localizada nesta auditoria; observar termos de uso do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e município",
+        "notes": "Resultados preliminares; SIRGAS2000. A própria documentação alerta para imperfeições geométricas, posicionais, topológicas e de atributos e para incorporação ainda parcial dos dados da coleta.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SHP | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS web | download"
+    ]
+  },
+  {
+    "product_id": "DP000200",
+    "resource_id": "DR0086",
+    "product_name": "Cadastro Nacional de Endereços para Fins Estatísticos — CNEFE — Censo Demográfico 2022",
+    "product_acronym": "CNEFE 2022",
+    "product_family": "Censo 2022 — cadastro estatístico de endereços",
+    "product_kind": "dataset",
+    "product_description": "Cadastro estatístico nacional dos endereços visitados no Censo Demográfico 2022, com identificação territorial, componentes de endereço, espécie da unidade e coordenadas geográficas; nesta edição o IBGE informa georreferenciamento de todos os endereços coletados em campo.",
+    "research_areas": "Population geography | Spatial analysis | Urban studies | GIS",
+    "keywords": "CNEFE | endereços | latitude | longitude | logradouro | espécie | domicílios | estabelecimentos | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "endereço georreferenciado | domicílio e estabelecimento como unidades de investigação/análise",
+    "spatial_resolution": "pontual por endereço; qualidade posicional depende da coleta e validação",
+    "temporal_coverage": "coleta do Censo Demográfico 2022; arquivos divulgados e atualizados a partir de 2024",
+    "temporal_resolution": "registro por endereço; snapshot censitário",
+    "update_frequency": "eventual; cadastro atualizado nas operações do IBGE e integralmente nos censos",
+    "product_status": "ativo",
+    "version_or_collection": "CNEFE oriundo do Censo Demográfico 2022",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html",
+    "primary_or_derived": "primário",
+    "limitations": "É cadastro estatístico, não cadastro postal, imobiliário ou administrativo em tempo real. Endereços, espécies e coordenadas refletem a operação censitária e seus procedimentos de validação; revisões de arquivos e diferenças locais de qualidade devem ser preservadas.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000221",
+        "product_id": "DP000200",
+        "distribution_name": "CNEFE 2022 — microdados e arquivos georreferenciados",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html",
+        "format": "CSV | GeoJSON | arquivos compactados; verificar recurso específico",
+        "access_protocol": "HTTPS web | download",
+        "access_tool": "navegador web | SIG | ferramentas tabulares",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos conforme seção do produto; arquivos organizados por recortes e versões",
+        "license": "licença específica dos arquivos não localizada nesta auditoria; observar termos de uso e salvaguardas do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF/município ou produto derivado conforme arquivo",
+        "notes": "Cadastro estatístico do Censo 2022; preservar dicionário, versão e notas metodológicas. Não reinterpretar como cadastro postal ou imobiliário corrente.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "CSV | GeoJSON | arquivos compactados; verificar recurso específico"
+    ],
+    "available_protocols": [
+      "HTTPS web | download"
+    ]
+  },
+  {
+    "product_id": "DP000201",
+    "resource_id": "DR0086",
+    "product_name": "Trajetos dos Recenseadores — Censo Demográfico 2022",
+    "product_acronym": "Trajetos Censo 2022",
+    "product_family": "Censo 2022 — trajetos operacionais de campo",
+    "product_kind": "dataset",
+    "product_description": "Arquivos vetoriais dos caminhos percorridos por recenseadores em áreas rurais durante a coleta do Censo Demográfico 2022, derivados de sequências de coordenadas capturadas por GPS em dispositivos móveis e disponibilizados por município.",
+    "research_areas": "Spatial analysis | GIS | Territorial analysis | Rural geography",
+    "keywords": "trajetos | recenseadores | GPS | áreas rurais | estradas | trilhas | acessibilidade | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil — áreas rurais percorridas durante a coleta censitária",
+    "covers_brazil": "sim",
+    "spatial_support": "linhas de trajetos capturados em campo | arquivos por município",
+    "spatial_resolution": "precisão dependente do GPS móvel, percurso e processamento; não inferir escala cartográfica única",
+    "temporal_coverage": "coleta do Censo Demográfico 2022",
+    "temporal_resolution": "sequências de posições durante deslocamentos de campo",
+    "update_frequency": "por operação censitária",
+    "product_status": "ativo",
+    "version_or_collection": "Censo Demográfico 2022; divulgação acompanhada da Nota metodológica n. 05/2024",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados",
+    "primary_or_derived": "primário",
+    "limitations": "Trajetos registram deslocamentos operacionais efetivamente percorridos, não uma rede oficial ou exaustiva de estradas, trilhas e acessos. Cobertura depende do trabalho de campo; geometrias podem refletir ruído de GPS, interrupções e escolhas de percurso.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000222",
+        "product_id": "DP000201",
+        "distribution_name": "Trajetos dos Recenseadores 2022 — arquivos por município",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html",
+        "format": "KML",
+        "access_protocol": "HTTPS web | download",
+        "access_tool": "navegador web | SIG | Google Earth",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "arquivos públicos por município",
+        "license": "licença específica dos arquivos não localizada nesta auditoria; observar termos de uso do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por município",
+        "notes": "Sequências de coordenadas capturadas por GPS durante deslocamentos rurais. São trajetos operacionais, não cartografia oficial completa de vias.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "KML"
+    ],
+    "available_protocols": [
+      "HTTPS web | download"
+    ]
+  },
+  {
+    "product_id": "DP000202",
+    "resource_id": "DR0086",
+    "product_name": "Grade Estatística — Censo Demográfico 2022",
+    "product_acronym": "Grade Estatística 2022",
+    "product_family": "Censo 2022 — grade estatística de população e domicílios",
+    "product_kind": "dataset",
+    "product_description": "Sistema de células regulares para disseminação de população residente e domicílios do Censo 2022 em unidades espaciais pequenas e independentes dos limites político-administrativos, associado à Malha de Setores e ao CNEFE 2022.",
+    "research_areas": "Population geography | Spatial analysis | Urban studies | GIS",
+    "keywords": "grade estatística | população | domicílios | 200 m | 1 km | CNEFE | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "células regulares: 200 × 200 m nas áreas urbanas e 1 × 1 km nas áreas rurais; grades agregadas adicionais",
+    "spatial_resolution": "200 m urbano | 1 km rural na grade-base; agregações de 1, 5, 10, 50, 100 e 500 km disponíveis",
+    "temporal_coverage": "Censo Demográfico 2022",
+    "temporal_resolution": "snapshot censitário agregado em células",
+    "update_frequency": "por edição censitária",
+    "product_status": "ativo",
+    "version_or_collection": "Grade Estatística 2022; Nota metodológica 01/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=44265&t=resultados",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=44265&t=resultados",
+    "primary_or_derived": "derivado",
+    "limitations": "A grade agrega dados censitários e não representa indivíduos ou domicílios como pontos. A resolução difere entre áreas urbanas e rurais; efeitos de agregação, sigilo, revisões e associação espacial ao CNEFE/Malha de Setores devem ser considerados antes de análises multiescalares ou comparações temporais.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000223",
+        "product_id": "DP000202",
+        "distribution_name": "Grade Estatística 2022 — grade-base e grades agregadas",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=44265&t=resultados",
+        "format": "arquivos geoespaciais compactados | PDF metodológico; formato específico conforme download",
+        "access_protocol": "HTTPS web | download | aplicação interativa",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "grade-base, grades agregadas e documentação disponíveis publicamente",
+        "license": "licença específica dos arquivos não localizada nesta auditoria; observar termos de uso do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "grade-base e agregações 1, 5, 10, 50, 100 e 500 km",
+        "notes": "Grade-base 200 m urbana / 1 km rural; valores derivam do universo do Censo 2022 associados ao CNEFE e à malha de setores.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "arquivos geoespaciais compactados | PDF metodológico; formato específico conforme download"
+    ],
+    "available_protocols": [
+      "HTTPS web | download | aplicação interativa"
+    ]
+  },
+  {
+    "product_id": "DP000203",
+    "resource_id": "DR0086",
+    "product_name": "Agregados por Setores Censitários — Censo Demográfico 2022 — resultados do universo",
+    "product_acronym": "Agregados Setoriais 2022",
+    "product_family": "Censo 2022 — resultados do universo por setor censitário",
+    "product_kind": "dataset",
+    "product_description": "Resultados definitivos do questionário do universo do Censo Demográfico 2022 agregados por Setores Censitários, com variáveis de população e domicílios e arquivos vetoriais associados para análise espacial.",
+    "research_areas": "Population geography | Spatial analysis | Urban studies | GIS",
+    "keywords": "setor censitário | agregados | população | domicílios | resultados do universo | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "setor censitário | tabelas nacionais e arquivos vetoriais por Brasil/UF",
+    "spatial_resolution": "setor censitário; geometrias em SHP/GPKG conforme distribuição oficial",
+    "temporal_coverage": "Censo Demográfico 2022; arquivos definitivos com atualizações documentadas até 20/05/2026",
+    "temporal_resolution": "snapshot censitário com revisões",
+    "update_frequency": "por edição censitária e revisões documentadas",
+    "product_status": "ativo",
+    "version_or_collection": "resultados do universo definitivos; Nota metodológica n. 06/2024 atualizada em 30/04/2025; base principal atualizada em 20/05/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=41852&t=resultados",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=41852&t=resultados",
+    "primary_or_derived": "derivado",
+    "limitations": "Setores sem moradores podem não aparecer nos arquivos agregados, portanto o número de registros pode ser menor que o número de geometrias da malha. Arquivos foram corrigidos/revisados após a divulgação; registrar a versão de download e não pressupor estabilidade espacial entre censos.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000224",
+        "product_id": "DP000203",
+        "distribution_name": "Agregados por Setores Censitários 2022 — tabelas e malhas com atributos",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=41852&t=resultados",
+        "format": "CSV | XLSX | SHP | GPKG | XLSX/ODS de dicionário",
+        "access_protocol": "HTTPS web | download",
+        "access_tool": "navegador web | ferramenta tabular | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos nacionais e por UF conforme arquivo",
+        "license": "licença específica dos arquivos não localizada nesta auditoria; observar termos de uso do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | UF | setores e outros recortes disponíveis",
+        "notes": "A base principal foi atualizada em 20/05/2026; setores sem moradores podem ser omitidos das tabelas agregadas. Preservar dicionário e versão do arquivo usado.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | SHP | GPKG | XLSX/ODS de dicionário"
+    ],
+    "available_protocols": [
+      "HTTPS web | download"
+    ]
   }
 ]
