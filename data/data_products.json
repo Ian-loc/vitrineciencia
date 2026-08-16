@@ -13964,5 +13964,300 @@
     "available_protocols": [
       "HTTPS web | SIDRA"
     ]
+  },
+  {
+    "product_id": "DP000235",
+    "resource_id": "DR0086",
+    "product_name": "Religiões — Censo Demográfico 2022 — resultados preliminares da amostra",
+    "product_acronym": "Religiões Censo 2022",
+    "product_family": "Censo 2022 — religiões",
+    "product_kind": "dataset",
+    "product_description": "Resultados preliminares da amostra do Censo Demográfico 2022 sobre religiões ou cultos declarados por pessoas de 10 anos ou mais, com perfis sociodemográficos, educacionais e domiciliares e divulgação por múltiplos recortes territoriais.",
+    "research_areas": "Population geography | Social statistics | Demography | Territorial analysis",
+    "keywords": "religião | culto | sem religião | sexo | cor ou raça | idade | educação | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil; Grandes Regiões; Unidades da Federação; Regiões Geográficas Intermediárias e Imediatas; Concentrações Urbanas; Municípios",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoas agregadas por categorias sociodemográficas e recortes territoriais | tabelas SIDRA | visualizações",
+    "spatial_resolution": "Município na divulgação territorial; outros recortes agregados também disponíveis",
+    "temporal_coverage": "Censo Demográfico 2022",
+    "temporal_resolution": "snapshot censitário; resultados preliminares da amostra",
+    "update_frequency": "por edição censitária",
+    "product_status": "ativo",
+    "version_or_collection": "divulgação de 06/06/2025; tabela SIDRA 10203 corrigida e substituída em 18/09/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/todos-os-produtos-estatisticas/22827-censo-demografico-2022.html?edicao=43045",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/todos-os-produtos-estatisticas/22827-censo-demografico-2022.html?edicao=43045",
+    "primary_or_derived": "derivado",
+    "limitations": "Resultados preliminares da amostra, não contagens integrais do universo. Categorias religiosas são autodeclaradas e devem ser interpretadas com o desenho e os domínios de estimação. A tabela SIDRA 10203 teve valores corrigidos em 18/09/2025; análises reproduzíveis devem usar o estado corrigido.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000256",
+        "product_id": "DP000235",
+        "distribution_name": "Religiões Censo 2022 — SIDRA, Panorama e publicação corrigida",
+        "access_url": "https://www.ibge.gov.br/estatisticas/todos-os-produtos-estatisticas/22827-censo-demografico-2022.html?edicao=43045",
+        "format": "SIDRA | XLSX | ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA",
+        "access_tool": "navegador web | SIDRA | Panorama Censo 2022",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; usar tabelas corrigidas e observar revisões oficiais",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela, religião, sexo, idade, cor ou raça, escolaridade e recorte territorial disponível",
+        "notes": "Resultados preliminares da amostra; a tabela SIDRA 10203 foi corrigida e substituída em 18/09/2025.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000236",
+    "resource_id": "DR0086",
+    "product_name": "Pessoas com deficiência e pessoas diagnosticadas com transtorno do espectro autista — Censo Demográfico 2022 — resultados preliminares da amostra",
+    "product_acronym": "Deficiência e TEA Censo 2022",
+    "product_family": "Censo 2022 — deficiência e TEA",
+    "product_kind": "dataset",
+    "product_description": "Resultados preliminares da amostra do Censo 2022 sobre cinco domínios de dificuldades funcionais e diagnóstico declarado de transtorno do espectro autista, com perfis sociodemográficos e educacionais.",
+    "research_areas": "Population geography | Social statistics | Public health | Demography",
+    "keywords": "deficiência | dificuldades funcionais | autismo | TEA | educação | sexo | idade | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil; Grandes Regiões; Unidades da Federação; Municípios e demais domínios de divulgação da amostra",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoas agregadas por condição funcional, diagnóstico e recortes sociodemográficos | tabelas SIDRA | visualizações",
+    "spatial_resolution": "Município e demais domínios de divulgação publicados",
+    "temporal_coverage": "Censo Demográfico 2022",
+    "temporal_resolution": "snapshot censitário; resultados preliminares da amostra",
+    "update_frequency": "por edição censitária",
+    "product_status": "ativo",
+    "version_or_collection": "publicação 2025 — resultados preliminares da amostra",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/Sociais/populacao/22827-censo-demografico-2022.html?edicao=43453",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/Sociais/populacao/22827-censo-demografico-2022.html?edicao=43453",
+    "primary_or_derived": "derivado",
+    "limitations": "Resultados preliminares da amostra; não equivalem a registros clínicos, diagnóstico médico independente ou prevalência medida por vigilância sanitária. Os domínios funcionais e o diagnóstico de TEA seguem os quesitos censitários e exigem desenho amostral e pesos para inferência.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000257",
+        "product_id": "DP000236",
+        "distribution_name": "Deficiência e TEA Censo 2022 — SIDRA, Panorama e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/Sociais/populacao/22827-censo-demografico-2022.html?edicao=43453",
+        "format": "SIDRA | XLSX | ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA",
+        "access_tool": "navegador web | SIDRA | Panorama Censo 2022",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; análises devem respeitar desenho, pesos e definições censitárias",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela, domínio funcional, diagnóstico, grupo sociodemográfico e recorte territorial disponível",
+        "notes": "Não equivale a registro clínico ou vigilância de saúde; resultados preliminares da amostra.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000237",
+    "resource_id": "DR0086",
+    "product_name": "Fecundidade e Migração — Censo Demográfico 2022 — resultados preliminares da amostra",
+    "product_acronym": "Fecundidade e Migração Censo 2022",
+    "product_family": "Censo 2022 — dinâmica demográfica",
+    "product_kind": "dataset",
+    "product_description": "Resultados preliminares da amostra do Censo 2022 sobre fecundidade, parturição e migração, incluindo filhos nascidos vivos, idade da mãe, imigração internacional, local de nascimento, residência anterior e tempo de residência no município.",
+    "research_areas": "Demography | Population geography | Social statistics | Territorial analysis",
+    "keywords": "fecundidade | parturição | migração | imigração | residência anterior | filhos nascidos vivos | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil; Grandes Regiões; Unidades da Federação; Municípios e recortes compostos a partir de Municípios",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoas e mulheres agregadas por variáveis demográficas e recortes territoriais | tabelas SIDRA | visualizações",
+    "spatial_resolution": "Município e demais domínios de divulgação publicados",
+    "temporal_coverage": "Censo Demográfico 2022; algumas variáveis migratórias usam períodos retrospectivos próprios",
+    "temporal_resolution": "snapshot censitário com referências retrospectivas específicas; resultados preliminares da amostra",
+    "update_frequency": "por edição censitária",
+    "product_status": "ativo",
+    "version_or_collection": "divulgação de 27/06/2025 — resultados preliminares da amostra",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/Estatisticas/Sociais/Populacao/22827-censo-demografico-2022.html?edicao=43821",
+    "methodology_url": "https://www.ibge.gov.br/Estatisticas/Sociais/Populacao/22827-censo-demografico-2022.html?edicao=43821",
+    "primary_or_derived": "derivado",
+    "limitations": "Resultados preliminares da amostra. Fecundidade e migração têm universos, filtros e períodos de referência distintos; migração retrospectiva não é fluxo contínuo observado e fecundidade censitária não é registro vital. Usar pesos, domínios e notas metodológicas.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000258",
+        "product_id": "DP000237",
+        "distribution_name": "Fecundidade e Migração Censo 2022 — SIDRA, Panorama e publicação",
+        "access_url": "https://www.ibge.gov.br/Estatisticas/Sociais/Populacao/22827-censo-demografico-2022.html?edicao=43821",
+        "format": "SIDRA | XLSX | ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA",
+        "access_tool": "navegador web | SIDRA | Panorama Censo 2022",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; observar universos, períodos de referência, pesos e revisões",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela, variável demográfica, grupo sociodemográfico e domínio geográfico disponível",
+        "notes": "Fecundidade censitária não é registro vital; migração retrospectiva não é fluxo contínuo observado.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000238",
+    "resource_id": "DR0086",
+    "product_name": "Nupcialidade e Família — Censo Demográfico 2022 — resultados preliminares da amostra — 2ª edição corrigida",
+    "product_acronym": "Nupcialidade e Família Censo 2022",
+    "product_family": "Censo 2022 — nupcialidade e família",
+    "product_kind": "dataset",
+    "product_description": "Resultados preliminares da amostra do Censo 2022 sobre estado conjugal, natureza da união e composição familiar, incluindo uniões entre pessoas do mesmo sexo e desagregações sociodemográficas.",
+    "research_areas": "Demography | Population geography | Social statistics | Territorial analysis",
+    "keywords": "nupcialidade | família | estado conjugal | união consensual | casamento | composição familiar | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil; Grandes Regiões; Unidades da Federação; Municípios e outros recortes compostos a partir de Municípios",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoas e famílias agregadas por características conjugais, familiares e territoriais | tabelas SIDRA | visualizações",
+    "spatial_resolution": "Município e demais domínios de divulgação publicados",
+    "temporal_coverage": "Censo Demográfico 2022",
+    "temporal_resolution": "snapshot censitário; resultados preliminares da amostra",
+    "update_frequency": "por edição censitária",
+    "product_status": "ativo",
+    "version_or_collection": "2ª edição corrigida de 12/11/2025 após falha no algoritmo de identificação de famílias",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=44940&t=sobre",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=44940&t=sobre",
+    "primary_or_derived": "derivado",
+    "limitations": "Resultados preliminares da amostra. A publicação original teve falha de processamento na identificação de famílias e foi substituída por 2ª edição corrigida em 12/11/2025; usar apenas a versão corrigida. Estado conjugal, natureza da união e composição familiar são conceitos censitários, não registros civis individualizados.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000259",
+        "product_id": "DP000238",
+        "distribution_name": "Nupcialidade e Família Censo 2022 — 2ª edição corrigida — SIDRA e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=44940&t=sobre",
+        "format": "SIDRA | XLSX | ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA",
+        "access_tool": "navegador web | SIDRA | Panorama Censo 2022",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; utilizar a 2ª edição corrigida e tabelas substituídas",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela, estado conjugal, natureza da união, composição familiar e domínio geográfico disponível",
+        "notes": "A publicação e as tabelas foram substituídas em 12/11/2025 após falha no algoritmo de identificação de famílias.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000239",
+    "resource_id": "DR0086",
+    "product_name": "Características dos domicílios — Censo Demográfico 2022 — resultados preliminares da amostra",
+    "product_acronym": "Domicílios Censo 2022",
+    "product_family": "Censo 2022 — características dos domicílios",
+    "product_kind": "dataset",
+    "product_description": "Resultados preliminares da amostra do Censo 2022 sobre características dos domicílios e moradores, divulgados em tabelas SIDRA e materiais associados para diferentes recortes territoriais.",
+    "research_areas": "Population geography | Social statistics | Territorial analysis | Public policy",
+    "keywords": "domicílios | habitação | infraestrutura domiciliar | moradores | Censo 2022 | amostra | IBGE",
+    "geographic_coverage": "Brasil; Grandes Regiões; Unidades da Federação; Municípios e demais domínios de divulgação da amostra",
+    "covers_brazil": "sim",
+    "spatial_support": "domicílios e moradores agregados por características e recortes territoriais | tabelas SIDRA",
+    "spatial_resolution": "Município e demais domínios de divulgação publicados",
+    "temporal_coverage": "Censo Demográfico 2022",
+    "temporal_resolution": "snapshot censitário; resultados preliminares da amostra",
+    "update_frequency": "por edição censitária",
+    "product_status": "ativo",
+    "version_or_collection": "resultados preliminares da amostra — edição vigente no portal",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=42157&t=resultados",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=42157&t=resultados",
+    "primary_or_derived": "derivado",
+    "limitations": "Resultados preliminares da amostra, não resultados do universo. Variáveis domiciliares possuem universos e denominadores próprios; estimativas exigem desenho amostral e pesos. Não confundir características domiciliares declaradas com medições técnicas de qualidade ambiental ou habitacional.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000260",
+        "product_id": "DP000239",
+        "distribution_name": "Características dos domicílios Censo 2022 — SIDRA e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=42157&t=resultados",
+        "format": "SIDRA | XLSX | ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA",
+        "access_tool": "navegador web | SIDRA | Panorama Censo 2022",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; análises devem respeitar desenho amostral, pesos, denominadores e revisões",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela, característica domiciliar e domínio geográfico disponível",
+        "notes": "Resultados preliminares da amostra; não confundir atributos declarados do domicílio com medições técnicas ambientais ou habitacionais.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA"
+    ]
   }
 ]
