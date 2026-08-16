@@ -17976,5 +17976,123 @@
     "available_protocols": [
       "HTTPS | SIDRA quando disponível"
     ]
+  },
+  {
+    "product_id": "DP000303",
+    "resource_id": "DR0097",
+    "product_name": "Demografia das Empresas e Estatísticas de Empreendedorismo — 2022",
+    "product_acronym": "Demografia das Empresas 2022",
+    "product_family": "Demografia empresarial e empreendedorismo",
+    "product_kind": "indicator_family",
+    "product_description": "Estudo anual sobre a dinâmica demográfica das empresas formais empregadoras brasileiras — nascimentos, mortes e sobrevivência — e sobre empresas de alto crescimento e gazelas, com base principal no CEMPRE e, para empreendedorismo, também nas pesquisas estruturais por empresas do IBGE.",
+    "research_areas": "Economics | Labour | Economic geography | Regional development",
+    "keywords": "demografia das empresas | nascimento de empresas | morte de empresas | sobrevivência | alto crescimento | gazelas | CEMPRE | empreendedorismo",
+    "geographic_coverage": "Brasil; Grandes Regiões, UFs e Municípios das Capitais conforme indicador",
+    "covers_brazil": "sim",
+    "spatial_support": "empresa empregadora | unidade local empregadora | agregações territoriais e setoriais",
+    "spatial_resolution": "empresa/unidade local agregada; detalhamento geográfico e CNAE conforme tabela",
+    "temporal_coverage": "ano de referência 2022; sobrevivência de coortes desde 2017 e crescimento 2019–2022 conforme indicador",
+    "temporal_resolution": "anual e por coorte conforme indicador",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "edição 2022 — publicada em 2024; nova metodologia/escopo populacional",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/servicos/22649-demografia-das-empresas-e-estatisticas-de-empreendedorismo.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/servicos/22649-demografia-das-empresas-e-estatisticas-de-empreendedorismo.html",
+    "primary_or_derived": "derivado",
+    "limitations": "A edição 2022 inaugura mudança de escopo para empresas e unidades locais empregadoras e incorpora a quebra de série do CEMPRE iniciada no ano-base 2022. Não comparar taxas diretamente com edições anteriores sem considerar a Nota Técnica 01/2024; alto crescimento e gazelas obedecem critérios próprios e não representam todo o universo empresarial.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0097",
+      "resource_name": "Cadastro Central de Empresas — Estatísticas — IBGE",
+      "acronym": "CEMPRE",
+      "official_identity": "Sistema estatístico anual do IBGE sobre empresas e outras organizações formalmente constituídas e suas unidades locais",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000324",
+        "product_id": "DP000303",
+        "distribution_name": "Demografia das Empresas e Estatísticas de Empreendedorismo 2022 — tabelas e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/servicos/22649-demografia-das-empresas-e-estatisticas-de-empreendedorismo.html",
+        "format": "XLSX | ODS | PDF | página web",
+        "access_protocol": "HTTPS download / web",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso por tabelas, publicação e downloads da edição 2022",
+        "license": "licença específica dos arquivos não determinada nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tema, evento demográfico, atividade, porte e recorte territorial conforme tabela",
+        "notes": "A edição 2022 possui Nota Técnica 01/2024 sobre mudança metodológica e quebra de série; preservar o escopo de empresas empregadoras e os critérios de alto crescimento/gazelas.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | PDF | página web"
+    ],
+    "available_protocols": [
+      "HTTPS download / web"
+    ]
+  },
+  {
+    "product_id": "DP000304",
+    "resource_id": "DR0097",
+    "product_name": "FASFIL — Fundações Privadas e Associações sem Fins Lucrativos no Brasil — 2023",
+    "product_acronym": "FASFIL 2023",
+    "product_family": "Organizações da sociedade civil sem fins lucrativos",
+    "product_kind": "dataset_series",
+    "product_description": "Quinta edição do estudo FASFIL, derivada do CEMPRE, que caracteriza fundações privadas e associações sem fins lucrativos por finalidade, localização, idade, porte, emprego e remuneração, incorporando a nova série metodológica do CEMPRE a partir do ano-base 2022.",
+    "research_areas": "Economics | Labour | Social inequalities | Regional development",
+    "keywords": "FASFIL | organizações sem fins lucrativos | sociedade civil | fundações | associações | emprego | remuneração | CEMPRE",
+    "geographic_coverage": "Brasil; Grandes Regiões, UFs e municípios conforme tabela",
+    "covers_brazil": "sim",
+    "spatial_support": "entidade sem fins lucrativos | unidade local | agregações territoriais",
+    "spatial_resolution": "unidade local e agregações; município disponível no plano tabular",
+    "temporal_coverage": "ano de referência 2023; comparação publicada com 2022",
+    "temporal_resolution": "anual no conteúdo; divulgação eventual",
+    "update_frequency": "eventual",
+    "product_status": "ativo",
+    "version_or_collection": "5ª edição — ano-base 2023, publicada em 2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/outras-estatisticas-economicas/9023-as-fundacoes-privadas-e-associacoes-sem-fins-lucrativos-no-brasil.html",
+    "methodology_url": "https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/FP",
+    "primary_or_derived": "derivado",
+    "limitations": "É um recorte metodológico de entidades privadas sem fins lucrativos no CEMPRE, não um cadastro exaustivo de toda forma de organização da sociedade civil. A edição 2023 incorpora a quebra de série do CEMPRE iniciada em 2022; comparações com 2016 e edições anteriores exigem cautela metodológica.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0097",
+      "resource_name": "Cadastro Central de Empresas — Estatísticas — IBGE",
+      "acronym": "CEMPRE",
+      "official_identity": "Sistema estatístico anual do IBGE sobre empresas e outras organizações formalmente constituídas e suas unidades locais",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000325",
+        "product_id": "DP000304",
+        "distribution_name": "FASFIL 2023 — tabelas, SIDRA e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/outras-estatisticas-economicas/9023-as-fundacoes-privadas-e-associacoes-sem-fins-lucrativos-no-brasil.html",
+        "format": "XLS | ODS | PDF | SIDRA | página web",
+        "access_protocol": "HTTPS download / web",
+        "access_tool": "navegador web | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso por tabelas, publicação, SIDRA e downloads da edição 2023",
+        "license": "licença específica dos arquivos não determinada nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por classificação FASFIL, porte, ano de fundação e recorte territorial conforme tabela",
+        "notes": "A edição 2023 segue a nova série do CEMPRE a partir de 2022; não comparar automaticamente com 2016 ou séries antigas sem harmonização metodológica.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS | PDF | SIDRA | página web"
+    ],
+    "available_protocols": [
+      "HTTPS download / web"
+    ]
   }
 ]
