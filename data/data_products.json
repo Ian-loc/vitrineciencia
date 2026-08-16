@@ -12725,5 +12725,241 @@
     "available_protocols": [
       "HTTPS"
     ]
+  },
+  {
+    "product_id": "DP000214",
+    "resource_id": "DR0088",
+    "product_name": "Pesquisa Nacional de Saneamento Básico — 2017: abastecimento de água e esgotamento sanitário",
+    "product_acronym": "PNSB 2017",
+    "product_family": "Saneamento básico",
+    "product_kind": "dataset",
+    "product_description": "Resultados da PNSB 2017 sobre entidades prestadoras, infraestrutura e operação dos serviços coletivos de abastecimento de água por rede geral e esgotamento sanitário por rede coletora nos municípios brasileiros.",
+    "research_areas": "Environmental statistics | Water resources | Public policy | Territorial analysis",
+    "keywords": "PNSB 2017 | saneamento | água | esgoto | tratamento | prestadores | municípios | IBGE",
+    "geographic_coverage": "Brasil; 5.570 municípios no universo territorial da edição",
+    "covers_brazil": "sim",
+    "spatial_support": "prestador de serviço | município | agregações regionais",
+    "spatial_resolution": "município na unidade de investigação; resultados também agregados",
+    "temporal_coverage": "01/01/2017–31/12/2017",
+    "temporal_resolution": "ano de referência 2017",
+    "update_frequency": "eventual",
+    "product_status": "ativo",
+    "version_or_collection": "2017; tabelas atualizadas em 24/06/2021",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/9073-pesquisa-nacional-de-saneamento-basico.html?edicao=28244&t=resultados",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/9073-pesquisa-nacional-de-saneamento-basico.html?edicao=28244&t=conceitos-e-metodos",
+    "primary_or_derived": "primário",
+    "limitations": "A edição 2017 cobre água e esgoto, não resíduos sólidos e drenagem; é censo de prestadores dos serviços cobertos. Em 24/06/2021 o IBGE substituiu 30 tabelas após identificar preenchimentos e duplicações em questionários.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0088",
+      "resource_name": "Pesquisa Nacional de Saneamento Básico — IBGE",
+      "acronym": "PNSB",
+      "official_identity": "Pesquisa Nacional de Saneamento Básico do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/9073-pesquisa-nacional-de-saneamento-basico.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/9073-pesquisa-nacional-de-saneamento-basico.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000235",
+        "product_id": "DP000214",
+        "distribution_name": "PNSB 2017 — tabelas, SIDRA e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/9073-pesquisa-nacional-de-saneamento-basico.html?edicao=28244&t=resultados",
+        "format": "XLSX | ODS | SIDRA | PDF",
+        "access_protocol": "HTTPS | SIDRA",
+        "access_tool": "navegador web | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; usar tabelas corrigidas vigentes",
+        "license": "licença específica não localizada; citar IBGE e a edição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela e agregação territorial disponível",
+        "notes": "As tabelas de Dados Gerais e Abastecimento de Água foram atualizadas em 24/06/2021; não reutilizar cópias anteriores sem verificar versão.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | SIDRA | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS | SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000215",
+    "resource_id": "DR0089",
+    "product_name": "Perfil dos Municípios Brasileiros — MUNIC 2024",
+    "product_acronym": "MUNIC 2024",
+    "product_family": "Gestão pública municipal",
+    "product_kind": "dataset_series",
+    "product_description": "Edição 2024 da MUNIC, com registros administrativos municipais sobre recursos humanos, informática e comunicação, governança, habitação, transporte e mobilidade, agropecuária, instrumentos de gestão migratória, igualdade racial e outros blocos divulgados pelo IBGE.",
+    "research_areas": "Public policy | Territorial analysis | Environmental governance | Agriculture",
+    "keywords": "MUNIC 2024 | municípios | gestão pública | governança | agropecuária | evento climático | IBGE",
+    "geographic_coverage": "Brasil — municípios",
+    "covers_brazil": "sim",
+    "spatial_support": "município",
+    "spatial_resolution": "município",
+    "temporal_coverage": "01/01/2024–31/12/2024",
+    "temporal_resolution": "ano de referência 2024",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "2024; base corrigida em 07/11/2025 para incorporar bloco Evento Climático do Rio Grande do Sul",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/10586-pesquisa-de-informacoes-basicas-municipais.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/10586-pesquisa-de-informacoes-basicas-municipais.html?t=conceitos-e-metodos",
+    "primary_or_derived": "primário",
+    "limitations": "Temas variam entre edições e resultados representam informações administrativas declaradas pelas prefeituras. A base inicialmente publicada em 2025 omitia o bloco Evento Climático do Rio Grande do Sul e foi corrigida em 07/11/2025.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0089",
+      "resource_name": "Pesquisa de Informações Básicas Municipais — IBGE",
+      "acronym": "MUNIC",
+      "official_identity": "Pesquisa de Informações Básicas Municipais do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/10586-pesquisa-de-informacoes-basicas-municipais.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/10586-pesquisa-de-informacoes-basicas-municipais.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000236",
+        "product_id": "DP000215",
+        "distribution_name": "MUNIC 2024 — base, SIDRA, microdados e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/10586-pesquisa-de-informacoes-basicas-municipais.html",
+        "format": "XLSX | ODS | microdados | SIDRA | PDF",
+        "access_protocol": "HTTPS | SIDRA",
+        "access_tool": "navegador web | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto",
+        "license": "licença específica não localizada; citar IBGE e a edição",
+        "provider_attribution_required": "sim",
+        "subset_support": "município | tema | variável conforme distribuição",
+        "notes": "Usar a base posterior à correção de 07/11/2025 que incorporou o bloco Evento Climático do Rio Grande do Sul.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | microdados | SIDRA | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS | SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000216",
+    "resource_id": "DR0089",
+    "product_name": "MUNIC 2023 — Suplemento de Saneamento: limpeza urbana, resíduos sólidos e drenagem de águas pluviais",
+    "product_acronym": "MUNIC Saneamento 2023",
+    "product_family": "Gestão municipal do saneamento básico",
+    "product_kind": "dataset",
+    "product_description": "Suplemento municipal que investigou gestão pública de limpeza urbana e manejo de resíduos sólidos, além de drenagem e manejo de águas pluviais, incluindo infraestrutura, instrumentos de gestão, soluções baseadas na natureza, coleta seletiva, catadores, logística reversa e educação ambiental.",
+    "research_areas": "Environmental statistics | Waste management | Water resources | Public policy | Territorial analysis",
+    "keywords": "MUNIC 2023 | saneamento | resíduos sólidos | drenagem | águas pluviais | soluções baseadas na natureza | coleta seletiva | IBGE",
+    "geographic_coverage": "Brasil — 5.570 municípios",
+    "covers_brazil": "sim",
+    "spatial_support": "município",
+    "spatial_resolution": "município",
+    "temporal_coverage": "ano de referência 2023 conforme suplemento",
+    "temporal_resolution": "snapshot temático municipal",
+    "update_frequency": "eventual",
+    "product_status": "ativo",
+    "version_or_collection": "2023; publicação corrigida em 02/12/2024",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/19879-suplementos-munic2.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/19879-suplementos-munic2.html?t=conceitos-e-metodos",
+    "primary_or_derived": "primário",
+    "limitations": "O suplemento descreve gestão e existência de serviços/instrumentos municipais, não desempenho ambiental medido diretamente. A publicação digital recebeu correção em 02/12/2024 em dado sobre coleta seletiva e inclusão de colaborador.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0089",
+      "resource_name": "Pesquisa de Informações Básicas Municipais — IBGE",
+      "acronym": "MUNIC",
+      "official_identity": "Pesquisa de Informações Básicas Municipais do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/10586-pesquisa-de-informacoes-basicas-municipais.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/10586-pesquisa-de-informacoes-basicas-municipais.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000237",
+        "product_id": "DP000216",
+        "distribution_name": "MUNIC Saneamento 2023 — dados gerais, resíduos sólidos, drenagem e base",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/19879-suplementos-munic2.html",
+        "format": "XLS | XLSX | ODS | PDF",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto",
+        "license": "licença específica não localizada; citar IBGE e o suplemento",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela temática; base completa em XLSX",
+        "notes": "Inclui dados gerais, limpeza urbana/manejo de resíduos sólidos e drenagem/manejo de águas pluviais; considerar errata de 02/12/2024.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLS | XLSX | ODS | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000217",
+    "resource_id": "DR0090",
+    "product_name": "Perfil dos Estados Brasileiros — ESTADIC 2024",
+    "product_acronym": "ESTADIC 2024",
+    "product_family": "Gestão pública estadual",
+    "product_kind": "dataset_series",
+    "product_description": "Edição 2024 da ESTADIC com registros administrativos das 27 UFs sobre recursos humanos, informática e comunicação, governança, habitação, transporte e mobilidade urbana, agropecuária e igualdade racial, entre outros temas.",
+    "research_areas": "Public policy | Territorial analysis | Environmental governance | Agriculture",
+    "keywords": "ESTADIC 2024 | estados | gestão pública | governança | agropecuária | políticas estaduais | IBGE",
+    "geographic_coverage": "Brasil — 27 Unidades da Federação",
+    "covers_brazil": "sim",
+    "spatial_support": "Unidade da Federação | Grandes Regiões | Brasil",
+    "spatial_resolution": "Unidade da Federação",
+    "temporal_coverage": "01/01/2024–31/12/2024",
+    "temporal_resolution": "ano de referência 2024",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "2024",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/multidominio/cultura-recreacao-e-esporte/16770-pesquisa-de-informacoes-basicas-estaduais.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/multidominio/cultura-recreacao-e-esporte/16770-pesquisa-de-informacoes-basicas-estaduais.html?t=conceitos-e-metodos",
+    "primary_or_derived": "primário",
+    "limitations": "Resultados refletem registros e respostas institucionais dos governos estaduais; presença de órgão, instrumento ou política não equivale à sua implementação ou efetividade. Temas variam entre edições.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0090",
+      "resource_name": "Pesquisa de Informações Básicas Estaduais — IBGE",
+      "acronym": "ESTADIC",
+      "official_identity": "Pesquisa de Informações Básicas Estaduais do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/multidominio/cultura-recreacao-e-esporte/16770-pesquisa-de-informacoes-basicas-estaduais.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/multidominio/cultura-recreacao-e-esporte/16770-pesquisa-de-informacoes-basicas-estaduais.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000238",
+        "product_id": "DP000217",
+        "distribution_name": "ESTADIC 2024 — base de dados e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/multidominio/cultura-recreacao-e-esporte/16770-pesquisa-de-informacoes-basicas-estaduais.html",
+        "format": "XLSX | ODS | PDF",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto",
+        "license": "licença específica não localizada; citar IBGE e a edição",
+        "provider_attribution_required": "sim",
+        "subset_support": "Unidade da Federação | tema | variável conforme tabela",
+        "notes": "Base completa e tabelas do Questionário Básico; a unidade analítica é a UF, não município.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
   }
 ]
