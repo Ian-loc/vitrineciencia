@@ -1,0 +1,140 @@
+name: Materializar lote Censo 2022 2026-08-16
+
+on:
+  push:
+    branches: ["audit/ibge-censo-batch-20260816"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/ibge-censo-batch-20260816
+
+      - name: Append verified products and distributions
+        run: |
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+
+          root = Path('.')
+          pp = root/'data/data_products.csv'
+          dp = root/'data/product_distributions.csv'
+          today = '2026-08-16'
+
+          with pp.open(encoding='utf-8-sig', newline='') as f:
+              pr = csv.DictReader(f)
+              pfields = pr.fieldnames
+              products = list(pr)
+          with dp.open(encoding='utf-8-sig', newline='') as f:
+              dr = csv.DictReader(f)
+              dfields = dr.fieldnames
+              distributions = list(dr)
+
+          assert len(products) == 243, len(products)
+          assert len(distributions) == 264, len(distributions)
+          assert max(int(r['product_id'][2:]) for r in products) == 247
+          assert max(int(r['distribution_id'][2:]) for r in distributions) == 268
+
+          new_products = [
+            {
+              'product_id':'DP000248','resource_id':'DR0086','product_name':'Nomes no Brasil — Censo Demográfico 2022','product_acronym':'Nomes no Brasil','product_family':'Censo 2022 — nomes e sobrenomes','product_kind':'dataset',
+              'product_description':'Divulgação oficial dos nomes e sobrenomes mais frequentes identificados na lista de moradores do Censo Demográfico 2022, com consulta de frequências e distribuição territorial conforme regras de divulgação do IBGE.',
+              'research_areas':'Population geography | Demography | Social statistics | Cultural geography','keywords':'nomes | sobrenomes | frequência | população residente | Censo 2022 | IBGE',
+              'geographic_coverage':'Brasil; 27 Unidades da Federação; 5 570 Municípios, conforme a divulgação','covers_brazil':'sim','spatial_support':'pessoas agregadas por nome ou sobrenome e recorte territorial | consulta web','spatial_resolution':'Município na divulgação territorial; agregações por UF e Brasil','temporal_coverage':'população residente em 1º de agosto de 2022','temporal_resolution':'snapshot censitário','update_frequency':'por edição censitária/divulgação temática','product_status':'ativo','version_or_collection':'divulgação 2025 — Censo Demográfico 2022','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/sociais/populacao/2178-np-censo-demografico-2000/22827-censo-demografico-2022.html?edicao=44913','methodology_url':'https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/CD','primary_or_derived':'derivado',
+              'limitations':'Baseia-se na lista de moradores do Censo 2022, não em registro civil contínuo. A interface aplica regras de divulgação para proteger frequências raras; resultados não devem ser tratados como cadastro nominal exaustivo nem como dinâmica anual de registros de nascimento.','last_verified':today
+            },
+            {
+              'product_id':'DP000249','resource_id':'DR0086','product_name':'Mulheres no Censo 2022 — resultados do universo e da amostra','product_acronym':'Mulheres no Censo 2022','product_family':'Censo 2022 — panorama temático de mulheres','product_kind':'dataset',
+              'product_description':'Panorama temático integrado das condições de vida das mulheres no Censo Demográfico 2022, reunindo indicadores de educação, trabalho, rendimentos, mobilidade, maternidade, arranjos familiares, nupcialidade, deficiência e territórios.',
+              'research_areas':'Gender studies | Population geography | Demography | Social statistics | Public policy','keywords':'mulheres | gênero | educação | trabalho | rendimento | mobilidade | maternidade | deficiência | Censo 2022 | IBGE',
+              'geographic_coverage':'Brasil e recortes territoriais disponíveis nas tabelas e no Panorama do Censo 2022','covers_brazil':'sim','spatial_support':'pessoas e indicadores agregados por características e recortes territoriais | tabelas | Panorama','spatial_resolution':'varia por indicador e domínio de divulgação; inclui Município quando disponibilizado','temporal_coverage':'Censo Demográfico 2022','temporal_resolution':'snapshot censitário; combinação de resultados do universo e da amostra','update_frequency':'por edição censitária/divulgação temática','product_status':'ativo','version_or_collection':'divulgação de 26/03/2026 — resultados do universo e da amostra','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/sociais/populacao/9662-censo-demografico-2010.html/22827-censo-demografico-2022.html?edicao=46200','methodology_url':'https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/CD','primary_or_derived':'derivado',
+              'limitations':'Síntese transversal que combina indicadores oriundos do universo e da amostra; os denominadores, universos e níveis de precisão variam entre tabelas. Não constitui nova pesquisa independente nem torna automaticamente comparáveis indicadores com desenhos de divulgação distintos.','last_verified':today
+            },
+            {
+              'product_id':'DP000250','resource_id':'DR0086','product_name':'Composição domiciliar e óbitos informados — Censo Demográfico 2022 — resultados do universo','product_acronym':'Composição e óbitos Censo 2022','product_family':'Censo 2022 — composição domiciliar e mortalidade declarada','product_kind':'dataset',
+              'product_description':'Resultados do universo do Censo 2022 sobre composição domiciliar segundo relações de parentesco ou convivência com a pessoa responsável pelo domicílio e sobre ocorrência de óbitos informados entre pessoas que viviam no domicílio.',
+              'research_areas':'Demography | Population geography | Social statistics | Public health','keywords':'composição domiciliar | parentesco | responsável pelo domicílio | óbitos informados | mortalidade | Censo 2022 | IBGE',
+              'geographic_coverage':'Brasil; Grandes Regiões; Unidades da Federação; Municípios e demais recortes disponibilizados','covers_brazil':'sim','spatial_support':'pessoas e domicílios agregados por composição, características e recortes territoriais | SIDRA | Panorama | PGI','spatial_resolution':'Município e outros recortes de divulgação disponíveis','temporal_coverage':'Censo Demográfico 2022; período de referência próprio para óbitos informados','temporal_resolution':'snapshot censitário com pergunta retrospectiva de óbitos','update_frequency':'por edição censitária/divulgação temática','product_status':'ativo','version_or_collection':'divulgação de 25/10/2024 — resultados do universo','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demograf-ico-2022.html?edicao=41639&t=resultados','methodology_url':'https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/CD','primary_or_derived':'derivado',
+              'limitations':'Óbitos informados no domicílio são respostas censitárias e não equivalem ao registro civil contínuo ou a um sistema de vigilância de mortalidade. A composição domiciliar é um retrato na data de referência e depende das definições censitárias de morador e pessoa responsável.','last_verified':today
+            },
+            {
+              'product_id':'DP000251','resource_id':'DR0086','product_name':'Tipos de domicílios coletivos, improvisados, de uso ocasional e vagos — Censo Demográfico 2022 — resultados do universo','product_acronym':'Tipos de domicílios Censo 2022','product_family':'Censo 2022 — espécies e ocupação dos domicílios','product_kind':'dataset',
+              'product_description':'Resultados do universo do Censo 2022 sobre domicílios coletivos e improvisados, população residente nesses tipos de domicílio e domicílios particulares permanentes não ocupados, classificados como vagos ou de uso ocasional.',
+              'research_areas':'Population geography | Housing studies | Social statistics | Public policy','keywords':'domicílios coletivos | domicílios improvisados | domicílios vagos | uso ocasional | população | Censo 2022 | IBGE',
+              'geographic_coverage':'Brasil; Grandes Regiões; Unidades da Federação; Municípios e outros recortes quando disponibilizados','covers_brazil':'sim','spatial_support':'pessoas e domicílios agregados por espécie/condição de ocupação e recorte territorial | SIDRA | Panorama | PGI','spatial_resolution':'UF, Município e outros recortes conforme tabela','temporal_coverage':'Censo Demográfico 2022','temporal_resolution':'snapshot censitário; resultados do universo','update_frequency':'por edição censitária/divulgação temática','product_status':'ativo','version_or_collection':'divulgação de 06/09/2024 — resultados do universo','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/sociais/educacao/22827-sintese-de-indicadores-2025/22827-censo-demografico-2022.html?edicao=41154','methodology_url':'https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/CD','primary_or_derived':'derivado',
+              'limitations':'As categorias seguem conceitos censitários de espécie e ocupação do domicílio. Pessoas em domicílios improvisados não representam toda a população em situação de rua; domicílios vagos e de uso ocasional refletem a condição observada na referência censitária e não um estoque habitacional permanente.','last_verified':today
+            },
+            {
+              'product_id':'DP000252','resource_id':'DR0086','product_name':'Registros de nascimentos — Censo Demográfico 2022 — resultados do universo','product_acronym':'Registros de nascimentos Censo 2022','product_family':'Censo 2022 — registro de nascimento','product_kind':'dataset',
+              'product_description':'Resultados do universo do Censo 2022 sobre a existência e o tipo de registro de nascimento para a população investigada, divulgados em tabelas e recortes territoriais do IBGE.',
+              'research_areas':'Demography | Population geography | Social statistics | Public policy','keywords':'registro de nascimento | registro civil | crianças | população | Censo 2022 | IBGE',
+              'geographic_coverage':'Brasil; Grandes Regiões; Unidades da Federação; Municípios e demais recortes disponíveis','covers_brazil':'sim','spatial_support':'pessoas agregadas por situação/tipo de registro de nascimento e recorte territorial | SIDRA | Panorama | PGI','spatial_resolution':'Município e outros recortes de divulgação disponíveis','temporal_coverage':'Censo Demográfico 2022','temporal_resolution':'snapshot censitário; resultados do universo','update_frequency':'por edição censitária/divulgação temática','product_status':'ativo','version_or_collection':'divulgação de 08/08/2024 — resultados do universo','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/sociais/educacao/22827-sintese-de-indicadores-2025/22827-censo-demografico-2022.html?edicao=40692','methodology_url':'https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/CD','primary_or_derived':'derivado',
+              'limitations':'A informação é declarada no contexto censitário sobre existência/tipo de registro e não corresponde a microdados administrativos do Registro Civil nem ao número corrente de nascimentos ocorridos. Comparações exigem preservar universo, idade e conceitos da tabela.','last_verified':today
+            },
+          ]
+
+          new_distributions = [
+            {'distribution_id':'DD000269','product_id':'DP000248','distribution_name':'Nomes no Brasil — consulta oficial e nota técnica','access_url':'https://www.ibge.gov.br/estatisticas/sociais/populacao/2178-np-censo-demografico-2000/22827-censo-demografico-2022.html?edicao=44913','format':'visualização web | publicação/nota técnica PDF','access_protocol':'HTTPS web','access_tool':'navegador web | aplicação Nomes no Brasil','free_download':'parcial','authentication_required':'não','access_conditions':'consulta pública; regras de divulgação limitam frequências raras','license':'licença específica dos dados exibidos não localizada; preservar atribuição IBGE e termos do portal','provider_attribution_required':'sim','subset_support':'por nome ou sobrenome e recortes territoriais disponibilizados','notes':'A divulgação deriva da lista de moradores do Censo 2022; não é um cadastro civil nominal. A interface não exibe nomes com frequência nacional inferior ao limiar de divulgação definido pelo IBGE.','last_verified':today},
+            {'distribution_id':'DD000270','product_id':'DP000249','distribution_name':'Mulheres no Censo 2022 — Panorama e tabelas','access_url':'https://www.ibge.gov.br/estatisticas/sociais/populacao/9662-censo-demografico-2010.html/22827-censo-demografico-2022.html?edicao=46200','format':'XLSX | visualização web | publicação','access_protocol':'HTTPS web | HTTP download','access_tool':'navegador web | Panorama Censo 2022','free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos; observar o universo e o desenho de cada indicador','license':'licença específica das tabelas não localizada; preservar atribuição IBGE e termos do portal','provider_attribution_required':'sim','subset_support':'por indicador, característica e recorte territorial conforme tabela/Panorama','notes':'Integra resultados do universo e da amostra; níveis de precisão e denominadores não são uniformes entre indicadores.','last_verified':today},
+            {'distribution_id':'DD000271','product_id':'DP000250','distribution_name':'Composição domiciliar e óbitos informados — SIDRA, Panorama, PGI e publicação','access_url':'https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demograf-ico-2022.html?edicao=41639&t=resultados','format':'SIDRA | XLSX | ODS | PDF | visualização web','access_protocol':'HTTPS web | SIDRA','access_tool':'navegador web | SIDRA | Panorama Censo 2022 | PGI','free_download':'sim','authentication_required':'não','access_conditions':'consulta pública; observar definições censitárias e política de revisão','license':'licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal','provider_attribution_required':'sim','subset_support':'por tabela, característica domiciliar/óbito e recorte territorial disponível','notes':'Óbitos informados são respostas censitárias de moradores do domicílio e não substituem estatísticas administrativas do Registro Civil.','last_verified':today},
+            {'distribution_id':'DD000272','product_id':'DP000251','distribution_name':'Tipos de domicílios Censo 2022 — SIDRA, Panorama, PGI e publicação','access_url':'https://www.ibge.gov.br/estatisticas/sociais/educacao/22827-sintese-de-indicadores-2025/22827-censo-demografico-2022.html?edicao=41154','format':'SIDRA | XLSX | ODS | PDF | visualização web','access_protocol':'HTTPS web | SIDRA','access_tool':'navegador web | SIDRA | Panorama Censo 2022 | PGI','free_download':'sim','authentication_required':'não','access_conditions':'consulta pública; preservar conceitos de espécie e condição de ocupação do domicílio','license':'licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal','provider_attribution_required':'sim','subset_support':'por espécie/condição do domicílio, características populacionais e recorte disponível','notes':'Domicílio improvisado, coletivo, vago e de uso ocasional são categorias censitárias distintas; não inferir população em situação de rua a partir de uma única categoria.','last_verified':today},
+            {'distribution_id':'DD000273','product_id':'DP000252','distribution_name':'Registros de nascimentos Censo 2022 — SIDRA e publicação','access_url':'https://www.ibge.gov.br/estatisticas/sociais/educacao/22827-sintese-de-indicadores-2025/22827-censo-demografico-2022.html?edicao=40692','format':'SIDRA | XLSX | ODS | PDF | visualização web','access_protocol':'HTTPS web | SIDRA','access_tool':'navegador web | SIDRA | Panorama Censo 2022 | PGI','free_download':'sim','authentication_required':'não','access_conditions':'consulta pública; observar população-alvo, categorias e política de revisão','license':'licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal','provider_attribution_required':'sim','subset_support':'por situação/tipo de registro, características e recorte territorial disponível','notes':'Indicador censitário de existência/tipo de registro; não equivale a eventos de nascimento ou microdados administrativos do Registro Civil.','last_verified':today},
+          ]
+
+          existing_names = {r['product_name'].strip().casefold() for r in products}
+          existing_urls = {r['product_page_url'].strip() for r in products}
+          existing_pids = {r['product_id'] for r in products}
+          existing_dids = {r['distribution_id'] for r in distributions}
+          for r in new_products:
+              assert r['product_id'] not in existing_pids
+              assert r['product_name'].strip().casefold() not in existing_names, r['product_name']
+              assert r['product_page_url'] not in existing_urls, r['product_page_url']
+          for r in new_distributions:
+              assert r['distribution_id'] not in existing_dids
+
+          with pp.open('a', encoding='utf-8', newline='') as f:
+              w = csv.DictWriter(f, fieldnames=pfields, lineterminator='\n')
+              for r in new_products: w.writerow(r)
+          with dp.open('a', encoding='utf-8', newline='') as f:
+              w = csv.DictWriter(f, fieldnames=dfields, lineterminator='\n')
+              for r in new_distributions: w.writerow(r)
+          PY
+
+      - name: Validate and rebuild
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+          python3 - <<'PY'
+          import csv
+          for p, expected in [('data/data_resources.csv',92),('data/data_products.csv',248),('data/product_distributions.csv',269)]:
+              with open(p, encoding='utf-8-sig', newline='') as f:
+                  n=sum(1 for _ in csv.DictReader(f))
+              assert n == expected, (p,n,expected)
+          print('READBACK OK: 92 fontes, 248 produtos, 269 distribuicoes')
+          PY
+
+      - name: Commit materialized batch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json data/link_role_audit.json
+          git commit -m 'Materialize verified Censo 2022 batch'
+          git push origin HEAD:audit/ibge-censo-batch-20260816
