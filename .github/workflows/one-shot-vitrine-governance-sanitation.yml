@@ -1,0 +1,148 @@
+name: One-shot Vitrine governance and sanitation batch
+
+on:
+  push:
+    branches:
+      - audit/vitrine-20260816-governance-sanitation
+    paths:
+      - .github/workflows/one-shot-vitrine-governance-sanitation.yml
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/vitrine-20260816-governance-sanitation
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Append verified products and distributions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          products_path = Path('data/data_products.csv')
+          dists_path = Path('data/product_distributions.csv')
+
+          products = [
+            {
+              'product_id':'DP000218','resource_id':'DR0088','product_name':'Pesquisa Nacional de Saneamento Básico — PNSB 2008','product_acronym':'PNSB 2008','product_family':'Saneamento básico','product_kind':'dataset',
+              'product_description':'Edição nacional da PNSB realizada em 2008 para investigar a prestação e as condições dos quatro componentes do saneamento básico: abastecimento de água, esgotamento sanitário, manejo de resíduos sólidos e manejo de águas pluviais, junto a prefeituras e entidades prestadoras.',
+              'research_areas':'Environmental statistics | Water resources | Waste management | Public policy | Territorial analysis','keywords':'PNSB 2008 | saneamento | abastecimento de água | esgotamento sanitário | resíduos sólidos | drenagem | águas pluviais | municípios | IBGE',
+              'geographic_coverage':'Brasil — 5.565 municípios existentes na data de referência da pesquisa','covers_brazil':'sim','spatial_support':'município | entidade prestadora | agregações territoriais','spatial_resolution':'município na investigação; resultados também agregados','temporal_coverage':'ano de referência 2008','temporal_resolution':'snapshot de 2008','update_frequency':'eventual','product_status':'ativo','version_or_collection':'2008','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/9073-pesquisa-nacional-de-saneamento-basico.html','methodology_url':'https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/9073-pesquisa-nacional-de-saneamento-basico.html','primary_or_derived':'primário',
+              'limitations':'Retrato histórico de 2008, anterior às edições e arranjos recentes de saneamento. Os quatro componentes possuem entidades, variáveis e coberturas operacionais próprias; presença do serviço no município não equivale a cobertura domiciliar universal nem qualidade adequada do serviço.','last_verified':'2026-08-16'
+            },
+            {
+              'product_id':'DP000219','resource_id':'DR0089','product_name':'Perfil dos Municípios Brasileiros — MUNIC 2020','product_acronym':'MUNIC 2020','product_family':'Gestão pública municipal','product_kind':'dataset_series',
+              'product_description':'Edição 2020 da MUNIC, com registros administrativos municipais sobre recursos humanos, habitação, transporte, agropecuária, meio ambiente, gestão de riscos e desastres e respostas locais à COVID-19; a coleta foi realizada pela primeira vez predominantemente via sistema web ou questionário eletrônico.',
+              'research_areas':'Public policy | Territorial analysis | Environmental governance | Disaster risk | Agriculture','keywords':'MUNIC 2020 | gestão ambiental | riscos e desastres | queimadas | seca | inundação | municípios | COVID-19 | IBGE',
+              'geographic_coverage':'Brasil — municípios','covers_brazil':'sim','spatial_support':'município','spatial_resolution':'município','temporal_coverage':'referências de 2020; alguns blocos usam janelas retrospectivas específicas','temporal_resolution':'ano de referência e janelas temáticas conforme variável','update_frequency':'anual','product_status':'ativo','version_or_collection':'2020; 18ª edição','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/10586-pesquisa-deinformacoes-basicas-municipais.html?edicao=32141','methodology_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/10586-pesquisa-deinformacoes-basicas-municipais.html?edicao=32141&t=conceitos-e-metodos','primary_or_derived':'primário',
+              'limitations':'São registros administrativos declarados pelas prefeituras, não medições ambientais diretas. Blocos ambientais e de risco usam períodos de referência próprios; ocorrência declarada de queimadas, secas, alagamentos ou outros impactos não fornece intensidade física, extensão espacial ou atribuição causal.','last_verified':'2026-08-16'
+            },
+            {
+              'product_id':'DP000220','resource_id':'DR0090','product_name':'Perfil dos Estados Brasileiros — ESTADIC 2020','product_acronym':'ESTADIC 2020','product_family':'Gestão pública estadual','product_kind':'dataset_series',
+              'product_description':'Edição 2020 da ESTADIC com registros administrativos das 27 Unidades da Federação sobre recursos humanos, habitação, transporte, agropecuária e meio ambiente, incluindo prioridades e instrumentos da gestão ambiental estadual.',
+              'research_areas':'Public policy | Territorial analysis | Environmental governance | Water resources | Agriculture','keywords':'ESTADIC 2020 | gestão ambiental | recursos hídricos | licenciamento | queimadas | resíduos sólidos | estados | IBGE',
+              'geographic_coverage':'Brasil — 27 Unidades da Federação','covers_brazil':'sim','spatial_support':'Unidade da Federação | Grandes Regiões | Brasil','spatial_resolution':'Unidade da Federação','temporal_coverage':'ano de referência 2020; algumas variáveis administrativas referem-se a 2019','temporal_resolution':'ano de referência conforme variável','update_frequency':'anual','product_status':'ativo','version_or_collection':'2020','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/multidominio/cultura-recreacao-e-esporte/16770-pesquisa-de-informacoes-basicas-estaduais.html','methodology_url':'https://www.ibge.gov.br/estatisticas/multidominio/cultura-recreacao-e-esporte/16770-pesquisa-de-informacoes-basicas-estaduais.html?t=conceitos-e-metodos','primary_or_derived':'primário',
+              'limitations':'Registros e prioridades declarados pelos governos estaduais não equivalem a desempenho ambiental observado. Valores orçamentários, instrumentos e prioridades têm referências temporais próprias e não devem ser interpretados como medidas diretamente comparáveis de condição ecológica entre UFs.','last_verified':'2026-08-16'
+            },
+            {
+              'product_id':'DP000221','resource_id':'DR0089','product_name':'MUNIC 2024 — Suplemento de Segurança Alimentar e Nutricional','product_acronym':'MUNIC SAN 2024','product_family':'Segurança alimentar e nutricional na gestão municipal','product_kind':'dataset',
+              'product_description':'Primeira edição do Suplemento de Segurança Alimentar e Nutricional aplicado com a MUNIC 2024, cobrindo estrutura de gestão, legislação, instrumentos de participação, ações públicas e equipamentos relacionados ao Direito Humano à Alimentação Adequada e ao enfrentamento da má nutrição nos municípios.',
+              'research_areas':'Public policy | Food systems | Territorial analysis | Social policy','keywords':'MUNIC 2024 | segurança alimentar | nutrição | direito à alimentação | gestão municipal | políticas públicas | municípios | IBGE',
+              'geographic_coverage':'Brasil — 5.570 municipalidades no universo; respostas efetivas conforme base divulgada','covers_brazil':'sim','spatial_support':'município','spatial_resolution':'município','temporal_coverage':'2024; algumas ações investigadas referem-se a 2023 conforme quesito','temporal_resolution':'snapshot administrativo conforme variável','update_frequency':'eventual','product_status':'ativo','version_or_collection':'2024 — primeira edição do suplemento','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/19879-suplementos-munic2.html','methodology_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/19879-suplementos-munic2.html?t=conceitos-e-metodos','primary_or_derived':'primário',
+              'limitations':'Mede estruturas, instrumentos, ações e equipamentos declarados pela gestão municipal; não mede diretamente insegurança alimentar domiciliar, consumo, estado nutricional ou efetividade causal das políticas. Nem todos os 5.570 municípios necessariamente responderam a todos os quesitos.','last_verified':'2026-08-16'
+            },
+            {
+              'product_id':'DP000222','resource_id':'DR0090','product_name':'ESTADIC 2024 — Suplemento de Segurança Alimentar e Nutricional','product_acronym':'ESTADIC SAN 2024','product_family':'Segurança alimentar e nutricional na gestão estadual','product_kind':'dataset',
+              'product_description':'Primeira edição do Suplemento de Segurança Alimentar e Nutricional aplicado com a ESTADIC 2024, cobrindo estrutura de gestão, legislação, instrumentos de participação, ações públicas e equipamentos relacionados ao Direito Humano à Alimentação Adequada e ao enfrentamento da má nutrição nas Unidades da Federação.',
+              'research_areas':'Public policy | Food systems | Territorial analysis | Social policy','keywords':'ESTADIC 2024 | segurança alimentar | nutrição | direito à alimentação | gestão estadual | políticas públicas | estados | IBGE',
+              'geographic_coverage':'Brasil — 27 Unidades da Federação','covers_brazil':'sim','spatial_support':'Unidade da Federação | Grandes Regiões | Brasil','spatial_resolution':'Unidade da Federação','temporal_coverage':'2024; algumas ações investigadas referem-se a 2023 conforme quesito','temporal_resolution':'snapshot administrativo conforme variável','update_frequency':'eventual','product_status':'ativo','version_or_collection':'2024 — primeira edição do suplemento','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/19880-suplementos-estadic2.html?lang=pt-BR','methodology_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/19880-suplementos-estadic2.html?lang=pt-BR','primary_or_derived':'primário',
+              'limitations':'Mede estruturas, instrumentos, ações e equipamentos declarados pelos governos estaduais; não mede diretamente insegurança alimentar domiciliar, consumo, estado nutricional ou efetividade causal das políticas. A unidade analítica é a UF, não o município.','last_verified':'2026-08-16'
+            }
+          ]
+
+          distributions = [
+            {'distribution_id':'DD000239','product_id':'DP000218','distribution_name':'PNSB 2008 — tabelas, publicação e downloads oficiais','access_url':'https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/9073-pesquisa-nacional-de-saneamento-basico.html','format':'XLS | ODS | PDF | arquivos conforme edição','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'acesso aberto; selecionar edição 2008','license':'licença específica não localizada; citar IBGE e a edição','provider_attribution_required':'sim','subset_support':'por componente de saneamento e tabela conforme edição','notes':'A edição 2008 reúne os quatro componentes do saneamento; preservar diferenças entre abastecimento de água, esgotamento sanitário, resíduos sólidos e águas pluviais.','last_verified':'2026-08-16'},
+            {'distribution_id':'DD000240','product_id':'DP000219','distribution_name':'MUNIC 2020 — base de dados, tabelas e publicação','access_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/10586-pesquisa-deinformacoes-basicas-municipais.html?edicao=32141','format':'XLS | XLSX | ODS | PDF | microdados conforme portal','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'acesso aberto','license':'licença específica não localizada; citar IBGE e a edição','provider_attribution_required':'sim','subset_support':'município | tema | variável conforme base e tabela','notes':'A página oficial disponibiliza base completa e tabelas temáticas, incluindo Meio Ambiente e Gestão de riscos e de desastres; preservar períodos de referência de cada bloco.','last_verified':'2026-08-16'},
+            {'distribution_id':'DD000241','product_id':'DP000220','distribution_name':'ESTADIC 2020 — base de dados, tabelas e publicação','access_url':'https://www.ibge.gov.br/estatisticas/multidominio/cultura-recreacao-e-esporte/16770-pesquisa-de-informacoes-basicas-estaduais.html','format':'XLS | XLSX | ODS | PDF | arquivos conforme edição','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'acesso aberto; selecionar edição 2020','license':'licença específica não localizada; citar IBGE e a edição','provider_attribution_required':'sim','subset_support':'Unidade da Federação | tema | variável conforme tabela','notes':'A edição 2020 contém bloco de Meio Ambiente; a unidade analítica é a UF e os resultados são registros administrativos.','last_verified':'2026-08-16'},
+            {'distribution_id':'DD000242','product_id':'DP000221','distribution_name':'MUNIC Segurança Alimentar e Nutricional 2024 — base e tabelas','access_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/19879-suplementos-munic2.html','format':'XLS | XLSX | ODS | PDF','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'acesso aberto','license':'licença específica não localizada; citar IBGE e o suplemento','provider_attribution_required':'sim','subset_support':'município | variável | tabela','notes':'A página oficial oferece tabelas e base do suplemento; interpretar respostas como registros administrativos municipais, não medidas domiciliares de insegurança alimentar.','last_verified':'2026-08-16'},
+            {'distribution_id':'DD000243','product_id':'DP000222','distribution_name':'ESTADIC Segurança Alimentar e Nutricional 2024 — base e tabelas','access_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/19880-suplementos-estadic2.html?lang=pt-BR','format':'XLS | XLSX | ODS | PDF','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'acesso aberto','license':'licença específica não localizada; citar IBGE e o suplemento','provider_attribution_required':'sim','subset_support':'Unidade da Federação | variável | tabela','notes':'A página oficial oferece base/tabelas do suplemento em nível estadual; não atribuir desagregação municipal à ESTADIC.','last_verified':'2026-08-16'}
+          ]
+
+          def append_dict_rows(path, rows, id_field):
+              with path.open('r', encoding='utf-8', newline='') as f:
+                  reader = csv.DictReader(f)
+                  fieldnames = reader.fieldnames
+                  existing = list(reader)
+              existing_ids = {r[id_field] for r in existing}
+              existing_names = {r.get('product_name','') for r in existing}
+              for row in rows:
+                  if row[id_field] in existing_ids:
+                      raise SystemExit(f'duplicate ID: {row[id_field]}')
+                  if id_field == 'product_id' and row.get('product_name') in existing_names:
+                      raise SystemExit(f'duplicate product name: {row.get("product_name")}')
+                  missing = set(fieldnames) - set(row)
+                  extra = set(row) - set(fieldnames)
+                  if missing or extra:
+                      raise SystemExit(f'field mismatch {path}: missing={missing} extra={extra}')
+              with path.open('a', encoding='utf-8', newline='') as f:
+                  writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator='\n')
+                  for row in rows:
+                      writer.writerow(row)
+
+          append_dict_rows(products_path, products, 'product_id')
+          append_dict_rows(dists_path, distributions, 'distribution_id')
+          PY
+
+      - name: Validate and rebuild
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          with Path('data/data_resources.csv').open(encoding='utf-8', newline='') as f: resources=list(csv.DictReader(f))
+          with Path('data/data_products.csv').open(encoding='utf-8', newline='') as f: products=list(csv.DictReader(f))
+          with Path('data/product_distributions.csv').open(encoding='utf-8', newline='') as f: dists=list(csv.DictReader(f))
+          assert len({r['resource_id'] for r in resources}) == len(resources)
+          assert len({r['product_id'] for r in products}) == len(products)
+          assert len({r['distribution_id'] for r in dists}) == len(dists)
+          resource_ids={r['resource_id'] for r in resources}; product_ids={r['product_id'] for r in products}
+          assert all(r['resource_id'] in resource_ids for r in products)
+          assert all(r['product_id'] in product_ids for r in dists)
+          expected_products={'DP000218','DP000219','DP000220','DP000221','DP000222'}
+          expected_dists={'DD000239','DD000240','DD000241','DD000242','DD000243'}
+          assert expected_products <= product_ids
+          assert expected_dists <= {r['distribution_id'] for r in dists}
+          print(f'READBACK resources={len(resources)} products={len(products)} distributions={len(dists)}')
+          PY
+
+      - name: Commit materialized batch and remove one-shot workflow
+        shell: bash
+        run: |
+          set -euxo pipefail
+          rm .github/workflows/one-shot-vitrine-governance-sanitation.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Expand verified IBGE governance and sanitation catalog'
+          git push origin HEAD:audit/vitrine-20260816-governance-sanitation
