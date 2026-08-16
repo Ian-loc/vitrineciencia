@@ -16,6 +16,10 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
       - name: Verificar endpoints públicos após deploy
         env:
           SITE: https://ian-loc.github.io/vitrineciencia
@@ -42,6 +46,7 @@ jobs:
           fetch "$SITE/assets/analytics.js" "$tmp/analytics.js"
           fetch "$SITE/data/data_resources.json" "$tmp/resources.json"
           fetch "$SITE/data/data_products.json" "$tmp/products.json"
+          fetch "$SITE/data/product_distributions.csv" "$tmp/distributions.csv"
 
           grep -q 'Vitrine Ciência' "$tmp/index.html"
           grep -q 'id="filters"' "$tmp/index.html"
@@ -58,15 +63,35 @@ jobs:
           grep -q 'data/data_products.json' "$tmp/products.js"
           grep -q 'data/data_resources.json' "$tmp/analytics.js"
 
-          python3 - "$tmp/resources.json" "$tmp/products.json" <<'PY'
-          import json, sys
-          resources = json.load(open(sys.argv[1], encoding='utf-8'))
-          products = json.load(open(sys.argv[2], encoding='utf-8'))
-          assert isinstance(resources, list) and len(resources) == 51, len(resources)
-          assert isinstance(products, list) and len(products) > 0, len(products)
-          ids = [item['resource_id'] for item in resources]
-          assert len(ids) == len(set(ids))
-          print(f"OK: Vitrine publicada acessível — {len(resources)} fontes e {len(products)} produtos")
+          python3 - "$tmp/resources.json" "$tmp/products.json" "$tmp/distributions.csv" <<'PY'
+          import csv, json, sys
+
+          public_resources = json.load(open(sys.argv[1], encoding='utf-8'))
+          public_products = json.load(open(sys.argv[2], encoding='utf-8'))
+          with open(sys.argv[3], encoding='utf-8', newline='') as f:
+              public_distributions = list(csv.DictReader(f))
+
+          expected_resources = json.load(open('data/data_resources.json', encoding='utf-8'))
+          expected_products = json.load(open('data/data_products.json', encoding='utf-8'))
+          with open('data/product_distributions.csv', encoding='utf-8', newline='') as f:
+              expected_distributions = list(csv.DictReader(f))
+
+          def ids(rows, field):
+              values = [item[field] for item in rows]
+              assert len(values) == len(set(values)), f'duplicate {field}'
+              return set(values)
+
+          assert isinstance(public_resources, list)
+          assert isinstance(public_products, list)
+          assert ids(public_resources, 'resource_id') == ids(expected_resources, 'resource_id')
+          assert ids(public_products, 'product_id') == ids(expected_products, 'product_id')
+          assert ids(public_distributions, 'distribution_id') == ids(expected_distributions, 'distribution_id')
+
+          print(
+              'OK: Vitrine publicada corresponde ao catálogo canônico — '
+              f'{len(public_resources)} fontes, {len(public_products)} produtos, '
+              f'{len(public_distributions)} distribuições'
+          )
           PY
 
       - name: Confirmar fronteira pública
