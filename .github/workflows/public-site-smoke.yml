@@ -71,8 +71,10 @@ jobs:
           with open(sys.argv[3], encoding='utf-8', newline='') as f:
               public_distributions = list(csv.DictReader(f))
 
-          expected_resources = json.load(open('data/data_resources.json', encoding='utf-8'))
-          expected_products = json.load(open('data/data_products.json', encoding='utf-8'))
+          with open('data/data_resources.csv', encoding='utf-8', newline='') as f:
+              expected_resources = list(csv.DictReader(f))
+          with open('data/data_products.csv', encoding='utf-8', newline='') as f:
+              expected_products = list(csv.DictReader(f))
           with open('data/product_distributions.csv', encoding='utf-8', newline='') as f:
               expected_distributions = list(csv.DictReader(f))
 
