@@ -1,0 +1,226 @@
+name: One-shot Vitrine agro audit
+
+on:
+  push:
+    branches:
+      - agent/vitrine-agro-dedupe-20260816
+
+permissions:
+  contents: write
+
+jobs:
+  curate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/vitrine-agro-dedupe-20260816
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Curate, validate, read back and commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import csv, io, re, unicodedata
+          from pathlib import Path
+
+          ROOT=Path('.')
+          P=ROOT/'data/data_products.csv'
+          D=ROOT/'data/product_distributions.csv'
+          TODAY='2026-08-16'
+
+          def norm(s):
+              s=unicodedata.normalize('NFKD', s).encode('ascii','ignore').decode().lower()
+              return re.sub(r'[^a-z0-9]+',' ',s).strip()
+
+          def read_rows(path):
+              with path.open(encoding='utf-8-sig', newline='') as f:
+                  return list(csv.DictReader(f))
+
+          products=read_rows(P); dists=read_rows(D)
+          print('START', len(products), len(dists))
+
+          # 1) Proven duplicate: same MapBiomas LULC Collection 10.1 represented twice.
+          bypid={r['product_id']:r for r in products}
+          for pid in ('DP000025','DP000050'):
+              assert pid in bypid, f'missing expected duplicate {pid}'
+          a,b=bypid['DP000025'],bypid['DP000050']
+          assert a['resource_id']==b['resource_id']=='DR0010'
+          assert a['version_or_collection']==b['version_or_collection']=='Coleção 10.1'
+          assert a['product_page_url']==b['product_page_url']=='https://brasil.mapbiomas.org/colecoes-mapbiomas/'
+          assert a['methodology_url']==b['methodology_url']=='https://brasil.mapbiomas.org/metodo_cobertura_e_uso/'
+
+          products=[r for r in products if r['product_id']!='DP000050']
+          # Preserve oldest stable product ID. Keep the two materially distinct access routes
+          # that were attached to DP000050; drop older redundant collection-page distribution.
+          newd=[]
+          for r in dists:
+              if r['distribution_id']=='DD000033':
+                  continue
+              if r['product_id']=='DP000050':
+                  r=dict(r); r['product_id']='DP000025'
+              newd.append(r)
+          dists=newd
+          assert not any(r['product_id']=='DP000050' for r in dists)
+          assert {r['distribution_id'] for r in dists if r['product_id']=='DP000025'} >= {'DD000061','DD000062'}
+
+          # 2) Reuse the already-existing IBGE agriculture family/source instead of creating a new source.
+          agro_markers=('producao agricola municipal','pesquisa da pecuaria municipal','levantamento sistematico da producao agricola','pesquisa de estoques')
+          source_candidates=[]
+          for r in products:
+              n=norm(r['product_name'])
+              if any(m in n for m in agro_markers):
+                  source_candidates.append((r['product_id'],r['resource_id'],r['product_name']))
+          print('EXISTING_AGRO', source_candidates)
+          assert source_candidates, 'no existing IBGE agriculture product found to anchor family'
+          # Prefer the resource already used by PAM/PPM; require agreement where both exist.
+          pamppm=[x for x in source_candidates if 'producao agricola municipal' in norm(x[2]) or 'pesquisa da pecuaria municipal' in norm(x[2])]
+          assert pamppm, 'PAM/PPM anchor not found'
+          source_ids={x[1] for x in pamppm}
+          assert len(source_ids)==1, f'PAM/PPM unexpectedly split across sources: {pamppm}'
+          RID=next(iter(source_ids))
+          print('AGRO_RESOURCE', RID)
+
+          existing_names={norm(r['product_name']) for r in products}
+          next_pid=max(int(r['product_id'][2:]) for r in products)+1
+          next_did=max(int(r['distribution_id'][2:]) for r in dists)+1
+
+          candidates=[
+            dict(
+              key='pevs', name='Produção da Extração Vegetal e da Silvicultura — edição 2024', acronym='PEVS 2024',
+              family='Estatísticas agropecuárias — produção florestal',
+              description='Pesquisa anual do IBGE sobre quantidade e valor da produção obtida pela extração de recursos vegetais nativos e pela silvicultura, incluindo área total existente e área colhida de cultivos florestais.',
+              areas='Agriculture | Forestry | Environmental statistics | Territorial analysis',
+              keywords='PEVS | extrativismo vegetal | silvicultura | produção florestal | florestas plantadas | municípios | IBGE',
+              coverage='Brasil — Grandes Regiões, Unidades da Federação e municípios produtores', support='município | Unidade da Federação | Grande Região | Brasil',
+              spatial='municipal para os resultados detalhados; agregações regionais e nacionais disponíveis', temporal='série histórica; edição corrente verificada 2024', resolution='anual', frequency='anual',
+              version='2024', url='https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9105-producao-da-extracao-vegetal-e-da-silvicultura.html',
+              limitations='A pesquisa mede produção declarada/estimada nos municípios e não cobertura florestal, biomassa ou estoque de carbono. Produtos do extrativismo nativo e da silvicultura plantada devem permanecer distinguidos; revisões e notas técnicas da edição usada precisam ser preservadas.',
+              subset='produto | município | Unidade da Federação | Grande Região', notes='Edição 2024 com tabelas e metadados oficiais; disseminação inclui publicação digital e SIDRA.'),
+            dict(
+              key='abate', name='Pesquisa Trimestral do Abate de Animais — resultados completos', acronym='Abate Trimestral',
+              family='Estatísticas trimestrais da produção pecuária',
+              description='Pesquisa conjuntural do IBGE sobre número de animais abatidos e peso total das carcaças por espécie em estabelecimentos sob fiscalização sanitária federal, estadual ou municipal.',
+              areas='Agriculture | Livestock | Economic statistics | Territorial analysis',
+              keywords='abate | bovinos | suínos | frangos | carcaças | produção pecuária | IBGE',
+              coverage='Brasil e Unidades da Federação nos resultados completos', support='estabelecimento informante | Unidade da Federação | Brasil', spatial='Unidade da Federação na divulgação completa', temporal='série trimestral; edição corrente verificada 1º trimestre de 2026', resolution='trimestral; resultados discriminados por mês nas tabelas do trimestre', frequency='trimestral',
+              version='1º trimestre de 2026', url='https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9203-pesquisas-trimestrais-do-abate-de-animais.html',
+              limitations='Investiga estabelecimentos que realizam abate sob fiscalização sanitária e não representa automaticamente todo abate informal ou não inspecionado. Distinguir Primeiros Resultados, divulgados somente para Brasil, dos Resultados Completos por Unidade da Federação e considerar revisões programadas.',
+              subset='espécie | mês | Unidade da Federação | Brasil', notes='Resultados completos do 1º trimestre de 2026 divulgados em 16/06/2026; tabelas e SIDRA sujeitos à política de revisão do IBGE.'),
+            dict(
+              key='ovos', name='Produção de Ovos de Galinha — resultados trimestrais', acronym='POG',
+              family='Estatísticas trimestrais da produção pecuária',
+              description='Pesquisa trimestral do IBGE sobre produção física de ovos de galinha e efetivo de poedeiras/matrizeiras em estabelecimentos especializados com capacidade de alojamento de pelo menos 10 mil aves elegíveis.',
+              areas='Agriculture | Livestock | Economic statistics | Territorial analysis',
+              keywords='ovos de galinha | poedeiras | matrizeiras | produção pecuária | granjas | IBGE',
+              coverage='Brasil e Unidades da Federação nos resultados completos', support='estabelecimento informante | Unidade da Federação | Brasil', spatial='Unidade da Federação na divulgação completa', temporal='série iniciada com dados de 1983; edição corrente verificada 1º trimestre de 2026', resolution='trimestral com dados mensais dentro do trimestre', frequency='trimestral',
+              version='1º trimestre de 2026', url='https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9216-pesquisa-trimestral-da-producao-de-ovos-de-galinha.html',
+              limitations='Representa produção especializada/comercial no painel elegível e não toda a produção municipal de ovos; a PPM inclui também produção não comercial e estabelecimentos abaixo do corte. Primeiros resultados são provisórios e o painel é atualizado ao longo do tempo.',
+              subset='mês | Unidade da Federação | Brasil', notes='Resultados do 1º trimestre de 2026; a pesquisa é trimestral e os dados podem ser revistos até a consolidação subsequente.'),
+            dict(
+              key='leite', name='Pesquisa Trimestral do Leite — resultados completos', acronym='Leite Trimestral',
+              family='Estatísticas trimestrais da produção pecuária',
+              description='Pesquisa trimestral do IBGE sobre quantidades de leite cru, resfriado ou não, adquiridas e industrializadas pelos estabelecimentos investigados.',
+              areas='Agriculture | Livestock | Economic statistics | Territorial analysis',
+              keywords='leite cru | laticínios | aquisição | industrialização | preço ao produtor | IBGE',
+              coverage='Brasil e Unidades da Federação nos resultados completos', support='estabelecimento informante | Unidade da Federação | Brasil', spatial='Unidade da Federação na divulgação completa', temporal='série trimestral; edição corrente verificada 1º trimestre de 2026', resolution='trimestral', frequency='trimestral',
+              version='1º trimestre de 2026', url='https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9209-pesquisa-trimestral-do-leite.html',
+              limitations='A pesquisa mede leite cru adquirido/industrializado pelos estabelecimentos cobertos e não equivale à produção total de leite na fazenda. A variável preço médio pago ao produtor, investigada desde 2019, é divulgada como estatística experimental e deve permanecer separada das quantidades físicas.',
+              subset='Unidade da Federação | Brasil | variável', notes='Resultados completos do 1º trimestre de 2026; quantidades físicas e preço médio ao produtor têm estatutos metodológicos distintos.'),
+            dict(
+              key='couro', name='Pesquisa Trimestral do Couro — resultados completos', acronym='Couro Trimestral',
+              family='Estatísticas trimestrais da produção pecuária',
+              description='Pesquisa trimestral do IBGE sobre quantidade de couro cru bovino adquirida e curtida em estabelecimentos que adquirem e curtem pelo menos 5 mil unidades inteiras de couro cru bovino por ano.',
+              areas='Agriculture | Livestock | Economic statistics | Territorial analysis',
+              keywords='couro bovino | curtumes | couro cru | curtimento | produção pecuária | IBGE',
+              coverage='Brasil e Unidades da Federação nos resultados completos', support='estabelecimento informante | Unidade da Federação | Brasil', spatial='Unidade da Federação na divulgação completa', temporal='série trimestral desde 1997; edição corrente verificada 1º trimestre de 2026', resolution='trimestral', frequency='trimestral',
+              version='1º trimestre de 2026', url='https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9214-pesquisa-trimestral-do-couro.html',
+              limitations='A população-alvo é definida pelo corte de pelo menos 5 mil unidades anuais e não representa curtumes abaixo desse limite. Quantidades adquiridas, recebidas de terceiros e curtidas são conceitos distintos. Primeiros resultados são somente nacionais e podem ser revisados.',
+              subset='mês | Unidade da Federação | Brasil | variável', notes='Resultados completos do 1º trimestre de 2026; disseminação por publicação digital e SIDRA, com política de revisão.'),
+          ]
+
+          # Defensive absence check: do not create a cosmetic duplicate if another spelling is already present.
+          aliases={
+            'pevs':['producao da extracao vegetal e da silvicultura','pevs'],
+            'abate':['pesquisa trimestral do abate de animais'],
+            'ovos':['producao de ovos de galinha'],
+            'leite':['pesquisa trimestral do leite'],
+            'couro':['pesquisa trimestral do couro'],
+          }
+          added=[]
+          for c in candidates:
+              if any(any(a in norm(r['product_name']) for a in aliases[c['key']]) for r in products):
+                  print('SKIP_EXISTING', c['key'])
+                  continue
+              pid=f'DP{next_pid:06d}'; next_pid+=1
+              row={
+                'product_id':pid,'resource_id':RID,'product_name':c['name'],'product_acronym':c['acronym'],'product_family':c['family'],
+                'product_kind':'dataset_series','product_description':c['description'],'research_areas':c['areas'],'keywords':c['keywords'],
+                'geographic_coverage':c['coverage'],'covers_brazil':'sim','spatial_support':c['support'],'spatial_resolution':c['spatial'],
+                'temporal_coverage':c['temporal'],'temporal_resolution':c['resolution'],'update_frequency':c['frequency'],'product_status':'ativo',
+                'version_or_collection':c['version'],'enumeration_scope':'complete','product_page_url':c['url'],'methodology_url':c['url'],
+                'primary_or_derived':'primário','limitations':c['limitations'],'last_verified':TODAY,
+              }
+              products.append(row)
+              did=f'DD{next_did:06d}'; next_did+=1
+              dists.append({
+                'distribution_id':did,'product_id':pid,'distribution_name':c['name']+' — página, tabelas e SIDRA','access_url':c['url'],
+                'format':'XLSX | SIDRA | publicação digital','access_protocol':'HTTPS web | HTTP download','access_tool':'navegador web | planilha | SIDRA',
+                'free_download':'sim','authentication_required':'não','access_conditions':'consulta pública e downloads oficiais; observar revisões da edição',
+                'license':'licença específica do arquivo não inferida; observar termos de uso do IBGE','provider_attribution_required':'sim',
+                'subset_support':c['subset'],'notes':c['notes'],'last_verified':TODAY,
+              })
+              added.append((pid,did,c['key']))
+          print('ADDED', added)
+
+          # Write deterministically. The baseline is intentionally reserialized here only after
+          # all semantic guards passed; git diff checks below ensure the final scope is auditable.
+          with P.open('w',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=list(products[0].keys()),lineterminator='\n'); w.writeheader(); w.writerows(products)
+          with D.open('w',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=list(dists[0].keys()),lineterminator='\n'); w.writeheader(); w.writerows(dists)
+
+          # Relational/read-back guards before project validators.
+          products2=read_rows(P); dists2=read_rows(D)
+          pids=[r['product_id'] for r in products2]; dids=[r['distribution_id'] for r in dists2]
+          assert len(pids)==len(set(pids)); assert len(dids)==len(set(dids))
+          assert all(r['product_id'] in set(pids) for r in dists2)
+          assert 'DP000050' not in set(pids) and 'DD000033' not in set(dids)
+          assert sum('mapbiomas cobertura e uso da terra' in norm(r['product_name']) and '10 1' in norm(r['version_or_collection']) for r in products2)==1
+          print('READBACK_PREVALIDATION', len(products2), len(dists2))
+          PY
+
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          def rows(p):
+              with Path(p).open(encoding='utf-8-sig',newline='') as f:return list(csv.DictReader(f))
+          s=rows('data/data_resources.csv'); p=rows('data/data_products.csv'); d=rows('data/product_distributions.csv')
+          pids={x['product_id'] for x in p}; rids={x['resource_id'] for x in s}
+          assert len(rids)==len(s) and len(pids)==len(p) and len({x['distribution_id'] for x in d})==len(d)
+          assert all(x['resource_id'] in rids for x in p) and all(x['product_id'] in pids for x in d)
+          print('FINAL_READBACK',len(s),len(p),len(d))
+          for x in p:
+              if x['last_verified']=='2026-08-16' and int(x['product_id'][2:])>=204:
+                  print('NEW_PRODUCT',x['product_id'],x['resource_id'],x['product_name'])
+          PY
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -u
+          git add data
+          git commit -m 'Audit MapBiomas duplicate and expand IBGE agro statistics'
+          git rm .github/workflows/one-shot-vitrine-agro.yml
+          git commit -m 'Remove one-shot audit workflow'
+          git push origin HEAD:agent/vitrine-agro-dedupe-20260816
