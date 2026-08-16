@@ -18094,5 +18094,182 @@
     "available_protocols": [
       "HTTPS download / web"
     ]
+  },
+  {
+    "product_id": "DP000305",
+    "resource_id": "DR0098",
+    "product_name": "Pesquisa Industrial Anual — Empresa 2024",
+    "product_acronym": "PIA-Empresa 2024",
+    "product_family": "Estrutura da indústria brasileira",
+    "product_kind": "dataset_series",
+    "product_description": "Pesquisa estrutural anual sobre empresas industriais, com pessoal ocupado, salários, custos e despesas, receitas, valor da produção e valor da transformação industrial; a edição 2024 inicia nova série metodológica.",
+    "research_areas": "Economics | Labour | Economic geography | Regional development",
+    "keywords": "indústria | empresas | emprego | salários | receita | valor da transformação industrial | CNAE",
+    "geographic_coverage": "Brasil; Grandes Regiões e UFs conforme tabela",
+    "covers_brazil": "sim",
+    "spatial_support": "empresa | unidade local produtiva | agregações setoriais e territoriais",
+    "spatial_resolution": "empresa/unidade local; detalhamento por CNAE e recorte geográfico conforme tabela",
+    "temporal_coverage": "ano de referência 2024; nova série a partir de 2024",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "edição 2024 — nova série metodológica",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/industria/9042-pesquisa-industrial-anual.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/industria/9042-pesquisa-industrial-anual.html",
+    "primary_or_derived": "primário",
+    "limitations": "A nova série iniciada em 2024 incorpora mudanças na seleção da amostra e apresentação dos resultados. Não comparar automaticamente com séries anteriores; observar população-alvo e estratos de divulgação.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0098",
+      "resource_name": "Pesquisas Estruturais por Empresas — IBGE",
+      "acronym": "Pesquisas Estruturais IBGE",
+      "official_identity": "Programa de pesquisas estruturais anuais por empresas do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000326",
+        "product_id": "DP000305",
+        "distribution_name": "PIA-Empresa 2024 — SIDRA, tabelas e painel",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/industria/9042-pesquisa-industrial-anual.html",
+        "format": "SIDRA | HTML | PDF | tabelas conforme portal",
+        "access_protocol": "HTTPS / SIDRA",
+        "access_tool": "navegador web | SIDRA | painel",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público por página, SIDRA e painel conforme edição",
+        "license": "licença específica dos arquivos não determinada nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por atividade, porte e recorte territorial conforme tabela",
+        "notes": "Nova série a partir de 2024; preservar notas técnicas e critérios de seleção/amostra.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | HTML | PDF | tabelas conforme portal"
+    ],
+    "available_protocols": [
+      "HTTPS / SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000306",
+    "resource_id": "DR0098",
+    "product_name": "Pesquisa Industrial Anual — Produto 2024",
+    "product_acronym": "PIA-Produto 2024",
+    "product_family": "Produção industrial por produto",
+    "product_kind": "dataset_series",
+    "product_description": "Pesquisa estrutural anual sobre produtos e serviços industriais produzidos no país segundo a Prodlist-Indústria, com quantidade produzida e vendida, valor da produção e vendas; a edição 2024 inicia nova série.",
+    "research_areas": "Economics | Industrial ecology | Economic geography | Regional development",
+    "keywords": "produtos industriais | produção | vendas | Prodlist | NCM | CNAE | indústria",
+    "geographic_coverage": "Brasil; UFs para recortes selecionados e Brasil conforme tabela",
+    "covers_brazil": "sim",
+    "spatial_support": "produto industrial | unidade produtiva | agregações territoriais",
+    "spatial_resolution": "produto e agregações; detalhamento geográfico conforme tabela",
+    "temporal_coverage": "ano de referência 2024; nova série a partir de 2024",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "edição 2024 — nova série metodológica",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/industria/9044-pesquisa-industrial-anual-produto.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/industria/9044-pesquisa-industrial-anual-produto.html",
+    "primary_or_derived": "primário",
+    "limitations": "A PIA-Produto cobre o estrato certo/selecionado da PIA-Empresa e não constitui inventário físico exaustivo de toda produção industrial. A nova série iniciada em 2024 exige cautela em comparações históricas.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0098",
+      "resource_name": "Pesquisas Estruturais por Empresas — IBGE",
+      "acronym": "Pesquisas Estruturais IBGE",
+      "official_identity": "Programa de pesquisas estruturais anuais por empresas do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000327",
+        "product_id": "DP000306",
+        "distribution_name": "PIA-Produto 2024 — SIDRA, tabelas e painel",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/industria/9044-pesquisa-industrial-anual-produto.html",
+        "format": "SIDRA | HTML | PDF | tabelas conforme portal",
+        "access_protocol": "HTTPS / SIDRA",
+        "access_tool": "navegador web | SIDRA | painel",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público por página, SIDRA e painel conforme edição",
+        "license": "licença específica dos arquivos não determinada nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por produto, atividade e recorte territorial conforme tabela",
+        "notes": "Nova série a partir de 2024; cobertura deriva do universo selecionado da PIA e da Prodlist-Indústria.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | HTML | PDF | tabelas conforme portal"
+    ],
+    "available_protocols": [
+      "HTTPS / SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000307",
+    "resource_id": "DR0098",
+    "product_name": "Pesquisa Anual da Indústria da Construção 2024",
+    "product_acronym": "PAIC 2024",
+    "product_family": "Estrutura econômica da construção",
+    "product_kind": "dataset_series",
+    "product_description": "Pesquisa estrutural anual sobre empresas de construção, com pessoal ocupado, salários, custos e despesas, receitas e valor de incorporações, obras e serviços; a edição 2024 inicia nova série.",
+    "research_areas": "Economics | Labour | Urban studies | Regional development",
+    "keywords": "construção | empresas | obras | serviços | emprego | custos | receitas | CNAE",
+    "geographic_coverage": "Brasil; Grandes Regiões e UFs conforme tabela",
+    "covers_brazil": "sim",
+    "spatial_support": "empresa | unidade local | agregações setoriais e territoriais",
+    "spatial_resolution": "empresa/unidade local; detalhamento territorial conforme tabela",
+    "temporal_coverage": "ano de referência 2024; nova série a partir de 2024",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "edição 2024 — nova série metodológica",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/industria/9018-pesquisa-anual-da-industria-da-construcao.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/industria/9018-pesquisa-anual-da-industria-da-construcao.html",
+    "primary_or_derived": "primário",
+    "limitations": "A edição 2024 iniciou nova série após correção da amostra selecionada e mudança metodológica documentada. A partir de 2024 os resultados são disseminados no SIDRA; não assumir continuidade direta com séries anteriores.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0098",
+      "resource_name": "Pesquisas Estruturais por Empresas — IBGE",
+      "acronym": "Pesquisas Estruturais IBGE",
+      "official_identity": "Programa de pesquisas estruturais anuais por empresas do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000328",
+        "product_id": "DP000307",
+        "distribution_name": "PAIC 2024 — SIDRA e publicação digital",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/industria/9018-pesquisa-anual-da-industria-da-construcao.html",
+        "format": "SIDRA | HTML | PDF",
+        "access_protocol": "HTTPS / SIDRA",
+        "access_tool": "navegador web | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "a partir do ano-base 2024 os resultados são disseminados no SIDRA",
+        "license": "licença específica dos arquivos não determinada nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por atividade, porte e recorte territorial conforme tabela",
+        "notes": "A edição 2024 inicia nova série; o IBGE informa que os resultados passaram a ser disponibilizados apenas no SIDRA.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | HTML | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / SIDRA"
+    ]
   }
 ]
