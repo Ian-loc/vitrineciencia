@@ -1,0 +1,95 @@
+name: One-shot Vitrine pesticide survey batch
+
+on:
+  push:
+    branches:
+      - audit/vitrine-20260816-governance-sanitation
+    paths:
+      - .github/workflows/one-shot-vitrine-pesticides.yml
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/vitrine-20260816-governance-sanitation
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Append verified pesticide-use product and distribution
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          p = Path('data/data_products.csv')
+          d = Path('data/product_distributions.csv')
+          with p.open(encoding='utf-8', newline='') as f:
+              reader=csv.DictReader(f); pf=reader.fieldnames; existing=list(reader)
+          with d.open(encoding='utf-8', newline='') as f:
+              reader=csv.DictReader(f); df=reader.fieldnames; dexisting=list(reader)
+          assert 'DP000223' not in {r['product_id'] for r in existing}
+          assert 'DD000244' not in {r['distribution_id'] for r in dexisting}
+          assert not any('Uso de Agrotóxicos no Estado do Paraná' in r['product_name'] for r in existing)
+
+          row={
+            'product_id':'DP000223','resource_id':'DR0087','product_name':'Uso de Agrotóxicos no Estado do Paraná — safra 1998/1999','product_acronym':'Agrotóxicos PR 1998/1999','product_family':'Pesquisa piloto sobre uso de agrotóxicos','product_kind':'dataset',
+            'product_description':'Pesquisa piloto do IBGE, em convênio com a Secretaria de Estado da Agricultura e do Abastecimento do Paraná, sobre uso de agrotóxicos em estabelecimentos agropecuários, baseada em amostragem probabilística derivada da estrutura metodológica da PREVS.',
+            'research_areas':'Agriculture | Environmental statistics | Public health | Territorial analysis','keywords':'agrotóxicos | pesticidas | estabelecimentos agropecuários | Paraná | safra 1998/1999 | intoxicação | equipamentos de proteção | PREVS | IBGE',
+            'geographic_coverage':'Estado do Paraná, Brasil','covers_brazil':'sim','spatial_support':'segmentos amostrais | estabelecimentos agropecuários | Estado do Paraná','spatial_resolution':'amostra probabilística de segmentos; resultados agregados para o estado e categorias investigadas','temporal_coverage':'safra 1998/1999; coleta março–abril de 1999; algumas variáveis de saúde referem-se a 1998–1999','temporal_resolution':'períodos de referência variam por variável','update_frequency':'não recorrente','product_status':'arquivado','version_or_collection':'1998–1999; publicação 2001','enumeration_scope':'complete',
+            'product_page_url':'https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9121-uso-de-agrotoxicos-no-estado-do-parana.html','methodology_url':'https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9121-uso-de-agrotoxicos-no-estado-do-parana.html','primary_or_derived':'primário',
+            'limitations':'Pesquisa piloto histórica restrita ao Paraná e à safra 1998/1999; não representa uso atual de agrotóxicos no estado ou no Brasil. As estimativas derivam de amostra probabilística e devem ser interpretadas com seus coeficientes de variação e períodos de referência próprios. Uso declarado/aplicado não equivale a resíduos ambientais, exposição individual medida ou causalidade de intoxicação.','last_verified':'2026-08-16'
+          }
+          dist={
+            'distribution_id':'DD000244','product_id':'DP000223','distribution_name':'Uso de Agrotóxicos no Paraná 1998/1999 — tabelas, publicação e downloads oficiais','access_url':'https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9121-uso-de-agrotoxicos-no-estado-do-parana.html','format':'XLS | PDF | downloads conforme portal','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'acesso aberto','license':'licença específica não localizada; citar IBGE e a publicação','provider_attribution_required':'sim','subset_support':'por tabela e variável investigada','notes':'As tabelas oficiais são disponibilizadas em Excel e a publicação é de 2001. Preservar o desenho amostral, coeficientes de variação e períodos de referência das variáveis.','last_verified':'2026-08-16'
+          }
+          assert set(row)==set(pf), (set(pf)-set(row),set(row)-set(pf))
+          assert set(dist)==set(df), (set(df)-set(dist),set(dist)-set(df))
+          with p.open('a',encoding='utf-8',newline='') as f:
+              csv.DictWriter(f,fieldnames=pf,lineterminator='\n').writerow(row)
+          with d.open('a',encoding='utf-8',newline='') as f:
+              csv.DictWriter(f,fieldnames=df,lineterminator='\n').writerow(dist)
+          PY
+
+      - name: Validate and rebuild
+        shell: bash
+        run: |
+          set -euxo pipefail
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          with Path('data/data_resources.csv').open(encoding='utf-8',newline='') as f: r=list(csv.DictReader(f))
+          with Path('data/data_products.csv').open(encoding='utf-8',newline='') as f: p=list(csv.DictReader(f))
+          with Path('data/product_distributions.csv').open(encoding='utf-8',newline='') as f: d=list(csv.DictReader(f))
+          assert len({x['resource_id'] for x in r})==len(r)
+          assert len({x['product_id'] for x in p})==len(p)
+          assert len({x['distribution_id'] for x in d})==len(d)
+          assert all(x['resource_id'] in {y['resource_id'] for y in r} for x in p)
+          assert all(x['product_id'] in {y['product_id'] for y in p} for x in d)
+          assert any(x['product_id']=='DP000223' and x['resource_id']=='DR0087' for x in p)
+          assert any(x['distribution_id']=='DD000244' and x['product_id']=='DP000223' for x in d)
+          print(f'READBACK resources={len(r)} products={len(p)} distributions={len(d)}')
+          PY
+
+      - name: Commit materialized batch and remove one-shot workflow
+        shell: bash
+        run: |
+          set -euxo pipefail
+          rm .github/workflows/one-shot-vitrine-pesticides.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add verified IBGE pesticide-use pilot survey'
+          git push origin HEAD:audit/vitrine-20260816-governance-sanitation
