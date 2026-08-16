@@ -17032,5 +17032,241 @@
     "available_protocols": [
       "HTTPS web | download"
     ]
+  },
+  {
+    "product_id": "DP000287",
+    "resource_id": "DR0017",
+    "product_name": "Atlas Irrigação — Uso da Água na Agricultura Irrigada, 2ª edição 2021",
+    "product_acronym": "Atlas Irrigação 2021",
+    "product_family": "Planejamento e uso da água na agricultura irrigada",
+    "product_kind": "indicator_family",
+    "product_description": "Síntese nacional da ANA sobre agricultura irrigada que integra retrospectiva, áreas irrigadas, potencial de expansão, uso da água e polos de agricultura irrigada para apoiar planejamento e gestão de recursos hídricos.",
+    "research_areas": "Water resources | Hydrology | Agriculture | Environmental planning",
+    "keywords": "irrigação | agricultura irrigada | uso da água | demanda hídrica | potencial de expansão | ANA",
+    "geographic_coverage": "Brasil; recortes territoriais e polos conforme tema e base do Atlas",
+    "covers_brazil": "sim",
+    "spatial_support": "áreas irrigadas | municípios | polos | bacias e agregações territoriais conforme tema",
+    "spatial_resolution": "varia conforme camada, indicador e fonte integrada",
+    "temporal_coverage": "2ª edição publicada em 2021; retrospectivas e projeções variam conforme capítulo/indicador",
+    "temporal_resolution": "varia conforme indicador e série de origem",
+    "update_frequency": "por edição/revisão do Atlas",
+    "product_status": "ativo",
+    "version_or_collection": "2ª edição, 2021",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ana.gov.br/atlasirrigacao/",
+    "methodology_url": "https://www.ana.gov.br/atlasirrigacao/",
+    "primary_or_derived": "derivado",
+    "limitations": "Síntese multifuente e parcialmente modelada: áreas irrigadas, demandas, potenciais e projeções possuem métodos e anos de referência próprios. Não equivale a medição em tempo real da área irrigada nem a captação observada em cada empreendimento.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000308",
+        "product_id": "DP000287",
+        "distribution_name": "Atlas Irrigação — hotsite, publicação e dados associados",
+        "access_url": "https://www.ana.gov.br/atlasirrigacao/",
+        "format": "aplicação web | publicação PDF | dados e mapas associados conforme portal/SNIRH",
+        "access_protocol": "HTTPS web | download",
+        "access_tool": "navegador web | leitor PDF | software tabular/geoespacial conforme arquivo",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; verificar condições específicas de arquivos associados",
+        "license": "dados abertos da ANA são disponibilizados para livre utilização; verificar licença/termos específicos no arquivo utilizado",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tema, território, indicador e arquivo conforme hotsite/SNIRH",
+        "notes": "A segunda edição em português foi publicada em 2021; traduções posteriores não constituem nova edição metodológica do produto.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "aplicação web | publicação PDF | dados e mapas associados conforme portal/SNIRH"
+    ],
+    "available_protocols": [
+      "HTTPS web | download"
+    ]
+  },
+  {
+    "product_id": "DP000288",
+    "resource_id": "DR0017",
+    "product_name": "Atlas Águas — Segurança Hídrica do Abastecimento Urbano 2021",
+    "product_acronym": "Atlas Águas 2021",
+    "product_family": "Segurança hídrica e abastecimento urbano",
+    "product_kind": "indicator_family",
+    "product_description": "Diagnóstico e planejamento nacional da ANA sobre mananciais e sistemas de abastecimento urbano, incorporando índice de segurança hídrica urbano, alternativas técnicas e necessidades de investimento e gestão.",
+    "research_areas": "Water security | Water resources | Urban systems | Environmental planning",
+    "keywords": "abastecimento urbano | segurança hídrica | mananciais | sistemas de abastecimento | investimentos | ANA",
+    "geographic_coverage": "Brasil — 5.570 municípios avaliados na edição 2021",
+    "covers_brazil": "sim",
+    "spatial_support": "município | sede urbana | manancial | sistema de produção | intervenções planejadas",
+    "spatial_resolution": "municipal/sistema/manancial conforme componente",
+    "temporal_coverage": "edição 2021 com horizonte de planejamento até 2035",
+    "temporal_resolution": "diagnóstico por edição; horizontes futuros conforme componente",
+    "update_frequency": "por edição/revisão do Atlas",
+    "product_status": "ativo",
+    "version_or_collection": "Atlas Águas 2021",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ana.gov.br/atlasaguas/",
+    "methodology_url": "https://www.ana.gov.br/atlasaguas/",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto de diagnóstico e planejamento, não monitoramento operacional em tempo real. Índices e propostas de intervenção dependem das bases e hipóteses da edição 2021; não garantem condição atual do serviço nem execução das obras propostas.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000309",
+        "product_id": "DP000288",
+        "distribution_name": "Atlas Águas — hotsite, publicação e metadados",
+        "access_url": "https://www.ana.gov.br/atlasaguas/",
+        "format": "aplicação web | publicação PDF | mapas, indicadores e metadados",
+        "access_protocol": "HTTPS web | download",
+        "access_tool": "navegador web | leitor PDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública",
+        "license": "dados abertos da ANA são disponibilizados para livre utilização; verificar licença/termos específicos no arquivo utilizado",
+        "provider_attribution_required": "sim",
+        "subset_support": "por município, sistema/manancial e componentes disponíveis na aplicação",
+        "notes": "A edição 2021 avalia o abastecimento urbano nacional e apresenta diagnóstico, índice de segurança hídrica e planejamento de intervenções até 2035.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "aplicação web | publicação PDF | mapas, indicadores e metadados"
+    ],
+    "available_protocols": [
+      "HTTPS web | download"
+    ]
+  },
+  {
+    "product_id": "DP000289",
+    "resource_id": "DR0017",
+    "product_name": "Atlas Esgotos — Despoluição de Bacias Hidrográficas 2017",
+    "product_acronym": "Atlas Esgotos 2017",
+    "product_family": "Esgotamento sanitário e impactos nos recursos hídricos",
+    "product_kind": "indicator_family",
+    "product_description": "Diagnóstico nacional ANA/SNSA sobre coleta e tratamento de esgotos urbanos, cargas orgânicas, capacidade de diluição dos corpos receptores, impactos associados e soluções de tratamento e investimento.",
+    "research_areas": "Water quality | Water resources | Urban systems | Environmental planning",
+    "keywords": "esgotamento sanitário | DBO | carga orgânica | tratamento de esgotos | corpos receptores | ANA",
+    "geographic_coverage": "Brasil — 5.570 cidades brasileiras na edição 2017",
+    "covers_brazil": "sim",
+    "spatial_support": "município | sistema de esgotamento | corpo receptor | trechos de rios e agregações",
+    "spatial_resolution": "municipal e rede hidrográfica/modelagem conforme componente",
+    "temporal_coverage": "edição 2017; horizonte de planejamento até 2035; bases auxiliares podem ter atualizações posteriores",
+    "temporal_resolution": "diagnóstico por edição e cenário de planejamento",
+    "update_frequency": "por edição/atualização temática",
+    "product_status": "ativo",
+    "version_or_collection": "Atlas Esgotos 2017",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ana.gov.br/atlasesgotos/",
+    "methodology_url": "https://www.ana.gov.br/atlasesgotos/",
+    "primary_or_derived": "derivado",
+    "limitations": "Os impactos sobre corpos hídricos incluem modelagem de carga/DBO e não equivalem a uma rede nacional de medições in situ de qualidade da água. É um diagnóstico de referência da edição 2017; cobertura de serviços e infraestrutura podem ter mudado desde então.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000310",
+        "product_id": "DP000289",
+        "distribution_name": "Atlas Esgotos — hotsite, publicação e dados por município",
+        "access_url": "https://www.ana.gov.br/atlasesgotos/",
+        "format": "aplicação web | publicação PDF | tabelas/mapas e dados por município conforme interface",
+        "access_protocol": "HTTPS web | download",
+        "access_tool": "navegador web | leitor PDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública",
+        "license": "dados abertos da ANA são disponibilizados para livre utilização; verificar licença/termos específicos no arquivo utilizado",
+        "provider_attribution_required": "sim",
+        "subset_support": "por município e componentes/indicadores conforme interface",
+        "notes": "O produto combina diagnóstico sanitário e modelagem do impacto de cargas orgânicas nos corpos hídricos; não confundir modelagem de DBO com observações in situ.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "aplicação web | publicação PDF | tabelas/mapas e dados por município conforme interface"
+    ],
+    "available_protocols": [
+      "HTTPS web | download"
+    ]
+  },
+  {
+    "product_id": "DP000290",
+    "resource_id": "DR0017",
+    "product_name": "Massas d’Água — ANA/SNIRH",
+    "product_acronym": "Massas d’Água",
+    "product_family": "Base Hidrográfica Ottocodificada — massas d’água",
+    "product_kind": "dataset",
+    "product_description": "Base vetorial nacional da ANA com polígonos de massas d’água naturais e artificiais, classificadas também segundo o domínio das águas, disponibilizada pelo Catálogo de Metadados do SNIRH.",
+    "research_areas": "Hydrology | Water resources | Geospatial information science | Environmental monitoring",
+    "keywords": "massas d’água | espelho d’água | reservatórios | lagos | lagoas | hidrografia | SNIRH | ANA",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "polígono de massa d’água",
+    "spatial_resolution": "escala de referência 1:100.000 conforme metadado oficial",
+    "temporal_coverage": "base associada a referência 2019 no catálogo; metadado publicado em 2020 e marcado como contínuo",
+    "temporal_resolution": "não se aplica; inventário cartográfico com atualização contínua conforme catálogo",
+    "update_frequency": "contínua conforme metadado oficial",
+    "product_status": "ativo",
+    "version_or_collection": "GEOFT_BHO_MASSA_DAGUA — catálogo oficial verificado em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://metadados.snirh.gov.br/geonetwork/srv/search?keyword=GEOFT_BHO_MASSA_DAGUA",
+    "methodology_url": "https://metadados.snirh.gov.br/geonetwork/srv/search?keyword=GEOFT_BHO_MASSA_DAGUA",
+    "primary_or_derived": "derivado",
+    "limitations": "Representação cartográfica de massas d’água em escala 1:100.000; não é cadastro de precisão local, série de volume armazenado, vazão ou qualidade da água. Contagens e atributos podem mudar com atualizações contínuas, portanto registrar a versão/data de extração usada.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000311",
+        "product_id": "DP000290",
+        "distribution_name": "Massas d’Água — Catálogo de Metadados ANA/SNIRH",
+        "access_url": "https://metadados.snirh.gov.br/geonetwork/srv/search?keyword=GEOFT_BHO_MASSA_DAGUA",
+        "format": "vetor | metadados geoespaciais | download/visualização conforme catálogo",
+        "access_protocol": "HTTPS web | serviços/download conforme GeoNetwork",
+        "access_tool": "navegador web | software GIS conforme arquivo/serviço",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos conforme catálogo",
+        "license": "dados abertos da ANA são disponibilizados para livre utilização; verificar licença/termos específicos no arquivo ou serviço utilizado",
+        "provider_attribution_required": "sim",
+        "subset_support": "por camada/download; filtros e serviços conforme catálogo",
+        "notes": "O metadado oficial identifica recurso vetorial, escala 1:100.000, referência 2019, ano de metadado 2020 e frequência/status contínuos.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "vetor | metadados geoespaciais | download/visualização conforme catálogo"
+    ],
+    "available_protocols": [
+      "HTTPS web | serviços/download conforme GeoNetwork"
+    ]
   }
 ]
