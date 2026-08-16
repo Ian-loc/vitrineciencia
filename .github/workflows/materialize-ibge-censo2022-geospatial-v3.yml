@@ -1,0 +1,72 @@
+name: Finalize validated IBGE Censo 2022 geospatial batch
+
+on:
+  push:
+    branches:
+      - audit/ibge-censo2022-geospatial-20260816
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/ibge-censo2022-geospatial-20260816
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reuse already validated materialization payload
+        shell: bash
+        run: |
+          git show 741c861f21baf138ec7befbe2690941ec553275d:.github/workflows/materialize-ibge-censo2022-geospatial-v2.yml > /tmp/v2.yml
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('/tmp/v2.yml').read_text(encoding='utf-8')
+          marker = "      - name: Append verified source, products and distributions\n"
+          block = text.split(marker, 1)[1].split("      - name: Validate and rebuild\n", 1)[0]
+          start = block.index("          python - <<'PY'\n") + len("          python - <<'PY'\n")
+          end = block.rindex("          PY\n")
+          code = '\n'.join(line[10:] if line.startswith('          ') else line for line in block[start:end].splitlines())
+          Path('/tmp/materialize.py').write_text(code + '\n', encoding='utf-8')
+          PY
+          python /tmp/materialize.py
+      - name: Validate and read back
+        shell: bash
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          def load(p):
+              with Path(p).open(encoding='utf-8-sig', newline='') as f:
+                  return list(csv.DictReader(f))
+          rr, pp, dd = load('data/data_resources.csv'), load('data/data_products.csv'), load('data/product_distributions.csv')
+          assert (len(rr), len(pp), len(dd)) == (86, 200, 221)
+          rids = {x['resource_id'] for x in rr}; pids = {x['product_id'] for x in pp}; dids = {x['distribution_id'] for x in dd}
+          assert len(rids) == 86 and len(pids) == 200 and len(dids) == 221
+          assert all(x['resource_id'] in rids for x in pp)
+          assert all(x['product_id'] in pids for x in dd)
+          assert {'DP000199','DP000200','DP000201','DP000202','DP000203'} <= pids
+          assert {'DD000220','DD000221','DD000222','DD000223','DD000224'} <= dids
+          print('READBACK validated: 86 sources / 200 products / 221 distributions; IDs/FKs valid')
+          PY
+      - name: Commit validated materialization
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/materialize-ibge-censo2022-geospatial-v3.yml
+          git add -u
+          git commit -m 'Expand verified IBGE Censo 2022 geospatial catalog'
+          git push origin HEAD:audit/ibge-censo2022-geospatial-20260816
