@@ -1,0 +1,87 @@
+name: Materialize Censo 2022 Indigenous and Quilombola localities
+
+on:
+  push:
+    branches:
+      - agent/vitrine-censo2022-universe-core-20260816
+    paths:
+      - '.github/workflows/materialize-censo2022-localidades.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/vitrine-censo2022-universe-core-20260816
+
+      - name: Append verified locality products and distributions
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+
+          ppath=Path('data/data_products.csv')
+          dpath=Path('data/product_distributions.csv')
+
+          newp=[
+            {'product_id':'DP000246','resource_id':'DR0086','product_name':'Localidades Indígenas — Censo Demográfico 2022 — resultados do universo','product_acronym':'Localidades Indígenas 2022','product_family':'Censo 2022 — localidades indígenas','product_kind':'map_layer_collection','product_description':'Mapeamento temático do Censo Demográfico 2022 das Localidades Indígenas e demais locais de concentração de pessoas indígenas no Brasil, produzido a partir da Base Territorial Censitária e aperfeiçoado com as concentrações espaciais observadas na operação.','research_areas':'Indigenous studies | Population geography | GIS | Territorial analysis','keywords':'localidades indígenas | concentração de pessoas indígenas | Base Territorial | cartografia censitária | Censo 2022 | IBGE','geographic_coverage':'Brasil; arquivos e cartogramas nacionais e por Unidades da Federação conforme disponibilidade','covers_brazil':'sim','spatial_support':'pontos e feições geoespaciais de localidades indígenas e locais de concentração | cartogramas | tabelas','spatial_resolution':'localidade/concentração espacial; precisão depende do processo censitário e da base territorial','temporal_coverage':'Censo Demográfico 2022; divulgação 19/12/2024; arquivos geoespaciais corrigidos em 19/09/2025','temporal_resolution':'snapshot censitário/cartográfico','update_frequency':'por edição censitária e revisões oficiais','product_status':'ativo','version_or_collection':'Censo 2022 — arquivos corrigidos/substituídos em 19/09/2025','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/Estatisticas/Sociais/Populacao/22827-censo-demografico-2022.html?edicao=41815','methodology_url':'https://www.ibge.gov.br/Estatisticas/Sociais/Populacao/22827-censo-demografico-2022.html?edicao=41815','primary_or_derived':'derivado','limitations':'Localidade Indígena e local de concentração são categorias cartográfico-censitárias e não equivalem a Terra Indígena, aldeia juridicamente reconhecida ou limite fundiário. Em 19/09/2025 o IBGE substituiu arquivos geoespaciais após identificar inconsistências; análises devem usar os arquivos corrigidos.','last_verified':'2026-08-16'},
+            {'product_id':'DP000247','resource_id':'DR0086','product_name':'Localidades Quilombolas — Censo Demográfico 2022 — resultados do universo','product_acronym':'Localidades Quilombolas 2022','product_family':'Censo 2022 — localidades quilombolas','product_kind':'map_layer_collection','product_description':'Mapeamento temático do Censo Demográfico 2022 das Localidades Quilombolas, com cartogramas nacionais e estaduais, tabelas de localidades e sua associação a comunidades declaradas e Territórios Quilombolas oficialmente delimitados.','research_areas':'Population geography | GIS | Social statistics | Environmental justice','keywords':'localidades quilombolas | comunidades quilombolas | Territórios Quilombolas | cartografia censitária | Censo 2022 | IBGE','geographic_coverage':'Brasil; Unidades da Federação com localidades quilombolas identificadas e recortes territoriais associados','covers_brazil':'sim','spatial_support':'localidades quilombolas | comunidades declaradas | Territórios Quilombolas | cartogramas | tabelas | vetores','spatial_resolution':'localidade e recortes territoriais associados; precisão depende da Base Territorial e metodologia da operação','temporal_coverage':'Censo Demográfico 2022; divulgação temática 2024; nota técnica cartográfica 02/2024','temporal_resolution':'snapshot censitário/cartográfico','update_frequency':'por edição censitária e revisões oficiais','product_status':'ativo','version_or_collection':'Censo 2022 — Localidades Quilombolas; nota técnica 02/2024','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html/22827-censo-demografico-2022.html?edicao=40667','methodology_url':'https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html/22827-censo-demografico-2022.html?edicao=40667','primary_or_derived':'derivado','limitations':'Localidade Quilombola, comunidade quilombola declarada e Território Quilombola oficialmente delimitado são objetos distintos. O produto não substitui reconhecimento jurídico, cadastro fundiário ou limites cadastrais. Os estados do Acre e de Roraima não tiveram localidades quilombolas identificadas na divulgação.','last_verified':'2026-08-16'}
+          ]
+          newd=[
+            {'distribution_id':'DD000267','product_id':'DP000246','distribution_name':'Localidades Indígenas 2022 — vetores, cartogramas e tabelas corrigidos','access_url':'https://www.ibge.gov.br/Estatisticas/Sociais/Populacao/22827-censo-demografico-2022.html?edicao=41815','format':'arquivos geoespaciais vetoriais | XLSX | ODS | PDF | visualização web','access_protocol':'HTTPS web | HTTP download','access_tool':'navegador web | SIG | PGI | Panorama Censo 2022','free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos; utilizar os arquivos corrigidos/substituídos pelo IBGE em 19/09/2025','license':'licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal','provider_attribution_required':'sim','subset_support':'Brasil | Unidade da Federação | localidade/concentração conforme arquivo e aplicação','notes':'O IBGE substituiu arquivos geoespaciais nacionais e de UFs selecionadas em 19/09/2025 por inconsistências de formatação/conteúdo; usar o estado corrigido.','last_verified':'2026-08-16'},
+            {'distribution_id':'DD000268','product_id':'DP000247','distribution_name':'Localidades Quilombolas 2022 — vetores, cartogramas e tabelas','access_url':'https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html/22827-censo-demografico-2022.html?edicao=40667','format':'arquivos geoespaciais vetoriais | XLSX | ODS | PDF | JPG | visualização web','access_protocol':'HTTPS web | HTTP download','access_tool':'navegador web | SIG | PGI | Panorama Censo 2022','free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos; observar conceitos, nota técnica cartográfica e política de revisão do Censo','license':'licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal','provider_attribution_required':'sim','subset_support':'Brasil | Unidade da Federação | Município | Território Quilombola conforme tabela/arquivo','notes':'A página disponibiliza cartogramas por UF e tabelas relacionando localidades, comunidades declaradas e Territórios Quilombolas; Acre e Roraima não tiveram localidades quilombolas identificadas.','last_verified':'2026-08-16'}
+          ]
+
+          with ppath.open(encoding='utf-8',newline='') as f:
+            r=csv.DictReader(f); pf=r.fieldnames; old=list(r)
+          ids={x['product_id'] for x in old}; names={x['product_name'].casefold() for x in old}
+          for x in newp:
+            assert x['product_id'] not in ids
+            assert x['product_name'].casefold() not in names
+            assert set(x)==set(pf)
+          with ppath.open('a',encoding='utf-8',newline='') as f:
+            w=csv.DictWriter(f,fieldnames=pf,lineterminator='\n'); w.writerows(newp)
+
+          with dpath.open(encoding='utf-8',newline='') as f:
+            r=csv.DictReader(f); df=r.fieldnames; oldd=list(r)
+          dids={x['distribution_id'] for x in oldd}
+          for x in newd:
+            assert x['distribution_id'] not in dids
+            assert set(x)==set(df)
+          with dpath.open('a',encoding='utf-8',newline='') as f:
+            w=csv.DictWriter(f,fieldnames=df,lineterminator='\n'); w.writerows(newd)
+
+          with ppath.open(encoding='utf-8',newline='') as f: products=list(csv.DictReader(f))
+          with dpath.open(encoding='utf-8',newline='') as f: dists=list(csv.DictReader(f))
+          pids=[x['product_id'] for x in products]; dids=[x['distribution_id'] for x in dists]
+          assert len(pids)==len(set(pids)); assert len(dids)==len(set(dids))
+          assert all(x in set(pids) for x in ('DP000246','DP000247'))
+          assert all(x in set(dids) for x in ('DD000267','DD000268'))
+          assert all(x['product_id'] in set(pids) for x in dists)
+          print(f'read-back: products={len(products)} distributions={len(dists)}')
+          PY
+
+      - name: Validate catalog and Vitrine
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Commit materialized locality batch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json
+          git diff --cached --check
+          git commit -m "Materialize verified Censo 2022 locality batch"
+          git push origin HEAD:agent/vitrine-censo2022-universe-core-20260816
