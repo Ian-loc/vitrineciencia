@@ -1,0 +1,181 @@
+name: Materialize verified IBGE enterprise batch 2026-08-17
+
+on:
+  push:
+    branches: ["main"]
+    paths: [".github/workflows/materialize-vitrine-2026-08-17.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Append verified canonical records and validate
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv, json, pathlib
+
+          ROOT = pathlib.Path('.')
+          TODAY = '2026-08-17'
+
+          def append_dict_rows(path, id_field, rows):
+              path = ROOT / path
+              with path.open('r', encoding='utf-8', newline='') as f:
+                  reader = csv.DictReader(f)
+                  fieldnames = reader.fieldnames
+                  existing = {r[id_field] for r in reader}
+              missing = [r for r in rows if r[id_field] not in existing]
+              duplicates = [r[id_field] for r in rows if r[id_field] in existing]
+              if duplicates:
+                  raise SystemExit(f'IDs already exist in {path}: {duplicates}')
+              with path.open('a', encoding='utf-8', newline='') as f:
+                  writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator='\n', extrasaction='raise')
+                  for row in missing:
+                      writer.writerow(row)
+
+          resource = {
+            'resource_id':'DR0099',
+            'resource_name':'Indicadores Conjunturais de Atividade Econômica — IBGE',
+            'acronym':'Indicadores Conjunturais IBGE',
+            'official_identity':'Família institucional de pesquisas mensais conjunturais sobre indústria, comércio e serviços do IBGE',
+            'description':'Reúne pesquisas mensais por empresas que produzem índices de curto prazo para acompanhar produção industrial, vendas do varejo e volume/receita de serviços, com operações e populações-alvo próprias.',
+            'homepage_url':'https://www.ibge.gov.br/estatisticas/economicas.html',
+            'data_access_url':'https://www.ibge.gov.br/estatisticas/economicas.html',
+            'research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados',
+            'keywords':'conjuntura | indústria | comércio | serviços | índices mensais | produção | vendas | receita',
+            'data_product_types':'indicadores | séries mensais | SIDRA | publicações',
+            'data_formats':'SIDRA | XLSX | ODS | PDF | HTML; varia por pesquisa',
+            'visualization_types':'tabelas | séries | gráficos | publicações digitais',
+            'geographic_coverage':'Brasil; Unidades da Federação e atividades selecionadas conforme pesquisa',
+            'covers_brazil':'sim',
+            'spatial_resolution':'empresa/unidade local e agregações setoriais/territoriais conforme pesquisa',
+            'temporal_coverage':'séries mensais; início e encadeamentos variam por operação',
+            'temporal_resolution':'mensal',
+            'data_sources':'questionários empresariais | CEMPRE e classificações oficiais conforme operação',
+            'free_download':'sim',
+            'access_conditions':'aberto; observar desenho amostral, população-alvo, revisões e ajuste sazonal de cada pesquisa',
+            'programmatic_access':'parcial',
+            'access_protocols':'HTTPS | SIDRA',
+            'authentication_required':'não',
+            'access_documentation_url':'https://www.ibge.gov.br/estatisticas/economicas.html',
+            'license':'não localizada no nível da família; verificar produto e arquivo',
+            'institutional_status':'público',
+            'owner_or_manager':'IBGE',
+            'academic_uses':'Análise conjuntural de atividade econômica, ciclos setoriais, produção industrial, comércio, serviços e diferenças territoriais.',
+            'limitations':'As pesquisas têm populações-alvo, amostras, índices, bases, ajustes sazonais e revisões próprios. Índices de curto prazo não equivalem a níveis absolutos de produção, vendas ou valor adicionado.',
+            'academic_evidence_type':'documentação oficial',
+            'academic_evidence_url':'https://www.ibge.gov.br/estatisticas/economicas.html',
+            'academic_evidence_note':'As páginas oficiais do IBGE documentam objetivo, desenho, população-alvo, periodicidade, níveis de divulgação e política de revisão de cada operação.',
+            'verification_url':'https://www.ibge.gov.br/estatisticas/economicas/industria/9294-pesquisa-industrial-mensal-producao-fisica.html',
+            'last_verified':TODAY
+          }
+
+          products = [
+            {
+              'product_id':'DP000308','resource_id':'DR0098','product_name':'Pesquisa Anual de Comércio — 2023','product_acronym':'PAC 2023','product_family':'Estrutura do comércio','product_kind':'dataset_series',
+              'product_description':'Pesquisa estrutural anual por empresas comerciais formalmente constituídas, com informações sobre pessoal ocupado, salários, receitas, custos e despesas, margem de comercialização, estoques, unidades locais e valor adicionado.',
+              'research_areas':'Economics | Labour | Economic geography | Regional development','keywords':'comércio | empresas | receita | emprego | salários | margem de comercialização | CNAE | PAC',
+              'geographic_coverage':'Brasil; Grandes Regiões e Unidades da Federação conforme tabela','covers_brazil':'sim','spatial_support':'empresa | unidade local | agregações setoriais e territoriais','spatial_resolution':'empresa/unidade local agregada; UF e atividade conforme tabela',
+              'temporal_coverage':'ano de referência 2023; série histórica anual','temporal_resolution':'anual','update_frequency':'anual','product_status':'ativo','version_or_collection':'edição 2023 — última edição materialmente verificada nesta auditoria','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/economicas/comercio/9075-pesquisa-anual-de-comercio.html','methodology_url':'https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/PB','primary_or_derived':'primário',
+              'limitations':'Pesquisa amostral de empresas comerciais formalmente constituídas; não representa comércio informal. A edição 2024 constava do calendário de 2026, mas não foi promovida porque a página oficial auditada ainda materializa 2023. Comparações exigem observar CNAE, plano tabular e política de revisão.','last_verified':TODAY
+            },
+            {
+              'product_id':'DP000309','resource_id':'DR0098','product_name':'Pesquisa Anual de Serviços — 2023','product_acronym':'PAS 2023','product_family':'Estrutura dos serviços não financeiros','product_kind':'dataset_series',
+              'product_description':'Pesquisa estrutural anual sobre empresas prestadoras de serviços não financeiros, com pessoal ocupado, salários, receitas, despesas, valor adicionado e estrutura regional/setorial segundo a CNAE 2.0.',
+              'research_areas':'Economics | Labour | Economic geography | Regional development','keywords':'serviços | empresas | receita | emprego | salários | valor adicionado | CNAE | PAS',
+              'geographic_coverage':'Brasil; Grandes Regiões e Unidades da Federação conforme tabela','covers_brazil':'sim','spatial_support':'empresa | unidade local | agregações setoriais e territoriais','spatial_resolution':'empresa/unidade local agregada; UF e atividade conforme tabela',
+              'temporal_coverage':'ano de referência 2023; série histórica anual','temporal_resolution':'anual','update_frequency':'anual','product_status':'ativo','version_or_collection':'edição 2023 — última edição materialmente verificada nesta auditoria','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/economicas/servicos/9028-pesquisa-anual-de-servicos.html','methodology_url':'https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/PY','primary_or_derived':'primário',
+              'limitations':'Abrange serviços não financeiros e exclui Saúde e Educação conforme o escopo da pesquisa; não representa serviços informais. A edição 2024 estava prevista para agosto de 2026, mas a página oficial auditada ainda materializa 2023; não houve promoção antecipada.','last_verified':TODAY
+            },
+            {
+              'product_id':'DP000310','resource_id':'DR0099','product_name':'Pesquisa Mensal de Comércio — série conjuntural','product_acronym':'PMC','product_family':'Indicadores mensais do comércio varejista','product_kind':'dataset_series',
+              'product_description':'Pesquisa mensal por amostragem probabilística que produz índices de volume de vendas e receita nominal para acompanhar o comportamento conjuntural do comércio varejista no Brasil e nas Unidades da Federação.',
+              'research_areas':'Economics | Retail studies | Economic geography | Regional development','keywords':'comércio varejista | vendas | receita nominal | volume | índice | ajuste sazonal | PMC',
+              'geographic_coverage':'Brasil e 27 Unidades da Federação; detalhamento por atividade varia territorialmente','covers_brazil':'sim','spatial_support':'empresa | UF | agregações por atividade','spatial_resolution':'UF; atividades detalhadas para Brasil e subconjunto de UFs conforme metodologia',
+              'temporal_coverage':'série nacional desde 2000; edição mais recente materialmente verificada: maio de 2026','temporal_resolution':'mensal','update_frequency':'mensal','product_status':'ativo','version_or_collection':'série corrente; metodologia 6ª ed. 2023; maio de 2026 materialmente verificado','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/economicas/comercio/9227-pesquisa-mensal-de-comercio.html','methodology_url':'https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/MC','primary_or_derived':'derivado',
+              'limitations':'População-alvo inclui empresas varejistas formalmente constituídas com 20 ou mais pessoas ocupadas segundo os critérios da pesquisa. Os resultados são índices, não níveis absolutos de vendas; ajuste sazonal e revisões devem ser preservados. A divulgação de junho/2026 aparecia apenas como prevista na página auditada, por isso maio/2026 é a última edição materialmente verificada.','last_verified':TODAY
+            },
+            {
+              'product_id':'DP000311','resource_id':'DR0099','product_name':'Pesquisa Mensal de Serviços — série conjuntural','product_acronym':'PMS','product_family':'Indicadores mensais de serviços','product_kind':'dataset_series',
+              'product_description':'Pesquisa mensal que acompanha o comportamento conjuntural dos serviços não financeiros por meio de índices nominais e de volume, com resultados para Brasil, UFs e grupos de atividades conforme o plano de divulgação.',
+              'research_areas':'Economics | Service studies | Economic geography | Regional development','keywords':'serviços | volume | receita | índice | transporte | informação | ajuste sazonal | PMS',
+              'geographic_coverage':'Brasil e 27 Unidades da Federação; detalhamento por atividade varia territorialmente','covers_brazil':'sim','spatial_support':'empresa | UF | agregações por atividade','spatial_resolution':'UF; grupos/subgrupos de atividades para Brasil e subconjunto de UFs conforme metodologia',
+              'temporal_coverage':'indicadores a partir de janeiro de 2012; edição mais recente materialmente verificada: maio de 2026','temporal_resolution':'mensal','update_frequency':'mensal','product_status':'ativo','version_or_collection':'série corrente; maio de 2026 materialmente verificado','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/economicas/servicos/9229-pesquisa-mensal-de-servicos.html','methodology_url':'https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/SC','primary_or_derived':'derivado',
+              'limitations':'Investiga empresas formalmente constituídas com 20 ou mais pessoas ocupadas e atividade principal em serviços não financeiros, excluindo Saúde e Educação. Índices de volume/receita, ajustes sazonais e revisões não equivalem a níveis absolutos ou ao conjunto de serviços informais. A divulgação de junho/2026 aparecia apenas como prevista na página auditada.','last_verified':TODAY
+            },
+            {
+              'product_id':'DP000312','resource_id':'DR0099','product_name':'Pesquisa Industrial Mensal — Produção Física','product_acronym':'PIM-PF','product_family':'Índices mensais da produção industrial','product_kind':'dataset_series',
+              'product_description':'Pesquisa mensal de unidades locais industriais que levanta quantidades produzidas de produtos selecionados e gera índices de curto prazo da produção física das indústrias extrativas e de transformação, em componentes Brasil e Regional.',
+              'research_areas':'Economics | Industrial ecology | Economic geography | Regional development','keywords':'produção industrial | indústria extrativa | transformação | índice | produção física | PIM-PF',
+              'geographic_coverage':'Brasil; Região Nordeste e Unidades da Federação selecionadas na PIM-PF Regional','covers_brazil':'sim','spatial_support':'unidade local industrial | Brasil | região/UF | agregações por atividade','spatial_resolution':'Brasil e UFs/região elegíveis conforme participação industrial e desenho vigente',
+              'temporal_coverage':'séries históricas encadeadas; série reformulada em 2023 desde janeiro de 2022; edição materialmente verificada: maio de 2026','temporal_resolution':'mensal','update_frequency':'mensal','product_status':'ativo','version_or_collection':'série reformulada em 2023; maio de 2026 materialmente verificado','enumeration_scope':'complete',
+              'product_page_url':'https://www.ibge.gov.br/estatisticas/economicas/industria/9294-pesquisa-industrial-mensal-producao-fisica.html','methodology_url':'https://www.ibge.gov.br/estatisticas/economicas/industria/9294-pesquisa-industrial-mensal-producao-fisica.html','primary_or_derived':'derivado',
+              'limitations':'A amostra vigente é não probabilística e cobre unidades locais formalmente constituídas das seções B e C da CNAE 2.0. O índice aproxima a evolução de curto prazo do valor adicionado industrial, não mede diretamente valor adicionado ou produção física exaustiva. Reformulações e encadeamentos de série devem ser preservados.','last_verified':TODAY
+            }
+          ]
+
+          distributions = [
+            {'distribution_id':'DD000329','product_id':'DP000308','distribution_name':'PAC 2023 — SIDRA, tabelas e publicação digital','access_url':'https://www.ibge.gov.br/estatisticas/economicas/comercio/9075-pesquisa-anual-de-comercio.html','format':'SIDRA | XLSX | ODS | PDF | HTML','access_protocol':'HTTPS / SIDRA','access_tool':'navegador web | SIDRA','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; observar notas técnicas e política de revisão','license':'licença específica dos arquivos não determinada nesta auditoria','provider_attribution_required':'sim','subset_support':'por atividade, porte e recorte territorial conforme tabela','notes':'Página oficial materializa a edição 2023 e oferece plano tabular por atividade, Grandes Regiões e UFs; 2024 não foi inferida do calendário.','last_verified':TODAY},
+            {'distribution_id':'DD000330','product_id':'DP000309','distribution_name':'PAS 2023 — SIDRA, tabelas e publicação digital','access_url':'https://www.ibge.gov.br/estatisticas/economicas/servicos/9028-pesquisa-anual-de-servicos.html','format':'SIDRA | XLSX | ODS | PDF | HTML','access_protocol':'HTTPS / SIDRA','access_tool':'navegador web | SIDRA','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; observar notas técnicas e política de revisão','license':'licença específica dos arquivos não determinada nesta auditoria','provider_attribution_required':'sim','subset_support':'por segmento/atividade e recorte territorial conforme tabela','notes':'Página oficial materializa a edição 2023; serviços não financeiros, excluindo Saúde e Educação. A edição 2024 não foi inferida do calendário.','last_verified':TODAY},
+            {'distribution_id':'DD000331','product_id':'DP000310','distribution_name':'PMC — SIDRA, séries, downloads e publicação mensal','access_url':'https://www.ibge.gov.br/estatisticas/economicas/comercio/9227-pesquisa-mensal-de-comercio.html','format':'SIDRA | XLSX | ODS | PDF | HTML','access_protocol':'HTTPS / SIDRA','access_tool':'navegador web | SIDRA','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; resultados sujeitos à política de revisão','license':'licença específica dos arquivos não determinada nesta auditoria','provider_attribution_required':'sim','subset_support':'por período, índice, atividade e UF conforme divulgação','notes':'A página auditada materializa maio/2026; junho/2026 constava como próxima divulgação e não foi promovido sem evidência material na página.','last_verified':TODAY},
+            {'distribution_id':'DD000332','product_id':'DP000311','distribution_name':'PMS — SIDRA, séries, downloads e publicação mensal','access_url':'https://www.ibge.gov.br/estatisticas/economicas/servicos/9229-pesquisa-mensal-de-servicos.html','format':'SIDRA | XLSX | ODS | PDF | HTML','access_protocol':'HTTPS / SIDRA','access_tool':'navegador web | SIDRA','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; resultados sujeitos à política de revisão','license':'licença específica dos arquivos não determinada nesta auditoria','provider_attribution_required':'sim','subset_support':'por período, índice, grupo de atividade e UF conforme divulgação','notes':'A página auditada materializa maio/2026; junho/2026 constava como próxima divulgação e não foi promovido sem evidência material na página.','last_verified':TODAY},
+            {'distribution_id':'DD000333','product_id':'DP000312','distribution_name':'PIM-PF — SIDRA, séries Brasil/Regional e publicações mensais','access_url':'https://www.ibge.gov.br/estatisticas/economicas/industria/9294-pesquisa-industrial-mensal-producao-fisica.html','format':'SIDRA | XLSX | PDF | HTML','access_protocol':'HTTPS / SIDRA','access_tool':'navegador web | SIDRA','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; observar reformulações, encadeamentos e política de revisão','license':'licença específica dos arquivos não determinada nesta auditoria','provider_attribution_required':'sim','subset_support':'por período, atividade/categoria e recorte Brasil/Regional conforme série','notes':'A página auditada materializa maio/2026 e documenta a série reformulada em 2023; componentes Brasil e Regional possuem coberturas próprias.','last_verified':TODAY}
+          ]
+
+          append_dict_rows('data/data_resources.csv', 'resource_id', [resource])
+          append_dict_rows('data/data_products.csv', 'product_id', products)
+          append_dict_rows('data/product_distributions.csv', 'distribution_id', distributions)
+
+          p = ROOT / 'data/brazil_scope_priorities.json'
+          registry = json.loads(p.read_text(encoding='utf-8'))
+          registry['reviewed_at'] = TODAY
+          p0 = next(t for t in registry['tiers'] if t['priority_tier'] == 'P0')
+          if 'DR0099' not in p0['resource_ids']:
+              p0['resource_ids'].append('DR0099')
+          p.write_text(json.dumps(registry, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          # Deterministic relational read-back before the project validators.
+          def read_csv(path):
+              with open(path, encoding='utf-8', newline='') as f:
+                  return list(csv.DictReader(f))
+          rs, ps, ds = read_csv('data/data_resources.csv'), read_csv('data/data_products.csv'), read_csv('data/product_distributions.csv')
+          rids, pids, dids = {r['resource_id'] for r in rs}, {r['product_id'] for r in ps}, {r['distribution_id'] for r in ds}
+          assert len(rids) == len(rs) and len(pids) == len(ps) and len(dids) == len(ds)
+          assert all(r['resource_id'] in rids for r in ps)
+          assert all(r['product_id'] in pids for r in ds)
+          assert all(x in pids for x in ['DP000308','DP000309','DP000310','DP000311','DP000312'])
+          assert all(x in dids for x in ['DD000329','DD000330','DD000331','DD000332','DD000333'])
+          print(f'READBACK resources={len(rs)} products={len(ps)} distributions={len(ds)}')
+          PY
+
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Commit canonical batch and remove one-shot workflow
+        shell: bash
+        run: |
+          git config user.name "vitrine-catalog-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/materialize-vitrine-2026-08-17.yml
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/data_products.json data/data_quality_report.json data/link_role_audit.json data/brazil_scope_priorities.json
+          git diff --cached --check
+          git commit -m "Expand verified IBGE enterprise indicators catalog"
+          git push origin HEAD:main
