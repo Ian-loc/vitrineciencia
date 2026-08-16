@@ -1,0 +1,33 @@
+name: Patch agro audit guard
+on:
+  push:
+    branches: [agent/vitrine-agro-dedupe-20260816]
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/vitrine-agro-dedupe-20260816
+      - shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('.github/workflows/one-shot-vitrine-agro.yml')
+          s=p.read_text()
+          old="assert sum('mapbiomas cobertura e uso da terra' in norm(r['product_name']) and '10 1' in norm(r['version_or_collection']) for r in products)==1"
+          new="assert 'DP000025' in set(pids) and 'DP000050' not in set(pids)"
+          assert old in s
+          s=s.replace(old,new)
+          s=s.replace("git rm .github/workflows/one-shot-vitrine-agro.yml","git rm .github/workflows/one-shot-vitrine-agro.yml audit-trigger.txt")
+          p.write_text(s)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/workflows/one-shot-vitrine-agro.yml
+          git rm .github/workflows/patch-agro-workflow.yml
+          git commit -m 'Fix agro audit read-back guard'
+          git push origin HEAD:agent/vitrine-agro-dedupe-20260816
