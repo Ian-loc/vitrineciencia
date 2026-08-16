@@ -16796,5 +16796,241 @@
     "available_protocols": [
       "HTTPS web"
     ]
+  },
+  {
+    "product_id": "DP000283",
+    "resource_id": "DR0017",
+    "product_name": "Portal da Qualidade da Água — ANA 2026",
+    "product_acronym": "Portal Qualidade da Água",
+    "product_family": "Qualidade das águas superficiais",
+    "product_kind": "data_service",
+    "product_description": "Plataforma interativa lançada pela ANA em 2026 para explorar análises e dados de monitoramento de qualidade das águas produzidos pelas Unidades da Federação integrantes da RNQA.",
+    "research_areas": "Water quality | Hydrology | Environmental monitoring | Public health",
+    "keywords": "qualidade da água | RNQA | monitoramento | rios | indicadores | ANA",
+    "geographic_coverage": "Brasil; cobertura conforme estações e dados disponibilizados pelas Unidades da Federação participantes",
+    "covers_brazil": "sim",
+    "spatial_support": "estações/pontos de monitoramento | corpos hídricos | agregações territoriais conforme interface",
+    "spatial_resolution": "pontual na origem; agregações e análises variam conforme visualização",
+    "temporal_coverage": "séries históricas conforme estação, UF, parâmetro e disponibilidade",
+    "temporal_resolution": "varia por programa, estação e parâmetro",
+    "update_frequency": "operacional/irregular conforme incorporação de dados estaduais",
+    "product_status": "ativo",
+    "version_or_collection": "Portal lançado em 01/04/2026",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://qualidadedaagua.ana.gov.br/",
+    "methodology_url": "https://www.gov.br/ana/pt-br/assuntos/monitoramento-e-eventos-criticos/qualidade-da-agua",
+    "primary_or_derived": "serviço",
+    "limitations": "Integra dados produzidos por órgãos estaduais e análises da ANA; cobertura, parâmetros, frequência, consistência e períodos variam entre redes e estações. Indicadores derivados não devem ser confundidos com medições brutas nem generalizados para corpos hídricos não monitorados.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000304",
+        "product_id": "DP000283",
+        "distribution_name": "Portal da Qualidade da Água — aplicação interativa",
+        "access_url": "https://qualidadedaagua.ana.gov.br/",
+        "format": "aplicação web | mapas | gráficos | dados conforme interface",
+        "access_protocol": "HTTPS web",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; componentes administrativos restritos quando explicitamente indicado",
+        "license": "dados abertos da ANA são disponibilizados para livre utilização; verificar licença/termos específicos no arquivo ou sistema utilizado",
+        "provider_attribution_required": "sim",
+        "subset_support": "por estação, território, período, parâmetro e indicador conforme interface",
+        "notes": "Lançado pela ANA em 01/04/2026 com análises baseadas em dados das UFs integrantes da RNQA.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "aplicação web | mapas | gráficos | dados conforme interface"
+    ],
+    "available_protocols": [
+      "HTTPS web"
+    ]
+  },
+  {
+    "product_id": "DP000284",
+    "resource_id": "DR0017",
+    "product_name": "Base Nacional de Referência de Usos Consuntivos da Água — 2ª edição 2024",
+    "product_acronym": "BD-Usos 2024",
+    "product_family": "Usos consuntivos da água",
+    "product_kind": "dataset_series",
+    "product_description": "Base nacional consolidada pela ANA para estimativas históricas e projeções de demandas hídricas por usos consuntivos, atualizada na segunda edição do Manual de Usos Consuntivos da Água no Brasil.",
+    "research_areas": "Water resources | Hydrology | Agriculture | Urban systems | Environmental planning",
+    "keywords": "usos consuntivos | demanda hídrica | retirada | consumo | municípios | projeções | ANA",
+    "geographic_coverage": "Brasil; municípios e demais recortes conforme base e publicação",
+    "covers_brazil": "sim",
+    "spatial_support": "município | setores usuários | agregações territoriais",
+    "spatial_resolution": "municipal na base de referência; agregações conforme aplicação",
+    "temporal_coverage": "1931–2040 na 2ª edição, combinando reconstruções históricas e projeções",
+    "temporal_resolution": "anual conforme série/base",
+    "update_frequency": "por edição/revisão metodológica",
+    "product_status": "ativo",
+    "version_or_collection": "2ª edição 2024; horizonte 1931–2040",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/ana/pt-br/centrais-de-conteudos/publicacoes",
+    "methodology_url": "https://www.gov.br/ana/pt-br/centrais-de-conteudos/publicacoes",
+    "primary_or_derived": "derivado",
+    "limitations": "Valores são estimativas modeladas/reconstruídas por setor e território e incluem projeções futuras; não equivalem a medições diretas de captação ou consumo. Comparações entre versões devem preservar métodos, bases auxiliares e revisões.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000305",
+        "product_id": "DP000284",
+        "distribution_name": "Manual de Usos Consuntivos 2ª edição e base associada",
+        "access_url": "https://www.gov.br/ana/pt-br/centrais-de-conteudos/publicacoes",
+        "format": "publicação PDF | base de dados e produtos associados conforme SNIRH",
+        "access_protocol": "HTTPS web | download",
+        "access_tool": "navegador web | leitor PDF | software tabular/geoespacial conforme arquivo",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; componentes administrativos restritos quando explicitamente indicado",
+        "license": "dados abertos da ANA são disponibilizados para livre utilização; verificar licença/termos específicos no arquivo ou sistema utilizado",
+        "provider_attribution_required": "sim",
+        "subset_support": "por município, setor usuário, ano e variável conforme base",
+        "notes": "A 2ª edição de 2024 atualiza o diagnóstico/prognóstico para 1931–2040 e consolida nova versão da BD-Usos.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "publicação PDF | base de dados e produtos associados conforme SNIRH"
+    ],
+    "available_protocols": [
+      "HTTPS web | download"
+    ]
+  },
+  {
+    "product_id": "DP000285",
+    "resource_id": "DR0017",
+    "product_name": "Cadastro Nacional de Usuários de Recursos Hídricos — CNARH",
+    "product_acronym": "CNARH",
+    "product_family": "Regulação dos usos de recursos hídricos",
+    "product_kind": "data_service",
+    "product_description": "Cadastro nacional mantido pela ANA para registrar usuários, usos e interferências regularizados em recursos hídricos de domínio da União e, conforme integração, dos estados, com componentes de gestão e dados abertos.",
+    "research_areas": "Water resources | Environmental regulation | Environmental policy | Infrastructure",
+    "keywords": "CNARH | usuários de água | outorga | captação | lançamento | interferências | regulação | ANA",
+    "geographic_coverage": "Brasil; cobertura depende da integração dos órgãos gestores e do domínio dos corpos hídricos",
+    "covers_brazil": "sim",
+    "spatial_support": "ponto de interferência | empreendimento | usuário | corpo hídrico",
+    "spatial_resolution": "registro administrativo georreferenciado conforme cadastro",
+    "temporal_coverage": "cadastro corrente; histórico conforme registros e atos integrados",
+    "temporal_resolution": "evento/registro administrativo",
+    "update_frequency": "contínua conforme regularização e integração institucional",
+    "product_status": "ativo",
+    "version_or_collection": "CNARH corrente; CNARH 40 e integrações vigentes",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.gov.br/ana/pt-br/assuntos/regulacao-e-fiscalizacao/cadastro-nacional-de-usuarios-recursos-hidricos-cnarh",
+    "methodology_url": "https://www.gov.br/ana/pt-br/assuntos/regulacao-e-fiscalizacao/cadastro-nacional-de-usuarios-recursos-hidricos-cnarh",
+    "primary_or_derived": "primário",
+    "limitations": "Cadastro administrativo, não censo físico de todos os usos da água. Cobertura depende da regularização, inserção pelos órgãos gestores, domínio do corpo hídrico e integração de sistemas; ausência de registro não implica ausência de uso.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000306",
+        "product_id": "DP000285",
+        "distribution_name": "CNARH — consulta institucional e dados abertos de usos regularizados",
+        "access_url": "https://www.gov.br/ana/pt-br/assuntos/regulacao-e-fiscalizacao/cadastro-nacional-de-usuarios-recursos-hidricos-cnarh",
+        "format": "aplicação web | dados abertos | formatos variam por conjunto",
+        "access_protocol": "HTTPS web | download/API conforme portal de dados abertos",
+        "access_tool": "navegador web | ferramentas de dados abertos",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; componentes administrativos restritos quando explicitamente indicado",
+        "license": "dados abertos da ANA são disponibilizados para livre utilização; verificar licença/termos específicos no arquivo ou sistema utilizado",
+        "provider_attribution_required": "sim",
+        "subset_support": "por domínio, tipo de uso/interferência e território conforme conjunto disponibilizado",
+        "notes": "A ANA diferencia módulos de gestão restritos e dados abertos públicos; registros estaduais dependem da integração dos respectivos órgãos gestores.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "aplicação web | dados abertos | formatos variam por conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS web | download/API conforme portal de dados abertos"
+    ]
+  },
+  {
+    "product_id": "DP000286",
+    "resource_id": "DR0017",
+    "product_name": "Plano Nacional de Segurança Hídrica — PNSH 2019",
+    "product_acronym": "PNSH",
+    "product_family": "Planejamento nacional de segurança hídrica",
+    "product_kind": "indicator_family",
+    "product_description": "Plano estratégico nacional que integra diagnóstico de segurança hídrica, critérios de priorização e carteira de intervenções de infraestrutura hídrica de relevância regional.",
+    "research_areas": "Water security | Water resources | Environmental planning | Infrastructure | Public policy",
+    "keywords": "PNSH | segurança hídrica | infraestrutura hídrica | planejamento | índice de segurança hídrica | ANA",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "territórios, sistemas hídricos, unidades de análise e intervenções conforme componente do plano",
+    "spatial_resolution": "varia por indicador, estudo e intervenção",
+    "temporal_coverage": "plano publicado em 2019; horizontes de planejamento e boletins posteriores conforme componente",
+    "temporal_resolution": "plano estratégico com atualizações/boletins",
+    "update_frequency": "irregular conforme revisão e monitoramento",
+    "product_status": "ativo",
+    "version_or_collection": "PNSH 2019 e boletins de acompanhamento",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.gov.br/ana/pt-br/assuntos/seguranca-hidrica/plano-nacional-de-seguranca-hidrica",
+    "methodology_url": "https://www.gov.br/ana/pt-br/assuntos/seguranca-hidrica/plano-nacional-de-seguranca-hidrica",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto de planejamento e síntese multifuente; indicadores, cenários e carteira de intervenções não equivalem a observações hidrológicas atuais nem garantem execução das obras. Preservar versão, componente e hipótese de planejamento.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000307",
+        "product_id": "DP000286",
+        "distribution_name": "PNSH — plano, estudos e boletins de acompanhamento",
+        "access_url": "https://www.gov.br/ana/pt-br/assuntos/seguranca-hidrica/plano-nacional-de-seguranca-hidrica",
+        "format": "publicações | mapas | relatórios/boletins conforme componente",
+        "access_protocol": "HTTPS web | download",
+        "access_tool": "navegador web | leitor PDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; componentes administrativos restritos quando explicitamente indicado",
+        "license": "dados abertos da ANA são disponibilizados para livre utilização; verificar licença/termos específicos no arquivo ou sistema utilizado",
+        "provider_attribution_required": "sim",
+        "subset_support": "por componente, território e intervenção conforme documentos",
+        "notes": "O PNSH complementa o planejamento de recursos hídricos com foco estratégico em segurança hídrica e infraestrutura de relevância regional.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "publicações | mapas | relatórios/boletins conforme componente"
+    ],
+    "available_protocols": [
+      "HTTPS web | download"
+    ]
   }
 ]
