@@ -17622,5 +17622,359 @@
     "available_protocols": [
       "HTTPS download"
     ]
+  },
+  {
+    "product_id": "DP000297",
+    "resource_id": "DR0095",
+    "product_name": "Síntese de Indicadores Sociais — 2025",
+    "product_acronym": "SIS 2025",
+    "product_family": "Síntese de Indicadores Sociais",
+    "product_kind": "indicator_family",
+    "product_description": "Sistema anual de indicadores sobre condições de vida e desigualdades sociais, organizado em 2025 nos eixos estrutura econômica e mercado de trabalho, padrão de vida e distribuição de rendimentos e educação.",
+    "research_areas": "Demography | Social inequalities | Labour | Income | Education | Public policy",
+    "keywords": "condições de vida | desigualdade | trabalho | rendimento | pobreza | educação | indicadores sociais",
+    "geographic_coverage": "Brasil, Grandes Regiões, UFs, Regiões Metropolitanas e Municípios das Capitais conforme indicador",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa | domicílio | agregações territoriais conforme indicador",
+    "spatial_resolution": "varia por indicador; níveis de divulgação definidos por fonte e confiabilidade",
+    "temporal_coverage": "2012–2024 na edição 2025, com períodos específicos por indicador",
+    "temporal_resolution": "anual ou conforme indicador",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "edição 2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9221-sintese-de-indicadores-sociais.html",
+    "methodology_url": "https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/XS",
+    "primary_or_derived": "derivado",
+    "limitations": "Sistema de indicadores multifuente: denominadores, populações-alvo, períodos e níveis geográficos variam. Não tratar o conjunto como uma única pesquisa nem comparar indicadores sem preservar suas fontes e conceitos.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0095",
+      "resource_name": "Sínteses e Indicadores Sociais — IBGE",
+      "acronym": "Indicadores Sociais IBGE",
+      "official_identity": "Família institucional de sistemas de indicadores e estudos-síntese sociais do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000318",
+        "product_id": "DP000297",
+        "distribution_name": "Síntese de Indicadores Sociais 2025 — tabelas e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9221-sintese-de-indicadores-sociais.html",
+        "format": "XLS | ODS | PDF | HTML",
+        "access_protocol": "HTTPS | SIDRA quando disponível",
+        "access_tool": "navegador web | SIDRA quando disponível",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; observar metadados, notas técnicas e eventuais regras do sistema de tabulação",
+        "license": "não determinada especificamente para os arquivos nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por capítulo, tabela, indicador e recorte territorial",
+        "notes": "Distribuição oficial do IBGE. Formatos, recortes e tabelas variam por componente; não generalizar uma modalidade de acesso para todo o conteúdo do produto.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS | SIDRA quando disponível"
+    ]
+  },
+  {
+    "product_id": "DP000298",
+    "resource_id": "DR0095",
+    "product_name": "Estatísticas de Gênero — Indicadores sociais das mulheres no Brasil — 3ª edição 2024",
+    "product_acronym": "Estatísticas de Gênero 2024",
+    "product_family": "Indicadores sociais de gênero",
+    "product_kind": "indicator_family",
+    "product_description": "Sistema de indicadores de gênero alinhado ao Conjunto Mínimo de Indicadores de Gênero da ONU, integrando pesquisas, censos, registros administrativos, projeções e fontes oficiais para analisar condições das mulheres no Brasil.",
+    "research_areas": "Gender studies | Demography | Labour | Health | Education | Public policy",
+    "keywords": "gênero | mulheres | empoderamento | trabalho | educação | saúde | participação | direitos humanos",
+    "geographic_coverage": "Brasil; desagregações variam por indicador e fonte",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa | domicílio | instituições e agregações territoriais conforme indicador",
+    "spatial_resolution": "varia conforme indicador e fonte",
+    "temporal_coverage": "referências variáveis; edição 2024",
+    "temporal_resolution": "eventual; período próprio de cada indicador",
+    "update_frequency": "eventual",
+    "product_status": "ativo",
+    "version_or_collection": "3ª edição — 2024",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/multidominio/genero/20163-estatisticas-de-genero-indicadores-sociais-das-mulheres-no-brasil.html",
+    "methodology_url": "https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/C9",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicadores são multifuente e não compartilham necessariamente população, período ou denominador. Desagregações e comparabilidade internacional dependem da definição de cada indicador.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0095",
+      "resource_name": "Sínteses e Indicadores Sociais — IBGE",
+      "acronym": "Indicadores Sociais IBGE",
+      "official_identity": "Família institucional de sistemas de indicadores e estudos-síntese sociais do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000319",
+        "product_id": "DP000298",
+        "distribution_name": "Estatísticas de Gênero 2024 — tabelas e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/multidominio/genero/20163-estatisticas-de-genero-indicadores-sociais-das-mulheres-no-brasil.html",
+        "format": "XLS | ODS | PDF | HTML",
+        "access_protocol": "HTTPS | SIDRA quando disponível",
+        "access_tool": "navegador web | SIDRA quando disponível",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; observar metadados, notas técnicas e eventuais regras do sistema de tabulação",
+        "license": "não determinada especificamente para os arquivos nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por domínio, indicador e desagregação disponível",
+        "notes": "Distribuição oficial do IBGE. Formatos, recortes e tabelas variam por componente; não generalizar uma modalidade de acesso para todo o conteúdo do produto.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS | SIDRA quando disponível"
+    ]
+  },
+  {
+    "product_id": "DP000299",
+    "resource_id": "DR0095",
+    "product_name": "Desigualdades Sociais por Cor ou Raça no Brasil — 2ª edição 2022",
+    "product_acronym": "Desigualdades por Cor ou Raça 2022",
+    "product_family": "Desigualdades sociais por cor ou raça",
+    "product_kind": "indicator_family",
+    "product_description": "Estudo-síntese sobre desigualdades sociais por cor ou raça em trabalho e renda, moradia, educação, violência, participação e gestão, usando principalmente PNAD Contínua e outras fontes oficiais.",
+    "research_areas": "Race and ethnicity | Social inequalities | Labour | Income | Education | Public policy",
+    "keywords": "cor ou raça | desigualdade racial | pretos | pardos | brancos | trabalho | renda | educação",
+    "geographic_coverage": "Brasil; Grandes Regiões e outros recortes quando a fonte sustenta",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa | domicílio | município/UF em componentes específicos",
+    "spatial_resolution": "varia por fonte e indicador",
+    "temporal_coverage": "principalmente referências em torno de 2018–2021; períodos próprios conforme indicador",
+    "temporal_resolution": "eventual; período próprio por indicador",
+    "update_frequency": "eventual",
+    "product_status": "ativo",
+    "version_or_collection": "2ª edição — 2022",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/25844-desigualdades-sociais-por-cor-ou-raca.html",
+    "methodology_url": "https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/DL",
+    "primary_or_derived": "derivado",
+    "limitations": "Grande parte das análises amostrais concentra-se em pessoas brancas, pretas e pardas devido à representação amostral. Indicadores usam fontes, anos e níveis geográficos distintos; não inferir causalidade ou equivalência entre dimensões.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0095",
+      "resource_name": "Sínteses e Indicadores Sociais — IBGE",
+      "acronym": "Indicadores Sociais IBGE",
+      "official_identity": "Família institucional de sistemas de indicadores e estudos-síntese sociais do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000320",
+        "product_id": "DP000299",
+        "distribution_name": "Desigualdades Sociais por Cor ou Raça — tabelas e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/25844-desigualdades-sociais-por-cor-ou-raca.html",
+        "format": "XLS | ODS | PDF | HTML",
+        "access_protocol": "HTTPS | SIDRA quando disponível",
+        "access_tool": "navegador web | SIDRA quando disponível",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; observar metadados, notas técnicas e eventuais regras do sistema de tabulação",
+        "license": "não determinada especificamente para os arquivos nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tema, indicador e recorte suportado",
+        "notes": "Distribuição oficial do IBGE. Formatos, recortes e tabelas variam por componente; não generalizar uma modalidade de acesso para todo o conteúdo do produto.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS | SIDRA quando disponível"
+    ]
+  },
+  {
+    "product_id": "DP000300",
+    "resource_id": "DR0095",
+    "product_name": "Pessoas com Deficiência e as Desigualdades Sociais no Brasil — 2022",
+    "product_acronym": "Pessoas com Deficiência 2022",
+    "product_family": "Desigualdades sociais e deficiência",
+    "product_kind": "indicator_family",
+    "product_description": "Estudo analítico sobre condições de vida das pessoas com deficiência nas dimensões trabalho, educação, saúde, participação e gestão, rendimento e moradia, tendo a PNS 2019 como principal fonte.",
+    "research_areas": "Disability studies | Public health | Social inequalities | Labour | Education | Public policy",
+    "keywords": "deficiência | desigualdade | PNS 2019 | trabalho | educação | saúde | moradia",
+    "geographic_coverage": "Brasil; recortes geográficos e sociodemográficos limitados pela precisão das estimativas",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa | domicílio | agregações territoriais conforme confiabilidade",
+    "spatial_resolution": "varia por indicador; recortes definidos considerando coeficientes de variação",
+    "temporal_coverage": "principalmente PNS 2019; fontes complementares possuem referências próprias",
+    "temporal_resolution": "estudo pontual; referência própria por indicador",
+    "update_frequency": "eventual",
+    "product_status": "ativo",
+    "version_or_collection": "publicação 2022; principal fonte PNS 2019",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/34889-pessoas-com-deficiencia-e-as-desigualdades-sociais-no-brasil.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/34889-pessoas-com-deficiencia-e-as-desigualdades-sociais-no-brasil.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Estimativas derivadas principalmente da PNS 2019 e sujeitas ao desenho amostral e coeficientes de variação. Não são registros clínicos, administrativos ou prevalência atual automática; fontes complementares usam conceitos próprios.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0095",
+      "resource_name": "Sínteses e Indicadores Sociais — IBGE",
+      "acronym": "Indicadores Sociais IBGE",
+      "official_identity": "Família institucional de sistemas de indicadores e estudos-síntese sociais do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000321",
+        "product_id": "DP000300",
+        "distribution_name": "Pessoas com Deficiência e Desigualdades 2022 — tabelas e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/34889-pessoas-com-deficiencia-e-as-desigualdades-sociais-no-brasil.html",
+        "format": "XLS | ODS | PDF | HTML",
+        "access_protocol": "HTTPS | SIDRA quando disponível",
+        "access_tool": "navegador web | SIDRA quando disponível",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; observar metadados, notas técnicas e eventuais regras do sistema de tabulação",
+        "license": "não determinada especificamente para os arquivos nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tema e recorte estatisticamente suportado",
+        "notes": "Distribuição oficial do IBGE. Formatos, recortes e tabelas variam por componente; não generalizar uma modalidade de acesso para todo o conteúdo do produto.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS | SIDRA quando disponível"
+    ]
+  },
+  {
+    "product_id": "DP000301",
+    "resource_id": "DR0096",
+    "product_name": "Estatísticas do Registro Civil — 2024",
+    "product_acronym": "Registro Civil 2024",
+    "product_family": "Estatísticas vitais e eventos civis",
+    "product_kind": "dataset_series",
+    "product_description": "Edição anual com estatísticas de nascidos vivos, óbitos, óbitos fetais, casamentos e divórcios registrados e informados ao IBGE por cartórios e órgãos judiciais/extrajudiciais.",
+    "research_areas": "Demography | Vital statistics | Public health | Population studies",
+    "keywords": "nascidos vivos | óbitos | óbitos fetais | casamentos | divórcios | registro civil",
+    "geographic_coverage": "Brasil; resultados nacionais, estaduais e municipais conforme tabela",
+    "covers_brazil": "sim",
+    "spatial_support": "evento de registro | município | agregações territoriais",
+    "spatial_resolution": "municipal e agregações superiores conforme tabela",
+    "temporal_coverage": "ano de referência 2024; série histórica disponível",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "edição 2024 — divulgada em 2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9110-estatisticas-do-registro-civil.html",
+    "methodology_url": "https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/RC",
+    "primary_or_derived": "derivado",
+    "limitations": "Estatísticas refletem eventos registrados/informados e podem diferir do ano de ocorrência conforme o evento e o fluxo administrativo. Cobertura, atraso de registro e conceitos devem ser preservados; não equivalem automaticamente a sistemas de saúde.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0096",
+      "resource_name": "Estatísticas do Registro Civil — IBGE",
+      "acronym": "Registro Civil",
+      "official_identity": "Operação estatística anual do IBGE baseada em registros administrativos de pessoas naturais e atos correlatos",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9110-estatisticas-do-registro-civil.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9110-estatisticas-do-registro-civil.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000322",
+        "product_id": "DP000301",
+        "distribution_name": "Registro Civil 2024 — tabelas, SIDRA e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9110-estatisticas-do-registro-civil.html",
+        "format": "XLS | XLSX | ODS | PDF | SIDRA",
+        "access_protocol": "HTTPS | SIDRA quando disponível",
+        "access_tool": "navegador web | SIDRA quando disponível",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; observar metadados, notas técnicas e eventuais regras do sistema de tabulação",
+        "license": "não determinada especificamente para os arquivos nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tipo de evento, ano, geografia e atributos disponíveis",
+        "notes": "Distribuição oficial do IBGE. Formatos, recortes e tabelas variam por componente; não generalizar uma modalidade de acesso para todo o conteúdo do produto.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLS | XLSX | ODS | PDF | SIDRA"
+    ],
+    "available_protocols": [
+      "HTTPS | SIDRA quando disponível"
+    ]
+  },
+  {
+    "product_id": "DP000302",
+    "resource_id": "DR0097",
+    "product_name": "Estatísticas do Cadastro Central de Empresas — CEMPRE 2024",
+    "product_acronym": "CEMPRE 2024",
+    "product_family": "Estrutura empresarial e unidades locais",
+    "product_kind": "dataset_series",
+    "product_description": "Estatísticas anuais sobre empresas e outras organizações formais ativas e suas unidades locais, incluindo pessoal ocupado, assalariados, salários e remunerações, atividade econômica, natureza jurídica, porte e distribuição geográfica.",
+    "research_areas": "Economics | Labour | Economic geography | Regional development",
+    "keywords": "CEMPRE | empresas | unidades locais | pessoal ocupado | salários | CNAE | organizações formais",
+    "geographic_coverage": "Brasil; Grandes Regiões, UFs, municípios e outros recortes conforme tabela/SIDRA",
+    "covers_brazil": "sim",
+    "spatial_support": "empresa | unidade local | agregações territoriais e setoriais",
+    "spatial_resolution": "empresa/unidade local agregada; município em tabulações SIDRA",
+    "temporal_coverage": "ano de referência 2024; nova série metodológica a partir de 2022",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "CEMPRE 2024 — publicado em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
+    "methodology_url": "https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/CL",
+    "primary_or_derived": "misto",
+    "limitations": "Abrange organizações formalmente constituídas e não representa toda atividade informal. A integração de pesquisas e registros administrativos e a mudança metodológica com nova série a partir de 2022 exigem cautela em comparações históricas.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0097",
+      "resource_name": "Cadastro Central de Empresas — Estatísticas — IBGE",
+      "acronym": "CEMPRE",
+      "official_identity": "Sistema estatístico anual do IBGE sobre empresas e outras organizações formalmente constituídas e suas unidades locais",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000323",
+        "product_id": "DP000302",
+        "distribution_name": "CEMPRE 2024 — tabelas, séries e SIDRA",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
+        "format": "ODS | XLSX | PDF | HTML | SIDRA",
+        "access_protocol": "HTTPS | SIDRA quando disponível",
+        "access_tool": "navegador web | SIDRA quando disponível",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; observar metadados, notas técnicas e eventuais regras do sistema de tabulação",
+        "license": "não determinada especificamente para os arquivos nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por atividade CNAE, natureza jurídica, porte, variável e geografia",
+        "notes": "Distribuição oficial do IBGE. Formatos, recortes e tabelas variam por componente; não generalizar uma modalidade de acesso para todo o conteúdo do produto.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "ODS | XLSX | PDF | HTML | SIDRA"
+    ],
+    "available_protocols": [
+      "HTTPS | SIDRA quando disponível"
+    ]
   }
 ]
