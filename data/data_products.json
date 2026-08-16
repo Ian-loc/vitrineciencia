@@ -16619,5 +16619,182 @@
     "available_protocols": [
       "HTTPS web | HTTP/HTTPS download"
     ]
+  },
+  {
+    "product_id": "DP000280",
+    "resource_id": "DR0017",
+    "product_name": "Conjuntura dos Recursos Hídricos no Brasil 2025 — Relatório Pleno digital",
+    "product_acronym": "Conjuntura 2025",
+    "product_family": "Conjuntura dos Recursos Hídricos no Brasil",
+    "product_kind": "indicator_family",
+    "product_description": "Relatório pleno digital da ANA que integra dados, séries históricas, estatísticas e indicadores sobre disponibilidade, usos, qualidade e quantidade da água, gestão, clima, segurança hídrica e desafios dos recursos hídricos no Brasil.",
+    "research_areas": "Hydrology | Water resources | Climate impacts | Environmental policy | Environmental monitoring",
+    "keywords": "Conjuntura | recursos hídricos | disponibilidade hídrica | usos da água | qualidade da água | segurança hídrica | ANA",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "indicadores nacionais e territoriais | séries e mapas conforme tema",
+    "spatial_resolution": "varia conforme indicador e fonte integrada",
+    "temporal_coverage": "edição 2025 com atualização do panorama e retrospectiva recente; séries históricas variam por indicador",
+    "temporal_resolution": "anual e outras frequências conforme indicador de origem",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "Relatório Pleno 2025; ciclo 2025–2028",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/ana/pt-br/centrais-de-conteudos/publicacoes/conjuntura-dos-recursos-hidricos/conjuntura-dos-recursos-hidricos",
+    "methodology_url": "https://www.gov.br/ana/pt-br/centrais-de-conteudos/publicacoes/conjuntura-dos-recursos-hidricos/conjuntura-dos-recursos-hidricos",
+    "primary_or_derived": "derivado",
+    "limitations": "Síntese multifuente: indicadores possuem fontes, escalas, períodos, métodos e revisões próprios. O relatório não deve ser tratado como um único dataset observacional homogêneo; para análise quantitativa, preservar a fonte e a definição de cada indicador.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000301",
+        "product_id": "DP000280",
+        "distribution_name": "Conjuntura 2025 — relatório digital e publicações associadas",
+        "access_url": "https://www.gov.br/ana/pt-br/centrais-de-conteudos/publicacoes/conjuntura-dos-recursos-hidricos/conjuntura-dos-recursos-hidricos",
+        "format": "site interativo | publicação digital | PDF conforme item",
+        "access_protocol": "HTTPS web | HTTP/HTTPS download",
+        "access_tool": "navegador web | leitor PDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; verificar condições específicas de arquivos e módulos quando aplicável",
+        "license": "licença específica dos dados/arquivos não inferida nesta auditoria; conteúdo gov.br pode ter licença editorial própria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tema, indicador e publicação conforme interface",
+        "notes": "A edição 2025 inaugurou novo ciclo 2025–2028 e reúne informações atualizadas e séries históricas de múltiplas instituições; registrar a fonte de cada indicador usado.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "site interativo | publicação digital | PDF conforme item"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP/HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000281",
+    "resource_id": "DR0017",
+    "product_name": "Sistema de Acompanhamento de Reservatórios — SAR",
+    "product_acronym": "SAR",
+    "product_family": "Monitoramento operacional de reservatórios",
+    "product_kind": "data_service",
+    "product_description": "Plataforma operacional da ANA para acompanhamento de dados de operação dos principais reservatórios do Brasil, organizada em módulos do Sistema Interligado Nacional, Nordeste e Semiárido e outros sistemas hídricos.",
+    "research_areas": "Hydrology | Water resources | Reservoir operations | Environmental monitoring",
+    "keywords": "SAR | reservatórios | volume armazenado | vazão afluente | vazão defluente | SIN | Semiárido | ANA",
+    "geographic_coverage": "Brasil — principais reservatórios acompanhados pela ANA; cobertura varia por módulo",
+    "covers_brazil": "sim",
+    "spatial_support": "reservatório | sistema hídrico | bacia",
+    "spatial_resolution": "infraestrutura/reservatório monitorado",
+    "temporal_coverage": "séries operacionais e históricas conforme reservatório e módulo; sistema criado em 2013 e lançado em 2014",
+    "temporal_resolution": "operacional; frequência varia conforme variável e reservatório",
+    "update_frequency": "operacional",
+    "product_status": "ativo",
+    "version_or_collection": "SAR corrente verificado em 2026",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.ana.gov.br/sar/",
+    "methodology_url": "https://www.ana.gov.br/sar/descricao-sar",
+    "primary_or_derived": "serviço",
+    "limitations": "Não representa todos os reservatórios do país. Cobertura, variáveis e frequência variam entre módulos e infraestruturas. Dados operacionais de reservatórios não equivalem a disponibilidade hídrica natural de bacias nem a inventário de segurança de barragens.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000302",
+        "product_id": "DP000281",
+        "distribution_name": "SAR — consulta web e dados históricos por módulo",
+        "access_url": "https://www.ana.gov.br/sar/",
+        "format": "aplicação web | tabelas e séries históricas conforme módulo",
+        "access_protocol": "HTTPS web",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; verificar condições específicas de arquivos e módulos quando aplicável",
+        "license": "licença específica dos dados/arquivos não inferida nesta auditoria; conteúdo gov.br pode ter licença editorial própria",
+        "provider_attribution_required": "sim",
+        "subset_support": "reservatório | bacia | módulo | período conforme interface",
+        "notes": "O SAR possui módulos SIN, Nordeste e Semiárido e Outros Sistemas Hídricos; o módulo Nordeste e Semiárido reúne mais de 500 reservatórios, enquanto o SIN possui conjunto próprio de infraestruturas.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "aplicação web | tabelas e séries históricas conforme módulo"
+    ],
+    "available_protocols": [
+      "HTTPS web"
+    ]
+  },
+  {
+    "product_id": "DP000282",
+    "resource_id": "DR0017",
+    "product_name": "Monitor de Secas — mapa mensal de severidade e impactos",
+    "product_acronym": "Monitor de Secas",
+    "product_family": "Monitoramento nacional de secas",
+    "product_kind": "dataset_series",
+    "product_description": "Produto mensal coordenado pela ANA que integra indicadores climáticos, hidrológicos e agrícolas, informações de impacto e validação institucional para classificar a severidade relativa da seca em cinco categorias no território brasileiro.",
+    "research_areas": "Drought monitoring | Climatology | Hydrology | Agriculture | Climate impacts",
+    "keywords": "seca | severidade | impactos | indicadores climáticos | indicadores hidrológicos | agricultura | mapa mensal | ANA",
+    "geographic_coverage": "Brasil — cobertura nacional desde janeiro de 2024",
+    "covers_brazil": "sim",
+    "spatial_support": "áreas classificadas no mapa mensal | agregações territoriais",
+    "spatial_resolution": "regional; polígonos/classes resultantes da síntese de evidências",
+    "temporal_coverage": "série iniciada em 2014 no Nordeste; expansão posterior; cobertura nacional desde janeiro de 2024",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "Programa Monitor de Secas — série mensal corrente",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.gov.br/ana/pt-br/assuntos/monitoramento-e-eventos-criticos/eventos-criticos/monitor-de-secas",
+    "methodology_url": "https://www.gov.br/ana/pt-br/legislacao/resolucoes/resolucoes-regulatorias/2020/31",
+    "primary_or_derived": "derivado",
+    "limitations": "Mapa de seca relativa obtido por convergência de múltiplos indicadores e evidências validadas; não equivale a precipitação observada, um índice meteorológico isolado, impacto econômico medido diretamente ou previsão de seca futura.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000303",
+        "product_id": "DP000282",
+        "distribution_name": "Monitor de Secas — mapas mensais e sínteses de severidade",
+        "access_url": "https://www.gov.br/ana/pt-br/assuntos/monitoramento-e-eventos-criticos/eventos-criticos/monitor-de-secas",
+        "format": "mapa web | imagens e publicações mensais conforme divulgação",
+        "access_protocol": "HTTPS web",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; verificar condições específicas de arquivos e módulos quando aplicável",
+        "license": "licença específica dos dados/arquivos não inferida nesta auditoria; conteúdo gov.br pode ter licença editorial própria",
+        "provider_attribution_required": "sim",
+        "subset_support": "mês | Unidade da Federação | região e Brasil conforme divulgação",
+        "notes": "A metodologia classifica seca relativa em cinco graus e combina conhecimento técnico-científico e validação institucional. Em 2024 o produto passou a cobrir todas as UFs e o Distrito Federal.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "mapa web | imagens e publicações mensais conforme divulgação"
+    ],
+    "available_protocols": [
+      "HTTPS web"
+    ]
   }
 ]
