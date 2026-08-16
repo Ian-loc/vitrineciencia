@@ -1,16 +1,16 @@
 {
-  "records": 91,
-  "official_documentation_records": 51,
+  "records": 92,
+  "official_documentation_records": 52,
   "peer_reviewed_evidence_records": 38,
-  "access_uncertainty_records": 52,
+  "access_uncertainty_records": 53,
   "license_uncertainty_records": 37,
-  "brazil_applicable_records": 88,
+  "brazil_applicable_records": 89,
   "verification_date_min": "2026-08-10",
   "verification_date_max": "2026-08-16",
   "evidence_type_counts": {
     "artigo revisado por pares": 38,
     "artigo técnico": 2,
-    "documentação oficial": 8,
+    "documentação oficial": 9,
     "documentação técnica oficial": 43
   },
   "unknown_or_variable_by_field": {
@@ -38,7 +38,7 @@
     "limitations": 0,
     "official_identity": 0,
     "owner_or_manager": 0,
-    "programmatic_access": 26,
+    "programmatic_access": 27,
     "research_areas": 0,
     "spatial_resolution": 42,
     "temporal_coverage": 38,
