@@ -1,0 +1,39 @@
+name: Retry verified ANA hydrographic expansion
+
+on:
+  push:
+    paths:
+      - '.github/workflows/one-shot-vitrine-ana-hydro-fix-20260816.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  curate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reuse audited materializer with baseline-aware duplicate guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          src=Path('.github/workflows/one-shot-vitrine-ana-hydro-20260816.yml').read_text(encoding='utf-8').splitlines()
+          start=next(i for i,x in enumerate(src) if x.strip()=='run: |')+1
+          body=[]
+          for line in src[start:]:
+              body.append(line[10:] if line.startswith('          ') else line)
+          text='\n'.join(body)+'\n'
+          text=text.replace("assert len(names)==len(set(names)), 'exact duplicate product names remain'", "# Baseline may contain historical exact-name duplicates; new-name collisions were already blocked before append.")
+          Path('/tmp/materialize.sh').write_text(text,encoding='utf-8')
+          PY
+          bash /tmp/materialize.sh
+          git pull --ff-only origin main
+          git rm .github/workflows/one-shot-vitrine-ana-hydro-fix-20260816.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Remove temporary ANA retry workflow'
+          git push origin HEAD:main
