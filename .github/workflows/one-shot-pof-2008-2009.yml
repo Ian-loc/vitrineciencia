@@ -1,0 +1,102 @@
+name: One-shot POF 2008-2009 catalog batch
+
+on:
+  push:
+    branches:
+      - agent/pof-batch-2008-2009
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Append verified POF products and distributions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          ppath = Path('data/data_products.csv')
+          dpath = Path('data/product_distributions.csv')
+
+          with ppath.open(encoding='utf-8', newline='') as f:
+              products = list(csv.DictReader(f))
+              pfields = list(products[0].keys())
+          with dpath.open(encoding='utf-8', newline='') as f:
+              dists = list(csv.DictReader(f))
+              dfields = list(dists[0].keys())
+
+          existing_p = {r['product_id'] for r in products}
+          existing_d = {r['distribution_id'] for r in dists}
+
+          new_products = [
+            {
+              'product_id':'DP000274','resource_id':'DR0094','product_name':'POF 2017-2018 — Perfil das despesas: alimentação, transporte, lazer e inclusão financeira','product_acronym':'POF Despesas Temáticas','product_family':'POF 2017-2018 — despesas e condições de vida','product_kind':'dataset','product_description':'Publicação temática complementar da POF 2017-2018 sobre acesso a serviços financeiros e padrão de vida, alimentação, transporte, lazer e viagens, com estimativas para famílias e pessoas nas áreas urbana e rural.','research_areas':'Economics | Social statistics | Public policy | Well-being studies','keywords':'POF | inclusão financeira | alimentação | transporte | lazer | viagens | despesas | 2017-2018 | IBGE','geographic_coverage':'Brasil; Grandes Regiões; situações urbana e rural e demais estratos oficialmente divulgados','covers_brazil':'sim','spatial_support':'famílias e pessoas amostradas | estimativas agregadas | tabelas','spatial_resolution':'Brasil e Grandes Regiões; demais recortes conforme tabelas','temporal_coverage':'POF 2017-2018','temporal_resolution':'períodos de referência próprios por item de despesa e variável','update_frequency':'por edição/estudo temático','product_status':'ativo','version_or_collection':'POF 2017-2018; divulgação temática 19/08/2021','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/estatisticas/economicas/servicos/24786-pesquisa-de-orcamentos-familiares-2.html?edicao=31309','methodology_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html','primary_or_derived':'derivado','limitations':'Complementa o perfil de despesas já divulgado em outro volume e não deve ser fundido com renda, consumo alimentar individual ou registros administrativos de transações. Estimativas dependem do desenho amostral e de períodos de referência específicos.','last_verified':'2026-08-16'
+            },
+            {
+              'product_id':'DP000275','resource_id':'DR0094','product_name':'POF 2008-2009 — Despesas, rendimentos e condições de vida','product_acronym':'POF 2008-2009 Despesas','product_family':'POF 2008-2009 — resultados gerais','product_kind':'dataset','product_description':'Resultados da POF 2008-2009 sobre despesas, rendimentos, variação patrimonial e avaliação subjetiva das condições de vida das famílias, com diferentes detalhamentos geográficos.','research_areas':'Economics | Social statistics | Public policy | Well-being studies','keywords':'POF | despesas | rendimento | orçamento familiar | condições de vida | 2008-2009 | IBGE','geographic_coverage':'Brasil; Grandes Regiões; Unidades da Federação; situações urbana e rural conforme divulgação','covers_brazil':'sim','spatial_support':'famílias, domicílios e pessoas amostrados | estimativas agregadas | tabelas | microdados','spatial_resolution':'Brasil, Grandes Regiões e UFs; demais níveis apenas quando disponibilizados','temporal_coverage':'2008-2009, com períodos de referência próprios por variável','temporal_resolution':'levantamento por edição com diferentes períodos de recordação','update_frequency':'por edição da POF','product_status':'ativo','version_or_collection':'POF 2008-2009','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/estatisticas/multidominio/ciencia-tecnologia-e-inovacao/9050-pesquisa-de-orcamentos-familiares.html?edicao=9061','methodology_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/9050-pesquisa-de-orcamentos-familiares.html','primary_or_derived':'derivado','limitations':'Estimativas amostrais e históricas; despesas, rendimentos e avaliação subjetiva têm conceitos e períodos de referência próprios. Não equivalem a registros administrativos nem descrevem a situação econômica atual.','last_verified':'2026-08-16'
+            },
+            {
+              'product_id':'DP000276','resource_id':'DR0094','product_name':'POF 2008-2009 — Aquisição alimentar domiciliar per capita: Brasil e Grandes Regiões','product_acronym':'POF 2008-2009 Aquisição Alimentar','product_family':'POF 2008-2009 — alimentação e nutrição','product_kind':'dataset','product_description':'Resultados sobre quantidades de alimentos e bebidas adquiridas pelas famílias para consumo no domicílio, por recortes geográficos, classes de rendimento e formas de aquisição.','research_areas':'Nutrition | Public health | Social statistics | Food systems','keywords':'POF | aquisição alimentar | alimentos | bebidas | domicílios | per capita | 2008-2009 | IBGE','geographic_coverage':'Brasil; Grandes Regiões; situações urbana e rural e classes de rendimento conforme tabelas','covers_brazil':'sim','spatial_support':'domicílios e famílias amostrados | aquisições agregadas | estimativas per capita','spatial_resolution':'Brasil e Grandes Regiões; demais recortes conforme tabelas','temporal_coverage':'POF 2008-2009','temporal_resolution':'períodos de aquisição definidos pela POF','update_frequency':'por edição/estudo temático','product_status':'ativo','version_or_collection':'POF 2008-2009','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/estatisticas/sociais/protecao-social/9050-pesquisa-de-orcamentos-familiares.html?edicao=9059','methodology_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/9050-pesquisa-de-orcamentos-familiares.html','primary_or_derived':'derivado','limitations':'Aquisição para consumo domiciliar não equivale ao consumo alimentar individual efetivamente ingerido, à disponibilidade territorial de alimentos ou à produção agrícola.','last_verified':'2026-08-16'
+            },
+            {
+              'product_id':'DP000277','resource_id':'DR0094','product_name':'POF 2008-2009 — Avaliação nutricional da disponibilidade domiciliar de alimentos no Brasil','product_acronym':'POF 2008-2009 Disponibilidade Nutricional','product_family':'POF 2008-2009 — alimentação e nutrição','product_kind':'dataset','product_description':'Avaliação nutricional derivada da disponibilidade de alimentos para consumo nos domicílios, construída a partir das aquisições registradas na POF 2008-2009.','research_areas':'Nutrition | Public health | Social statistics | Food systems','keywords':'POF | disponibilidade alimentar | avaliação nutricional | domicílios | nutrientes | 2008-2009 | IBGE','geographic_coverage':'Brasil; Grandes Regiões e estratos oficialmente divulgados','covers_brazil':'sim','spatial_support':'domicílios e famílias amostrados | disponibilidade alimentar derivada | estimativas agregadas','spatial_resolution':'Brasil e Grandes Regiões; demais estratos conforme publicação','temporal_coverage':'POF 2008-2009','temporal_resolution':'por edição da POF','update_frequency':'por edição/estudo temático','product_status':'ativo','version_or_collection':'POF 2008-2009','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/2004-pesquisa-de-orcamentos-familiares/9050-pesquisa-de-orcamentos-familiares.html?edicao=9060','methodology_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/9050-pesquisa-de-orcamentos-familiares.html','primary_or_derived':'derivado','limitations':'Disponibilidade nutricional domiciliar é inferida de aquisições e não equivale a ingestão individual, biomarcadores, diagnóstico nutricional ou oferta física territorial de alimentos.','last_verified':'2026-08-16'
+            },
+            {
+              'product_id':'DP000278','resource_id':'DR0094','product_name':'POF 2008-2009 — Análise do consumo alimentar pessoal no Brasil','product_acronym':'POF 2008-2009 Consumo Alimentar','product_family':'POF 2008-2009 — alimentação e nutrição','product_kind':'dataset','product_description':'Análise do consumo alimentar da população de 10 anos ou mais baseada em registros de alimentos e bebidas consumidos em dois dias não consecutivos, incluindo energia, nutrientes e consumo fora do domicílio.','research_areas':'Nutrition | Public health | Social statistics | Food systems','keywords':'POF | consumo alimentar | dieta | energia | nutrientes | consumo fora do domicílio | 2008-2009 | IBGE','geographic_coverage':'Brasil; Grandes Regiões; situações urbana e rural e estratos sociodemográficos conforme tabelas','covers_brazil':'sim','spatial_support':'subamostra de pessoas de 10 anos ou mais | registros alimentares | estimativas agregadas','spatial_resolution':'Brasil e Grandes Regiões; demais estratos conforme tabelas','temporal_coverage':'POF 2008-2009; dois dias não consecutivos de registro por pessoa elegível','temporal_resolution':'registro alimentar diário dentro da edição da pesquisa','update_frequency':'por edição/estudo temático','product_status':'ativo','version_or_collection':'POF 2008-2009','enumeration_scope':'complete','product_page_url':'https://anda.ibge.gov.br/estatisticas/sociais/populacao/9050-pesquisa-de-orcamentos-familiares.html?edicao=9051','methodology_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/9050-pesquisa-de-orcamentos-familiares.html','primary_or_derived':'derivado','limitations':'Registros de dois dias não representam ingestão habitual individual sem modelagem apropriada. O produto é distinto da aquisição/disponibilidade domiciliar e depende de desenho amostral e tabelas de composição nutricional.','last_verified':'2026-08-16'
+            },
+            {
+              'product_id':'DP000279','resource_id':'DR0094','product_name':'POF 2008-2009 — Antropometria e estado nutricional de crianças, adolescentes e adultos no Brasil','product_acronym':'POF 2008-2009 Antropometria','product_family':'POF 2008-2009 — antropometria e nutrição','product_kind':'dataset','product_description':'Resultados de medidas antropométricas e avaliação do estado nutricional de crianças, adolescentes e adultos investigados na POF 2008-2009, com índices antropométricos e padrões de referência específicos.','research_areas':'Nutrition | Public health | Demography | Social statistics','keywords':'POF | antropometria | peso | altura | estado nutricional | crianças | adolescentes | adultos | 2008-2009 | IBGE','geographic_coverage':'Brasil; situações urbana e rural; Grandes Regiões e Unidades da Federação conforme divulgação','covers_brazil':'sim','spatial_support':'pessoas amostradas | medidas antropométricas | estimativas agregadas','spatial_resolution':'Brasil, Grandes Regiões e Unidades da Federação conforme tabela','temporal_coverage':'POF 2008-2009','temporal_resolution':'medidas coletadas durante a edição da pesquisa','update_frequency':'por edição/estudo temático','product_status':'ativo','version_or_collection':'POF 2008-2009','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/estatisticas/todos-os-produtos-estatisticas/9050-pesquisa-de-orcamentos-familiares.html?edicao=9058','methodology_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/9050-pesquisa-de-orcamentos-familiares.html','primary_or_derived':'derivado','limitations':'É um retrato antropométrico histórico da POF 2008-2009. Classificações dependem de idade, sexo, índices e padrões de referência; não equivalem a diagnóstico clínico individual nem a estado nutricional atual da população.','last_verified':'2026-08-16'
+            }
+          ]
+
+          new_dists = [
+            {'distribution_id':'DD000295','product_id':'DP000274','distribution_name':'POF 2017-2018 — alimentação, transporte, lazer e inclusão financeira — tabelas e publicação','access_url':'https://www.ibge.gov.br/estatisticas/economicas/servicos/24786-pesquisa-de-orcamentos-familiares-2.html?edicao=31309','format':'XLSX | ODS | PDF','access_protocol':'HTTPS web | HTTP/HTTPS download','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'download público; observar desenho amostral e conceitos por dimensão','license':'licença específica do arquivo não localizada nesta auditoria; preservar atribuição IBGE','provider_attribution_required':'sim','subset_support':'por tabelas e publicação','notes':'Publicação complementar sobre quatro dimensões adicionais do perfil de despesas; não fundir automaticamente com o volume anterior.','last_verified':'2026-08-16'},
+            {'distribution_id':'DD000296','product_id':'DP000275','distribution_name':'POF 2008-2009 — despesas, rendimentos e condições de vida — tabelas e microdados','access_url':'https://www.ibge.gov.br/estatisticas/multidominio/ciencia-tecnologia-e-inovacao/9050-pesquisa-de-orcamentos-familiares.html?edicao=9061','format':'XLS | ZIP | PDF | microdados e documentação','access_protocol':'HTTPS web | HTTP/HTTPS download','access_tool':'navegador web | software estatístico','free_download':'sim','authentication_required':'não','access_conditions':'download público; aplicar pesos, desenho amostral e períodos de referência','license':'licença específica do arquivo não localizada nesta auditoria; preservar atribuição IBGE','provider_attribution_required':'sim','subset_support':'por tabelas, publicação e microdados','notes':'Inclui tabelas de despesas, rendimentos, avaliação subjetiva e coeficientes de variação; produto histórico.','last_verified':'2026-08-16'},
+            {'distribution_id':'DD000297','product_id':'DP000276','distribution_name':'POF 2008-2009 — aquisição alimentar domiciliar per capita — tabelas e publicação','access_url':'https://www.ibge.gov.br/estatisticas/sociais/protecao-social/9050-pesquisa-de-orcamentos-familiares.html?edicao=9059','format':'XLS | ZIP | PDF','access_protocol':'HTTPS web | HTTP/HTTPS download','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'download público; observar classificação dos alimentos, formas de aquisição e pesos','license':'licença específica do arquivo não localizada nesta auditoria; preservar atribuição IBGE','provider_attribution_required':'sim','subset_support':'por tabelas e publicação','notes':'Aquisição domiciliar não representa consumo individual efetivamente ingerido.','last_verified':'2026-08-16'},
+            {'distribution_id':'DD000298','product_id':'DP000277','distribution_name':'POF 2008-2009 — avaliação nutricional da disponibilidade domiciliar — tabelas e publicação','access_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/2004-pesquisa-de-orcamentos-familiares/9050-pesquisa-de-orcamentos-familiares.html?edicao=9060','format':'XLS | ZIP | PDF','access_protocol':'HTTPS web | HTTP/HTTPS download','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'download público; preservar metodologia de conversão de aquisições em disponibilidade nutricional','license':'licença específica do arquivo não localizada nesta auditoria; preservar atribuição IBGE','provider_attribution_required':'sim','subset_support':'por tabelas e publicação','notes':'Indicadores são derivados de disponibilidade domiciliar e não de ingestão pessoal medida.','last_verified':'2026-08-16'},
+            {'distribution_id':'DD000299','product_id':'DP000278','distribution_name':'POF 2008-2009 — consumo alimentar pessoal — tabelas, publicação e microdados','access_url':'https://anda.ibge.gov.br/estatisticas/sociais/populacao/9050-pesquisa-de-orcamentos-familiares.html?edicao=9051','format':'XLS | ZIP | PDF | microdados','access_protocol':'HTTPS web | HTTP/HTTPS download','access_tool':'navegador web | software estatístico','free_download':'sim','authentication_required':'não','access_conditions':'download público; análise requer pesos, desenho amostral e documentação nutricional','license':'licença específica do arquivo não localizada nesta auditoria; preservar atribuição IBGE','provider_attribution_required':'sim','subset_support':'por tabelas, publicação e microdados','notes':'Inclui consumo de alimentos, energia e nutrientes; registros pessoais abrangem dois dias não consecutivos.','last_verified':'2026-08-16'},
+            {'distribution_id':'DD000300','product_id':'DP000279','distribution_name':'POF 2008-2009 — antropometria e estado nutricional — tabelas, publicação e microdados','access_url':'https://www.ibge.gov.br/estatisticas/todos-os-produtos-estatisticas/9050-pesquisa-de-orcamentos-familiares.html?edicao=9058','format':'XLS | ZIP | PDF | microdados','access_protocol':'HTTPS web | HTTP/HTTPS download','access_tool':'navegador web | software estatístico','free_download':'sim','authentication_required':'não','access_conditions':'download público; interpretar medidas e índices segundo idade, sexo e padrão de referência','license':'licença específica do arquivo não localizada nesta auditoria; preservar atribuição IBGE','provider_attribution_required':'sim','subset_support':'por tabelas, publicação e microdados','notes':'Inclui coeficientes de variação para estimativas selecionadas; não usar como estado nutricional contemporâneo.','last_verified':'2026-08-16'}
+          ]
+
+          assert not (existing_p & {r['product_id'] for r in new_products}), 'product ID collision'
+          assert not (existing_d & {r['distribution_id'] for r in new_dists}), 'distribution ID collision'
+
+          products.extend(new_products)
+          dists.extend(new_dists)
+          with ppath.open('w', encoding='utf-8', newline='') as f:
+              w = csv.DictWriter(f, fieldnames=pfields, lineterminator='\n')
+              w.writeheader(); w.writerows(products)
+          with dpath.open('w', encoding='utf-8', newline='') as f:
+              w = csv.DictWriter(f, fieldnames=dfields, lineterminator='\n')
+              w.writeheader(); w.writerows(dists)
+          print('appended', len(new_products), 'products and', len(new_dists), 'distributions')
+          PY
+      - name: Validate and rebuild
+        shell: bash
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Commit materialized batch and remove one-shot workflow
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/one-shot-pof-2008-2009.yml
+          git add data/data_products.csv data/data_products.json data/product_distributions.csv
+          git commit -m 'Expand verified POF historical catalog'
+          git push origin HEAD:agent/pof-batch-2008-2009
