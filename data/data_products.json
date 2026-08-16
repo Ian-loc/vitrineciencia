@@ -15262,5 +15262,300 @@
     "available_protocols": [
       "HTTPS web | SIDRA | HTTP/HTTPS download"
     ]
+  },
+  {
+    "product_id": "DP000257",
+    "resource_id": "DR0093",
+    "product_name": "PNAD Contínua — Características adicionais do mercado de trabalho 2024",
+    "product_acronym": "PNADC Mercado de Trabalho 2024",
+    "product_family": "PNAD Contínua — módulo temático anual",
+    "product_kind": "dataset",
+    "product_description": "Resultados amostrais de 2024 sobre características adicionais da inserção no mercado de trabalho, incluindo associação sindical, registro do empreendimento no CNPJ, adesão a cooperativa e local de exercício do trabalho.",
+    "research_areas": "Demography | Social statistics | Public policy",
+    "keywords": "PNAD Contínua | mercado de trabalho | sindicato | CNPJ | cooperativa | local de trabalho | 2024 | IBGE",
+    "geographic_coverage": "Brasil e Grandes Regiões; demais recortes somente conforme tabelas oficiais do módulo",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoas amostradas | estimativas agregadas | SIDRA | microdados",
+    "spatial_resolution": "conforme domínio de divulgação e tabela; não inferir Município",
+    "temporal_coverage": "2024; comparações históricas conforme pontos disponíveis da série",
+    "temporal_resolution": "anual temático",
+    "update_frequency": "anual quando investigado/divulgado",
+    "product_status": "ativo",
+    "version_or_collection": "2024; microdados atualizados em 19/11/2025; resultados reponderados em 2025 com totais calibrados ao Censo 2022",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html?edicao=45003",
+    "methodology_url": "https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/B5",
+    "primary_or_derived": "derivado",
+    "limitations": "Pesquisa domiciliar por amostragem probabilística; estimativas exigem pesos e desenho amostral. A série temática tem lacunas associadas à coleta telefônica na pandemia, e comparações devem preservar reponderações, população-alvo e disponibilidade por ano.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0093",
+      "resource_name": "Pesquisa Nacional por Amostra de Domicílios Contínua — IBGE",
+      "acronym": "PNAD Contínua",
+      "official_identity": "Operação estatística domiciliar integrada e contínua do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html?t=microdados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000278",
+        "product_id": "DP000257",
+        "distribution_name": "PNAD Contínua — Características adicionais do mercado de trabalho 2024 — SIDRA, publicação e microdados",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html?edicao=45003",
+        "format": "SIDRA | microdados | XLSX/ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA | HTTP/HTTPS download",
+        "access_tool": "navegador web | SIDRA | software estatístico",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos; microdados anonimizados; aplicar pesos e desenho amostral",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por indicador e domínio de divulgação; microdados para análise amostral",
+        "notes": "Microdados do tema 2024 atualizados em 19/11/2025; resultados incorporam reponderação realizada em 2025.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | microdados | XLSX/ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA | HTTP/HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000258",
+    "resource_id": "DR0093",
+    "product_name": "PNAD Contínua — Trabalho por meio de plataformas digitais 2024 — Estatísticas Experimentais",
+    "product_acronym": "PNADC Plataformas 2024",
+    "product_family": "PNAD Contínua — módulo temático experimental",
+    "product_kind": "dataset",
+    "product_description": "Estatísticas experimentais do terceiro trimestre de 2024 sobre uso de plataformas digitais no trabalho único ou principal de pessoas ocupadas de 14 anos ou mais, com foco em aplicativos de transporte, entrega e prestação de serviços.",
+    "research_areas": "Demography | Social statistics | Public policy",
+    "keywords": "PNAD Contínua | plataformas digitais | trabalho por aplicativo | gig economy | transporte | entrega | 2024 | IBGE",
+    "geographic_coverage": "Brasil e Grandes Regiões conforme divulgação oficial",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoas ocupadas amostradas | estimativas agregadas | SIDRA | microdados",
+    "spatial_resolution": "Brasil e Grandes Regiões conforme tabelas oficiais",
+    "temporal_coverage": "3º trimestre de 2024",
+    "temporal_resolution": "módulo concentrado em trimestre específico",
+    "update_frequency": "irregular",
+    "product_status": "experimental",
+    "version_or_collection": "2024; microdados atualizados em 17/10/2025; nota técnica 04/2025 atualizada em 31/10/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html?edicao=44741",
+    "methodology_url": "https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/B5",
+    "primary_or_derived": "derivado",
+    "limitations": "Estatísticas experimentais e amostrais. O módulo considera o trabalho único ou principal e exclui empregados no setor público e militares no recorte divulgado; não mede toda forma de renda de plataforma nem registros administrativos das empresas.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0093",
+      "resource_name": "Pesquisa Nacional por Amostra de Domicílios Contínua — IBGE",
+      "acronym": "PNAD Contínua",
+      "official_identity": "Operação estatística domiciliar integrada e contínua do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html?t=microdados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000279",
+        "product_id": "DP000258",
+        "distribution_name": "PNAD Contínua — Trabalho por plataformas digitais 2024 — SIDRA, publicação e microdados",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html?edicao=44741",
+        "format": "SIDRA | microdados | XLSX/ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA | HTTP/HTTPS download",
+        "access_tool": "navegador web | SIDRA | software estatístico",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos; microdados anonimizados; aplicar pesos e desenho amostral",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tipo de plataforma, características do trabalho e recortes publicados; microdados para análise amostral",
+        "notes": "Estatísticas experimentais; módulo concentrado no 3º trimestre de 2024 e microdados atualizados em 17/10/2025.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | microdados | XLSX/ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA | HTTP/HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000259",
+    "resource_id": "DR0093",
+    "product_name": "PNAD Contínua — Segurança Alimentar 2024",
+    "product_acronym": "PNADC Segurança Alimentar 2024",
+    "product_family": "PNAD Contínua — suplemento temático",
+    "product_kind": "dataset",
+    "product_description": "Estatísticas amostrais de 2024 sobre segurança e insegurança alimentar domiciliar segundo a Escala Brasileira de Insegurança Alimentar (EBIA), com classificação de severidade e características dos moradores e domicílios.",
+    "research_areas": "Demography | Social statistics | Public health | Public policy",
+    "keywords": "PNAD Contínua | segurança alimentar | insegurança alimentar | EBIA | domicílios | 2024 | IBGE",
+    "geographic_coverage": "Brasil e recortes geográficos oficialmente divulgados pelo módulo",
+    "covers_brazil": "sim",
+    "spatial_support": "domicílios e moradores amostrados | estimativas agregadas | SIDRA | microdados",
+    "spatial_resolution": "conforme tabela e domínio de divulgação; não inferir granularidade abaixo da publicação",
+    "temporal_coverage": "2024",
+    "temporal_resolution": "suplemento anual/temático",
+    "update_frequency": "irregular",
+    "product_status": "ativo",
+    "version_or_collection": "2024; microdados atualizados em 10/10/2025; variável derivada SD17001 corrigida/incluída em 14/10/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html",
+    "methodology_url": "https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/B5",
+    "primary_or_derived": "derivado",
+    "limitations": "A classificação depende da EBIA e do desenho amostral; não equivale a avaliação nutricional clínica, disponibilidade física de alimentos ou registro administrativo. Nos microdados, a variável derivada SD17001 foi inicialmente omitida e incluída em versão corrigida em 14/10/2025; resultados publicados permaneceram válidos.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0093",
+      "resource_name": "Pesquisa Nacional por Amostra de Domicílios Contínua — IBGE",
+      "acronym": "PNAD Contínua",
+      "official_identity": "Operação estatística domiciliar integrada e contínua do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html?t=microdados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000280",
+        "product_id": "DP000259",
+        "distribution_name": "PNAD Contínua — Segurança Alimentar 2024 — SIDRA, publicação e microdados corrigidos",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html",
+        "format": "SIDRA | microdados | XLSX/ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA | HTTP/HTTPS download",
+        "access_tool": "navegador web | SIDRA | software estatístico",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos; microdados anonimizados; aplicar pesos e desenho amostral",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por classificação EBIA, características domiciliares e recortes publicados; microdados para análise amostral",
+        "notes": "A variável derivada SD17001, ausente na primeira versão dos microdados, foi incluída em 14/10/2025; usar a versão corrigida.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | microdados | XLSX/ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA | HTTP/HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000260",
+    "resource_id": "DR0093",
+    "product_name": "PNAD Contínua — Turismo 2024",
+    "product_acronym": "PNADC Turismo 2024",
+    "product_family": "PNAD Contínua — suplemento temático",
+    "product_kind": "dataset",
+    "product_description": "Resultados amostrais de 2024 sobre viagens realizadas por moradores dos domicílios, incluindo ocorrência, motivos, destinos, meios de transporte, hospedagem e gastos associados ao turismo nacional.",
+    "research_areas": "Demography | Social statistics | Territorial analysis | Public policy",
+    "keywords": "PNAD Contínua | turismo | viagens | gastos | destinos | transporte | hospedagem | 2024 | IBGE",
+    "geographic_coverage": "Brasil e recortes geográficos oficialmente divulgados pelo módulo",
+    "covers_brazil": "sim",
+    "spatial_support": "domicílios e moradores amostrados | viagens declaradas | estimativas agregadas | SIDRA | microdados",
+    "spatial_resolution": "conforme tabela e domínio de divulgação; destinos não equivalem a rastreamento espacial de trajetórias",
+    "temporal_coverage": "2024",
+    "temporal_resolution": "suplemento anual/temático",
+    "update_frequency": "irregular",
+    "product_status": "ativo",
+    "version_or_collection": "2024; microdados atualizados em 02/10/2025; série reponderada em 2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html",
+    "methodology_url": "https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/B5",
+    "primary_or_derived": "derivado",
+    "limitations": "Pesquisa amostral baseada em viagens declaradas pelos moradores e períodos de referência próprios; não representa bilhetagem, fluxo turístico em tempo real, movimentação de visitantes estrangeiros ou registros administrativos de empresas. Comparações históricas devem preservar reponderações e revisões oficiais.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0093",
+      "resource_name": "Pesquisa Nacional por Amostra de Domicílios Contínua — IBGE",
+      "acronym": "PNAD Contínua",
+      "official_identity": "Operação estatística domiciliar integrada e contínua do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html?t=microdados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000281",
+        "product_id": "DP000260",
+        "distribution_name": "PNAD Contínua — Turismo 2024 — SIDRA, publicação e microdados",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html",
+        "format": "SIDRA | microdados | XLSX/ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA | HTTP/HTTPS download",
+        "access_tool": "navegador web | SIDRA | software estatístico",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos; microdados anonimizados; aplicar pesos e desenho amostral",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por viagem, motivo, destino, transporte, hospedagem, gasto e recortes publicados; microdados para análise amostral",
+        "notes": "Microdados de Turismo 2024 atualizados em 02/10/2025; comparações com anos anteriores devem usar versões reponderadas/revisadas.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | microdados | XLSX/ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA | HTTP/HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000261",
+    "resource_id": "DR0093",
+    "product_name": "PNAD Contínua — Trabalho de Crianças e Adolescentes de 5 a 17 anos 2024 — Estatísticas Experimentais",
+    "product_acronym": "PNADC Trabalho Infantil 2024",
+    "product_family": "PNAD Contínua — módulo temático experimental",
+    "product_kind": "dataset",
+    "product_description": "Estatísticas experimentais de 2024 sobre atividades econômicas, produção para o próprio consumo, frequência escolar, atividades domésticas e situação de trabalho infantil entre pessoas de 5 a 17 anos, segundo critérios metodológicos da pesquisa.",
+    "research_areas": "Demography | Social statistics | Public policy",
+    "keywords": "PNAD Contínua | crianças | adolescentes | trabalho infantil | atividade econômica | produção para autoconsumo | escola | 2024 | IBGE",
+    "geographic_coverage": "Brasil e recortes geográficos oficialmente divulgados pelo módulo",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoas de 5 a 17 anos amostradas | estimativas agregadas | SIDRA | microdados",
+    "spatial_resolution": "conforme tabela e domínio de divulgação; não inferir Município",
+    "temporal_coverage": "2024",
+    "temporal_resolution": "anual temático baseado na 5ª visita",
+    "update_frequency": "anual quando investigado/divulgado",
+    "product_status": "experimental",
+    "version_or_collection": "2024; divulgação 19/09/2025; microdados atualizados em 19/09/2025; dicionário anual da 5ª visita corrigido em 24/09/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html",
+    "methodology_url": "https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/B5",
+    "primary_or_derived": "derivado",
+    "limitations": "Estatísticas experimentais por amostragem probabilística. Pessoa que realiza atividade econômica ou produção para autoconsumo não é automaticamente classificada como em situação de trabalho infantil; a classificação depende de idade, atividade, horas, condições e critérios metodológicos. O dicionário dos microdados de 5ª visita 2024 foi corrigido em 24/09/2025.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0093",
+      "resource_name": "Pesquisa Nacional por Amostra de Domicílios Contínua — IBGE",
+      "acronym": "PNAD Contínua",
+      "official_identity": "Operação estatística domiciliar integrada e contínua do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html?t=microdados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000282",
+        "product_id": "DP000261",
+        "distribution_name": "PNAD Contínua — Trabalho de Crianças e Adolescentes 2024 — SIDRA, publicação e microdados",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html",
+        "format": "SIDRA | microdados | XLSX/ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA | HTTP/HTTPS download",
+        "access_tool": "navegador web | SIDRA | software estatístico",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos; microdados anonimizados; aplicar pesos e desenho amostral",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por idade, sexo, cor ou raça, atividade, escola e demais dimensões publicadas; microdados para análise amostral",
+        "notes": "Estatísticas experimentais; divulgação e microdados de 19/09/2025. O dicionário anual de 5ª visita 2024 foi corrigido em 24/09/2025.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | microdados | XLSX/ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA | HTTP/HTTPS download"
+    ]
   }
 ]
