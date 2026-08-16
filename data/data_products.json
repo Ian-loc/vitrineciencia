@@ -1600,28 +1600,47 @@
     },
     "distributions": [
       {
-        "distribution_id": "DD000033",
+        "distribution_id": "DD000061",
         "product_id": "DP000025",
-        "distribution_name": "MapBiomas LULC 10.1 — plataforma/GEE",
-        "access_url": "https://brasil.mapbiomas.org/colecoes-mapbiomas/",
-        "format": "GeoTIFF | asset Google Earth Engine | estatísticas tabulares",
-        "access_protocol": "HTTP download | Google Earth Engine",
-        "access_tool": "Plataforma MapBiomas | GEE Toolkit | script",
+        "distribution_name": "MapBiomas — plataforma de cobertura e uso",
+        "access_url": "https://plataforma.brasil.mapbiomas.org/",
+        "format": "visualização | estatísticas | exportação",
+        "access_protocol": "HTTPS web",
+        "access_tool": "navegador web",
         "free_download": "sim",
         "authentication_required": "parcial",
-        "access_conditions": "dados públicos, abertos e gratuitos; GEE requer conta/projeto conforme serviço",
-        "license": "CC BY; atribuição MapBiomas requerida",
+        "access_conditions": "consulta pública; algumas operações podem depender de serviços Google",
+        "license": "CC BY; atribuição requerida conforme termos do MapBiomas",
         "provider_attribution_required": "sim",
-        "subset_support": "estado | bioma | município | território vetorial via ferramentas documentadas",
-        "notes": "Asset oficial da Coleção 10.1 e downloads são listados na página de coleções; registrar coleção e legenda.",
+        "subset_support": "territorial | classe | ano",
+        "notes": "Registrar explicitamente Coleção 10.1, legenda e ano ao extrair dados.",
+        "last_verified": "2026-08-14"
+      },
+      {
+        "distribution_id": "DD000062",
+        "product_id": "DP000025",
+        "distribution_name": "MapBiomas LULC 10.1 — catálogo de assets e downloads",
+        "access_url": "https://brasil.mapbiomas.org/colecoes-mapbiomas/",
+        "format": "GeoTIFF | Google Earth Engine assets | estatísticas",
+        "access_protocol": "HTTP download | Google Earth Engine",
+        "access_tool": "navegador web | GEE",
+        "free_download": "sim",
+        "authentication_required": "parcial",
+        "access_conditions": "download direto público; GEE requer conta/projeto habilitado",
+        "license": "CC BY; atribuição requerida conforme termos do MapBiomas",
+        "provider_attribution_required": "sim",
+        "subset_support": "ano | recorte via GEE",
+        "notes": "A página oficial documenta o asset da Coleção 10.1 e links de download direto.",
         "last_verified": "2026-08-14"
       }
     ],
     "available_formats": [
-      "GeoTIFF | asset Google Earth Engine | estatísticas tabulares"
+      "GeoTIFF | Google Earth Engine assets | estatísticas",
+      "visualização | estatísticas | exportação"
     ],
     "available_protocols": [
-      "HTTP download | Google Earth Engine"
+      "HTTP download | Google Earth Engine",
+      "HTTPS web"
     ]
   },
   {
@@ -3094,84 +3113,6 @@
     ],
     "available_protocols": [
       "HTTP download"
-    ]
-  },
-  {
-    "product_id": "DP000050",
-    "resource_id": "DR0010",
-    "product_name": "MapBiomas Cobertura e Uso da Terra — Coleção 10.1",
-    "product_acronym": "MapBiomas LULC 10.1",
-    "product_family": "Mapas anuais de cobertura e uso da terra",
-    "product_kind": "dataset_series",
-    "product_description": "Série anual de mapas de cobertura e uso da terra do Brasil da Coleção 10.1, com correções históricas e cobertura de 1985 a 2024.",
-    "research_areas": "Land use and land cover | Remote sensing | Landscape ecology | Environmental monitoring",
-    "keywords": "uso da terra | cobertura da terra | Landsat | 30 m | série anual | MapBiomas",
-    "geographic_coverage": "Brasil",
-    "covers_brazil": "sim",
-    "spatial_support": "célula raster",
-    "spatial_resolution": "30 m",
-    "temporal_coverage": "1985–2024",
-    "temporal_resolution": "anual",
-    "update_frequency": "coleção anual com revisões",
-    "product_status": "ativo",
-    "version_or_collection": "Coleção 10.1",
-    "enumeration_scope": "complete",
-    "product_page_url": "https://brasil.mapbiomas.org/colecoes-mapbiomas/",
-    "methodology_url": "https://brasil.mapbiomas.org/metodo_cobertura_e_uso/",
-    "primary_or_derived": "derivado",
-    "limitations": "Coleções incorporam revisões metodológicas e correções históricas; registrar coleção, versão e legenda. A Coleção 10.1 corrigiu dados históricos específicos e pixels sem informação em determinadas áreas.",
-    "last_verified": "2026-08-14",
-    "source": {
-      "resource_id": "DR0010",
-      "resource_name": "MapBiomas Brasil",
-      "acronym": "MapBiomas",
-      "official_identity": "Rede colaborativa que produz mapas e dados anuais de cobertura e uso da terra",
-      "homepage_url": "https://brasil.mapbiomas.org/",
-      "data_access_url": "https://plataforma.brasil.mapbiomas.org/"
-    },
-    "distributions": [
-      {
-        "distribution_id": "DD000061",
-        "product_id": "DP000050",
-        "distribution_name": "MapBiomas — plataforma de cobertura e uso",
-        "access_url": "https://plataforma.brasil.mapbiomas.org/",
-        "format": "visualização | estatísticas | exportação",
-        "access_protocol": "HTTPS web",
-        "access_tool": "navegador web",
-        "free_download": "sim",
-        "authentication_required": "parcial",
-        "access_conditions": "consulta pública; algumas operações podem depender de serviços Google",
-        "license": "CC BY; atribuição requerida conforme termos do MapBiomas",
-        "provider_attribution_required": "sim",
-        "subset_support": "territorial | classe | ano",
-        "notes": "Registrar explicitamente Coleção 10.1, legenda e ano ao extrair dados.",
-        "last_verified": "2026-08-14"
-      },
-      {
-        "distribution_id": "DD000062",
-        "product_id": "DP000050",
-        "distribution_name": "MapBiomas LULC 10.1 — catálogo de assets e downloads",
-        "access_url": "https://brasil.mapbiomas.org/colecoes-mapbiomas/",
-        "format": "GeoTIFF | Google Earth Engine assets | estatísticas",
-        "access_protocol": "HTTP download | Google Earth Engine",
-        "access_tool": "navegador web | GEE",
-        "free_download": "sim",
-        "authentication_required": "parcial",
-        "access_conditions": "download direto público; GEE requer conta/projeto habilitado",
-        "license": "CC BY; atribuição requerida conforme termos do MapBiomas",
-        "provider_attribution_required": "sim",
-        "subset_support": "ano | recorte via GEE",
-        "notes": "A página oficial documenta o asset da Coleção 10.1 e links de download direto.",
-        "last_verified": "2026-08-14"
-      }
-    ],
-    "available_formats": [
-      "GeoTIFF | Google Earth Engine assets | estatísticas",
-      "visualização | estatísticas | exportação"
-    ],
-    "available_protocols": [
-      "HTTP download | Google Earth Engine",
-      "HTTPS web"
     ]
   },
   {
@@ -12193,6 +12134,301 @@
     ],
     "available_protocols": [
       "HTTPS web | download"
+    ]
+  },
+  {
+    "product_id": "DP000204",
+    "resource_id": "DR0087",
+    "product_name": "Produção da Extração Vegetal e da Silvicultura — edição 2024",
+    "product_acronym": "PEVS 2024",
+    "product_family": "Estatísticas agropecuárias — produção florestal",
+    "product_kind": "dataset_series",
+    "product_description": "Pesquisa anual do IBGE sobre quantidade e valor da produção obtida pela extração de recursos vegetais nativos e pela silvicultura, incluindo área total existente e área colhida de cultivos florestais.",
+    "research_areas": "Agriculture | Forestry | Environmental statistics | Territorial analysis",
+    "keywords": "PEVS | extrativismo vegetal | silvicultura | produção florestal | florestas plantadas | municípios | IBGE",
+    "geographic_coverage": "Brasil — Grandes Regiões, Unidades da Federação e municípios produtores",
+    "covers_brazil": "sim",
+    "spatial_support": "município | Unidade da Federação | Grande Região | Brasil",
+    "spatial_resolution": "municipal nos resultados detalhados; agregações regionais e nacionais disponíveis",
+    "temporal_coverage": "série histórica; edição corrente verificada 2024",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "2024",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9105-producao-da-extracao-vegetal-e-da-silvicultura.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9105-producao-da-extracao-vegetal-e-da-silvicultura.html",
+    "primary_or_derived": "primário",
+    "limitations": "A pesquisa mede produção de produtos florestais, não cobertura florestal, biomassa ou estoque de carbono. Extrativismo nativo e silvicultura plantada são componentes distintos; revisões e notas técnicas da edição usada precisam ser preservadas.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0087",
+      "resource_name": "Estatísticas Agropecuárias — IBGE",
+      "acronym": "Estatísticas Agropecuárias IBGE",
+      "official_identity": "Tema institucional Agricultura, pecuária e outros do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000225",
+        "product_id": "DP000204",
+        "distribution_name": "Produção da Extração Vegetal e da Silvicultura — edição 2024 — página, tabelas e SIDRA",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9105-producao-da-extracao-vegetal-e-da-silvicultura.html",
+        "format": "XLSX | SIDRA | publicação digital",
+        "access_protocol": "HTTPS web | HTTP download",
+        "access_tool": "navegador web | planilha | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública e downloads oficiais; observar revisões da edição",
+        "license": "licença específica do arquivo não inferida; observar termos de uso do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "produto | município | Unidade da Federação | Grande Região",
+        "notes": "Edição 2024; disseminação oficial por publicação digital, tabelas e SIDRA.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | SIDRA | publicação digital"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP download"
+    ]
+  },
+  {
+    "product_id": "DP000205",
+    "resource_id": "DR0087",
+    "product_name": "Pesquisa Trimestral do Abate de Animais — resultados completos",
+    "product_acronym": "Abate Trimestral",
+    "product_family": "Estatísticas trimestrais da produção pecuária",
+    "product_kind": "dataset_series",
+    "product_description": "Pesquisa conjuntural do IBGE sobre número de animais abatidos e peso total das carcaças por espécie em estabelecimentos sob fiscalização sanitária federal, estadual ou municipal.",
+    "research_areas": "Agriculture | Livestock | Economic statistics | Territorial analysis",
+    "keywords": "abate | bovinos | suínos | frangos | carcaças | produção pecuária | IBGE",
+    "geographic_coverage": "Brasil e Unidades da Federação nos resultados completos",
+    "covers_brazil": "sim",
+    "spatial_support": "estabelecimento informante | Unidade da Federação | Brasil",
+    "spatial_resolution": "Unidade da Federação na divulgação completa",
+    "temporal_coverage": "série trimestral; edição corrente verificada 1º trimestre de 2026",
+    "temporal_resolution": "trimestral; tabelas discriminam meses dentro do trimestre",
+    "update_frequency": "trimestral",
+    "product_status": "ativo",
+    "version_or_collection": "1º trimestre de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9203-pesquisas-trimestrais-do-abate-de-animais.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9203-pesquisas-trimestrais-do-abate-de-animais.html",
+    "primary_or_derived": "primário",
+    "limitations": "Investiga abate sob fiscalização sanitária e não representa automaticamente todo abate informal ou não inspecionado. Distinguir Primeiros Resultados nacionais dos Resultados Completos por Unidade da Federação e considerar revisões programadas.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0087",
+      "resource_name": "Estatísticas Agropecuárias — IBGE",
+      "acronym": "Estatísticas Agropecuárias IBGE",
+      "official_identity": "Tema institucional Agricultura, pecuária e outros do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000226",
+        "product_id": "DP000205",
+        "distribution_name": "Pesquisa Trimestral do Abate de Animais — resultados completos — página, tabelas e SIDRA",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9203-pesquisas-trimestrais-do-abate-de-animais.html",
+        "format": "XLSX | SIDRA | publicação digital",
+        "access_protocol": "HTTPS web | HTTP download",
+        "access_tool": "navegador web | planilha | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública e downloads oficiais; observar revisões da edição",
+        "license": "licença específica do arquivo não inferida; observar termos de uso do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "espécie | mês | Unidade da Federação | Brasil",
+        "notes": "Resultados completos do 1º trimestre de 2026 divulgados em 16/06/2026; dados sujeitos à política de revisão do IBGE.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | SIDRA | publicação digital"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP download"
+    ]
+  },
+  {
+    "product_id": "DP000206",
+    "resource_id": "DR0087",
+    "product_name": "Produção de Ovos de Galinha — resultados trimestrais",
+    "product_acronym": "POG",
+    "product_family": "Estatísticas trimestrais da produção pecuária",
+    "product_kind": "dataset_series",
+    "product_description": "Pesquisa trimestral do IBGE sobre produção física de ovos e efetivo de poedeiras/matrizeiras em estabelecimentos especializados com capacidade de alojamento de pelo menos 10 mil aves elegíveis.",
+    "research_areas": "Agriculture | Livestock | Economic statistics | Territorial analysis",
+    "keywords": "ovos de galinha | poedeiras | matrizeiras | produção pecuária | granjas | IBGE",
+    "geographic_coverage": "Brasil e Unidades da Federação nos resultados completos",
+    "covers_brazil": "sim",
+    "spatial_support": "estabelecimento informante | Unidade da Federação | Brasil",
+    "spatial_resolution": "Unidade da Federação na divulgação completa",
+    "temporal_coverage": "série iniciada com dados de 1983; edição corrente verificada 1º trimestre de 2026",
+    "temporal_resolution": "trimestral com dados mensais dentro do trimestre",
+    "update_frequency": "trimestral",
+    "product_status": "ativo",
+    "version_or_collection": "1º trimestre de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9216-pesquisa-trimestral-da-producao-de-ovos-de-galinha.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9216-pesquisa-trimestral-da-producao-de-ovos-de-galinha.html",
+    "primary_or_derived": "primário",
+    "limitations": "Representa produção especializada/comercial no painel elegível e não toda a produção municipal de ovos; a PPM inclui produção não comercial e estabelecimentos abaixo do corte. Primeiros resultados são provisórios.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0087",
+      "resource_name": "Estatísticas Agropecuárias — IBGE",
+      "acronym": "Estatísticas Agropecuárias IBGE",
+      "official_identity": "Tema institucional Agricultura, pecuária e outros do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000227",
+        "product_id": "DP000206",
+        "distribution_name": "Produção de Ovos de Galinha — resultados trimestrais — página, tabelas e SIDRA",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9216-pesquisa-trimestral-da-producao-de-ovos-de-galinha.html",
+        "format": "XLSX | SIDRA | publicação digital",
+        "access_protocol": "HTTPS web | HTTP download",
+        "access_tool": "navegador web | planilha | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública e downloads oficiais; observar revisões da edição",
+        "license": "licença específica do arquivo não inferida; observar termos de uso do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "mês | Unidade da Federação | Brasil",
+        "notes": "Resultados do 1º trimestre de 2026; painel e valores podem ser revistos conforme política da pesquisa.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | SIDRA | publicação digital"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP download"
+    ]
+  },
+  {
+    "product_id": "DP000207",
+    "resource_id": "DR0087",
+    "product_name": "Pesquisa Trimestral do Leite — resultados completos",
+    "product_acronym": "Leite Trimestral",
+    "product_family": "Estatísticas trimestrais da produção pecuária",
+    "product_kind": "dataset_series",
+    "product_description": "Pesquisa trimestral do IBGE sobre quantidades de leite cru, resfriado ou não, adquiridas e industrializadas pelos estabelecimentos investigados.",
+    "research_areas": "Agriculture | Livestock | Economic statistics | Territorial analysis",
+    "keywords": "leite cru | laticínios | aquisição | industrialização | preço ao produtor | IBGE",
+    "geographic_coverage": "Brasil e Unidades da Federação nos resultados completos",
+    "covers_brazil": "sim",
+    "spatial_support": "estabelecimento informante | Unidade da Federação | Brasil",
+    "spatial_resolution": "Unidade da Federação na divulgação completa",
+    "temporal_coverage": "série trimestral; edição corrente verificada 1º trimestre de 2026",
+    "temporal_resolution": "trimestral",
+    "update_frequency": "trimestral",
+    "product_status": "ativo",
+    "version_or_collection": "1º trimestre de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9209-pesquisa-trimestral-do-leite.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9209-pesquisa-trimestral-do-leite.html",
+    "primary_or_derived": "primário",
+    "limitations": "Mede leite cru adquirido/industrializado pelos estabelecimentos cobertos e não equivale à produção total de leite na fazenda. O preço médio pago ao produtor, investigado desde 2019, é estatística experimental e deve permanecer separado das quantidades físicas.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0087",
+      "resource_name": "Estatísticas Agropecuárias — IBGE",
+      "acronym": "Estatísticas Agropecuárias IBGE",
+      "official_identity": "Tema institucional Agricultura, pecuária e outros do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000228",
+        "product_id": "DP000207",
+        "distribution_name": "Pesquisa Trimestral do Leite — resultados completos — página, tabelas e SIDRA",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9209-pesquisa-trimestral-do-leite.html",
+        "format": "XLSX | SIDRA | publicação digital",
+        "access_protocol": "HTTPS web | HTTP download",
+        "access_tool": "navegador web | planilha | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública e downloads oficiais; observar revisões da edição",
+        "license": "licença específica do arquivo não inferida; observar termos de uso do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "Unidade da Federação | Brasil | variável",
+        "notes": "Resultados completos do 1º trimestre de 2026; quantidades físicas e preço médio têm estatutos metodológicos distintos.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | SIDRA | publicação digital"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP download"
+    ]
+  },
+  {
+    "product_id": "DP000208",
+    "resource_id": "DR0087",
+    "product_name": "Pesquisa Trimestral do Couro — resultados completos",
+    "product_acronym": "Couro Trimestral",
+    "product_family": "Estatísticas trimestrais da produção pecuária",
+    "product_kind": "dataset_series",
+    "product_description": "Pesquisa trimestral do IBGE sobre quantidade de couro cru bovino adquirida e curtida em estabelecimentos que adquirem e curtem pelo menos 5 mil unidades inteiras de couro cru bovino por ano.",
+    "research_areas": "Agriculture | Livestock | Economic statistics | Territorial analysis",
+    "keywords": "couro bovino | curtumes | couro cru | curtimento | produção pecuária | IBGE",
+    "geographic_coverage": "Brasil e Unidades da Federação nos resultados completos",
+    "covers_brazil": "sim",
+    "spatial_support": "estabelecimento informante | Unidade da Federação | Brasil",
+    "spatial_resolution": "Unidade da Federação na divulgação completa",
+    "temporal_coverage": "série trimestral desde 1997; edição corrente verificada 1º trimestre de 2026",
+    "temporal_resolution": "trimestral",
+    "update_frequency": "trimestral",
+    "product_status": "ativo",
+    "version_or_collection": "1º trimestre de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9214-pesquisa-trimestral-do-couro.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9214-pesquisa-trimestral-do-couro.html",
+    "primary_or_derived": "primário",
+    "limitations": "A população-alvo usa corte de pelo menos 5 mil unidades anuais e não representa curtumes abaixo desse limite. Quantidades adquiridas, recebidas de terceiros e curtidas são conceitos distintos; Primeiros Resultados são nacionais e provisórios.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0087",
+      "resource_name": "Estatísticas Agropecuárias — IBGE",
+      "acronym": "Estatísticas Agropecuárias IBGE",
+      "official_identity": "Tema institucional Agricultura, pecuária e outros do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000229",
+        "product_id": "DP000208",
+        "distribution_name": "Pesquisa Trimestral do Couro — resultados completos — página, tabelas e SIDRA",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9214-pesquisa-trimestral-do-couro.html",
+        "format": "XLSX | SIDRA | publicação digital",
+        "access_protocol": "HTTPS web | HTTP download",
+        "access_tool": "navegador web | planilha | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública e downloads oficiais; observar revisões da edição",
+        "license": "licença específica do arquivo não inferida; observar termos de uso do IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "mês | Unidade da Federação | Brasil | variável",
+        "notes": "Resultados completos do 1º trimestre de 2026; publicação digital e SIDRA com política de revisão.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | SIDRA | publicação digital"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP download"
     ]
   }
 ]
