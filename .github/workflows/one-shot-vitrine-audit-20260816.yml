@@ -1,0 +1,90 @@
+name: One-shot Vitrine audit 2026-08-16
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/one-shot-vitrine-audit-20260816.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Append verified IBGE CEMPRE-derived products
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import csv, io
+
+          p = Path('data/data_products.csv')
+          d = Path('data/product_distributions.csv')
+
+          with p.open(encoding='utf-8', newline='') as f:
+              prows = list(csv.DictReader(f))
+          with d.open(encoding='utf-8', newline='') as f:
+              drows = list(csv.DictReader(f))
+
+          assert len(prows) == 298, f'unexpected product count: {len(prows)}'
+          assert len(drows) == 319, f'unexpected distribution count: {len(drows)}'
+          assert not any(r['product_id'] in {'DP000303','DP000304'} for r in prows)
+          assert not any(r['distribution_id'] in {'DD000324','DD000325'} for r in drows)
+          assert any(r['resource_id']=='DR0097' for r in prows), 'DR0097 not represented in products'
+
+          new_products = [
+            ['DP000303','DR0097','Demografia das Empresas e Estatísticas de Empreendedorismo — 2022','Demografia das Empresas 2022','Demografia empresarial e empreendedorismo','indicator_family','Estudo anual sobre a dinâmica demográfica das empresas formais empregadoras brasileiras — nascimentos, mortes e sobrevivência — e sobre empresas de alto crescimento e gazelas, com base principal no CEMPRE e, para empreendedorismo, também nas pesquisas estruturais por empresas do IBGE.','Economics | Labour | Economic geography | Regional development','demografia das empresas | nascimento de empresas | morte de empresas | sobrevivência | alto crescimento | gazelas | CEMPRE | empreendedorismo','Brasil; Grandes Regiões, UFs e Municípios das Capitais conforme indicador','sim','empresa empregadora | unidade local empregadora | agregações territoriais e setoriais','empresa/unidade local agregada; detalhamento geográfico e CNAE conforme tabela','ano de referência 2022; sobrevivência de coortes desde 2017 e crescimento 2019–2022 conforme indicador','anual e por coorte conforme indicador','anual','ativo','edição 2022 — publicada em 2024; nova metodologia/escopo populacional','complete','https://www.ibge.gov.br/estatisticas/economicas/servicos/22649-demografia-das-empresas-e-estatisticas-de-empreendedorismo.html','https://www.ibge.gov.br/estatisticas/economicas/servicos/22649-demografia-das-empresas-e-estatisticas-de-empreendedorismo.html','derivado','A edição 2022 inaugura mudança de escopo para empresas e unidades locais empregadoras e incorpora a quebra de série do CEMPRE iniciada no ano-base 2022. Não comparar taxas diretamente com edições anteriores sem considerar a Nota Técnica 01/2024; alto crescimento e gazelas obedecem critérios próprios e não representam todo o universo empresarial.','2026-08-16'],
+            ['DP000304','DR0097','FASFIL — Fundações Privadas e Associações sem Fins Lucrativos no Brasil — 2023','FASFIL 2023','Organizações da sociedade civil sem fins lucrativos','dataset_series','Quinta edição do estudo FASFIL, derivada do CEMPRE, que caracteriza fundações privadas e associações sem fins lucrativos por finalidade, localização, idade, porte, emprego e remuneração, incorporando a nova série metodológica do CEMPRE a partir do ano-base 2022.','Economics | Labour | Social inequalities | Regional development','FASFIL | organizações sem fins lucrativos | sociedade civil | fundações | associações | emprego | remuneração | CEMPRE','Brasil; Grandes Regiões, UFs e municípios conforme tabela','sim','entidade sem fins lucrativos | unidade local | agregações territoriais','unidade local e agregações; município disponível no plano tabular','ano de referência 2023; comparação publicada com 2022','anual no conteúdo; divulgação eventual','eventual','ativo','5ª edição — ano-base 2023, publicada em 2025','complete','https://www.ibge.gov.br/estatisticas/economicas/outras-estatisticas-economicas/9023-as-fundacoes-privadas-e-associacoes-sem-fins-lucrativos-no-brasil.html','https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/FP','derivado','É um recorte metodológico de entidades privadas sem fins lucrativos no CEMPRE, não um cadastro exaustivo de toda forma de organização da sociedade civil. A edição 2023 incorpora a quebra de série do CEMPRE iniciada em 2022; comparações com 2016 e edições anteriores exigem cautela metodológica.','2026-08-16'],
+          ]
+
+          new_dists = [
+            ['DD000324','DP000303','Demografia das Empresas e Estatísticas de Empreendedorismo 2022 — tabelas e publicação','https://www.ibge.gov.br/estatisticas/economicas/servicos/22649-demografia-das-empresas-e-estatisticas-de-empreendedorismo.html','XLSX | ODS | PDF | página web','HTTPS download / web','navegador web','sim','não','acesso por tabelas, publicação e downloads da edição 2022','licença específica dos arquivos não determinada nesta auditoria','sim','por tema, evento demográfico, atividade, porte e recorte territorial conforme tabela','A edição 2022 possui Nota Técnica 01/2024 sobre mudança metodológica e quebra de série; preservar o escopo de empresas empregadoras e os critérios de alto crescimento/gazelas.','2026-08-16'],
+            ['DD000325','DP000304','FASFIL 2023 — tabelas, SIDRA e publicação','https://www.ibge.gov.br/estatisticas/economicas/outras-estatisticas-economicas/9023-as-fundacoes-privadas-e-associacoes-sem-fins-lucrativos-no-brasil.html','XLS | ODS | PDF | SIDRA | página web','HTTPS download / web','navegador web | SIDRA','sim','não','acesso por tabelas, publicação, SIDRA e downloads da edição 2023','licença específica dos arquivos não determinada nesta auditoria','sim','por classificação FASFIL, porte, ano de fundação e recorte territorial conforme tabela','A edição 2023 segue a nova série do CEMPRE a partir de 2022; não comparar automaticamente com 2016 ou séries antigas sem harmonização metodológica.','2026-08-16'],
+          ]
+
+          def append_rows(path, rows):
+              with path.open('a', encoding='utf-8', newline='') as f:
+                  w = csv.writer(f, lineterminator='\n')
+                  w.writerows(rows)
+
+          append_rows(p, new_products)
+          append_rows(d, new_dists)
+          PY
+
+      - name: Validate and rebuild
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+          python3 - <<'PY'
+          import csv
+          with open('data/data_products.csv', encoding='utf-8', newline='') as f:
+              p=list(csv.DictReader(f))
+          with open('data/product_distributions.csv', encoding='utf-8', newline='') as f:
+              d=list(csv.DictReader(f))
+          assert len(p)==300, len(p)
+          assert len(d)==321, len(d)
+          assert {r['product_id'] for r in p if r['product_id'] in {'DP000303','DP000304'}} == {'DP000303','DP000304'}
+          assert {r['distribution_id'] for r in d if r['distribution_id'] in {'DD000324','DD000325'}} == {'DD000324','DD000325'}
+          assert all(r['resource_id']=='DR0097' for r in p if r['product_id'] in {'DP000303','DP000304'})
+          print('READBACK_OK', len(p), len(d))
+          PY
+
+      - name: Commit materialized batch and remove one-shot workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/one-shot-vitrine-audit-20260816.yml
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json data/link_role_audit.json
+          git commit -m "Expand verified IBGE enterprise catalog"
+          git push origin HEAD:main
