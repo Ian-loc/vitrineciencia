@@ -15911,5 +15911,359 @@
     "available_protocols": [
       "HTTPS web | SIDRA | HTTP/HTTPS download"
     ]
+  },
+  {
+    "product_id": "DP000268",
+    "resource_id": "DR0094",
+    "product_name": "POF 2017-2018 — Primeiros resultados",
+    "product_acronym": "POF Primeiros Resultados",
+    "product_family": "POF 2017-2018 — resultados gerais",
+    "product_kind": "dataset",
+    "product_description": "Resultados iniciais da POF 2017-2018 sobre estruturas de consumo, despesas, rendimentos, aquisições e condições de vida dos domicílios e famílias.",
+    "research_areas": "Demography | Social statistics | Public policy",
+    "keywords": "POF | despesas | rendimento | consumo | orçamento doméstico | famílias | 2017-2018 | IBGE",
+    "geographic_coverage": "Brasil; Grandes Regiões; situações urbana e rural e demais domínios oficialmente divulgados",
+    "covers_brazil": "sim",
+    "spatial_support": "domicílios, pessoas e famílias amostrados | estimativas agregadas | tabelas | microdados",
+    "spatial_resolution": "conforme domínio de estimação; não inferir Município sem tabela oficial",
+    "temporal_coverage": "11/07/2017–10/07/2018, com períodos de referência próprios por variável",
+    "temporal_resolution": "levantamento por edição com diferentes períodos de recordação",
+    "update_frequency": "por edição da POF",
+    "product_status": "ativo",
+    "version_or_collection": "POF 2017-2018; primeiros resultados publicados em 2019",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/24786-pesquisa-de-orcamentos-familiares-2.html?edicao=25578&t=resultados",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Estimativas amostrais; despesas, rendimentos e aquisições têm períodos de referência e tratamentos próprios. Não equivalem a registros administrativos de transações nem a um painel corrente de preços ou consumo.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0094",
+      "resource_name": "Pesquisa de Orçamentos Familiares — IBGE",
+      "acronym": "POF",
+      "official_identity": "Pesquisa de Orçamentos Familiares do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/9050-pesquisa-de-orcamentos-familiares.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000289",
+        "product_id": "DP000268",
+        "distribution_name": "POF 2017-2018 — primeiros resultados, tabelas e microdados",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/24786-pesquisa-de-orcamentos-familiares-2.html?edicao=25578&t=resultados",
+        "format": "XLSX | ODS | PDF | microdados e documentação",
+        "access_protocol": "HTTPS web | HTTP/HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos; usar documentação e desenho amostral",
+        "license": "licença específica do arquivo não localizada nesta auditoria; preservar atribuição IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabelas, publicação e arquivos de microdados",
+        "notes": "Resultados e microdados compartilham a operação POF, mas períodos de referência e universos variam por variável.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | PDF | microdados e documentação"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP/HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000269",
+    "resource_id": "DR0094",
+    "product_name": "POF 2017-2018 — Avaliação nutricional da disponibilidade domiciliar de alimentos no Brasil",
+    "product_acronym": "POF Disponibilidade Alimentar",
+    "product_family": "POF 2017-2018 — alimentação e nutrição",
+    "product_kind": "dataset",
+    "product_description": "Resultados sobre aquisição e disponibilidade domiciliar de alimentos para consumo, incluindo quantidades per capita e comparações com edições anteriores da POF.",
+    "research_areas": "Nutrition | Public health | Social statistics | Food systems",
+    "keywords": "POF | disponibilidade alimentar | aquisição de alimentos | nutrição | domicílios | 2017-2018 | IBGE",
+    "geographic_coverage": "Brasil; Grandes Regiões; situações urbana e rural e classes de rendimento conforme publicação",
+    "covers_brazil": "sim",
+    "spatial_support": "domicílios e famílias amostrados | aquisições agregadas | estimativas per capita",
+    "spatial_resolution": "Brasil e Grandes Regiões; demais recortes conforme tabelas",
+    "temporal_coverage": "POF 2017-2018; comparações documentadas com 2002-2003 e 2008-2009",
+    "temporal_resolution": "por edição da POF",
+    "update_frequency": "por edição/estudo temático",
+    "product_status": "ativo",
+    "version_or_collection": "POF 2017-2018; divulgação temática 2020",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/24786-pesquisa-de-orcamentos-familiares-2.html?edicao=27139",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Disponibilidade/aquisição domiciliar não equivale ao consumo alimentar individual efetivamente ingerido, ao estado nutricional clínico ou à produção/oferta física de alimentos. Comparações históricas exigem preservar método e classificação.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0094",
+      "resource_name": "Pesquisa de Orçamentos Familiares — IBGE",
+      "acronym": "POF",
+      "official_identity": "Pesquisa de Orçamentos Familiares do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/9050-pesquisa-de-orcamentos-familiares.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000290",
+        "product_id": "DP000269",
+        "distribution_name": "POF 2017-2018 — disponibilidade domiciliar de alimentos",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/24786-pesquisa-de-orcamentos-familiares-2.html?edicao=27139",
+        "format": "XLSX | ODS | PDF",
+        "access_protocol": "HTTPS web | HTTP/HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público; observar notas metodológicas",
+        "license": "licença específica do arquivo não localizada nesta auditoria; preservar atribuição IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabelas e publicação",
+        "notes": "Disponibilidade domiciliar é derivada de aquisições; não confundir com consumo pessoal efetivo.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP/HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000270",
+    "resource_id": "DR0094",
+    "product_name": "POF 2017-2018 — Análise do consumo alimentar pessoal no Brasil",
+    "product_acronym": "POF Consumo Alimentar Pessoal",
+    "product_family": "POF 2017-2018 — alimentação e nutrição",
+    "product_kind": "dataset",
+    "product_description": "Resultados do bloco de consumo alimentar pessoal da POF 2017-2018 para pessoas de 10 anos ou mais, baseado no registro de alimentos e bebidas consumidos em dois dias não consecutivos.",
+    "research_areas": "Nutrition | Public health | Social statistics | Food systems",
+    "keywords": "POF | consumo alimentar | dieta | alimentos | bebidas | recordatório | pessoas | 2017-2018 | IBGE",
+    "geographic_coverage": "Brasil; Grandes Regiões e recortes sociodemográficos oficialmente divulgados",
+    "covers_brazil": "sim",
+    "spatial_support": "subamostra de pessoas de 10 anos ou mais | registros alimentares | estimativas agregadas",
+    "spatial_resolution": "conforme domínio de estimação e tabela",
+    "temporal_coverage": "POF 2017-2018; dois dias não consecutivos por pessoa na subamostra",
+    "temporal_resolution": "registro alimentar diário dentro da edição da pesquisa",
+    "update_frequency": "por edição/estudo temático",
+    "product_status": "ativo",
+    "version_or_collection": "POF 2017-2018; divulgação temática 21/08/2020",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/24786-pesquisa-de-orcamentos-familiares-2.html?edicao=28523&t=publicacoes",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Consumo alimentar pessoal provém de subamostra e dias específicos de registro; não equivale à disponibilidade domiciliar, biomarcadores nutricionais ou ingestão habitual individual sem modelagem apropriada.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0094",
+      "resource_name": "Pesquisa de Orçamentos Familiares — IBGE",
+      "acronym": "POF",
+      "official_identity": "Pesquisa de Orçamentos Familiares do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/9050-pesquisa-de-orcamentos-familiares.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000291",
+        "product_id": "DP000270",
+        "distribution_name": "POF 2017-2018 — consumo alimentar pessoal",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/24786-pesquisa-de-orcamentos-familiares-2.html?edicao=28523&t=publicacoes",
+        "format": "XLSX | ODS | PDF | microdados",
+        "access_protocol": "HTTPS web | HTTP/HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público; análise da subamostra requer pesos e documentação",
+        "license": "licença específica do arquivo não localizada nesta auditoria; preservar atribuição IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabelas, publicação e microdados",
+        "notes": "O bloco POF7 foi aplicado em subamostra e registra dois dias não consecutivos por pessoa elegível.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | PDF | microdados"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP/HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000271",
+    "resource_id": "DR0094",
+    "product_name": "POF 2017-2018 — Análise da segurança alimentar no Brasil",
+    "product_acronym": "POF Segurança Alimentar",
+    "product_family": "POF 2017-2018 — segurança alimentar",
+    "product_kind": "dataset",
+    "product_description": "Resultados sobre segurança e insegurança alimentar domiciliar medidos pela Escala Brasileira de Insegurança Alimentar (EBIA) e relacionados a características socioeconômicas e orçamentárias.",
+    "research_areas": "Food security | Public health | Social statistics | Public policy",
+    "keywords": "POF | segurança alimentar | insegurança alimentar | EBIA | domicílios | alimentação | 2017-2018 | IBGE",
+    "geographic_coverage": "Brasil; Grandes Regiões; áreas urbana e rural conforme publicação",
+    "covers_brazil": "sim",
+    "spatial_support": "domicílios e moradores amostrados | classificação EBIA | estimativas agregadas",
+    "spatial_resolution": "Brasil e Grandes Regiões; demais estratos conforme tabelas",
+    "temporal_coverage": "POF 2017-2018",
+    "temporal_resolution": "por edição/levantamento",
+    "update_frequency": "por edição/estudo temático",
+    "product_status": "ativo",
+    "version_or_collection": "POF 2017-2018; divulgação temática 17/09/2020; Nota Técnica 01/2021",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html",
+    "primary_or_derived": "derivado",
+    "limitations": "EBIA mede experiência/percepção domiciliar de acesso aos alimentos segundo escala validada; não equivale a consumo calórico observado, estado nutricional, disponibilidade física territorial ou fome clinicamente diagnosticada.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0094",
+      "resource_name": "Pesquisa de Orçamentos Familiares — IBGE",
+      "acronym": "POF",
+      "official_identity": "Pesquisa de Orçamentos Familiares do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/9050-pesquisa-de-orcamentos-familiares.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000292",
+        "product_id": "DP000271",
+        "distribution_name": "POF 2017-2018 — segurança alimentar EBIA",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html",
+        "format": "XLSX | ODS | PDF | microdados",
+        "access_protocol": "HTTPS web | HTTP/HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público; preservar classificação e metodologia EBIA",
+        "license": "licença específica do arquivo não localizada nesta auditoria; preservar atribuição IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por publicação, tabelas e microdados",
+        "notes": "A página oficial inclui Nota Técnica 01/2021 sobre análise da segurança alimentar.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | PDF | microdados"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP/HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000272",
+    "resource_id": "DR0094",
+    "product_name": "POF 2017-2018 — Perfil das despesas no Brasil: indicadores selecionados",
+    "product_acronym": "POF Perfil das Despesas",
+    "product_family": "POF 2017-2018 — despesas e condições de vida",
+    "product_kind": "dataset",
+    "product_description": "Análise das despesas monetárias e não monetárias correntes, despesas de consumo, outras despesas, aumento do ativo e diminuição do passivo das famílias, com indicadores selecionados.",
+    "research_areas": "Economics | Social statistics | Public policy",
+    "keywords": "POF | despesas | consumo | orçamento familiar | renda | habitação | transporte | alimentação | 2017-2018 | IBGE",
+    "geographic_coverage": "Brasil; Grandes Regiões; áreas urbana e rural e classes de rendimento conforme publicação",
+    "covers_brazil": "sim",
+    "spatial_support": "famílias e domicílios amostrados | despesas agregadas | indicadores",
+    "spatial_resolution": "Brasil e Grandes Regiões; demais recortes conforme tabelas",
+    "temporal_coverage": "POF 2017-2018",
+    "temporal_resolution": "períodos de referência e anualização conforme componente de despesa",
+    "update_frequency": "por edição/estudo temático",
+    "product_status": "ativo",
+    "version_or_collection": "POF 2017-2018; indicadores selecionados",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/24786-pesquisa-de-orcamentos-familiares-2.html?edicao=29142",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Componentes de despesa possuem períodos de referência e procedimentos de anualização próprios. Não representam transações administrativas exaustivas, contas nacionais ou preços correntes fora do período da pesquisa.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0094",
+      "resource_name": "Pesquisa de Orçamentos Familiares — IBGE",
+      "acronym": "POF",
+      "official_identity": "Pesquisa de Orçamentos Familiares do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/9050-pesquisa-de-orcamentos-familiares.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000293",
+        "product_id": "DP000272",
+        "distribution_name": "POF 2017-2018 — perfil das despesas: indicadores selecionados",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/24786-pesquisa-de-orcamentos-familiares-2.html?edicao=29142",
+        "format": "XLSX | ODS | PDF",
+        "access_protocol": "HTTPS web | HTTP/HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público; observar anualização e conceitos de despesas",
+        "license": "licença específica do arquivo não localizada nesta auditoria; preservar atribuição IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabelas e publicação",
+        "notes": "Inclui despesas monetárias e não monetárias, consumo, outras despesas, ativos e passivos segundo definições da POF.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP/HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000273",
+    "resource_id": "DR0094",
+    "product_name": "POF 2017-2018 — Indicadores de qualidade de vida — Estatísticas Experimentais",
+    "product_acronym": "POF Qualidade de Vida",
+    "product_family": "POF 2017-2018 — qualidade de vida experimental",
+    "product_kind": "dataset",
+    "product_description": "Indicadores experimentais de perdas ou privações multidimensionais e desempenho socioeconômico derivados da POF, incluindo dimensões de moradia, serviços, saúde e alimentação, educação, finanças, padrão de vida, transporte e lazer.",
+    "research_areas": "Social statistics | Public policy | Well-being studies",
+    "keywords": "POF | qualidade de vida | pobreza multidimensional | IPQV | IDS | privações | 2017-2018 | IBGE",
+    "geographic_coverage": "Brasil; Grandes Regiões; áreas urbana e rural e demais estratos analíticos conforme publicação",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoas e famílias amostradas | índices derivados | tabelas",
+    "spatial_resolution": "conforme domínio de estimação e publicação",
+    "temporal_coverage": "POF 2017-2018; evolução comparativa inclui POF 2008-2009 conforme estudo",
+    "temporal_resolution": "por edição/estudo derivado",
+    "update_frequency": "irregular",
+    "product_status": "experimental",
+    "version_or_collection": "POF 2017-2018; Estatísticas Experimentais",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/24786-pesquisa-de-orcamentos-familiares-2.html?edicao=37191&t=publicacoes",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html",
+    "primary_or_derived": "derivado",
+    "limitations": "IPQV e IDS são índices compostos experimentais ainda sujeitos a avaliação metodológica; não são medidas diretas de bem-estar individual nem devem ser confundidos com renda, pobreza monetária ou condição ambiental observada.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0094",
+      "resource_name": "Pesquisa de Orçamentos Familiares — IBGE",
+      "acronym": "POF",
+      "official_identity": "Pesquisa de Orçamentos Familiares do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/9050-pesquisa-de-orcamentos-familiares.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pof-2017-2018.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000294",
+        "product_id": "DP000273",
+        "distribution_name": "POF 2017-2018 — indicadores experimentais de qualidade de vida",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/24786-pesquisa-de-orcamentos-familiares-2.html?edicao=37191&t=publicacoes",
+        "format": "XLSX | ODS | PDF",
+        "access_protocol": "HTTPS web | HTTP/HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público; indicadores classificados como Estatísticas Experimentais",
+        "license": "licença específica do arquivo não localizada nesta auditoria; preservar atribuição IBGE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabelas e publicação",
+        "notes": "IPQV e IDS são índices derivados experimentais e devem permanecer identificados como tais.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP/HTTPS download"
+    ]
   }
 ]
