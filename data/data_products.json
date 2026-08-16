@@ -14613,5 +14613,123 @@
     "available_protocols": [
       "HTTPS web | SIDRA"
     ]
+  },
+  {
+    "product_id": "DP000246",
+    "resource_id": "DR0086",
+    "product_name": "Localidades Indígenas — Censo Demográfico 2022 — resultados do universo",
+    "product_acronym": "Localidades Indígenas 2022",
+    "product_family": "Censo 2022 — localidades indígenas",
+    "product_kind": "map_layer_collection",
+    "product_description": "Mapeamento temático do Censo Demográfico 2022 das Localidades Indígenas e demais locais de concentração de pessoas indígenas no Brasil, produzido a partir da Base Territorial Censitária e aperfeiçoado com as concentrações espaciais observadas na operação.",
+    "research_areas": "Indigenous studies | Population geography | GIS | Territorial analysis",
+    "keywords": "localidades indígenas | concentração de pessoas indígenas | Base Territorial | cartografia censitária | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil; arquivos e cartogramas nacionais e por Unidades da Federação conforme disponibilidade",
+    "covers_brazil": "sim",
+    "spatial_support": "pontos e feições geoespaciais de localidades indígenas e locais de concentração | cartogramas | tabelas",
+    "spatial_resolution": "localidade/concentração espacial; precisão depende do processo censitário e da base territorial",
+    "temporal_coverage": "Censo Demográfico 2022; divulgação 19/12/2024; arquivos geoespaciais corrigidos em 19/09/2025",
+    "temporal_resolution": "snapshot censitário/cartográfico",
+    "update_frequency": "por edição censitária e revisões oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "Censo 2022 — arquivos corrigidos/substituídos em 19/09/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/Estatisticas/Sociais/Populacao/22827-censo-demografico-2022.html?edicao=41815",
+    "methodology_url": "https://www.ibge.gov.br/Estatisticas/Sociais/Populacao/22827-censo-demografico-2022.html?edicao=41815",
+    "primary_or_derived": "derivado",
+    "limitations": "Localidade Indígena e local de concentração são categorias cartográfico-censitárias e não equivalem a Terra Indígena, aldeia juridicamente reconhecida ou limite fundiário. Em 19/09/2025 o IBGE substituiu arquivos geoespaciais após identificar inconsistências; análises devem usar os arquivos corrigidos.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000267",
+        "product_id": "DP000246",
+        "distribution_name": "Localidades Indígenas 2022 — vetores, cartogramas e tabelas corrigidos",
+        "access_url": "https://www.ibge.gov.br/Estatisticas/Sociais/Populacao/22827-censo-demografico-2022.html?edicao=41815",
+        "format": "arquivos geoespaciais vetoriais | XLSX | ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | HTTP download",
+        "access_tool": "navegador web | SIG | PGI | Panorama Censo 2022",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos; utilizar os arquivos corrigidos/substituídos pelo IBGE em 19/09/2025",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | Unidade da Federação | localidade/concentração conforme arquivo e aplicação",
+        "notes": "O IBGE substituiu arquivos geoespaciais nacionais e de UFs selecionadas em 19/09/2025 por inconsistências de formatação/conteúdo; usar o estado corrigido.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "arquivos geoespaciais vetoriais | XLSX | ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP download"
+    ]
+  },
+  {
+    "product_id": "DP000247",
+    "resource_id": "DR0086",
+    "product_name": "Localidades Quilombolas — Censo Demográfico 2022 — resultados do universo",
+    "product_acronym": "Localidades Quilombolas 2022",
+    "product_family": "Censo 2022 — localidades quilombolas",
+    "product_kind": "map_layer_collection",
+    "product_description": "Mapeamento temático do Censo Demográfico 2022 das Localidades Quilombolas, com cartogramas nacionais e estaduais, tabelas de localidades e sua associação a comunidades declaradas e Territórios Quilombolas oficialmente delimitados.",
+    "research_areas": "Population geography | GIS | Social statistics | Environmental justice",
+    "keywords": "localidades quilombolas | comunidades quilombolas | Territórios Quilombolas | cartografia censitária | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil; Unidades da Federação com localidades quilombolas identificadas e recortes territoriais associados",
+    "covers_brazil": "sim",
+    "spatial_support": "localidades quilombolas | comunidades declaradas | Territórios Quilombolas | cartogramas | tabelas | vetores",
+    "spatial_resolution": "localidade e recortes territoriais associados; precisão depende da Base Territorial e metodologia da operação",
+    "temporal_coverage": "Censo Demográfico 2022; divulgação temática 2024; nota técnica cartográfica 02/2024",
+    "temporal_resolution": "snapshot censitário/cartográfico",
+    "update_frequency": "por edição censitária e revisões oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "Censo 2022 — Localidades Quilombolas; nota técnica 02/2024",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html/22827-censo-demografico-2022.html?edicao=40667",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html/22827-censo-demografico-2022.html?edicao=40667",
+    "primary_or_derived": "derivado",
+    "limitations": "Localidade Quilombola, comunidade quilombola declarada e Território Quilombola oficialmente delimitado são objetos distintos. O produto não substitui reconhecimento jurídico, cadastro fundiário ou limites cadastrais. Os estados do Acre e de Roraima não tiveram localidades quilombolas identificadas na divulgação.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000268",
+        "product_id": "DP000247",
+        "distribution_name": "Localidades Quilombolas 2022 — vetores, cartogramas e tabelas",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html/22827-censo-demografico-2022.html?edicao=40667",
+        "format": "arquivos geoespaciais vetoriais | XLSX | ODS | PDF | JPG | visualização web",
+        "access_protocol": "HTTPS web | HTTP download",
+        "access_tool": "navegador web | SIG | PGI | Panorama Censo 2022",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos; observar conceitos, nota técnica cartográfica e política de revisão do Censo",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | Unidade da Federação | Município | Território Quilombola conforme tabela/arquivo",
+        "notes": "A página disponibiliza cartogramas por UF e tabelas relacionando localidades, comunidades declaradas e Territórios Quilombolas; Acre e Roraima não tiveram localidades quilombolas identificadas.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "arquivos geoespaciais vetoriais | XLSX | ODS | PDF | JPG | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP download"
+    ]
   }
 ]
