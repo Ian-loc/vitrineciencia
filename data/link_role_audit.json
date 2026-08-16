@@ -1,5 +1,5 @@
 {
-  "records": 85,
+  "records": 86,
   "standard": {
     "homepage_url": "Página institucional principal ou página oficial sobre a fonte.",
     "data_access_url": "Página onde os dados podem ser pesquisados, visualizados, solicitados ou baixados.",
@@ -7,7 +7,7 @@
     "not_applicable": "Usado quando o recurso não oferece dados para consulta ou download, como software de publicação."
   },
   "counts": {
-    "separate_destinations": 49,
+    "separate_destinations": 50,
     "same_destination_pending_review": 35,
     "data_access_not_applicable": 1
   },
