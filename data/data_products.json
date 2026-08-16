@@ -17268,5 +17268,359 @@
     "available_protocols": [
       "HTTPS web | serviços/download conforme GeoNetwork"
     ]
+  },
+  {
+    "product_id": "DP000291",
+    "resource_id": "DR0017",
+    "product_name": "Regiões Hidrográficas — ANA/SNIRH — referência 2020",
+    "product_acronym": "Regiões Hidrográficas ANA",
+    "product_family": "Divisões e unidades hidrográficas",
+    "product_kind": "dataset",
+    "product_description": "Base vetorial nacional da ANA que representa as Regiões Hidrográficas brasileiras, definidas como espaços territoriais formados por bacia, grupo de bacias ou sub-bacias contíguas com características naturais, sociais e econômicas similares para orientar planejamento e gerenciamento dos recursos hídricos.",
+    "research_areas": "Hydrology | Water resources | Territorial analysis | Geospatial information science",
+    "keywords": "regiões hidrográficas | bacias | planejamento hídrico | limites | SNIRH | ANA",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "polígonos de Regiões Hidrográficas",
+    "spatial_resolution": "escala de referência 1:1.000.000 conforme metadado oficial",
+    "temporal_coverage": "referência/metadado 2020; produto cartográfico de regionalização",
+    "temporal_resolution": "não se aplica",
+    "update_frequency": "não planejada conforme metadado oficial",
+    "product_status": "ativo",
+    "version_or_collection": "metadado 2020; status Concluído no catálogo ANA",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://metadados.snirh.gov.br/geonetwork/srv/resources/datasets/0574947a-2c5b-48d2-96a4-b07c4702bbab",
+    "methodology_url": "https://metadados.snirh.gov.br/geonetwork/srv/resources/datasets/0574947a-2c5b-48d2-96a4-b07c4702bbab",
+    "primary_or_derived": "derivado",
+    "limitations": "Região Hidrográfica é unidade de planejamento formada por bacia ou conjunto de bacias e não equivale a uma bacia hidrográfica individual nem a limite cadastral. A escala 1:1.000.000 não suporta interpretação local de divisores.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000312",
+        "product_id": "DP000291",
+        "distribution_name": "Regiões Hidrográficas — recurso vetorial no Catálogo ANA",
+        "access_url": "https://metadados.snirh.gov.br/geonetwork/srv/resources/datasets/0574947a-2c5b-48d2-96a4-b07c4702bbab",
+        "format": "vetor; formatos específicos conforme recursos online do metadado",
+        "access_protocol": "HTTP download / GeoNetwork",
+        "access_tool": "navegador web | SIG conforme arquivo",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "recurso oficial publicamente baixável conforme metadado",
+        "license": "não determinada no nível do arquivo nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/camada conforme catálogo",
+        "notes": "Metadado oficial classifica o recurso como Dataset, Vector, Downloadable e Viewable, escala 1:1.000.000, ano 2020.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "vetor; formatos específicos conforme recursos online do metadado"
+    ],
+    "available_protocols": [
+      "HTTP download / GeoNetwork"
+    ]
+  },
+  {
+    "product_id": "DP000292",
+    "resource_id": "DR0017",
+    "product_name": "Sistemas Aquíferos — áreas aflorantes — ANA 2013",
+    "product_acronym": "Sistemas Aquíferos ANA",
+    "product_family": "Águas subterrâneas e hidrogeologia",
+    "product_kind": "dataset",
+    "product_description": "Mapeamento nacional das áreas aflorantes de aquíferos e sistemas aquíferos produzido pela ANA em 2013 por análise, adequação e reclassificação de bases geológicas e hidrogeológicas, resultando em 181 aquíferos e sistemas aquíferos aflorantes.",
+    "research_areas": "Hydrogeology | Water resources | Geology | Geospatial information science",
+    "keywords": "aquíferos | sistemas aquíferos | águas subterrâneas | hidrogeologia | áreas aflorantes | SNIRH | ANA",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "polígonos de áreas aflorantes de aquíferos e sistemas aquíferos",
+    "spatial_resolution": "escala 1:1.000.000",
+    "temporal_coverage": "mapeamento produzido em 2013; bases geológicas principais de 2006–2007 e mapas estaduais associados",
+    "temporal_resolution": "não se aplica",
+    "update_frequency": "quando necessário conforme metadado oficial",
+    "product_status": "ativo",
+    "version_or_collection": "ANA 2013; 181 aquíferos/sistemas aquíferos aflorantes",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://metadados.snirh.gov.br/geonetwork/srv/resources/datasets/3ec60e4f-85ea-4ba7-a90c-734b57594f90",
+    "methodology_url": "https://metadados.snirh.gov.br/geonetwork/srv/resources/datasets/3ec60e4f-85ea-4ba7-a90c-734b57594f90",
+    "primary_or_derived": "derivado",
+    "limitations": "Representa áreas aflorantes classificadas a partir de bases geológicas/hidrogeológicas heterogêneas, não profundidade, armazenamento, transmissividade ou disponibilidade explotável do aquífero. Preservar escala e fontes de origem.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000313",
+        "product_id": "DP000292",
+        "distribution_name": "Sistemas Aquíferos — recurso vetorial no Catálogo ANA",
+        "access_url": "https://metadados.snirh.gov.br/geonetwork/srv/resources/datasets/3ec60e4f-85ea-4ba7-a90c-734b57594f90",
+        "format": "vetor; formatos específicos conforme recursos online do metadado",
+        "access_protocol": "HTTP download / GeoNetwork",
+        "access_tool": "navegador web | SIG conforme arquivo",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "recurso oficial publicamente baixável conforme metadado",
+        "license": "não determinada no nível do arquivo nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/camada conforme catálogo",
+        "notes": "Metadado oficial classifica como Dataset, Vector e Downloadable, escala 1:1.000.000; mapeamento ANA 2013 baseado em fontes geológicas/hidrogeológicas reclassificadas.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "vetor; formatos específicos conforme recursos online do metadado"
+    ],
+    "available_protocols": [
+      "HTTP download / GeoNetwork"
+    ]
+  },
+  {
+    "product_id": "DP000293",
+    "resource_id": "DR0017",
+    "product_name": "Cenários Futuros da Disponibilidade Hídrica — ANA/SNIRH",
+    "product_acronym": "Cenários Disponibilidade Hídrica",
+    "product_family": "Mudança climática e disponibilidade hídrica",
+    "product_kind": "dataset",
+    "product_description": "Produto derivado da ANA com cenários hidrológicos futuros obtidos de projeções climáticas de modelos globais, sintetizando por Unidades de Gestão de Recursos Hídricos a proporção de cenários que indicam aumento ou redução da disponibilidade hídrica em futuros plausíveis até 2040.",
+    "research_areas": "Climate impacts | Hydrology | Water resources | Environmental modelling",
+    "keywords": "disponibilidade hídrica | cenários futuros | mudança climática | UGRH | modelos climáticos globais | vazão | ANA",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "Unidades de Gestão de Recursos Hídricos | sínteses derivadas de trechos de rios",
+    "spatial_resolution": "agregação por UGRH; resolução dos modelos e trechos de origem deve ser preservada na metodologia",
+    "temporal_coverage": "cenários futuros plausíveis até 2040; referência histórica conforme metodologia do produto",
+    "temporal_resolution": "cenário/horizonte de planejamento",
+    "update_frequency": "não determinada especificamente nesta auditoria",
+    "product_status": "ativo",
+    "version_or_collection": "camada oficial SNIRH verificada em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://metadados.snirh.gov.br/geonetwork/geonetwork/search?keyword=Climatologia%2C+Atmosfera",
+    "methodology_url": "https://metadados.snirh.gov.br/geonetwork/geonetwork/search?keyword=Climatologia%2C+Atmosfera",
+    "primary_or_derived": "derivado",
+    "limitations": "São cenários modelados e não previsões determinísticas nem observações futuras. Percentuais de cenários refletem conjunto de modelos, hipóteses, referência e regra de síntese; não interpretar a classe da UGRH como mudança uniforme em todos os seus rios.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000314",
+        "product_id": "DP000293",
+        "distribution_name": "Cenários Futuros da Disponibilidade Hídrica — Catálogo de Metadados ANA",
+        "access_url": "https://metadados.snirh.gov.br/geonetwork/geonetwork/search?keyword=Climatologia%2C+Atmosfera",
+        "format": "vetor e recursos online conforme registro oficial",
+        "access_protocol": "HTTP / GeoNetwork",
+        "access_tool": "navegador web | SIG conforme recurso",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; download conforme recurso listado",
+        "license": "não determinada no nível do arquivo nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por registro e arquivo conforme catálogo",
+        "notes": "Produto de cenários modelados até 2040; não interpretar como observação ou previsão determinística.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "vetor e recursos online conforme registro oficial"
+    ],
+    "available_protocols": [
+      "HTTP / GeoNetwork"
+    ]
+  },
+  {
+    "product_id": "DP000294",
+    "resource_id": "DR0017",
+    "product_name": "Estatísticas de Chuvas e Vazões — ANA/SNIRH",
+    "product_acronym": "Chuvas e Vazões ANA",
+    "product_family": "Estatísticas hidrológicas agregadas",
+    "product_kind": "dataset_series",
+    "product_description": "Representação agregada pela ANA, a partir de 2020, de chuva acumulada e escoamento/vazões de referência por Unidades de Gestão de Recursos Hídricos e Regiões Hidrográficas, incluindo estatísticas como vazão média e Q95 conforme o produto.",
+    "research_areas": "Hydrology | Climatology | Water resources | Environmental monitoring",
+    "keywords": "chuva | precipitação | vazão | Q95 | escoamento | UGRH | Região Hidrográfica | ANA",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "UGRH | Região Hidrográfica | estatísticas agregadas de chuva e vazão",
+    "spatial_resolution": "agregada por unidades hidrográficas; séries de origem possuem resolução própria",
+    "temporal_coverage": "representações agregadas a partir de 2020; séries de origem possuem períodos próprios",
+    "temporal_resolution": "conforme estatística e período de agregação",
+    "update_frequency": "não determinada especificamente nesta auditoria",
+    "product_status": "ativo",
+    "version_or_collection": "camada oficial SNIRH verificada em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://metadados.snirh.gov.br/geonetwork/geonetwork/search?keyword=Climatologia%2C+Atmosfera",
+    "methodology_url": "https://metadados.snirh.gov.br/geonetwork/geonetwork/search?keyword=Climatologia%2C+Atmosfera",
+    "primary_or_derived": "derivado",
+    "limitations": "Estatísticas agregadas não substituem séries de estação do HidroWeb. Chuva acumulada, vazão média e Q95 são estimandos distintos; preservar período, unidade hidrográfica, série de origem e regra de agregação.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000315",
+        "product_id": "DP000294",
+        "distribution_name": "Estatísticas de Chuvas e Vazões — Catálogo de Metadados ANA",
+        "access_url": "https://metadados.snirh.gov.br/geonetwork/geonetwork/search?keyword=Climatologia%2C+Atmosfera",
+        "format": "vetor/tabela e recursos online conforme registro oficial",
+        "access_protocol": "HTTP / GeoNetwork",
+        "access_tool": "navegador web | SIG/planilha conforme recurso",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; download conforme recurso listado",
+        "license": "não determinada no nível do arquivo nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UGRH/RH ou arquivo conforme recurso",
+        "notes": "Representação agregada a partir de 2020; para séries primárias de estação usar HidroWeb e preservar variável/período.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "vetor/tabela e recursos online conforme registro oficial"
+    ],
+    "available_protocols": [
+      "HTTP / GeoNetwork"
+    ]
+  },
+  {
+    "product_id": "DP000295",
+    "resource_id": "DR0017",
+    "product_name": "Uso da Água na Agricultura de Sequeiro no Brasil — 2013–2017",
+    "product_acronym": "Água na Agricultura de Sequeiro",
+    "product_family": "Uso da água na agricultura",
+    "product_kind": "dataset",
+    "product_description": "Estudo ANA–IBGE que quantifica, em perspectiva regional e para culturas agrícolas, o uso de água verde, consumo e déficit hídrico na agricultura de sequeiro brasileira com dados mensais de 2013 a 2017, produzido para planejamento hídrico e apoio às Contas Econômicas Ambientais da Água.",
+    "research_areas": "Water resources | Agriculture | Agroclimatology | Environmental accounting",
+    "keywords": "agricultura de sequeiro | água verde | déficit hídrico | evapotranspiração | culturas agrícolas | CEAA | ANA | IBGE",
+    "geographic_coverage": "Brasil; recortes regionais e principais culturas conforme estudo",
+    "covers_brazil": "sim",
+    "spatial_support": "regiões | culturas | áreas agrícolas e estimativas territoriais conforme publicação",
+    "spatial_resolution": "varia conforme análise e base integrada; não inferir uma resolução única",
+    "temporal_coverage": "2013–2017",
+    "temporal_resolution": "mensal nos dados analisados; sínteses anuais e do período conforme publicação",
+    "update_frequency": "estudo específico; sem periodicidade regular confirmada",
+    "product_status": "ativo",
+    "version_or_collection": "estudo 2013–2017 publicado em 2020",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/ana/pt-br/assuntos/noticias-e-eventos/noticias/ana-e-ibge-lancam-levantamento-sobre-uso-da-agua-na-agricultura-de-sequeiro-no-brasil-1",
+    "methodology_url": "https://www.gov.br/ana/pt-br/assuntos/noticias-e-eventos/noticias/ana-e-ibge-lancam-levantamento-sobre-uso-da-agua-na-agricultura-de-sequeiro-no-brasil-1/uso-da-agua-na-agricultura-de-sequeiro.pdf/view",
+    "primary_or_derived": "derivado",
+    "limitations": "Estimativas de água verde e déficit hídrico são resultados modelados/derivados para 2013–2017 e não medição direta da água consumida em cada estabelecimento. Agricultura de sequeiro não deve ser confundida com retirada de água azul para irrigação.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000316",
+        "product_id": "DP000295",
+        "distribution_name": "Uso da Água na Agricultura de Sequeiro — publicação e recursos oficiais ANA",
+        "access_url": "https://www.gov.br/ana/pt-br/assuntos/noticias-e-eventos/noticias/ana-e-ibge-lancam-levantamento-sobre-uso-da-agua-na-agricultura-de-sequeiro-no-brasil-1/uso-da-agua-na-agricultura-de-sequeiro.pdf/view",
+        "format": "PDF; dados e recursos complementares conforme publicação/SNIRH",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | leitor PDF | ferramentas analíticas conforme recurso",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "não determinada no nível do arquivo nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "não no PDF; recursos associados podem possuir recortes próprios",
+        "notes": "Estudo ANA–IBGE com dados mensais 2013–2017; distinguir estimativas de água verde/déficit de retiradas observadas para irrigação.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "PDF; dados e recursos complementares conforme publicação/SNIRH"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000296",
+    "resource_id": "DR0017",
+    "product_name": "Evaporação Líquida de Reservatórios Artificiais no Brasil — 2001–2019",
+    "product_acronym": "Evaporação Líquida Reservatórios",
+    "product_family": "Usos consuntivos e balanço hídrico de reservatórios",
+    "product_kind": "dataset_series",
+    "product_description": "Base técnica ANA–UFPR para estimar evaporação líquida dos reservatórios artificiais brasileiros, definida como evaporação do lago menos a evapotranspiração real esperada para a área na ausência do reservatório, com estimativas para cerca de 175 mil reservatórios entre 2001 e 2019.",
+    "research_areas": "Hydrology | Water resources | Reservoir science | Environmental modelling",
+    "keywords": "evaporação líquida | reservatórios artificiais | evapotranspiração | balanço hídrico | uso consuntivo | ANA | UFPR",
+    "geographic_coverage": "Brasil — reservatórios artificiais abrangidos pelo modelo",
+    "covers_brazil": "sim",
+    "spatial_support": "reservatório artificial | superfície de espelho d’água | agregações nacionais e territoriais",
+    "spatial_resolution": "por reservatório/modelagem espacial; resolução das bases auxiliares deve ser consultada na publicação",
+    "temporal_coverage": "2001–2019",
+    "temporal_resolution": "mensal e anual conforme resultados do estudo",
+    "update_frequency": "por revisão da base técnica; sem periodicidade regular confirmada",
+    "product_status": "ativo",
+    "version_or_collection": "estudo ANA–UFPR publicado em 2021",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/ana/pt-br/assuntos/noticias-e-eventos/noticias/ana-aprimora-base-tecnica-sobre-evaporacao-de-agua-de-reservatorios-no-brasil/",
+    "methodology_url": "https://www.gov.br/ana/pt-br/centrais-de-conteudos/publicacoes",
+    "primary_or_derived": "derivado",
+    "limitations": "Evaporação líquida é estimativa modelada aplicável a reservatórios artificiais e não evaporação bruta, retirada observada ou atribuição de consumo a um setor usuário. Resultados dependem das condições ambientais, geometria e operação e devem preservar versão e período.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0017",
+      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
+      "acronym": "SNIRH / HidroWeb",
+      "official_identity": "Sistema Nacional de Informações sobre Recursos Hídricos e ferramenta HidroWeb",
+      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
+      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000317",
+        "product_id": "DP000296",
+        "distribution_name": "Evaporação Líquida de Reservatórios Artificiais — publicação e recursos ANA",
+        "access_url": "https://www.gov.br/ana/pt-br/centrais-de-conteudos/publicacoes",
+        "format": "PDF e recursos/dados associados conforme SNIRH",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | leitor PDF | SIG/planilha conforme recurso associado",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "não determinada no nível do arquivo nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por reservatório/arquivo conforme recursos associados",
+        "notes": "Estudo ANA–UFPR publicado em 2021 com estimativas para cerca de 175 mil reservatórios artificiais em 2001–2019.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "PDF e recursos/dados associados conforme SNIRH"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
   }
 ]
