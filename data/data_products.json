@@ -14377,5 +14377,359 @@
     "available_protocols": [
       "HTTPS web | SIDRA"
     ]
+  },
+  {
+    "product_id": "DP000242",
+    "resource_id": "DR0086",
+    "product_name": "População por idade e sexo — Censo Demográfico 2022 — resultados do universo",
+    "product_acronym": "Idade e sexo Censo 2022",
+    "product_family": "Censo 2022 — estrutura etária e sexo",
+    "product_kind": "dataset",
+    "product_description": "Resultados do universo do Censo Demográfico 2022 sobre distribuição da população residente por idade e sexo, incluindo indicadores como idade mediana, índice de envelhecimento e razão de sexo nos recortes divulgados pelo IBGE.",
+    "research_areas": "Population geography | Demography | Social statistics | Territorial analysis",
+    "keywords": "idade | sexo | estrutura etária | envelhecimento | população residente | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil; Grandes Regiões; Unidades da Federação e demais recortes disponibilizados no SIDRA/PGI",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoas agregadas por idade, sexo e recortes territoriais | SIDRA | PGI | publicação",
+    "spatial_resolution": "conforme tabela e recorte de divulgação; não inferir granularidade única",
+    "temporal_coverage": "Censo Demográfico 2022; dados da segunda apuração com revisões incorporadas em 2023",
+    "temporal_resolution": "snapshot censitário; resultados do universo",
+    "update_frequency": "por edição censitária",
+    "product_status": "ativo",
+    "version_or_collection": "resultados do universo — segunda apuração; SIDRA atualizado em 22/12/2023",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=38166&t=resultados",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=38166&t=resultados",
+    "primary_or_derived": "derivado",
+    "limitations": "Resultados agregados do universo e sujeitos à política de revisão do Censo. Idade e sexo são atributos censitários na data de referência; não representam dinâmica demográfica contínua. Comparações temporais exigem harmonização de recortes territoriais e versões.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000263",
+        "product_id": "DP000242",
+        "distribution_name": "Idade e sexo Censo 2022 — SIDRA, PGI e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=38166&t=resultados",
+        "format": "SIDRA | XLSX | ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA",
+        "access_tool": "navegador web | SIDRA | PGI",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; observar revisões e composição dos recortes territoriais",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela, idade, sexo, indicador demográfico e recorte territorial disponível",
+        "notes": "A divulgação corresponde à segunda apuração e incorpora revisões de 2023; o SIDRA foi atualizado em 22/12/2023.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000243",
+    "resource_id": "DR0086",
+    "product_name": "População por cor ou raça — Censo Demográfico 2022 — resultados do universo",
+    "product_acronym": "Cor ou raça Censo 2022",
+    "product_family": "Censo 2022 — pertencimento étnico-racial",
+    "product_kind": "dataset",
+    "product_description": "Resultados do universo do Censo Demográfico 2022 sobre população residente segundo as categorias censitárias de cor ou raça, com desagregações por sexo, idade e recortes territoriais e indicadores demográficos associados.",
+    "research_areas": "Population geography | Social statistics | Demography | Territorial analysis",
+    "keywords": "cor ou raça | branca | preta | amarela | parda | indígena | sexo | idade | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil; recortes territoriais disponibilizados no SIDRA, Panorama e PGI",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoas agregadas por cor ou raça e características demográficas | SIDRA | Panorama | PGI",
+    "spatial_resolution": "conforme tabela e recorte de divulgação; não inferir granularidade única",
+    "temporal_coverage": "Censo Demográfico 2022",
+    "temporal_resolution": "snapshot censitário; resultados do universo",
+    "update_frequency": "por edição censitária",
+    "product_status": "ativo",
+    "version_or_collection": "divulgação temática de 22/12/2023; resultados do universo",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/Sociais/populacao/22827-censo-demografico-2022.html?edicao=38698",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/Sociais/populacao/22827-censo-demografico-2022.html?edicao=38698",
+    "primary_or_derived": "derivado",
+    "limitations": "Cor ou raça segue categorias e procedimentos censitários de autodeclaração/declaração do informante e não equivale a território étnico, ancestralidade genética ou identidade individual fora do contexto da operação. Comparações entre censos devem preservar mudanças de cobertura, metodologia e recortes.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000264",
+        "product_id": "DP000243",
+        "distribution_name": "Cor ou raça Censo 2022 — SIDRA, Panorama, PGI e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/Sociais/populacao/22827-censo-demografico-2022.html?edicao=38698",
+        "format": "SIDRA | XLSX | ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA",
+        "access_tool": "navegador web | SIDRA | Panorama Censo 2022 | PGI",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; observar categorias censitárias, notas metodológicas e política de revisão",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela, cor ou raça, sexo, idade, indicador e recorte territorial disponível",
+        "notes": "Não converter categorias censitárias em ancestralidade genética, território étnico ou classificação individual fora do contexto da operação.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000244",
+    "resource_id": "DR0086",
+    "product_name": "Indígenas — principais características das pessoas e dos domicílios por situação urbana ou rural — Censo 2022 — resultados do universo",
+    "product_acronym": "Indígenas urbano-rural Censo 2022",
+    "product_family": "Censo 2022 — população indígena e domicílios",
+    "product_kind": "dataset",
+    "product_description": "Resultados do universo do Censo 2022 sobre características demográficas e sociais das pessoas indígenas e dos domicílios com moradores indígenas, organizados por situação urbana ou rural e recortes territoriais específicos, incluindo alfabetização, registro de nascimento, saneamento e composição familiar.",
+    "research_areas": "Indigenous studies | Population geography | Social statistics | Environmental justice",
+    "keywords": "indígenas | domicílios | urbano | rural | alfabetização | registro de nascimento | saneamento | composição familiar | Terras Indígenas | Censo 2022",
+    "geographic_coverage": "Brasil; Grandes Regiões; Unidades da Federação; Municípios; Amazônia Legal; Terras Indígenas e recortes específicos divulgados",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoas indígenas | domicílios com moradores indígenas | municípios | Terras Indígenas | tabelas e visualizações",
+    "spatial_resolution": "múltiplos recortes censitários e territoriais específicos; não inferir equivalência jurídica entre recortes",
+    "temporal_coverage": "Censo Demográfico 2022",
+    "temporal_resolution": "snapshot censitário; resultados do universo",
+    "update_frequency": "por edição censitária",
+    "product_status": "ativo",
+    "version_or_collection": "divulgação de 19/12/2024; resultados do universo",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=42267",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=42267",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto estatístico censitário; pessoa indígena, Terra Indígena, situação urbana/rural e domicílio com morador indígena são dimensões distintas. Os resultados não substituem cadastros fundiários, registros administrativos ou medições ambientais e devem preservar definições pactuadas e recortes específicos.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000265",
+        "product_id": "DP000244",
+        "distribution_name": "Indígenas urbano-rural Censo 2022 — SIDRA, Panorama, PGI e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=42267",
+        "format": "SIDRA | XLSX | ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA",
+        "access_tool": "navegador web | SIDRA | Panorama Censo 2022 | PGI",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; preservar definições censitárias, recortes indígenas e situação urbana/rural",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela, característica, situação urbana/rural, Município, Terra Indígena e demais recortes disponíveis",
+        "notes": "Resultados do universo; não confundir recortes estatísticos com cadastro fundiário ou condição jurídica das Terras Indígenas.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000245",
+    "resource_id": "DR0086",
+    "product_name": "Quilombolas — principais características das pessoas e dos domicílios por situação urbana ou rural — Censo 2022 — resultados do universo",
+    "product_acronym": "Quilombolas urbano-rural Censo 2022",
+    "product_family": "Censo 2022 — população quilombola e domicílios",
+    "product_kind": "dataset",
+    "product_description": "Resultados do universo do Censo 2022 sobre características demográficas e sociais das pessoas quilombolas e dos domicílios com pelo menos um morador quilombola, organizados por situação urbana ou rural e por recortes territoriais específicos.",
+    "research_areas": "Population geography | Social statistics | Environmental justice | Territorial analysis",
+    "keywords": "quilombolas | domicílios | urbano | rural | Territórios Quilombolas | Amazônia Legal | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil; Grandes Regiões; Unidades da Federação; Municípios; Amazônia Legal; Territórios Quilombolas oficialmente delimitados e recortes associados",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoas quilombolas | domicílios com moradores quilombolas | municípios | Territórios Quilombolas | tabelas e visualizações",
+    "spatial_resolution": "múltiplos recortes censitários e territoriais específicos; não inferir equivalência jurídica entre recortes",
+    "temporal_coverage": "Censo Demográfico 2022",
+    "temporal_resolution": "snapshot censitário; resultados do universo",
+    "update_frequency": "por edição censitária",
+    "product_status": "ativo",
+    "version_or_collection": "divulgação de 09/05/2025; resultados do universo",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=43246",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=43246",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto estatístico censitário. Pessoa quilombola, comunidade declarada, Território Quilombola oficialmente delimitado e situação urbana/rural são conceitos distintos; resultados não substituem cadastros fundiários ou reconhecimento jurídico e devem ser analisados segundo os recortes e definições da divulgação.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000266",
+        "product_id": "DP000245",
+        "distribution_name": "Quilombolas urbano-rural Censo 2022 — SIDRA, Panorama e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?edicao=43246",
+        "format": "SIDRA | XLSX | ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | SIDRA",
+        "access_tool": "navegador web | SIDRA | Panorama Censo 2022",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; preservar definições censitárias, recortes quilombolas e situação urbana/rural",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela, característica, situação urbana/rural, Município, Território Quilombola e demais recortes disponíveis",
+        "notes": "Resultados do universo; não confundir identificação estatística de pessoas/comunidades com reconhecimento jurídico ou delimitação fundiária.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000246",
+    "resource_id": "DR0086",
+    "product_name": "Localidades Indígenas — Censo Demográfico 2022 — resultados do universo",
+    "product_acronym": "Localidades Indígenas 2022",
+    "product_family": "Censo 2022 — localidades indígenas",
+    "product_kind": "map_layer_collection",
+    "product_description": "Mapeamento temático do Censo Demográfico 2022 das Localidades Indígenas e demais locais de concentração de pessoas indígenas no Brasil, produzido a partir da Base Territorial Censitária e aperfeiçoado com as concentrações espaciais observadas na operação.",
+    "research_areas": "Indigenous studies | Population geography | GIS | Territorial analysis",
+    "keywords": "localidades indígenas | concentração de pessoas indígenas | Base Territorial | cartografia censitária | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil; arquivos e cartogramas nacionais e por Unidades da Federação conforme disponibilidade",
+    "covers_brazil": "sim",
+    "spatial_support": "pontos e feições geoespaciais de localidades indígenas e locais de concentração | cartogramas | tabelas",
+    "spatial_resolution": "localidade/concentração espacial; precisão depende do processo censitário e da base territorial",
+    "temporal_coverage": "Censo Demográfico 2022; divulgação 19/12/2024; arquivos geoespaciais corrigidos em 19/09/2025",
+    "temporal_resolution": "snapshot censitário/cartográfico",
+    "update_frequency": "por edição censitária e revisões oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "Censo 2022 — arquivos corrigidos/substituídos em 19/09/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/Estatisticas/Sociais/Populacao/22827-censo-demografico-2022.html?edicao=41815",
+    "methodology_url": "https://www.ibge.gov.br/Estatisticas/Sociais/Populacao/22827-censo-demografico-2022.html?edicao=41815",
+    "primary_or_derived": "derivado",
+    "limitations": "Localidade Indígena e local de concentração são categorias cartográfico-censitárias e não equivalem a Terra Indígena, aldeia juridicamente reconhecida ou limite fundiário. Em 19/09/2025 o IBGE substituiu arquivos geoespaciais após identificar inconsistências; análises devem usar os arquivos corrigidos.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000267",
+        "product_id": "DP000246",
+        "distribution_name": "Localidades Indígenas 2022 — vetores, cartogramas e tabelas corrigidos",
+        "access_url": "https://www.ibge.gov.br/Estatisticas/Sociais/Populacao/22827-censo-demografico-2022.html?edicao=41815",
+        "format": "arquivos geoespaciais vetoriais | XLSX | ODS | PDF | visualização web",
+        "access_protocol": "HTTPS web | HTTP download",
+        "access_tool": "navegador web | SIG | PGI | Panorama Censo 2022",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos; utilizar os arquivos corrigidos/substituídos pelo IBGE em 19/09/2025",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | Unidade da Federação | localidade/concentração conforme arquivo e aplicação",
+        "notes": "O IBGE substituiu arquivos geoespaciais nacionais e de UFs selecionadas em 19/09/2025 por inconsistências de formatação/conteúdo; usar o estado corrigido.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "arquivos geoespaciais vetoriais | XLSX | ODS | PDF | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP download"
+    ]
+  },
+  {
+    "product_id": "DP000247",
+    "resource_id": "DR0086",
+    "product_name": "Localidades Quilombolas — Censo Demográfico 2022 — resultados do universo",
+    "product_acronym": "Localidades Quilombolas 2022",
+    "product_family": "Censo 2022 — localidades quilombolas",
+    "product_kind": "map_layer_collection",
+    "product_description": "Mapeamento temático do Censo Demográfico 2022 das Localidades Quilombolas, com cartogramas nacionais e estaduais, tabelas de localidades e sua associação a comunidades declaradas e Territórios Quilombolas oficialmente delimitados.",
+    "research_areas": "Population geography | GIS | Social statistics | Environmental justice",
+    "keywords": "localidades quilombolas | comunidades quilombolas | Territórios Quilombolas | cartografia censitária | Censo 2022 | IBGE",
+    "geographic_coverage": "Brasil; Unidades da Federação com localidades quilombolas identificadas e recortes territoriais associados",
+    "covers_brazil": "sim",
+    "spatial_support": "localidades quilombolas | comunidades declaradas | Territórios Quilombolas | cartogramas | tabelas | vetores",
+    "spatial_resolution": "localidade e recortes territoriais associados; precisão depende da Base Territorial e metodologia da operação",
+    "temporal_coverage": "Censo Demográfico 2022; divulgação temática 2024; nota técnica cartográfica 02/2024",
+    "temporal_resolution": "snapshot censitário/cartográfico",
+    "update_frequency": "por edição censitária e revisões oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "Censo 2022 — Localidades Quilombolas; nota técnica 02/2024",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html/22827-censo-demografico-2022.html?edicao=40667",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html/22827-censo-demografico-2022.html?edicao=40667",
+    "primary_or_derived": "derivado",
+    "limitations": "Localidade Quilombola, comunidade quilombola declarada e Território Quilombola oficialmente delimitado são objetos distintos. O produto não substitui reconhecimento jurídico, cadastro fundiário ou limites cadastrais. Os estados do Acre e de Roraima não tiveram localidades quilombolas identificadas na divulgação.",
+    "last_verified": "2026-08-16",
+    "source": {
+      "resource_id": "DR0086",
+      "resource_name": "Censo Demográfico 2022 — IBGE",
+      "acronym": "Censo 2022",
+      "official_identity": "Operação estatística Censo Demográfico 2022 do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html?t=resultados"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000268",
+        "product_id": "DP000247",
+        "distribution_name": "Localidades Quilombolas 2022 — vetores, cartogramas e tabelas",
+        "access_url": "https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html/22827-censo-demografico-2022.html?edicao=40667",
+        "format": "arquivos geoespaciais vetoriais | XLSX | ODS | PDF | JPG | visualização web",
+        "access_protocol": "HTTPS web | HTTP download",
+        "access_tool": "navegador web | SIG | PGI | Panorama Censo 2022",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos; observar conceitos, nota técnica cartográfica e política de revisão do Censo",
+        "license": "licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | Unidade da Federação | Município | Território Quilombola conforme tabela/arquivo",
+        "notes": "A página disponibiliza cartogramas por UF e tabelas relacionando localidades, comunidades declaradas e Territórios Quilombolas; Acre e Roraima não tiveram localidades quilombolas identificadas.",
+        "last_verified": "2026-08-16"
+      }
+    ],
+    "available_formats": [
+      "arquivos geoespaciais vetoriais | XLSX | ODS | PDF | JPG | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS web | HTTP download"
+    ]
   }
 ]
