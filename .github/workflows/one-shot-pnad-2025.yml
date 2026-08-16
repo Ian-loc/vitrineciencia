@@ -1,0 +1,174 @@
+name: One-shot PNAD Continua 2025 catalog audit
+
+on:
+  push:
+    branches: ["main"]
+    paths: [".github/workflows/one-shot-pnad-2025.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Append verified PNAD Continua source, products and distributions
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv, io, json
+          from pathlib import Path
+
+          ROOT = Path('.')
+          resources_path = ROOT / 'data/data_resources.csv'
+          products_path = ROOT / 'data/data_products.csv'
+          dist_path = ROOT / 'data/product_distributions.csv'
+          priority_path = ROOT / 'data/brazil_scope_priorities.json'
+
+          def read_rows(path):
+              with path.open('r', encoding='utf-8', newline='') as f:
+                  return list(csv.DictReader(f))
+
+          def append_rows(path, rows):
+              with path.open('r', encoding='utf-8', newline='') as f:
+                  reader = csv.DictReader(f)
+                  fieldnames = reader.fieldnames
+              for row in rows:
+                  if set(row) != set(fieldnames):
+                      raise SystemExit(f'field mismatch for {path}: {set(fieldnames)-set(row)} / {set(row)-set(fieldnames)}')
+              buf = io.StringIO(newline='')
+              w = csv.DictWriter(buf, fieldnames=fieldnames, lineterminator='\n')
+              for row in rows:
+                  w.writerow(row)
+              raw = path.read_bytes()
+              prefix = b'' if raw.endswith(b'\n') else b'\n'
+              with path.open('ab') as f:
+                  f.write(prefix + buf.getvalue().encode('utf-8'))
+
+          resources = read_rows(resources_path)
+          products = read_rows(products_path)
+          dists = read_rows(dist_path)
+          if (len(resources), len(products), len(dists)) != (92, 248, 269):
+              raise SystemExit(f'unexpected baseline counts: {(len(resources), len(products), len(dists))}')
+          if any(r['resource_id'] == 'DR0093' or 'PNAD Contínua' in r['resource_name'] for r in resources):
+              raise SystemExit('PNAD Continua source already exists; aborting duplicate append')
+          candidate_names = {
+              'PNAD Contínua — Características gerais dos domicílios e dos moradores 2025',
+              'PNAD Contínua — Educação 2025',
+              'PNAD Contínua — Rendimento de Todas as Fontes 2025',
+              'PNAD Contínua — Acesso à Internet, televisão e telefone móvel 2025',
+          }
+          if any(p['product_name'] in candidate_names for p in products):
+              raise SystemExit('candidate PNAD product already exists; aborting duplicate append')
+
+          resource = {
+            'resource_id':'DR0093',
+            'resource_name':'Pesquisa Nacional por Amostra de Domicílios Contínua — IBGE',
+            'acronym':'PNAD Contínua',
+            'official_identity':'Operação estatística domiciliar integrada e contínua do IBGE',
+            'description':'Pesquisa domiciliar por amostragem probabilística que produz indicadores contínuos sobre força de trabalho e resultados anuais sobre características demográficas, educação, rendimento, habitação e temas suplementares.',
+            'homepage_url':'https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html',
+            'data_access_url':'https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html?t=microdados',
+            'research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados',
+            'keywords':'PNAD Contínua | trabalho | educação | rendimento | domicílios | TIC | amostragem | microdados | IBGE',
+            'data_product_types':'microdados | tabelas SIDRA | indicadores | publicações | séries mensais, trimestrais e anuais',
+            'data_formats':'microdados | CSV | XLSX | ODS | PDF | SIDRA; varia conforme divulgação',
+            'visualization_types':'tabelas | gráficos | painel interativo | publicações',
+            'geographic_coverage':'Brasil; Grandes Regiões; Unidades da Federação e recortes selecionados conforme divulgação',
+            'covers_brazil':'sim',
+            'spatial_resolution':'domicílio e pessoa nos microdados; agregações nacionais, regionais e estaduais conforme produto',
+            'temporal_coverage':'série iniciada em 2012; períodos de referência mensais, trimestrais e anuais conforme produto',
+            'temporal_resolution':'mensal | trimestral | anual conforme divulgação',
+            'data_sources':'amostra probabilística de domicílios | entrevistas domiciliares | Amostra Mestra do Sistema Integrado de Pesquisas Domiciliares',
+            'free_download':'sim',
+            'access_conditions':'consulta pública; microdados anonimizados e documentação disponíveis conforme divulgação; observar desenho amostral e revisões',
+            'programmatic_access':'parcial',
+            'access_protocols':'HTTPS web | HTTP/HTTPS download | SIDRA',
+            'authentication_required':'não',
+            'access_documentation_url':'https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/B5',
+            'license':'licença específica deve ser verificada por produto/arquivo; preservar atribuição IBGE e termos do portal',
+            'institutional_status':'público',
+            'owner_or_manager':'IBGE — Coordenação de Pesquisas por Amostra de Domicílios',
+            'academic_uses':'Mercado de trabalho, renda, desigualdade, educação, habitação, saneamento, inclusão digital, demografia e estudos socioeconômicos territoriais.',
+            'limitations':'Pesquisa amostral: estimativas exigem pesos, estratos e conglomerados apropriados. Módulos, visitas de coleta, períodos de referência, níveis geográficos e revisões variam. Em 2025 iniciou-se transição gradual da Amostra Mestra para incorporar o Censo 2022, com conclusão prevista em 2026; comparações devem considerar notas técnicas e reponderações.',
+            'academic_evidence_type':'documentação oficial',
+            'academic_evidence_url':'https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/B5',
+            'academic_evidence_note':'Os metadados e a página oficial documentam a PNAD Contínua como pesquisa domiciliar integrada por amostragem probabilística, com divulgações mensais, trimestrais e anuais e módulos temáticos distintos.',
+            'verification_url':'https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html',
+            'last_verified':'2026-08-16'
+          }
+
+          common_page = 'https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html'
+          methodology = 'https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/B5'
+          prows = [
+            {
+              'product_id':'DP000253','resource_id':'DR0093','product_name':'PNAD Contínua — Características gerais dos domicílios e dos moradores 2025','product_acronym':'PNADC Domicílios 2025','product_family':'PNAD Contínua — divulgação anual','product_kind':'dataset','product_description':'Resultados anuais de 2025 sobre características dos domicílios e dos moradores, incluindo habitação, saneamento, energia, bens e estrutura demográfica, produzidos a partir da PNAD Contínua.','research_areas':'Demography | Population geography | Social statistics | Public policy','keywords':'PNAD Contínua | domicílios | moradores | habitação | saneamento | demografia | 2025 | IBGE','geographic_coverage':'Brasil; Grandes Regiões; Unidades da Federação conforme tabela','covers_brazil':'sim','spatial_support':'domicílios e pessoas amostrados | estimativas agregadas | SIDRA','spatial_resolution':'Brasil, Grande Região e Unidade da Federação conforme indicador','temporal_coverage':'2025; séries comparativas variam por indicador, incluindo domicílios 2016–2019 e 2022–2025','temporal_resolution':'anual','update_frequency':'anual','product_status':'ativo','version_or_collection':'2025; microdados atualizados em 17/04/2026','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html?edicao=46417','methodology_url':methodology,'primary_or_derived':'derivado','limitations':'Estimativas amostrais exigem uso do desenho e dos pesos. Para características dos domicílios, não houve divulgação em 2020 e 2021 devido à redução da resposta na pandemia. Em 2025 iniciou-se transição gradual da Amostra Mestra baseada no Censo 2010 para incorporar o Censo 2022.','last_verified':'2026-08-16'
+            },
+            {
+              'product_id':'DP000254','resource_id':'DR0093','product_name':'PNAD Contínua — Educação 2025','product_acronym':'PNADC Educação 2025','product_family':'PNAD Contínua — divulgação anual','product_kind':'dataset','product_description':'Resultados anuais da PNAD Contínua sobre características educacionais da população em 2025, com tabelas, publicação e microdados atualizados pelo IBGE.','research_areas':'Demography | Social statistics | Public policy','keywords':'PNAD Contínua | educação | escolarização | instrução | alfabetização | 2025 | IBGE','geographic_coverage':'Brasil; Grandes Regiões; Unidades da Federação conforme tabela','covers_brazil':'sim','spatial_support':'pessoas amostradas | estimativas agregadas | SIDRA','spatial_resolution':'Brasil, Grande Região e Unidade da Federação conforme indicador','temporal_coverage':'2025; série anual comparável apenas conforme definições e revisões documentadas','temporal_resolution':'anual','update_frequency':'anual','product_status':'ativo','version_or_collection':'Educação 2025; microdados atualizados em 19/06/2026','enumeration_scope':'complete','product_page_url':common_page,'methodology_url':methodology,'primary_or_derived':'derivado','limitations':'Pesquisa amostral; indicadores educacionais requerem pesos e desenho amostral. Definições, população-alvo e módulos devem ser conferidos por indicador. Reponderações e a transição da Amostra Mestra podem afetar comparações temporais se ignoradas.','last_verified':'2026-08-16'
+            },
+            {
+              'product_id':'DP000255','resource_id':'DR0093','product_name':'PNAD Contínua — Rendimento de Todas as Fontes 2025','product_acronym':'PNADC Rendimentos 2025','product_family':'PNAD Contínua — divulgação anual','product_kind':'dataset','product_description':'Resultados anuais de 2025 sobre rendimentos do trabalho e de outras fontes, incluindo medidas de rendimento domiciliar e pessoal derivadas da PNAD Contínua.','research_areas':'Demography | Social statistics | Public policy','keywords':'PNAD Contínua | rendimento | renda | trabalho | desigualdade | domicílios | 2025 | IBGE','geographic_coverage':'Brasil; Grandes Regiões; Unidades da Federação conforme indicador','covers_brazil':'sim','spatial_support':'pessoas e domicílios amostrados | estimativas agregadas | SIDRA','spatial_resolution':'Brasil, Grande Região e Unidade da Federação conforme indicador','temporal_coverage':'2025; séries anuais conforme indicador e revisão','temporal_resolution':'anual','update_frequency':'anual','product_status':'ativo','version_or_collection':'Rendimento de Todas as Fontes 2025; microdados atualizados em 08/05/2026','enumeration_scope':'complete','product_page_url':common_page,'methodology_url':methodology,'primary_or_derived':'derivado','limitations':'Rendimentos do trabalho e de outras fontes possuem conceitos e visitas de coleta próprios. Valores reais dependem dos deflatores e procedimentos oficiais. Estimativas requerem desenho amostral e não devem ser tratadas como registros administrativos individuais.','last_verified':'2026-08-16'
+            },
+            {
+              'product_id':'DP000256','resource_id':'DR0093','product_name':'PNAD Contínua — Acesso à Internet, televisão e telefone móvel 2025','product_acronym':'PNADC TIC 2025','product_family':'PNAD Contínua — divulgação anual temática','product_kind':'dataset','product_description':'Resultados anuais de 2025 do módulo de Tecnologia da Informação e Comunicação da PNAD Contínua sobre acesso domiciliar à Internet e televisão e posse de telefone móvel celular para uso pessoal.','research_areas':'Demography | Social statistics | Public policy','keywords':'PNAD Contínua | internet | televisão | telefone móvel | TIC | inclusão digital | 2025 | IBGE','geographic_coverage':'Brasil; Grandes Regiões; Unidades da Federação','covers_brazil':'sim','spatial_support':'domicílios e pessoas amostrados | estimativas agregadas | SIDRA','spatial_resolution':'Brasil, Grande Região e Unidade da Federação conforme tabela','temporal_coverage':'2025; módulo referente ao quarto trimestre de 2025','temporal_resolution':'anual temático','update_frequency':'anual','product_status':'ativo','version_or_collection':'TIC 2025; microdados atualizados em 02/07/2026','enumeration_scope':'complete','product_page_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/17270-pnad-continua.html','methodology_url':methodology,'primary_or_derived':'derivado','limitations':'O módulo TIC de 2025 acumula dados correspondentes ao quarto trimestre e produz estimativas amostrais; não representa tráfego de rede, cobertura física de infraestrutura ou registros de operadoras. Comparações exigem preservar questionário, população-alvo, pesos e revisões.','last_verified':'2026-08-16'
+            }
+          ]
+
+          drows = [
+            {'distribution_id':'DD000274','product_id':'DP000253','distribution_name':'PNAD Contínua — Domicílios e moradores 2025 — SIDRA, publicação e microdados','access_url':'https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html?edicao=46417','format':'SIDRA | microdados | XLSX/ODS | PDF | visualização web','access_protocol':'HTTPS web | SIDRA | HTTP/HTTPS download','access_tool':'navegador web | SIDRA | software estatístico','free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos; microdados anonimizados; aplicar pesos e desenho amostral','license':'licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal','provider_attribution_required':'sim','subset_support':'por tabela, indicador e recorte territorial; microdados para análise amostral','notes':'Microdados do tema 2025 atualizados em 17/04/2026. Não há estatísticas anuais de características dos domicílios para 2020 e 2021 nessa série temática.','last_verified':'2026-08-16'},
+            {'distribution_id':'DD000275','product_id':'DP000254','distribution_name':'PNAD Contínua — Educação 2025 — SIDRA, publicação e microdados','access_url':common_page,'format':'SIDRA | microdados | XLSX/ODS | PDF | visualização web','access_protocol':'HTTPS web | SIDRA | HTTP/HTTPS download','access_tool':'navegador web | SIDRA | software estatístico','free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos; microdados anonimizados; aplicar pesos e desenho amostral','license':'licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal','provider_attribution_required':'sim','subset_support':'por indicador educacional, população e recorte territorial; microdados para análise amostral','notes':'Microdados de Educação 2025 atualizados em 19/06/2026; preservar definições e revisões do módulo.','last_verified':'2026-08-16'},
+            {'distribution_id':'DD000276','product_id':'DP000255','distribution_name':'PNAD Contínua — Rendimento de Todas as Fontes 2025 — SIDRA, publicação e microdados','access_url':common_page,'format':'SIDRA | microdados | XLSX/ODS | PDF | visualização web','access_protocol':'HTTPS web | SIDRA | HTTP/HTTPS download','access_tool':'navegador web | SIDRA | software estatístico','free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos; usar pesos, desenho amostral e deflatores oficiais quando aplicável','license':'licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal','provider_attribution_required':'sim','subset_support':'por componente de rendimento, característica populacional e recorte territorial; microdados para análise amostral','notes':'Microdados de Rendimento de Todas as Fontes 2025 atualizados em 08/05/2026; conceitos de rendimento efetivo, habitual e outras fontes não são intercambiáveis.','last_verified':'2026-08-16'},
+            {'distribution_id':'DD000277','product_id':'DP000256','distribution_name':'PNAD Contínua — TIC 2025 — SIDRA, publicação e microdados','access_url':'https://www.ibge.gov.br/estatisticas/sociais/saude/17270-pnad-continua.html','format':'SIDRA | microdados | XLSX/ODS | PDF | visualização web','access_protocol':'HTTPS web | SIDRA | HTTP/HTTPS download','access_tool':'navegador web | SIDRA | software estatístico','free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos; microdados anonimizados; aplicar pesos e desenho amostral','license':'licença específica dos arquivos não localizada; preservar atribuição IBGE e termos do portal','provider_attribution_required':'sim','subset_support':'por indicador TIC, característica e recorte territorial; microdados para análise amostral','notes':'O módulo refere-se ao quarto trimestre de 2025; microdados atualizados em 02/07/2026. Não interpretar os indicadores como medição direta de cobertura física ou qualidade de rede.','last_verified':'2026-08-16'}
+          ]
+
+          append_rows(resources_path, [resource])
+          append_rows(products_path, prows)
+          append_rows(dist_path, drows)
+
+          priority = json.loads(priority_path.read_text(encoding='utf-8'))
+          p0 = next(t for t in priority['tiers'] if t['priority_tier'] == 'P0')
+          if 'DR0093' not in p0['resource_ids']:
+              p0['resource_ids'].append('DR0093')
+          priority['reviewed_at'] = '2026-08-16'
+          priority_path.write_text(json.dumps(priority, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          print('materialized', len(read_rows(resources_path)), len(read_rows(products_path)), len(read_rows(dist_path)))
+          PY
+
+      - name: Validate and rebuild derived catalog
+        shell: bash
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+          for p in ['data/data_resources.csv','data/data_products.csv','data/product_distributions.csv']:
+              with open(p, encoding='utf-8', newline='') as f:
+                  rows=list(csv.DictReader(f))
+              ids=[next(iter(r.values())) for r in rows]
+              assert len(ids)==len(set(ids)), (p,'duplicate ids')
+              print(p, len(rows))
+          PY
+
+      - name: Commit materialized batch and remove one-shot workflow
+        shell: bash
+        run: |
+          rm -f .github/workflows/one-shot-pnad-2025.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/data_resources.csv data/data_products.csv data/data_products.json data/product_distributions.csv data/brazil_scope_priorities.json docs/reports/link_role_audit.json .github/workflows/one-shot-pnad-2025.yml || true
+          git status --short
+          git commit -m "Expand verified PNAD Continua 2025 catalog"
+          git push origin main
