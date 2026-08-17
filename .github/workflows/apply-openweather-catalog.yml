@@ -44,8 +44,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git rm -r candidates/openweather_2026-08-17 scripts/apply_openweather_catalog.py
           git add data/data_resources.csv data/data_products.csv data/product_distributions.csv
-          git add data/data_resources.json data/data_products.json data/data_quality_report.json data/link_role_audit.json
-          git add audit/OPENWEATHER_CATALOG_REVIEW_2026-08-17.md
+          git add data/link_role_audit.json audit/OPENWEATHER_CATALOG_REVIEW_2026-08-17.md
           git diff --cached --check
           git commit -m "Add OpenWeather source and API products"
           git push origin HEAD:agent/add-openweather-catalog
