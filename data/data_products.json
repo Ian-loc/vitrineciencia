@@ -25271,5 +25271,477 @@
     "available_protocols": [
       "HTTPS"
     ]
+  },
+  {
+    "product_id": "DP000426",
+    "resource_id": "DR0107",
+    "product_name": "IFN — DAP ≥ 10 cm por UF — set/2025",
+    "product_acronym": "IFN DAP10",
+    "product_family": "Inventário Florestal Nacional — dados biofísicos",
+    "product_kind": "dataset_series",
+    "product_description": "Árvores e indivíduos lenhosos registrados pelo IFN no estrato de medição com diâmetro à altura do peito (DAP) maior ou igual a 10 cm, disponibilizados por UF.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | DAP 10 | trees | diameter | forest inventory",
+    "geographic_coverage": "Brasil — UFs com levantamento do IFN disponibilizado na versão set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "indivíduo medido e unidade amostral",
+    "spatial_resolution": "por indivíduo/medição e UF",
+    "temporal_coverage": "campanhas do IFN incorporadas à versão disp-set2025",
+    "temporal_resolution": "campanha/unidade amostral",
+    "update_frequency": "conforme novos ciclos e atualização dos conjuntos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-dap-10-por-uf_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "primário",
+    "limitations": "O limiar DAP ≥10 cm define um estrato de mensuração do protocolo; não representa toda a regeneração ou todos os indivíduos lenhosos. Preservar espécie, DAP, condição, unidade amostral e regras do protocolo.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000449",
+        "product_id": "DP000426",
+        "distribution_name": "IFN — DAP ≥ 10 cm por UF — set/2025 — dados por UF e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-dap-10-por-uf_disp-set2025",
+        "format": "XLSX | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e recurso publicado",
+        "notes": "Distribuição oficial do IFN por UF, acompanhada de metadados; interpretar conforme desenho amostral e protocolo do componente.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000427",
+    "resource_id": "DR0107",
+    "product_name": "IFN — DAP ≥ 5 cm por UF — set/2025",
+    "product_acronym": "IFN DAP5",
+    "product_family": "Inventário Florestal Nacional — dados biofísicos",
+    "product_kind": "dataset_series",
+    "product_description": "Indivíduos lenhosos registrados no estrato do IFN com DAP maior ou igual a 5 cm segundo o protocolo aplicável, disponibilizados por UF.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | DAP 5 | trees | diameter | forest inventory",
+    "geographic_coverage": "Brasil — UFs com levantamento do IFN disponibilizado na versão set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "indivíduo medido e unidade amostral",
+    "spatial_resolution": "por indivíduo/medição e UF",
+    "temporal_coverage": "campanhas do IFN incorporadas à versão disp-set2025",
+    "temporal_resolution": "campanha/unidade amostral",
+    "update_frequency": "conforme novos ciclos e atualização dos conjuntos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-dap-5-por-uf_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "primário",
+    "limitations": "O estrato DAP ≥5 cm possui regras de amostragem próprias e não deve ser somado ingenuamente ao estrato DAP ≥10 cm sem verificar sobreposição e desenho do protocolo.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000450",
+        "product_id": "DP000427",
+        "distribution_name": "IFN — DAP ≥ 5 cm por UF — set/2025 — dados por UF e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-dap-5-por-uf_disp-set2025",
+        "format": "XLSX | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e recurso publicado",
+        "notes": "Distribuição oficial do IFN por UF, acompanhada de metadados; interpretar conforme desenho amostral e protocolo do componente.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000428",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Regeneração por UF — set/2025",
+    "product_acronym": "IFN Regeneração",
+    "product_family": "Inventário Florestal Nacional — dados biofísicos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados sobre regeneração registrados nas unidades amostrais do Inventário Florestal Nacional, disponibilizados por UF com metadados.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | regeneration | seedlings | saplings | forest inventory",
+    "geographic_coverage": "Brasil — UFs com levantamento do IFN disponibilizado na versão set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "indivíduo/classe de regeneração e unidade amostral",
+    "spatial_resolution": "por registro de regeneração e UF",
+    "temporal_coverage": "campanhas do IFN incorporadas à versão disp-set2025",
+    "temporal_resolution": "campanha/unidade amostral",
+    "update_frequency": "conforme novos ciclos e atualização dos conjuntos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-regeneracao-por-uf_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "primário",
+    "limitations": "Regeneração é observada no desenho amostral e critérios dimensionais do IFN; ausência em uma unidade não significa ausência regional, e os registros não formam superfície contínua de recrutamento.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000451",
+        "product_id": "DP000428",
+        "distribution_name": "IFN — Regeneração por UF — set/2025 — dados por UF e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-regeneracao-por-uf_disp-set2025",
+        "format": "XLSX | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e recurso publicado",
+        "notes": "Distribuição oficial do IFN por UF, acompanhada de metadados; interpretar conforme desenho amostral e protocolo do componente.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000429",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Uso da Terra por UF — set/2025",
+    "product_acronym": "IFN Uso da Terra",
+    "product_family": "Inventário Florestal Nacional — dados biofísicos",
+    "product_kind": "dataset_series",
+    "product_description": "Classes de uso da terra observadas em cada subparcela de cada subunidade das unidades amostrais do IFN, disponibilizadas por UF.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | land use | subplots | forest inventory | field observation",
+    "geographic_coverage": "Brasil — UFs com levantamento do IFN disponibilizado na versão set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "subparcela/subunidade da unidade amostral",
+    "spatial_resolution": "por subparcela e UF",
+    "temporal_coverage": "campanhas do IFN incorporadas à versão disp-set2025",
+    "temporal_resolution": "campanha/unidade amostral",
+    "update_frequency": "conforme novos ciclos e atualização dos conjuntos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-uso-da-terra-por-uf_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "primário",
+    "limitations": "É classificação de campo no desenho amostral do IFN, não mapa raster contínuo de uso/cobertura da terra. Comparações com produtos de sensoriamento remoto exigem harmonização de classe, data e suporte espacial.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000452",
+        "product_id": "DP000429",
+        "distribution_name": "IFN — Uso da Terra por UF — set/2025 — dados por UF e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-uso-da-terra-por-uf_disp-set2025",
+        "format": "XLSX | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e recurso publicado",
+        "notes": "Distribuição oficial do IFN por UF, acompanhada de metadados; interpretar conforme desenho amostral e protocolo do componente.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000430",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Madeira Caída por UF — set/2025",
+    "product_acronym": "IFN Madeira Caída",
+    "product_family": "Inventário Florestal Nacional — dados biofísicos",
+    "product_kind": "dataset_series",
+    "product_description": "Registros de madeira caída mensurada nas unidades amostrais do IFN, componente relacionado à necromassa lenhosa, disponibilizados por UF.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | fallen wood | deadwood | necromass | forest inventory",
+    "geographic_coverage": "Brasil — UFs com levantamento do IFN disponibilizado na versão set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "observação de madeira caída e unidade amostral",
+    "spatial_resolution": "por observação/intercepto ou unidade conforme protocolo e UF",
+    "temporal_coverage": "campanhas do IFN incorporadas à versão disp-set2025",
+    "temporal_resolution": "campanha/unidade amostral",
+    "update_frequency": "conforme novos ciclos e atualização dos conjuntos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-madeira-caida-por-uf_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "primário",
+    "limitations": "Madeira caída é componente amostral de necromassa e não representa toda a madeira morta ou estoque contínuo da paisagem. Preservar método, dimensões, unidade e relação com outros componentes de necromassa.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000453",
+        "product_id": "DP000430",
+        "distribution_name": "IFN — Madeira Caída por UF — set/2025 — dados por UF e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-madeira-caida-por-uf_disp-set2025",
+        "format": "XLSX | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e recurso publicado",
+        "notes": "Distribuição oficial do IFN por UF, acompanhada de metadados; interpretar conforme desenho amostral e protocolo do componente.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000431",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Herbáceas por UF — set/2025",
+    "product_acronym": "IFN Herbáceas",
+    "product_family": "Inventário Florestal Nacional — dados biofísicos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de plantas herbáceas observadas nas unidades amostrais do IFN segundo o protocolo biofísico, disponibilizados por UF.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | herbaceous vegetation | herbs | forest inventory",
+    "geographic_coverage": "Brasil — UFs com levantamento do IFN disponibilizado na versão set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de herbácea e unidade amostral",
+    "spatial_resolution": "por observação/unidade amostral e UF",
+    "temporal_coverage": "campanhas do IFN incorporadas à versão disp-set2025",
+    "temporal_resolution": "campanha/unidade amostral",
+    "update_frequency": "conforme novos ciclos e atualização dos conjuntos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-herbaceas-por-uf_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "primário",
+    "limitations": "O conjunto reflete observações herbáceas dentro do protocolo e esforço amostral do IFN; não constitui inventário florístico completo nem estimativa de biomassa herbácea sem processamento específico.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000454",
+        "product_id": "DP000431",
+        "distribution_name": "IFN — Herbáceas por UF — set/2025 — dados por UF e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-herbaceas-por-uf_disp-set2025",
+        "format": "XLSX | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e recurso publicado",
+        "notes": "Distribuição oficial do IFN por UF, acompanhada de metadados; interpretar conforme desenho amostral e protocolo do componente.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000432",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Bambus por UF — set/2025",
+    "product_acronym": "IFN Bambus",
+    "product_family": "Inventário Florestal Nacional — dados biofísicos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de bambus observados e mensurados nas unidades amostrais do IFN, disponibilizados por UF.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | bamboo | forest inventory | vegetation structure",
+    "geographic_coverage": "Brasil — UFs com levantamento do IFN disponibilizado na versão set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de bambu e unidade amostral",
+    "spatial_resolution": "por observação/unidade amostral e UF",
+    "temporal_coverage": "campanhas do IFN incorporadas à versão disp-set2025",
+    "temporal_resolution": "campanha/unidade amostral",
+    "update_frequency": "conforme novos ciclos e atualização dos conjuntos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-bambus-por-uf_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "primário",
+    "limitations": "Registros dependem do protocolo e da distribuição das unidades amostrais; ausência de registro não prova ausência de bambu na paisagem e os dados não equivalem a mapeamento contínuo.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000455",
+        "product_id": "DP000432",
+        "distribution_name": "IFN — Bambus por UF — set/2025 — dados por UF e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-bambus-por-uf_disp-set2025",
+        "format": "XLSX | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e recurso publicado",
+        "notes": "Distribuição oficial do IFN por UF, acompanhada de metadados; interpretar conforme desenho amostral e protocolo do componente.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000433",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Antropismo e Vegetação Exótica por UF — set/2025",
+    "product_acronym": "IFN Antropismo e Exóticas",
+    "product_family": "Inventário Florestal Nacional — dados biofísicos",
+    "product_kind": "dataset_series",
+    "product_description": "Observações de antropismo e presença de vegetação exótica nas unidades amostrais do IFN, disponibilizadas por UF.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | anthropism | exotic vegetation | disturbance | forest inventory",
+    "geographic_coverage": "Brasil — UFs com levantamento do IFN disponibilizado na versão set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "unidade amostral e observação de antropismo/vegetação exótica",
+    "spatial_resolution": "por observação/unidade amostral e UF",
+    "temporal_coverage": "campanhas do IFN incorporadas à versão disp-set2025",
+    "temporal_resolution": "campanha/unidade amostral",
+    "update_frequency": "conforme novos ciclos e atualização dos conjuntos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-antropismo-e-vegetacao-exotica-por-uf_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "primário",
+    "limitations": "Observações são condicionadas pelo desenho amostral e categorias do IFN; presença observada não mede automaticamente intensidade de impacto, invasibilidade ou cobertura regional de espécies exóticas.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000456",
+        "product_id": "DP000433",
+        "distribution_name": "IFN — Antropismo e Vegetação Exótica por UF — set/2025 — dados por UF e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-antropismo-e-vegetacao-exotica-por-uf_disp-set2025",
+        "format": "XLSX | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e recurso publicado",
+        "notes": "Distribuição oficial do IFN por UF, acompanhada de metadados; interpretar conforme desenho amostral e protocolo do componente.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
   }
 ]
