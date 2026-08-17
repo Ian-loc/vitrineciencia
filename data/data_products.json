@@ -28967,5 +28967,713 @@
     "available_protocols": [
       "HTTPS | API/download conforme recurso"
     ]
+  },
+  {
+    "product_id": "DP000488",
+    "resource_id": "DR0114",
+    "product_name": "SIASI/Sesai — Dados demográficos 2022",
+    "product_acronym": "SIASI Demografia",
+    "product_family": "demografia da saúde indígena",
+    "product_kind": "dataset_series",
+    "product_description": "Registros do quantitativo populacional de indígenas atendidos pelo SasiSUS no ano de 2022.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "população indígena | SIASI | demografia | SasiSUS | DSEI",
+    "geographic_coverage": "Brasil — população indígena atendida pelo SasiSUS",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa/registro e agregações disponibilizadas",
+    "spatial_resolution": "registro individual anonimizado e/ou DSEI/agregação conforme recurso",
+    "temporal_coverage": "2022",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em 12/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/siasi_dados_demograficos",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/siasi_dados_demograficos",
+    "primary_or_derived": "primário",
+    "limitations": "Quantitativo do universo assistido/cadastrado no SasiSUS; não equivale ao total censitário de indígenas do Brasil e pode diferir do Censo Demográfico por conceito, cobertura e referência temporal.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0114",
+      "resource_name": "Sistema de Informação da Atenção à Saúde Indígena — SIASI/Sesai",
+      "acronym": "SIASI",
+      "official_identity": "Sistema de informação do Subsistema de Atenção à Saúde Indígena (SasiSUS), sob gestão da Secretaria de Saúde Indígena — Sesai/MS",
+      "homepage_url": "https://www.gov.br/saude/pt-br/composicao/sesai",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000513",
+        "product_id": "DP000488",
+        "distribution_name": "SIASI Demografia — dados e documentação oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/siasi_dados_demograficos",
+        "format": "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto",
+        "access_protocol": "HTTPS download | API quando oferecida pelo recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar anonimização, dicionário, nota técnica, população coberta e eventuais revisões",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano/recurso e, quando disponível, DSEI ou variáveis do arquivo",
+        "notes": "O portal disponibiliza arquivos estruturados e documentação. Formatos e APIs não devem ser generalizados além do que estiver listado no conjunto específico.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando oferecida pelo recurso"
+    ]
+  },
+  {
+    "product_id": "DP000489",
+    "resource_id": "DR0114",
+    "product_name": "SIASI/Sesai — Monitorização das Doenças Diarreicas Agudas (MDDA) 2022",
+    "product_acronym": "SIASI MDDA",
+    "product_family": "vigilância de doenças diarreicas agudas",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de Doenças Diarreicas Agudas monitoradas no âmbito do SasiSUS, com cobertura dos 34 DSEI.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "diarreia | MDDA | saúde indígena | vigilância | DSEI",
+    "geographic_coverage": "34 Distritos Sanitários Especiais Indígenas",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de monitoramento/atendimento",
+    "spatial_resolution": "registro individual anonimizado e/ou DSEI/agregação conforme recurso",
+    "temporal_coverage": "2022",
+    "temporal_resolution": "evento/registro",
+    "update_frequency": "semestral",
+    "product_status": "ativo",
+    "version_or_collection": "portal atualizado em 13/08/2026; recursos em 12/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/siasi_doencas_diarreicas_diarreia_agudas_mdda",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/siasi_doencas_diarreicas_diarreia_agudas_mdda",
+    "primary_or_derived": "primário",
+    "limitations": "Dados de vigilância/assistência da população coberta; não representam incidência verdadeira sem denominador, completude e regras de monitoramento. Subnotificação e diferenças entre DSEI devem ser consideradas.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0114",
+      "resource_name": "Sistema de Informação da Atenção à Saúde Indígena — SIASI/Sesai",
+      "acronym": "SIASI",
+      "official_identity": "Sistema de informação do Subsistema de Atenção à Saúde Indígena (SasiSUS), sob gestão da Secretaria de Saúde Indígena — Sesai/MS",
+      "homepage_url": "https://www.gov.br/saude/pt-br/composicao/sesai",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000514",
+        "product_id": "DP000489",
+        "distribution_name": "SIASI MDDA — dados e documentação oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/siasi_doencas_diarreicas_diarreia_agudas_mdda",
+        "format": "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto",
+        "access_protocol": "HTTPS download | API quando oferecida pelo recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar anonimização, dicionário, nota técnica, população coberta e eventuais revisões",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano/recurso e, quando disponível, DSEI ou variáveis do arquivo",
+        "notes": "O portal disponibiliza arquivos estruturados e documentação. Formatos e APIs não devem ser generalizados além do que estiver listado no conjunto específico.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando oferecida pelo recurso"
+    ]
+  },
+  {
+    "product_id": "DP000490",
+    "resource_id": "DR0114",
+    "product_name": "SIASI/Sesai — Doenças zoonóticas 2022",
+    "product_acronym": "SIASI Zoonoses",
+    "product_family": "morbidades e zoonoses",
+    "product_kind": "dataset_series",
+    "product_description": "Registros de leishmaniose visceral, leishmaniose tegumentar e acidentes por animais potencialmente transmissores de raiva na população indígena assistida pelo SasiSUS em 2022.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "zoonoses | leishmaniose | raiva | saúde indígena | DSEI",
+    "geographic_coverage": "34 Distritos Sanitários Especiais Indígenas",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de morbidade",
+    "spatial_resolution": "registro individual anonimizado e/ou DSEI/agregação conforme recurso",
+    "temporal_coverage": "2022",
+    "temporal_resolution": "evento/registro",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "portal atualizado em 13/08/2026; recursos em 12/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/siasi_doencas_zoonoticas_leishmaniose_visceral",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/siasi_doencas_zoonoticas_leishmaniose_visceral",
+    "primary_or_derived": "primário",
+    "limitations": "Registros administrativos/assistenciais não equivalem a incidência populacional nem a ocorrência ambiental dos vetores/reservatórios; comparação exige denominadores e regras diagnósticas.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0114",
+      "resource_name": "Sistema de Informação da Atenção à Saúde Indígena — SIASI/Sesai",
+      "acronym": "SIASI",
+      "official_identity": "Sistema de informação do Subsistema de Atenção à Saúde Indígena (SasiSUS), sob gestão da Secretaria de Saúde Indígena — Sesai/MS",
+      "homepage_url": "https://www.gov.br/saude/pt-br/composicao/sesai",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000515",
+        "product_id": "DP000490",
+        "distribution_name": "SIASI Zoonoses — dados e documentação oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/siasi_doencas_zoonoticas_leishmaniose_visceral",
+        "format": "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto",
+        "access_protocol": "HTTPS download | API quando oferecida pelo recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar anonimização, dicionário, nota técnica, população coberta e eventuais revisões",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano/recurso e, quando disponível, DSEI ou variáveis do arquivo",
+        "notes": "O portal disponibiliza arquivos estruturados e documentação. Formatos e APIs não devem ser generalizados além do que estiver listado no conjunto específico.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando oferecida pelo recurso"
+    ]
+  },
+  {
+    "product_id": "DP000491",
+    "resource_id": "DR0114",
+    "product_name": "SIASI/Sesai — Cobertura vacinal 2022",
+    "product_acronym": "SIASI Imunização",
+    "product_family": "imunização na saúde indígena",
+    "product_kind": "dataset_series",
+    "product_description": "Coberturas vacinais da população indígena assistida pelo SasiSUS nos 34 DSEI, referentes a 2022 e a múltiplos imunobiológicos.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "vacinação | cobertura vacinal | saúde indígena | DSEI | SasiSUS",
+    "geographic_coverage": "34 Distritos Sanitários Especiais Indígenas",
+    "covers_brazil": "sim",
+    "spatial_support": "DSEI/população-alvo conforme imunobiológico",
+    "spatial_resolution": "registro individual anonimizado e/ou DSEI/agregação conforme recurso",
+    "temporal_coverage": "2022",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "recursos atualizados em 12/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/siasi_imunizacao_vacinacao",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/siasi_imunizacao_vacinacao",
+    "primary_or_derived": "primário",
+    "limitations": "Cobertura depende de numeradores, populações-alvo e regras de dose; não confundir dose registrada, pessoa imunizada e efetividade vacinal. A população é a assistida pelo SasiSUS.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0114",
+      "resource_name": "Sistema de Informação da Atenção à Saúde Indígena — SIASI/Sesai",
+      "acronym": "SIASI",
+      "official_identity": "Sistema de informação do Subsistema de Atenção à Saúde Indígena (SasiSUS), sob gestão da Secretaria de Saúde Indígena — Sesai/MS",
+      "homepage_url": "https://www.gov.br/saude/pt-br/composicao/sesai",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000516",
+        "product_id": "DP000491",
+        "distribution_name": "SIASI Imunização — dados e documentação oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/siasi_imunizacao_vacinacao",
+        "format": "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto",
+        "access_protocol": "HTTPS download | API quando oferecida pelo recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar anonimização, dicionário, nota técnica, população coberta e eventuais revisões",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano/recurso e, quando disponível, DSEI ou variáveis do arquivo",
+        "notes": "O portal disponibiliza arquivos estruturados e documentação. Formatos e APIs não devem ser generalizados além do que estiver listado no conjunto específico.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando oferecida pelo recurso"
+    ]
+  },
+  {
+    "product_id": "DP000492",
+    "resource_id": "DR0114",
+    "product_name": "SIASI/Sesai — Hepatites virais 2022",
+    "product_acronym": "SIASI Hepatites",
+    "product_family": "morbidades — hepatites virais",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de hepatites virais ocorridos na população indígena assistida pelo SasiSUS em 2022.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "hepatites virais | morbidade | saúde indígena | vigilância | DSEI",
+    "geographic_coverage": "34 Distritos Sanitários Especiais Indígenas",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de morbidade",
+    "spatial_resolution": "registro individual anonimizado e/ou DSEI/agregação conforme recurso",
+    "temporal_coverage": "2022",
+    "temporal_resolution": "evento/registro",
+    "update_frequency": "semestral",
+    "product_status": "ativo",
+    "version_or_collection": "recursos atualizados em 12/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/siasi_modulo_morbidades_hepatites_virais",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/siasi_modulo_morbidades_hepatites_virais",
+    "primary_or_derived": "primário",
+    "limitations": "Registros dependem de diagnóstico, acesso e completude do SIASI; não equivalem automaticamente a prevalência de hepatites na população indígena total.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0114",
+      "resource_name": "Sistema de Informação da Atenção à Saúde Indígena — SIASI/Sesai",
+      "acronym": "SIASI",
+      "official_identity": "Sistema de informação do Subsistema de Atenção à Saúde Indígena (SasiSUS), sob gestão da Secretaria de Saúde Indígena — Sesai/MS",
+      "homepage_url": "https://www.gov.br/saude/pt-br/composicao/sesai",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000517",
+        "product_id": "DP000492",
+        "distribution_name": "SIASI Hepatites — dados e documentação oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/siasi_modulo_morbidades_hepatites_virais",
+        "format": "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto",
+        "access_protocol": "HTTPS download | API quando oferecida pelo recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar anonimização, dicionário, nota técnica, população coberta e eventuais revisões",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano/recurso e, quando disponível, DSEI ou variáveis do arquivo",
+        "notes": "O portal disponibiliza arquivos estruturados e documentação. Formatos e APIs não devem ser generalizados além do que estiver listado no conjunto específico.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando oferecida pelo recurso"
+    ]
+  },
+  {
+    "product_id": "DP000493",
+    "resource_id": "DR0114",
+    "product_name": "SIASI/Sesai — Doenças imunopreveníveis 2022",
+    "product_acronym": "SIASI Imunopreveníveis",
+    "product_family": "morbidades — doenças imunopreveníveis",
+    "product_kind": "dataset_series",
+    "product_description": "Registros SIASI de doenças imunopreveníveis na população indígena assistida pelo SasiSUS, incluindo sarampo, coqueluche, difteria, meningites, tétano, varicela e outros agravos definidos no conjunto.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "imunopreveníveis | morbidade | sarampo | coqueluche | meningite | saúde indígena",
+    "geographic_coverage": "34 Distritos Sanitários Especiais Indígenas",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de morbidade",
+    "spatial_resolution": "registro individual anonimizado e/ou DSEI/agregação conforme recurso",
+    "temporal_coverage": "2022",
+    "temporal_resolution": "evento/registro",
+    "update_frequency": "semestral",
+    "product_status": "ativo",
+    "version_or_collection": "recursos atualizados em 12/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/siasi_morbidades_imunopreveniveis",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/siasi_morbidades_imunopreveniveis",
+    "primary_or_derived": "primário",
+    "limitations": "Conjunto reúne agravos distintos com definições e frequências diferentes; não somar categorias como carga única nem interpretar registros como incidência sem denominadores e avaliação de completude.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0114",
+      "resource_name": "Sistema de Informação da Atenção à Saúde Indígena — SIASI/Sesai",
+      "acronym": "SIASI",
+      "official_identity": "Sistema de informação do Subsistema de Atenção à Saúde Indígena (SasiSUS), sob gestão da Secretaria de Saúde Indígena — Sesai/MS",
+      "homepage_url": "https://www.gov.br/saude/pt-br/composicao/sesai",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000518",
+        "product_id": "DP000493",
+        "distribution_name": "SIASI Imunopreveníveis — dados e documentação oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/siasi_morbidades_imunopreveniveis",
+        "format": "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto",
+        "access_protocol": "HTTPS download | API quando oferecida pelo recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar anonimização, dicionário, nota técnica, população coberta e eventuais revisões",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano/recurso e, quando disponível, DSEI ou variáveis do arquivo",
+        "notes": "O portal disponibiliza arquivos estruturados e documentação. Formatos e APIs não devem ser generalizados além do que estiver listado no conjunto específico.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando oferecida pelo recurso"
+    ]
+  },
+  {
+    "product_id": "DP000494",
+    "resource_id": "DR0114",
+    "product_name": "SIASI/Sesai — Arboviroses 2022",
+    "product_acronym": "SIASI Arboviroses",
+    "product_family": "morbidades — arboviroses",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de dengue, zika, chikungunya, febre amarela e outras arboviroses ocorridos na população indígena assistida pelo SasiSUS em 2022.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "arboviroses | dengue | zika | chikungunya | febre amarela | saúde indígena",
+    "geographic_coverage": "34 Distritos Sanitários Especiais Indígenas",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de morbidade",
+    "spatial_resolution": "registro individual anonimizado e/ou DSEI/agregação conforme recurso",
+    "temporal_coverage": "2022",
+    "temporal_resolution": "evento/registro",
+    "update_frequency": "semestral",
+    "product_status": "ativo",
+    "version_or_collection": "recursos atualizados em 12/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/siasi_modulo_morbidades_dados_arboviroses",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/siasi_modulo_morbidades_dados_arboviroses",
+    "primary_or_derived": "primário",
+    "limitations": "Morbidades notificadas/registradas no SIASI não equivalem a incidência total nem a presença vetorial. Agravos têm critérios próprios; análises exigem denominadores e contexto de vigilância.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0114",
+      "resource_name": "Sistema de Informação da Atenção à Saúde Indígena — SIASI/Sesai",
+      "acronym": "SIASI",
+      "official_identity": "Sistema de informação do Subsistema de Atenção à Saúde Indígena (SasiSUS), sob gestão da Secretaria de Saúde Indígena — Sesai/MS",
+      "homepage_url": "https://www.gov.br/saude/pt-br/composicao/sesai",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000519",
+        "product_id": "DP000494",
+        "distribution_name": "SIASI Arboviroses — dados e documentação oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/siasi_modulo_morbidades_dados_arboviroses",
+        "format": "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto",
+        "access_protocol": "HTTPS download | API quando oferecida pelo recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar anonimização, dicionário, nota técnica, população coberta e eventuais revisões",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano/recurso e, quando disponível, DSEI ou variáveis do arquivo",
+        "notes": "O portal disponibiliza arquivos estruturados e documentação. Formatos e APIs não devem ser generalizados além do que estiver listado no conjunto específico.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando oferecida pelo recurso"
+    ]
+  },
+  {
+    "product_id": "DP000495",
+    "resource_id": "DR0114",
+    "product_name": "SIASI/Sesai — Acidentes ofídicos 2022",
+    "product_acronym": "SIASI Ofidismo",
+    "product_family": "morbidades — acidentes ofídicos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de acidentes ofídicos ocorridos na população indígena assistida pelo SasiSUS em 2022.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "ofidismo | acidentes ofídicos | saúde indígena | animais peçonhentos | DSEI",
+    "geographic_coverage": "34 Distritos Sanitários Especiais Indígenas",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de acidente/atendimento",
+    "spatial_resolution": "registro individual anonimizado e/ou DSEI/agregação conforme recurso",
+    "temporal_coverage": "2022",
+    "temporal_resolution": "evento/registro",
+    "update_frequency": "conforme publicação",
+    "product_status": "ativo",
+    "version_or_collection": "recursos atualizados em 12/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/siasi_web_acidentes_ofidicos",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/siasi_web_acidentes_ofidicos",
+    "primary_or_derived": "primário",
+    "limitations": "Registros de acidentes atendidos/notificados não constituem mapa de distribuição de serpentes nem incidência populacional sem denominadores, acesso a cuidado e completude.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0114",
+      "resource_name": "Sistema de Informação da Atenção à Saúde Indígena — SIASI/Sesai",
+      "acronym": "SIASI",
+      "official_identity": "Sistema de informação do Subsistema de Atenção à Saúde Indígena (SasiSUS), sob gestão da Secretaria de Saúde Indígena — Sesai/MS",
+      "homepage_url": "https://www.gov.br/saude/pt-br/composicao/sesai",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000520",
+        "product_id": "DP000495",
+        "distribution_name": "SIASI Ofidismo — dados e documentação oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/siasi_web_acidentes_ofidicos",
+        "format": "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto",
+        "access_protocol": "HTTPS download | API quando oferecida pelo recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar anonimização, dicionário, nota técnica, população coberta e eventuais revisões",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano/recurso e, quando disponível, DSEI ou variáveis do arquivo",
+        "notes": "O portal disponibiliza arquivos estruturados e documentação. Formatos e APIs não devem ser generalizados além do que estiver listado no conjunto específico.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando oferecida pelo recurso"
+    ]
+  },
+  {
+    "product_id": "DP000496",
+    "resource_id": "DR0114",
+    "product_name": "SIASI/Sesai — Acompanhamento gestacional 2019–2024",
+    "product_acronym": "SIASI Gestação",
+    "product_family": "saúde materna e pré-natal",
+    "product_kind": "dataset_series",
+    "product_description": "Microdados de gestações de mulheres indígenas residentes em aldeias ou acampamentos, finalizadas no ano de referência, incluindo acompanhamentos por EMSI/DSEI e unidades de referência.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "gestação | pré-natal | saúde indígena | saúde materna | SIASI",
+    "geographic_coverage": "Brasil — população indígena assistida pelo SasiSUS",
+    "covers_brazil": "sim",
+    "spatial_support": "gestação/acompanhamento",
+    "spatial_resolution": "registro individual anonimizado e/ou DSEI/agregação conforme recurso",
+    "temporal_coverage": "2019–2024",
+    "temporal_resolution": "consulta/gestação",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "microdados 2024 atualizados em 08/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/acompanhamento-gestacional-siasi",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/acompanhamento-gestacional-siasi",
+    "primary_or_derived": "primário",
+    "limitations": "Representa gestações registradas e finalizadas no SIASI, não todos os eventos gestacionais da população indígena. Consultas registradas não medem por si só qualidade ou adequação do cuidado.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0114",
+      "resource_name": "Sistema de Informação da Atenção à Saúde Indígena — SIASI/Sesai",
+      "acronym": "SIASI",
+      "official_identity": "Sistema de informação do Subsistema de Atenção à Saúde Indígena (SasiSUS), sob gestão da Secretaria de Saúde Indígena — Sesai/MS",
+      "homepage_url": "https://www.gov.br/saude/pt-br/composicao/sesai",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000521",
+        "product_id": "DP000496",
+        "distribution_name": "SIASI Gestação — dados e documentação oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/acompanhamento-gestacional-siasi",
+        "format": "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto",
+        "access_protocol": "HTTPS download | API quando oferecida pelo recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar anonimização, dicionário, nota técnica, população coberta e eventuais revisões",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano/recurso e, quando disponível, DSEI ou variáveis do arquivo",
+        "notes": "O portal disponibiliza arquivos estruturados e documentação. Formatos e APIs não devem ser generalizados além do que estiver listado no conjunto específico.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando oferecida pelo recurso"
+    ]
+  },
+  {
+    "product_id": "DP000497",
+    "resource_id": "DR0114",
+    "product_name": "SIASI/Sesai — Saúde Bucal 2019–2024",
+    "product_acronym": "SIASI Saúde Bucal",
+    "product_family": "saúde bucal indígena",
+    "product_kind": "dataset_series",
+    "product_description": "Três bancos de microdados do módulo de Saúde Bucal: atividades coletivas, ficha odontológica individual e procedimentos individuais, com séries anuais disponibilizadas.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "saúde bucal | odontologia | saúde indígena | procedimentos | SIASI",
+    "geographic_coverage": "Brasil — população indígena assistida pelo SasiSUS",
+    "covers_brazil": "sim",
+    "spatial_support": "atividade coletiva | pessoa/ficha odontológica | procedimento",
+    "spatial_resolution": "registro individual anonimizado e/ou DSEI/agregação conforme recurso",
+    "temporal_coverage": "2019–2024",
+    "temporal_resolution": "atividade/atendimento",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "recursos 2024 atualizados em 08/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/saude-bucal-siasi",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/saude-bucal-siasi",
+    "primary_or_derived": "primário",
+    "limitations": "Os três bancos possuem unidades de análise diferentes e não devem ser concatenados como se fossem observações equivalentes. Atendimentos/procedimentos registrados dependem do acesso e registro assistencial.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0114",
+      "resource_name": "Sistema de Informação da Atenção à Saúde Indígena — SIASI/Sesai",
+      "acronym": "SIASI",
+      "official_identity": "Sistema de informação do Subsistema de Atenção à Saúde Indígena (SasiSUS), sob gestão da Secretaria de Saúde Indígena — Sesai/MS",
+      "homepage_url": "https://www.gov.br/saude/pt-br/composicao/sesai",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000522",
+        "product_id": "DP000497",
+        "distribution_name": "SIASI Saúde Bucal — dados e documentação oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/saude-bucal-siasi",
+        "format": "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto",
+        "access_protocol": "HTTPS download | API quando oferecida pelo recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar anonimização, dicionário, nota técnica, população coberta e eventuais revisões",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano/recurso e, quando disponível, DSEI ou variáveis do arquivo",
+        "notes": "O portal disponibiliza arquivos estruturados e documentação. Formatos e APIs não devem ser generalizados além do que estiver listado no conjunto específico.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando oferecida pelo recurso"
+    ]
+  },
+  {
+    "product_id": "DP000498",
+    "resource_id": "DR0114",
+    "product_name": "SIASI/Sesai — Vigilância Alimentar e Nutricional 2019–2024",
+    "product_acronym": "SIASI VAN",
+    "product_family": "vigilância alimentar e nutricional indígena",
+    "product_kind": "dataset_series",
+    "product_description": "Microdados de vigilância alimentar e nutricional de crianças indígenas menores de cinco anos, com indicadores antropométricos recomendados pela OMS e situação de aleitamento materno.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "nutrição | antropometria | aleitamento | crianças indígenas | VAN | SIASI",
+    "geographic_coverage": "Brasil — crianças indígenas menores de 5 anos assistidas pelo SasiSUS",
+    "covers_brazil": "sim",
+    "spatial_support": "criança/avaliação antropométrica",
+    "spatial_resolution": "registro individual anonimizado e/ou DSEI/agregação conforme recurso",
+    "temporal_coverage": "2019–2024",
+    "temporal_resolution": "avaliação/ano",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "microdados 2019–2024 atualizados em 07/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/alimentar-nutricional-van-siasi",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/alimentar-nutricional-van-siasi",
+    "primary_or_derived": "primário",
+    "limitations": "Registros de crianças avaliadas no serviço não formam amostra probabilística de toda a população indígena menor de cinco anos. Estado nutricional depende de idade, sexo, medidas, referência OMS e qualidade antropométrica.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0114",
+      "resource_name": "Sistema de Informação da Atenção à Saúde Indígena — SIASI/Sesai",
+      "acronym": "SIASI",
+      "official_identity": "Sistema de informação do Subsistema de Atenção à Saúde Indígena (SasiSUS), sob gestão da Secretaria de Saúde Indígena — Sesai/MS",
+      "homepage_url": "https://www.gov.br/saude/pt-br/composicao/sesai",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000523",
+        "product_id": "DP000498",
+        "distribution_name": "SIASI VAN — dados e documentação oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/alimentar-nutricional-van-siasi",
+        "format": "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto",
+        "access_protocol": "HTTPS download | API quando oferecida pelo recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar anonimização, dicionário, nota técnica, população coberta e eventuais revisões",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano/recurso e, quando disponível, DSEI ou variáveis do arquivo",
+        "notes": "O portal disponibiliza arquivos estruturados e documentação. Formatos e APIs não devem ser generalizados além do que estiver listado no conjunto específico.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando oferecida pelo recurso"
+    ]
+  },
+  {
+    "product_id": "DP000499",
+    "resource_id": "DR0114",
+    "product_name": "SIASI/Sesai — Acompanhamento de crianças menores de um ano 2019–2024",
+    "product_acronym": "SIASI Criança <1",
+    "product_family": "saúde da criança indígena",
+    "product_kind": "dataset_series",
+    "product_description": "Microdados do módulo de morbidades para exame de rotina de saúde da criança (CID Z001), referentes ao acompanhamento de crianças indígenas menores de um ano pelas equipes de saúde.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "saúde da criança | crescimento | desenvolvimento | menores de um ano | SIASI",
+    "geographic_coverage": "Brasil — crianças indígenas menores de um ano assistidas pelo SasiSUS",
+    "covers_brazil": "sim",
+    "spatial_support": "criança/acompanhamento",
+    "spatial_resolution": "registro individual anonimizado e/ou DSEI/agregação conforme recurso",
+    "temporal_coverage": "2019–2024",
+    "temporal_resolution": "consulta/acompanhamento",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "microdados 2024 atualizados em 08/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/rotina-saude-da-crianca-siasi",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/rotina-saude-da-crianca-siasi",
+    "primary_or_derived": "primário",
+    "limitations": "Dados descrevem acompanhamentos registrados, não uma coorte populacional completa nem medida direta de desenvolvimento infantil. Ausência de registro não significa ausência de acompanhamento fora do SIASI.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0114",
+      "resource_name": "Sistema de Informação da Atenção à Saúde Indígena — SIASI/Sesai",
+      "acronym": "SIASI",
+      "official_identity": "Sistema de informação do Subsistema de Atenção à Saúde Indígena (SasiSUS), sob gestão da Secretaria de Saúde Indígena — Sesai/MS",
+      "homepage_url": "https://www.gov.br/saude/pt-br/composicao/sesai",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000524",
+        "product_id": "DP000499",
+        "distribution_name": "SIASI Criança <1 — dados e documentação oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/rotina-saude-da-crianca-siasi",
+        "format": "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto",
+        "access_protocol": "HTTPS download | API quando oferecida pelo recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar anonimização, dicionário, nota técnica, população coberta e eventuais revisões",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano/recurso e, quando disponível, DSEI ou variáveis do arquivo",
+        "notes": "O portal disponibiliza arquivos estruturados e documentação. Formatos e APIs não devem ser generalizados além do que estiver listado no conjunto específico.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação; disponibilidade varia por conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando oferecida pelo recurso"
+    ]
   }
 ]
