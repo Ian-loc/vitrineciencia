@@ -1,0 +1,120 @@
+name: Materialize verified Ibama batch 2026-08-17
+
+on:
+  push:
+    paths:
+      - '.github/workflows/materialize-ibama-batch-20260817.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Append verified products and distributions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          ppath = Path('data/data_products.csv')
+          dpath = Path('data/product_distributions.csv')
+
+          products = [
+            dict(product_id='DP000411',resource_id='DR0106',product_name='SIEMA — Comunicados de Acidentes Ambientais — Ibama',product_acronym='SIEMA Acidentes',product_family='Sistema Nacional de Emergências Ambientais',product_kind='dataset_series',product_description='Comunicações de acidentes ambientais registradas no Sistema Nacional de Emergências Ambientais (Siema), com localização e atributos dos eventos comunicados ao Ibama.',research_areas='Environmental management | Environmental science | Geospatial data',keywords='SIEMA | environmental accidents | emergency | hazardous events | Ibama',geographic_coverage='Brasil — acidentes ambientais comunicados e registrados no Siema',covers_brazil='sim',spatial_support='evento/ponto ou geometria conforme registro',spatial_resolution='por ocorrência comunicada; precisão espacial conforme informação registrada',temporal_coverage='desde a implantação do Siema em 2014 conforme acervo publicado',temporal_resolution='por ocorrência/data de comunicação',update_frequency='conforme atualização do sistema e do portal',product_status='ativo',version_or_collection='conjunto corrente; Siema instituído pela IN Ibama nº 15/2014',enumeration_scope='complete',product_page_url='https://dadosabertos.ibama.gov.br/dataset/siema-comunicado-de-acidente-ambiental',methodology_url='https://dadosabertos.ibama.gov.br/dataset/siema-comunicado-de-acidente-ambiental',primary_or_derived='primário',limitations='Registra acidentes comunicados ao Siema e não constitui censo exaustivo de todos os acidentes ambientais no país. Comunicação administrativa não equivale a confirmação independente de causa, magnitude, dano ou responsabilidade.',last_verified='2026-08-17'),
+            dict(product_id='DP000412',resource_id='DR0106',product_name='Ato Declaratório Ambiental — ADA — Ibama',product_acronym='ADA',product_family='Ato Declaratório Ambiental',product_kind='dataset_series',product_description='Informações declaradas anualmente sobre áreas de interesse ambiental em propriedades rurais registradas no formulário do Ato Declaratório Ambiental.',research_areas='Environmental management | Environmental science | Geospatial data',keywords='ADA | rural property | environmental interest area | ITR | declaration | Ibama',geographic_coverage='Brasil — imóveis rurais com ADA declarado no sistema',covers_brazil='sim',spatial_support='imóvel rural e áreas declaradas de interesse ambiental',spatial_resolution='por declaração/imóvel; geometria e área conforme campos disponíveis',temporal_coverage='série anual conforme anos disponíveis no acervo',temporal_resolution='anual por declaração',update_frequency='mensal no portal oficial',product_status='ativo',version_or_collection='conjunto corrente; metadados atualizados em 08/07/2026',enumeration_scope='complete',product_page_url='https://dadosabertos.ibama.gov.br/dataset/ato-declaratorio-ambiental-ada',methodology_url='https://dadosabertos.ibama.gov.br/dataset/ato-declaratorio-ambiental-ada',primary_or_derived='primário',limitations='ADA é declaração administrativa de áreas de interesse ambiental e não substitui cadastro fundiário, CAR, levantamento de campo ou verificação independente da condição ecológica e da proteção efetiva da área.',last_verified='2026-08-17'),
+            dict(product_id='DP000413',resource_id='DR0106',product_name='Sinaflor — Volumes Explorados — Inventário Amostral — Ibama',product_acronym='Volumes Explorados IA',product_family='Sinaflor — volumes efetivamente explorados declarados',product_kind='dataset_series',product_description='Produtos e volumes efetivamente explorados declarados por detentores de autorizações UAS, CAI, Exploração de Floresta Plantada e POA Outros Biomas com Inventário Amostral no Sinaflor/Sinaflor+.',research_areas='Environmental management | Forest ecology | Environmental science',keywords='Sinaflor | explored volume | forest products | UAS | CAI | planted forest | inventory',geographic_coverage='Brasil — autorizações e explorações registradas nos sistemas Sinaflor/Sinaflor+ para os tipos contemplados',covers_brazil='sim',spatial_support='autorização/empreendimento e produto florestal',spatial_resolution='por declaração de exploração, autorização e produto',temporal_coverage='conforme registros disponibilizados no acervo Sinaflor/Sinaflor+',temporal_resolution='por declaração/registro',update_frequency='semanal',product_status='ativo',version_or_collection='conjunto corrente; metadados atualizados em 16/03/2026',enumeration_scope='complete',product_page_url='https://dadosabertos.ibama.gov.br/dataset/volumes-explorados-inventario-amostral',methodology_url='https://dadosabertos.ibama.gov.br/dataset/volumes-explorados-inventario-amostral',primary_or_derived='primário',limitations='Os volumes são declarados pelos detentores das autorizações e cobrem apenas os tipos autorizativos e registros integrados ao Sinaflor/Sinaflor+. Não equivalem a mensuração independente de campo nem a todo volume florestal efetivamente extraído no país.',last_verified='2026-08-17'),
+            dict(product_id='DP000414',resource_id='DR0106',product_name='Sinaflor — Volumes Explorados — Inventário Florestal 100% — Ibama',product_acronym='Volumes Explorados IF100',product_family='Sinaflor — volumes efetivamente explorados declarados',product_kind='dataset_series',product_description='Produtos e volumes efetivamente explorados declarados por detentores de POA Amazônia Legal e POA Outros Biomas com Inventário Florestal 100% no Sinaflor/Sinaflor+.',research_areas='Environmental management | Forest ecology | Environmental science',keywords='Sinaflor | explored volume | forest inventory 100% | POA | Amazon | forest products',geographic_coverage='Brasil — registros Sinaflor/Sinaflor+ dos tipos contemplados; com lacuna declarada para estados integrados via API sem registro da exploração',covers_brazil='sim',spatial_support='autorização/POA e produto florestal',spatial_resolution='por declaração de exploração, autorização e produto',temporal_coverage='conforme registros disponibilizados no acervo Sinaflor/Sinaflor+',temporal_resolution='por declaração/registro',update_frequency='semanal',product_status='ativo',version_or_collection='conjunto corrente; metadados de 24/01/2025',enumeration_scope='complete',product_page_url='https://dadosabertos.ibama.gov.br/dataset/volumes-explorados-if-100',methodology_url='https://dadosabertos.ibama.gov.br/dataset/volumes-explorados-if-100',primary_or_derived='primário',limitations='Dados são declaratórios. O portal informa que PA e MT, integrados via API para esses tipos autorizativos, não são contemplados porque não registram a exploração de seus volumes no Sinaflor; não usar como total nacional exaustivo.',last_verified='2026-08-17'),
+            dict(product_id='DP000415',resource_id='DR0106',product_name='Sinaflor — Autorização Especial — AUTESP — Ibama',product_acronym='AUTESP',product_family='Sinaflor — autorizações de exploração',product_kind='dataset_series',product_description='Solicitações e autorizações de licenciamento de exploração do tipo Autorização Especial (AUTESP) cadastradas no Sinaflor+.',research_areas='Environmental management | Forest ecology | Environmental science',keywords='Sinaflor | AUTESP | special authorization | forest exploitation | licensing | Ibama',geographic_coverage='Brasil — registros de AUTESP cadastrados no Sinaflor+',covers_brazil='sim',spatial_support='solicitação/autorização administrativa e empreendimento',spatial_resolution='por registro autorizativo',temporal_coverage='conforme acervo Sinaflor+ desde a implantação do tipo autorizativo',temporal_resolution='por solicitação/autorização',update_frequency='semanal',product_status='ativo',version_or_collection='v1.0; metadados atualizados em 24/01/2025',enumeration_scope='complete',product_page_url='https://dadosabertos.ibama.gov.br/dataset/sinaflor-autorizacao-especial',methodology_url='https://dadosabertos.ibama.gov.br/dataset/sinaflor-autorizacao-especial',primary_or_derived='primário',limitations='Solicitação ou autorização AUTESP é ato administrativo e não comprova exploração efetivamente executada, volume removido, regularidade posterior ou ausência de impacto ambiental.',last_verified='2026-08-17'),
+            dict(product_id='DP000416',resource_id='DR0106',product_name='RAPP — Pilhas e Baterias — Reciclador — Ibama',product_acronym='RAPP Pilhas Reciclador',product_family='RAPP — logística reversa e resíduos',product_kind='dataset_series',product_description='Informações declaradas por recicladores no RAPP sobre tipos, quantidades e pesos de pilhas e baterias recebidas, destinação final e localização dos estabelecimentos, conforme o Anexo K da IN Ibama nº 22/2021.',research_areas='Environmental management | Environmental science',keywords='RAPP | batteries | recycling | reverse logistics | waste | Ibama',geographic_coverage='Brasil — empresas declarantes sujeitas ao formulário correspondente do RAPP',covers_brazil='sim',spatial_support='estabelecimento/empresa e declaração',spatial_resolution='por declarante, tipo de pilha/bateria e período declarado',temporal_coverage='conforme declarações disponibilizadas sob a IN Ibama nº 22/2021',temporal_resolution='anual por declaração RAPP',update_frequency='conforme atualização do portal e ciclo declaratório',product_status='ativo',version_or_collection='conjunto corrente; publicado no portal em 2026',enumeration_scope='complete',product_page_url='https://dadosabertos.ibama.gov.br/dataset/rapp-pilhas-e-baterias-reciclador',methodology_url='https://dadosabertos.ibama.gov.br/dataset/rapp-pilhas-e-baterias-reciclador',primary_or_derived='primário',limitations='Dados são administrativos e declaratórios do universo obrigado ao RAPP. Quantidades recebidas e destinadas não constituem auditoria independente, inventário de todas as pilhas/baterias geradas no país ou medida direta de eficiência da logística reversa.',last_verified='2026-08-17'),
+            dict(product_id='DP000417',resource_id='DR0106',product_name='Supressão de Vegetação Não Florestal no Bioma Amazônia — Ibama',product_acronym='Supressão Não-Floresta Amazônia',product_family='Monitoramento de vegetação — Ibama/CENIMA',product_kind='dataset_series',product_description='Conjunto geoespacial de supressão de vegetação não florestal no bioma Amazônia, originado no monitoramento do Ibama/CENIMA.',research_areas='Environmental management | Forest ecology | Environmental science | Geospatial data',keywords='Amazon biome | non-forest vegetation | suppression | CENIMA | Ibama | geospatial',geographic_coverage='Bioma Amazônia no Brasil — áreas de vegetação não florestal contempladas pelo produto',covers_brazil='sim',spatial_support='polígonos/feições de supressão',spatial_resolution='conforme geometria e metodologia do produto de monitoramento',temporal_coverage='acervo histórico conforme produto PMDBBS/CENIMA disponibilizado',temporal_resolution='conforme período de mapeamento do produto',update_frequency='sem atualização corrente demonstrada; acervo histórico',product_status='arquivado',version_or_collection='acervo histórico; metadados do portal de 18/09/2021',enumeration_scope='complete',product_page_url='https://dadosabertos.ibama.gov.br/dataset/supressao-de-vegetacao-nao-florestal-no-bioma-amazonia',methodology_url='https://dadosabertos.ibama.gov.br/dataset/supressao-de-vegetacao-nao-florestal-no-bioma-amazonia',primary_or_derived='derivado',limitations='Produto histórico de monitoramento; não representa automaticamente supressão atual, toda mudança de cobertura na Amazônia ou desmatamento PRODES. Interpretar apenas dentro da definição de vegetação não florestal e do período/metodologia do produto.',last_verified='2026-08-17'),
+            dict(product_id='DP000418',resource_id='DR0106',product_name='Autorização Ambiental para Transporte Interestadual de Produtos Perigosos — AATIPP — Ibama',product_acronym='AATIPP',product_family='Controle ambiental de produtos perigosos',product_kind='dataset_series',product_description='Autorizações ambientais emitidas pelo Ibama para transporte marítimo e interestadual fluvial ou terrestre de produtos perigosos, no âmbito da IN Ibama nº 05/2012.',research_areas='Environmental management | Environmental science',keywords='AATIPP | hazardous products | transport | environmental authorization | Ibama',geographic_coverage='Brasil — transportes sujeitos à autorização ambiental interestadual/marítima de competência do Ibama',covers_brazil='sim',spatial_support='autorização administrativa, origem/destino e transportador conforme registro',spatial_resolution='por autorização/registro',temporal_coverage='desde 2012 conforme acervo oficial',temporal_resolution='por autorização/data de emissão',update_frequency='conforme atualização do sistema e do portal',product_status='ativo',version_or_collection='acervo desde 2012; conjunto corrente',enumeration_scope='complete',product_page_url='https://dadosabertos.ibama.gov.br/dataset/autorizacao-ambiental-para-o-transporte-interestadual-de-produtos-perigosos-aatipp',methodology_url='https://dadosabertos.ibama.gov.br/dataset/autorizacao-ambiental-para-o-transporte-interestadual-de-produtos-perigosos-aatipp',primary_or_derived='primário',limitations='A autorização é ato administrativo de controle preventivo; não mede transporte efetivamente realizado, quantidade efetivamente movimentada, acidente, emissão ou conformidade ao longo de todo o trajeto. O portal usa exemplos parametrizados para simplificar um acervo muito grande.',last_verified='2026-08-17'),
+          ]
+
+          distributions = [
+            dict(distribution_id='DD000433',product_id='DP000411',distribution_name='SIEMA — Comunicados de Acidentes Ambientais — dados abertos',access_url='https://dadosabertos.ibama.gov.br/dataset/siema-comunicado-de-acidente-ambiental',format='CSV | GeoJSON | SHP-ZIP',access_protocol='HTTPS / CKAN',access_tool='navegador web | API CKAN',free_download='sim',authentication_required='não',access_conditions='acesso público',license='Open Data Commons - Atribuição e Compartilha Igual',provider_attribution_required='sim',subset_support='por recursos e campos disponíveis no conjunto',notes='Distribuição oficial do Siema. Preservar que os registros são comunicações administrativas de acidentes ambientais.',last_verified='2026-08-17'),
+            dict(distribution_id='DD000434',product_id='DP000412',distribution_name='ADA — Ato Declaratório Ambiental — dados abertos',access_url='https://dadosabertos.ibama.gov.br/dataset/ato-declaratorio-ambiental-ada',format='HTML | CSV | XML | JSON',access_protocol='HTTPS / CKAN',access_tool='navegador web | API CKAN',free_download='sim',authentication_required='não',access_conditions='acesso público; consulta pode ser parametrizada por ano',license='Creative Commons Attribution',provider_attribution_required='sim',subset_support='por ano e registros disponíveis',notes='Distribuição oficial do ADA. Não tratar declaração como verificação independente da condição ambiental do imóvel.',last_verified='2026-08-17'),
+            dict(distribution_id='DD000435',product_id='DP000413',distribution_name='Volumes Explorados — Inventário Amostral — Sinaflor/Ibama',access_url='https://dadosabertos.ibama.gov.br/dataset/volumes-explorados-inventario-amostral',format='CSV | XML | JSON',access_protocol='HTTPS / CKAN',access_tool='navegador web | API CKAN',free_download='sim',authentication_required='não',access_conditions='acesso público',license='não determinada especificamente para os arquivos',provider_attribution_required='sim',subset_support='por campos e registros disponíveis no recurso',notes='Volumes efetivamente explorados declarados para os tipos autorizativos contemplados; não é medição independente de campo.',last_verified='2026-08-17'),
+            dict(distribution_id='DD000436',product_id='DP000414',distribution_name='Volumes Explorados — IF 100% — Sinaflor/Ibama',access_url='https://dadosabertos.ibama.gov.br/dataset/volumes-explorados-if-100',format='CSV | XML | JSON',access_protocol='HTTPS / CKAN',access_tool='navegador web | API CKAN',free_download='sim',authentication_required='não',access_conditions='acesso público',license='não determinada especificamente para os arquivos',provider_attribution_required='sim',subset_support='por campos e registros disponíveis no recurso',notes='Preservar lacuna explicitamente documentada para PA e MT nos tipos autorizativos integrados via API.',last_verified='2026-08-17'),
+            dict(distribution_id='DD000437',product_id='DP000415',distribution_name='Sinaflor — Autorização Especial — dados abertos',access_url='https://dadosabertos.ibama.gov.br/dataset/sinaflor-autorizacao-especial',format='CSV | JSON | XML',access_protocol='HTTPS / CKAN',access_tool='navegador web | API CKAN',free_download='sim',authentication_required='não',access_conditions='acesso público',license='Outra (Aberta)',provider_attribution_required='sim',subset_support='por campos e registros disponíveis no recurso',notes='Solicitações/autorizações AUTESP; ato administrativo não equivale a exploração realizada.',last_verified='2026-08-17'),
+            dict(distribution_id='DD000438',product_id='DP000416',distribution_name='RAPP — Pilhas e Baterias — Reciclador — dados abertos',access_url='https://dadosabertos.ibama.gov.br/dataset/rapp-pilhas-e-baterias-reciclador',format='CSV',access_protocol='HTTPS / CKAN',access_tool='navegador web | API CKAN',free_download='sim',authentication_required='não',access_conditions='acesso público; observar escopo declaratório do RAPP',license='não determinada especificamente para os arquivos',provider_attribution_required='sim',subset_support='por registros e campos disponíveis no recurso',notes='Dados declarados por recicladores no RAPP conforme IN Ibama nº 22/2021.',last_verified='2026-08-17'),
+            dict(distribution_id='DD000439',product_id='DP000417',distribution_name='Supressão de Vegetação Não Florestal — Bioma Amazônia — dados abertos',access_url='https://dadosabertos.ibama.gov.br/dataset/supressao-de-vegetacao-nao-florestal-no-bioma-amazonia',format='CSV | GeoJSON | SHP-ZIP',access_protocol='HTTPS / CKAN',access_tool='navegador web | API CKAN',free_download='sim',authentication_required='não',access_conditions='acesso público',license='Creative Commons Attribution',provider_attribution_required='sim',subset_support='por feições e atributos disponíveis',notes='Acervo histórico de monitoramento CENIMA/PMDBBS; não confundir com PRODES ou supressão atual.',last_verified='2026-08-17'),
+            dict(distribution_id='DD000440',product_id='DP000418',distribution_name='AATIPP — Autorizações para Transporte Interestadual de Produtos Perigosos — dados abertos',access_url='https://dadosabertos.ibama.gov.br/dataset/autorizacao-ambiental-para-o-transporte-interestadual-de-produtos-perigosos-aatipp',format='HTML | CSV | XML | JSON',access_protocol='HTTPS / CKAN',access_tool='navegador web | API CKAN',free_download='sim',authentication_required='não',access_conditions='acesso público; portal exemplifica subconjuntos parametrizados devido ao grande volume do acervo',license='Outra (Aberta)',provider_attribution_required='sim',subset_support='por parâmetros de origem/ano e campos disponíveis',notes='Acervo de autorizações desde 2012; autorização não comprova transporte realizado nem ausência de acidente.',last_verified='2026-08-17'),
+          ]
+
+          def append_rows(path, rows, id_field, unique_url_field=None):
+              with path.open('r', encoding='utf-8', newline='') as f:
+                  reader = csv.DictReader(f)
+                  existing = list(reader)
+                  fields = reader.fieldnames
+              ids = {r[id_field] for r in existing}
+              urls = {r.get(unique_url_field, '') for r in existing} if unique_url_field else set()
+              to_add = []
+              for row in rows:
+                  if row[id_field] in ids:
+                      raise SystemExit(f'duplicate id: {row[id_field]}')
+                  if unique_url_field and row.get(unique_url_field) in urls:
+                      raise SystemExit(f'duplicate canonical URL: {row.get(unique_url_field)}')
+                  missing = [k for k in fields if k not in row]
+                  extra = [k for k in row if k not in fields]
+                  if missing or extra:
+                      raise SystemExit(f'schema mismatch {row[id_field]} missing={missing} extra={extra}')
+                  to_add.append(row)
+              with path.open('a', encoding='utf-8', newline='') as f:
+                  writer = csv.DictWriter(f, fieldnames=fields, lineterminator='\n')
+                  writer.writerows(to_add)
+              return len(to_add)
+
+          np = append_rows(ppath, products, 'product_id', 'product_page_url')
+          nd = append_rows(dpath, distributions, 'distribution_id')
+          if (np, nd) != (8, 8):
+              raise SystemExit(f'unexpected append counts: products={np} distributions={nd}')
+          print(f'Appended {np} products and {nd} distributions')
+          PY
+      - name: Validate and rebuild
+        shell: bash
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Relational read-back
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          with Path('data/data_products.csv').open(encoding='utf-8', newline='') as f:
+              products=list(csv.DictReader(f))
+          with Path('data/product_distributions.csv').open(encoding='utf-8', newline='') as f:
+              dists=list(csv.DictReader(f))
+          pids={r['product_id'] for r in products}
+          newp=[r for r in products if r['product_id'] in {f'DP{i:06d}' for i in range(411,419)}]
+          newd=[r for r in dists if r['distribution_id'] in {f'DD{i:06d}' for i in range(433,441)}]
+          assert len(newp)==8, len(newp)
+          assert len(newd)==8, len(newd)
+          assert all(r['resource_id']=='DR0106' for r in newp)
+          assert all(r['product_id'] in pids for r in newd)
+          assert len({r['product_page_url'] for r in newp})==8
+          print('READBACK', len(products), len(dists), [r['product_id'] for r in newp], [r['distribution_id'] for r in newd])
+          PY
+      - name: Commit materialized batch and self-remove
+        shell: bash
+        run: |
+          rm -f .github/workflows/materialize-ibama-batch-20260817.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Expand verified Ibama environmental catalog batch'
+          git push origin HEAD:main
