@@ -22637,5 +22637,319 @@
     "available_protocols": [
       "HTTPS / web download"
     ]
+  },
+  {
+    "product_id": "DP000382",
+    "resource_id": "DR0106",
+    "product_name": "Fiscalização — Autos de Infração Ambiental — Ibama",
+    "product_acronym": "Autos de Infração Ibama",
+    "product_family": "Fiscalização ambiental — registros administrativos",
+    "product_kind": "dataset_series",
+    "product_description": "Conjunto oficial de autos de infração ambiental registrados no sistema de fiscalização do Ibama, com atributos do auto e tabelas relacionadas de enquadramento, coordenadas, biomas, espécimes e anexos.",
+    "research_areas": "Conservation | Environmental management | Geospatial data | Environmental science",
+    "keywords": "Ibama | environmental enforcement | infraction notices | coordinates | biomes | administrative records",
+    "geographic_coverage": "Brasil — território nacional",
+    "covers_brazil": "sim",
+    "spatial_support": "auto de infração | pares de coordenadas de referência | atributos e tabelas relacionadas",
+    "spatial_resolution": "pontual nas coordenadas de referência quando disponíveis; atributos por auto",
+    "temporal_coverage": "desde 1980; em funcionamento conforme metadados oficiais",
+    "temporal_resolution": "data e hora da lavratura do auto",
+    "update_frequency": "diária conforme a atualização do relatório operacional",
+    "product_status": "ativo",
+    "version_or_collection": "dataset corrente; metadados CKAN atualizados em 27/05/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/fiscalizacao-auto-de-infracao",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/fiscalizacao-auto-de-infracao",
+    "primary_or_derived": "primário",
+    "limitations": "Auto de infração é ato administrativo de fiscalização e não equivale, isoladamente, a decisão final de responsabilidade, censo de todos os ilícitos ambientais ou medida direta de impacto ecológico. Registros em papel podem ter sido cadastrados posteriormente e coordenadas são referências do local.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000403",
+        "product_id": "DP000382",
+        "distribution_name": "Autos de Infração Ibama — dados estruturados",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/fiscalizacao-auto-de-infracao",
+        "format": "CSV | XML | JSON | HTML",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download e consulta pública por recurso/formato",
+        "license": "Outra (Aberta), conforme catálogo CKAN do dataset",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela/recurso; filtros após download ou conforme recursos CKAN",
+        "notes": "Preservar as chaves entre auto principal e tabelas relacionadas; data de atualização de metadados não deve ser interpretada como data do último auto.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000383",
+    "resource_id": "DR0106",
+    "product_name": "Fiscalização — Termos de Embargo — Ibama",
+    "product_acronym": "Termos de Embargo Ibama",
+    "product_family": "Fiscalização ambiental — embargos",
+    "product_kind": "dataset_series",
+    "product_description": "Conjunto oficial de termos de embargo registrados no sistema de fiscalização do Ibama, incluindo atributos principais, itens, coordenadas, decisões judiciais, enquadramentos e histórico, complementado por camada geoespacial de áreas embargadas.",
+    "research_areas": "Conservation | Environmental management | Geospatial data | Environmental science",
+    "keywords": "Ibama | embargo | environmental enforcement | polygons | administrative records | sanctions",
+    "geographic_coverage": "Brasil — território nacional",
+    "covers_brazil": "sim",
+    "spatial_support": "termos administrativos | pontos de referência | polígonos de áreas embargadas quando disponíveis",
+    "spatial_resolution": "por termo; delimitação vetorial ou coordenadas conforme registro",
+    "temporal_coverage": "todos os termos registrados no sistema de fiscalização; série corrente",
+    "temporal_resolution": "data e hora da lavratura e histórico de alterações",
+    "update_frequency": "diária para o conjunto administrativo; recursos geoespaciais possuem atualização própria",
+    "product_status": "ativo",
+    "version_or_collection": "versão 2.0 do conjunto administrativo; camada geoespacial publicada separadamente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/fiscalizacao-termo-de-embargo",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/fiscalizacao-termo-de-embargo",
+    "primary_or_derived": "primário",
+    "limitations": "Embargo formaliza medida administrativa para paralisar obra ou atividade e resguardar o processo; não equivale automaticamente a decisão judicial definitiva, magnitude do dano ambiental ou condição atual da cobertura do solo. Situação, decisões e geometrias podem mudar.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000404",
+        "product_id": "DP000383",
+        "distribution_name": "Termos de Embargo Ibama — registros administrativos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/fiscalizacao-termo-de-embargo",
+        "format": "CSV | XML | JSON",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download e consulta pública por tabela/recurso",
+        "license": "Outra (Aberta), conforme catálogo CKAN do dataset administrativo",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela/recurso; atributos e histórico separados",
+        "notes": "O conjunto inclui tabelas próprias para itens, coordenadas, decisões judiciais, enquadramentos e histórico; preservar essas relações.",
+        "last_verified": "2026-08-17"
+      },
+      {
+        "distribution_id": "DD000405",
+        "product_id": "DP000383",
+        "distribution_name": "Termos de Embargo Ibama — polígonos de áreas embargadas",
+        "access_url": "https://dadosabertos.ibama.gov.br/pt_BR/dataset/termos-de-embargo",
+        "format": "SHP-ZIP",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | software SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público do recurso geoespacial",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "arquivo geoespacial; subset após download",
+        "notes": "Recurso geoespacial possui ciclo de atualização próprio e não deve ser presumido sincrônico com todas as tabelas administrativas do sistema de fiscalização.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON",
+      "SHP-ZIP"
+    ],
+    "available_protocols": [
+      "HTTPS download",
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000384",
+    "resource_id": "DR0106",
+    "product_name": "Sisfogo — Registros de Ocorrências de Incêndio (ROI) — Ibama/Prevfogo",
+    "product_acronym": "Sisfogo ROI",
+    "product_family": "Incêndios florestais — registros operacionais",
+    "product_kind": "dataset_series",
+    "product_description": "Registros de Ocorrências de Incêndio verificados pelas brigadas do Prevfogo e publicados pelo Ibama em formatos estruturados.",
+    "research_areas": "Fire ecology | Environmental management | Geospatial data | Environmental science",
+    "keywords": "Sisfogo | ROI | wildfire | fire occurrence | Prevfogo | Ibama",
+    "geographic_coverage": "Brasil — ocorrências verificadas pelas brigadas Prevfogo e registradas no Sisfogo",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de ocorrência de incêndio; localização conforme ficha operacional",
+    "spatial_resolution": "por ocorrência registrada; precisão depende do registro de campo",
+    "temporal_coverage": "registros operacionais disponíveis no Sisfogo; período varia conforme acervo",
+    "temporal_resolution": "por ocorrência",
+    "update_frequency": "conforme registros operacionais e publicação do conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto Sisfogo ROI corrente; metadados CKAN atualizados em 13/11/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/sisfogo-roi",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/sisfogo-roi",
+    "primary_or_derived": "primário",
+    "limitations": "ROI representa ocorrências verificadas e registradas por brigadas Prevfogo e não um censo de todos os incêndios do Brasil. Não é equivalente a foco de calor por satélite, área queimada mapeada ou evento de fogo derivado por sensoriamento remoto.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000406",
+        "product_id": "DP000384",
+        "distribution_name": "Sisfogo ROI — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/sisfogo-roi",
+        "format": "HTML | CSV | XML | JSON",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Creative Commons Atribuição, conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Manter ROI distinto de focos de calor, área queimada e demais produtos de fogo; cobertura depende das ocorrências verificadas pelas brigadas Prevfogo.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "HTML | CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000385",
+    "resource_id": "DR0106",
+    "product_name": "Sinaflor — POA Outros Biomas — Ibama",
+    "product_acronym": "Sinaflor POA Outros Biomas",
+    "product_family": "Autorizações e manejo florestal — registros administrativos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de solicitações e autorizações de licenciamento de exploração do tipo Plano Operacional Anual cadastradas no Sinaflor e situadas fora da Amazônia Legal.",
+    "research_areas": "Forest ecology | Land use and land cover | Environmental management | Environmental science",
+    "keywords": "Sinaflor | POA | forest management | authorization | logging | other biomes | Ibama",
+    "geographic_coverage": "Brasil fora da Amazônia Legal — registros de POA cadastrados no Sinaflor",
+    "covers_brazil": "sim",
+    "spatial_support": "solicitação/autorização administrativa e atributos associados",
+    "spatial_resolution": "por processo/POA; geometria e localização conforme registro",
+    "temporal_coverage": "registros cadastrados no Sinaflor; período conforme acervo",
+    "temporal_resolution": "por solicitação/autorização",
+    "update_frequency": "semanal conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 11/11/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-poa-outros-biomas",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-poa-outros-biomas",
+    "primary_or_derived": "primário",
+    "limitations": "Solicitação ou autorização de exploração não equivale a corte efetivamente realizado, volume removido observado ou desmatamento detectado. O produto cobre POA fora da Amazônia Legal e deve ser combinado com outros módulos do Sinaflor para análises nacionais completas.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000407",
+        "product_id": "DP000385",
+        "distribution_name": "Sinaflor POA Outros Biomas — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-poa-outros-biomas",
+        "format": "CSV | XML | JSON | metadados CSV",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Outra (Aberta), conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Distinguir solicitações de autorizações e não inferir execução material da exploração a partir do registro administrativo.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON | metadados CSV"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000386",
+    "resource_id": "DR0106",
+    "product_name": "Siscites — Licenças de Fauna e Flora Emitidas — Ibama",
+    "product_acronym": "Siscites",
+    "product_family": "Comércio internacional de fauna e flora — licenças",
+    "product_kind": "dataset_series",
+    "product_description": "Dados oficiais de licenças emitidas pelo Ibama para importação, exportação e reexportação de espécimes, produtos e subprodutos da fauna e flora silvestre brasileira e exótica, abrangidos ou não pela CITES.",
+    "research_areas": "Biodiversity | Conservation | Environmental management | Environmental science",
+    "keywords": "Siscites | CITES | wildlife trade | flora | fauna | import | export | permits | Ibama",
+    "geographic_coverage": "Brasil — licenças emitidas pelo Ibama para operações de importação, exportação e reexportação",
+    "covers_brazil": "sim",
+    "spatial_support": "licença/registro administrativo e partes envolvidas conforme base",
+    "spatial_resolution": "por licença/operação; não é camada espacial contínua",
+    "temporal_coverage": "licenças emitidas registradas no Siscites; série corrente",
+    "temporal_resolution": "por licença",
+    "update_frequency": "diária conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 26/05/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/siscites-licencas-de-fauna-e-flora-emitidas",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/siscites-licencas-de-fauna-e-flora-emitidas",
+    "primary_or_derived": "primário",
+    "limitations": "Licenças emitidas representam operações autorizadas administrativamente e não equivalem ao volume efetivamente transacionado, comércio ilegal, ocorrência natural das espécies ou impacto populacional. Comparações devem preservar espécie/táxon, tipo de operação, produto e regime CITES aplicável.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000408",
+        "product_id": "DP000386",
+        "distribution_name": "Siscites — licenças emitidas",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/siscites-licencas-de-fauna-e-flora-emitidas",
+        "format": "HTML | CSV | XML | JSON",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Creative Commons Atribuição, conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Não interpretar licença emitida como confirmação de comércio realizado nem como registro de ocorrência da espécie.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "HTML | CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
   }
 ]
