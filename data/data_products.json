@@ -21929,5 +21929,418 @@
     "available_protocols": [
       "HTTPS web"
     ]
+  },
+  {
+    "product_id": "DP000370",
+    "resource_id": "DR0105",
+    "product_name": "Limites das Unidades de Conservação Federais — ICMBio",
+    "product_acronym": "UC Federais ICMBio",
+    "product_family": "Unidades de Conservação — dados geoespaciais",
+    "product_kind": "map_layer_collection",
+    "product_description": "Camada vetorial oficial do ICMBio com limites de Unidades de Conservação federais disponibilizada para download e por geosserviços da INDE; a edição corrente explicitamente documentada foi atualizada em 30/06/2026.",
+    "research_areas": "Conservation | Biodiversity | Geospatial data | Environmental science",
+    "keywords": "protected areas | conservation units | federal UC | boundaries | ICMBio | WFS | WMS",
+    "geographic_coverage": "Brasil — Unidades de Conservação federais, exceto RPPNs federais no arquivo explicitamente identificado na página de 30/06/2026",
+    "covers_brazil": "sim",
+    "spatial_support": "polígonos vetoriais de Unidades de Conservação federais",
+    "spatial_resolution": "limites vetoriais oficiais; precisão e escala de origem variam conforme a unidade, ato e base cartográfica",
+    "temporal_coverage": "estado publicado em 30/06/2026; histórico depende das atualizações institucionais",
+    "temporal_resolution": "por atualização cadastral/cartográfica",
+    "update_frequency": "conforme atualização institucional",
+    "product_status": "ativo",
+    "version_or_collection": "limites atualizados em 30/06/2026; exceto Reservas Particulares Federais conforme página oficial",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio/dados_geoespaciais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais",
+    "methodology_url": "https://www.gov.br/icmbio/pt-br/assuntos/dados_geoespaciais",
+    "primary_or_derived": "misto",
+    "limitations": "O arquivo oficialmente datado de 30/06/2026 exclui RPPNs federais. Limites podem refletir atos e bases cartográficas de diferentes origens e não equivalem automaticamente a situação fundiária, domínio, zoneamento interno ou precisão cadastral.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0105",
+      "resource_name": "Dados e Sistemas de Biodiversidade e Unidades de Conservação — ICMBio",
+      "acronym": "ICMBio Dados",
+      "official_identity": "Infraestrutura institucional do ICMBio para dados de unidades de conservação, biodiversidade, gestão e monitoramento",
+      "homepage_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio",
+      "data_access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000391",
+        "product_id": "DP000370",
+        "distribution_name": "Limites de UCs federais — SHP e geosserviços INDE",
+        "access_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio/dados_geoespaciais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais",
+        "format": "SHP | OGC WFS | OGC WMS",
+        "access_protocol": "HTTPS download | OGC WFS/WMS",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos; selecionar camada/arquivo e preservar metadados e data da versão",
+        "license": "não determinada especificamente para os arquivos nesta auditoria; verificar metadados/termos da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por camada e por feições via geosserviço",
+        "notes": "A página oficial documenta limites atualizados em 30/06/2026, exceto RPPNs federais, e publica endpoints WFS/WMS via INDE além de download vetorial.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "SHP | OGC WFS | OGC WMS"
+    ],
+    "available_protocols": [
+      "HTTPS download | OGC WFS/WMS"
+    ]
+  },
+  {
+    "product_id": "DP000371",
+    "resource_id": "DR0105",
+    "product_name": "Atributos das Unidades de Conservação Federais — ICMBio",
+    "product_acronym": "Atributos UCs ICMBio",
+    "product_family": "Unidades de Conservação — dados tabulares",
+    "product_kind": "dataset_series",
+    "product_description": "Conjunto de dados abertos do ICMBio com atributos cadastrais e administrativos das Unidades de Conservação federais, disponibilizado em arquivos tabulares e acompanhado por metadados.",
+    "research_areas": "Conservation | Biodiversity | Geospatial data | Environmental science",
+    "keywords": "conservation units | protected areas | attributes | category | administration | ICMBio | open data",
+    "geographic_coverage": "Brasil — Unidades de Conservação federais representadas na base",
+    "covers_brazil": "sim",
+    "spatial_support": "registros tabulares por Unidade de Conservação federal",
+    "spatial_resolution": "por unidade de conservação; não é geometria de limite",
+    "temporal_coverage": "acervo institucional com arquivos de diferentes atualizações; página de dados abertos revisada em 2025",
+    "temporal_resolution": "por atualização do cadastro",
+    "update_frequency": "irregular conforme atualização institucional",
+    "product_status": "ativo",
+    "version_or_collection": "coleção de dados abertos corrente; arquivos devem ser datados individualmente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos/arquivos/atributos-das-unidades-de-conservacao-federais",
+    "methodology_url": "https://www.gov.br/icmbio/pt-br/assuntos/dados_geoespaciais",
+    "primary_or_derived": "primário",
+    "limitations": "Atributos administrativos não substituem a geometria oficial nem garantem atualização simultânea entre todos os campos. Datas, categorias, atos e demais atributos devem ser interpretados conforme a versão específica do arquivo.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0105",
+      "resource_name": "Dados e Sistemas de Biodiversidade e Unidades de Conservação — ICMBio",
+      "acronym": "ICMBio Dados",
+      "official_identity": "Infraestrutura institucional do ICMBio para dados de unidades de conservação, biodiversidade, gestão e monitoramento",
+      "homepage_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio",
+      "data_access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000392",
+        "product_id": "DP000371",
+        "distribution_name": "Atributos das UCs federais — dados abertos ICMBio",
+        "access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos/arquivos/atributos-das-unidades-de-conservacao-federais",
+        "format": "CSV | XLSX | formatos tabulares conforme arquivo",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | planilha | linguagem de análise",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público; identificar a data de atualização do arquivo utilizado",
+        "license": "não determinada especificamente para os arquivos nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo; filtragem local por atributos",
+        "notes": "A coleção reúne arquivos tabulares de atributos administrativos das UCs federais; versões devem ser tratadas individualmente e não substituem a geometria dos limites.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | formatos tabulares conforme arquivo"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000372",
+    "resource_id": "DR0105",
+    "product_name": "SAMGe — Sistema de Análise e Monitoramento de Gestão",
+    "product_acronym": "SAMGe",
+    "product_family": "Efetividade de gestão de unidades de conservação",
+    "product_kind": "indicator_family",
+    "product_description": "Sistema do ICMBio para análise e monitoramento da efetividade de gestão de Unidades de Conservação, estruturado em ciclos de aplicação e com painel público de resultados consolidados.",
+    "research_areas": "Conservation | Environmental management | Protected areas | Policy",
+    "keywords": "SAMGe | management effectiveness | conservation units | protected areas | indicators | ICMBio",
+    "geographic_coverage": "Brasil — Unidades de Conservação participantes conforme ciclo e esfera de gestão",
+    "covers_brazil": "sim",
+    "spatial_support": "Unidade de Conservação e agregações por ciclo/recorte",
+    "spatial_resolution": "por Unidade de Conservação participante; agregações conforme painel",
+    "temporal_coverage": "ciclos anuais; documentação corrente inclui ciclo 2025/2026",
+    "temporal_resolution": "por ciclo de aplicação",
+    "update_frequency": "anual por ciclo",
+    "product_status": "ativo",
+    "version_or_collection": "ciclo 2025/2026 e painel público de resultados consolidados",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/icmbio/pt-br/servicos/sistemas-do-icmbio/samge-sistema-de-analise-e-monitoramento-de-gestao",
+    "methodology_url": "https://www.gov.br/icmbio/pt-br/servicos/sistemas-do-icmbio/samge-sistema-de-analise-e-monitoramento-de-gestao",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicadores de efetividade de gestão sintetizam dimensões e respostas do instrumento e não medem diretamente condição ecológica, integridade da biodiversidade ou impacto causal da gestão. Comparações exigem preservar ciclo, escopo e metodologia.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0105",
+      "resource_name": "Dados e Sistemas de Biodiversidade e Unidades de Conservação — ICMBio",
+      "acronym": "ICMBio Dados",
+      "official_identity": "Infraestrutura institucional do ICMBio para dados de unidades de conservação, biodiversidade, gestão e monitoramento",
+      "homepage_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio",
+      "data_access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000393",
+        "product_id": "DP000372",
+        "distribution_name": "SAMGe — painel público de resultados consolidados",
+        "access_url": "https://www.gov.br/icmbio/pt-br/servicos/sistemas-do-icmbio/samge-sistema-de-analise-e-monitoramento-de-gestao",
+        "format": "dashboard web | tabelas/visualizações conforme painel",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública ao painel consolidado; procedimentos de aplicação/gestão possuem fluxos próprios",
+        "license": "não determinada especificamente para os dados do painel nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "filtros por UC, ciclo e dimensões conforme painel",
+        "notes": "A página oficial identifica o Painel Dinâmico de Resultados Consolidados e documentação do ciclo 2025/2026.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "dashboard web | tabelas/visualizações conforme painel"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000373",
+    "resource_id": "DR0105",
+    "product_name": "SALVE — Sistema de Avaliação do Risco de Extinção da Biodiversidade",
+    "product_acronym": "SALVE",
+    "product_family": "Avaliação do risco de extinção da fauna brasileira",
+    "product_kind": "data_service",
+    "product_description": "Sistema público do ICMBio que organiza informações e resultados do processo de avaliação do risco de extinção da fauna brasileira, desde a compilação de dados até avaliação e publicação das categorias.",
+    "research_areas": "Biodiversity | Conservation | Species assessment | Environmental science",
+    "keywords": "SALVE | extinction risk | threatened species | fauna | IUCN methodology | ICMBio",
+    "geographic_coverage": "Brasil — táxons da fauna brasileira submetidos ao processo de avaliação do ICMBio",
+    "covers_brazil": "sim",
+    "spatial_support": "espécie/táxon e informações de distribuição, ameaças e população usadas nas avaliações",
+    "spatial_resolution": "por táxon; registros espaciais dependem dos dados compilados em cada avaliação",
+    "temporal_coverage": "avaliações de diferentes ciclos; sistema e processo correntes em 2026",
+    "temporal_resolution": "por ciclo/avaliação de táxon",
+    "update_frequency": "contínua conforme processo de avaliação e publicação",
+    "product_status": "ativo",
+    "version_or_collection": "sistema corrente; processo normatizado em 2026 e baseado na metodologia de avaliação de risco da IUCN",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/fauna-brasileira/salve",
+    "methodology_url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/fauna-brasileira/fauna-brasileira",
+    "primary_or_derived": "derivado",
+    "limitations": "Categoria de risco é resultado de avaliação com critérios, evidências e data de referência; não equivale a abundância atual, probabilidade de ocorrência local ou tendência observada diretamente. Cobertura e qualidade de dados variam entre táxons.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0105",
+      "resource_name": "Dados e Sistemas de Biodiversidade e Unidades de Conservação — ICMBio",
+      "acronym": "ICMBio Dados",
+      "official_identity": "Infraestrutura institucional do ICMBio para dados de unidades de conservação, biodiversidade, gestão e monitoramento",
+      "homepage_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio",
+      "data_access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000394",
+        "product_id": "DP000373",
+        "distribution_name": "SALVE — interface pública de espécies avaliadas",
+        "access_url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/fauna-brasileira/salve",
+        "format": "aplicação web | fichas e resultados por táxon",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; usar data/ciclo da avaliação e documentação metodológica do táxon",
+        "license": "não determinada especificamente para os registros do sistema nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por espécie/táxon e campos disponíveis na interface",
+        "notes": "A interface pública divulga informações sobre a fauna avaliada; categoria de risco deve ser interpretada com critérios e ciclo de avaliação correspondentes.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "aplicação web | fichas e resultados por táxon"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000374",
+    "resource_id": "DR0105",
+    "product_name": "Programa Monitora — Monitoramento da Biodiversidade em Unidades de Conservação Federais",
+    "product_acronym": "Programa Monitora",
+    "product_family": "Monitoramento da biodiversidade em unidades de conservação",
+    "product_kind": "dataset_series",
+    "product_description": "Programa Nacional de Monitoramento da Biodiversidade do ICMBio, com subprogramas Terrestre, Aquático Continental e Marinho e Costeiro, protocolos de monitoramento e dados abertos associados à implementação em Unidades de Conservação federais.",
+    "research_areas": "Biodiversity | Conservation | Ecological monitoring | Environmental science",
+    "keywords": "Programa Monitora | biodiversity monitoring | conservation units | ecological monitoring | ICMBio",
+    "geographic_coverage": "Brasil — mais de 125 Unidades de Conservação federais participam do programa segundo a página institucional corrente",
+    "covers_brazil": "sim",
+    "spatial_support": "Unidades de Conservação | pontos | transectos | parcelas/amostras conforme componente e protocolo",
+    "spatial_resolution": "dependente do protocolo, grupo-alvo e componente de monitoramento",
+    "temporal_coverage": "programa instituído em 2017, reformulado em 2022; dados e ciclos posteriores conforme componente",
+    "temporal_resolution": "por campanha/ciclo e protocolo",
+    "update_frequency": "periódica conforme componente e disponibilização de dados",
+    "product_status": "ativo",
+    "version_or_collection": "programa corrente; dados abertos listados até junho de 2025 na página oficial auditada",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/icmbio/pt-br/assuntos/monitoramento",
+    "methodology_url": "https://www.gov.br/icmbio/pt-br/assuntos/monitoramento/conteudo/estrutura-do-programa-monitora",
+    "primary_or_derived": "misto",
+    "limitations": "Cobertura espacial, grupos-alvo, esforço e frequência variam por protocolo e UC. Arquivos de implementação/participação não equivalem automaticamente a observações biológicas brutas, abundância ou tendência; análises devem preservar desenho amostral e componente.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0105",
+      "resource_name": "Dados e Sistemas de Biodiversidade e Unidades de Conservação — ICMBio",
+      "acronym": "ICMBio Dados",
+      "official_identity": "Infraestrutura institucional do ICMBio para dados de unidades de conservação, biodiversidade, gestão e monitoramento",
+      "homepage_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio",
+      "data_access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000395",
+        "product_id": "DP000374",
+        "distribution_name": "Programa Monitora — dados abertos de monitoramento da biodiversidade",
+        "access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos/arquivos/monitoramento-da-biodiversidade-em-unidades-de-conservacao-federais",
+        "format": "CSV | XLSX | documentos de metadados conforme arquivo",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | planilha | linguagem de análise",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público; preservar protocolo, componente, UC e data do arquivo",
+        "license": "não determinada especificamente para os arquivos nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo e filtragem local por UC/componente",
+        "notes": "A página de dados abertos lista arquivos do Programa Monitora até junho de 2025; a página institucional do programa permanece corrente e informa participação superior a 125 UCs federais.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | documentos de metadados conforme arquivo"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000375",
+    "resource_id": "DR0105",
+    "product_name": "Planos de Ação Nacional para Conservação de Espécies Ameaçadas — dados abertos",
+    "product_acronym": "PAN ICMBio",
+    "product_family": "Planejamento para conservação de espécies ameaçadas",
+    "product_kind": "dataset_series",
+    "product_description": "Conjunto de dados abertos do ICMBio sobre Planos de Ação Nacional para Conservação de Espécies Ameaçadas de Extinção, incluindo identificação dos PAN, espécies, biomas, estados e outros vínculos publicados em arquivos tabulares.",
+    "research_areas": "Biodiversity | Conservation | Species management | Environmental policy",
+    "keywords": "PAN | threatened species | action plans | conservation | biomes | states | ICMBio",
+    "geographic_coverage": "Brasil — PAN e espécies/territórios abrangidos conforme cada plano",
+    "covers_brazil": "sim",
+    "spatial_support": "PAN | espécie/táxon | bioma | Unidade da Federação e demais vínculos tabulares",
+    "spatial_resolution": "por entidade/vínculo do plano; não constitui mapa contínuo de distribuição das espécies",
+    "temporal_coverage": "planos em diferentes períodos; coleção de dados abertos com atualizações até 09/06/2025 na página auditada",
+    "temporal_resolution": "por plano, vigência e atualização do conjunto",
+    "update_frequency": "semestral conforme catálogo de dados abertos do ICMBio",
+    "product_status": "ativo",
+    "version_or_collection": "coleção de dados abertos; arquivo 202506-PAN.xlsx atualizado em 09/06/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos/arquivos/planos-de-acao-nacional-para-a-conservacao-das-especies-ameacadas-de-extincao-pan",
+    "methodology_url": "https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan",
+    "primary_or_derived": "misto",
+    "limitations": "PAN é instrumento de gestão e planejamento, não registro de ocorrência, abundância ou estado populacional. Relações com espécies, biomas e estados expressam escopo do plano e não substituem dados biogeográficos ou avaliação de risco.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0105",
+      "resource_name": "Dados e Sistemas de Biodiversidade e Unidades de Conservação — ICMBio",
+      "acronym": "ICMBio Dados",
+      "official_identity": "Infraestrutura institucional do ICMBio para dados de unidades de conservação, biodiversidade, gestão e monitoramento",
+      "homepage_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio",
+      "data_access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000396",
+        "product_id": "DP000375",
+        "distribution_name": "PAN — arquivos tabulares de dados abertos",
+        "access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos/arquivos/planos-de-acao-nacional-para-a-conservacao-das-especies-ameacadas-de-extincao-pan",
+        "format": "CSV | XLSX | ODS | metadados",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | planilha | linguagem de análise",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público; preservar versão do arquivo, vigência do PAN e chaves entre tabelas",
+        "license": "não determinada especificamente para os arquivos de dados nesta auditoria; página gov.br declara licença do conteúdo do site",
+        "provider_attribution_required": "sim",
+        "subset_support": "arquivos por entidade; filtragem local por PAN, espécie, bioma e estado",
+        "notes": "A coleção oficial inclui arquivo 202506-PAN.xlsx atualizado em 09/06/2025 e tabelas relacionadas; PAN é instrumento de gestão, não dado de ocorrência.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | ODS | metadados"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000376",
+    "resource_id": "DR0105",
+    "product_name": "Painéis Dinâmicos do ICMBio — ICMBio em Números",
+    "product_acronym": "ICMBio em Números",
+    "product_family": "Painéis institucionais de conservação e biodiversidade",
+    "product_kind": "catalog",
+    "product_description": "Índice institucional de painéis dinâmicos do ICMBio que reúne visualizações temáticas sobre unidades de conservação, gestão, pesquisa e monitoramento da biodiversidade, proteção, visitação, cavernas e espécies ameaçadas.",
+    "research_areas": "Conservation | Biodiversity | Environmental management | Geospatial data",
+    "keywords": "dashboards | conservation units | biodiversity | monitoring | threatened species | ICMBio",
+    "geographic_coverage": "Brasil — cobertura varia conforme painel temático",
+    "covers_brazil": "sim",
+    "spatial_support": "agregações nacionais e territoriais conforme painel",
+    "spatial_resolution": "heterogênea; depende da base e indicador de cada painel",
+    "temporal_coverage": "painéis correntes com séries e referências próprias",
+    "temporal_resolution": "varia por painel e indicador",
+    "update_frequency": "varia por painel",
+    "product_status": "ativo",
+    "version_or_collection": "índice corrente de painéis dinâmicos",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio/paineis-dinamicos-do-icmbio",
+    "methodology_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio/paineis-dinamicos-do-icmbio",
+    "primary_or_derived": "agregador",
+    "limitations": "Catálogo de painéis heterogêneos, não dataset único. Cada indicador ou visualização possui fonte, definição, data e granularidade próprias; valores devem ser rastreados à base de origem antes de uso analítico.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0105",
+      "resource_name": "Dados e Sistemas de Biodiversidade e Unidades de Conservação — ICMBio",
+      "acronym": "ICMBio Dados",
+      "official_identity": "Infraestrutura institucional do ICMBio para dados de unidades de conservação, biodiversidade, gestão e monitoramento",
+      "homepage_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio",
+      "data_access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000397",
+        "product_id": "DP000376",
+        "distribution_name": "ICMBio em Números — índice de painéis dinâmicos",
+        "access_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio/paineis-dinamicos-do-icmbio",
+        "format": "dashboards e visualizações web",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; condições de exportação variam por painel",
+        "license": "não determinada especificamente para os dados de cada painel nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tema e filtros de cada painel",
+        "notes": "Índice de múltiplos painéis; não tratar o conjunto como dataset homogêneo e rastrear cada indicador à sua fonte e referência temporal.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "dashboards e visualizações web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
   }
 ]
