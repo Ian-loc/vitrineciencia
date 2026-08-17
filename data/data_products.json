@@ -30029,5 +30029,949 @@
     "available_protocols": [
       "HTTPS download | API quando disponibilizada"
     ]
+  },
+  {
+    "product_id": "DP000506",
+    "resource_id": "DR0115",
+    "product_name": "Terras Indígenas no Brasil — limites e situação fundiária",
+    "product_acronym": "Terras Indígenas FUNAI",
+    "product_family": "terras indígenas e situação fundiária",
+    "product_kind": "dataset_series",
+    "product_description": "Camada vetorial e tabelas oficiais da FUNAI para terras indígenas no Brasil, com situação fundiária e, em recursos associados, portarias e datas de publicação.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Sensoriamento Remoto e Geoinformação",
+    "keywords": "terras indígenas | limites | situação fundiária | portarias | FUNAI",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "polígono vetorial | tabela",
+    "spatial_resolution": "conforme limite administrativo/fundiário; consultar metadados",
+    "temporal_coverage": "cadastro corrente; atualização mensal documentada",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "estado corrente verificado em 2026-08; página atualizada em 2026-07-29",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+    "methodology_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+    "primary_or_derived": "primário",
+    "limitations": "Limite e fase administrativa não medem população, cobertura vegetal ou posse individual. Situação jurídica pode mudar; registrar a data de extração e não substituir atos legais pelos geodados.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0115",
+      "resource_name": "Terras Indígenas e Geoprocessamento — FUNAI",
+      "acronym": "FUNAI Geo",
+      "official_identity": "Coordenação Geral de Geoprocessamento da Fundação Nacional dos Povos Indígenas — FUNAI",
+      "homepage_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+      "data_access_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas/geprocessamento"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000531",
+        "product_id": "DP000506",
+        "distribution_name": "FUNAI — Terras Indígenas: downloads e GeoServer",
+        "access_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+        "format": "SHP | KML | XLSX | CSV | ODS | OGC",
+        "access_protocol": "HTTPS download | GeoServer OGC",
+        "access_tool": "navegador web | cliente SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos; selecionar formato/camada e registrar data",
+        "license": "reprodução permitida com citação da FUNAI, salvo exceções/terceiros",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | UF | Amazônia Legal conforme recurso",
+        "notes": "A página oficial informa atualização mensal e também recursos com portarias/datas; GeoServer oferece camadas interoperáveis.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "SHP | KML | XLSX | CSV | ODS | OGC"
+    ],
+    "available_protocols": [
+      "HTTPS download | GeoServer OGC"
+    ]
+  },
+  {
+    "product_id": "DP000507",
+    "resource_id": "DR0115",
+    "product_name": "Terras Indígenas em Estudo — FUNAI",
+    "product_acronym": "TI em Estudo FUNAI",
+    "product_family": "terras indígenas em estudo",
+    "product_kind": "dataset_series",
+    "product_description": "Registros geoespaciais e tabulares de terras indígenas em fase de estudo, disponibilizados separadamente das terras indígenas com delimitações formalizadas em outras fases.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Sensoriamento Remoto e Geoinformação",
+    "keywords": "terras indígenas em estudo | área em estudo | portarias | FUNAI",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "ponto e/ou área conforme recurso | tabela",
+    "spatial_resolution": "conforme recurso e etapa administrativa",
+    "temporal_coverage": "cadastro corrente; atualização mensal documentada",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "estado corrente verificado em 2026-08",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+    "methodology_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+    "primary_or_derived": "primário",
+    "limitations": "Terra indígena em estudo não equivale a terra delimitada, declarada, homologada ou regularizada. Geometria e status são condicionados à etapa administrativa e podem ser alterados.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0115",
+      "resource_name": "Terras Indígenas e Geoprocessamento — FUNAI",
+      "acronym": "FUNAI Geo",
+      "official_identity": "Coordenação Geral de Geoprocessamento da Fundação Nacional dos Povos Indígenas — FUNAI",
+      "homepage_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+      "data_access_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas/geprocessamento"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000532",
+        "product_id": "DP000507",
+        "distribution_name": "FUNAI — Terras Indígenas em Estudo",
+        "access_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+        "format": "SHP/KML quando disponível | XLSX | CSV | ODS | OGC",
+        "access_protocol": "HTTPS download | GeoServer OGC",
+        "access_tool": "navegador web | cliente SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; preservar fase administrativa e versão",
+        "license": "reprodução permitida com citação da FUNAI, salvo exceções/terceiros",
+        "provider_attribution_required": "sim",
+        "subset_support": "por camada/UF conforme recurso",
+        "notes": "Produto separado das terras indígenas em outras fases administrativas.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "SHP/KML quando disponível | XLSX | CSV | ODS | OGC"
+    ],
+    "available_protocols": [
+      "HTTPS download | GeoServer OGC"
+    ]
+  },
+  {
+    "product_id": "DP000508",
+    "resource_id": "DR0115",
+    "product_name": "Aldeias Indígenas — FUNAI",
+    "product_acronym": "Aldeias FUNAI",
+    "product_family": "aldeias indígenas",
+    "product_kind": "dataset_series",
+    "product_description": "Localizações geoespaciais de aldeias indígenas disponibilizadas pela FUNAI para consulta e integração territorial.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Sensoriamento Remoto e Geoinformação",
+    "keywords": "aldeias indígenas | localidades | pontos | FUNAI",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "ponto vetorial",
+    "spatial_resolution": "localização pontual; precisão deve ser verificada no metadado",
+    "temporal_coverage": "cadastro corrente; atualização mensal documentada",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "estado corrente verificado em 2026-08",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+    "methodology_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+    "primary_or_derived": "primário",
+    "limitations": "Cadastro de aldeias conhecidas pela FUNAI não é censo populacional nem inventário necessariamente exaustivo de assentamentos; localização não define por si só limite territorial ou população residente.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0115",
+      "resource_name": "Terras Indígenas e Geoprocessamento — FUNAI",
+      "acronym": "FUNAI Geo",
+      "official_identity": "Coordenação Geral de Geoprocessamento da Fundação Nacional dos Povos Indígenas — FUNAI",
+      "homepage_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+      "data_access_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas/geprocessamento"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000533",
+        "product_id": "DP000508",
+        "distribution_name": "FUNAI — Aldeias Indígenas",
+        "access_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+        "format": "SHP/KML | XLSX | CSV | ODS | OGC",
+        "access_protocol": "HTTPS download | GeoServer OGC",
+        "access_tool": "navegador web | cliente SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; registrar data de extração",
+        "license": "reprodução permitida com citação da FUNAI, salvo exceções/terceiros",
+        "provider_attribution_required": "sim",
+        "subset_support": "camada nacional",
+        "notes": "GeoServer documenta Aldeias Indígenas como pontos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "SHP/KML | XLSX | CSV | ODS | OGC"
+    ],
+    "available_protocols": [
+      "HTTPS download | GeoServer OGC"
+    ]
+  },
+  {
+    "product_id": "DP000509",
+    "resource_id": "DR0115",
+    "product_name": "Coordenações Regionais e Coordenações Técnicas Locais — FUNAI",
+    "product_acronym": "CR/CTL FUNAI",
+    "product_family": "estrutura territorial-administrativa da FUNAI",
+    "product_kind": "dataset_series",
+    "product_description": "Dados geográficos das Coordenações Regionais e Coordenações Técnicas Locais da FUNAI, usados para representar a estrutura territorial de atuação institucional.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Sensoriamento Remoto e Geoinformação",
+    "keywords": "coordenações regionais | CTL | CR | jurisdição | FUNAI",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "pontos e jurisdições conforme recurso",
+    "spatial_resolution": "conforme camada",
+    "temporal_coverage": "cadastro corrente; atualização mensal documentada",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "estado corrente verificado em 2026-08",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+    "methodology_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+    "primary_or_derived": "primário",
+    "limitations": "Representa organização administrativa da FUNAI; não equivale a territórios indígenas, DSEI, regiões estatísticas ou limites político-administrativos.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0115",
+      "resource_name": "Terras Indígenas e Geoprocessamento — FUNAI",
+      "acronym": "FUNAI Geo",
+      "official_identity": "Coordenação Geral de Geoprocessamento da Fundação Nacional dos Povos Indígenas — FUNAI",
+      "homepage_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+      "data_access_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas/geprocessamento"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000534",
+        "product_id": "DP000509",
+        "distribution_name": "FUNAI — Coordenações Regionais e Técnicas Locais",
+        "access_url": "https://www.gov.br/funai/pt-br/atuacao/terras-indigenas/geoprocessamento-e-mapas",
+        "format": "SHP/KML | XLSX | CSV | ODS | OGC",
+        "access_protocol": "HTTPS download | GeoServer OGC",
+        "access_tool": "navegador web | cliente SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; distinguir CR e CTL",
+        "license": "reprodução permitida com citação da FUNAI, salvo exceções/terceiros",
+        "provider_attribution_required": "sim",
+        "subset_support": "por camada",
+        "notes": "A página disponibiliza CR e CTL separadamente; este produto representa a família administrativa e não as terras indígenas.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "SHP/KML | XLSX | CSV | ODS | OGC"
+    ],
+    "available_protocols": [
+      "HTTPS download | GeoServer OGC"
+    ]
+  },
+  {
+    "product_id": "DP000510",
+    "resource_id": "DR0116",
+    "product_name": "SIGMINE — Processos Minerários",
+    "product_acronym": "SIGMINE Processos",
+    "product_family": "processos minerários georreferenciados",
+    "product_kind": "dataset_series",
+    "product_description": "Poligonais e atributos de processos minerários ativos e inativos disponibilizados pela ANM, com atualização diária.",
+    "research_areas": "Geociências, Solos e Geografia Física | Planejamento Territorial e Políticas Públicas | Sensoriamento Remoto e Geoinformação",
+    "keywords": "processos minerários | poligonais | títulos minerários | SIGMINE | ANM",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "polígono vetorial",
+    "spatial_resolution": "geometria administrativa do processo",
+    "temporal_coverage": "cadastro dinâmico; atualização diária",
+    "temporal_resolution": "diária",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "portal SIGMINE 2026; dados gerados diariamente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/anm/pt-br/acesso-a-informacao/dados-abertos/bases-de-dados",
+    "methodology_url": "https://www.gov.br/anm/pt-br/assuntos/acesso-a-sistemas",
+    "primary_or_derived": "primário",
+    "limitations": "Poligonal de processo não prova lavra ativa, ocorrência mineral, impacto ambiental ou direito definitivo. O SIGMINE é informativo e pode ter defasagem aproximada de um dia; efeitos legais exigem consulta aos instrumentos oficiais.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0116",
+      "resource_name": "Geoinformação Mineral e Dados Abertos — ANM",
+      "acronym": "ANM Geo/SIGMINE",
+      "official_identity": "Infraestrutura de geoinformação e dados abertos da Agência Nacional de Mineração — ANM",
+      "homepage_url": "https://www.gov.br/anm/pt-br",
+      "data_access_url": "https://dadosabertos.anm.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000535",
+        "product_id": "DP000510",
+        "distribution_name": "ANM — SIGMINE Processos Minerários",
+        "access_url": "https://dadosabertos.anm.gov.br/SIGMINE/PROCESSOS_MINERARIOS/",
+        "format": "Shapefile ZIP | KMZ para processos ativos",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | cliente SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads nacionais e por UF; dados gerados diariamente",
+        "license": "dados abertos ANM; verificar metadados do conjunto",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | UF",
+        "notes": "Diretório oficial auditado em 2026-08; BRASIL.zip e arquivos por UF disponíveis.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "Shapefile ZIP | KMZ para processos ativos"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000511",
+    "resource_id": "DR0116",
+    "product_name": "SIGMINE — Áreas de Bloqueio",
+    "product_acronym": "SIGMINE Bloqueio",
+    "product_family": "áreas de bloqueio minerário",
+    "product_kind": "dataset_series",
+    "product_description": "Áreas registradas no SIGMINE em que interesses públicos ou outras restrições podem bloquear ou condicionar a atividade minerária.",
+    "research_areas": "Geociências, Solos e Geografia Física | Planejamento Territorial e Políticas Públicas",
+    "keywords": "bloqueio minerário | conflitos de uso | restrições | SIGMINE | ANM",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "polígono vetorial",
+    "spatial_resolution": "conforme ato/cadastro de bloqueio",
+    "temporal_coverage": "cadastro dinâmico",
+    "temporal_resolution": "diária",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "portal SIGMINE 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/anm/pt-br/acesso-a-informacao/dados-abertos/bases-de-dados",
+    "methodology_url": "https://www.gov.br/anm/pt-br/acesso-a-informacao/perguntas-frequentes/bloqueio-de-area",
+    "primary_or_derived": "primário",
+    "limitations": "Bloqueio é instrumento administrativo e não equivale automaticamente a área ambientalmente protegida; fundamento, vigência, abrangência e compatibilidade devem ser conferidos no processo correspondente.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0116",
+      "resource_name": "Geoinformação Mineral e Dados Abertos — ANM",
+      "acronym": "ANM Geo/SIGMINE",
+      "official_identity": "Infraestrutura de geoinformação e dados abertos da Agência Nacional de Mineração — ANM",
+      "homepage_url": "https://www.gov.br/anm/pt-br",
+      "data_access_url": "https://dadosabertos.anm.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000536",
+        "product_id": "DP000511",
+        "distribution_name": "ANM — SIGMINE Áreas de Bloqueio",
+        "access_url": "https://dadosabertos.anm.gov.br/SIGMINE/BLOQUEIO.zip",
+        "format": "Shapefile ZIP",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | cliente SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público",
+        "license": "dados abertos ANM; verificar metadados do conjunto",
+        "provider_attribution_required": "sim",
+        "subset_support": "camada nacional",
+        "notes": "Área de bloqueio é camada administrativa distinta das poligonais de processos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "Shapefile ZIP"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000512",
+    "resource_id": "DR0116",
+    "product_name": "SIGMINE — Reservas Garimpeiras",
+    "product_acronym": "SIGMINE Reservas Garimpeiras",
+    "product_family": "reservas garimpeiras",
+    "product_kind": "dataset_series",
+    "product_description": "Camada oficial de reservas garimpeiras disponibilizada entre os conjuntos geoespaciais do SIGMINE.",
+    "research_areas": "Geociências, Solos e Geografia Física | Planejamento Territorial e Políticas Públicas",
+    "keywords": "reserva garimpeira | garimpo | mineração | SIGMINE | ANM",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "polígono vetorial",
+    "spatial_resolution": "conforme delimitação administrativa",
+    "temporal_coverage": "cadastro dinâmico",
+    "temporal_resolution": "diária",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "portal SIGMINE 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/anm/pt-br/acesso-a-informacao/dados-abertos/bases-de-dados",
+    "methodology_url": "https://www.gov.br/anm/pt-br/acesso-a-informacao/dados-abertos/bases-de-dados",
+    "primary_or_derived": "primário",
+    "limitations": "Reserva garimpeira é categoria jurídico-administrativa; não demonstra mineração efetiva, intensidade de extração, legalidade de operações individuais ou impacto ambiental observado.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0116",
+      "resource_name": "Geoinformação Mineral e Dados Abertos — ANM",
+      "acronym": "ANM Geo/SIGMINE",
+      "official_identity": "Infraestrutura de geoinformação e dados abertos da Agência Nacional de Mineração — ANM",
+      "homepage_url": "https://www.gov.br/anm/pt-br",
+      "data_access_url": "https://dadosabertos.anm.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000537",
+        "product_id": "DP000512",
+        "distribution_name": "ANM — SIGMINE Reservas Garimpeiras",
+        "access_url": "https://dadosabertos.anm.gov.br/SIGMINE/RESERVAS_GARIMPEIRAS.zip",
+        "format": "Shapefile ZIP",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | cliente SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público",
+        "license": "dados abertos ANM; verificar metadados do conjunto",
+        "provider_attribution_required": "sim",
+        "subset_support": "camada nacional",
+        "notes": "Recurso oficial separado no diretório SIGMINE.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "Shapefile ZIP"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000513",
+    "resource_id": "DR0116",
+    "product_name": "SIGMINE — Áreas de Proteção de Fonte",
+    "product_acronym": "SIGMINE Proteção de Fonte",
+    "product_family": "proteção de fontes minerais",
+    "product_kind": "dataset_series",
+    "product_description": "Áreas de proteção de fonte disponibilizadas pela ANM no conjunto SIGMINE.",
+    "research_areas": "Geociências, Solos e Geografia Física | Recursos Hídricos e Oceanografia | Planejamento Territorial e Políticas Públicas",
+    "keywords": "proteção de fonte | água mineral | mineração | SIGMINE | ANM",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "polígono vetorial",
+    "spatial_resolution": "conforme delimitação administrativa",
+    "temporal_coverage": "cadastro dinâmico",
+    "temporal_resolution": "diária",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "portal SIGMINE 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/anm/pt-br/acesso-a-informacao/dados-abertos/bases-de-dados",
+    "methodology_url": "https://www.gov.br/anm/pt-br/acesso-a-informacao/dados-abertos/bases-de-dados",
+    "primary_or_derived": "primário",
+    "limitations": "Área administrativa de proteção de fonte não é mapa hidrogeológico completo nem medição de qualidade/disponibilidade da água; interpretar junto ao processo e à regulamentação aplicável.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0116",
+      "resource_name": "Geoinformação Mineral e Dados Abertos — ANM",
+      "acronym": "ANM Geo/SIGMINE",
+      "official_identity": "Infraestrutura de geoinformação e dados abertos da Agência Nacional de Mineração — ANM",
+      "homepage_url": "https://www.gov.br/anm/pt-br",
+      "data_access_url": "https://dadosabertos.anm.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000538",
+        "product_id": "DP000513",
+        "distribution_name": "ANM — SIGMINE Proteção de Fonte",
+        "access_url": "https://dadosabertos.anm.gov.br/SIGMINE/PROTECAO_FONTE.zip",
+        "format": "Shapefile ZIP",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | cliente SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público",
+        "license": "dados abertos ANM; verificar metadados do conjunto",
+        "provider_attribution_required": "sim",
+        "subset_support": "camada nacional",
+        "notes": "Recurso oficial separado no diretório SIGMINE.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "Shapefile ZIP"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000514",
+    "resource_id": "DR0116",
+    "product_name": "SIGMINE — Áreas de Servidão",
+    "product_acronym": "SIGMINE Servidão",
+    "product_family": "servidões minerárias",
+    "product_kind": "dataset_series",
+    "product_description": "Áreas de servidão associadas a atividades minerárias disponibilizadas pela ANM no portal de dados geoespaciais.",
+    "research_areas": "Geociências, Solos e Geografia Física | Planejamento Territorial e Políticas Públicas",
+    "keywords": "servidão minerária | mineração | SIGMINE | ANM",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "polígono vetorial",
+    "spatial_resolution": "conforme delimitação administrativa",
+    "temporal_coverage": "cadastro dinâmico",
+    "temporal_resolution": "diária",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "portal SIGMINE 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.anm.gov.br/SIGMINE/",
+    "methodology_url": "https://www.gov.br/anm/pt-br/acesso-a-informacao/dados-abertos/bases-de-dados",
+    "primary_or_derived": "primário",
+    "limitations": "Servidão minerária é objeto administrativo específico e não deve ser confundida com poligonal do processo, propriedade fundiária ou área efetivamente ocupada em campo.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0116",
+      "resource_name": "Geoinformação Mineral e Dados Abertos — ANM",
+      "acronym": "ANM Geo/SIGMINE",
+      "official_identity": "Infraestrutura de geoinformação e dados abertos da Agência Nacional de Mineração — ANM",
+      "homepage_url": "https://www.gov.br/anm/pt-br",
+      "data_access_url": "https://dadosabertos.anm.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000539",
+        "product_id": "DP000514",
+        "distribution_name": "ANM — SIGMINE Área de Servidão",
+        "access_url": "https://dadosabertos.anm.gov.br/SIGMINE/AREA_SERVIDAO.zip",
+        "format": "Shapefile ZIP",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | cliente SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público",
+        "license": "dados abertos ANM; verificar metadados do conjunto",
+        "provider_attribution_required": "sim",
+        "subset_support": "camada nacional",
+        "notes": "Recurso oficial separado no diretório SIGMINE.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "Shapefile ZIP"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000515",
+    "resource_id": "DR0116",
+    "product_name": "SIGMINE — Arrendamentos",
+    "product_acronym": "SIGMINE Arrendamentos",
+    "product_family": "arrendamentos minerários",
+    "product_kind": "dataset_series",
+    "product_description": "Poligonais de arrendamentos disponibilizadas separadamente pela ANM no conjunto SIGMINE.",
+    "research_areas": "Geociências, Solos e Geografia Física | Planejamento Territorial e Políticas Públicas",
+    "keywords": "arrendamento minerário | mineração | SIGMINE | ANM",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "polígono vetorial",
+    "spatial_resolution": "conforme cadastro do arrendamento",
+    "temporal_coverage": "cadastro dinâmico",
+    "temporal_resolution": "diária",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "portal SIGMINE 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.anm.gov.br/SIGMINE/",
+    "methodology_url": "https://www.gov.br/anm/pt-br/acesso-a-informacao/dados-abertos/bases-de-dados",
+    "primary_or_derived": "primário",
+    "limitations": "Arrendamento é relação/título administrativo e não prova operação de lavra, produção ou impacto no período analisado.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0116",
+      "resource_name": "Geoinformação Mineral e Dados Abertos — ANM",
+      "acronym": "ANM Geo/SIGMINE",
+      "official_identity": "Infraestrutura de geoinformação e dados abertos da Agência Nacional de Mineração — ANM",
+      "homepage_url": "https://www.gov.br/anm/pt-br",
+      "data_access_url": "https://dadosabertos.anm.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000540",
+        "product_id": "DP000515",
+        "distribution_name": "ANM — SIGMINE Arrendamentos",
+        "access_url": "https://dadosabertos.anm.gov.br/SIGMINE/ARRENDAMENTO.zip",
+        "format": "Shapefile ZIP",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | cliente SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público",
+        "license": "dados abertos ANM; verificar metadados do conjunto",
+        "provider_attribution_required": "sim",
+        "subset_support": "camada nacional",
+        "notes": "Recurso oficial separado no diretório SIGMINE.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "Shapefile ZIP"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000516",
+    "resource_id": "DR0116",
+    "product_name": "SIGBM — Barragens de Mineração",
+    "product_acronym": "SIGBM",
+    "product_family": "segurança de barragens de mineração",
+    "product_kind": "data_service",
+    "product_description": "Cadastro e sistema público da ANM para barragens de mineração, com localização, características técnicas, classificação de risco/dano potencial e informações de segurança.",
+    "research_areas": "Geociências, Solos e Geografia Física | Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia",
+    "keywords": "barragens de mineração | segurança de barragens | risco | dano potencial | SIGBM | ANM",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "estrutura georreferenciada e atributos cadastrais",
+    "spatial_resolution": "conforme cadastro da estrutura",
+    "temporal_coverage": "cadastro corrente e históricos classificatórios",
+    "temporal_resolution": "tempo real para informações públicas correntes; históricos conforme painel",
+    "update_frequency": "contínua",
+    "product_status": "ativo",
+    "version_or_collection": "SIGBM público corrente; manual atualizado em 2026-06",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/anm/pt-br/assuntos/acesso-a-sistemas/sistema-integrado-de-gestao-de-barragens-de-mineracao-sigbm-versao-publica",
+    "methodology_url": "https://www.gov.br/anm/pt-br/assuntos/acesso-a-sistemas/sistema-integrado-de-gestao-de-barragens-de-mineracao-sigbm-versao-publica",
+    "primary_or_derived": "primário",
+    "limitations": "Dados incluem informações declaradas pelos empreendedores e validações de fiscalização. Classificação e condição podem mudar; cadastro não equivale a medição independente de estabilidade nem a previsão de ruptura.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0116",
+      "resource_name": "Geoinformação Mineral e Dados Abertos — ANM",
+      "acronym": "ANM Geo/SIGMINE",
+      "official_identity": "Infraestrutura de geoinformação e dados abertos da Agência Nacional de Mineração — ANM",
+      "homepage_url": "https://www.gov.br/anm/pt-br",
+      "data_access_url": "https://dadosabertos.anm.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000541",
+        "product_id": "DP000516",
+        "distribution_name": "ANM — SIGBM público e extração de dados",
+        "access_url": "https://dadosabertos.anm.gov.br/SIGBM/",
+        "format": "CSV e recursos do sistema público",
+        "access_protocol": "HTTPS download | aplicação web",
+        "access_tool": "navegador web | ferramenta de análise",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados correntes e históricos conforme recurso",
+        "license": "dados abertos ANM; páginas gov.br CC BY-ND 3.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por estrutura e filtros territoriais",
+        "notes": "SIGBM público fornece cadastro, classificação atualizada e painéis; dados de empreendedor podem ser atualizados a qualquer tempo.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV e recursos do sistema público"
+    ],
+    "available_protocols": [
+      "HTTPS download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000517",
+    "resource_id": "DR0117",
+    "product_name": "SINISA 2024 — Gestão Municipal",
+    "product_acronym": "SINISA Gestão Municipal",
+    "product_family": "gestão municipal do saneamento",
+    "product_kind": "indicator_family",
+    "product_description": "Resultados do módulo Gestão Municipal da primeira coleta SINISA, com informações sobre prestadores, reguladores, planejamento municipal, prestação regionalizada e soluções alternativas.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia",
+    "keywords": "gestão municipal | saneamento | prestadores | reguladores | planejamento | SINISA",
+    "geographic_coverage": "Brasil; municípios respondentes/regularizados conforme divulgação",
+    "covers_brazil": "sim",
+    "spatial_support": "município e estruturas de gestão",
+    "spatial_resolution": "não aplicável a raster; unidade municipal/administrativa",
+    "temporal_coverage": "ano de referência 2023; coleta/divulgação SINISA 2024",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "SINISA 2024 — ano de referência 2023",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa",
+    "methodology_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/area-do-prestador/gestao-municipal",
+    "primary_or_derived": "primário",
+    "limitations": "Registro declaratório de gestão. Existência de plano, prestador, regulador ou solução alternativa não mede por si só cobertura, qualidade ou efetividade do serviço; considerar regularidade e não resposta.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0117",
+      "resource_name": "Sistema Nacional de Informações em Saneamento Básico — SINISA",
+      "acronym": "SINISA",
+      "official_identity": "Sistema Nacional de Informações em Saneamento Básico do Ministério das Cidades",
+      "homepage_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa",
+      "data_access_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000542",
+        "product_id": "DP000517",
+        "distribution_name": "SINISA 2024 — Gestão Municipal: relatório e planilhas",
+        "access_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa",
+        "format": "XLSX/ZIP | PDF | HTML",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "usar glossário, ano de referência 2023 e lista de regularidade",
+        "license": "CC BY-ND 3.0 no portal; verificar arquivo específico",
+        "provider_attribution_required": "sim",
+        "subset_support": "município conforme planilha",
+        "notes": "Primeira coleta SINISA; módulo Gestão Municipal não deve ser confundido com indicadores dos serviços.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX/ZIP | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000518",
+    "resource_id": "DR0117",
+    "product_name": "SINISA 2024 — Abastecimento de Água",
+    "product_acronym": "SINISA Água",
+    "product_family": "abastecimento de água",
+    "product_kind": "indicator_family",
+    "product_description": "Informações e indicadores do módulo de Abastecimento de Água do SINISA 2024, ano de referência 2023.",
+    "research_areas": "Recursos Hídricos e Oceanografia | Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia",
+    "keywords": "abastecimento de água | cobertura | perdas | prestação | indicadores | SINISA",
+    "geographic_coverage": "Brasil; prestadores e municípios conforme regularidade da coleta",
+    "covers_brazil": "sim",
+    "spatial_support": "prestador | município | agregações",
+    "spatial_resolution": "não aplicável a raster",
+    "temporal_coverage": "ano de referência 2023",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "SINISA 2024 — ano de referência 2023; planilhas retificadas quando aplicável",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa",
+    "methodology_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa",
+    "primary_or_derived": "primário",
+    "limitations": "Indicadores dependem de dados declarados, população atendida, definições operacionais e universo regular. Cobertura do serviço não equivale diretamente à qualidade da água; preservar retificações.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0117",
+      "resource_name": "Sistema Nacional de Informações em Saneamento Básico — SINISA",
+      "acronym": "SINISA",
+      "official_identity": "Sistema Nacional de Informações em Saneamento Básico do Ministério das Cidades",
+      "homepage_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa",
+      "data_access_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000543",
+        "product_id": "DP000518",
+        "distribution_name": "SINISA 2024 — Abastecimento de Água: informações e indicadores",
+        "access_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa",
+        "format": "XLSX/ZIP | PDF | HTML",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "usar versões/retificações mais recentes e glossários",
+        "license": "CC BY-ND 3.0 no portal; verificar arquivo específico",
+        "provider_attribution_required": "sim",
+        "subset_support": "prestador | município conforme planilha",
+        "notes": "A área de arquivos registra atualizações/retificações de planilhas do ano-base 2023.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX/ZIP | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000519",
+    "resource_id": "DR0117",
+    "product_name": "SINISA 2024 — Esgotamento Sanitário",
+    "product_acronym": "SINISA Esgoto",
+    "product_family": "esgotamento sanitário",
+    "product_kind": "indicator_family",
+    "product_description": "Informações e indicadores do módulo de Esgotamento Sanitário do SINISA 2024, ano de referência 2023.",
+    "research_areas": "Recursos Hídricos e Oceanografia | Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia",
+    "keywords": "esgotamento sanitário | coleta | tratamento | indicadores | SINISA",
+    "geographic_coverage": "Brasil; prestadores e municípios conforme regularidade da coleta",
+    "covers_brazil": "sim",
+    "spatial_support": "prestador | município | agregações",
+    "spatial_resolution": "não aplicável a raster",
+    "temporal_coverage": "ano de referência 2023",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "SINISA 2024 — ano de referência 2023; retificações oficiais posteriores",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa",
+    "methodology_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/planilhas-de-informacoes-e-indicadores",
+    "primary_or_derived": "primário",
+    "limitations": "Coleta, tratamento, volume e população atendida são conceitos distintos. Usar versões retificadas quando publicadas e considerar prestadores/municípios sem regularidade ou não respondentes.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0117",
+      "resource_name": "Sistema Nacional de Informações em Saneamento Básico — SINISA",
+      "acronym": "SINISA",
+      "official_identity": "Sistema Nacional de Informações em Saneamento Básico do Ministério das Cidades",
+      "homepage_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa",
+      "data_access_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000544",
+        "product_id": "DP000519",
+        "distribution_name": "SINISA 2024 — Esgotamento Sanitário: informações e indicadores",
+        "access_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/planilhas-de-informacoes-e-indicadores",
+        "format": "XLSX | PDF | HTML",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "priorizar planilhas retificadas e registrar versão",
+        "license": "CC BY-ND 3.0 no portal; verificar arquivo específico",
+        "provider_attribution_required": "sim",
+        "subset_support": "prestador | município conforme planilha",
+        "notes": "Página oficial lista retificações específicas para informações e indicadores de esgotamento.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000520",
+    "resource_id": "DR0117",
+    "product_name": "SINISA 2024 — Resíduos Sólidos",
+    "product_acronym": "SINISA Resíduos",
+    "product_family": "manejo de resíduos sólidos",
+    "product_kind": "indicator_family",
+    "product_description": "Informações e indicadores do módulo de Limpeza Urbana e Manejo de Resíduos Sólidos da primeira coleta SINISA, ano de referência 2023.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia",
+    "keywords": "resíduos sólidos | limpeza urbana | coleta | destinação | indicadores | SINISA",
+    "geographic_coverage": "Brasil; municípios e prestadores conforme módulo",
+    "covers_brazil": "sim",
+    "spatial_support": "município | prestador | agregações",
+    "spatial_resolution": "não aplicável a raster",
+    "temporal_coverage": "ano de referência 2023",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "SINISA 2024 — ano de referência 2023",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa",
+    "methodology_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa",
+    "primary_or_derived": "primário",
+    "limitations": "Dados sobre geração, coleta, infraestrutura e destinação são declaratórios e possuem universos/denominadores próprios; não equivalem automaticamente a massa ambientalmente disposta ou impacto medido.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0117",
+      "resource_name": "Sistema Nacional de Informações em Saneamento Básico — SINISA",
+      "acronym": "SINISA",
+      "official_identity": "Sistema Nacional de Informações em Saneamento Básico do Ministério das Cidades",
+      "homepage_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa",
+      "data_access_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000545",
+        "product_id": "DP000520",
+        "distribution_name": "SINISA 2024 — Resíduos Sólidos: informações e indicadores",
+        "access_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa",
+        "format": "XLSX/ZIP | PDF | HTML",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "usar glossários e atestados de regularidade",
+        "license": "CC BY-ND 3.0 no portal; verificar arquivo específico",
+        "provider_attribution_required": "sim",
+        "subset_support": "município/prestador conforme planilha",
+        "notes": "Resultados oficiais da primeira coleta, ano-base 2023.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX/ZIP | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000521",
+    "resource_id": "DR0117",
+    "product_name": "SINISA 2024 — Águas Pluviais",
+    "product_acronym": "SINISA Águas Pluviais",
+    "product_family": "drenagem e manejo de águas pluviais",
+    "product_kind": "indicator_family",
+    "product_description": "Informações e indicadores do módulo de Drenagem e Manejo das Águas Pluviais Urbanas do SINISA 2024, ano de referência 2023.",
+    "research_areas": "Recursos Hídricos e Oceanografia | Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia",
+    "keywords": "drenagem urbana | águas pluviais | infraestrutura | alagamentos | indicadores | SINISA",
+    "geographic_coverage": "Brasil; municípios respondentes/regularizados conforme divulgação",
+    "covers_brazil": "sim",
+    "spatial_support": "município | infraestrutura declarada | agregações",
+    "spatial_resolution": "não aplicável a raster",
+    "temporal_coverage": "ano de referência 2023",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "SINISA 2024 — ano de referência 2023",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa",
+    "methodology_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa",
+    "primary_or_derived": "primário",
+    "limitations": "Infraestrutura e gestão declaradas não equivalem a desempenho hidráulico medido, risco de inundação ou ausência de alagamentos. Considerar universo respondente, definições e regularidade do módulo.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0117",
+      "resource_name": "Sistema Nacional de Informações em Saneamento Básico — SINISA",
+      "acronym": "SINISA",
+      "official_identity": "Sistema Nacional de Informações em Saneamento Básico do Ministério das Cidades",
+      "homepage_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa",
+      "data_access_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000546",
+        "product_id": "DP000521",
+        "distribution_name": "SINISA 2024 — Águas Pluviais: informações e indicadores",
+        "access_url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa/resultados-sinisa",
+        "format": "XLSX/ZIP | PDF | HTML",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "usar glossários e atestados de regularidade",
+        "license": "CC BY-ND 3.0 no portal; verificar arquivo específico",
+        "provider_attribution_required": "sim",
+        "subset_support": "município conforme planilha",
+        "notes": "Resultados oficiais da primeira coleta, ano-base 2023.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX/ZIP | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
   }
 ]
