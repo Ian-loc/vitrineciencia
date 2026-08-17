@@ -26923,5 +26923,1400 @@
     "available_protocols": [
       "HTTPS / SIGWeb"
     ]
+  },
+  {
+    "product_id": "DP000454",
+    "resource_id": "DR0112",
+    "product_name": "Current Weather Data — OpenWeather",
+    "product_acronym": "OpenWeather Current",
+    "product_family": "OpenWeather — current and forecast weather",
+    "product_kind": "data_service",
+    "product_description": "Condições meteorológicas atuais para qualquer localização, com temperatura, pressão, umidade, vento, nebulosidade, precipitação e demais parâmetros retornados conforme ocorrência e disponibilidade.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia",
+    "keywords": "tempo atual | temperatura | pressão | umidade | vento | precipitação | nuvens | API",
+    "geographic_coverage": "global, incluindo Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "consulta por latitude/longitude; também existem identificadores/localidades legados",
+    "spatial_resolution": "ponto de consulta; suporte efetivo depende das observações e modelos processados pela OpenWeather",
+    "temporal_coverage": "estado meteorológico atual",
+    "temporal_resolution": "instantâneo/atual no tempo de referência retornado pela API",
+    "update_frequency": "atualização operacional contínua; frequência efetiva depende do plano e das fontes",
+    "product_status": "ativo",
+    "version_or_collection": "Current Weather Data API 2.5",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://openweathermap.org/api/current",
+    "methodology_url": "https://openweathermap.org/api/current",
+    "primary_or_derived": "misto",
+    "limitations": "Dados combinam modelos, satélites, radares e estações. O ponto consultado não deve ser interpretado automaticamente como observação local de estação; preservar timestamp, unidades, coordenadas e campos efetivamente retornados.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0112",
+      "resource_name": "OpenWeather — Weather, Air Pollution, Solar and Fire Weather APIs",
+      "acronym": "OpenWeather",
+      "official_identity": "OpenWeather developer weather data platform and APIs",
+      "homepage_url": "https://openweathermap.org/",
+      "data_access_url": "https://openweathermap.org/api"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000477",
+        "product_id": "DP000454",
+        "distribution_name": "Current Weather Data — REST API",
+        "access_url": "https://openweathermap.org/api/current",
+        "format": "JSON | XML | HTML",
+        "access_protocol": "REST API | HTTPS",
+        "access_tool": "script | cliente HTTP | navegador",
+        "free_download": "parcial",
+        "authentication_required": "sim",
+        "access_conditions": "conta OpenWeather e API key; incluído em planos gratuitos e pagos conforme página de produtos/preços",
+        "license": "Open License/termos OpenWeather conforme plano; CC BY-SA 4.0 e requisitos de atribuição/share-alike para planos aplicáveis; licenças OpenWeather for Business podem diferir",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "latitude/longitude | unidades | idioma | formato",
+        "notes": "Atribuição depende da licença/plano; nos planos entre Free e Professional a OpenWeather exige atribuição. Preferir coordenadas; geocodificação embutida por nome/ID está depreciada.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "JSON | XML | HTML"
+    ],
+    "available_protocols": [
+      "REST API | HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000455",
+    "resource_id": "DR0112",
+    "product_name": "5 Day / 3 Hour Forecast — OpenWeather",
+    "product_acronym": "OpenWeather 5d/3h",
+    "product_family": "OpenWeather — current and forecast weather",
+    "product_kind": "dataset_series",
+    "product_description": "Previsão meteorológica de cinco dias para qualquer localização, com valores em intervalos de três horas e parâmetros meteorológicos associados.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia",
+    "keywords": "previsão do tempo | 5 dias | 3 horas | temperatura | precipitação | vento | API",
+    "geographic_coverage": "global, incluindo Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "consulta por latitude/longitude",
+    "spatial_resolution": "ponto de consulta; grade/modelo meteorológico subjacente não deve ser inferido da coordenada solicitada",
+    "temporal_coverage": "até 5 dias à frente",
+    "temporal_resolution": "3 horas",
+    "update_frequency": "operacional; consultar documentação/plano para frequência de atualização dos dados",
+    "product_status": "ativo",
+    "version_or_collection": "5 Day / 3 Hour Forecast API 2.5",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://openweathermap.org/api/forecast5",
+    "methodology_url": "https://openweathermap.org/api/forecast5",
+    "primary_or_derived": "derivado",
+    "limitations": "É previsão modelada, não observação futura. Acurácia varia por local, horizonte e fenômeno; registrar data da consulta, tempo de validade, coordenadas e unidades.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0112",
+      "resource_name": "OpenWeather — Weather, Air Pollution, Solar and Fire Weather APIs",
+      "acronym": "OpenWeather",
+      "official_identity": "OpenWeather developer weather data platform and APIs",
+      "homepage_url": "https://openweathermap.org/",
+      "data_access_url": "https://openweathermap.org/api"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000478",
+        "product_id": "DP000455",
+        "distribution_name": "5 Day / 3 Hour Forecast — REST API",
+        "access_url": "https://openweathermap.org/api/forecast5",
+        "format": "JSON | XML",
+        "access_protocol": "REST API | HTTPS",
+        "access_tool": "script | cliente HTTP",
+        "free_download": "parcial",
+        "authentication_required": "sim",
+        "access_conditions": "conta OpenWeather e API key; acesso conforme plano",
+        "license": "Open License/termos OpenWeather conforme plano; CC BY-SA 4.0 e requisitos de atribuição/share-alike para planos aplicáveis; licenças OpenWeather for Business podem diferir",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "latitude/longitude | unidades | idioma | quantidade de timestamps",
+        "notes": "Previsão de 5 dias com passo de 3 horas. Atribuição depende da licença/plano aplicável.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "JSON | XML"
+    ],
+    "available_protocols": [
+      "REST API | HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000456",
+    "resource_id": "DR0112",
+    "product_name": "One Call API 4.0 — OpenWeather",
+    "product_acronym": "One Call 4.0",
+    "product_family": "OpenWeather — integrated weather timeline",
+    "product_kind": "data_service",
+    "product_description": "API integrada por coordenadas para condições atuais, previsões em múltiplas escalas temporais, alertas governamentais e linhas temporais históricas/previstas.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "One Call | tempo atual | previsão minuto | previsão horária | previsão diária | histórico | alertas | API",
+    "geographic_coverage": "global, incluindo Brasil; alertas dependem das fontes nacionais disponíveis",
+    "covers_brazil": "sim",
+    "spatial_support": "consulta por latitude/longitude",
+    "spatial_resolution": "ponto de consulta; suporte meteorológico subjacente depende do endpoint e do modelo",
+    "temporal_coverage": "condições atuais, previsões e linha temporal histórica; documentação vigente anuncia 47+ anos de histórico em endpoints aplicáveis",
+    "temporal_resolution": "minuto | 15 minutos | hora | dia, conforme endpoint",
+    "update_frequency": "por solicitação; atualização operacional depende do tipo de dado",
+    "product_status": "ativo",
+    "version_or_collection": "One Call API 4.0",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://openweathermap.org/api/one-call-4",
+    "methodology_url": "https://openweathermap.org/api/one-call-4",
+    "primary_or_derived": "misto",
+    "limitations": "Requer assinatura própria e paginação pode gerar chamadas adicionais. Horizontes e limites variam entre endpoints; alertas dependem da cobertura das fontes governamentais.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0112",
+      "resource_name": "OpenWeather — Weather, Air Pollution, Solar and Fire Weather APIs",
+      "acronym": "OpenWeather",
+      "official_identity": "OpenWeather developer weather data platform and APIs",
+      "homepage_url": "https://openweathermap.org/",
+      "data_access_url": "https://openweathermap.org/api"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000479",
+        "product_id": "DP000456",
+        "distribution_name": "One Call API 4.0 — REST API",
+        "access_url": "https://openweathermap.org/api/one-call-4",
+        "format": "JSON",
+        "access_protocol": "REST API | HTTPS",
+        "access_tool": "script | cliente HTTP",
+        "free_download": "parcial",
+        "authentication_required": "sim",
+        "access_conditions": "assinatura separada One Call API 4.0; API key; limite padrão documentado de 2.000 chamadas/dia após assinatura, ajustável no plano",
+        "license": "Open License/termos OpenWeather conforme plano; CC BY-SA 4.0 e requisitos de atribuição/share-alike para planos aplicáveis; licenças OpenWeather for Business podem diferir",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "latitude/longitude | endpoint | intervalo temporal | unidades | idioma | paginação",
+        "notes": "Alguns endpoints são paginados e cada página conta como nova chamada. Atribuição e cobrança dependem da assinatura.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "JSON"
+    ],
+    "available_protocols": [
+      "REST API | HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000457",
+    "resource_id": "DR0112",
+    "product_name": "Historical Weather Data — OpenWeather",
+    "product_acronym": "OpenWeather History",
+    "product_family": "OpenWeather — historical weather",
+    "product_kind": "dataset_series",
+    "product_description": "Dados meteorológicos históricos por localização, disponibilizados por Weather History API e por produtos bulk/marketplace para séries mais extensas.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia",
+    "keywords": "histórico meteorológico | série temporal | temperatura | precipitação | vento | API | bulk",
+    "geographic_coverage": "global, incluindo Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "consulta por latitude/longitude ou arquivos bulk por localizações/produtos",
+    "spatial_resolution": "ponto/localização; suporte efetivo depende da fonte e do processamento meteorológico",
+    "temporal_coverage": "histórico; produtos bulk correntes são anunciados com 47+ anos, desde 1979",
+    "temporal_resolution": "horária no Weather History API; outras agregações dependem do produto bulk",
+    "update_frequency": "arquivo histórico atualizado conforme o produto; consulta sob demanda",
+    "product_status": "ativo",
+    "version_or_collection": "Weather History API 2.5 | History Bulk",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://openweathermap.org/api/history",
+    "methodology_url": "https://openweathermap.org/api/history",
+    "primary_or_derived": "misto",
+    "limitations": "A profundidade histórica e os limites por chamada dependem da assinatura; API horária e produtos bulk possuem condições diferentes. Não confundir série reconstruída/processada com observação de estação específica.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0112",
+      "resource_name": "OpenWeather — Weather, Air Pollution, Solar and Fire Weather APIs",
+      "acronym": "OpenWeather",
+      "official_identity": "OpenWeather developer weather data platform and APIs",
+      "homepage_url": "https://openweathermap.org/",
+      "data_access_url": "https://openweathermap.org/api"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000480",
+        "product_id": "DP000457",
+        "distribution_name": "Weather History API — histórico horário",
+        "access_url": "https://openweathermap.org/api/history",
+        "format": "JSON",
+        "access_protocol": "REST API | HTTPS",
+        "access_tool": "script | cliente HTTP",
+        "free_download": "não",
+        "authentication_required": "sim",
+        "access_conditions": "acesso histórico por assinatura; a documentação indica Professional/Expert para recursos e limites específicos",
+        "license": "Open License/termos OpenWeather conforme plano; CC BY-SA 4.0 e requisitos de atribuição/share-alike para planos aplicáveis; licenças OpenWeather for Business podem diferir",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "latitude/longitude | início/fim | número de horas | unidades",
+        "notes": "O Weather History API retorna registros horários; profundidade e quantidade por chamada dependem do plano.",
+        "last_verified": "2026-08-17"
+      },
+      {
+        "distribution_id": "DD000481",
+        "product_id": "DP000457",
+        "distribution_name": "History Bulk / History Forecast Bulk — arquivos",
+        "access_url": "https://openweathermap.org/api/history-bulk",
+        "format": "CSV | JSON",
+        "access_protocol": "HTTP download | marketplace",
+        "access_tool": "navegador web | script após aquisição",
+        "free_download": "não",
+        "authentication_required": "sim",
+        "access_conditions": "produto histórico bulk comercial; aquisição/assinatura conforme marketplace e plano OpenWeather",
+        "license": "Open License/termos OpenWeather conforme plano; CC BY-SA 4.0 e requisitos de atribuição/share-alike para planos aplicáveis; licenças OpenWeather for Business podem diferir",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "localização | período | produto adquirido",
+        "notes": "Adequado a séries históricas extensas; preservar período, versão do arquivo e condições de licença da aquisição.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON",
+      "JSON"
+    ],
+    "available_protocols": [
+      "HTTP download | marketplace",
+      "REST API | HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000458",
+    "resource_id": "DR0112",
+    "product_name": "Air Pollution API — OpenWeather",
+    "product_acronym": "OpenWeather Air Pollution",
+    "product_family": "OpenWeather — environmental APIs",
+    "product_kind": "data_service",
+    "product_description": "Dados atuais, previstos e históricos de qualidade do ar por coordenadas, incluindo índice de qualidade do ar e concentrações de CO, NO, NO₂, O₃, SO₂, NH₃, PM2.5 e PM10.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia",
+    "keywords": "qualidade do ar | poluição atmosférica | AQI | PM2.5 | PM10 | ozônio | NO2 | SO2 | API",
+    "geographic_coverage": "global, incluindo Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "consulta por latitude/longitude",
+    "spatial_resolution": "ponto de consulta; não equivale a monitor local de estação",
+    "temporal_coverage": "atual | histórico | previsão de 4 dias",
+    "temporal_resolution": "horária para previsão; timestamps retornados para atual e histórico",
+    "update_frequency": "operacional; consulta sob demanda",
+    "product_status": "ativo",
+    "version_or_collection": "Air Pollution API 2.5",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://openweathermap.org/api/air-pollution",
+    "methodology_url": "https://openweathermap.org/api/air-pollution",
+    "primary_or_derived": "derivado",
+    "limitations": "AQI e concentrações são fornecidos pelo serviço e não substituem rede regulatória local. Para estudos epidemiológicos/ecológicos, avaliar validação espacial e temporal independente e registrar versão, coordenadas e período.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0112",
+      "resource_name": "OpenWeather — Weather, Air Pollution, Solar and Fire Weather APIs",
+      "acronym": "OpenWeather",
+      "official_identity": "OpenWeather developer weather data platform and APIs",
+      "homepage_url": "https://openweathermap.org/",
+      "data_access_url": "https://openweathermap.org/api"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000482",
+        "product_id": "DP000458",
+        "distribution_name": "Air Pollution API — current, forecast and history",
+        "access_url": "https://openweathermap.org/api/air-pollution",
+        "format": "JSON",
+        "access_protocol": "REST API | HTTPS",
+        "access_tool": "script | cliente HTTP",
+        "free_download": "parcial",
+        "authentication_required": "sim",
+        "access_conditions": "conta OpenWeather e API key; página principal informa inclusão em assinaturas gratuitas e pagas",
+        "license": "Open License/termos OpenWeather conforme plano; CC BY-SA 4.0 e requisitos de atribuição/share-alike para planos aplicáveis; licenças OpenWeather for Business podem diferir",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "latitude/longitude | atual | previsão | intervalo histórico",
+        "notes": "Inclui AQI e CO, NO, NO2, O3, SO2, NH3, PM2.5 e PM10. Atribuição depende da licença/plano.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "JSON"
+    ],
+    "available_protocols": [
+      "REST API | HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000459",
+    "resource_id": "DR0112",
+    "product_name": "Weather Maps 2.0 — OpenWeather",
+    "product_acronym": "Weather Maps 2.0",
+    "product_family": "OpenWeather — weather maps",
+    "product_kind": "map_layer_collection",
+    "product_description": "Coleção de camadas cartográficas meteorológicas em tiles para condições atuais, previsões e histórico, incluindo precipitação, neve, vento, pressão, temperatura, umidade e nebulosidade.",
+    "research_areas": "Clima e Ciências Atmosféricas | Sensoriamento Remoto e Geoinformação",
+    "keywords": "mapas meteorológicos | tiles | precipitação | temperatura | vento | pressão | umidade | nuvens",
+    "geographic_coverage": "global, incluindo Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "tiles XYZ em múltiplos níveis de zoom",
+    "spatial_resolution": "dependente do nível de zoom e da camada; zoom do tile não representa necessariamente a resolução meteorológica nativa",
+    "temporal_coverage": "atual | previsão até 10 dias | histórico desde 18/03/2019 na variante documentada de 3 horas",
+    "temporal_resolution": "3 horas na variante documentada de Weather Maps 2.0; existe oferta de 1 hora sob condições comerciais próprias",
+    "update_frequency": "operacional; conforme variante/plano",
+    "product_status": "ativo",
+    "version_or_collection": "Weather Maps 2.0",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://openweathermap.org/api/weather-map-2",
+    "methodology_url": "https://openweathermap.org/api/weather-map-2",
+    "primary_or_derived": "derivado",
+    "limitations": "Tiles são uma distribuição cartográfica e não evidenciam a resolução meteorológica nativa. Acesso e cadência dependem do plano; registrar camada, data, zoom e parâmetros usados.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0112",
+      "resource_name": "OpenWeather — Weather, Air Pollution, Solar and Fire Weather APIs",
+      "acronym": "OpenWeather",
+      "official_identity": "OpenWeather developer weather data platform and APIs",
+      "homepage_url": "https://openweathermap.org/",
+      "data_access_url": "https://openweathermap.org/api"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000483",
+        "product_id": "DP000459",
+        "distribution_name": "Weather Maps 2.0 — tiles meteorológicos",
+        "access_url": "https://openweathermap.org/api/weather-map-2",
+        "format": "tiles de mapa | imagem raster",
+        "access_protocol": "XYZ tiles | HTTPS",
+        "access_tool": "Leaflet | OpenLayers | Google Maps | cliente de tiles",
+        "free_download": "não",
+        "authentication_required": "sim",
+        "access_conditions": "API key; variante de 3 horas incluída em Developer, Professional e Expert; variante de 1 hora sob cotação",
+        "license": "Open License/termos OpenWeather conforme plano; CC BY-SA 4.0 e requisitos de atribuição/share-alike para planos aplicáveis; licenças OpenWeather for Business podem diferir",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "camada | z/x/y | data | paleta | opacidade",
+        "notes": "15 camadas na variante de 3 horas; atual, previsão até 10 dias e histórico desde março de 2019. Zoom de tile não é resolução meteorológica nativa.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "tiles de mapa | imagem raster"
+    ],
+    "available_protocols": [
+      "XYZ tiles | HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000460",
+    "resource_id": "DR0112",
+    "product_name": "Solar Irradiance API v2 — OpenWeather",
+    "product_acronym": "Solar Irradiance v2",
+    "product_family": "OpenWeather — solar irradiance",
+    "product_kind": "data_service",
+    "product_description": "Séries de irradiância solar por coordenadas com GHI, DNI e DHI em modelos de céu claro e céu nublado, cobrindo histórico, condições atuais e previsão.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia",
+    "keywords": "irradiância solar | GHI | DNI | DHI | radiação solar | energia solar | API",
+    "geographic_coverage": "global, incluindo Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "consulta por latitude/longitude",
+    "spatial_resolution": "ponto de consulta; suporte espacial do modelo não é equivalente a medição local",
+    "temporal_coverage": "desde 01/01/1979 até o presente e previsão de 15 dias",
+    "temporal_resolution": "15 minutos | 1 hora | 1 dia, conforme intervalo solicitado",
+    "update_frequency": "operacional; consulta sob demanda",
+    "product_status": "ativo",
+    "version_or_collection": "Solar Irradiance API v2",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://openweathermap.org/api/solar-irradiance",
+    "methodology_url": "https://openweathermap.org/api/solar-irradiance",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto modelado e comercial em assinatura separada; não equivale a medição piranométrica local. Validar para aplicações de alta precisão e registrar modelo céu claro/nublado, intervalo e unidade.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0112",
+      "resource_name": "OpenWeather — Weather, Air Pollution, Solar and Fire Weather APIs",
+      "acronym": "OpenWeather",
+      "official_identity": "OpenWeather developer weather data platform and APIs",
+      "homepage_url": "https://openweathermap.org/",
+      "data_access_url": "https://openweathermap.org/api"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000484",
+        "product_id": "DP000460",
+        "distribution_name": "Solar Irradiance API v2 — REST API",
+        "access_url": "https://openweathermap.org/api/solar-irradiance",
+        "format": "JSON",
+        "access_protocol": "REST API | HTTPS",
+        "access_tool": "script | cliente HTTP",
+        "free_download": "não",
+        "authentication_required": "sim",
+        "access_conditions": "assinatura separada com cobrança por chamadas; API key obrigatória",
+        "license": "Open License/termos OpenWeather conforme plano; CC BY-SA 4.0 e requisitos de atribuição/share-alike para planos aplicáveis; licenças OpenWeather for Business podem diferir",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "latitude/longitude | data | intervalo | fuso horário | céu claro/nublado",
+        "notes": "Fornece GHI, DNI e DHI desde 1979, atual e previsão de 15 dias, com intervalos documentados.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "JSON"
+    ],
+    "available_protocols": [
+      "REST API | HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000461",
+    "resource_id": "DR0112",
+    "product_name": "Fire Weather Index API and Map — OpenWeather",
+    "product_acronym": "OpenWeather FWI",
+    "product_family": "OpenWeather — fire weather",
+    "product_kind": "indicator_family",
+    "product_description": "Índice meteorológico de perigo de incêndio baseado no Canadian Forest Service Fire Weather Index Rating System, com valor atual, previsão diária de cinco dias e distribuição cartográfica.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Sensoriamento Remoto e Geoinformação",
+    "keywords": "Fire Weather Index | FWI | perigo de incêndio | fogo | clima de incêndio | previsão",
+    "geographic_coverage": "global, incluindo Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "consulta por latitude/longitude e tiles XYZ para mapas",
+    "spatial_resolution": "ponto de consulta ou tile; não equivale à resolução de combustíveis, vegetação ou ocorrência de fogo",
+    "temporal_coverage": "atual e previsão de 5 dias",
+    "temporal_resolution": "diária",
+    "update_frequency": "operacional; acesso mediante contratação/cotação",
+    "product_status": "ativo",
+    "version_or_collection": "Fire Weather Index API 2.5 | Fire Weather Index Map 2.0",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://openweathermap.org/api/fire-index-api",
+    "methodology_url": "https://openweathermap.org/api/fire-index-api",
+    "primary_or_derived": "derivado",
+    "limitations": "FWI expressa perigo meteorológico potencial, não ocorrência observada, propagação real ou risco completo de incêndio. Não incorpora sozinho ignição, combustível, manejo, topografia e vulnerabilidade local.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0112",
+      "resource_name": "OpenWeather — Weather, Air Pollution, Solar and Fire Weather APIs",
+      "acronym": "OpenWeather",
+      "official_identity": "OpenWeather developer weather data platform and APIs",
+      "homepage_url": "https://openweathermap.org/",
+      "data_access_url": "https://openweathermap.org/api"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000485",
+        "product_id": "DP000461",
+        "distribution_name": "Fire Weather Index API — current and 5-day forecast",
+        "access_url": "https://openweathermap.org/api/fire-index-api",
+        "format": "JSON",
+        "access_protocol": "REST API | HTTPS",
+        "access_tool": "script | cliente HTTP",
+        "free_download": "não",
+        "authentication_required": "sim",
+        "access_conditions": "conta/API key e acesso comercial mediante contato/cotação com OpenWeather",
+        "license": "Open License/termos OpenWeather conforme plano; CC BY-SA 4.0 e requisitos de atribuição/share-alike para planos aplicáveis; licenças OpenWeather for Business podem diferir",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "latitude/longitude | atual | previsão diária",
+        "notes": "Retorna FWI e classe de perigo; previsão diária de cinco dias. Não interpretar como ocorrência de fogo observada.",
+        "last_verified": "2026-08-17"
+      },
+      {
+        "distribution_id": "DD000486",
+        "product_id": "DP000461",
+        "distribution_name": "Fire Weather Index Map — tiles",
+        "access_url": "https://openweathermap.org/api/fire-index-map",
+        "format": "tiles de mapa | imagem raster",
+        "access_protocol": "XYZ tiles | HTTPS",
+        "access_tool": "Leaflet | OpenLayers | cliente de tiles",
+        "free_download": "não",
+        "authentication_required": "sim",
+        "access_conditions": "API key e acesso conforme contratação/cotação do produto FWI",
+        "license": "Open License/termos OpenWeather conforme plano; CC BY-SA 4.0 e requisitos de atribuição/share-alike para planos aplicáveis; licenças OpenWeather for Business podem diferir",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "z/x/y | data | paleta | opacidade",
+        "notes": "Camada cartográfica do FWI atual ou previsto; registrar data e parâmetros de visualização.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "JSON",
+      "tiles de mapa | imagem raster"
+    ],
+    "available_protocols": [
+      "REST API | HTTPS",
+      "XYZ tiles | HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000462",
+    "resource_id": "DR0113",
+    "product_name": "Sistema de Informação sobre Mortalidade — SIM",
+    "product_acronym": "SIM",
+    "product_family": "Mortalidade — Ministério da Saúde",
+    "product_kind": "dataset_series",
+    "product_description": "Bancos de disseminação de óbitos do SIM, com causas, características socioeconômicas e local de residência/ocorrência.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "mortalidade | óbitos | causas de morte | SIM",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de óbito de disseminação",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "1979 em diante; anos recentes podem ter prévias antes da consolidação",
+    "temporal_resolution": "anual; atualizações de prévias/finais conforme publicação",
+    "update_frequency": "anual; atualizações de prévias/finais conforme publicação",
+    "product_status": "ativo",
+    "version_or_collection": "portal atualizado em maio/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sim",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sim",
+    "primary_or_derived": "primário",
+    "limitations": "Registro administrativo de mortalidade; cobertura e oportunidade variam no espaço e no tempo. Preservar ano, condição de prévia/final, causa e regras de disseminação.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000487",
+        "product_id": "DP000462",
+        "distribution_name": "SIM — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sim",
+        "format": "CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000463",
+    "resource_id": "DR0113",
+    "product_name": "Sistema de Informação sobre Nascidos Vivos — Sinasc",
+    "product_acronym": "SINASC",
+    "product_family": "Nascidos vivos — Ministério da Saúde",
+    "product_kind": "dataset_series",
+    "product_description": "Registros de nascidos vivos com características maternas, gestação, parto, recém-nascido e residência/ocorrência.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "nascidos vivos | natalidade | parto | pré-natal | SINASC",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de nascido vivo de disseminação",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "desde 1990, com implantação gradual; anos recentes podem ter prévias",
+    "temporal_resolution": "anual; atualizações conforme publicação",
+    "update_frequency": "anual; atualizações conforme publicação",
+    "product_status": "ativo",
+    "version_or_collection": "portal atualizado em maio/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sistema-de-informacao-sobre-nascidos-vivos-sinasc",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sistema-de-informacao-sobre-nascidos-vivos-sinasc",
+    "primary_or_derived": "primário",
+    "limitations": "Registro administrativo; implantação e cobertura variaram historicamente. Não confundir com Estatísticas do Registro Civil/IBGE nem ignorar status preliminar de anos recentes.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000488",
+        "product_id": "DP000463",
+        "distribution_name": "SINASC — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sistema-de-informacao-sobre-nascidos-vivos-sinasc",
+        "format": "CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000464",
+    "resource_id": "DR0113",
+    "product_name": "Cadastro Nacional de Estabelecimentos de Saúde — CNES",
+    "product_acronym": "CNES",
+    "product_family": "Infraestrutura e estabelecimentos de saúde",
+    "product_kind": "data_service",
+    "product_description": "Relação nacional de estabelecimentos de saúde cadastrados no CNES, com recursos estruturados e API.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "CNES | estabelecimentos de saúde | infraestrutura | serviços de saúde",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "estabelecimento de saúde cadastrado",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "cadastro corrente; recursos atualizados em junho/2026",
+    "temporal_resolution": "diária conforme página oficial",
+    "update_frequency": "diária conforme página oficial",
+    "product_status": "ativo",
+    "version_or_collection": "portal atualizado em junho/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/cnes-cadastro-nacional-de-estabelecimentos-de-saude",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/cnes-cadastro-nacional-de-estabelecimentos-de-saude",
+    "primary_or_derived": "primário",
+    "limitations": "Cadastro administrativo: presença no CNES não garante funcionamento, capacidade efetiva ou qualidade assistencial em qualquer data. Preservar competência/extração.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000489",
+        "product_id": "DP000464",
+        "distribution_name": "CNES — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/cnes-cadastro-nacional-de-estabelecimentos-de-saude",
+        "format": "CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000465",
+    "resource_id": "DR0113",
+    "product_name": "Hospitais e Leitos — CNES",
+    "product_acronym": "Hospitais e Leitos",
+    "product_family": "Infraestrutura hospitalar e leitos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de estabelecimentos hospitalares, leitos gerais e complementares e informações de contato, por competências mensais e anuais.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "hospitais | leitos | CNES | infraestrutura de saúde",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "estabelecimento hospitalar e leito cadastrado",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "série por competência; recursos 2026 disponíveis",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em maio/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/hospitais-e-leitos",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/hospitais-e-leitos",
+    "primary_or_derived": "primário",
+    "limitations": "Dados enviados por gestores locais e sujeitos a limitações de captura. Leito cadastrado não equivale automaticamente a leito operacional/disponível no instante de análise.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000490",
+        "product_id": "DP000465",
+        "distribution_name": "Hospitais e Leitos — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/hospitais-e-leitos",
+        "format": "CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000466",
+    "resource_id": "DR0113",
+    "product_name": "Sinan — Dengue",
+    "product_acronym": "SINAN Dengue",
+    "product_family": "Vigilância epidemiológica — arboviroses",
+    "product_kind": "dataset_series",
+    "product_description": "Notificações e investigações de dengue disseminadas pelo Sinan Online.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SINAN | dengue | arboviroses | notificação compulsória",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "notificação/investigação epidemiológica",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "série por ano; atualização corrente até 2026 conforme portal",
+    "temporal_resolution": "mensal conforme recursos",
+    "update_frequency": "mensal conforme recursos",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em maio/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/arboviroses-dengue",
+    "methodology_url": "https://portalsinan.saude.gov.br/",
+    "primary_or_derived": "primário",
+    "limitations": "Notificação não equivale a incidência verdadeira: há subnotificação, duplicidades/correções, mudanças de definição e atrasos. Preservar classificação e data de atualização.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000491",
+        "product_id": "DP000466",
+        "distribution_name": "SINAN Dengue — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/arboviroses-dengue",
+        "format": "CSV | JSON | XML",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000467",
+    "resource_id": "DR0113",
+    "product_name": "Sinan — Febre de Chikungunya",
+    "product_acronym": "SINAN Chikungunya",
+    "product_family": "Vigilância epidemiológica — arboviroses",
+    "product_kind": "dataset_series",
+    "product_description": "Notificações e investigações de febre de chikungunya disseminadas pelo Sinan Online.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SINAN | chikungunya | arboviroses | notificação compulsória",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "notificação/investigação epidemiológica",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "série por ano; atualização corrente até 2026 conforme portal",
+    "temporal_resolution": "mensal conforme recursos",
+    "update_frequency": "mensal conforme recursos",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em junho/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/arboviroses-febre-de-chikungunya",
+    "methodology_url": "https://portalsinan.saude.gov.br/",
+    "primary_or_derived": "primário",
+    "limitations": "Notificação não equivale a incidência verdadeira; cobertura, investigação, oportunidade e classificação podem mudar. Não combinar automaticamente com dengue ou zika.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000492",
+        "product_id": "DP000467",
+        "distribution_name": "SINAN Chikungunya — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/arboviroses-febre-de-chikungunya",
+        "format": "CSV | JSON | XML",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000468",
+    "resource_id": "DR0113",
+    "product_name": "Sinan — Vírus Zika",
+    "product_acronym": "SINAN Zika",
+    "product_family": "Vigilância epidemiológica — arboviroses",
+    "product_kind": "dataset_series",
+    "product_description": "Notificações e investigações de vírus Zika, disseminadas no portal como série própria.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SINAN | zika | arboviroses | notificação compulsória",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "notificação/investigação epidemiológica",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "2016–2026 na série corrente documentada",
+    "temporal_resolution": "mensal conforme recursos",
+    "update_frequency": "mensal conforme recursos",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em junho/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/arboviroses-zika-virus",
+    "methodology_url": "https://portalsinan.saude.gov.br/zika",
+    "primary_or_derived": "primário",
+    "limitations": "Série de notificações; não é medida direta de circulação viral populacional. Alterações de vigilância, diagnóstico e completude afetam comparações temporais.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000493",
+        "product_id": "DP000468",
+        "distribution_name": "SINAN Zika — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/arboviroses-zika-virus",
+        "format": "CSV | JSON | XML",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000469",
+    "resource_id": "DR0113",
+    "product_name": "e-SUS Sinan — Mpox",
+    "product_acronym": "e-SUS Sinan Mpox",
+    "product_family": "Vigilância epidemiológica — e-SUS Sinan",
+    "product_kind": "dataset_series",
+    "product_description": "Notificações de mpox no e-SUS Sinan, sistema em modernização destinado a substituir progressivamente versões anteriores do Sinan.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "e-SUS Sinan | mpox | monkeypox | vigilância epidemiológica",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "notificação/investigação epidemiológica",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "2022–2026 nos recursos atuais",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em junho/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/mpox",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/mpox",
+    "primary_or_derived": "primário",
+    "limitations": "Sistema em transição tecnológica; notificações não equivalem a casos confirmados sem observar classificação e dicionário. Comparações com sistemas legados exigem cautela.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000494",
+        "product_id": "DP000469",
+        "distribution_name": "e-SUS Sinan Mpox — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/mpox",
+        "format": "CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000470",
+    "resource_id": "DR0113",
+    "product_name": "SISAGUA — Pontos de captação",
+    "product_acronym": "SISAGUA Captação",
+    "product_family": "SISAGUA — cadastro de abastecimento",
+    "product_kind": "dataset",
+    "product_description": "Pontos de captação de água para consumo humano registrados em sistemas e soluções alternativas cadastrados no Sisagua.",
+    "research_areas": "Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SISAGUA | captação de água | abastecimento | água potável",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "ponto de captação cadastrado",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "cadastro corrente; atualizado em junho/2026",
+    "temporal_resolution": "conforme atualização cadastral; portal atualizado mensalmente",
+    "update_frequency": "conforme atualização cadastral; portal atualizado mensalmente",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em junho/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-pontos-de-captacao",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-pontos-de-captacao",
+    "primary_or_derived": "primário",
+    "limitations": "Cadastro administrativo; ponto registrado não é inventário hidrográfico nem garante captação ativa, vazão ou qualidade da água. Cobertura depende do cadastro no Sisagua.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000495",
+        "product_id": "DP000470",
+        "distribution_name": "SISAGUA Captação — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-pontos-de-captacao",
+        "format": "CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000471",
+    "resource_id": "DR0113",
+    "product_name": "SISAGUA — Tratamento de água",
+    "product_acronym": "SISAGUA Tratamento",
+    "product_family": "SISAGUA — cadastro de abastecimento",
+    "product_kind": "dataset",
+    "product_description": "Informações anuais declaradas sobre tratamento de água em sistemas e soluções alternativas coletivas de abastecimento.",
+    "research_areas": "Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SISAGUA | tratamento de água | abastecimento | potabilidade",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "sistema ou solução de abastecimento cadastrada",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "cadastro corrente; recursos atualizados em maio/2026",
+    "temporal_resolution": "anual por registro; portal atualizado mensalmente",
+    "update_frequency": "anual por registro; portal atualizado mensalmente",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em maio/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-tratamento-de-agua",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-tratamento-de-agua",
+    "primary_or_derived": "primário",
+    "limitations": "Informação declarada pelo prestador; existência de tratamento não comprova conformidade contínua com padrões de potabilidade nem qualidade em todos os pontos da rede.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000496",
+        "product_id": "DP000471",
+        "distribution_name": "SISAGUA Tratamento — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-tratamento-de-agua",
+        "format": "CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000472",
+    "resource_id": "DR0113",
+    "product_name": "SISAGUA — População abastecida",
+    "product_acronym": "SISAGUA População",
+    "product_family": "SISAGUA — cadastro de abastecimento",
+    "product_kind": "dataset",
+    "product_description": "Dados anuais sobre população atendida por SAA, SAC e SAI cadastrados no Sisagua.",
+    "research_areas": "Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SISAGUA | população abastecida | SAA | SAC | SAI | abastecimento",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "forma de abastecimento e população informada",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "cadastro anual; recurso atualizado em maio/2026",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em maio/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-populacao-abastecida",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-populacao-abastecida",
+    "primary_or_derived": "primário",
+    "limitations": "População informada no cadastro não é automaticamente população censitária nem cobertura universal; evitar soma sem verificar sobreposição entre formas de abastecimento.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000497",
+        "product_id": "DP000472",
+        "distribution_name": "SISAGUA População — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-populacao-abastecida",
+        "format": "CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000473",
+    "resource_id": "DR0113",
+    "product_name": "SISAGUA — Controle mensal — Parâmetros básicos",
+    "product_acronym": "SISAGUA Controle Básico",
+    "product_family": "SISAGUA — controle da qualidade da água",
+    "product_kind": "dataset_series",
+    "product_description": "Análises rotineiras de baixa complexidade realizadas pelos responsáveis por SAA e SAC e informadas mensalmente ao Sisagua.",
+    "research_areas": "Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SISAGUA | qualidade da água | controle | coliformes | cloro | turbidez",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "análise/amostra informada pelo prestador",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "série anual disponível por arquivos; 2026 corrente",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em maio/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-parametros-basicos",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-parametros-basicos",
+    "primary_or_derived": "primário",
+    "limitations": "Dados de controle produzidos pelo responsável pelo abastecimento; não são a mesma coisa que vigilância independente do setor saúde. Cobertura depende do plano e do envio de resultados.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000498",
+        "product_id": "DP000473",
+        "distribution_name": "SISAGUA Controle Básico — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-parametros-basicos",
+        "format": "CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000474",
+    "resource_id": "DR0113",
+    "product_name": "SISAGUA — Vigilância — Parâmetros básicos",
+    "product_acronym": "SISAGUA Vigilância Básica",
+    "product_family": "SISAGUA — vigilância da qualidade da água",
+    "product_kind": "dataset_series",
+    "product_description": "Análises de parâmetros básicos de qualidade da água realizadas rotineiramente pelo setor saúde.",
+    "research_areas": "Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SISAGUA | qualidade da água | vigilância | E. coli | cloro | turbidez",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "análise/amostra de vigilância",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "2014 em diante nos recursos atuais; atualização em 2026",
+    "temporal_resolution": "conforme rotina de vigilância; arquivos anuais",
+    "update_frequency": "conforme rotina de vigilância; arquivos anuais",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em junho/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-vigilancia-parametros-basicos",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-vigilancia-parametros-basicos",
+    "primary_or_derived": "primário",
+    "limitations": "Amostragem de vigilância não é censo de todos os pontos de abastecimento. Frequência, cobertura e desenho podem variar territorialmente; preservar parâmetro, data e local.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000499",
+        "product_id": "DP000474",
+        "distribution_name": "SISAGUA Vigilância Básica — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-vigilancia-parametros-basicos",
+        "format": "CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000475",
+    "resource_id": "DR0113",
+    "product_name": "SISAGUA — Controle semestral",
+    "product_acronym": "SISAGUA Controle Semestral",
+    "product_family": "SISAGUA — controle da qualidade da água",
+    "product_kind": "dataset_series",
+    "product_description": "Análises de maior complexidade realizadas pelos responsáveis por SAA e SAC em frequência superior à mensal e informadas ao Sisagua.",
+    "research_areas": "Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SISAGUA | qualidade da água | controle semestral | parâmetros químicos",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "análise/amostra informada pelo prestador",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "série histórica por ano; 2026 corrente",
+    "temporal_resolution": "semestral ou frequência superior à mensal conforme parâmetro",
+    "update_frequency": "semestral ou frequência superior à mensal conforme parâmetro",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em maio/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-semestral",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-semestral",
+    "primary_or_derived": "primário",
+    "limitations": "Resultados dependem do cumprimento de planos de amostragem e do envio pelos prestadores. Não inferir qualidade em períodos/locais não amostrados.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000500",
+        "product_id": "DP000475",
+        "distribution_name": "SISAGUA Controle Semestral — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-semestral",
+        "format": "CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000476",
+    "resource_id": "DR0113",
+    "product_name": "SISAGUA — Controle mensal — Demais parâmetros",
+    "product_acronym": "SISAGUA Controle Demais",
+    "product_family": "SISAGUA — controle da qualidade da água",
+    "product_kind": "dataset",
+    "product_description": "Análises mensais ou de frequência inferior de média/alta complexidade informadas pelos responsáveis por SAA e SAC.",
+    "research_areas": "Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SISAGUA | qualidade da água | controle | parâmetros químicos | potabilidade",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "análise/amostra informada pelo prestador",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "cadastro corrente; atualizado em junho/2026",
+    "temporal_resolution": "mensal ou inferior conforme parâmetro",
+    "update_frequency": "mensal ou inferior conforme parâmetro",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em junho/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-demais-parametros",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-demais-parametros",
+    "primary_or_derived": "primário",
+    "limitations": "Conjunto de controle do prestador e não vigilância independente. Parâmetros, frequência e cobertura variam; não transformar ausência de registro em conformidade.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000501",
+        "product_id": "DP000476",
+        "distribution_name": "SISAGUA Controle Demais — portal oficial e recursos estruturados",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-demais-parametros",
+        "format": "CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por ano/competência conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial para preservar a enumeração atual de arquivos, APIs, dicionários e versões; não inferir que todos os formatos estejam disponíveis em todos os anos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
   }
 ]
