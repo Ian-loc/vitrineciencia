@@ -1,0 +1,73 @@
+name: Materialize verified SIASI catalog batch v2
+
+on:
+  push:
+    paths:
+      - '.github/workflows/materialize-siasi-batch-v2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run corrected SIASI materializer
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          src=Path('.github/workflows/materialize-siasi-batch.yml').read_text(encoding='utf-8')
+          src=src.replace('p[13] in existing_urls','p[12] in existing_urls').replace('dist_urls=[p[13] for p in products]','dist_urls=[p[12] for p in products]')
+          start=src.index("          python - <<'PY'\n")+len("          python - <<'PY'\n")
+          end=src.index("\n          PY\n",start)
+          code='\n'.join(line[10:] if line.startswith('          ') else line for line in src[start:end].splitlines())
+          Path('/tmp/materialize.py').write_text(code,encoding='utf-8')
+          PY
+          python /tmp/materialize.py
+      - name: Validate Brazil scope and catalog
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+      - name: Rebuild derived catalog and link audit
+        run: |
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+      - name: Validate Vitrine and public artifact
+        run: |
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Read-back relational integrity
+        run: |
+          python - <<'PY'
+          import csv
+          rs=list(csv.DictReader(open('data/data_resources.csv',encoding='utf-8')))
+          ps=list(csv.DictReader(open('data/data_products.csv',encoding='utf-8')))
+          ds=list(csv.DictReader(open('data/product_distributions.csv',encoding='utf-8')))
+          rids={r['resource_id'] for r in rs}; pids={p['product_id'] for p in ps}; dids={d['distribution_id'] for d in ds}
+          assert len(rids)==len(rs) and len(pids)==len(ps) and len(dids)==len(ds)
+          assert all(p['resource_id'] in rids for p in ps)
+          assert all(d['product_id'] in pids for d in ds)
+          assert all(f'DP{i:06d}' in pids for i in range(488,500))
+          assert all(f'DD{i:06d}' in dids for i in range(513,525))
+          assert 'DR0114' in rids
+          print(f'canonical counts: {len(rs)} sources | {len(ps)} products | {len(ds)} distributions')
+          PY
+      - name: Commit materialized batch and remove one-shot workflows
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/materialize-siasi-batch.yml .github/workflows/materialize-siasi-batch-v2.yml
+          git add data/data_resources.csv data/data_products.csv data/data_products.json data/product_distributions.csv data/brazil_scope_priorities.json data/link_role_audit.json 2>/dev/null || true
+          git add -u
+          git commit -m 'Expand verified SIASI indigenous-health catalog'
+          git push origin HEAD:main
