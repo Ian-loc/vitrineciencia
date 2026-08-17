@@ -1,0 +1,195 @@
+name: One-shot INMET catalog materializer
+
+on:
+  push:
+    paths:
+      - '.github/workflows/one-shot-inmet-catalog.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Append verified INMET source, products and distributions
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          from datetime import datetime, timezone
+
+          today = datetime.now(timezone.utc).date().isoformat()
+          resources_path = Path('data/data_resources.csv')
+          products_path = Path('data/data_products.csv')
+          distributions_path = Path('data/product_distributions.csv')
+          priorities_path = Path('data/brazil_scope_priorities.json')
+
+          def read_rows(path):
+              with path.open('r', encoding='utf-8', newline='') as f:
+                  r = csv.DictReader(f)
+                  return r.fieldnames, list(r)
+
+          def append_dicts(path, rows):
+              fieldnames, existing = read_rows(path)
+              with path.open('a', encoding='utf-8', newline='') as f:
+                  w = csv.DictWriter(f, fieldnames=fieldnames, lineterminator='\n')
+                  for row in rows:
+                      w.writerow({k: row.get(k, '') for k in fieldnames})
+
+          _, resources = read_rows(resources_path)
+          _, products = read_rows(products_path)
+          _, distributions = read_rows(distributions_path)
+          resource_ids = {r['resource_id'] for r in resources}
+          product_ids = {r['product_id'] for r in products}
+          distribution_ids = {r['distribution_id'] for r in distributions}
+          product_urls = {r['product_page_url'] for r in products if r.get('product_page_url')}
+
+          new_resource = {
+              'resource_id':'DR0118',
+              'resource_name':'Instituto Nacional de Meteorologia — dados, estações e climatologia',
+              'acronym':'INMET',
+              'official_identity':'Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária',
+              'description':'Fonte meteorológica oficial brasileira para observações de estações, séries históricas, catálogos de estações, normais climatológicas e avisos meteorológicos.',
+              'homepage_url':'https://portal.inmet.gov.br/',
+              'data_access_url':'https://portal.inmet.gov.br/dadoshistoricos',
+              'research_areas':'Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados',
+              'keywords':'INMET | meteorologia | clima | estações meteorológicas | séries históricas | normais climatológicas | avisos meteorológicos',
+              'data_product_types':'observações meteorológicas | séries históricas | climatologia | catálogos de estações | alertas',
+              'data_formats':'CSV | ZIP | tabelas web | mapas; varia por produto',
+              'visualization_types':'tabelas | mapas | gráficos | portal web',
+              'geographic_coverage':'Brasil; rede de estações e produtos nacionais conforme o serviço',
+              'covers_brazil':'sim',
+              'spatial_resolution':'pontual por estação ou agregada/cartográfica conforme produto',
+              'temporal_coverage':'séries históricas e produtos correntes; varia por produto',
+              'temporal_resolution':'horária a climatológica conforme produto',
+              'data_sources':'estações meteorológicas automáticas e convencionais | processamento climatológico do INMET | previsão e análise meteorológica institucional',
+              'free_download':'parcial',
+              'access_conditions':'acesso público em produtos selecionados; BDMEP pode exigir fluxo próprio de consulta; observar metadados e período de cada produto',
+              'programmatic_access':'desconhecido',
+              'access_protocols':'HTTPS download | consulta web',
+              'authentication_required':'parcial',
+              'access_documentation_url':'https://portal.inmet.gov.br/paginas/estacoes',
+              'license':'não localizada de forma inequívoca no nível geral; verificar termos do produto/arquivo',
+              'institutional_status':'público',
+              'owner_or_manager':'Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária',
+              'academic_uses':'Climatologia, meteorologia, extremos climáticos, agrometeorologia, ecologia, hidrologia, risco de desastres e validação de produtos de sensoriamento remoto.',
+              'limitations':'Cobertura espacial e continuidade variam por estação e período. Observações de estação, normais climatológicas, previsões e avisos são objetos distintos e não devem ser tratados como equivalentes; registrar estação, período, unidade e versão do produto.',
+              'academic_evidence_type':'documentação técnica oficial',
+              'academic_evidence_url':'https://portal.inmet.gov.br/normais',
+              'academic_evidence_note':'O portal oficial documenta séries históricas, estações automáticas e convencionais, normais climatológicas e demais produtos meteorológicos do INMET.',
+              'verification_url':'https://portal.inmet.gov.br/paginas/estacoes',
+              'last_verified':today,
+          }
+
+          new_products = [
+            {
+              'product_id':'DP000522','resource_id':'DR0118','product_name':'INMET — Dados Históricos Anuais de Estações Automáticas','product_acronym':'INMET Históricos Automáticas','product_family':'observações meteorológicas históricas','product_kind':'dataset_series',
+              'product_description':'Arquivos anuais de observações das estações meteorológicas automáticas do INMET, organizados por ano e estação.',
+              'research_areas':'Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados','keywords':'INMET | estações automáticas | dados históricos | temperatura | precipitação | umidade | vento | radiação','geographic_coverage':'Brasil — estações automáticas do INMET','covers_brazil':'sim','spatial_support':'ponto de estação meteorológica','spatial_resolution':'pontual; representatividade espacial depende da estação e variável','temporal_coverage':'2000–2026 no portal auditado; 2026 parcial e sujeito a atualização','temporal_resolution':'horária nas séries automáticas','update_frequency':'anual/contínua conforme consolidação do portal','product_status':'ativo','version_or_collection':'portal de Dados Históricos Anuais, consultado em 2026','enumeration_scope':'complete','product_page_url':'https://portal.inmet.gov.br/dadoshistoricos','methodology_url':'https://portal.inmet.gov.br/paginas/estacoes','primary_or_derived':'primário','limitations':'Cobertura, falhas, manutenção e disponibilidade variam por estação e ano. O arquivo anual não implica série completa ou homogênea em todas as estações; 2026 é parcial no estado auditado.','last_verified':today
+            },
+            {
+              'product_id':'DP000523','resource_id':'DR0118','product_name':'INMET — Estações Automáticas — observações correntes','product_acronym':'INMET Automáticas','product_family':'observações meteorológicas operacionais','product_kind':'data_service',
+              'product_description':'Serviço de observações meteorológicas das estações automáticas do INMET, com atualização de hora em hora e janela operacional recente.',
+              'research_areas':'Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados','keywords':'INMET | estação automática | observação horária | tempo | temperatura | umidade | chuva | vento','geographic_coverage':'Brasil — rede de estações automáticas do INMET','covers_brazil':'sim','spatial_support':'ponto de estação meteorológica','spatial_resolution':'pontual','temporal_coverage':'janela operacional dos últimos 90 dias segundo a documentação do serviço','temporal_resolution':'horária','update_frequency':'horária','product_status':'ativo','version_or_collection':'serviço corrente 2026','enumeration_scope':'complete','product_page_url':'https://portal.inmet.gov.br/servicos/esta%C3%A7%C3%B5es-autom%C3%A1ticas','methodology_url':'https://portal.inmet.gov.br/paginas/estacoes','primary_or_derived':'primário','limitations':'Observação pontual não representa automaticamente a condição de todo o município ou célula espacial. Disponibilidade depende do funcionamento e transmissão de cada estação; usar horário UTC e metadados da estação.','last_verified':today
+            },
+            {
+              'product_id':'DP000524','resource_id':'DR0118','product_name':'INMET — Normais Climatológicas do Brasil 1991–2020','product_acronym':'Normais 1991–2020','product_family':'normais climatológicas','product_kind':'indicator_family',
+              'product_description':'Valores climatológicos normais de variáveis meteorológicas calculados para o período 1991–2020 segundo critérios recomendados pela Organização Meteorológica Mundial, com tabelas e mapas por variável.',
+              'research_areas':'Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia','keywords':'normais climatológicas | 1991-2020 | temperatura | precipitação | umidade | vento | pressão | insolação | evaporação','geographic_coverage':'Brasil — estações e produtos climatológicos do INMET','covers_brazil':'sim','spatial_support':'estação e sínteses/mapas climatológicos conforme variável','spatial_resolution':'varia por tabela/mapa e conjunto de estações','temporal_coverage':'1991-01-01 a 2020-12-31','temporal_resolution':'mensal | anual | decendial e estatísticas específicas conforme variável','update_frequency':'por período climatológico/atualização metodológica','product_status':'ativo','version_or_collection':'Normais Climatológicas 1991–2020, lançadas em 2022','enumeration_scope':'complete','product_page_url':'https://portal.inmet.gov.br/normais','methodology_url':'https://portal.inmet.gov.br/servicos/normais-climatol%C3%B3gicas','primary_or_derived':'derivado','limitations':'Normal climatológica é estatística de referência de longo período, não observação do tempo presente nem projeção climática futura. Cobertura e disponibilidade de variáveis dependem das estações e critérios de cálculo.','last_verified':today
+            },
+            {
+              'product_id':'DP000525','resource_id':'DR0118','product_name':'INMET — Catálogo de Estações Automáticas','product_acronym':'Catálogo Automáticas','product_family':'metadados de estações meteorológicas','product_kind':'catalog',
+              'product_description':'Catálogo oficial das estações meteorológicas automáticas do INMET, disponibilizado para download em CSV.',
+              'research_areas':'Clima e Ciências Atmosféricas | Infraestruturas e Ciência de Dados','keywords':'estações automáticas | catálogo | metadados | coordenadas | INMET','geographic_coverage':'Brasil','covers_brazil':'sim','spatial_support':'ponto de estação e metadados cadastrais','spatial_resolution':'pontual','temporal_coverage':'cadastro corrente; histórico operacional depende da estação','temporal_resolution':'não aplicável; metadado cadastral','update_frequency':'conforme manutenção da rede','product_status':'ativo','version_or_collection':'catálogo corrente 2026','enumeration_scope':'complete','product_page_url':'https://portal.inmet.gov.br/paginas/catalogoaut','methodology_url':'https://portal.inmet.gov.br/paginas/estacoes','primary_or_derived':'primário','limitations':'Catálogo descreve estações e não contém, por si só, a série observacional completa. Status e disponibilidade podem mudar; coordenadas/metadados devem ser associados à estação correta no período analisado.','last_verified':today
+            },
+            {
+              'product_id':'DP000526','resource_id':'DR0118','product_name':'INMET — Catálogo de Estações Convencionais','product_acronym':'Catálogo Convencionais','product_family':'metadados de estações meteorológicas','product_kind':'catalog',
+              'product_description':'Catálogo oficial das estações meteorológicas convencionais do INMET, disponibilizado para download em CSV.',
+              'research_areas':'Clima e Ciências Atmosféricas | Infraestruturas e Ciência de Dados','keywords':'estações convencionais | catálogo | metadados | coordenadas | INMET','geographic_coverage':'Brasil','covers_brazil':'sim','spatial_support':'ponto de estação e metadados cadastrais','spatial_resolution':'pontual','temporal_coverage':'cadastro corrente; histórico operacional depende da estação','temporal_resolution':'não aplicável; metadado cadastral','update_frequency':'conforme manutenção da rede','product_status':'ativo','version_or_collection':'catálogo corrente 2026','enumeration_scope':'complete','product_page_url':'https://portal.inmet.gov.br/paginas/catalogoman','methodology_url':'https://portal.inmet.gov.br/paginas/estacoes','primary_or_derived':'primário','limitations':'Catálogo de estações não equivale aos dados observados. Estações convencionais possuem práticas, horários e continuidade próprios; verificar metadados e disponibilidade da série antes de comparar com estações automáticas.','last_verified':today
+            },
+            {
+              'product_id':'DP000527','resource_id':'DR0118','product_name':'INMET — Avisos Meteorológicos','product_acronym':'Avisos INMET','product_family':'avisos de tempo severo','product_kind':'data_service',
+              'product_description':'Serviço oficial de avisos meteorológicos emitidos pelo INMET, com fenômeno, área de abrangência, severidade e período de validade; em 2026 a interface passou a organizar avisos por dia com horizonte de até cinco dias.',
+              'research_areas':'Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas','keywords':'avisos meteorológicos | tempo severo | tempestade | chuva intensa | onda de calor | baixa umidade | risco','geographic_coverage':'Brasil','covers_brazil':'sim','spatial_support':'área de abrangência do aviso','spatial_resolution':'conforme polígono/área do aviso','temporal_coverage':'serviço corrente; histórico depende da interface e arquivo disponível','temporal_resolution':'evento/aviso','update_frequency':'diária e conforme emissão/atualização do aviso','product_status':'ativo','version_or_collection':'interface atualizada em 2026-06-09; horizonte de até 5 dias','enumeration_scope':'complete','product_page_url':'https://alertas2.inmet.gov.br/','methodology_url':'https://portal.inmet.gov.br/noticias/inmet-aprimora-interface-de-avisos-meteorol%C3%B3gicos','primary_or_derived':'derivado','limitations':'Aviso é produto de análise/previsão de risco meteorológico e não observação de impacto ocorrido. Severidade, área e validade podem ser atualizadas; não interpretar ausência de aviso como ausência garantida de fenômeno local.','last_verified':today
+            }
+          ]
+
+          new_distributions = [
+            {'distribution_id':'DD000543','product_id':'DP000522','distribution_name':'INMET — Dados Históricos Anuais — downloads por ano','access_url':'https://portal.inmet.gov.br/dadoshistoricos','format':'ZIP/CSV conforme ano e pacote','access_protocol':'HTTPS download','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'seleção por ano; preservar estação, unidades e cabeçalhos dos arquivos','license':'não localizada de forma inequívoca no nível do arquivo','provider_attribution_required':'sim','subset_support':'por ano e estação dentro dos pacotes','notes':'O portal lista anos 2000–2026 no estado auditado; 2026 aparece como parcial e deve ser tratado como tal.','last_verified':today},
+            {'distribution_id':'DD000544','product_id':'DP000523','distribution_name':'INMET — Estações Automáticas — tabela operacional','access_url':'https://tempo.inmet.gov.br/','format':'tabela/consulta web','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'parcial','authentication_required':'não','access_conditions':'consulta operacional; documentação informa atualização horária e janela recente','license':'não localizada de forma inequívoca','provider_attribution_required':'sim','subset_support':'por estação/local e período oferecido pela interface','notes':'Produto operacional; para séries longas utilizar a distribuição histórica e registrar UTC.','last_verified':today},
+            {'distribution_id':'DD000545','product_id':'DP000524','distribution_name':'INMET — Normais Climatológicas 1991–2020 — tabelas e mapas','access_url':'https://portal.inmet.gov.br/normais','format':'tabelas/arquivos e mapas conforme variável','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'seleção por período climatológico e variável','license':'não localizada de forma inequívoca no nível do arquivo','provider_attribution_required':'sim','subset_support':'por variável, estação/período e produto climatológico','notes':'Inclui temperatura, precipitação, umidade, vento, pressão, insolação, evaporação e outras estatísticas conforme disponibilidade.','last_verified':today},
+            {'distribution_id':'DD000546','product_id':'DP000525','distribution_name':'INMET — Catálogo de Estações Automáticas — CSV','access_url':'https://portal.inmet.gov.br/paginas/catalogoaut','format':'CSV','access_protocol':'HTTPS download','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'download público','license':'não localizada de forma inequívoca no nível do arquivo','provider_attribution_required':'sim','subset_support':'catálogo completo; filtrar localmente','notes':'Metadados cadastrais das estações automáticas; não contém a série meteorológica histórica.','last_verified':today},
+            {'distribution_id':'DD000547','product_id':'DP000526','distribution_name':'INMET — Catálogo de Estações Convencionais — CSV','access_url':'https://portal.inmet.gov.br/paginas/catalogoman','format':'CSV','access_protocol':'HTTPS download','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'download público','license':'não localizada de forma inequívoca no nível do arquivo','provider_attribution_required':'sim','subset_support':'catálogo completo; filtrar localmente','notes':'Metadados cadastrais das estações convencionais; não contém a série meteorológica histórica.','last_verified':today},
+            {'distribution_id':'DD000548','product_id':'DP000527','distribution_name':'INMET — Avisos Meteorológicos — portal operacional','access_url':'https://alertas2.inmet.gov.br/','format':'visualização web e dados do aviso conforme interface','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'parcial','authentication_required':'não','access_conditions':'consulta pública; avisos são dinâmicos e podem ser atualizados','license':'não localizada de forma inequívoca no nível do recurso','provider_attribution_required':'sim','subset_support':'por dia, fenômeno e área conforme interface','notes':'Desde 2026-06-09 a interface organiza avisos por dia e pode apresentar horizonte de até cinco dias.','last_verified':today}
+          ]
+
+          if new_resource['resource_id'] not in resource_ids:
+              if any(r.get('homepage_url') == new_resource['homepage_url'] for r in resources):
+                  raise SystemExit('INMET homepage already cataloged under another resource; aborting duplicate source')
+              append_dicts(resources_path, [new_resource])
+
+          add_products=[]
+          for p in new_products:
+              if p['product_id'] in product_ids:
+                  continue
+              if p['product_page_url'] in product_urls:
+                  raise SystemExit(f"duplicate canonical product URL: {p['product_page_url']}")
+              add_products.append(p)
+          if add_products:
+              append_dicts(products_path, add_products)
+
+          add_distributions=[d for d in new_distributions if d['distribution_id'] not in distribution_ids]
+          if add_distributions:
+              append_dicts(distributions_path, add_distributions)
+
+          registry=json.loads(priorities_path.read_text(encoding='utf-8'))
+          registry['reviewed_at']=today
+          p0=next(t for t in registry['tiers'] if t['priority_tier']=='P0')
+          if 'DR0118' not in p0['resource_ids']:
+              p0['resource_ids'].append('DR0118')
+          priorities_path.write_text(json.dumps(registry, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+
+          # Relational and uniqueness guards before project validators.
+          _, resources2=read_rows(resources_path); _, products2=read_rows(products_path); _, distributions2=read_rows(distributions_path)
+          assert len({r['resource_id'] for r in resources2}) == len(resources2)
+          assert len({r['product_id'] for r in products2}) == len(products2)
+          assert len({r['distribution_id'] for r in distributions2}) == len(distributions2)
+          rids={r['resource_id'] for r in resources2}; pids={r['product_id'] for r in products2}
+          assert all(p['resource_id'] in rids for p in products2)
+          assert all(d['product_id'] in pids for d in distributions2)
+          assert all(x in pids for x in [f'DP{i:06d}' for i in range(522,528)])
+          assert all(x in {d['distribution_id'] for d in distributions2} for x in [f'DD{i:06d}' for i in range(543,549)])
+          print(f"Read-back counts: {len(resources2)} resources | {len(products2)} products | {len(distributions2)} distributions")
+          PY
+      - name: Validate Brazil scope
+        run: python scripts/validate_brazil_scope.py
+      - name: Validate product catalog
+        run: python scripts/validate_product_catalog.py
+      - name: Rebuild catalog
+        run: python scripts/build_catalog.py
+      - name: Regenerate link-role audit
+        run: python scripts/audit_link_roles.py --write
+      - name: Validate Vitrine
+        run: python scripts/validate_vitrine.py
+      - name: Build public artifact
+        run: python scripts/build_site_artifact.py
+      - name: Diff check
+        run: git diff --check
+      - name: Commit materialized batch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          if git diff --cached --quiet; then
+            echo "No material changes to commit"
+          else
+            git commit -m "Expand verified INMET climate catalog"
+            git push origin HEAD:main
+          fi
