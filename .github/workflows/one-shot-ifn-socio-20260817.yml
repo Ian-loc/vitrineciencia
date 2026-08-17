@@ -1,0 +1,117 @@
+name: One-shot IFN socioenvironmental catalog
+
+on:
+  push:
+    paths:
+      - '.github/workflows/one-shot-ifn-socio-20260817.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Append verified IFN products and distributions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, io, pathlib
+
+          ppath = pathlib.Path('data/data_products.csv')
+          dpath = pathlib.Path('data/product_distributions.csv')
+
+          with ppath.open(encoding='utf-8', newline='') as f:
+              products = list(csv.DictReader(f))
+          with dpath.open(encoding='utf-8', newline='') as f:
+              dists = list(csv.DictReader(f))
+
+          product_ids = {r['product_id'] for r in products}
+          dist_ids = {r['distribution_id'] for r in dists}
+          product_urls = {r['product_page_url'] for r in products if r['product_page_url']}
+
+          new_products = [
+            ['DP000434','DR0107','IFN — Percepção ambiental, política e comportamento — set/2025','IFN Percepção Ambiental','Inventário Florestal Nacional — dados socioambientais','dataset_series','Dados do levantamento socioambiental do IFN sobre percepção ambiental, aspectos de política e comportamento associados às populações entrevistadas no desenho do inventário.','Forest ecology | Environmental science | Environmental management','IFN | socioenvironmental survey | environmental perception | policy | behavior | interviews','Brasil — UFs com levantamento socioambiental do IFN publicado na versão set/2025','sim','registro de entrevista/levantamento socioambiental associado ao IFN','por registro e UF conforme arquivos; precisão e confidencialidade conforme metadados','campanhas socioambientais do IFN incorporadas à versão disp-set2025','campanha/entrevista','conforme novos ciclos e atualização dos conjuntos','ativo','disp-set2025','complete','https://dados.florestal.gov.br/dataset/ifn-percepcao-ambiental-politica-e-comportamento_disp-set2025','https://snif.florestal.gov.br/pt-br/temas-florestais/ifn','primário','Respostas dependem do desenho amostral, instrumento e contexto da entrevista. Percepções e declarações não equivalem a medições biofísicas, comportamento observado continuamente ou opinião de toda a população de uma UF.','2026-08-17'],
+            ['DP000435','DR0107','IFN — Perfil socioeconômico — set/2025','IFN Perfil Socioeconômico','Inventário Florestal Nacional — dados socioambientais','dataset_series','Dados de perfil socioeconômico obtidos pelo levantamento socioambiental do Inventário Florestal Nacional, distribuídos por UF com metadados e arquivos tabulares.','Forest ecology | Environmental science | Environmental management','IFN | socioenvironmental survey | socioeconomic profile | livelihoods | interviews','Brasil — UFs com levantamento socioambiental do IFN publicado na versão set/2025','sim','registro de entrevista/levantamento socioambiental associado ao IFN','por registro e UF conforme arquivos; precisão e confidencialidade conforme metadados','campanhas socioambientais do IFN incorporadas à versão disp-set2025','campanha/entrevista','conforme novos ciclos e atualização dos conjuntos','ativo','disp-set2025','complete','https://dados.florestal.gov.br/dataset/ifn-perfil-socioeconomico_disp-set2025','https://snif.florestal.gov.br/pt-br/temas-florestais/ifn','primário','O perfil representa a população alcançada pelo desenho socioambiental do IFN e não deve ser tratado como censo domiciliar ou estimativa representativa de toda a população estadual sem consultar pesos, universo e desenho amostral.','2026-08-17'],
+            ['DP000436','DR0107','IFN — Serviços ambientais e mudanças climáticas — set/2025','IFN Serviços Ambientais e Clima','Inventário Florestal Nacional — dados socioambientais','dataset_series','Dados do levantamento socioambiental do IFN sobre serviços ambientais e mudanças climáticas, disponibilizados por UF com metadados e arquivos tabulares.','Forest ecology | Environmental science | Environmental management','IFN | socioenvironmental survey | ecosystem services | climate change | perception | interviews','Brasil — UFs com levantamento socioambiental do IFN publicado na versão set/2025','sim','registro de entrevista/levantamento socioambiental associado ao IFN','por registro e UF conforme arquivos; precisão e confidencialidade conforme metadados','campanhas socioambientais do IFN incorporadas à versão disp-set2025','campanha/entrevista','conforme novos ciclos e atualização dos conjuntos','ativo','disp-set2025','complete','https://dados.florestal.gov.br/dataset/ifn-servicos-ambientais-e-mudancas-climaticas_disp-set2025','https://snif.florestal.gov.br/pt-br/temas-florestais/ifn','primário','Respostas sobre serviços ambientais e mudanças climáticas são dados socioambientais declarados; não equivalem à mensuração direta de serviços ecossistêmicos, variáveis climáticas, impactos ou causalidade.','2026-08-17'],
+            ['DP000437','DR0107','IFN — Uso dos recursos, importância e renda — set/2025','IFN Recursos e Renda','Inventário Florestal Nacional — dados socioambientais','dataset_series','Dados do levantamento socioambiental do IFN sobre uso de recursos florestais, importância atribuída e componentes de renda, distribuídos por UF.','Forest ecology | Environmental science | Environmental management','IFN | socioenvironmental survey | forest resources | use | income | livelihoods','Brasil — UFs com levantamento socioambiental do IFN publicado na versão set/2025','sim','registro de entrevista/levantamento socioambiental associado ao IFN','por registro e UF conforme arquivos; precisão e confidencialidade conforme metadados','campanhas socioambientais do IFN incorporadas à versão disp-set2025','campanha/entrevista','conforme novos ciclos e atualização dos conjuntos','ativo','disp-set2025','complete','https://dados.florestal.gov.br/dataset/ifn-uso-dos-recursos-importancia-e-renda_disp-set2025','https://snif.florestal.gov.br/pt-br/temas-florestais/ifn','primário','Uso, importância e renda são informações declaradas no levantamento socioambiental e dependem de definições, períodos de referência e desenho amostral. Não representam automaticamente extração física medida ou contas econômicas completas.','2026-08-17'],
+            ['DP000438','DR0107','IFN — Uso do solo e observação do entorno — set/2025','IFN Uso do Solo e Entorno','Inventário Florestal Nacional — dados socioambientais','dataset_series','Dados do levantamento socioambiental do IFN sobre uso do solo e observações do entorno, distribuídos por UF com metadados e arquivos tabulares.','Forest ecology | Environmental science | Environmental management','IFN | socioenvironmental survey | land use | surroundings | field observations | interviews','Brasil — UFs com levantamento socioambiental do IFN publicado na versão set/2025','sim','registro socioambiental e observação associada ao levantamento do IFN','por registro e UF conforme arquivos; precisão conforme desenho e metadados','campanhas socioambientais do IFN incorporadas à versão disp-set2025','campanha/registro','conforme novos ciclos e atualização dos conjuntos','ativo','disp-set2025','complete','https://dados.florestal.gov.br/dataset/ifn-uso-do-solo-e-observacao-do-entorno_disp-set2025','https://snif.florestal.gov.br/pt-br/temas-florestais/ifn','primário','O conjunto não é mapa raster contínuo de uso e cobertura da terra. Observações do entorno e respostas socioambientais devem ser interpretadas no suporte amostral do IFN e não extrapoladas sem desenho/modelagem explícitos.','2026-08-17'],
+            ['DP000439','DR0107','IFN — Dados consolidados para o Painel Socioambiental — set/2025','IFN Painel Socioambiental Dados','Inventário Florestal Nacional — dados consolidados para painéis','dataset_series','Conjuntos tabulares consolidados pelo SFB para elaboração do painel socioambiental do IFN, incluindo perfil socioeconômico, serviços, percepção, uso de recursos, renda, uso do solo e observação do entorno.','Forest ecology | Environmental science | Environmental management','IFN | socioenvironmental panel | consolidated data | indicators | CSV','Brasil — consolidações dos dados socioambientais do IFN disponíveis no pacote set/2025','sim','registros e agregações preparados para painel','conforme cada arquivo temático e agregação do painel','dados incorporados ao pacote disp-set2025','conforme arquivo/indicador','conforme atualização do painel e novos ciclos','ativo','disp-set2025','complete','https://dados.florestal.gov.br/dataset/ifn-painel-de-dados-socioambientais_disp-set2025','https://snif.florestal.gov.br/pt-br/temas-florestais/ifn','derivado','São dados preparados para o painel e podem derivar ou agregar os conjuntos socioambientais primários. Não contar registros do painel como observações independentes adicionais nem substituir metadados, universo e denominadores das bases de origem.','2026-08-17'],
+            ['DP000440','DR0107','IFN — Dados consolidados para o Painel Botânico — set/2025','IFN Painel Botânico Dados','Inventário Florestal Nacional — dados consolidados para painéis','dataset_series','Conjuntos preparados pelo SFB para elaboração do painel botânico do IFN, incluindo pontos modificados e pacotes de coletas botânicas em formatos tabulares e Darwin Core.','Biodiversity | Forest ecology | Environmental science','IFN | botanical panel | collections | Darwin Core | consolidated data','Brasil — registros botânicos do IFN incorporados ao pacote de painel set/2025','sim','registro botânico/ponto de coleta e agregações preparadas para painel','por registro/ponto conforme arquivo; precisão conforme metadados de origem','dados incorporados ao pacote disp-set2025','evento de coleta/registro','conforme atualização do painel e novos ciclos','ativo','disp-set2025','complete','https://dados.florestal.gov.br/dataset/ifn-painel-de-dados-botanicos_disp-set2025','https://snif.florestal.gov.br/pt-br/temas-florestais/ifn','derivado','O pacote reorganiza dados botânicos para visualização e pode sobrepor registros do conjunto primário de coletas botânicas. Não somar como ocorrências independentes; preservar identificação taxonômica, status de determinação, coordenadas e proveniência.','2026-08-17'],
+            ['DP000441','DR0107','IFN — Dados consolidados para o Painel Biofísico — set/2025','IFN Painel Biofísico Dados','Inventário Florestal Nacional — dados consolidados para painéis','dataset_series','Conjuntos preparados pelo SFB para elaboração do painel biofísico do IFN, incluindo dados de estoques, madeira caída, panorama geral e dados gerais.','Forest ecology | Environmental science | Environmental management','IFN | biophysical panel | stocks | deadwood | consolidated data | CSV','Brasil — registros e agregações biofísicas do IFN incorporados ao pacote de painel set/2025','sim','registros e agregações biofísicas preparados para painel','conforme componente e arquivo do painel','dados incorporados ao pacote disp-set2025','campanha/componente/indicador','conforme atualização do painel e novos ciclos','ativo','disp-set2025','complete','https://dados.florestal.gov.br/dataset/ifn-painel-de-dados-biofisicos_disp-set2025','https://snif.florestal.gov.br/pt-br/temas-florestais/ifn','derivado','O pacote consolida e reorganiza dados biofísicos que podem sobrepor os conjuntos primários do IFN e o Painel de Biomassa e Carbono. Não somar registros/estoques sem rastrear componente, unidade, equação, suporte amostral e proveniência.','2026-08-17'],
+          ]
+
+          new_dists = [
+            ['DD000457','DP000434','IFN — Percepção ambiental, política e comportamento — set/2025 — dados por UF e metadados','https://dados.florestal.gov.br/dataset/ifn-percepcao-ambiental-politica-e-comportamento_disp-set2025','CSV | PDF','HTTPS / CKAN','navegador web | API CKAN','sim','não','acesso público','Creative Commons Attribution','sim','por UF e recurso publicado','Distribuição oficial por UF com metadados. Interpretar respostas no desenho socioambiental e no universo documentado do IFN.','2026-08-17'],
+            ['DD000458','DP000435','IFN — Perfil socioeconômico — set/2025 — dados por UF e metadados','https://dados.florestal.gov.br/dataset/ifn-perfil-socioeconomico_disp-set2025','CSV | PDF','HTTPS / CKAN','navegador web | API CKAN','sim','não','acesso público','Creative Commons Attribution','sim','por UF e recurso publicado','Distribuição oficial por UF com metadados; não tratar o levantamento como censo socioeconômico estadual.','2026-08-17'],
+            ['DD000459','DP000436','IFN — Serviços ambientais e mudanças climáticas — set/2025 — dados por UF e metadados','https://dados.florestal.gov.br/dataset/ifn-servicos-ambientais-e-mudancas-climaticas_disp-set2025','CSV | PDF','HTTPS / CKAN','navegador web | API CKAN','sim','não','acesso público','Creative Commons Attribution','sim','por UF e recurso publicado','Distribuição oficial por UF com metadados; variáveis socioambientais declaradas não substituem medições biofísicas ou climáticas.','2026-08-17'],
+            ['DD000460','DP000437','IFN — Uso dos recursos, importância e renda — set/2025 — dados por UF e metadados','https://dados.florestal.gov.br/dataset/ifn-uso-dos-recursos-importancia-e-renda_disp-set2025','CSV | PDF','HTTPS / CKAN','navegador web | API CKAN','sim','não','acesso público','Creative Commons Attribution','sim','por UF e recurso publicado','Distribuição oficial por UF com metadados; preservar períodos de referência, definições e desenho amostral das variáveis de uso e renda.','2026-08-17'],
+            ['DD000461','DP000438','IFN — Uso do solo e observação do entorno — set/2025 — dados por UF e metadados','https://dados.florestal.gov.br/dataset/ifn-uso-do-solo-e-observacao-do-entorno_disp-set2025','CSV | PDF','HTTPS / CKAN','navegador web | API CKAN','sim','não','acesso público','Creative Commons Attribution','sim','por UF e recurso publicado','Distribuição oficial por UF com metadados; dados amostrais/observacionais não formam mapa contínuo de uso da terra.','2026-08-17'],
+            ['DD000462','DP000439','IFN — Painel socioambiental — pacote de dados set/2025','https://dados.florestal.gov.br/dataset/ifn-painel-de-dados-socioambientais_disp-set2025','CSV','HTTPS / CKAN','navegador web | API CKAN','sim','não','acesso público','Creative Commons Attribution','sim','por arquivo temático do painel','Pacote oficial de dados preparados para o painel; contém dados derivados/organizados a partir das bases socioambientais e não constitui observações independentes adicionais.','2026-08-17'],
+            ['DD000463','DP000440','IFN — Painel botânico — pacote de dados set/2025','https://dados.florestal.gov.br/dataset/ifn-painel-de-dados-botanicos_disp-set2025','CSV | ZIP','HTTPS / CKAN','navegador web | API CKAN','sim','não','acesso público','Creative Commons Attribution','sim','por arquivo/pacote publicado','Pacote oficial para o painel botânico; inclui pontos e coletas reorganizados e pode sobrepor o conjunto primário Darwin Core.','2026-08-17'],
+            ['DD000464','DP000441','IFN — Painel biofísico — pacote de dados set/2025','https://dados.florestal.gov.br/dataset/ifn-painel-de-dados-biofisicos_disp-set2025','CSV | ZIP','HTTPS / CKAN','navegador web | API CKAN','sim','não','acesso público','Creative Commons Attribution','sim','por arquivo/pacote publicado','Pacote oficial para o painel biofísico; inclui estoques, madeira caída e dados gerais e pode sobrepor conjuntos primários já catalogados.','2026-08-17'],
+          ]
+
+          for row in new_products:
+              assert row[0] not in product_ids, row[0]
+              assert row[19] not in product_urls, row[19]
+          for row in new_dists:
+              assert row[0] not in dist_ids, row[0]
+              assert row[1] in product_ids or row[1] in {r[0] for r in new_products}, row[1]
+
+          def append_rows(path, rows):
+              with path.open('a', encoding='utf-8', newline='') as f:
+                  w = csv.writer(f, lineterminator='\n')
+                  w.writerows(rows)
+
+          append_rows(ppath, new_products)
+          append_rows(dpath, new_dists)
+          print(f'Appended {len(new_products)} products and {len(new_dists)} distributions')
+          PY
+
+      - name: Validate Brazil scope and catalog
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+      - name: Rebuild and validate Vitrine
+        run: |
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Read-back relational integrity
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          def rows(p):
+              with Path(p).open(encoding='utf-8', newline='') as f: return list(csv.DictReader(f))
+          rs=rows('data/data_resources.csv'); ps=rows('data/data_products.csv'); ds=rows('data/product_distributions.csv')
+          rids={r['resource_id'] for r in rs}; pids={p['product_id'] for p in ps}; dids={d['distribution_id'] for d in ds}
+          assert len(rids)==len(rs)==109
+          assert len(pids)==len(ps)==437
+          assert len(dids)==len(ds)==460
+          assert all(p['resource_id'] in rids for p in ps)
+          assert all(d['product_id'] in pids for d in ds)
+          for pid in [f'DP{i:06d}' for i in range(434,442)]: assert pid in pids
+          for did in [f'DD{i:06d}' for i in range(457,465)]: assert did in dids
+          print('READBACK_OK', len(rs), len(ps), len(ds))
+          PY
+      - name: Commit materialized batch and remove one-shot workflow
+        shell: bash
+        run: |
+          rm -f .github/workflows/one-shot-ifn-socio-20260817.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          git add -u .github/workflows/one-shot-ifn-socio-20260817.yml
+          git diff --cached --check
+          git commit -m 'Expand verified IFN socioenvironmental catalog'
+          git push origin HEAD:main
