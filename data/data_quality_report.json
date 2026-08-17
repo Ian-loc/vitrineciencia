@@ -1,17 +1,17 @@
 {
-  "records": 102,
-  "official_documentation_records": 62,
+  "records": 103,
+  "official_documentation_records": 63,
   "peer_reviewed_evidence_records": 38,
   "access_uncertainty_records": 62,
   "license_uncertainty_records": 45,
-  "brazil_applicable_records": 99,
+  "brazil_applicable_records": 100,
   "verification_date_min": "2026-08-10",
   "verification_date_max": "2026-08-17",
   "evidence_type_counts": {
     "artigo revisado por pares": 38,
     "artigo técnico": 2,
     "documentação oficial": 19,
-    "documentação técnica oficial": 43
+    "documentação técnica oficial": 44
   },
   "unknown_or_variable_by_field": {
     "academic_evidence_note": 0,

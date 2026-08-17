@@ -19510,5 +19510,359 @@
     "available_protocols": [
       "HTTP download"
     ]
+  },
+  {
+    "product_id": "DP000329",
+    "resource_id": "DR0103",
+    "product_name": "Focos de Queimadas e Incêndios — Programa Queimadas INPE",
+    "product_acronym": "Focos Queimadas INPE",
+    "product_family": "Programa Queimadas — detecção de fogo ativo",
+    "product_kind": "dataset_series",
+    "product_description": "Detecções orbitais de focos de fogo ativo/queimadas e incêndios florestais disponibilizadas pelo INPE em intervalos que vão de anuais a quase tempo real, com histórico operacional e múltiplos satélites.",
+    "research_areas": "Fire ecology | Conservation | Remote sensing | Environmental monitoring",
+    "keywords": "active fire | fire hotspots | queimadas | incêndios | satélite | INPE",
+    "geographic_coverage": "Brasil; cobertura adicional conforme satélite/arquivo",
+    "covers_brazil": "sim",
+    "spatial_support": "ponto de detecção orbital",
+    "spatial_resolution": "dependente do sensor/satélite; não interpretar ponto como perímetro do incêndio",
+    "temporal_coverage": "acervo desde 1998; arquivos correntes em quase tempo real",
+    "temporal_resolution": "até aproximadamente 10 minutos nos arquivos correntes; diário, mensal e anual também disponíveis",
+    "update_frequency": "quase tempo real",
+    "product_status": "ativo",
+    "version_or_collection": "série operacional corrente; satélite de referência deve ser registrado",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/index.html",
+    "methodology_url": "https://www.gov.br/inpe/pt-br/acesso-a-informacao/perguntas-frequentes/principais-produtos-e-servicos-do-inpe/monitoramento-do-territorio-queimadas",
+    "primary_or_derived": "derivado",
+    "limitations": "Cada foco é uma detecção orbital de fogo ativo, não um incêndio individual nem área queimada. Um incêndio pode gerar múltiplos focos e eventos pequenos podem não ser detectados. Comparações temporais devem preservar satélite de referência, sensor e condições de observação.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0103",
+      "resource_name": "Programa Queimadas — INPE",
+      "acronym": "Programa Queimadas INPE",
+      "official_identity": "Programa nacional do INPE para monitoramento e modelagem de queimadas e incêndios florestais por sensoriamento remoto",
+      "homepage_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/index.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000350",
+        "product_id": "DP000329",
+        "distribution_name": "Focos de Queimadas — dados abertos CSV/KML",
+        "access_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/index.html",
+        "format": "CSV | KML",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | SIG | scripts",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar intervalo e preservar satélite de referência",
+        "license": "dados abertos para uso público; atribuição ao INPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "últimos 10 min | diário | mensal | anual | KML conforme portal",
+        "notes": "Arquivos correntes podem ser atualizados em intervalos de cerca de 10 minutos. Comparações devem usar satélite de referência consistente.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | KML"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000330",
+    "resource_id": "DR0103",
+    "product_name": "Eventos de Fogo — Programa Queimadas INPE",
+    "product_acronym": "Eventos de Fogo INPE",
+    "product_family": "Programa Queimadas — eventos integrados",
+    "product_kind": "dataset_series",
+    "product_description": "Produto que integra espacial e temporalmente detecções de fogo ativo para formar eventos de fogo e caracterizar sua dinâmica, incluindo localização de frentes, duração, estimativa de área queimada e atributos ambientais associados.",
+    "research_areas": "Fire ecology | Landscape ecology | Remote sensing | Environmental monitoring",
+    "keywords": "fire events | eventos de fogo | active fire | burned area estimate | duração | uso do solo",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "evento integrado derivado de múltiplas detecções",
+    "spatial_resolution": "derivada das detecções e regras de integração espaço-temporal",
+    "temporal_coverage": "produto operacional corrente; histórico conforme portal",
+    "temporal_resolution": "evento; estados ativo/em observação atualizados operacionalmente",
+    "update_frequency": "horária para KML operacional",
+    "product_status": "ativo",
+    "version_or_collection": "produto Eventos de Fogo corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/index.html",
+    "methodology_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+    "primary_or_derived": "derivado",
+    "limitations": "Evento de fogo é uma integração algorítmica de focos, não observação independente de campo. A estimativa de área queimada do evento não é semanticamente equivalente ao produto AQ1km nem a perímetro validado em campo; classificação e atributos dependem das regras vigentes.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0103",
+      "resource_name": "Programa Queimadas — INPE",
+      "acronym": "Programa Queimadas INPE",
+      "official_identity": "Programa nacional do INPE para monitoramento e modelagem de queimadas e incêndios florestais por sensoriamento remoto",
+      "homepage_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/index.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000351",
+        "product_id": "DP000330",
+        "distribution_name": "Eventos de Fogo — KML operacional",
+        "access_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/index.html",
+        "format": "KML",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | Google Earth | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; eventos ativos/em observação conforme estado operacional",
+        "license": "dados abertos para uso público; atribuição ao INPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "eventos ativos | eventos em observação",
+        "notes": "KML operacional atualizado aproximadamente a cada hora conforme documentação oficial.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "KML"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000331",
+    "resource_id": "DR0103",
+    "product_name": "Área Queimada AQ1km — Programa Queimadas INPE",
+    "product_acronym": "AQ1km",
+    "product_family": "Programa Queimadas — área queimada",
+    "product_kind": "dataset_series",
+    "product_description": "Produto do Programa Queimadas que delimita a extensão de áreas atingidas pelo fogo na vegetação e disponibiliza arquivos com localização, data e hora das áreas queimadas detectadas.",
+    "research_areas": "Fire ecology | Land use and land cover | Remote sensing | Environmental monitoring",
+    "keywords": "burned area | área queimada | AQ1km | fogo | vegetação | INPE",
+    "geographic_coverage": "Brasil e cobertura definida pelo produto",
+    "covers_brazil": "sim",
+    "spatial_support": "célula/área derivada de sensoriamento remoto",
+    "spatial_resolution": "produto AQ1km — resolução nominal indicada pelo próprio produto; verificar documentação da edição",
+    "temporal_coverage": "série conforme arquivos disponíveis no portal",
+    "temporal_resolution": "conforme arquivo/período de composição",
+    "update_frequency": "operacional conforme processamento",
+    "product_status": "ativo",
+    "version_or_collection": "AQ1km corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+    "methodology_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+    "primary_or_derived": "derivado",
+    "limitations": "Área queimada derivada por sensoriamento remoto não equivale à soma de focos ativos nem a perímetro cadastral de incêndio. Resolução, composição temporal e algoritmo precisam acompanhar qualquer estimativa de área ou comparação entre períodos.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0103",
+      "resource_name": "Programa Queimadas — INPE",
+      "acronym": "Programa Queimadas INPE",
+      "official_identity": "Programa nacional do INPE para monitoramento e modelagem de queimadas e incêndios florestais por sensoriamento remoto",
+      "homepage_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/index.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000352",
+        "product_id": "DP000331",
+        "distribution_name": "AQ1km — download de área queimada",
+        "access_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+        "format": "arquivos geoespaciais conforme portal AQ1km",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; consultar metadados e período de composição",
+        "license": "dados abertos para uso público; atribuição ao INPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período/arquivo conforme portal",
+        "notes": "Produto de área queimada deve ser usado independentemente da simples contagem de focos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "arquivos geoespaciais conforme portal AQ1km"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000332",
+    "resource_id": "DR0103",
+    "product_name": "Risco de Fogo e Meteorologia — Programa Queimadas INPE",
+    "product_acronym": "Risco de Fogo INPE",
+    "product_family": "Programa Queimadas — risco meteorológico",
+    "product_kind": "dataset_series",
+    "product_description": "Arquivos e mapas de risco meteorológico de fogo e variáveis meteorológicas associadas produzidos pelo Programa Queimadas para apoiar prevenção e monitoramento de incêndios na vegetação.",
+    "research_areas": "Fire ecology | Climate science | Meteorology | Environmental monitoring",
+    "keywords": "fire risk | risco de fogo | meteorologia | umidade | precipitação | incêndios",
+    "geographic_coverage": "Brasil; cobertura conforme produto meteorológico",
+    "covers_brazil": "sim",
+    "spatial_support": "grade/modelo meteorológico e agregações derivadas",
+    "spatial_resolution": "varia conforme campo meteorológico e produto",
+    "temporal_coverage": "série corrente; Anuário de Risco de Fogo completo desde 2017",
+    "temporal_resolution": "diária a agregada conforme produto",
+    "update_frequency": "diária/operacional",
+    "product_status": "ativo",
+    "version_or_collection": "produto corrente; anuários desde 2017",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_relatorio/anuario-risco-de-fogo/",
+    "methodology_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+    "primary_or_derived": "derivado",
+    "limitations": "Risco de fogo é indicador/modelagem de condições favoráveis ao fogo, não ocorrência observada de incêndio. Não inferir área queimada, número de focos ou causalidade a partir do risco isoladamente; preservar versão e campos meteorológicos usados.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0103",
+      "resource_name": "Programa Queimadas — INPE",
+      "acronym": "Programa Queimadas INPE",
+      "official_identity": "Programa nacional do INPE para monitoramento e modelagem de queimadas e incêndios florestais por sensoriamento remoto",
+      "homepage_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/index.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000353",
+        "product_id": "DP000332",
+        "distribution_name": "Risco de Fogo — arquivos e Anuário",
+        "access_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_relatorio/anuario-risco-de-fogo/",
+        "format": "mapas/arquivos meteorológicos | publicações conforme recurso",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; registrar data, variável e versão",
+        "license": "dados abertos para uso público; atribuição ao INPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por dia/semana/ano e variável conforme portal",
+        "notes": "Anuário preliminar 2026 é atualizado diariamente; edições completas disponíveis desde 2017.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "mapas/arquivos meteorológicos | publicações conforme recurso"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000333",
+    "resource_id": "DR0103",
+    "product_name": "Geosserviços OGC — Programa Queimadas INPE",
+    "product_acronym": "Queimadas OGC",
+    "product_family": "Programa Queimadas — serviços de acesso",
+    "product_kind": "data_service",
+    "product_description": "Serviços geoespaciais do Programa Queimadas fornecidos por GeoServer em protocolos OGC para acesso interoperável a camadas do programa.",
+    "research_areas": "Remote sensing | Geoinformatics | Environmental monitoring | Fire ecology",
+    "keywords": "WMS | WFS | OGC | geoservice | queimadas | INPE",
+    "geographic_coverage": "conforme camada publicada; inclui Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "camadas vetoriais/raster conforme serviço",
+    "spatial_resolution": "herdada da camada servida",
+    "temporal_coverage": "conforme camada e endpoint",
+    "temporal_resolution": "conforme camada",
+    "update_frequency": "conforme camada operacional",
+    "product_status": "ativo",
+    "version_or_collection": "GeoServer/OGC corrente",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+    "methodology_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+    "primary_or_derived": "derivado",
+    "limitations": "Geosserviço é mecanismo de distribuição, não um dataset homogêneo. Cada camada mantém sua própria semântica, resolução, período, método e atualização; aplicações devem consultar capabilities/metadados do endpoint vigente.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0103",
+      "resource_name": "Programa Queimadas — INPE",
+      "acronym": "Programa Queimadas INPE",
+      "official_identity": "Programa nacional do INPE para monitoramento e modelagem de queimadas e incêndios florestais por sensoriamento remoto",
+      "homepage_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/index.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000354",
+        "product_id": "DP000333",
+        "distribution_name": "Programa Queimadas — geosserviços OGC",
+        "access_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+        "format": "WMS | WFS",
+        "access_protocol": "OGC WMS/WFS over HTTPS",
+        "access_tool": "SIG | cliente OGC | scripts",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consultar capabilities e metadados por camada",
+        "license": "dados abertos para uso público; verificar camada",
+        "provider_attribution_required": "sim",
+        "subset_support": "por camada, bbox, atributos e parâmetros suportados",
+        "notes": "Serviço distribui camadas heterogêneas; não assumir esquema único entre produtos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "WMS | WFS"
+    ],
+    "available_protocols": [
+      "OGC WMS/WFS over HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000334",
+    "resource_id": "DR0103",
+    "product_name": "Boletim InfoQueima — Programa Queimadas INPE",
+    "product_acronym": "InfoQueima",
+    "product_family": "Programa Queimadas — síntese técnica mensal",
+    "product_kind": "indicator_family",
+    "product_description": "Publicação técnica mensal que sintetiza o monitoramento de queimadas e incêndios florestais no Brasil, reunindo focos de fogo ativo, eventos de fogo, áreas queimadas, risco meteorológico e condições meteorológicas associadas.",
+    "research_areas": "Fire ecology | Environmental monitoring | Climate science | Conservation",
+    "keywords": "InfoQueima | boletim | focos de fogo | eventos de fogo | risco | área queimada",
+    "geographic_coverage": "Brasil e recortes territoriais destacados em cada edição",
+    "covers_brazil": "sim",
+    "spatial_support": "sínteses nacionais e territoriais derivadas dos produtos do programa",
+    "spatial_resolution": "heterogênea; depende dos produtos sintetizados",
+    "temporal_coverage": "publicação mensal há mais de uma década; edição junho de 2026 oficialmente verificada",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "edição junho de 2026 verificada em 23/07/2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+    "methodology_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+    "primary_or_derived": "derivado",
+    "limitations": "Boletim de síntese, não base observacional homogênea. Indicadores nele reunidos possuem unidades, métodos e universos distintos; números de focos, eventos, estimativa de área queimada e risco de fogo não são intercambiáveis.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0103",
+      "resource_name": "Programa Queimadas — INPE",
+      "acronym": "Programa Queimadas INPE",
+      "official_identity": "Programa nacional do INPE para monitoramento e modelagem de queimadas e incêndios florestais por sensoriamento remoto",
+      "homepage_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/index.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000355",
+        "product_id": "DP000334",
+        "distribution_name": "InfoQueima — boletins mensais",
+        "access_url": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+        "format": "PDF | HTML/notícia conforme edição",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "publicação institucional; atribuição ao INPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por mês/edição",
+        "notes": "Edição junho/2026 teve destaques publicados no portal INPE em 23/07/2026.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "PDF | HTML/notícia conforme edição"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
   }
 ]
