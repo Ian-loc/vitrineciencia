@@ -22951,5 +22951,713 @@
     "available_protocols": [
       "HTTPS download | CKAN API"
     ]
+  },
+  {
+    "product_id": "DP000387",
+    "resource_id": "DR0106",
+    "product_name": "Sinaflor — Uso Alternativo do Solo — Ibama",
+    "product_acronym": "Sinaflor UAS",
+    "product_family": "Autorizações e manejo florestal — registros administrativos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de solicitações e autorizações de Uso Alternativo do Solo cadastrados no Sinaflor.",
+    "research_areas": "Forest ecology | Land use and land cover | Environmental management | Environmental science",
+    "keywords": "Sinaflor | UAS | land-use change | authorization | forest products | Ibama",
+    "geographic_coverage": "Brasil — registros UAS cadastrados no Sinaflor",
+    "covers_brazil": "sim",
+    "spatial_support": "solicitação/autorização administrativa e atributos associados",
+    "spatial_resolution": "por processo/autorização; localização e geometria conforme registro",
+    "temporal_coverage": "registros cadastrados no Sinaflor; período conforme acervo",
+    "temporal_resolution": "por registro administrativo",
+    "update_frequency": "semanal conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 08/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-uso-alternativo-do-solo",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-uso-alternativo-do-solo",
+    "primary_or_derived": "primário",
+    "limitations": "Solicitação ou autorização UAS não equivale a conversão do uso do solo efetivamente executada, desmatamento observado ou impacto ecológico medido.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000409",
+        "product_id": "DP000387",
+        "distribution_name": "Sinaflor UAS — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-uso-alternativo-do-solo",
+        "format": "CSV | XML | JSON | metadados CSV",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Outra (Aberta), conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Preservar solicitações e autorizações como estados administrativos; não inferir conversão material do uso do solo.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON | metadados CSV"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000388",
+    "resource_id": "DR0106",
+    "product_name": "Sinaflor — Corte de Árvores Isoladas — Ibama",
+    "product_acronym": "Sinaflor CAI",
+    "product_family": "Autorizações e manejo florestal — registros administrativos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de solicitações e autorizações de Corte de Árvores Isoladas cadastrados no Sinaflor.",
+    "research_areas": "Forest ecology | Land use and land cover | Environmental management | Environmental science",
+    "keywords": "Sinaflor | CAI | isolated trees | authorization | forest products | Ibama",
+    "geographic_coverage": "Brasil — registros CAI cadastrados no Sinaflor",
+    "covers_brazil": "sim",
+    "spatial_support": "solicitação/autorização administrativa e atributos associados",
+    "spatial_resolution": "por processo/autorização; localização conforme registro",
+    "temporal_coverage": "registros cadastrados no Sinaflor; período conforme acervo",
+    "temporal_resolution": "por registro administrativo",
+    "update_frequency": "semanal conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 09/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-corte-de-arvores-isoladas",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-corte-de-arvores-isoladas",
+    "primary_or_derived": "primário",
+    "limitations": "Solicitação ou autorização de corte não comprova remoção efetiva das árvores, volume explorado ou alteração de cobertura observada.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000410",
+        "product_id": "DP000388",
+        "distribution_name": "Sinaflor CAI — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-corte-de-arvores-isoladas",
+        "format": "CSV | XML | JSON | metadados CSV",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Outra (Aberta), conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Não inferir corte executado a partir da solicitação ou autorização.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON | metadados CSV"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000389",
+    "resource_id": "DR0106",
+    "product_name": "Sinaflor — Autorização de Supressão de Vegetação — Ibama",
+    "product_acronym": "Sinaflor ASV",
+    "product_family": "Autorizações e manejo florestal — registros administrativos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de solicitações e autorizações de Supressão de Vegetação cadastrados no Sinaflor.",
+    "research_areas": "Forest ecology | Land use and land cover | Environmental management | Environmental science",
+    "keywords": "Sinaflor | ASV | vegetation suppression | authorization | forest products | Ibama",
+    "geographic_coverage": "Brasil — registros ASV cadastrados no Sinaflor",
+    "covers_brazil": "sim",
+    "spatial_support": "solicitação/autorização administrativa e atributos associados",
+    "spatial_resolution": "por processo/autorização; localização e geometria conforme registro",
+    "temporal_coverage": "registros cadastrados no Sinaflor; período conforme acervo",
+    "temporal_resolution": "por registro administrativo",
+    "update_frequency": "semanal conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 10/04/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-autorizacao-de-supressao-de-vegetacao",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-autorizacao-de-supressao-de-vegetacao",
+    "primary_or_derived": "primário",
+    "limitations": "ASV cadastrada no Sinaflor é ato administrativo e não equivale a supressão efetivamente realizada, desmatamento detectado por sensoriamento remoto ou magnitude de impacto.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000411",
+        "product_id": "DP000389",
+        "distribution_name": "Sinaflor ASV — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-autorizacao-de-supressao-de-vegetacao",
+        "format": "CSV | XML | JSON",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Outra (Aberta), conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "ASV administrativa é distinta de supressão observada por campo ou sensoriamento remoto.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000390",
+    "resource_id": "DR0106",
+    "product_name": "Sinaflor — PMFS Amazônia Legal — Ibama",
+    "product_acronym": "Sinaflor PMFS Amazônia",
+    "product_family": "Manejo florestal sustentável — registros administrativos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de solicitações e autorizações de Plano de Manejo Florestal Sustentável cadastrados no Sinaflor e situados na Amazônia Legal.",
+    "research_areas": "Forest ecology | Land use and land cover | Environmental management | Environmental science",
+    "keywords": "Sinaflor | PMFS | sustainable forest management | Amazon | authorization | Ibama",
+    "geographic_coverage": "Amazônia Legal — registros PMFS cadastrados no Sinaflor",
+    "covers_brazil": "sim",
+    "spatial_support": "solicitação/autorização administrativa e atributos associados",
+    "spatial_resolution": "por processo/PMFS; localização e geometria conforme registro",
+    "temporal_coverage": "registros cadastrados no Sinaflor; período conforme acervo",
+    "temporal_resolution": "por registro administrativo",
+    "update_frequency": "semanal conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 11/11/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-pmfs-amazonia-legal",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-pmfs-amazonia-legal",
+    "primary_or_derived": "primário",
+    "limitations": "PMFS solicitado ou autorizado não equivale a exploração efetivamente executada, volume removido observado, conformidade do manejo ou estoque florestal medido.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000412",
+        "product_id": "DP000390",
+        "distribution_name": "Sinaflor PMFS Amazônia Legal — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-pmfs-amazonia-legal",
+        "format": "CSV | XML | JSON | metadados CSV",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Outra (Aberta), conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Preservar Amazônia Legal como recorte institucional e o status administrativo de cada PMFS.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON | metadados CSV"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000391",
+    "resource_id": "DR0106",
+    "product_name": "Sinaflor — PMFS Outros Biomas — Ibama",
+    "product_acronym": "Sinaflor PMFS Outros Biomas",
+    "product_family": "Manejo florestal sustentável — registros administrativos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de solicitações e autorizações de Plano de Manejo Florestal Sustentável cadastrados no Sinaflor e situados fora da Amazônia Legal.",
+    "research_areas": "Forest ecology | Land use and land cover | Environmental management | Environmental science",
+    "keywords": "Sinaflor | PMFS | sustainable forest management | other biomes | authorization | Ibama",
+    "geographic_coverage": "Brasil fora da Amazônia Legal — registros PMFS cadastrados no Sinaflor",
+    "covers_brazil": "sim",
+    "spatial_support": "solicitação/autorização administrativa e atributos associados",
+    "spatial_resolution": "por processo/PMFS; localização e geometria conforme registro",
+    "temporal_coverage": "registros cadastrados no Sinaflor; período conforme acervo",
+    "temporal_resolution": "por registro administrativo",
+    "update_frequency": "semanal conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 11/11/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-pmfs-outros-biomas",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-pmfs-outros-biomas",
+    "primary_or_derived": "primário",
+    "limitations": "PMFS solicitado ou autorizado não equivale a exploração efetivamente executada, volume removido observado, conformidade do manejo ou estoque florestal medido.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000413",
+        "product_id": "DP000391",
+        "distribution_name": "Sinaflor PMFS Outros Biomas — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-pmfs-outros-biomas",
+        "format": "CSV | XML | JSON | metadados CSV",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Outra (Aberta), conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Cobertura fora da Amazônia Legal; não inferir execução de manejo a partir da autorização.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON | metadados CSV"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000392",
+    "resource_id": "DR0106",
+    "product_name": "Sinaflor — POA Amazônia Legal — Ibama",
+    "product_acronym": "Sinaflor POA Amazônia",
+    "product_family": "Autorizações e manejo florestal — registros administrativos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de solicitações e autorizações de Plano Operacional Anual cadastrados no Sinaflor e situados na Amazônia Legal.",
+    "research_areas": "Forest ecology | Land use and land cover | Environmental management | Environmental science",
+    "keywords": "Sinaflor | POA | annual operational plan | Amazon | authorization | logging | Ibama",
+    "geographic_coverage": "Amazônia Legal — registros de POA cadastrados no Sinaflor",
+    "covers_brazil": "sim",
+    "spatial_support": "solicitação/autorização administrativa e atributos associados",
+    "spatial_resolution": "por processo/POA; localização e geometria conforme registro",
+    "temporal_coverage": "registros cadastrados no Sinaflor; período conforme acervo",
+    "temporal_resolution": "por registro administrativo",
+    "update_frequency": "semanal conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 11/11/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-poa-amazonia-legal",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-poa-amazonia-legal",
+    "primary_or_derived": "primário",
+    "limitations": "POA solicitado ou autorizado não equivale a exploração material executada, volume efetivamente removido ou desmatamento observado.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000414",
+        "product_id": "DP000392",
+        "distribution_name": "Sinaflor POA Amazônia Legal — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-poa-amazonia-legal",
+        "format": "CSV | XML | JSON",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Outra (Aberta), conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Complementa POA Outros Biomas já catalogado; manter os dois recortes separados.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000393",
+    "resource_id": "DR0106",
+    "product_name": "Sinaflor — Exploração de Floresta Plantada — Ibama",
+    "product_acronym": "Sinaflor FP",
+    "product_family": "Autorizações e manejo florestal — registros administrativos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de solicitações e autorizações para exploração de floresta plantada cadastrados no Sinaflor.",
+    "research_areas": "Forest ecology | Land use and land cover | Environmental management | Environmental science",
+    "keywords": "Sinaflor | planted forest | silviculture | authorization | forest products | Ibama",
+    "geographic_coverage": "Brasil — registros de exploração de floresta plantada cadastrados no Sinaflor",
+    "covers_brazil": "sim",
+    "spatial_support": "solicitação/autorização administrativa e atributos associados",
+    "spatial_resolution": "por processo/autorização; localização conforme registro",
+    "temporal_coverage": "registros cadastrados no Sinaflor; período conforme acervo",
+    "temporal_resolution": "por registro administrativo",
+    "update_frequency": "semanal conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; atualização semanal; página oficial recuperada em 17/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-exploracao-de-floresta-plantada",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-exploracao-de-floresta-plantada",
+    "primary_or_derived": "primário",
+    "limitations": "Autorização para exploração de floresta plantada não comprova exploração executada, área corrente de silvicultura, volume produzido ou origem nativa da cobertura.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000415",
+        "product_id": "DP000393",
+        "distribution_name": "Sinaflor Floresta Plantada — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-exploracao-de-floresta-plantada",
+        "format": "CSV | XML | JSON",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Outra (Aberta), conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Autorização administrativa não é medida de área plantada ou produção florestal.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000394",
+    "resource_id": "DR0106",
+    "product_name": "Sinaflor — Empreendimentos de Base Florestal — Ibama",
+    "product_acronym": "Sinaflor EBF",
+    "product_family": "Empreendimentos florestais — cadastro administrativo",
+    "product_kind": "dataset_series",
+    "product_description": "Cadastro de empreendimentos no Sinaflor cuja atividade envolve exploração de produtos florestais; o cadastro é requisito para obtenção de autorizações no sistema.",
+    "research_areas": "Forest ecology | Land use and land cover | Environmental management | Environmental science",
+    "keywords": "Sinaflor | forest enterprises | registration | forest products | authorization | Ibama",
+    "geographic_coverage": "Brasil — empreendimentos cadastrados no Sinaflor",
+    "covers_brazil": "sim",
+    "spatial_support": "empreendimento cadastrado e atributos administrativos",
+    "spatial_resolution": "por empreendimento; localização conforme cadastro",
+    "temporal_coverage": "cadastro corrente; período conforme acervo",
+    "temporal_resolution": "por registro administrativo",
+    "update_frequency": "semanal conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 16/03/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-empreendimentos-de-base-florestal",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-empreendimentos-de-base-florestal",
+    "primary_or_derived": "primário",
+    "limitations": "Cadastro no Sinaflor não comprova operação atual, produção, exploração realizada, regularidade integral ou impacto ambiental do empreendimento.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000416",
+        "product_id": "DP000394",
+        "distribution_name": "Sinaflor Empreendimentos de Base Florestal — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-empreendimentos-de-base-florestal",
+        "format": "CSV | XML | JSON | metadados CSV",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Outra (Domínio Público), conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Cadastro é requisito administrativo e não comprova operação material atual.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON | metadados CSV"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000395",
+    "resource_id": "DR0106",
+    "product_name": "Sinaflor — Responsáveis Técnicos — Ibama",
+    "product_acronym": "Sinaflor RT",
+    "product_family": "Responsabilidade técnica florestal — cadastro administrativo",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de responsáveis técnicos inscritos no Sinaflor para elaboração e/ou execução técnica de projetos de exploração florestal perante o órgão ambiental competente.",
+    "research_areas": "Environmental management | Forest ecology | Environmental science",
+    "keywords": "Sinaflor | responsible technician | ART | forest projects | administrative register | Ibama",
+    "geographic_coverage": "Brasil — responsáveis técnicos inscritos no Sinaflor",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa física e atributos de responsabilidade técnica",
+    "spatial_resolution": "por responsável técnico/registro; não é camada territorial contínua",
+    "temporal_coverage": "cadastro corrente; período conforme acervo",
+    "temporal_resolution": "por registro administrativo",
+    "update_frequency": "semanal conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 17/04/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-responsavel-tecnico",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-responsavel-tecnico",
+    "primary_or_derived": "primário",
+    "limitations": "Inscrição como responsável técnico não comprova atuação em determinado projeto, execução material, qualidade técnica ou situação profissional fora do escopo e data do cadastro.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000417",
+        "product_id": "DP000395",
+        "distribution_name": "Sinaflor Responsáveis Técnicos — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-responsavel-tecnico",
+        "format": "CSV | XML | JSON",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Outra (Aberta), conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Dados cadastrais de responsabilidade técnica; preservar finalidade administrativa e eventuais restrições de interpretação.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000396",
+    "resource_id": "DR0106",
+    "product_name": "Sinaflor — Autorização de Utilização de Matéria-Prima Florestal — Ibama",
+    "product_acronym": "Sinaflor AUMPF",
+    "product_family": "Autorizações e manejo florestal — registros administrativos",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de solicitações e autorizações de Utilização de Matéria-Prima Florestal cadastrados no Sinaflor.",
+    "research_areas": "Forest ecology | Land use and land cover | Environmental management | Environmental science",
+    "keywords": "Sinaflor | AUMPF | forest raw material | authorization | forest products | Ibama",
+    "geographic_coverage": "Brasil — registros AUMPF cadastrados no Sinaflor",
+    "covers_brazil": "sim",
+    "spatial_support": "solicitação/autorização administrativa e atributos associados",
+    "spatial_resolution": "por processo/autorização; localização conforme registro",
+    "temporal_coverage": "registros cadastrados no Sinaflor; período conforme acervo",
+    "temporal_resolution": "por registro administrativo",
+    "update_frequency": "semanal conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; atualização semanal; página oficial recuperada em 17/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-autorizacao-de-utilizacao-de-materia-prima-florestal",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-autorizacao-de-utilizacao-de-materia-prima-florestal",
+    "primary_or_derived": "primário",
+    "limitations": "AUMPF solicitada ou autorizada não equivale a matéria-prima efetivamente utilizada, volume consumido observado, origem verificada fora do processo ou impacto ecológico medido.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000418",
+        "product_id": "DP000396",
+        "distribution_name": "Sinaflor AUMPF — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-autorizacao-de-utilizacao-de-materia-prima-florestal",
+        "format": "CSV | XML | JSON",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Outra (Aberta), conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Não inferir utilização material ou volume consumido apenas pela autorização.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000397",
+    "resource_id": "DR0106",
+    "product_name": "Sinaflor+ — Uso Alternativo do Solo — Agricultor Familiar — Ibama",
+    "product_acronym": "Sinaflor+ UAS AF",
+    "product_family": "Autorizações e manejo florestal — agricultor familiar",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de solicitações e autorizações de Uso Alternativo do Solo para agricultor familiar/empreendedor familiar rural cadastrados no Sinaflor+.",
+    "research_areas": "Forest ecology | Land use and land cover | Environmental management | Environmental science",
+    "keywords": "Sinaflor+ | UAS | family farming | rural family enterprise | authorization | Ibama",
+    "geographic_coverage": "Brasil — registros UAS de agricultor/empreendedor familiar rural no Sinaflor+",
+    "covers_brazil": "sim",
+    "spatial_support": "solicitação/autorização administrativa e atributos associados",
+    "spatial_resolution": "por processo/autorização; localização conforme registro",
+    "temporal_coverage": "conjunto criado em 2025; registros conforme acervo",
+    "temporal_resolution": "por registro administrativo",
+    "update_frequency": "semanal conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; atualização semanal",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-uso-alternativo-do-solo-agricultor-familiar",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-uso-alternativo-do-solo-agricultor-familiar",
+    "primary_or_derived": "primário",
+    "limitations": "O recorte identifica registros administrativos do módulo destinado a agricultor/empreendedor familiar rural; autorização não comprova mudança de uso executada nem representa censo de toda agricultura familiar.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000419",
+        "product_id": "DP000397",
+        "distribution_name": "Sinaflor+ UAS Agricultor Familiar — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/sinaflor-uso-alternativo-do-solo-agricultor-familiar",
+        "format": "CSV | XML | JSON",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Outra (Aberta), conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Recorte administrativo específico de agricultor/empreendedor familiar rural; não representa todo o universo da agricultura familiar.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000398",
+    "resource_id": "DR0106",
+    "product_name": "Licenças Ambientais Federais de Atividades e Empreendimentos — Ibama",
+    "product_acronym": "LAF Ibama",
+    "product_family": "Licenciamento ambiental federal — atos administrativos",
+    "product_kind": "dataset_series",
+    "product_description": "Relação de licenças ambientais, autorizações, renovações e retificações emitidas pelo Ibama no licenciamento ambiental federal, incluindo LP, LI, LO, LIO, LPS, ASV e ABIO.",
+    "research_areas": "Environmental management | Conservation | Geospatial data | Environmental science",
+    "keywords": "Ibama | federal environmental licensing | LP | LI | LO | LIO | LPS | ASV | ABIO | SISLIC",
+    "geographic_coverage": "Brasil — processos de licenciamento ambiental de competência federal conduzidos pelo Ibama",
+    "covers_brazil": "sim",
+    "spatial_support": "licença/autorização e atributos do processo/empreendimento",
+    "spatial_resolution": "por ato administrativo; localização conforme registro",
+    "temporal_coverage": "atos emitidos registrados no sistema; período conforme acervo",
+    "temporal_resolution": "por registro administrativo",
+    "update_frequency": "semanal conforme metadados oficiais",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 29/05/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/licencas-ambientais-de-atividades-e-empreendimentos-licenciados-pelo-ibama",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/licencas-ambientais-de-atividades-e-empreendimentos-licenciados-pelo-ibama",
+    "primary_or_derived": "primário",
+    "limitations": "O conjunto cobre atos do licenciamento ambiental federal sob competência do Ibama, não todas as licenças estaduais ou municipais. Emissão, renovação ou retificação não comprova execução da atividade, conformidade contínua, ausência de impacto ou cumprimento integral das condicionantes.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000420",
+        "product_id": "DP000398",
+        "distribution_name": "Licenciamento Ambiental Federal Ibama — atos emitidos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/licencas-ambientais-de-atividades-e-empreendimentos-licenciados-pelo-ibama",
+        "format": "HTML | CSV | XML | JSON",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "CKAN | navegador web | script/API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e download públicos",
+        "license": "Outra (Domínio Público), conforme catálogo CKAN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/formato; filtragem após download",
+        "notes": "Inclui diferentes tipos de licença/autorização e suas renovações/retificações; preservar tipo e situação de cada ato.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "HTML | CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
   }
 ]
