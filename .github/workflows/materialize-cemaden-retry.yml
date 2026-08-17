@@ -1,0 +1,45 @@
+name: Retry verified CEMADEN catalog materialization
+
+on:
+  push:
+    paths:
+      - '.github/workflows/materialize-cemaden-retry.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run corrected verified CEMADEN batch
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess, textwrap
+          path=Path('.github/workflows/materialize-cemaden-catalog.yml')
+          text=path.read_text(encoding='utf-8')
+          marker='      - name: Append verified CEMADEN source, products and distributions\n'
+          start=text.index(marker)+len(marker)
+          run_marker='        shell: bash\n        run: |\n'
+          assert text[start:].startswith(run_marker)
+          start += len(run_marker)
+          end=text.index('\n      - name: Commit verified batch and remove one-shot workflow', start)
+          script=textwrap.dedent(text[start:end])
+          old="assert not any('CEMADEN' in (r['resource_name']+r['acronym']).upper() for r in s)"
+          new="assert not any(r['homepage_url'].startswith('https://www.gov.br/cemaden/') or r['homepage_url'].startswith('https://www2.cemaden.gov.br/') for r in s)"
+          assert old in script
+          script=script.replace(old,new)
+          subprocess.run(script, shell=True, executable='/bin/bash', check=True)
+          PY
+      - name: Commit corrected batch and remove temporary workflows
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/materialize-cemaden-catalog.yml .github/workflows/materialize-cemaden-retry.yml
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          git commit -m 'Expand verified CEMADEN monitoring catalog'
+          git push
