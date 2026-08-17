@@ -31327,5 +31327,477 @@
     "available_protocols": [
       "HTTPS"
     ]
+  },
+  {
+    "product_id": "DP000528",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Estações Convencionais — observações correntes",
+    "product_acronym": "INMET Convencionais",
+    "product_family": "observações meteorológicas operacionais",
+    "product_kind": "data_service",
+    "product_description": "Serviço de dados meteorológicos observados nas estações convencionais do INMET, com observações nos horários sinóticos padrão e janela operacional recente.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "INMET | estações convencionais | observações | temperatura | precipitação | umidade | vento | pressão",
+    "geographic_coverage": "Brasil — rede de estações convencionais do INMET",
+    "covers_brazil": "sim",
+    "spatial_support": "ponto de estação meteorológica",
+    "spatial_resolution": "pontual",
+    "temporal_coverage": "janela operacional dos últimos 90 dias segundo a carta de serviços",
+    "temporal_resolution": "observações em 00UTC, 12UTC e 18UTC conforme serviço",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "serviço corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/esta%C3%A7%C3%B5es-convencionais",
+    "methodology_url": "https://portal.inmet.gov.br/paginas/estacoes",
+    "primary_or_derived": "primário",
+    "limitations": "Observações pontuais não representam automaticamente a condição de todo o município ou região. Continuidade, horários, instrumentos e disponibilidade variam por estação; não combinar diretamente com séries automáticas sem harmonizar metadados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000553",
+        "product_id": "DP000528",
+        "distribution_name": "INMET — Estações Convencionais — consulta de observações recentes",
+        "access_url": "https://tempo.inmet.gov.br/",
+        "format": "tabela/consulta web",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; disponibilidade depende da estação e janela operacional",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por estação e período conforme interface",
+        "notes": "Serviço oficial para observações recentes de estações convencionais; horários e disponibilidade variam por estação.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "tabela/consulta web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000529",
+    "resource_id": "DR0118",
+    "product_name": "INMET — BDMEP — Banco de Dados Meteorológicos para Ensino e Pesquisa",
+    "product_acronym": "BDMEP",
+    "product_family": "séries meteorológicas históricas convencionais",
+    "product_kind": "dataset_series",
+    "product_description": "Banco de dados de séries históricas diárias digitalizadas das estações meteorológicas convencionais da rede do INMET.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "BDMEP | séries históricas | estações convencionais | precipitação | temperatura | meteorologia",
+    "geographic_coverage": "Brasil — estações convencionais do INMET com séries disponíveis",
+    "covers_brazil": "sim",
+    "spatial_support": "ponto de estação meteorológica",
+    "spatial_resolution": "pontual",
+    "temporal_coverage": "histórico variável por estação; milhões de observações digitalizadas",
+    "temporal_resolution": "diária",
+    "update_frequency": "a cada 90 dias segundo a carta de serviços",
+    "product_status": "ativo",
+    "version_or_collection": "BDMEP corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/bdmep-dados-historicos",
+    "methodology_url": "https://bdmep.inmet.gov.br/",
+    "primary_or_derived": "primário",
+    "limitations": "Cobertura temporal, falhas e disponibilidade variam por estação. Série histórica convencional não é equivalente à série automática e exige associação ao código, metadados, instrumentos e período operacional corretos.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000554",
+        "product_id": "DP000529",
+        "distribution_name": "BDMEP — consulta e extração de séries históricas",
+        "access_url": "https://bdmep.inmet.gov.br/",
+        "format": "dados tabulares via sistema de consulta",
+        "access_protocol": "HTTPS",
+        "access_tool": "BDMEP web",
+        "free_download": "sim",
+        "authentication_required": "parcial",
+        "access_conditions": "seguir fluxo de consulta do BDMEP; metadados e disponibilidade variam por estação",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por estação, variável e período conforme sistema",
+        "notes": "Banco oficial de séries históricas diárias de estações convencionais; a carta de serviços informa atualização a cada 90 dias.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "dados tabulares via sistema de consulta"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000530",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Previsão Numérica do Tempo — modelo COSMO",
+    "product_acronym": "COSMO INMET",
+    "product_family": "previsão numérica do tempo",
+    "product_kind": "data_service",
+    "product_description": "Serviço de mapas e produtos de previsão numérica do tempo produzidos pelo INMET com o modelo não hidrostático COSMO para o Brasil e entorno.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "COSMO | previsão numérica | precipitação | vento | temperatura | meteorologia | modelo",
+    "geographic_coverage": "Brasil e domínio de modelagem associado",
+    "covers_brazil": "sim",
+    "spatial_support": "grade de modelo numérico",
+    "spatial_resolution": "varia conforme configuração; a documentação cita aplicações de aproximadamente 7 km a 2,8 km",
+    "temporal_coverage": "previsão operacional corrente",
+    "temporal_resolution": "passos de prognóstico conforme saída do modelo",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "serviço operacional 2026; horizonte de até 174 horas",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/previs%C3%A3o-num%C3%A9rica-modelo",
+    "methodology_url": "https://vime.inmet.gov.br/",
+    "primary_or_derived": "derivado",
+    "limitations": "Saídas de modelo são previsões, não observações. Resolução nominal não equivale a precisão local; desempenho varia por variável, horizonte e situação meteorológica e deve ser avaliado contra observações quando usado cientificamente.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000555",
+        "product_id": "DP000530",
+        "distribution_name": "INMET VIME — mapas e saídas de previsão numérica",
+        "access_url": "https://vime.inmet.gov.br/",
+        "format": "mapas e produtos de modelo; formatos variam por saída",
+        "access_protocol": "HTTPS",
+        "access_tool": "VIME / navegador web",
+        "free_download": "parcial",
+        "authentication_required": "desconhecido",
+        "access_conditions": "consulta pública de produtos selecionados; verificar metadado da saída",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por variável, prazo e domínio conforme interface",
+        "notes": "Saídas de previsão numérica; não tratar como observações. Horizonte operacional documentado de até 174 horas.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas e produtos de modelo; formatos variam por saída"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000531",
+    "resource_id": "DR0118",
+    "product_name": "INMET — SISDAGRO — Sistema de Suporte à Decisão na Agropecuária",
+    "product_acronym": "SISDAGRO",
+    "product_family": "agrometeorologia e suporte à decisão",
+    "product_kind": "data_service",
+    "product_description": "Sistema de suporte à decisão agropecuária com ferramentas de monitoramento, climatologia e previsão agrometeorológica, incluindo balanço hídrico, conforto térmico bovino, graus-dia e risco de geada.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas",
+    "keywords": "SISDAGRO | agrometeorologia | balanço hídrico | graus-dia | conforto térmico | geada | agricultura",
+    "geographic_coverage": "Brasil; cobertura depende do módulo e dos dados meteorológicos usados",
+    "covers_brazil": "sim",
+    "spatial_support": "estações, grades e sínteses agrometeorológicas conforme módulo",
+    "spatial_resolution": "varia conforme módulo",
+    "temporal_coverage": "climatologias e monitoramento/previsão correntes conforme módulo",
+    "temporal_resolution": "diária | decendial | mensal e outras conforme módulo",
+    "update_frequency": "varia conforme módulo",
+    "product_status": "ativo",
+    "version_or_collection": "SISDAGRO corrente 2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/sisdagro",
+    "methodology_url": "https://sisdagro.inmet.gov.br/",
+    "primary_or_derived": "derivado",
+    "limitations": "É um sistema agregador de indicadores e ferramentas, não um dataset homogêneo. Balanço hídrico, graus-dia, conforto térmico e previsão de geada têm métodos, entradas e escalas próprios; não interpretar indicadores modelados como impactos agrícolas observados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000556",
+        "product_id": "DP000531",
+        "distribution_name": "SISDAGRO — aplicação web de monitoramento, climatologia e previsão",
+        "access_url": "https://sisdagro.inmet.gov.br/",
+        "format": "aplicação web | mapas | gráficos | tabelas conforme módulo",
+        "access_protocol": "HTTPS",
+        "access_tool": "SISDAGRO",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; condições e exportação variam conforme módulo",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por módulo, localidade/período e variável conforme ferramenta",
+        "notes": "Agregador de ferramentas agrometeorológicas; preservar método e entradas de cada módulo.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "aplicação web | mapas | gráficos | tabelas conforme módulo"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000532",
+    "resource_id": "DR0118",
+    "product_name": "INMET — SPI — Índice de Precipitação Padronizada",
+    "product_acronym": "SPI INMET",
+    "product_family": "monitoramento de seca meteorológica",
+    "product_kind": "indicator_family",
+    "product_description": "Mapas nacionais do Standardized Precipitation Index calculado a partir de precipitação acumulada em diferentes escalas temporais e transformada para uma distribuição padronizada.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Recursos Hídricos e Oceanografia",
+    "keywords": "SPI | seca meteorológica | precipitação | índice padronizado | monitoramento climático",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "mapa/grade derivada de séries de precipitação",
+    "spatial_resolution": "conforme processamento/cartografia do produto",
+    "temporal_coverage": "série e mapas correntes conforme dados disponíveis",
+    "temporal_resolution": "mensal e escalas acumuladas como 1, 3 meses e outras",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "produto corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/spi-%C3%ADndice-de-precipita%C3%A7%C3%A3o-padronizada",
+    "methodology_url": "https://portal.inmet.gov.br/servicos/spi-%C3%ADndice-de-precipita%C3%A7%C3%A3o-padronizada",
+    "primary_or_derived": "derivado",
+    "limitations": "SPI expressa anomalia padronizada de precipitação e não mede diretamente seca agrícola, hidrológica, disponibilidade hídrica, impacto econômico ou umidade do solo. Resultados dependem do período de referência, comprimento/qualidade das séries e escala temporal escolhida.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000557",
+        "product_id": "DP000532",
+        "distribution_name": "INMET Clima — mapas do SPI",
+        "access_url": "https://clima.inmet.gov.br/",
+        "format": "mapas e visualização web",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal climatológico INMET",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; escala temporal selecionável conforme produto",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período/escala temporal conforme interface",
+        "notes": "SPI é índice derivado da precipitação; usar período de referência e escala temporal explícitos.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas e visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000533",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Boletim Agroclimatológico Mensal",
+    "product_acronym": "Boletim Agroclimatológico",
+    "product_family": "boletins agroclimatológicos",
+    "product_kind": "indicator_family",
+    "product_description": "Boletim mensal do INMET com análise das condições climáticas observadas no mês anterior, fenômenos de grande escala e informações prognósticas para os três meses seguintes, voltado ao planejamento agrícola.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas",
+    "keywords": "boletim agroclimatológico | agricultura | clima | prognóstico climático | monitoramento",
+    "geographic_coverage": "Brasil; análises regionais e nacionais conforme edição",
+    "covers_brazil": "sim",
+    "spatial_support": "sínteses, mapas e regiões conforme edição",
+    "spatial_resolution": "varia conforme figura, análise e dado de origem",
+    "temporal_coverage": "série mensal de boletins; edição de junho de 2026 confirmada no portal auditado",
+    "temporal_resolution": "mensal; prognóstico sazonal de três meses",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "Boletim Agroclimatológico Mensal — série corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/boletins-agroclimatol%C3%B3gicos",
+    "methodology_url": "https://portal.inmet.gov.br/boletinsagro",
+    "primary_or_derived": "derivado",
+    "limitations": "Boletim integra observações, análises e prognósticos; esses componentes não são equivalentes. Prognóstico climático é probabilístico e não deve ser interpretado como previsão determinística de impacto ou produtividade agrícola.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000558",
+        "product_id": "DP000533",
+        "distribution_name": "INMET — arquivo de Boletins Agroclimatológicos",
+        "access_url": "https://portal.inmet.gov.br/boletinsagro",
+        "format": "PDF | HTML conforme edição",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal INMET",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público às edições disponibilizadas",
+        "license": "não localizada de forma inequívoca no nível de cada boletim",
+        "provider_attribution_required": "sim",
+        "subset_support": "por edição mensal",
+        "notes": "Cada boletim combina análise observada e prognóstico; preservar edição e horizonte prognóstico.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "PDF | HTML conforme edição"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000534",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Análise Sinótica",
+    "product_acronym": "Análise Sinótica",
+    "product_family": "análise meteorológica sinótica",
+    "product_kind": "data_service",
+    "product_description": "Análise descritiva da situação sinótica observada no Brasil e América do Sul nos horários padrão de 00UTC e 12UTC.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia",
+    "keywords": "análise sinótica | frentes | pressão | massas de ar | meteorologia | América do Sul",
+    "geographic_coverage": "Brasil e América do Sul",
+    "covers_brazil": "sim",
+    "spatial_support": "análise regional/sinótica baseada em múltiplas observações e produtos",
+    "spatial_resolution": "sinótica/regional",
+    "temporal_coverage": "serviço operacional corrente",
+    "temporal_resolution": "00UTC e 12UTC",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "serviço corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/an%C3%A1lise-da-situa%C3%A7%C3%A3o-atual",
+    "methodology_url": "https://portal.inmet.gov.br/servicos/an%C3%A1lise-da-situa%C3%A7%C3%A3o-atual",
+    "primary_or_derived": "derivado",
+    "limitations": "Análise sinótica é interpretação meteorológica integrada, não uma observação instrumental única nem um dataset homogêneo. Elementos e diagnósticos podem ser revisados e devem ser usados com as cartas/dados correspondentes ao horário analisado.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000559",
+        "product_id": "DP000534",
+        "distribution_name": "INMET — consulta de Análise Sinótica atual",
+        "access_url": "https://tempo.inmet.gov.br/",
+        "format": "análise textual/cartográfica web",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por horário/data conforme interface disponível",
+        "notes": "Análise institucional derivada para horários sinóticos padrão; não equivale ao arquivo bruto de observações.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "análise textual/cartográfica web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000535",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Histórico de Cartas Sinóticas — 2022–presente",
+    "product_acronym": "Cartas Sinóticas",
+    "product_family": "cartas meteorológicas sinóticas",
+    "product_kind": "dataset_series",
+    "product_description": "Arquivo público para download das cartas sinóticas produzidas pelo INMET no padrão visual vigente desde 2022, representando sistemas de pressão, frentes, massas de ar e outros elementos meteorológicos.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "cartas sinóticas | arquivo histórico | frentes | pressão atmosférica | massas de ar | INMET",
+    "geographic_coverage": "Brasil e América do Sul conforme a carta",
+    "covers_brazil": "sim",
+    "spatial_support": "carta meteorológica sinótica",
+    "spatial_resolution": "sinótica/regional",
+    "temporal_coverage": "2022–presente no arquivo público anunciado em 2026",
+    "temporal_resolution": "horários sinóticos conforme cada carta",
+    "update_frequency": "conforme produção operacional",
+    "product_status": "ativo",
+    "version_or_collection": "arquivo público desde 2022; download direto disponibilizado em 2026-06-30",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/cartasinotica",
+    "methodology_url": "https://portal.inmet.gov.br/noticias/inmet-disponibiliza-cartas-sin%C3%B3ticas-dos-%C3%BAltimos-anos-para-download-em-seu-portal",
+    "primary_or_derived": "derivado",
+    "limitations": "Cartas são produtos analíticos derivados e não substituem as observações subjacentes. O arquivo público documentado começa em 2022 no padrão visual vigente; não inferir cobertura histórica anterior a partir desse acervo.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000560",
+        "product_id": "DP000535",
+        "distribution_name": "INMET — download de Cartas Sinóticas históricas",
+        "access_url": "https://portal.inmet.gov.br/cartasinotica",
+        "format": "arquivos de cartas sinóticas; formato conforme item disponibilizado",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público das cartas disponibilizadas desde 2022",
+        "license": "não localizada de forma inequívoca no nível de cada arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "por data/horário conforme arquivo",
+        "notes": "Acervo direto anunciado pelo INMET em 30/06/2026 para cartas publicadas desde 2022.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "arquivos de cartas sinóticas; formato conforme item disponibilizado"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
   }
 ]
