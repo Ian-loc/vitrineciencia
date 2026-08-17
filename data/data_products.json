@@ -2796,17 +2796,17 @@
     "covers_brazil": "sim",
     "spatial_support": "município | terras indígenas | assentamentos e outros recortes de monitoramento",
     "spatial_resolution": "territorial; varia conforme indicador",
-    "temporal_coverage": "série de monitoramento contínua; consultas recentes e histórico disponível",
+    "temporal_coverage": "série mensal; edição mais recente materialmente verificada: junho de 2026",
     "temporal_resolution": "mensal",
     "update_frequency": "mensal",
     "product_status": "ativo",
-    "version_or_collection": "monitoramento mensal corrente",
+    "version_or_collection": "junho de 2026, publicado em 14/07/2026; série mensal corrente",
     "enumeration_scope": "family_level",
     "product_page_url": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/impactos-seca/monitoramento-de-seca-para-o-brasil",
     "methodology_url": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/impactos-seca/monitoramento-de-seca-para-o-brasil",
     "primary_or_derived": "derivado",
-    "limitations": "O IIS e demais classificações são indicadores derivados; interpretar classes segundo metodologia e mês de referência, sem converter diretamente categorias em perdas econômicas ou ecológicas.",
-    "last_verified": "2026-08-14",
+    "limitations": "O IIS e demais classificações são indicadores derivados e compostos; interpretar classes segundo metodologia e mês de referência, sem converter categorias diretamente em perdas econômicas, agrícolas ou ecológicas. A edição junho/2026 disponibiliza IIS por município.",
+    "last_verified": "2026-08-17",
     "source": {
       "resource_id": "DR0005",
       "resource_name": "Centro Nacional de Monitoramento e Alertas de Desastres Naturais",
@@ -22341,6 +22341,65 @@
     ],
     "available_protocols": [
       "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000377",
+    "resource_id": "DR0005",
+    "product_name": "RiSAF — Risco de Seca na Agricultura Familiar",
+    "product_acronym": "RiSAF",
+    "product_family": "Risco de seca na agricultura familiar",
+    "product_kind": "indicator_family",
+    "product_description": "Produto mensal do CEMADEN que avalia risco de seca para agricultura familiar, considerando cultivos não irrigados de feijão e/ou milho, exposição ao déficit hídrico, vulnerabilidades, capacidades adaptativas municipais e calendário agrícola.",
+    "research_areas": "Climate science | Agriculture | Drought | Vulnerability | Disaster risk",
+    "keywords": "RiSAF | drought risk | family farming | maize | beans | vulnerability | CEMADEN",
+    "geographic_coverage": "Brasil — municípios e estados com calendário de plantio vigente e dados aplicáveis na edição",
+    "covers_brazil": "sim",
+    "spatial_support": "municípios e cultivos/meses de plantio considerados",
+    "spatial_resolution": "municipal; componentes de exposição e vulnerabilidade possuem bases próprias",
+    "temporal_coverage": "série mensal; edição mais recente materialmente verificada: junho de 2026",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "junho de 2026, v.6 n.69, publicado em 03/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/impactos-seca/RiSAF-Risco-da-seca-na-agricultura-familiar",
+    "methodology_url": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/impactos-seca/RiSAF-Risco-da-seca-na-agricultura-familiar",
+    "primary_or_derived": "derivado",
+    "limitations": "Risco integra exposição, vulnerabilidade e capacidade adaptativa e não é sinônimo de déficit hídrico, perda observada ou quebra de safra. Aplica-se aos cultivos e calendários definidos pelo método e depende das bases socioeconômicas e climáticas utilizadas.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0005",
+      "resource_name": "Centro Nacional de Monitoramento e Alertas de Desastres Naturais",
+      "acronym": "CEMADEN",
+      "official_identity": "Centro nacional de monitoramento e alertas de desastres naturais",
+      "homepage_url": "https://www.gov.br/cemaden/pt-br",
+      "data_access_url": "https://www.gov.br/cemaden/pt-br/assuntos/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000398",
+        "product_id": "DP000377",
+        "distribution_name": "RiSAF — boletim e dados mensais",
+        "access_url": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/impactos-seca/RiSAF-Risco-da-seca-na-agricultura-familiar",
+        "format": "boletim | dados para download conforme edição | mapas",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | planilha | SIG após processamento",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público; preservar mês de plantio, cultura, edição e componentes do risco",
+        "license": "não determinada especificamente para os arquivos nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por edição e filtragem dos dados disponibilizados",
+        "notes": "A edição junho/2026 (v.6 n.69) foi publicada em 03/07/2026 e oferece download de boletim e dados; risco não equivale a impacto agrícola observado.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "boletim | dados para download conforme edição | mapas"
+    ],
+    "available_protocols": [
+      "HTTPS download"
     ]
   }
 ]
