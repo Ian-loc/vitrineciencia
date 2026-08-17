@@ -1,0 +1,51 @@
+name: Apply OpenWeather catalog addition
+
+on:
+  push:
+    branches: ["agent/add-openweather-catalog"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apply-openweather-catalog
+  cancel-in-progress: false
+
+jobs:
+  apply-and-validate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/add-openweather-catalog
+
+      - name: Apply verified OpenWeather rows
+        run: python3 scripts/apply_openweather_catalog.py
+
+      - name: Validate canonical catalog
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          node --check assets/app.js
+          node --check assets/products.js
+          node --check assets/analytics.js
+          node --check assets/quality-summary.js
+          node --check assets/build-meta.js
+
+      - name: Commit only validated catalog outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -r candidates/openweather_2026-08-17 scripts/apply_openweather_catalog.py
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv
+          git add data/data_resources.json data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          git add audit/OPENWEATHER_CATALOG_REVIEW_2026-08-17.md
+          git diff --cached --check
+          git commit -m "Add OpenWeather source and API products"
+          git push origin HEAD:agent/add-openweather-catalog
