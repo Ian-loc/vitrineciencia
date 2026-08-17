@@ -22401,5 +22401,241 @@
     "available_protocols": [
       "HTTPS download"
     ]
+  },
+  {
+    "product_id": "DP000378",
+    "resource_id": "DR0105",
+    "product_name": "Reservas Particulares do Patrimônio Natural (RPPNs) Federais — limites e localização",
+    "product_acronym": "RPPNs Federais — SIMRPPN",
+    "product_family": "Unidades de Conservação — dados geoespaciais",
+    "product_kind": "map_layer_collection",
+    "product_description": "Produto geoespacial do ICMBio/SIMRPPN para consulta e download da localização e dos limites disponíveis das Reservas Particulares do Patrimônio Natural reconhecidas em âmbito federal.",
+    "research_areas": "Conservation | Biodiversity | Geospatial data | Environmental science",
+    "keywords": "RPPN | protected areas | private reserves | SIMRPPN | boundaries | ICMBio",
+    "geographic_coverage": "Brasil — RPPNs federais registradas no SIMRPPN",
+    "covers_brazil": "sim",
+    "spatial_support": "polígonos de RPPNs georreferenciadas | círculos de localização aproximada para registros antigos não georreferenciados",
+    "spatial_resolution": "por RPPN; precisão depende do georreferenciamento e do ato cadastral",
+    "temporal_coverage": "cadastro corrente com RPPNs reconhecidas em diferentes datas",
+    "temporal_resolution": "por registro/atualização cadastral",
+    "update_frequency": "contínua conforme atualização do SIMRPPN",
+    "product_status": "ativo",
+    "version_or_collection": "SIMRPPN corrente; página geoespacial do ICMBio atualizada em 24/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/icmbio/pt-br/assuntos/unidades-de-conservacao/rppn",
+    "methodology_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio/dados_geoespaciais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais",
+    "primary_or_derived": "misto",
+    "limitations": "RPPNs antigas sem georreferenciamento podem ser representadas por círculos sobre localização aproximada, não por fronteiras exatas. Apenas registros georreferenciados devem ser interpretados como limites da RPPN; o cadastro não substitui o ato legal e documentos fundiários.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0105",
+      "resource_name": "Dados e Sistemas de Biodiversidade e Unidades de Conservação — ICMBio",
+      "acronym": "ICMBio Dados",
+      "official_identity": "Infraestrutura institucional do ICMBio para dados de unidades de conservação, biodiversidade, gestão e monitoramento",
+      "homepage_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio",
+      "data_access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000399",
+        "product_id": "DP000378",
+        "distribution_name": "RPPNs Federais — SIMRPPN consulta e download",
+        "access_url": "https://simrppn.sisicmbio.icmbio.gov.br",
+        "format": "Shapefile | KML | visualização web",
+        "access_protocol": "HTTPS / web",
+        "access_tool": "SIMRPPN | navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública e download por camada/RPPN; autenticação é necessária para funções administrativas de cadastro, não para a consulta pública",
+        "license": "licença específica do arquivo não determinada; citar ICMBio/SIMRPPN",
+        "provider_attribution_required": "sim",
+        "subset_support": "por RPPN/camada",
+        "notes": "Não interpretar os círculos de RPPNs antigas não georreferenciadas como limites exatos; o próprio ICMBio os identifica como referência aproximada de localização.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "Shapefile | KML | visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS / web"
+    ]
+  },
+  {
+    "product_id": "DP000379",
+    "resource_id": "DR0105",
+    "product_name": "Áreas Embargadas — ICMBio",
+    "product_acronym": "Áreas Embargadas ICMBio",
+    "product_family": "Fiscalização ambiental — dados geoespaciais",
+    "product_kind": "dataset_series",
+    "product_description": "Base temática oficial do ICMBio com registros e localização geoespacial de áreas embargadas, disponibilizada para download tabular/geográfico e por geosserviços da INDE.",
+    "research_areas": "Conservation | Geospatial data | Environmental science | Environmental management",
+    "keywords": "embargo | environmental enforcement | sanctions | ICMBio | WFS | WMS | geospatial",
+    "geographic_coverage": "Brasil — áreas embargadas registradas pelo ICMBio",
+    "covers_brazil": "sim",
+    "spatial_support": "registros administrativos e geometrias de áreas embargadas",
+    "spatial_resolution": "por registro de embargo; precisão depende da geometria e do processo de origem",
+    "temporal_coverage": "registros correntes e históricos conforme base administrativa; estado publicado atualizado em 04/08/2026",
+    "temporal_resolution": "por auto/embargo e atualização administrativa",
+    "update_frequency": "irregular conforme atualização administrativa",
+    "product_status": "ativo",
+    "version_or_collection": "atualização publicada em 04/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio/dados_geoespaciais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais",
+    "methodology_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio/dados_geoespaciais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais",
+    "primary_or_derived": "primário",
+    "limitations": "Embargo é medida administrativa e sua presença/localização não equivale à magnitude de dano ambiental, cobertura do solo observada ou decisão judicial definitiva. Situação processual e geometria podem ser atualizadas; usar a versão e os atributos do registro.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0105",
+      "resource_name": "Dados e Sistemas de Biodiversidade e Unidades de Conservação — ICMBio",
+      "acronym": "ICMBio Dados",
+      "official_identity": "Infraestrutura institucional do ICMBio para dados de unidades de conservação, biodiversidade, gestão e monitoramento",
+      "homepage_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio",
+      "data_access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000400",
+        "product_id": "DP000379",
+        "distribution_name": "Áreas Embargadas ICMBio — downloads e geosserviços",
+        "access_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio/dados_geoespaciais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais",
+        "format": "XLSX | KML | SHP | WFS/WMS",
+        "access_protocol": "HTTPS download | OGC WFS/WMS",
+        "access_tool": "navegador web | software SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download direto pela página oficial ou consumo pelos geosserviços ICMBio/INDE",
+        "license": "licença específica dos arquivos não determinada; atribuição ao ICMBio recomendada",
+        "provider_attribution_required": "sim",
+        "subset_support": "arquivo nacional; consulta por camada via WFS/WMS",
+        "notes": "A página oficial marca a base como atualizada em 04/08/2026 e disponibiliza XLSX, KML e SHP; os geosserviços WFS/WMS expõem a camada para SIG.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX | KML | SHP | WFS/WMS"
+    ],
+    "available_protocols": [
+      "HTTPS download | OGC WFS/WMS"
+    ]
+  },
+  {
+    "product_id": "DP000380",
+    "resource_id": "DR0105",
+    "product_name": "Autos de Infração — ICMBio",
+    "product_acronym": "Autos de Infração ICMBio",
+    "product_family": "Fiscalização ambiental — dados geoespaciais",
+    "product_kind": "dataset_series",
+    "product_description": "Base temática oficial do ICMBio com registros de autos de infração e sua representação geoespacial, disponibilizada para download tabular/geográfico e por geosserviços da INDE.",
+    "research_areas": "Conservation | Geospatial data | Environmental science | Environmental management",
+    "keywords": "environmental infractions | enforcement | administrative records | ICMBio | WFS | WMS | geospatial",
+    "geographic_coverage": "Brasil — autos de infração registrados pelo ICMBio",
+    "covers_brazil": "sim",
+    "spatial_support": "registros administrativos georreferenciados; geometria conforme registro",
+    "spatial_resolution": "por auto/registro; precisão depende da informação espacial de origem",
+    "temporal_coverage": "registros correntes e históricos conforme base administrativa; estado publicado atualizado em 04/08/2026",
+    "temporal_resolution": "por auto e atualização administrativa",
+    "update_frequency": "irregular conforme atualização administrativa",
+    "product_status": "ativo",
+    "version_or_collection": "atualização publicada em 04/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio/dados_geoespaciais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais",
+    "methodology_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio/dados_geoespaciais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais",
+    "primary_or_derived": "primário",
+    "limitations": "Auto de infração é registro administrativo de fiscalização e não deve ser interpretado isoladamente como decisão final de responsabilidade, censo completo de infrações ambientais ou medida direta de impacto ecológico. Situação processual, atributos e localização podem ser atualizados.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0105",
+      "resource_name": "Dados e Sistemas de Biodiversidade e Unidades de Conservação — ICMBio",
+      "acronym": "ICMBio Dados",
+      "official_identity": "Infraestrutura institucional do ICMBio para dados de unidades de conservação, biodiversidade, gestão e monitoramento",
+      "homepage_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio",
+      "data_access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000401",
+        "product_id": "DP000380",
+        "distribution_name": "Autos de Infração ICMBio — downloads e geosserviços",
+        "access_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio/dados_geoespaciais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais",
+        "format": "XLSX | KML | SHP | WFS/WMS",
+        "access_protocol": "HTTPS download | OGC WFS/WMS",
+        "access_tool": "navegador web | software SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download direto pela página oficial ou consumo pelos geosserviços ICMBio/INDE",
+        "license": "licença específica dos arquivos não determinada; atribuição ao ICMBio recomendada",
+        "provider_attribution_required": "sim",
+        "subset_support": "arquivo nacional; consulta por camada via WFS/WMS",
+        "notes": "A página oficial marca a base como atualizada em 04/08/2026 e disponibiliza XLSX, KML e SHP; os geosserviços WFS/WMS expõem a camada para SIG.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX | KML | SHP | WFS/WMS"
+    ],
+    "available_protocols": [
+      "HTTPS download | OGC WFS/WMS"
+    ]
+  },
+  {
+    "product_id": "DP000381",
+    "resource_id": "DR0105",
+    "product_name": "CANIE — Cadastro Nacional de Informações Espeleológicas",
+    "product_acronym": "CANIE",
+    "product_family": "Patrimônio espeleológico e cavidades naturais subterrâneas",
+    "product_kind": "data_service",
+    "product_description": "Sistema nacional do ICMBio/CECAV, integrante do SINIMA, que congrega informações geoespaciais e cadastrais conhecidas sobre o patrimônio espeleológico brasileiro provenientes de múltiplas fontes e processos de validação.",
+    "research_areas": "Geology | Geospatial data | Environmental science | Conservation",
+    "keywords": "caves | speleology | CANIE | CECAV | karst | geospatial | cave inventory",
+    "geographic_coverage": "Brasil — cavidades naturais subterrâneas cadastradas no CANIE",
+    "covers_brazil": "sim",
+    "spatial_support": "pontos de entrada/localização de cavidades e atributos cadastrais; mapas associados conforme registro",
+    "spatial_resolution": "pontual; precisão varia segundo os níveis de validação do CANIE",
+    "temporal_coverage": "cadastro corrente formado por registros históricos e novas incorporações",
+    "temporal_resolution": "por registro e atualização cadastral",
+    "update_frequency": "contínua/periodicamente conforme inserção, correção e validação de registros",
+    "product_status": "ativo",
+    "version_or_collection": "CANIE corrente; sistema nacional instituído pela Resolução CONAMA 347/2004",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/icmbio/pt-br/assuntos/centros-de-pesquisa/cavernas/cadastro-nacional-de-informacoes-espeleologicas/canie",
+    "methodology_url": "https://www.gov.br/icmbio/pt-br/assuntos/centros-de-pesquisa/cavernas/cadastro-nacional-de-informacoes-espeleologicas/canie",
+    "primary_or_derived": "misto",
+    "limitations": "O CANIE reúne somente cavidades conhecidas, prospectadas e cadastradas e não representa todo o universo de cavernas do Brasil. Registros podem ser inseridos, corrigidos ou excluídos; a precisão espacial varia entre três níveis de validação e o uso não substitui análise técnica do SISNAMA.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0105",
+      "resource_name": "Dados e Sistemas de Biodiversidade e Unidades de Conservação — ICMBio",
+      "acronym": "ICMBio Dados",
+      "official_identity": "Infraestrutura institucional do ICMBio para dados de unidades de conservação, biodiversidade, gestão e monitoramento",
+      "homepage_url": "https://www.gov.br/icmbio/pt-br/dados-icmbio",
+      "data_access_url": "https://www.gov.br/icmbio/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000402",
+        "product_id": "DP000381",
+        "distribution_name": "CANIE — sistema e dados geoespaciais",
+        "access_url": "https://www.gov.br/icmbio/pt-br/assuntos/centros-de-pesquisa/cavernas/cadastro-nacional-de-informacoes-espeleologicas/canie",
+        "format": "sistema web | Shapefile | KMZ",
+        "access_protocol": "HTTPS / web download",
+        "access_tool": "CANIE | navegador web | software SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta e downloads públicos; cadastro/autenticação aplicam-se a inserção e edição de informações",
+        "license": "reutilização indicada pela página com citação da fonte CANIE; licença padronizada específica não identificada",
+        "provider_attribution_required": "sim",
+        "subset_support": "consulta por registro; arquivos conforme disponibilização do CECAV",
+        "notes": "A documentação explicita SIRGAS2000 para coordenadas validadas e três níveis de validação. Os arquivos estáticos citados na página têm data de incorporação própria e não devem ser confundidos com o estado corrente do sistema.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "sistema web | Shapefile | KMZ"
+    ],
+    "available_protocols": [
+      "HTTPS / web download"
+    ]
   }
 ]
