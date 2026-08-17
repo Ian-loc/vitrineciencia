@@ -1,0 +1,129 @@
+name: Materialize verified SGB geology batch
+
+on:
+  push:
+    paths:
+      - '.github/workflows/materialize-sgb-geology-batch.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Append verified products and distributions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          products_path = Path('data/data_products.csv')
+          dists_path = Path('data/product_distributions.csv')
+          verified = '2026-08-17'
+
+          products = [
+            {
+              'product_id':'DP000349','resource_id':'DR0104','product_name':'Mapa Geológico do Brasil — escala 1:5.000.000 — 2025','product_acronym':'Mapa Geológico Brasil 5M 2025','product_family':'Cartografia geológica nacional','product_kind':'map_layer_collection','product_description':'Mapa geológico integrado do território brasileiro publicado pelo Serviço Geológico do Brasil em 2025, com representação nacional em escala 1:5.000.000 e disponibilização digital para uso em SIG.','research_areas':'Geology | Geospatial data | Environmental science','keywords':'geological map | geology | Brazil | 1:5000000 | shapefile | SGB','geographic_coverage':'Brasil','covers_brazil':'sim','spatial_support':'polígonos e linhas de unidades/estruturas geológicas | mapa nacional','spatial_resolution':'escala cartográfica 1:5.000.000','temporal_coverage':'síntese geológica publicada em 2025; idades geológicas variam conforme unidade','temporal_resolution':'não se aplica; síntese geológica','update_frequency':'eventual','product_status':'ativo','version_or_collection':'edição 2025; escala 1:5.000.000','enumeration_scope':'complete','product_page_url':'https://rigeo.sgb.gov.br/items/b60343f1-7767-41dc-98fa-de6d7ec54d95','methodology_url':'https://www.sgb.gov.br/mapeamento_geologico/','primary_or_derived':'derivado','limitations':'Produto de síntese em pequena escala; não substitui cartografia geológica de maior detalhe nem observação de campo. Unidades e contatos generalizados não devem ser usados como limites locais precisos.','last_verified':verified
+            },
+            {
+              'product_id':'DP000350','resource_id':'DR0104','product_name':'Carta Geológica do Brasil ao Milionésimo — coleção de folhas 2004','product_acronym':'Carta Geológica Brasil 1M','product_family':'Cartografia geológica nacional','product_kind':'map_layer_collection','product_description':'Coleção de folhas do Programa Geologia do Brasil em escala 1:1.000.000, publicada em 2004, com mapas e dados vetoriais SIG por folha da Carta Internacional ao Milionésimo.','research_areas':'Geology | Geospatial data | Environmental science','keywords':'geological map | 1:1000000 | CIM | geological sheets | GIS | SGB','geographic_coverage':'Brasil — coleção por folhas da Carta Internacional ao Milionésimo','covers_brazil':'sim','spatial_support':'folhas cartográficas | vetores SIG | mapas PDF','spatial_resolution':'escala 1:1.000.000','temporal_coverage':'edição publicada em 2004; conteúdo geológico sintetiza levantamentos de diferentes épocas','temporal_resolution':'não se aplica; síntese cartográfica histórica','update_frequency':'não se aplica à edição 2004','product_status':'arquivado','version_or_collection':'Programa Geologia do Brasil; coleção 1:1.000.000 publicada em 2004','enumeration_scope':'complete','product_page_url':'https://www.sgb.gov.br/mapeamento_geologico/','methodology_url':'https://www.sgb.gov.br/geologia-basica','primary_or_derived':'derivado','limitations':'Coleção histórica de síntese; datas e fontes dos levantamentos variam por folha. Não confundir com o Mapa Geológico do Brasil 2025 nem usar como cartografia local de detalhe.','last_verified':verified
+            },
+            {
+              'product_id':'DP000351','resource_id':'DR0104','product_name':'Base de Afloramentos Geológicos — GeoSGB','product_acronym':'Afloramentos GeoSGB','product_family':'Bases geológicas de campo','product_kind':'dataset_series','product_description':'Base pontual do GeoSGB com afloramentos geológicos cadastrados a partir de descrições de campo, vinculando registros de rochas, fotografias, estruturas e metadados de levantamento quando disponíveis.','research_areas':'Geology | Geospatial data | Environmental science','keywords':'outcrops | field geology | rocks | structures | GeoSGB | OGC API','geographic_coverage':'Brasil — cobertura condicionada aos levantamentos e registros incorporados ao GeoSGB','covers_brazil':'sim','spatial_support':'pontos de afloramento e tabelas relacionadas','spatial_resolution':'pontual; precisão posicional varia conforme método de geoposicionamento e época','temporal_coverage':'registros históricos e correntes incorporados à base','temporal_resolution':'por registro/levantamento','update_frequency':'contínua conforme incorporação de dados','product_status':'ativo','version_or_collection':'Base AFLO / GeoSGB corrente','enumeration_scope':'complete','product_page_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/afloramentos?f=html','methodology_url':'https://geosgb.sgb.gov.br/geosgb/sobre_geosgb.html','primary_or_derived':'primário','limitations':'Cobertura é amostral e orientada pelos projetos de campo do SGB e parceiros; ausência de ponto não significa ausência de afloramento. Precisão, completude e atributos variam por registro e campanha.','last_verified':verified
+            },
+            {
+              'product_id':'DP000352','resource_id':'DR0104','product_name':'Biblioteca Espectral do Serviço Geológico do Brasil','product_acronym':'Biblioteca Espectral SGB','product_family':'Espectroscopia e caracterização mineralógica','product_kind':'dataset_series','product_description':'Banco temático em atualização desde 2011 com assinaturas espectrais de reflectância de materiais geológicos, características físicas de amostras, imagens e análises complementares quando disponíveis, integrado ao GeoSGB.','research_areas':'Geology | Remote sensing | Geospatial data','keywords':'spectral library | reflectance | minerals | rocks | VNIR | SWIR | GeoSGB','geographic_coverage':'Brasil — amostras de projetos do SGB; cobertura espacial não uniforme','covers_brazil':'sim','spatial_support':'amostras geológicas pontuais vinculadas a afloramentos e projetos','spatial_resolution':'pontual na origem da amostra; resolução espectral depende do instrumento/análise','temporal_coverage':'base desenvolvida e atualizada desde 2011','temporal_resolution':'por amostra/análise','update_frequency':'contínua conforme novas análises','product_status':'ativo','version_or_collection':'Biblioteca Espectral SGB corrente; referência institucional Perrotta et al. 2024','enumeration_scope':'complete','product_page_url':'https://www.sgb.gov.br/geologia-espectral','methodology_url':'https://www.sgb.gov.br/geologia-espectral','primary_or_derived':'primário','limitations':'Coleção de amostras, não cobertura espectral contínua do território. Instrumentos, preparação, qualidade e análises complementares variam; assinaturas não devem ser generalizadas para unidades geológicas inteiras sem validação.','last_verified':verified
+            },
+            {
+              'product_id':'DP000353','resource_id':'DR0104','product_name':'Datações Geocronológicas — GeoSGB','product_acronym':'Geocronologia GeoSGB','product_family':'Bases geológicas analíticas','product_kind':'dataset_series','product_description':'Coleção georreferenciada do GeoSGB de datações radiométricas e informações associadas, incluindo métodos como U/Pb, K/Ar, 40Ar/39Ar, Rb/Sr e Sm/Nd conforme o registro.','research_areas':'Geology | Geospatial data | Environmental science','keywords':'geochronology | radiometric dating | U-Pb | K-Ar | Ar-Ar | Rb-Sr | Sm-Nd | SGB','geographic_coverage':'Brasil — registros disponíveis no GeoSGB','covers_brazil':'sim','spatial_support':'pontos/amostras geológicas georreferenciadas','spatial_resolution':'pontual; localização e precisão variam por registro','temporal_coverage':'idades geológicas determinadas em amostras; datas de coleta/análise variam','temporal_resolution':'por análise/amostra','update_frequency':'contínua conforme incorporação ao GeoSGB','product_status':'ativo','version_or_collection':'coleção OGC API / GeoSGB corrente','enumeration_scope':'complete','product_page_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/geocronologia?f=html','methodology_url':'https://geosgb.sgb.gov.br/geosgb/sobre_geosgb.html','primary_or_derived':'primário','limitations':'Métodos isotópicos, materiais datados, incertezas e interpretações geológicas variam entre registros. Uma idade analítica não equivale automaticamente à idade de toda a unidade cartográfica.','last_verified':verified
+            },
+            {
+              'product_id':'DP000354','resource_id':'DR0104','product_name':'Ocorrências de Recursos Minerais — GeoSGB','product_acronym':'Recursos Minerais GeoSGB','product_family':'Bases de recursos minerais','product_kind':'dataset_series','product_description':'Base georreferenciada do GeoSGB com ocorrências, depósitos, minas e garimpos cadastrados e atributos geológicos, econômicos e administrativos quando disponíveis.','research_areas':'Geology | Geospatial data | Environmental science','keywords':'mineral occurrences | deposits | mines | commodities | geology | GeoSGB | OGC API','geographic_coverage':'Brasil — registros disponíveis no GeoSGB','covers_brazil':'sim','spatial_support':'pontos de ocorrências minerais e atributos relacionados','spatial_resolution':'pontual; precisão varia conforme método de geoposicionamento e fonte','temporal_coverage':'registros históricos e correntes com datas de cadastro e levantamento variáveis','temporal_resolution':'por ocorrência/registro','update_frequency':'contínua conforme atualização da base','product_status':'ativo','version_or_collection':'coleção OGC API / GeoSGB corrente','enumeration_scope':'complete','product_page_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/recursos-minerais?f=html','methodology_url':'https://www.sgb.gov.br/recursos_minerais/','primary_or_derived':'misto','limitations':'Cadastro geocientífico não equivale a inventário econômico atual nem a título minerário vigente. Status, importância, substância, precisão espacial e data variam; ausência de registro não implica ausência de recurso.','last_verified':verified
+            },
+            {
+              'product_id':'DP000355','resource_id':'DR0104','product_name':'Mapas Geofísicos Integrados em Escala Nacional — SGB','product_acronym':'Mapas Geofísicos Nacionais SGB','product_family':'Geofísica integrada nacional','product_kind':'map_layer_collection','product_description':'Coleção de mapas geofísicos integrados de abrangência nacional disponibilizados pelo SGB, incluindo Mapa Gravimétrico do Brasil 2024 e mapas magnetométrico e radiométrico de 2019.','research_areas':'Geology | Geospatial data | Environmental science','keywords':'gravimetry | magnetometry | radiometry | geophysics | national maps | SGB','geographic_coverage':'Brasil','covers_brazil':'sim','spatial_support':'grades e mapas nacionais derivados da integração de levantamentos geofísicos','spatial_resolution':'varia por mapa e pelos levantamentos de origem; mapa gravimétrico 2024 publicado em escala 1:5.500.000','temporal_coverage':'mapa gravimétrico 2024; mapas magnetométrico e radiométrico 2019; levantamentos de origem de diferentes épocas','temporal_resolution':'não se aplica; produtos integrados','update_frequency':'eventual','product_status':'ativo','version_or_collection':'coleção nacional: gravimetria 2024; magnetometria 2019; radiometria 2019','enumeration_scope':'complete','product_page_url':'https://www.sgb.gov.br/mapas-integrados-em-escala-nacional','methodology_url':'https://www.sgb.gov.br/aerogeofisica','primary_or_derived':'derivado','limitations':'Produtos integrados combinam levantamentos de diferentes instituições, épocas, resoluções e processamentos. Não são equivalentes aos dados originais de cada aerolevantamento e requerem cautela para interpretação quantitativa local.','last_verified':verified
+            },
+          ]
+
+          dists = [
+            {'distribution_id':'DD000370','product_id':'DP000349','distribution_name':'Mapa Geológico do Brasil 2025 — mapa e pacote digital','access_url':'https://rigeo.sgb.gov.br/items/b60343f1-7767-41dc-98fa-de6d7ec54d95','format':'ZIP | mapa digital; SGB também documenta disponibilização em Shapefile pelo GeoSGB','access_protocol':'HTTPS download','access_tool':'navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'download público pelo RIgeo/GeoSGB','license':'tipo de acesso open no RIgeo; verificar licença específica dos arquivos e citar o produto oficial','provider_attribution_required':'sim','subset_support':'produto nacional; recortes posteriores em SIG','notes':'Mapa nacional de síntese em 1:5.000.000; a notícia oficial de 2025 documenta disponibilização também em SHP pelo GeoSGB.','last_verified':verified},
+            {'distribution_id':'DD000371','product_id':'DP000350','distribution_name':'Cartas Geológicas ao Milionésimo — folhas PDF e vetores SIG','access_url':'https://geosgb.sgb.gov.br/downloads/','format':'PDF | ZIP de vetores SIG por folha','access_protocol':'HTTPS web/download','access_tool':'GeoSGB | navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'seleção/download por folha e produto','license':'verificar licença e atribuição do item específico; fonte institucional SGB/CPRM','provider_attribution_required':'sim','subset_support':'por folha CIM','notes':'Itens RIgeo de 2004 documentam mapas PDF e pacotes vetoriais SIG em escala 1:1.000.000; preservar a folha efetivamente usada.','last_verified':verified},
+            {'distribution_id':'DD000372','product_id':'DP000351','distribution_name':'Afloramentos — OGC API Features','access_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/afloramentos?f=html','format':'GeoJSON | JSON | HTML / OGC API Features','access_protocol':'HTTPS | OGC API Features','access_tool':'cliente OGC | navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'consulta pública; paginação/subset conforme parâmetros da API','license':'licença específica dos registros não determinada nesta auditoria; atribuir SGB','provider_attribution_required':'sim','subset_support':'por bbox, filtros/queryables e paginação quando suportado','notes':'Coleção oficial de afloramentos catalogados; serviço declara CRS 4326/CRS84/4674.','last_verified':verified},
+            {'distribution_id':'DD000373','product_id':'DP000352','distribution_name':'Biblioteca Espectral — GeoSGB/serviço geoespacial','access_url':'https://geoportal.sgb.gov.br/server/rest/services/geologia/aespectral/MapServer/0','format':'JSON | GeoJSON | PBF via ArcGIS REST; downloads espectrais pelo GeoSGB','access_protocol':'HTTPS | ArcGIS REST','access_tool':'GeoSGB | cliente REST | SIG','free_download':'sim','authentication_required':'não','access_conditions':'consulta pública e download gratuito das assinaturas e atributos quando disponíveis','license':'acesso irrestrito informado pelo SGB; verificar termos do arquivo específico e atribuir SGB','provider_attribution_required':'sim','subset_support':'por consulta espacial/atributos e amostra','notes':'Layer oficial expõe pontos de amostras e atributos; a página institucional informa download de assinaturas espectrais e análises complementares quando disponíveis.','last_verified':verified},
+            {'distribution_id':'DD000374','product_id':'DP000353','distribution_name':'Datações Geocronológicas — OGC API Features','access_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/geocronologia?f=html','format':'GeoJSON | JSON | HTML / OGC API Features','access_protocol':'HTTPS | OGC API Features','access_tool':'cliente OGC | navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'consulta pública; subset conforme parâmetros/queryables do serviço','license':'licença específica dos registros não determinada nesta auditoria; atribuir SGB','provider_attribution_required':'sim','subset_support':'por bbox, filtros/queryables e paginação quando suportado','notes':'Coleção oficial de datações radiométricas; preservar método, material, idade e incerteza do registro usado.','last_verified':verified},
+            {'distribution_id':'DD000375','product_id':'DP000354','distribution_name':'Ocorrências de Recursos Minerais — OGC API Features','access_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/recursos-minerais?f=html','format':'GeoJSON | JSON | HTML / OGC API Features','access_protocol':'HTTPS | OGC API Features','access_tool':'cliente OGC | navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'consulta pública; subset conforme parâmetros/queryables do serviço','license':'licença específica dos registros não determinada nesta auditoria; atribuir SGB','provider_attribution_required':'sim','subset_support':'por bbox, filtros/queryables e paginação quando suportado','notes':'A coleção pública contém dezenas de milhares de registros e atributos de substância, status, município e contexto geológico; não interpretar como cadastro minerário vigente.','last_verified':verified},
+            {'distribution_id':'DD000376','product_id':'DP000355','distribution_name':'Mapas Geofísicos Integrados — mapas e dados nacionais','access_url':'https://www.sgb.gov.br/mapas-integrados-em-escala-nacional','format':'mapas digitais | dados para download conforme produto','access_protocol':'HTTPS web/download','access_tool':'navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'downloads públicos indicados individualmente na página institucional','license':'verificar licença/atribuição do mapa ou dado específico; fonte institucional SGB','provider_attribution_required':'sim','subset_support':'por produto; recorte posterior em SIG quando dados estiverem disponíveis','notes':'Página oficial distingue Mapa Gravimétrico do Brasil 2024 e mapas Magnetométrico e Radiométrico 2019; preservar versão e método de cada mapa.','last_verified':verified},
+          ]
+
+          def read_ids(path, key):
+              with path.open(encoding='utf-8', newline='') as f:
+                  return {r[key] for r in csv.DictReader(f)}
+
+          existing_products = read_ids(products_path, 'product_id')
+          existing_dists = read_ids(dists_path, 'distribution_id')
+          if existing_products.intersection(p['product_id'] for p in products):
+              raise SystemExit('Product ID collision detected')
+          if existing_dists.intersection(d['distribution_id'] for d in dists):
+              raise SystemExit('Distribution ID collision detected')
+
+          with products_path.open(encoding='utf-8', newline='') as f:
+              product_fields = next(csv.reader(f))
+          with dists_path.open(encoding='utf-8', newline='') as f:
+              dist_fields = next(csv.reader(f))
+
+          with products_path.open('a', encoding='utf-8', newline='') as f:
+              w = csv.DictWriter(f, fieldnames=product_fields, lineterminator='\n')
+              for row in products:
+                  w.writerow(row)
+          with dists_path.open('a', encoding='utf-8', newline='') as f:
+              w = csv.DictWriter(f, fieldnames=dist_fields, lineterminator='\n')
+              for row in dists:
+                  w.writerow(row)
+
+          print(f'Appended {len(products)} products and {len(dists)} distributions')
+          PY
+      - name: Validate and rebuild
+        shell: bash
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Read-back relational integrity
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          def rows(p):
+              with Path(p).open(encoding='utf-8', newline='') as f: return list(csv.DictReader(f))
+          rs=rows('data/data_resources.csv'); ps=rows('data/data_products.csv'); ds=rows('data/product_distributions.csv')
+          rids={r['resource_id'] for r in rs}; pids={p['product_id'] for p in ps}; dids={d['distribution_id'] for d in ds}
+          assert len(rids)==len(rs) and len(pids)==len(ps) and len(dids)==len(ds)
+          assert all(p['resource_id'] in rids for p in ps)
+          assert all(d['product_id'] in pids for d in ds)
+          expected={f'DP{i:06d}' for i in range(349,356)}
+          assert expected.issubset(pids)
+          assert {f'DD{i:06d}' for i in range(370,377)}.issubset(dids)
+          print(f'READBACK resources={len(rs)} products={len(ps)} distributions={len(ds)}')
+          PY
+      - name: Commit materialized batch and remove one-shot workflow
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/materialize-sgb-geology-batch.yml
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          git commit -m 'Expand verified SGB geology catalog'
+          git push origin HEAD:main
