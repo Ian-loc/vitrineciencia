@@ -1,0 +1,82 @@
+name: Refine verified INPE Queimadas batch 2026-08-17
+
+on:
+  push:
+    branches: ["main"]
+    paths: [".github/workflows/refine-vitrine-queimadas-2026-08-17.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Refine and append
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv, io, pathlib
+          ROOT=pathlib.Path('.')
+          TODAY='2026-08-17'
+          def replace_row(path,id_field,id_value,updates):
+              p=ROOT/path
+              lines=p.read_text(encoding='utf-8').splitlines(keepends=True)
+              header=next(csv.reader([lines[0].rstrip('\r\n')]))
+              idx=header.index(id_field)
+              for i,line in enumerate(lines[1:],1):
+                  vals=next(csv.reader([line.rstrip('\r\n')]))
+                  if len(vals)>idx and vals[idx]==id_value:
+                      row=dict(zip(header,vals)); row.update(updates)
+                      out=io.StringIO(); csv.DictWriter(out,fieldnames=header,lineterminator='\n').writerow(row)
+                      lines[i]=out.getvalue(); break
+              else: raise SystemExit(f'missing {id_value}')
+              p.write_text(''.join(lines),encoding='utf-8',newline='')
+          def append(path,id_field,row):
+              p=ROOT/path
+              with p.open(encoding='utf-8',newline='') as f:
+                  r=csv.DictReader(f); fields=r.fieldnames; existing=list(r)
+              if any(x[id_field]==row[id_field] for x in existing): raise SystemExit('duplicate id')
+              if id_field=='product_id' and any(x['product_name']==row['product_name'] for x in existing): raise SystemExit('duplicate product')
+              with p.open('a',encoding='utf-8',newline='') as f: csv.DictWriter(f,fieldnames=fields,lineterminator='\n').writerow(row)
+
+          replace_row('data/data_products.csv','product_id','DP000330',{
+            'product_status':'experimental',
+            'version_or_collection':'produto em fase de validação — nível de maturidade Provisório',
+            'limitations':'Evento de fogo é uma integração algorítmica de focos, não observação independente de campo. O produto está em fase de validação e tem nível de maturidade Provisório. A estimativa de área queimada do evento não é semanticamente equivalente ao produto AQ1km nem a perímetro validado em campo; classificação e atributos podem mudar com a validação.',
+            'last_verified':TODAY})
+          replace_row('data/product_distributions.csv','distribution_id','DD000351',{
+            'access_conditions':'acesso público; produto em fase de validação — maturidade Provisório; eventos ativos/em observação conforme estado operacional',
+            'notes':'KML operacional atualizado aproximadamente a cada hora. Produto oficialmente marcado como Provisório e em fase de validação.','last_verified':TODAY})
+          replace_row('data/product_distributions.csv','distribution_id','DD000352',{
+            'format':'TIFF | Shapefile',
+            'notes':'O portal oficial disponibiliza AQ1km mensal em TIFF e Shapefile. Produto de área queimada deve ser usado independentemente da simples contagem de focos.','last_verified':TODAY})
+
+          product={'product_id':'DP000335','resource_id':'DR0103','product_name':'Painel do Fogo — Programa Queimadas INPE','product_acronym':'Painel do Fogo','product_family':'Programa Queimadas — síntese mensal e visualização','product_kind':'indicator_family','product_description':'Painéis mensais do Programa Queimadas com mapas digitais, gráficos e resumos numéricos da ocorrência de focos de fogo ativo no Brasil e do Risco de Fogo Médio observado para os biomas.','research_areas':'Fire ecology | Environmental monitoring | Climate science | Conservation','keywords':'Painel do Fogo | focos de fogo | risco de fogo | biomas | estados | monitoramento','geographic_coverage':'Brasil; estados, regiões e biomas conforme painel','covers_brazil':'sim','spatial_support':'sínteses nacionais e territoriais derivadas de focos ativos e risco de fogo','spatial_resolution':'heterogênea; depende dos produtos sintetizados','temporal_coverage':'coleção mensal documentada desde 2019; edições de 2026 disponíveis no portal','temporal_resolution':'mensal','update_frequency':'mensal','product_status':'ativo','version_or_collection':'coleção mensal corrente; volumes 2019–2026 disponíveis','enumeration_scope':'external_index','product_page_url':'https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_relatorio/painel-do-fogo/','methodology_url':'https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_relatorio/painel-do-fogo/','primary_or_derived':'derivado','limitations':'Produto de síntese e visualização, não dataset observacional único. Os painéis combinam ocorrência de focos ativos e Risco de Fogo Médio observado; quantidade de focos e risco são métricas distintas e não devem ser interpretadas como área queimada ou número de incêndios individuais.','last_verified':TODAY}
+          append('data/data_products.csv','product_id',product)
+          dist={'distribution_id':'DD000356','product_id':'DP000335','distribution_name':'Painel do Fogo — painéis e PDFs mensais','access_url':'https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_relatorio/painel-do-fogo/','format':'HTML | PDF','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'acesso público','license':'publicação institucional; atribuição ao INPE','provider_attribution_required':'sim','subset_support':'por mês/volume; gráficos e mapas por recorte apresentado','notes':'Coleção mensal com volumes de 2019 a 2026 no portal oficial; periodicidade declarada como mensal.','last_verified':TODAY}
+          append('data/product_distributions.csv','distribution_id',dist)
+          PY
+      - name: Validate and rebuild
+        shell: bash
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+      - name: Commit refinement and remove workflow
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/refine-vitrine-queimadas-2026-08-17.yml
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          git commit -m "Refine verified INPE Queimadas catalog"
+          git push origin HEAD:main
