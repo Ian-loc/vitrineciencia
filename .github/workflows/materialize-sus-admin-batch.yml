@@ -1,0 +1,84 @@
+name: Materialize verified SUS administrative catalog batch
+
+on:
+  push:
+    paths:
+      - '.github/workflows/materialize-sus-admin-batch.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Append verified SUS products and distributions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          reviewed='2026-08-17'
+          rid='DR0113'
+          products=[
+            dict(product_id='DP000500',product_name='Macrorregião e Região de Saúde — Ministério da Saúde',product_acronym='Regiões de Saúde',product_family='referência territorial do SUS',product_kind='dataset_series',product_description='Base oficial de referência das Macrorregiões e Regiões de Saúde utilizadas na organização territorial do SUS, com recursos atualizados em agosto de 2026.',keywords='região de saúde | macrorregião | SUS | territorialização | planejamento',geographic_coverage='Brasil',spatial_support='unidade territorial de saúde e relação com municípios conforme recurso',spatial_resolution='Região de Saúde/Macrorregião e unidades relacionadas',temporal_coverage='cadastro vigente; recursos atualizados em 13/08/2026',temporal_resolution='estado cadastral/referência',update_frequency='conforme atualização administrativa',version_or_collection='recursos atualizados em 13/08/2026',url='https://dadosabertos.saude.gov.br/dataset/macrorregiao-de-saude',primary_or_derived='primário',limitations='Região e Macrorregião de Saúde são recortes de planejamento do SUS, não limites político-administrativos autônomos nem regiões funcionais invariantes no tempo; registrar a versão utilizada em comparações territoriais.'),
+            dict(product_id='DP000501',product_name='BNAFAR — Posição de Estoque',product_acronym='BNAFAR Estoque',product_family='assistência farmacêutica',product_kind='dataset_series',product_description='Posições de estoque informadas à Base Nacional de Dados de Ações e Serviços da Assistência Farmacêutica, com granularidade municipal indicada no portal.',keywords='BNAFAR | estoque | medicamentos | assistência farmacêutica | município',geographic_coverage='Brasil',spatial_support='município/unidade informante conforme arquivo',spatial_resolution='município',temporal_coverage='posição publicada em 06/06/2026; série conforme recursos',temporal_resolution='posição de estoque',update_frequency='quinzenal',version_or_collection='posição de estoque 06/06/2026; conjunto em manutenção',url='https://dadosabertos.saude.gov.br/dataset/bnafar-posicao-de-estoque',primary_or_derived='primário',limitations='Posição registrada no sistema não equivale a disponibilidade contínua, dispensação efetiva ou acesso do usuário. O próprio portal marca o conjunto como em manutenção; interpretar faltantes e cobertura institucional com cautela.'),
+            dict(product_id='DP000502',product_name='ESAVI — Eventos Supostamente Atribuíveis à Vacinação ou Imunização',product_acronym='ESAVI',product_family='farmacovigilância de vacinas e imunobiológicos',product_kind='dataset_series',product_description='Base nacional anonimizada de eventos médicos indesejados notificados após vacinação ou imunização no e-SUS Notifica — Módulo ESAVI, disponível desde janeiro de 2021.',keywords='ESAVI | farmacovigilância | vacinação | imunização | segurança vacinal',geographic_coverage='Brasil',spatial_support='notificação individual anonimizada',spatial_resolution='registro individual anonimizado e agregações deriváveis',temporal_coverage='janeiro de 2021–2026',temporal_resolution='evento/notificação',update_frequency='conforme atualização do portal',version_or_collection='base atualizada em 16/08/2026',url='https://dadosabertos.saude.gov.br/dataset/esavi',primary_or_derived='primário',limitations='ESAVI significa ocorrência posterior à vacinação e não implica nexo causal. Frequências dependem de notificação, investigação, exposição vacinal e completude; taxas exigem denominadores de doses/pessoas e desenho de farmacovigilância.'),
+            dict(product_id='DP000503',product_name='Programa Mais Médicos para o Brasil — dados de provimento federal',product_acronym='PMMB',product_family='provimento de profissionais de saúde',product_kind='dataset_series',product_description='Bases consolidadas e séries históricas do Programa Mais Médicos, incluindo vagas, profissionais ativos, cobertura e recortes territoriais do provimento federal.',keywords='Mais Médicos | provimento | profissionais de saúde | atenção primária | vagas',geographic_coverage='Brasil — nacional, estadual, municipal e DSEI conforme recurso',spatial_support='profissional/vaga e agregações territoriais conforme recurso',spatial_resolution='nacional/UF/município/DSEI conforme base',temporal_coverage='série histórica 2013–2026 e bases correntes',temporal_resolution='registro/mês conforme recurso',update_frequency='mensal',version_or_collection='recursos atualizados em 12/08/2026',url='https://dadosabertos.saude.gov.br/dataset/provimento-federal-programa-mais-medicos',primary_or_derived='primário',limitations='Vaga cadastrada, profissional ativo e cobertura populacional são conceitos distintos. Dados administrativos do programa não medem por si só disponibilidade efetiva, qualidade do cuidado ou fixação longitudinal; preservar status e competência temporal.'),
+            dict(product_id='DP000504',product_name='MGDI — Programa Farmácia Popular do Brasil',product_acronym='MGDI PFPB',product_family='indicadores de acesso a medicamentos',product_kind='indicator_family',product_description='Família de indicadores do Programa Farmácia Popular do Brasil sobre pessoas atendidas, gratuidade/copagamento, grupos de medicamentos e recortes de políticas sociais.',keywords='Farmácia Popular | medicamentos | acesso | gratuidade | copagamento | MGDI',geographic_coverage='Brasil; recortes territoriais conforme indicador',spatial_support='agregações territoriais e programáticas conforme indicador',spatial_resolution='varia por indicador',temporal_coverage='série conforme recursos; indicadores atualizados até 03/07/2026',temporal_resolution='período de referência do indicador',update_frequency='conforme atualização MGDI',version_or_collection='conjunto atualizado em 03/07/2026',url='https://dadosabertos.saude.gov.br/dataset/mgdi-programa-farmacia-popular-do-brasil',primary_or_derived='derivado',limitations='Indicadores de pessoas atendidas e dispensação programática não equivalem a prevalência de doenças, necessidade terapêutica, adesão ou acesso total a medicamentos. Evitar somar categorias sobrepostas e preservar denominadores/definições de cada indicador.'),
+            dict(product_id='DP000505',product_name='MGDI — Vigilância em Saúde Bucal — Fluoretação',product_acronym='MGDI Fluoretação',product_family='indicadores de fluoretação da água',product_kind='indicator_family',product_description='Indicadores derivados do SISAGUA sobre acesso à água fluoretada e conformidade de concentrações de fluoretos, para vigilância e gestão em saúde bucal.',keywords='fluoretação | fluoreto | água de abastecimento | SISAGUA | saúde bucal | MGDI',geographic_coverage='Brasil; indicadores municipais e agregados conforme recurso',spatial_support='município/sistema de abastecimento e agregações conforme indicador',spatial_resolution='município ou agregação do indicador',temporal_coverage='séries históricas conforme indicador; recursos atualizados até 25/06/2026',temporal_resolution='período do indicador',update_frequency='conforme atualização MGDI/SISAGUA',version_or_collection='conjunto atualizado em 03/07/2026',url='https://dadosabertos.saude.gov.br/dataset/mgdi-vigilancia-em-saude-bucal-fluoretacao',primary_or_derived='derivado',limitations='Indicadores derivam de dados de Controle e Vigilância do SISAGUA e dependem de cobertura de cadastro e amostragem. Proporção de amostras, população com acesso e número de municípios são métricas distintas; não inferir concentração individual de exposição.'),
+          ]
+          with open('data/data_products.csv',encoding='utf-8',newline='') as f:
+              rr=csv.DictReader(f); pfields=rr.fieldnames; old=list(rr)
+          pids={r['product_id'] for r in old}; urls={r['product_page_url'] for r in old}
+          assert rid in {r['resource_id'] for r in csv.DictReader(open('data/data_resources.csv',encoding='utf-8'))}
+          assert all(p['product_id'] not in pids for p in products)
+          assert all(p['url'] not in urls for p in products)
+          with open('data/data_products.csv','a',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=pfields,lineterminator='\n')
+              for p in products:
+                  w.writerow({'product_id':p['product_id'],'resource_id':rid,'product_name':p['product_name'],'product_acronym':p['product_acronym'],'product_family':p['product_family'],'product_kind':p['product_kind'],'product_description':p['product_description'],'research_areas':'Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados','keywords':p['keywords'],'geographic_coverage':p['geographic_coverage'],'covers_brazil':'sim','spatial_support':p['spatial_support'],'spatial_resolution':p['spatial_resolution'],'temporal_coverage':p['temporal_coverage'],'temporal_resolution':p['temporal_resolution'],'update_frequency':p['update_frequency'],'product_status':'ativo','version_or_collection':p['version_or_collection'],'enumeration_scope':'complete','product_page_url':p['url'],'methodology_url':p['url'],'primary_or_derived':p['primary_or_derived'],'limitations':p['limitations'],'last_verified':reviewed})
+          with open('data/product_distributions.csv',encoding='utf-8',newline='') as f:
+              rr=csv.DictReader(f); dfields=rr.fieldnames; oldd=list(rr)
+          dids=[f'DD{i:06d}' for i in range(525,531)]
+          assert not ({r['distribution_id'] for r in oldd} & set(dids))
+          with open('data/product_distributions.csv','a',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=dfields,lineterminator='\n')
+              for did,p in zip(dids,products):
+                  w.writerow({'distribution_id':did,'product_id':p['product_id'],'distribution_name':p['product_acronym']+' — recursos oficiais','access_url':p['url'],'format':'CSV | JSON | XML | PDF/documentação conforme recursos do conjunto','access_protocol':'HTTPS download | API quando disponibilizada','access_tool':'Portal de Dados Abertos do SUS','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; observar dicionário, notas do conjunto, versões e eventuais dados anonimizados','license':'conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso','provider_attribution_required':'sim','subset_support':'por recurso/competência/recorte conforme conjunto','notes':'Distribuição aponta ao conjunto oficial; formatos e granularidades devem ser verificados no recurso efetivamente usado.','last_verified':reviewed})
+          print('appended',len(products),'products and',len(dids),'distributions')
+          PY
+      - name: Validate and rebuild
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Read-back relational integrity
+        run: |
+          python - <<'PY'
+          import csv
+          rs=list(csv.DictReader(open('data/data_resources.csv',encoding='utf-8'))); ps=list(csv.DictReader(open('data/data_products.csv',encoding='utf-8'))); ds=list(csv.DictReader(open('data/product_distributions.csv',encoding='utf-8')))
+          rids={r['resource_id'] for r in rs}; pids={p['product_id'] for p in ps}; dids={d['distribution_id'] for d in ds}
+          assert len(rids)==len(rs) and len(pids)==len(ps) and len(dids)==len(ds)
+          assert all(p['resource_id'] in rids for p in ps) and all(d['product_id'] in pids for d in ds)
+          assert all(f'DP{i:06d}' in pids for i in range(500,506)); assert all(f'DD{i:06d}' in dids for i in range(525,531))
+          print(f'canonical counts: {len(rs)} sources | {len(ps)} products | {len(ds)} distributions')
+          PY
+      - name: Commit and remove one-shot workflow
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/materialize-sus-admin-batch.yml
+          git add data/data_products.csv data/data_products.json data/product_distributions.csv data/link_role_audit.json 2>/dev/null || true
+          git add -u
+          git commit -m 'Expand verified SUS administrative and access catalog'
+          git push origin HEAD:main
