@@ -28318,5 +28318,654 @@
     "available_protocols": [
       "HTTPS | API/download conforme recurso"
     ]
+  },
+  {
+    "product_id": "DP000477",
+    "resource_id": "DR0113",
+    "product_name": "SIVEP-Gripe — Síndrome Respiratória Aguda Grave (SRAG) 2019–2026",
+    "product_acronym": "SIVEP-Gripe SRAG",
+    "product_family": "Vigilância de vírus respiratórios e SRAG",
+    "product_kind": "dataset_series",
+    "product_description": "Banco nacional anonimizado do SIVEP-Gripe para casos e óbitos por Síndrome Respiratória Aguda Grave, organizado por ano epidemiológico, com bancos históricos e banco corrente atualizado semanalmente.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SRAG | SIVEP-Gripe | influenza | covid-19 | vírus respiratórios | vigilância epidemiológica",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "notificação epidemiológica anonimizada",
+    "spatial_resolution": "município nos campos de disseminação; observar dicionário",
+    "temporal_coverage": "2019–2026; 2019–2024 congelados e ano corrente em atualização",
+    "temporal_resolution": "dia | semana epidemiológica conforme variável",
+    "update_frequency": "semanal para banco corrente",
+    "product_status": "ativo",
+    "version_or_collection": "portal atualizado em 03/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/srag-2019-a-2026",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/srag-2019-a-2026",
+    "primary_or_derived": "primário",
+    "limitations": "Notificações estão sujeitas a erros de preenchimento, revisões, classificação e atraso. Banco corrente é mutável; dados são anonimizados. Notificação de SRAG não equivale à incidência populacional total de infecções respiratórias.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000502",
+        "product_id": "DP000477",
+        "distribution_name": "SIVEP-Gripe SRAG — portal oficial e recursos",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/srag-2019-a-2026",
+        "format": "CSV | JSON | XML | Parquet | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por período/competência conforme conjunto",
+        "notes": "Bancos por ano epidemiológico; históricos e banco corrente possuem estados de atualização distintos. Preservar dicionário e data de extração.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | Parquet | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000478",
+    "resource_id": "DR0113",
+    "product_name": "Doses aplicadas pelo Programa Nacional de Imunizações — PNI 2026",
+    "product_acronym": "PNI 2026",
+    "product_family": "Vacinação e imunizações",
+    "product_kind": "dataset_series",
+    "product_description": "Registros abertos de doses aplicadas pelo Programa Nacional de Imunizações em 2026, disponibilizados por ano e mês de vacinação com dicionário e variáveis de disseminação.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "PNI | vacinação | imunização | doses aplicadas | vacinas",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de vacinação de disseminação",
+    "spatial_resolution": "registro e agregações territoriais conforme recurso",
+    "temporal_coverage": "2026; recursos mensais disponíveis até julho na verificação",
+    "temporal_resolution": "registro | mês",
+    "update_frequency": "semanal",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em 03/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/doses-aplicadas-pelo-programa-de-nacional-de-imunizacoes-pni-2026",
+    "methodology_url": "https://www.gov.br/saude/pt-br/vacinacao",
+    "primary_or_derived": "primário",
+    "limitations": "Registros de doses aplicadas dependem da alimentação e integração dos sistemas de informação. Não inferir cobertura vacinal sem denominador e regras metodológicas adequadas; revisões e atrasos podem alterar totais.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000503",
+        "product_id": "DP000478",
+        "distribution_name": "PNI 2026 — portal oficial e recursos",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/doses-aplicadas-pelo-programa-de-nacional-de-imunizacoes-pni-2026",
+        "format": "CSV | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por período/competência conforme conjunto",
+        "notes": "Recursos de 2026 são publicados por ano/mês; preservar competência, dicionário e data de atualização.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000479",
+    "resource_id": "DR0113",
+    "product_name": "Campanha Nacional de Vacinação contra Covid-19 — registros anonimizados",
+    "product_acronym": "Vacinação COVID-19",
+    "product_family": "Vacinação contra Covid-19",
+    "product_kind": "dataset_series",
+    "product_description": "Registros anonimizados de vacinação contra Covid-19 integrados à RNDS a partir do SI-PNI, e-SUS APS e sistemas próprios integrados de estados e municípios.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "covid-19 | vacinação | SI-PNI | RNDS | doses aplicadas",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de vacinação anonimizado",
+    "spatial_resolution": "município e UF nos campos de disseminação",
+    "temporal_coverage": "desde 18/01/2021",
+    "temporal_resolution": "dia",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "dados completos atualizados em 22/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/covid-19-vacinacao",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/covid-19-vacinacao",
+    "primary_or_derived": "primário",
+    "limitations": "Registros dependem da integração e oportunidade dos sistemas locais/RNDS. Doses registradas não equivalem automaticamente a pessoas únicas ou cobertura vacinal; preservar dose, fabricante, data, município e denominadores.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000504",
+        "product_id": "DP000479",
+        "distribution_name": "Vacinação COVID-19 — portal oficial e recursos",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/covid-19-vacinacao",
+        "format": "CSV | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por período/competência conforme conjunto",
+        "notes": "Inclui registros completos e arquivos particionados; preservar dose, data, local e regras de anonimização.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000480",
+    "resource_id": "DR0113",
+    "product_name": "RIPSA — Indicadores de Mortalidade",
+    "product_acronym": "RIPSA Mortalidade",
+    "product_family": "RIPSA — indicadores de saúde",
+    "product_kind": "indicator_family",
+    "product_description": "Família nacional de indicadores RIPSA sobre magnitude e distribuição dos óbitos segundo pessoa, lugar e tempo, com fichas de qualificação e recursos estruturados por indicador.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "RIPSA | mortalidade | indicadores de saúde | óbitos | desigualdades",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "indicador agregado",
+    "spatial_resolution": "varia por indicador e fonte",
+    "temporal_coverage": "varia por indicador e fonte de origem",
+    "temporal_resolution": "varia por indicador",
+    "update_frequency": "conforme atualização da RIPSA",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto atualizado em maio/2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/ripsa-mortalidade",
+    "methodology_url": "https://www.ripsa.org.br/fichasidb/c-mortalidade",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicadores possuem numeradores, denominadores, fontes, períodos e regras de cálculo próprios. Não tratar a família como série homogênea nem somar indicadores. Consultar a Ficha de Qualificação de cada indicador.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000505",
+        "product_id": "DP000480",
+        "distribution_name": "RIPSA Mortalidade — indicadores e recursos",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/ripsa-mortalidade",
+        "format": "CSV | JSON | XML",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por período/competência conforme conjunto",
+        "notes": "Família de indicadores; cada recurso possui definição e ficha de qualificação própria.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000481",
+    "resource_id": "DR0113",
+    "product_name": "RIPSA — Indicadores de Recursos em Saúde",
+    "product_acronym": "RIPSA Recursos",
+    "product_family": "RIPSA — indicadores de saúde",
+    "product_kind": "indicator_family",
+    "product_description": "Família nacional de indicadores RIPSA sobre pessoal, infraestrutura e financiamento em saúde, com recursos estruturados e fichas de qualificação por indicador.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "RIPSA | recursos em saúde | infraestrutura | financiamento | trabalhadores da saúde",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "indicador agregado",
+    "spatial_resolution": "varia por indicador e fonte",
+    "temporal_coverage": "varia por indicador e fonte de origem",
+    "temporal_resolution": "varia por indicador",
+    "update_frequency": "conforme atualização da RIPSA",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto atualizado em maio/2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/ripsa-recursos",
+    "methodology_url": "https://www.ripsa.org.br/fichasidb/e-recursos",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicadores combinam fontes e conceitos diferentes de pessoal, leitos, gasto e infraestrutura. Comparações exigem a ficha específica, denominadores e referência temporal; não interpretar disponibilidade cadastrada como capacidade efetiva instantânea.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000506",
+        "product_id": "DP000481",
+        "distribution_name": "RIPSA Recursos — indicadores e recursos",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/ripsa-recursos",
+        "format": "CSV | JSON | XML",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por período/competência conforme conjunto",
+        "notes": "Família de indicadores; pessoal, infraestrutura e financiamento não compartilham necessariamente fonte ou denominador.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000482",
+    "resource_id": "DR0113",
+    "product_name": "SISAGUA — Vigilância — Demais parâmetros",
+    "product_acronym": "SISAGUA Vigilância Demais",
+    "product_family": "SISAGUA — vigilância da qualidade da água",
+    "product_kind": "dataset_series",
+    "product_description": "Análises de qualidade da água de alta complexidade realizadas pelo setor saúde e registradas no Sisagua.",
+    "research_areas": "Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SISAGUA | qualidade da água | vigilância | parâmetros químicos | potabilidade",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "análise/amostra de vigilância",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "série histórica conforme recursos; atualização corrente em 2026",
+    "temporal_resolution": "conforme rotina de vigilância",
+    "update_frequency": "mensal no portal",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em 04/06/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-vigilancia-demais-parametros",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-vigilancia-demais-parametros",
+    "primary_or_derived": "primário",
+    "limitations": "Amostragem de vigilância não é censo de todos os pontos nem garante cobertura espacial uniforme. Frequência, parâmetros e locais variam; ausência de análise não significa conformidade ou ausência de risco.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000507",
+        "product_id": "DP000482",
+        "distribution_name": "SISAGUA Vigilância Demais — recursos",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-vigilancia-demais-parametros",
+        "format": "ODT | CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por período/competência conforme conjunto",
+        "notes": "Resultados de vigilância do setor saúde; preservar parâmetro, unidade, ponto, data e plano de amostragem.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "ODT | CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000483",
+    "resource_id": "DR0113",
+    "product_name": "SISAGUA — Controle mensal — Infraestrutura Operacional",
+    "product_acronym": "SISAGUA Infraestrutura",
+    "product_family": "SISAGUA — controle do abastecimento",
+    "product_kind": "dataset_series",
+    "product_description": "Condições operacionais e de infraestrutura de sistemas e soluções de abastecimento informadas mensalmente pelos prestadores de serviço ao Sisagua.",
+    "research_areas": "Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SISAGUA | abastecimento | infraestrutura operacional | controle | água potável",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "sistema ou solução de abastecimento cadastrada",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "série histórica conforme recursos; atualização corrente em 2026",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em 03/06/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-infraestrutura-operacional",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-infraestrutura-operacional",
+    "primary_or_derived": "primário",
+    "limitations": "Informação operacional declarada pelo prestador. Não comprova desempenho contínuo, conformidade com potabilidade ou funcionamento ininterrupto; cobertura depende do cadastro e envio ao Sisagua.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000508",
+        "product_id": "DP000483",
+        "distribution_name": "SISAGUA Infraestrutura — recursos",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-infraestrutura-operacional",
+        "format": "ODT | CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por período/competência conforme conjunto",
+        "notes": "Condições operacionais declaradas pelos prestadores; não confundir com resultados analíticos de qualidade.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "ODT | CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000484",
+    "resource_id": "DR0113",
+    "product_name": "SISAGUA — Controle mensal — Amostras fora do padrão",
+    "product_acronym": "SISAGUA Fora do Padrão",
+    "product_family": "SISAGUA — controle da qualidade da água",
+    "product_kind": "dataset_series",
+    "product_description": "Registros detalhados de análises sob responsabilidade dos prestadores que não atenderam ao padrão de potabilidade e foram informadas ao Sisagua.",
+    "research_areas": "Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SISAGUA | água potável | não conformidade | amostras fora do padrão | controle",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "análise/amostra informada pelo prestador",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "série histórica conforme recursos; atualização corrente em 2026",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "atualizado em 03/06/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-amostras-fora-do-padrao",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-amostras-fora-do-padrao",
+    "primary_or_derived": "primário",
+    "limitations": "Conjunto contém resultados reportados como fora do padrão, não a totalidade das análises. Frequência de não conformidade exige denominador, plano de amostragem e contexto do parâmetro; não extrapolar para toda a rede.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000509",
+        "product_id": "DP000484",
+        "distribution_name": "SISAGUA Fora do Padrão — recursos",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-amostras-fora-do-padrao",
+        "format": "ODT | CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por período/competência conforme conjunto",
+        "notes": "Somente análises reportadas como fora do padrão; requer denominador e plano para interpretação de frequência.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "ODT | CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000485",
+    "resource_id": "DR0113",
+    "product_name": "SISAGUA — Controle mensal — Plano de Amostragem",
+    "product_acronym": "SISAGUA Plano Amostragem",
+    "product_family": "SISAGUA — planejamento do controle",
+    "product_kind": "dataset_series",
+    "product_description": "Quantitativos mínimos de análises definidos para prestadores por forma de abastecimento, parâmetro de qualidade e ponto de monitoramento, com frequências de amostragem.",
+    "research_areas": "Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SISAGUA | plano de amostragem | controle | potabilidade | monitoramento",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "plano por forma de abastecimento/parâmetro/ponto",
+    "spatial_resolution": "registro de planejamento do controle",
+    "temporal_coverage": "2014–2025 nos recursos atualmente publicados",
+    "temporal_resolution": "mensal conforme plano",
+    "update_frequency": "mensal no portal",
+    "product_status": "ativo",
+    "version_or_collection": "portal atualizado em 02/02/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-plano-amostragem",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-plano-amostragem",
+    "primary_or_derived": "primário",
+    "limitations": "Plano estabelece quantitativos/frequências previstos; não comprova que todas as análises foram executadas nem que resultados atenderam ao padrão. Comparar planejamento, execução e resultados separadamente.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000510",
+        "product_id": "DP000485",
+        "distribution_name": "SISAGUA Plano de Amostragem — recursos",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-controle-mensal-plano-amostragem",
+        "format": "ODT | CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por período/competência conforme conjunto",
+        "notes": "Planejamento de quantitativos/frequências; não equivale à execução efetiva das análises.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "ODT | CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000486",
+    "resource_id": "DR0113",
+    "product_name": "SISAGUA — Vigilância — Cianobactérias e cianotoxinas",
+    "product_acronym": "SISAGUA Cianobactérias",
+    "product_family": "SISAGUA — vigilância da qualidade da água",
+    "product_kind": "dataset_series",
+    "product_description": "Análises de cianobactérias e cianotoxinas realizadas pelo setor saúde e disseminadas no Portal de Dados Abertos do SUS.",
+    "research_areas": "Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "SISAGUA | cianobactérias | cianotoxinas | qualidade da água | vigilância",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "análise/amostra de vigilância",
+    "spatial_resolution": "registro/ponto ou agregação conforme variável e recurso",
+    "temporal_coverage": "série histórica conforme recursos do conjunto",
+    "temporal_resolution": "conforme rotina e parâmetro",
+    "update_frequency": "conforme atualização do portal",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto ativo em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-vigilancia-cianobacterias-e-cianotoxinas",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-vigilancia-cianobacterias-e-cianotoxinas",
+    "primary_or_derived": "primário",
+    "limitations": "Análises de vigilância são amostrais e dependem de locais, frequência e parâmetros monitorados. Não inferir ausência de florações/toxinas em locais ou períodos sem amostragem.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000511",
+        "product_id": "DP000486",
+        "distribution_name": "SISAGUA Cianobactérias — recursos",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/sisagua-vigilancia-cianobacterias-e-cianotoxinas",
+        "format": "ODT | CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por período/competência conforme conjunto",
+        "notes": "Resultados amostrais de cianobactérias/cianotoxinas; cobertura varia espacial e temporalmente.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "ODT | CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000487",
+    "resource_id": "DR0113",
+    "product_name": "Febre Amarela em humanos e primatas não-humanos — 1994–2026",
+    "product_acronym": "Febre Amarela 1994–2026",
+    "product_family": "Vigilância epidemiológica de febre amarela",
+    "product_kind": "dataset_series",
+    "product_description": "Bases individualizadas e anonimizadas de casos humanos confirmados e epizootias em primatas não-humanos, harmonizadas pela vigilância nacional de febre amarela.",
+    "research_areas": "Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "febre amarela | epizootias | primatas não-humanos | vigilância | arboviroses | zoonoses",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "caso humano confirmado | epizootia confirmada",
+    "spatial_resolution": "município do local provável de infecção/ocorrência",
+    "temporal_coverage": "casos humanos 1994–2026; epizootias em PNH 1999–2026",
+    "temporal_resolution": "dia",
+    "update_frequency": "anual com revisões durante monitoramento",
+    "product_status": "ativo",
+    "version_or_collection": "dados atualizados até 16/06/2026; portal atualizado em 09/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/febre-amarela-em-humanos-e-primatas-nao-humanos",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/febre-amarela-em-humanos-e-primatas-nao-humanos",
+    "primary_or_derived": "primário",
+    "limitations": "Inclui casos/epizootias confirmados e não todas as suspeitas; registros são revisados e podem conter faltantes. Vigilância de PNH inicia mais tarde e fontes mudam historicamente. Local provável de infecção não é residência.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000512",
+        "product_id": "DP000487",
+        "distribution_name": "Febre Amarela — bases e recursos",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/febre-amarela-em-humanos-e-primatas-nao-humanos",
+        "format": "CSV | JSON | XML | API",
+        "access_protocol": "HTTPS | API/download conforme recurso",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão, competência e regras de anonimização/sigilo do conjunto",
+        "license": "conteúdo do portal CC BY-ND 3.0; verificar termos específicos do arquivo/recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "API quando documentada; arquivos por período/competência conforme conjunto",
+        "notes": "Casos humanos e epizootias confirmados em arquivos separados; registros permanecem sujeitos a revisão.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | API"
+    ],
+    "available_protocols": [
+      "HTTPS | API/download conforme recurso"
+    ]
   }
 ]
