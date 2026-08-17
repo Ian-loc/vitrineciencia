@@ -1,0 +1,131 @@
+name: Materialize verified TerraBrasilis batch 2026-08-17
+
+on:
+  push:
+    branches: ["main"]
+    paths: [".github/workflows/materialize-vitrine-terrabrasilis-2026-08-17.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update and append verified canonical records
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv, io, pathlib
+          ROOT = pathlib.Path('.')
+          TODAY = '2026-08-17'
+
+          def replace_row(path, id_field, row):
+              path = ROOT / path
+              text = path.read_text(encoding='utf-8')
+              lines = text.splitlines(keepends=True)
+              header = next(csv.reader([lines[0].rstrip('\r\n')]))
+              idx = header.index(id_field)
+              out = io.StringIO()
+              w = csv.DictWriter(out, fieldnames=header, lineterminator='\n', extrasaction='raise')
+              w.writerow(row)
+              new_line = out.getvalue()
+              replaced = False
+              for i, line in enumerate(lines[1:], start=1):
+                  parsed = next(csv.reader([line.rstrip('\r\n')]))
+                  if len(parsed) > idx and parsed[idx] == row[id_field]:
+                      lines[i] = new_line
+                      replaced = True
+                      break
+              if not replaced:
+                  raise SystemExit(f"Missing row {row[id_field]} in {path}")
+              path.write_text(''.join(lines), encoding='utf-8', newline='')
+
+          def append_rows(path, id_field, rows):
+              path = ROOT / path
+              with path.open('r', encoding='utf-8', newline='') as f:
+                  reader = csv.DictReader(f)
+                  fieldnames = reader.fieldnames
+                  existing = list(reader)
+              ids = {r[id_field] for r in existing}
+              dup = [r[id_field] for r in rows if r[id_field] in ids]
+              if dup:
+                  raise SystemExit(f'IDs already exist in {path}: {dup}')
+              with path.open('a', encoding='utf-8', newline='') as f:
+                  w = csv.DictWriter(f, fieldnames=fieldnames, lineterminator='\n', extrasaction='raise')
+                  for row in rows:
+                      w.writerow(row)
+
+          terraclass_amazon = {
+            'product_id':'DP000005','resource_id':'DR0011','product_name':'TerraClass Amazônia 2024','product_acronym':'TerraClass Amazônia 2024','product_family':'TerraClass — cobertura e uso da terra','product_kind':'dataset_series',
+            'product_description':'Mapeamento de cobertura e uso da terra no bioma Amazônia para o ano-base 2024, produzido por INPE e Embrapa e integrado à série histórica TerraClass. O produto qualifica áreas antropizadas e desflorestadas, incluindo agricultura, pastagens e vegetação natural secundária.',
+            'research_areas':'Land use and land cover | Landscape ecology | Remote sensing | Restoration ecology','keywords':'land use | land cover | Amazon | TerraClass | agriculture | pasture | secondary vegetation',
+            'geographic_coverage':'Bioma Amazônia — Brasil','covers_brazil':'sim','spatial_support':'célula raster | polígonos e estatísticas derivados','spatial_resolution':'10 m no mapeamento 2024 baseado em Sentinel-2/MSI; consultar produto para generalização cartográfica',
+            'temporal_coverage':'série histórica 2008–2024; edição corrente ano-base 2024','temporal_resolution':'por edição/ano-base','update_frequency':'por edição','product_status':'ativo','version_or_collection':'ano-base 2024; publicado em junho de 2026','enumeration_scope':'complete',
+            'product_page_url':'https://www.terraclass.gov.br/','methodology_url':'https://www.terraclass.gov.br/','primary_or_derived':'derivado',
+            'limitations':'Produto temático derivado de sensoriamento remoto. Classes de uso/cobertura, acurácia e transições devem ser interpretadas conforme legenda e metodologia da edição. Não confundir TerraClass com PRODES: PRODES detecta supressão; TerraClass qualifica cobertura e uso da terra. Comparações históricas devem observar mudanças metodológicas e de sensores.',
+            'last_verified':TODAY
+          }
+          replace_row('data/data_products.csv','product_id',terraclass_amazon)
+
+          terraclass_dist = {
+            'distribution_id':'DD000006','product_id':'DP000005','distribution_name':'TerraClass Amazônia 2024 — GeoPortal e dados','access_url':'https://www.terraclass.gov.br/','format':'mapas e dados geoespaciais; formatos conforme recurso','access_protocol':'HTTPS','access_tool':'GeoPortal TerraClass | navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'acesso aberto; consultar legenda, acurácia e metodologia da edição 2024','license':'consultar termos específicos do projeto/arquivo; publicação histórica do TerraClass usa Creative Commons','provider_attribution_required':'sim','subset_support':'por bioma, ano, classe e ferramenta do GeoPortal','notes':'A edição 2024 usa Sentinel-2/MSI e compõe a série 2008–2024 da Amazônia. Não usar o antigo rótulo 2020 como edição corrente.','last_verified':TODAY
+          }
+          replace_row('data/product_distributions.csv','distribution_id',terraclass_dist)
+
+          products = [
+            {'product_id':'DP000325','resource_id':'DR0011','product_name':'TerraClass Cerrado 2024','product_acronym':'TerraClass Cerrado 2024','product_family':'TerraClass — cobertura e uso da terra','product_kind':'dataset_series','product_description':'Mapeamento de cobertura e uso da terra do bioma Cerrado no ano-base 2024, produzido no âmbito do TerraClass por INPE e Embrapa, com série histórica iniciada em 2018.','research_areas':'Land use and land cover | Savanna ecology | Remote sensing | Restoration ecology','keywords':'land use | land cover | Cerrado | TerraClass | agriculture | pasture | secondary vegetation','geographic_coverage':'Bioma Cerrado — Brasil','covers_brazil':'sim','spatial_support':'célula raster | polígonos e estatísticas derivados','spatial_resolution':'10 m no mapeamento 2024 baseado em Sentinel-2/MSI','temporal_coverage':'série 2018–2024; edição corrente ano-base 2024','temporal_resolution':'por edição/ano-base','update_frequency':'por edição','product_status':'ativo','version_or_collection':'ano-base 2024','enumeration_scope':'complete','product_page_url':'https://www.terraclass.gov.br/','methodology_url':'https://www.terraclass.gov.br/acuracia-cer','primary_or_derived':'derivado','limitations':'Produto temático derivado. A acurácia global publicada para 2024 é 94,75%, mas métricas variam por classe; áreas e transições devem considerar incerteza e desenho de validação. Não confundir com PRODES/DETER ou com cobertura observada sem classificação.','last_verified':TODAY},
+            {'product_id':'DP000326','resource_id':'DR0011','product_name':'DETER Amazônia — fitofisionomias Não Florestais','product_acronym':'DETER Amazônia Não-Floresta','product_family':'DETER — alertas operacionais','product_kind':'dataset_series','product_description':'Avisos experimentais de alterações na cobertura vegetal em fitofisionomias não florestais da Amazônia, disponibilizados pelo TerraBrasilis desde 2023 como ampliação do sistema DETER.','research_areas':'Conservation | Remote sensing | Environmental monitoring | Vegetation dynamics','keywords':'DETER | Amazon | non-forest | alerts | native vegetation | experimental','geographic_coverage':'Amazônia brasileira — fitofisionomias não florestais monitoradas','covers_brazil':'sim','spatial_support':'polígono vetorial','spatial_resolution':'dependente do sensor e da coleção DETER; consultar metadados','temporal_coverage':'2023–presente conforme disponibilidade','temporal_resolution':'evento/alerta','update_frequency':'operacional','product_status':'experimental','version_or_collection':'produto experimental desde 2023','enumeration_scope':'complete','product_page_url':'https://terrabrasilis.dpi.inpe.br/downloads/','methodology_url':'https://www.gov.br/inpe/pt-br/area-conhecimento/unidade-amazonia/projetos-e-pesquisas/deter','primary_or_derived':'derivado','limitations':'Produto explicitamente experimental e sujeito a ajustes parciais ou integrais. Alertas DETER apoiam fiscalização e não constituem taxa mensal/anual de desmatamento; nuvens e oportunidade de detecção afetam comparações temporais.','last_verified':TODAY},
+            {'product_id':'DP000327','resource_id':'DR0011','product_name':'PRODES Amazônia Legal — taxa e mapeamento 2025','product_acronym':'PRODES Amazônia 2025','product_family':'PRODES — monitoramento anual','product_kind':'dataset_series','product_description':'Resultado anual PRODES para a Amazônia Legal referente ao ciclo 2025, acompanhado por mapeamento vetorial/raster e série histórica oficial. A estimativa divulgada para 2025 foi de 5.796 km² de desmatamento.','research_areas':'Forest ecology | Conservation | Remote sensing | Environmental monitoring','keywords':'PRODES | Amazon | deforestation | annual rate | Legal Amazon | 2025','geographic_coverage':'Amazônia Legal brasileira','covers_brazil':'sim','spatial_support':'polígonos vetoriais | raster | agregações por estado','spatial_resolution':'compatível com metodologia PRODES; consultar metadados da edição e arquivos','temporal_coverage':'série anual desde 1988; edição 2025','temporal_resolution':'anual','update_frequency':'anual','product_status':'ativo','version_or_collection':'PRODES 2025; arquivos atualizados em 2026','enumeration_scope':'complete','product_page_url':'https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2025/10/amazonia-e-cerrado-registram-quedas-nos-indices-de-desmatamento/','methodology_url':'https://www.gov.br/inpe/pt-br/acesso-a-informacao/perguntas-frequentes/principais-produtos-e-servicos-do-inpe/monitoramento-do-territorio-florestas/como-se-monitora-o-desmatamento','primary_or_derived':'derivado','limitations':'Taxa anual PRODES não é equivalente a alertas DETER. A estimativa anual e o mapeamento final possuem calendário, regras de detecção e revisões próprias; usar a versão arquivada e registrar data de extração.','last_verified':TODAY},
+            {'product_id':'DP000328','resource_id':'DR0011','product_name':'PRODES Cerrado — taxa e mapeamento 2025','product_acronym':'PRODES Cerrado 2025','product_family':'PRODES — monitoramento anual','product_kind':'dataset_series','product_description':'Resultado anual PRODES da supressão de vegetação nativa no bioma Cerrado referente a 2025, com arquivos vetoriais/raster e incrementos anuais disponibilizados no TerraBrasilis.','research_areas':'Savanna ecology | Conservation | Remote sensing | Environmental monitoring','keywords':'PRODES | Cerrado | native vegetation suppression | deforestation | annual monitoring | 2025','geographic_coverage':'Bioma Cerrado — Brasil','covers_brazil':'sim','spatial_support':'polígonos vetoriais | raster | agregações territoriais','spatial_resolution':'consultar metadados e arquivos da edição PRODES Cerrado','temporal_coverage':'série anual conforme programa BiomasBR; edição 2025','temporal_resolution':'anual','update_frequency':'anual','product_status':'ativo','version_or_collection':'PRODES Cerrado 2025; arquivos atualizados em 2026','enumeration_scope':'complete','product_page_url':'https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/2025/10/amazonia-e-cerrado-registram-quedas-nos-indices-de-desmatamento/','methodology_url':'https://data.inpe.br/big/web/biomasbr/','primary_or_derived':'derivado','limitations':'Supressão anual PRODES no Cerrado não é equivalente aos alertas operacionais DETER. Classes, máscara, área mínima mapeável e versão dos arquivos devem acompanhar qualquer análise temporal ou espacial.','last_verified':TODAY}
+          ]
+
+          distributions = [
+            {'distribution_id':'DD000346','product_id':'DP000325','distribution_name':'TerraClass Cerrado 2024 — GeoPortal e dados','access_url':'https://www.terraclass.gov.br/','format':'mapas e dados geoespaciais; formatos conforme recurso','access_protocol':'HTTPS','access_tool':'GeoPortal TerraClass | navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'acesso aberto; consultar legenda, acurácia e metodologia','license':'consultar termos específicos do projeto/arquivo','provider_attribution_required':'sim','subset_support':'por bioma, ano, classe e ferramenta do GeoPortal','notes':'Acurácia global publicada para o mapeamento Cerrado 2024: 94,75% (IC ±1,30%); métricas por classe variam.','last_verified':TODAY},
+            {'distribution_id':'DD000347','product_id':'DP000326','distribution_name':'DETER Amazônia Não-Floresta — download experimental','access_url':'https://terrabrasilis.dpi.inpe.br/downloads/','format':'Shapefile','access_protocol':'HTTP download','access_tool':'navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'produto experimental em testes e ajustes','license':'consultar produto; atribuição ao INPE/TerraBrasilis','provider_attribution_required':'sim','subset_support':'por período e camada conforme portal','notes':'Dados disponibilizados desde 08/11/2023; podem ser alterados parcial ou integralmente.','last_verified':TODAY},
+            {'distribution_id':'DD000348','product_id':'DP000327','distribution_name':'PRODES Amazônia Legal — arquivos vetoriais e raster','access_url':'https://terrabrasilis.dpi.inpe.br/downloads/','format':'GeoPackage | Shapefile | GeoTIFF','access_protocol':'HTTP download','access_tool':'navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'seleção por Amazônia Legal e tipo de arquivo; usar metadados da edição','license':'consultar produto/arquivo e termos INPE','provider_attribution_required':'sim','subset_support':'por produto e componente do mapeamento','notes':'O portal informa atualizações dos arquivos PRODES em 2026; registrar versão/data de download.','last_verified':TODAY},
+            {'distribution_id':'DD000349','product_id':'DP000328','distribution_name':'PRODES Cerrado — arquivos vetoriais e raster','access_url':'https://terrabrasilis.dpi.inpe.br/downloads/','format':'GeoPackage | Shapefile | GeoTIFF','access_protocol':'HTTP download','access_tool':'navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'seleção Cerrado/PRODES e componente do mapeamento; usar metadados','license':'consultar produto/arquivo e termos INPE','provider_attribution_required':'sim','subset_support':'por componente e ano conforme arquivo','notes':'O portal expõe mapa completo, incrementos anuais, resíduos e arquivos raster/vetoriais com datas de atualização próprias.','last_verified':TODAY}
+          ]
+
+          append_rows('data/data_products.csv','product_id',products)
+          append_rows('data/product_distributions.csv','distribution_id',distributions)
+
+          def read_csv(path):
+              with open(path, encoding='utf-8', newline='') as f:
+                  return list(csv.DictReader(f))
+          rs, ps, ds = read_csv('data/data_resources.csv'), read_csv('data/data_products.csv'), read_csv('data/product_distributions.csv')
+          rids, pids, dids = {r['resource_id'] for r in rs}, {r['product_id'] for r in ps}, {r['distribution_id'] for r in ds}
+          assert len(rids) == len(rs) and len(pids) == len(ps) and len(dids) == len(ds)
+          assert all(r['resource_id'] in rids for r in ps)
+          assert all(r['product_id'] in pids for r in ds)
+          assert all(x in pids for x in ['DP000005','DP000325','DP000326','DP000327','DP000328'])
+          assert all(x in dids for x in ['DD000006','DD000346','DD000347','DD000348','DD000349'])
+          assert len(rs) == 102, len(rs)
+          assert len(ps) == 324, len(ps)
+          assert len(ds) == 345, len(ds)
+          print(f'Canonical read-back: {len(rs)} sources, {len(ps)} products, {len(ds)} distributions')
+          PY
+
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Commit materialized batch and self-remove workflow
+        shell: bash
+        run: |
+          git config user.name "vitrine-catalog-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/materialize-vitrine-terrabrasilis-2026-08-17.yml
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          git diff --cached --check
+          git commit -m "Expand and refresh verified TerraBrasilis catalog"
+          git push origin HEAD:main
