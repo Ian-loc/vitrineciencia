@@ -23659,5 +23659,713 @@
     "available_protocols": [
       "HTTPS download | CKAN API"
     ]
+  },
+  {
+    "product_id": "DP000399",
+    "resource_id": "DR0106",
+    "product_name": "DOF — Autorizações de Exploração Florestal — Ibama",
+    "product_acronym": "DOF Autex",
+    "product_family": "Documento de Origem Florestal — autorizações",
+    "product_kind": "dataset_series",
+    "product_description": "Relação de Autorizações de Exploração Florestal (Autex) cadastradas e homologadas no sistema DOF, com produtos, espécies, volumes autorizados e remanescentes.",
+    "research_areas": "Environmental management | Forest ecology | Environmental science",
+    "keywords": "DOF | Autex | forest exploitation | authorized volume | species | Ibama",
+    "geographic_coverage": "Brasil — registros cobertos pelo sistema DOF, segmentados por UF de origem",
+    "covers_brazil": "sim",
+    "spatial_support": "autorização administrativa | produto | espécie | UF",
+    "spatial_resolution": "por Autex/registro e UF de origem; não é superfície territorial contínua",
+    "temporal_coverage": "2007–presente conforme acervo; dados completos de Autex emitidas no DOF desde janeiro de 2007, ressalvadas lacunas de integração estadual descritas pelo Ibama",
+    "temporal_resolution": "por autorização/ano de emissão",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 16/03/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/dof-autorizacoes-de-exploracao-florestal",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/dof-autorizacoes-de-exploracao-florestal",
+    "primary_or_derived": "primário",
+    "limitations": "Autex é autorização administrativa, não comprovação de exploração executada nem volume efetivamente extraído. Há lacunas históricas de integração: BA até nov/2007, CE e MA até 2009, RO até mai/2011; MT, MG e PA ausentes para autorizações internas no período informado.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000421",
+        "product_id": "DP000399",
+        "distribution_name": "DOF — Autorizações de Exploração Florestal — Ibama — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/dof-autorizacoes-de-exploracao-florestal",
+        "format": "CSV | XML | JSON",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar descrição e restrições legais de divulgação do conjunto",
+        "license": "Outra (Domínio Público)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano de emissão e UF de origem",
+        "notes": "Distribuição oficial no Portal de Dados Abertos do Ibama. Preservar escopo administrativo/declaratório e metadados do recurso na análise.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000400",
+    "resource_id": "DR0106",
+    "product_name": "DOF — Transportes de Produtos Florestais — Ibama",
+    "product_acronym": "DOF Transportes",
+    "product_family": "Documento de Origem Florestal — transportes",
+    "product_kind": "dataset_series",
+    "product_description": "Relação de transportes acompanhados por Documento de Origem Florestal, com movimentações de produtos florestais controladas pelo sistema DOF.",
+    "research_areas": "Environmental management | Forest ecology | Environmental science",
+    "keywords": "DOF | forest products | transport | timber | charcoal | Ibama",
+    "geographic_coverage": "Brasil — transportes cobertos pelo sistema DOF, segmentados por UF de origem",
+    "covers_brazil": "sim",
+    "spatial_support": "documento de transporte | movimentação | produto | UF",
+    "spatial_resolution": "por DOF/movimentação e UF de origem; não é fluxo físico observado fora do sistema",
+    "temporal_coverage": "2007–presente conforme acervo; DOFs emitidos disponíveis desde janeiro de 2007, com lacunas de integração estadual documentadas",
+    "temporal_resolution": "por documento/ano de emissão",
+    "update_frequency": "semanal",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 16/03/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/dof-transportes-de-produtos-florestais",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/dof-transportes-de-produtos-florestais",
+    "primary_or_derived": "primário",
+    "limitations": "Registra transportes acompanhados pelo DOF, não toda movimentação florestal do país. Dados internos de BA até nov/2007, CE/MA até 2009, RO até mai/2011 e MT/MG/PA em todo o período têm lacunas por não uso ou falta de integração de sistemas estaduais; documentos interestaduais descritos pelo Ibama permanecem contemplados.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000422",
+        "product_id": "DP000400",
+        "distribution_name": "DOF — Transportes de Produtos Florestais — Ibama — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/dof-transportes-de-produtos-florestais",
+        "format": "CSV | XML | JSON",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar descrição e restrições legais de divulgação do conjunto",
+        "license": "Outra (Domínio Público)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano de emissão e UF de origem",
+        "notes": "Distribuição oficial no Portal de Dados Abertos do Ibama. Preservar escopo administrativo/declaratório e metadados do recurso na análise.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000401",
+    "resource_id": "DR0106",
+    "product_name": "Pessoas jurídicas inscritas no CTF/APP — Ibama",
+    "product_acronym": "CTF/APP PJ",
+    "product_family": "Cadastro Técnico Federal — atividades potencialmente poluidoras",
+    "product_kind": "dataset_series",
+    "product_description": "Cadastro aberto de pessoas jurídicas inscritas no CTF/APP, extraído periodicamente das bases corporativas do Ibama e distribuído por Unidade da Federação.",
+    "research_areas": "Environmental management | Environmental science",
+    "keywords": "CTF/APP | potentially polluting activities | legal entities | administrative register | Ibama",
+    "geographic_coverage": "Brasil — 26 UFs e Distrito Federal",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa jurídica | situação cadastral | UF",
+    "spatial_resolution": "por pessoa jurídica/registro cadastral; arquivos segmentados por UF",
+    "temporal_coverage": "cadastro corrente; extrações periódicas",
+    "temporal_resolution": "por registro cadastral",
+    "update_frequency": "periódica conforme extração do Ibama",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 24/06/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/pessoas-juridicas-inscritas-no-ctf-app",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/pessoas-juridicas-inscritas-no-ctf-app",
+    "primary_or_derived": "primário",
+    "limitations": "Inscrição no CTF/APP é condição cadastral/administrativa e não mede emissão, impacto, conformidade ambiental ou atividade efetivamente exercida em cada período. O conjunto inclui diferentes situações cadastrais e está sujeito às restrições legais de divulgação.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000423",
+        "product_id": "DP000401",
+        "distribution_name": "Pessoas jurídicas inscritas no CTF/APP — Ibama — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/pessoas-juridicas-inscritas-no-ctf-app",
+        "format": "ZIP com 27 arquivos em CSV | XML | JSON",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar descrição e restrições legais de divulgação do conjunto",
+        "license": "Outra (Domínio Público)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF/DF",
+        "notes": "Distribuição oficial no Portal de Dados Abertos do Ibama. Preservar escopo administrativo/declaratório e metadados do recurso na análise.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "ZIP com 27 arquivos em CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000402",
+    "resource_id": "DR0106",
+    "product_name": "Pessoas jurídicas inscritas no CTF/AIDA — Ibama",
+    "product_acronym": "CTF/AIDA PJ",
+    "product_family": "Cadastro Técnico Federal — atividades e instrumentos de defesa ambiental",
+    "product_kind": "dataset_series",
+    "product_description": "Cadastro aberto de pessoas jurídicas inscritas no CTF/AIDA, destinado ao registro de atividades e instrumentos de defesa ambiental e extraído periodicamente das bases corporativas do Ibama.",
+    "research_areas": "Environmental management | Environmental science",
+    "keywords": "CTF/AIDA | environmental defense | legal entities | administrative register | Ibama",
+    "geographic_coverage": "Brasil — 26 UFs e Distrito Federal",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa jurídica | atividade/instrumento | UF",
+    "spatial_resolution": "por pessoa jurídica/registro cadastral; arquivos segmentados por UF",
+    "temporal_coverage": "cadastro corrente; extrações periódicas",
+    "temporal_resolution": "por registro cadastral",
+    "update_frequency": "periódica conforme extração do Ibama",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN atualizados em 24/06/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/pessoas-juridicas-inscritas-no-ctf-aida",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/pessoas-juridicas-inscritas-no-ctf-aida",
+    "primary_or_derived": "primário",
+    "limitations": "Inscrição no CTF/AIDA não equivale a certificação de capacidade, desempenho ambiental, prestação efetiva de serviço ou regularidade profissional fora do escopo e data do cadastro.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000424",
+        "product_id": "DP000402",
+        "distribution_name": "Pessoas jurídicas inscritas no CTF/AIDA — Ibama — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/pessoas-juridicas-inscritas-no-ctf-aida",
+        "format": "ZIP com 27 arquivos em CSV | XML | JSON",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar descrição e restrições legais de divulgação do conjunto",
+        "license": "Outra (Domínio Público)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF/DF",
+        "notes": "Distribuição oficial no Portal de Dados Abertos do Ibama. Preservar escopo administrativo/declaratório e metadados do recurso na análise.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "ZIP com 27 arquivos em CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000403",
+    "resource_id": "DR0106",
+    "product_name": "RAPP — Resíduos Sólidos — Gerador (a partir de 2012) — Ibama",
+    "product_acronym": "RAPP Resíduos Gerador",
+    "product_family": "RAPP — resíduos sólidos",
+    "product_kind": "dataset_series",
+    "product_description": "Relação declarada no RAPP de geradores de resíduos sólidos por Município/UF e atividade, com descrição, quantidade, ano de geração e classificação de periculosidade.",
+    "research_areas": "Environmental management | Environmental science",
+    "keywords": "RAPP | solid waste | generator | hazardous waste | CTF/APP | Ibama",
+    "geographic_coverage": "Brasil — pessoas jurídicas no universo do CTF/APP obrigadas ao formulário correspondente",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa jurídica | município/UF | atividade | resíduo | ano",
+    "spatial_resolution": "por declaração/gerador, resíduo e ano",
+    "temporal_coverage": "a partir de 2012 conforme declarações disponibilizadas",
+    "temporal_resolution": "anual por declaração RAPP",
+    "update_frequency": "conforme atualização do portal e ciclo declaratório",
+    "product_status": "ativo",
+    "version_or_collection": "série pós-2012; página CKAN revisada em 17/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-gerador-a-partir-de-2012",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-gerador-a-partir-de-2012",
+    "primary_or_derived": "primário",
+    "limitations": "Dados administrativos/declaratórios do universo obrigado ao RAPP; não constituem inventário censitário de todos os resíduos gerados no Brasil, nem medição independente de massa, destinação ou periculosidade.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000425",
+        "product_id": "DP000403",
+        "distribution_name": "RAPP — Resíduos Sólidos — Gerador (a partir de 2012) — Ibama — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-gerador-a-partir-de-2012",
+        "format": "HTML | CSV | XML | JSON",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar descrição e restrições legais de divulgação do conjunto",
+        "license": "Outra (Domínio Público)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por registros e campos disponíveis no recurso",
+        "notes": "Distribuição oficial no Portal de Dados Abertos do Ibama. Preservar escopo administrativo/declaratório e metadados do recurso na análise.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "HTML | CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000404",
+    "resource_id": "DR0106",
+    "product_name": "RAPP — Resíduos Sólidos — Gerador (anterior a 2012) — Ibama",
+    "product_acronym": "RAPP Resíduos Gerador histórico",
+    "product_family": "RAPP — resíduos sólidos",
+    "product_kind": "dataset_series",
+    "product_description": "Série histórica do RAPP para geradores de resíduos no modelo anterior a 2012, incluindo quantidade, periculosidade, monitoramento, destinação, empresa destinadora e localização declarada.",
+    "research_areas": "Environmental management | Environmental science",
+    "keywords": "RAPP | solid waste | generator | historical | hazardous waste | Ibama",
+    "geographic_coverage": "Brasil — pessoas jurídicas no universo histórico do CTF/APP obrigadas ao formulário",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa jurídica | município/UF | atividade | resíduo | ano",
+    "spatial_resolution": "por declaração/gerador, resíduo e ano",
+    "temporal_coverage": "período anterior a 2012 conforme acervo",
+    "temporal_resolution": "anual por declaração histórica",
+    "update_frequency": "descontinuada; acervo histórico",
+    "product_status": "arquivado",
+    "version_or_collection": "formulário histórico anterior a 2012; metadados CKAN de 18/09/2021",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-gerador-anterior-a-2012",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-gerador-anterior-a-2012",
+    "primary_or_derived": "primário",
+    "limitations": "Estrutura histórica anterior a 2012 não deve ser concatenada automaticamente à série pós-2012 sem harmonização dos formulários, campos e conceitos. Dados são declaratórios e restritos ao universo cadastral aplicável.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000426",
+        "product_id": "DP000404",
+        "distribution_name": "RAPP — Resíduos Sólidos — Gerador (anterior a 2012) — Ibama — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-gerador-anterior-a-2012",
+        "format": "HTML | CSV | XML | JSON",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar descrição e restrições legais de divulgação do conjunto",
+        "license": "Outra (Domínio Público)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por registros e campos disponíveis no recurso",
+        "notes": "Distribuição oficial no Portal de Dados Abertos do Ibama. Preservar escopo administrativo/declaratório e metadados do recurso na análise.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "HTML | CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000405",
+    "resource_id": "DR0106",
+    "product_name": "RAPP — Resíduos Sólidos — Armazenador — Ibama",
+    "product_acronym": "RAPP Resíduos Armazenador",
+    "product_family": "RAPP — resíduos sólidos",
+    "product_kind": "dataset_series",
+    "product_description": "Relação de armazenadores de resíduos declarados no RAPP por Município/UF, incluindo vínculos declarados com empresas geradoras e responsáveis pela destinação final.",
+    "research_areas": "Environmental management | Environmental science",
+    "keywords": "RAPP | solid waste | storage | hazardous waste | CTF/APP | Ibama",
+    "geographic_coverage": "Brasil — pessoas jurídicas no universo do CTF/APP sujeito ao formulário",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa jurídica | município/UF | vínculos gerador-destinador",
+    "spatial_resolution": "por declaração/armazenador e vínculos informados",
+    "temporal_coverage": "conforme declarações do RAPP no acervo",
+    "temporal_resolution": "anual por declaração RAPP",
+    "update_frequency": "conforme atualização do portal e ciclo declaratório",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN de 18/09/2021",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-armazenador",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-armazenador",
+    "primary_or_derived": "primário",
+    "limitations": "Registra relações declaradas no RAPP; não comprova capacidade física, estoque instantâneo, conformidade operacional ou universo completo de armazenadores fora do CTF/APP e do formulário aplicável.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000427",
+        "product_id": "DP000405",
+        "distribution_name": "RAPP — Resíduos Sólidos — Armazenador — Ibama — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-armazenador",
+        "format": "HTML | CSV | XML | JSON",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar descrição e restrições legais de divulgação do conjunto",
+        "license": "Outra (Domínio Público)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por registros e campos disponíveis no recurso",
+        "notes": "Distribuição oficial no Portal de Dados Abertos do Ibama. Preservar escopo administrativo/declaratório e metadados do recurso na análise.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "HTML | CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000406",
+    "resource_id": "DR0106",
+    "product_name": "RAPP — Resíduos Sólidos — Transportador — Ibama",
+    "product_acronym": "RAPP Resíduos Transportador",
+    "product_family": "RAPP — resíduos sólidos",
+    "product_kind": "dataset_series",
+    "product_description": "Relação de transportadores de resíduos perigosos declarados e confirmados no RAPP, por Município/UF, com empresas geradoras e ano de prestação do serviço.",
+    "research_areas": "Environmental management | Environmental science",
+    "keywords": "RAPP | hazardous waste | transporter | solid waste | CTF/APP | Ibama",
+    "geographic_coverage": "Brasil — pessoas jurídicas no universo do CTF/APP sujeito ao formulário",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa jurídica | município/UF | gerador | ano",
+    "spatial_resolution": "por transportador/serviço declarado e confirmado",
+    "temporal_coverage": "conforme declarações do RAPP no acervo",
+    "temporal_resolution": "anual por declaração RAPP",
+    "update_frequency": "conforme atualização do portal e ciclo declaratório",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN de 18/09/2021",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-transportador",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-transportador",
+    "primary_or_derived": "primário",
+    "limitations": "A lista deriva de transportadores declarados pelos geradores e confirmados pelo transportador; não é rastreamento integral de cargas nem censo de todo transporte de resíduos perigosos no país.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000428",
+        "product_id": "DP000406",
+        "distribution_name": "RAPP — Resíduos Sólidos — Transportador — Ibama — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-transportador",
+        "format": "HTML | CSV | XML | JSON",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar descrição e restrições legais de divulgação do conjunto",
+        "license": "Outra (Domínio Público)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por registros e campos disponíveis no recurso",
+        "notes": "Distribuição oficial no Portal de Dados Abertos do Ibama. Preservar escopo administrativo/declaratório e metadados do recurso na análise.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "HTML | CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000407",
+    "resource_id": "DR0106",
+    "product_name": "RAPP — Resíduos Sólidos — Destinador — Ibama",
+    "product_acronym": "RAPP Resíduos Destinador",
+    "product_family": "RAPP — resíduos sólidos",
+    "product_kind": "dataset_series",
+    "product_description": "Relação de destinadores de resíduos no RAPP por Município/UF, com atividade, descrição e quantidade de resíduos destinados, ano, tipo de destinação e empresas geradoras.",
+    "research_areas": "Environmental management | Environmental science",
+    "keywords": "RAPP | solid waste | destination | treatment | hazardous waste | CTF/APP | Ibama",
+    "geographic_coverage": "Brasil — pessoas jurídicas no universo do CTF/APP sujeito ao formulário",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa jurídica | município/UF | resíduo | destinação | ano",
+    "spatial_resolution": "por destinador/resíduo/destinação declarada",
+    "temporal_coverage": "conforme declarações do RAPP no acervo",
+    "temporal_resolution": "anual por declaração RAPP",
+    "update_frequency": "conforme atualização do portal e ciclo declaratório",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN de 18/09/2021",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-destinador",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-destinador",
+    "primary_or_derived": "primário",
+    "limitations": "O conjunto cobre resíduos cuja destinação/armazenamento por terceiros foi informada pelo gerador e efetivamente destinada conforme a lógica do RAPP; não representa toda destinação nacional nem auditoria independente da quantidade ou tratamento.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000429",
+        "product_id": "DP000407",
+        "distribution_name": "RAPP — Resíduos Sólidos — Destinador — Ibama — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/residuos-solidos-destinador",
+        "format": "HTML | CSV | XML | JSON",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar descrição e restrições legais de divulgação do conjunto",
+        "license": "Outra (Domínio Público)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por registros e campos disponíveis no recurso",
+        "notes": "Distribuição oficial no Portal de Dados Abertos do Ibama. Preservar escopo administrativo/declaratório e metadados do recurso na análise.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "HTML | CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000408",
+    "resource_id": "DR0106",
+    "product_name": "RAPP — Emissões de Poluentes Atmosféricos — Ibama",
+    "product_acronym": "RAPP Emissões Atmosféricas",
+    "product_family": "RAPP — emissões atmosféricas",
+    "product_kind": "dataset_series",
+    "product_description": "Relação de pessoas jurídicas sujeitas ao formulário de Emissões de Poluentes Atmosféricos no RAPP, com Município/UF, atividade, poluente, quantidade declarada e metodologia usada para obtenção do dado.",
+    "research_areas": "Environmental management | Environmental science | Climate and atmospheric sciences",
+    "keywords": "RAPP | atmospheric emissions | pollutant | CTF/APP | methodology | Ibama",
+    "geographic_coverage": "Brasil — pessoas jurídicas no universo do CTF/APP sujeito ao formulário",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa jurídica | município/UF | atividade | poluente | ano",
+    "spatial_resolution": "por declaração, estabelecimento/atividade e poluente",
+    "temporal_coverage": "conforme declarações do RAPP no acervo",
+    "temporal_resolution": "anual por declaração RAPP",
+    "update_frequency": "conforme atualização do portal e ciclo declaratório",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN de 18/09/2021",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/emissoes-de-poluentes-atmosfericos",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/emissoes-de-poluentes-atmosfericos",
+    "primary_or_derived": "primário",
+    "limitations": "Quantidades podem resultar de metodologias declaradas diferentes e não são necessariamente medições instrumentais. O universo é o de pessoas jurídicas obrigadas ao RAPP, não inventário nacional completo de todas as emissões atmosféricas.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000430",
+        "product_id": "DP000408",
+        "distribution_name": "RAPP — Emissões de Poluentes Atmosféricos — Ibama — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/emissoes-de-poluentes-atmosfericos",
+        "format": "HTML | CSV",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar descrição e restrições legais de divulgação do conjunto",
+        "license": "Outra (Domínio Público)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por registros e campos disponíveis no recurso",
+        "notes": "Distribuição oficial no Portal de Dados Abertos do Ibama. Preservar escopo administrativo/declaratório e metadados do recurso na análise.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "HTML | CSV"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000409",
+    "resource_id": "DR0106",
+    "product_name": "RAPP — Unidade Poluidora — Ibama",
+    "product_acronym": "RAPP Unidade Poluidora",
+    "product_family": "RAPP — emissões atmosféricas",
+    "product_kind": "dataset_series",
+    "product_description": "Série administrativa do RAPP para unidades/fontes poluidoras associadas a formulários de emissões atmosféricas, com atividade, tipo de fonte, capacidade nominal, tempo de funcionamento, controle e chaminé.",
+    "research_areas": "Environmental management | Environmental science | Climate and atmospheric sciences",
+    "keywords": "RAPP | pollution source | atmospheric emissions | control equipment | CTF/APP | Ibama",
+    "geographic_coverage": "Brasil — pessoas jurídicas no universo do CTF/APP sujeito aos formulários históricos de emissões",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa jurídica | município/UF | atividade | fonte poluidora",
+    "spatial_resolution": "por unidade/fonte declarada",
+    "temporal_coverage": "declarações anteriores a 2013 conforme descrição oficial do conjunto",
+    "temporal_resolution": "anual por declaração histórica",
+    "update_frequency": "descontinuada; acervo histórico",
+    "product_status": "arquivado",
+    "version_or_collection": "formulários de emissões anteriores a 2013; metadados CKAN de 18/09/2021",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/unidade-poluidora",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/unidade-poluidora",
+    "primary_or_derived": "primário",
+    "limitations": "É cadastro declaratório de fontes e características operacionais históricas, não série de concentração ou emissão medida. Não deve ser confundido com o conjunto de Emissões de Poluentes Atmosféricos nem extrapolado para situação atual.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000431",
+        "product_id": "DP000409",
+        "distribution_name": "RAPP — Unidade Poluidora — Ibama — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/unidade-poluidora",
+        "format": "HTML | CSV | XML | JSON",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar descrição e restrições legais de divulgação do conjunto",
+        "license": "Outra (Domínio Público)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por registros e campos disponíveis no recurso",
+        "notes": "Distribuição oficial no Portal de Dados Abertos do Ibama. Preservar escopo administrativo/declaratório e metadados do recurso na análise.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "HTML | CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000410",
+    "resource_id": "DR0106",
+    "product_name": "RAPP — Exploração Econômica da Madeira ou Lenha e Subprodutos Florestais — Ibama",
+    "product_acronym": "RAPP Exploração Madeira/Lenha",
+    "product_family": "RAPP — produtos florestais",
+    "product_kind": "dataset_series",
+    "product_description": "Relação de pessoas jurídicas que entregaram o formulário RAPP sobre movimentação de produtos florestais oriundos da exploração de madeira, lenha e subprodutos quando utilizado sistema de controle distinto do DOF.",
+    "research_areas": "Environmental management | Forest ecology | Environmental science",
+    "keywords": "RAPP | timber | firewood | forest products | non-DOF control | CTF/APP | Ibama",
+    "geographic_coverage": "Brasil — pessoas jurídicas obrigadas ao formulário no CTF/APP",
+    "covers_brazil": "sim",
+    "spatial_support": "pessoa jurídica | produto florestal | movimentação declarada",
+    "spatial_resolution": "por declaração e movimentação registrada",
+    "temporal_coverage": "conforme declarações do RAPP no acervo",
+    "temporal_resolution": "anual por declaração RAPP",
+    "update_frequency": "conforme atualização do portal e ciclo declaratório",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados CKAN de 18/09/2021",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.ibama.gov.br/dataset/exploracao-economica-da-madeira-ou-lenha-e-subprodutos-florestais",
+    "methodology_url": "https://dadosabertos.ibama.gov.br/dataset/exploracao-economica-da-madeira-ou-lenha-e-subprodutos-florestais",
+    "primary_or_derived": "primário",
+    "limitations": "Cobre movimentações declaradas no RAPP quando utilizado outro sistema de controle que não o DOF; portanto não deve ser somado ao DOF sem resolução de sobreposição/escopo e não comprova exploração física ou volume efetivamente removido.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0106",
+      "resource_name": "Dados Abertos e Sistemas Ambientais — Ibama",
+      "acronym": "Ibama Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas administrativos do Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis",
+      "homepage_url": "https://www.gov.br/ibama/pt-br",
+      "data_access_url": "https://dadosabertos.ibama.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000432",
+        "product_id": "DP000410",
+        "distribution_name": "RAPP — Exploração Econômica da Madeira ou Lenha e Subprodutos Florestais — Ibama — dados abertos",
+        "access_url": "https://dadosabertos.ibama.gov.br/dataset/exploracao-economica-da-madeira-ou-lenha-e-subprodutos-florestais",
+        "format": "HTML | CSV | XML | JSON",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar descrição e restrições legais de divulgação do conjunto",
+        "license": "Outra (Domínio Público)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por registros e campos disponíveis no recurso",
+        "notes": "Distribuição oficial no Portal de Dados Abertos do Ibama. Preservar escopo administrativo/declaratório e metadados do recurso na análise.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "HTML | CSV | XML | JSON"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
   }
 ]
