@@ -1,0 +1,151 @@
+name: Materialize verified Ibama Sinaflor catalog completion
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/materialize-ibama-sinaflor-20260817.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Append verified Ibama products and distributions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          verified='2026-08-17'
+          products_path=Path('data/data_products.csv')
+          dists_path=Path('data/product_distributions.csv')
+
+          def product(pid, name, acronym, family, desc, keywords, coverage, support, resolution, temporal, version, url, limitations, areas='Forest ecology | Land use and land cover | Environmental management | Environmental science'):
+              return {
+                  'product_id':pid,'resource_id':'DR0106','product_name':name,'product_acronym':acronym,
+                  'product_family':family,'product_kind':'dataset_series','product_description':desc,
+                  'research_areas':areas,'keywords':keywords,'geographic_coverage':coverage,'covers_brazil':'sim',
+                  'spatial_support':support,'spatial_resolution':resolution,'temporal_coverage':temporal,
+                  'temporal_resolution':'por registro administrativo','update_frequency':'semanal conforme metadados oficiais',
+                  'product_status':'ativo','version_or_collection':version,'enumeration_scope':'complete',
+                  'product_page_url':url,'methodology_url':url,'primary_or_derived':'primário',
+                  'limitations':limitations,'last_verified':verified
+              }
+
+          products=[
+            product('DP000387','Sinaflor — Uso Alternativo do Solo — Ibama','Sinaflor UAS','Autorizações e manejo florestal — registros administrativos','Dados de solicitações e autorizações de Uso Alternativo do Solo cadastrados no Sinaflor.','Sinaflor | UAS | land-use change | authorization | forest products | Ibama','Brasil — registros UAS cadastrados no Sinaflor','solicitação/autorização administrativa e atributos associados','por processo/autorização; localização e geometria conforme registro','registros cadastrados no Sinaflor; período conforme acervo','conjunto corrente; metadados CKAN atualizados em 08/07/2026','https://dadosabertos.ibama.gov.br/dataset/sinaflor-uso-alternativo-do-solo','Solicitação ou autorização UAS não equivale a conversão do uso do solo efetivamente executada, desmatamento observado ou impacto ecológico medido.'),
+            product('DP000388','Sinaflor — Corte de Árvores Isoladas — Ibama','Sinaflor CAI','Autorizações e manejo florestal — registros administrativos','Dados de solicitações e autorizações de Corte de Árvores Isoladas cadastrados no Sinaflor.','Sinaflor | CAI | isolated trees | authorization | forest products | Ibama','Brasil — registros CAI cadastrados no Sinaflor','solicitação/autorização administrativa e atributos associados','por processo/autorização; localização conforme registro','registros cadastrados no Sinaflor; período conforme acervo','conjunto corrente; metadados CKAN atualizados em 09/07/2026','https://dadosabertos.ibama.gov.br/dataset/sinaflor-corte-de-arvores-isoladas','Solicitação ou autorização de corte não comprova remoção efetiva das árvores, volume explorado ou alteração de cobertura observada.'),
+            product('DP000389','Sinaflor — Autorização de Supressão de Vegetação — Ibama','Sinaflor ASV','Autorizações e manejo florestal — registros administrativos','Dados de solicitações e autorizações de Supressão de Vegetação cadastrados no Sinaflor.','Sinaflor | ASV | vegetation suppression | authorization | forest products | Ibama','Brasil — registros ASV cadastrados no Sinaflor','solicitação/autorização administrativa e atributos associados','por processo/autorização; localização e geometria conforme registro','registros cadastrados no Sinaflor; período conforme acervo','conjunto corrente; metadados CKAN atualizados em 10/04/2026','https://dadosabertos.ibama.gov.br/dataset/sinaflor-autorizacao-de-supressao-de-vegetacao','ASV cadastrada no Sinaflor é ato administrativo e não equivale a supressão efetivamente realizada, desmatamento detectado por sensoriamento remoto ou magnitude de impacto.'),
+            product('DP000390','Sinaflor — PMFS Amazônia Legal — Ibama','Sinaflor PMFS Amazônia','Manejo florestal sustentável — registros administrativos','Dados de solicitações e autorizações de Plano de Manejo Florestal Sustentável cadastrados no Sinaflor e situados na Amazônia Legal.','Sinaflor | PMFS | sustainable forest management | Amazon | authorization | Ibama','Amazônia Legal — registros PMFS cadastrados no Sinaflor','solicitação/autorização administrativa e atributos associados','por processo/PMFS; localização e geometria conforme registro','registros cadastrados no Sinaflor; período conforme acervo','conjunto corrente; metadados CKAN atualizados em 11/11/2025','https://dadosabertos.ibama.gov.br/dataset/sinaflor-pmfs-amazonia-legal','PMFS solicitado ou autorizado não equivale a exploração efetivamente executada, volume removido observado, conformidade do manejo ou estoque florestal medido.'),
+            product('DP000391','Sinaflor — PMFS Outros Biomas — Ibama','Sinaflor PMFS Outros Biomas','Manejo florestal sustentável — registros administrativos','Dados de solicitações e autorizações de Plano de Manejo Florestal Sustentável cadastrados no Sinaflor e situados fora da Amazônia Legal.','Sinaflor | PMFS | sustainable forest management | other biomes | authorization | Ibama','Brasil fora da Amazônia Legal — registros PMFS cadastrados no Sinaflor','solicitação/autorização administrativa e atributos associados','por processo/PMFS; localização e geometria conforme registro','registros cadastrados no Sinaflor; período conforme acervo','conjunto corrente; metadados CKAN atualizados em 11/11/2025','https://dadosabertos.ibama.gov.br/dataset/sinaflor-pmfs-outros-biomas','PMFS solicitado ou autorizado não equivale a exploração efetivamente executada, volume removido observado, conformidade do manejo ou estoque florestal medido.'),
+            product('DP000392','Sinaflor — POA Amazônia Legal — Ibama','Sinaflor POA Amazônia','Autorizações e manejo florestal — registros administrativos','Dados de solicitações e autorizações de Plano Operacional Anual cadastrados no Sinaflor e situados na Amazônia Legal.','Sinaflor | POA | annual operational plan | Amazon | authorization | logging | Ibama','Amazônia Legal — registros de POA cadastrados no Sinaflor','solicitação/autorização administrativa e atributos associados','por processo/POA; localização e geometria conforme registro','registros cadastrados no Sinaflor; período conforme acervo','conjunto corrente; metadados CKAN atualizados em 11/11/2025','https://dadosabertos.ibama.gov.br/dataset/sinaflor-poa-amazonia-legal','POA solicitado ou autorizado não equivale a exploração material executada, volume efetivamente removido ou desmatamento observado.'),
+            product('DP000393','Sinaflor — Exploração de Floresta Plantada — Ibama','Sinaflor FP','Autorizações e manejo florestal — registros administrativos','Dados de solicitações e autorizações para exploração de floresta plantada cadastrados no Sinaflor.','Sinaflor | planted forest | silviculture | authorization | forest products | Ibama','Brasil — registros de exploração de floresta plantada cadastrados no Sinaflor','solicitação/autorização administrativa e atributos associados','por processo/autorização; localização conforme registro','registros cadastrados no Sinaflor; período conforme acervo','conjunto corrente; atualização semanal; página oficial recuperada em 17/08/2026','https://dadosabertos.ibama.gov.br/dataset/sinaflor-exploracao-de-floresta-plantada','Autorização para exploração de floresta plantada não comprova exploração executada, área corrente de silvicultura, volume produzido ou origem nativa da cobertura.'),
+            product('DP000394','Sinaflor — Empreendimentos de Base Florestal — Ibama','Sinaflor EBF','Empreendimentos florestais — cadastro administrativo','Cadastro de empreendimentos no Sinaflor cuja atividade envolve exploração de produtos florestais; o cadastro é requisito para obtenção de autorizações no sistema.','Sinaflor | forest enterprises | registration | forest products | authorization | Ibama','Brasil — empreendimentos cadastrados no Sinaflor','empreendimento cadastrado e atributos administrativos','por empreendimento; localização conforme cadastro','cadastro corrente; período conforme acervo','conjunto corrente; metadados CKAN atualizados em 16/03/2026','https://dadosabertos.ibama.gov.br/dataset/sinaflor-empreendimentos-de-base-florestal','Cadastro no Sinaflor não comprova operação atual, produção, exploração realizada, regularidade integral ou impacto ambiental do empreendimento.'),
+            product('DP000395','Sinaflor — Responsáveis Técnicos — Ibama','Sinaflor RT','Responsabilidade técnica florestal — cadastro administrativo','Dados de responsáveis técnicos inscritos no Sinaflor para elaboração e/ou execução técnica de projetos de exploração florestal perante o órgão ambiental competente.','Sinaflor | responsible technician | ART | forest projects | administrative register | Ibama','Brasil — responsáveis técnicos inscritos no Sinaflor','pessoa física e atributos de responsabilidade técnica','por responsável técnico/registro; não é camada territorial contínua','cadastro corrente; período conforme acervo','conjunto corrente; metadados CKAN atualizados em 17/04/2025','https://dadosabertos.ibama.gov.br/dataset/sinaflor-responsavel-tecnico','Inscrição como responsável técnico não comprova atuação em determinado projeto, execução material, qualidade técnica ou situação profissional fora do escopo e data do cadastro.', areas='Environmental management | Forest ecology | Environmental science'),
+            product('DP000396','Sinaflor — Autorização de Utilização de Matéria-Prima Florestal — Ibama','Sinaflor AUMPF','Autorizações e manejo florestal — registros administrativos','Dados de solicitações e autorizações de Utilização de Matéria-Prima Florestal cadastrados no Sinaflor.','Sinaflor | AUMPF | forest raw material | authorization | forest products | Ibama','Brasil — registros AUMPF cadastrados no Sinaflor','solicitação/autorização administrativa e atributos associados','por processo/autorização; localização conforme registro','registros cadastrados no Sinaflor; período conforme acervo','conjunto corrente; atualização semanal; página oficial recuperada em 17/08/2026','https://dadosabertos.ibama.gov.br/dataset/sinaflor-autorizacao-de-utilizacao-de-materia-prima-florestal','AUMPF solicitada ou autorizada não equivale a matéria-prima efetivamente utilizada, volume consumido observado, origem verificada fora do processo ou impacto ecológico medido.'),
+            product('DP000397','Sinaflor+ — Uso Alternativo do Solo — Agricultor Familiar — Ibama','Sinaflor+ UAS AF','Autorizações e manejo florestal — agricultor familiar','Dados de solicitações e autorizações de Uso Alternativo do Solo para agricultor familiar/empreendedor familiar rural cadastrados no Sinaflor+.','Sinaflor+ | UAS | family farming | rural family enterprise | authorization | Ibama','Brasil — registros UAS de agricultor/empreendedor familiar rural no Sinaflor+','solicitação/autorização administrativa e atributos associados','por processo/autorização; localização conforme registro','conjunto criado em 2025; registros conforme acervo','conjunto corrente; atualização semanal','https://dadosabertos.ibama.gov.br/dataset/sinaflor-uso-alternativo-do-solo-agricultor-familiar','O recorte identifica registros administrativos do módulo destinado a agricultor/empreendedor familiar rural; autorização não comprova mudança de uso executada nem representa censo de toda agricultura familiar.'),
+            product('DP000398','Licenças Ambientais Federais de Atividades e Empreendimentos — Ibama','LAF Ibama','Licenciamento ambiental federal — atos administrativos','Relação de licenças ambientais, autorizações, renovações e retificações emitidas pelo Ibama no licenciamento ambiental federal, incluindo LP, LI, LO, LIO, LPS, ASV e ABIO.','Ibama | federal environmental licensing | LP | LI | LO | LIO | LPS | ASV | ABIO | SISLIC','Brasil — processos de licenciamento ambiental de competência federal conduzidos pelo Ibama','licença/autorização e atributos do processo/empreendimento','por ato administrativo; localização conforme registro','atos emitidos registrados no sistema; período conforme acervo','conjunto corrente; metadados CKAN atualizados em 29/05/2026','https://dadosabertos.ibama.gov.br/dataset/licencas-ambientais-de-atividades-e-empreendimentos-licenciados-pelo-ibama','O conjunto cobre atos do licenciamento ambiental federal sob competência do Ibama, não todas as licenças estaduais ou municipais. Emissão, renovação ou retificação não comprova execução da atividade, conformidade contínua, ausência de impacto ou cumprimento integral das condicionantes.', areas='Environmental management | Conservation | Geospatial data | Environmental science')
+          ]
+
+          def dist(did,pid,name,url,fmt,license_text,notes):
+              return {'distribution_id':did,'product_id':pid,'distribution_name':name,'access_url':url,'format':fmt,
+                      'access_protocol':'HTTPS download | CKAN API','access_tool':'CKAN | navegador web | script/API',
+                      'free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos',
+                      'license':license_text,'provider_attribution_required':'sim','subset_support':'por recurso/formato; filtragem após download',
+                      'notes':notes,'last_verified':verified}
+
+          specs=[
+            ('DD000409','DP000387','Sinaflor UAS — dados abertos','https://dadosabertos.ibama.gov.br/dataset/sinaflor-uso-alternativo-do-solo','CSV | XML | JSON | metadados CSV','Outra (Aberta), conforme catálogo CKAN','Preservar solicitações e autorizações como estados administrativos; não inferir conversão material do uso do solo.'),
+            ('DD000410','DP000388','Sinaflor CAI — dados abertos','https://dadosabertos.ibama.gov.br/dataset/sinaflor-corte-de-arvores-isoladas','CSV | XML | JSON | metadados CSV','Outra (Aberta), conforme catálogo CKAN','Não inferir corte executado a partir da solicitação ou autorização.'),
+            ('DD000411','DP000389','Sinaflor ASV — dados abertos','https://dadosabertos.ibama.gov.br/dataset/sinaflor-autorizacao-de-supressao-de-vegetacao','CSV | XML | JSON','Outra (Aberta), conforme catálogo CKAN','ASV administrativa é distinta de supressão observada por campo ou sensoriamento remoto.'),
+            ('DD000412','DP000390','Sinaflor PMFS Amazônia Legal — dados abertos','https://dadosabertos.ibama.gov.br/dataset/sinaflor-pmfs-amazonia-legal','CSV | XML | JSON | metadados CSV','Outra (Aberta), conforme catálogo CKAN','Preservar Amazônia Legal como recorte institucional e o status administrativo de cada PMFS.'),
+            ('DD000413','DP000391','Sinaflor PMFS Outros Biomas — dados abertos','https://dadosabertos.ibama.gov.br/dataset/sinaflor-pmfs-outros-biomas','CSV | XML | JSON | metadados CSV','Outra (Aberta), conforme catálogo CKAN','Cobertura fora da Amazônia Legal; não inferir execução de manejo a partir da autorização.'),
+            ('DD000414','DP000392','Sinaflor POA Amazônia Legal — dados abertos','https://dadosabertos.ibama.gov.br/dataset/sinaflor-poa-amazonia-legal','CSV | XML | JSON','Outra (Aberta), conforme catálogo CKAN','Complementa POA Outros Biomas já catalogado; manter os dois recortes separados.'),
+            ('DD000415','DP000393','Sinaflor Floresta Plantada — dados abertos','https://dadosabertos.ibama.gov.br/dataset/sinaflor-exploracao-de-floresta-plantada','CSV | XML | JSON','Outra (Aberta), conforme catálogo CKAN','Autorização administrativa não é medida de área plantada ou produção florestal.'),
+            ('DD000416','DP000394','Sinaflor Empreendimentos de Base Florestal — dados abertos','https://dadosabertos.ibama.gov.br/dataset/sinaflor-empreendimentos-de-base-florestal','CSV | XML | JSON | metadados CSV','Outra (Domínio Público), conforme catálogo CKAN','Cadastro é requisito administrativo e não comprova operação material atual.'),
+            ('DD000417','DP000395','Sinaflor Responsáveis Técnicos — dados abertos','https://dadosabertos.ibama.gov.br/dataset/sinaflor-responsavel-tecnico','CSV | XML | JSON','Outra (Aberta), conforme catálogo CKAN','Dados cadastrais de responsabilidade técnica; preservar finalidade administrativa e eventuais restrições de interpretação.'),
+            ('DD000418','DP000396','Sinaflor AUMPF — dados abertos','https://dadosabertos.ibama.gov.br/dataset/sinaflor-autorizacao-de-utilizacao-de-materia-prima-florestal','CSV | XML | JSON','Outra (Aberta), conforme catálogo CKAN','Não inferir utilização material ou volume consumido apenas pela autorização.'),
+            ('DD000419','DP000397','Sinaflor+ UAS Agricultor Familiar — dados abertos','https://dadosabertos.ibama.gov.br/dataset/sinaflor-uso-alternativo-do-solo-agricultor-familiar','CSV | XML | JSON','Outra (Aberta), conforme catálogo CKAN','Recorte administrativo específico de agricultor/empreendedor familiar rural; não representa todo o universo da agricultura familiar.'),
+            ('DD000420','DP000398','Licenciamento Ambiental Federal Ibama — atos emitidos','https://dadosabertos.ibama.gov.br/dataset/licencas-ambientais-de-atividades-e-empreendimentos-licenciados-pelo-ibama','HTML | CSV | XML | JSON','Outra (Domínio Público), conforme catálogo CKAN','Inclui diferentes tipos de licença/autorização e suas renovações/retificações; preservar tipo e situação de cada ato.')
+          ]
+          dists=[dist(*s) for s in specs]
+
+          def read_csv(path):
+              with path.open('r',encoding='utf-8',newline='') as f:
+                  r=csv.DictReader(f); return r.fieldnames,list(r)
+          pf, oldp=read_csv(products_path); df, oldd=read_csv(dists_path)
+          pids={r['product_id'] for r in oldp}; purls={r['product_page_url'].rstrip('/') for r in oldp if r['product_page_url']}
+          dids={r['distribution_id'] for r in oldd}
+          for r in products:
+              assert r['product_id'] not in pids, f"duplicate product id {r['product_id']}"
+              assert r['product_page_url'].rstrip('/') not in purls, f"duplicate product URL {r['product_page_url']}"
+              assert set(r)==set(pf), (r['product_id'], set(pf)-set(r), set(r)-set(pf))
+          for r in dists:
+              assert r['distribution_id'] not in dids, f"duplicate distribution id {r['distribution_id']}"
+              assert set(r)==set(df), (r['distribution_id'], set(df)-set(r), set(r)-set(df))
+          with products_path.open('a',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=pf,lineterminator='\n'); w.writerows(products)
+          with dists_path.open('a',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=df,lineterminator='\n'); w.writerows(dists)
+          print(f'Appended {len(products)} products and {len(dists)} distributions')
+          PY
+
+      - name: Validate Brazil scope and product catalog
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+
+      - name: Rebuild catalog and link-role audit
+        run: |
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+
+      - name: Validate Vitrine and public artifact
+        run: |
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Read-back relational integrity and expected delta
+        run: |
+          python - <<'PY'
+          import csv
+          def rows(path):
+              with open(path,encoding='utf-8',newline='') as f: return list(csv.DictReader(f))
+          R=rows('data/data_resources.csv'); P=rows('data/data_products.csv'); D=rows('data/product_distributions.csv')
+          rids={x['resource_id'] for x in R}; pids={x['product_id'] for x in P}; dids={x['distribution_id'] for x in D}
+          assert len(rids)==len(R); assert len(pids)==len(P); assert len(dids)==len(D)
+          assert all(x['resource_id'] in rids for x in P)
+          assert all(x['product_id'] in pids for x in D)
+          expected={f'DP{i:06d}' for i in range(387,399)}
+          assert expected <= pids
+          expected_d={f'DD{i:06d}' for i in range(409,421)}
+          assert expected_d <= dids
+          new=[x for x in P if x['product_id'] in expected]
+          assert all(x['resource_id']=='DR0106' for x in new)
+          assert len(R)==106 and len(P)==394 and len(D)==416, (len(R),len(P),len(D))
+          print('READBACK',len(R),len(P),len(D),'OK')
+          PY
+
+      - name: Commit verified canonical batch and self-remove
+        shell: bash
+        run: |
+          rm .github/workflows/materialize-ibama-sinaflor-20260817.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -u
+          git add data/data_products.csv data/data_products.json data/product_distributions.csv data/data_quality_report.json data/link_role_audit.json
+          if git diff --cached --quiet; then
+            echo 'No material change to commit'
+            exit 1
+          fi
+          git commit -m 'Complete verified Ibama Sinaflor and licensing catalog'
+          git push
