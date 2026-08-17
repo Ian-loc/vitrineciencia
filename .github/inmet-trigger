@@ -1,1 +1,1 @@
-trigger INMET catalog materialization
+trigger INMET catalog materialization retry 1
