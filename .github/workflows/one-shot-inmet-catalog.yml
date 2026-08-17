@@ -21,6 +21,20 @@ jobs:
           python-version: '3.11'
       - name: Materialize verified INMET batch
         run: python scripts/one_shot_inmet_catalog.py
+      - name: Normalize catalog enumeration scope
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          p=Path('data/data_products.csv')
+          with p.open(encoding='utf-8', newline='') as f:
+              r=csv.DictReader(f); fields=r.fieldnames; rows=list(r)
+          for row in rows:
+              if row['product_id'] in {'DP000525','DP000526'}:
+                  row['enumeration_scope']='external_index'
+          with p.open('w', encoding='utf-8', newline='') as f:
+              w=csv.DictWriter(f, fieldnames=fields, lineterminator='\n'); w.writeheader(); w.writerows(rows)
+          PY
       - name: Validate Brazil scope
         run: python scripts/validate_brazil_scope.py
       - name: Validate product catalog
