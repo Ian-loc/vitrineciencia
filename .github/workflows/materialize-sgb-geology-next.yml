@@ -1,0 +1,114 @@
+name: Materialize next verified SGB geology batch
+
+on:
+  push:
+    paths:
+      - '.github/workflows/materialize-sgb-geology-next.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Append verified SGB products and distributions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          verified = '2026-08-17'
+          products_path = Path('data/data_products.csv')
+          dists_path = Path('data/product_distributions.csv')
+
+          products = [
+            {'product_id':'DP000356','resource_id':'DR0104','product_name':'Resultados de Análises Geoquímicas de Rocha — GeoSGB','product_acronym':'Geoquímica Rocha GeoSGB','product_family':'Bases geoquímicas analíticas','product_kind':'dataset_series','product_description':'Coleção georreferenciada do GeoSGB com resultados de análises químicas de amostras de rocha, incluindo metadados de projeto, laboratório, método de abertura/leitura, data de análise e analitos quando disponíveis.','research_areas':'Geology | Geospatial data | Environmental science','keywords':'geochemistry | rock samples | chemical analysis | GeoSGB | OGC API | Brazil','geographic_coverage':'Brasil — registros disponíveis no GeoSGB','covers_brazil':'sim','spatial_support':'pontos/amostras geológicas georreferenciadas','spatial_resolution':'pontual; precisão espacial varia conforme campanha e registro','temporal_coverage':'análises históricas e correntes de diferentes projetos e laboratórios','temporal_resolution':'por amostra/análise','update_frequency':'contínua conforme incorporação ao GeoSGB','product_status':'ativo','version_or_collection':'coleção OGC API / GeoSGB corrente','enumeration_scope':'complete','product_page_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/geoquimica/analises-rocha?f=html','methodology_url':'https://geosgb.sgb.gov.br/geosgb/sobre_geosgb.html','primary_or_derived':'primário','limitations':'Métodos analíticos, limites de detecção, preparação, laboratório, analitos e datas variam entre amostras. Comparações quantitativas exigem controle do método e da matriz; ausência de amostra não implica ausência do elemento ou litologia.','last_verified':verified},
+            {'product_id':'DP000357','resource_id':'DR0104','product_name':'Resultados de Análises Geoquímicas de Sedimento de Corrente — GeoSGB','product_acronym':'Geoquímica Sedimento GeoSGB','product_family':'Bases geoquímicas analíticas','product_kind':'dataset_series','product_description':'Coleção georreferenciada do GeoSGB com resultados de análises geoquímicas de sedimentos ativos de corrente, vinculando amostras, projetos, laboratórios, procedimentos analíticos e analitos quando disponíveis.','research_areas':'Geology | Geospatial data | Environmental science','keywords':'geochemistry | stream sediment | drainage | chemical analysis | GeoSGB | OGC API','geographic_coverage':'Brasil — cobertura condicionada aos projetos de amostragem incorporados ao GeoSGB','covers_brazil':'sim','spatial_support':'pontos de amostragem de sedimento de corrente e áreas de drenagem associadas por contexto','spatial_resolution':'pontual na amostra; suporte ambiental efetivo depende da bacia drenada e do desenho de amostragem','temporal_coverage':'amostragens e análises históricas e correntes de diferentes projetos','temporal_resolution':'por amostra/análise','update_frequency':'contínua conforme incorporação ao GeoSGB','product_status':'ativo','version_or_collection':'coleção OGC API / GeoSGB corrente','enumeration_scope':'complete','product_page_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/geoquimica/analises-sedimento-de-corrente?f=html','methodology_url':'https://geosgb.sgb.gov.br/geosgb/sobre_geosgb.html','primary_or_derived':'primário','limitations':'Resultados dependem do material amostrado, área de captação, granulometria/preparo e método analítico. Não representam concentração contínua do solo, água ou rocha e não são diretamente comparáveis sem harmonização metodológica.','last_verified':verified},
+            {'product_id':'DP000358','resource_id':'DR0104','product_name':'Descrições Petrográficas — GeoSGB','product_acronym':'Petrografia GeoSGB','product_family':'Bases petrográficas','product_kind':'dataset_series','product_description':'Coleção do GeoSGB de descrições petrográficas vinculadas a amostras e afloramentos, incluindo litologia, textura, granulação, estado de alteração, tipo de seção/lâmina e observações petrográficas quando disponíveis.','research_areas':'Geology | Geospatial data | Environmental science','keywords':'petrography | thin section | rock description | lithology | GeoSGB | OGC API','geographic_coverage':'Brasil — amostras e descrições incorporadas ao GeoSGB','covers_brazil':'sim','spatial_support':'amostras/lâminas vinculadas a afloramentos georreferenciados','spatial_resolution':'pontual na origem da amostra; descrição microscópica por lâmina/amostra','temporal_coverage':'descrições históricas e correntes de projetos do SGB','temporal_resolution':'por amostra/lâmina','update_frequency':'contínua conforme incorporação ao GeoSGB','product_status':'ativo','version_or_collection':'Base PETRO / coleção OGC API corrente','enumeration_scope':'complete','product_page_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/petrografia?f=html','methodology_url':'https://geosgb.sgb.gov.br/geosgb/sobre_geosgb.html','primary_or_derived':'primário','limitations':'Coleção de amostras selecionadas, não inventário completo das litologias do território. Terminologia, preparação, observador, qualidade e completude variam entre projetos e épocas; uma lâmina não representa necessariamente toda a unidade geológica.','last_verified':verified},
+            {'product_id':'DP000359','resource_id':'DR0104','product_name':'Ocorrências Fossilíferas — GeoSGB','product_acronym':'Fósseis GeoSGB','product_family':'Bases paleontológicas','product_kind':'dataset_series','product_description':'Coleção georreferenciada do GeoSGB de ocorrências fossilíferas cadastradas, associando localidades e informações paleontológicas/geológicas disponíveis em levantamentos e projetos.','research_areas':'Geology | Geospatial data | Environmental science','keywords':'paleontology | fossils | fossil occurrences | GeoSGB | OGC API | Brazil','geographic_coverage':'Brasil — ocorrências cadastradas no GeoSGB','covers_brazil':'sim','spatial_support':'pontos de ocorrência fossilífera','spatial_resolution':'pontual; precisão depende da fonte e época do registro','temporal_coverage':'registros históricos e correntes; idade geológica varia por ocorrência','temporal_resolution':'por ocorrência/registro','update_frequency':'contínua conforme incorporação ao GeoSGB','product_status':'ativo','version_or_collection':'Base PALEO / coleção OGC API corrente','enumeration_scope':'complete','product_page_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/ocorrencias-fossiliferas?f=html','methodology_url':'https://geosgb.sgb.gov.br/geosgb/sobre_geosgb.html','primary_or_derived':'primário','limitations':'Cadastro de ocorrências conhecidas, não amostra probabilística nem inventário exaustivo de patrimônio fossilífero. Ausência de registro não implica ausência de fóssil; taxonomia, precisão espacial e contexto estratigráfico variam entre registros.','last_verified':verified},
+            {'product_id':'DP000360','resource_id':'DR0104','product_name':'Unidades Litoestratigráficas Multiescala — GeoSGB','product_acronym':'Litoestratigrafia GeoSGB','product_family':'Bases litoestratigráficas','product_kind':'map_layer_collection','product_description':'Coleções vetoriais do GeoSGB de unidades litoestratigráficas organizadas por escala cartográfica, atualmente expostas em 1:1.000.000, 1:250.000, 1:100.000, 1:50.000 e 1:25.000, com atributos de nome, hierarquia, idade, litotipos e mapa de origem quando disponíveis.','research_areas':'Geology | Geospatial data | Environmental science','keywords':'lithostratigraphy | geological units | 1:1000000 | 1:250000 | 1:100000 | 1:50000 | 1:25000 | OGC API','geographic_coverage':'Brasil — cobertura e densidade variam por escala e pelos mapas incorporados','covers_brazil':'sim','spatial_support':'polígonos de unidades litoestratigráficas por mapa/escala','spatial_resolution':'escalas 1:1.000.000 | 1:250.000 | 1:100.000 | 1:50.000 | 1:25.000','temporal_coverage':'sínteses geológicas de mapas produzidos em diferentes épocas; idades geológicas próprias das unidades','temporal_resolution':'não se aplica; cartografia geológica multiescala','update_frequency':'contínua conforme incorporação/revisão de mapas no GeoSGB','product_status':'ativo','version_or_collection':'coleções OGC API multiescala correntes','enumeration_scope':'complete','product_page_url':'https://geoservicos.sgb.gov.br/ogcapi/collections?f=html','methodology_url':'https://www.sgb.gov.br/mapeamento_geologico/','primary_or_derived':'derivado','limitations':'Escalas não são intercambiáveis nem devem ser sobrepostas como se tivessem igual generalização, data ou precisão. Cobertura, nomenclatura e interpretação podem variar entre mapas; usar sempre escala e mapa de origem adequados.','last_verified':verified},
+            {'product_id':'DP000361','resource_id':'DR0104','product_name':'GEOSSIT — Sistema de Cadastro e Quantificação de Geossítios e Sítios da Geodiversidade','product_acronym':'GEOSSIT','product_family':'Patrimônio geológico e geoconservação','product_kind':'data_service','product_description':'Sistema público do SGB para inventário, qualificação e avaliação quantitativa de geossítios e sítios da geodiversidade, com critérios de valor científico, potencial educativo/turístico e risco de degradação.','research_areas':'Geology | Environmental science | Geospatial data','keywords':'geosites | geodiversity | geoheritage | geoconservation | GEOSSIT | SGB','geographic_coverage':'Brasil — registros cadastrados no sistema; também utilizado em áreas de geoparques','covers_brazil':'sim','spatial_support':'sítios georreferenciados com atributos descritivos e avaliações','spatial_resolution':'pontual/área do sítio conforme cadastro; precisão varia por registro','temporal_coverage':'cadastro corrente com registros em diferentes estados de análise/avaliação','temporal_resolution':'por sítio e atualização de cadastro','update_frequency':'contínua conforme cadastro, revisão e avaliação','product_status':'ativo','version_or_collection':'GEOSSIT corrente; metodologia baseada em Brilha 2005/2016 e Garcia-Cortés & Urquí 2009 com adaptações','enumeration_scope':'complete','product_page_url':'https://www.sgb.gov.br/geossit/','methodology_url':'https://www.sgb.gov.br/web/guest/saiba-mais-patrim%C3%B4nio-geol%C3%B3gico','primary_or_derived':'misto','limitations':'Base depende de inventário e avaliação dos sítios cadastrados; cobertura não é exaustiva nem probabilística. Escores são resultados da metodologia do sistema e não substituem instrumentos legais de proteção ou avaliação ambiental específica.','last_verified':verified},
+            {'product_id':'DP000362','resource_id':'DR0104','product_name':'Mapas de Prospectividade de Áreas Selecionadas do Brasil — edição 2025','product_acronym':'Prospectividade Mineral 2025','product_family':'Avaliação de potencial mineral','product_kind':'map_layer_collection','product_description':'Compilação técnica do SGB publicada em 2025 reunindo mapas de prospectividade/favorabilidade mineral de áreas selecionadas do Brasil, produzidos em projetos de avaliação de recursos minerais.','research_areas':'Geology | Geospatial data | Environmental science','keywords':'mineral prospectivity | favorability | mineral resources | economic geology | Brazil | SGB','geographic_coverage':'Brasil — áreas selecionadas cobertas pelos estudos compilados','covers_brazil':'sim','spatial_support':'mapas e áreas de prospectividade mineral de projetos selecionados','spatial_resolution':'varia entre áreas e projetos; consultar cada mapa de origem','temporal_coverage':'compilação publicada em 2025; dados e levantamentos de origem têm épocas distintas','temporal_resolution':'não se aplica; síntese de prospectividade','update_frequency':'eventual','product_status':'ativo','version_or_collection':'edição 2025','enumeration_scope':'complete','product_page_url':'https://rigeo.sgb.gov.br/handle/doc/25451','methodology_url':'https://www.sgb.gov.br/recursos_minerais/','primary_or_derived':'derivado','limitations':'Prospectividade/favorabilidade é resultado de modelagem e integração de evidências e não comprova recurso, reserva, teor econômico ou viabilidade de lavra. Escalas, métodos, alvos e dados de entrada variam por área.','last_verified':verified},
+          ]
+
+          dists = [
+            {'distribution_id':'DD000377','product_id':'DP000356','distribution_name':'Geoquímica de Rocha — OGC API Features','access_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/geoquimica/analises-rocha?f=html','format':'GeoJSON | JSON | HTML / OGC API Features','access_protocol':'HTTPS | OGC API Features','access_tool':'cliente OGC | navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos pela OGC API do SGB','license':'CC BY 4.0 conforme landing page da OGC API do SGB','provider_attribution_required':'sim','subset_support':'consulta por itens/queryables e paginação da coleção','notes':'Preservar campos de método, laboratório, data e analitos ao comparar amostras.','last_verified':verified},
+            {'distribution_id':'DD000378','product_id':'DP000357','distribution_name':'Geoquímica de Sedimento de Corrente — OGC API Features','access_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/geoquimica/analises-sedimento-de-corrente?f=html','format':'GeoJSON | JSON | HTML / OGC API Features','access_protocol':'HTTPS | OGC API Features','access_tool':'cliente OGC | navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos pela OGC API do SGB','license':'CC BY 4.0 conforme landing page da OGC API do SGB','provider_attribution_required':'sim','subset_support':'consulta por itens/queryables e paginação da coleção','notes':'A API expõe metadados de projeto, laboratório, método e objeto analises; interpretar conforme matriz e desenho de amostragem.','last_verified':verified},
+            {'distribution_id':'DD000379','product_id':'DP000358','distribution_name':'Descrições Petrográficas — OGC API Features','access_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/petrografia?f=html','format':'GeoJSON | JSON | HTML / OGC API Features','access_protocol':'HTTPS | OGC API Features','access_tool':'cliente OGC | navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos pela OGC API do SGB','license':'CC BY 4.0 conforme landing page da OGC API do SGB','provider_attribution_required':'sim','subset_support':'consulta por itens e atributos da coleção','notes':'Registros vinculam amostra, afloramento, lâmina e descrição petrográfica; completude varia.','last_verified':verified},
+            {'distribution_id':'DD000380','product_id':'DP000359','distribution_name':'Ocorrências Fossilíferas — OGC API Features','access_url':'https://geoservicos.sgb.gov.br/ogcapi/collections/geologia/ocorrencias-fossiliferas?f=html','format':'GeoJSON | JSON | HTML / OGC API Features','access_protocol':'HTTPS | OGC API Features','access_tool':'cliente OGC | navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'consulta e download públicos pela OGC API do SGB','license':'CC BY 4.0 conforme landing page da OGC API do SGB','provider_attribution_required':'sim','subset_support':'consulta por itens/queryables e paginação da coleção','notes':'Cadastro de ocorrências conhecidas; preservar taxonomia, contexto e precisão de cada registro.','last_verified':verified},
+            {'distribution_id':'DD000381','product_id':'DP000360','distribution_name':'Unidades Litoestratigráficas — coleções OGC API multiescala','access_url':'https://geoservicos.sgb.gov.br/ogcapi/collections?f=html','format':'GeoJSON | JSON | HTML / OGC API Features','access_protocol':'HTTPS | OGC API Features','access_tool':'cliente OGC | navegador web | SIG','free_download':'sim','authentication_required':'não','access_conditions':'consulta pública; selecionar a coleção litoestratigráfica da escala requerida','license':'CC BY 4.0 conforme landing page da OGC API do SGB','provider_attribution_required':'sim','subset_support':'por escala, coleção, itens e queryables','notes':'Coleções oficiais separadas em 1:1M, 1:250k, 1:100k, 1:50k e 1:25k; não misturar escalas sem controle cartográfico.','last_verified':verified},
+            {'distribution_id':'DD000382','product_id':'DP000361','distribution_name':'GEOSSIT — consulta pública de geossítios e sítios da geodiversidade','access_url':'https://www.sgb.gov.br/geossit/','format':'aplicação web | tabelas e fichas de cadastro/avaliação','access_protocol':'HTTPS web','access_tool':'navegador web','free_download':'sim','authentication_required':'não para consulta pública','access_conditions':'consulta pública; funcionalidades de cadastro podem exigir fluxo próprio do sistema','license':'não determinada especificamente para o conjunto de registros; citar SGB e o sistema/metodologia','provider_attribution_required':'sim','subset_support':'busca por coordenadas, classificação temática, município/UF e atributos disponíveis','notes':'O sistema distingue geossítios e sítios da geodiversidade e mantém registros em diferentes estados de análise.','last_verified':verified},
+            {'distribution_id':'DD000383','product_id':'DP000362','distribution_name':'Prospectivity maps of selected areas from Brazil — relatório técnico 2025','access_url':'https://rigeo.sgb.gov.br/handle/doc/25451','format':'PDF','access_protocol':'HTTPS download','access_tool':'navegador web | leitor PDF | SIG quando mapas derivados forem obtidos de seus projetos de origem','free_download':'sim','authentication_required':'não','access_conditions':'download público pelo RIgeo','license':'acesso público no RIgeo; verificar licença específica do arquivo e citar a publicação oficial','provider_attribution_required':'sim','subset_support':'por área/mapa dentro da compilação; dados SIG devem ser obtidos nos produtos/projetos de origem quando disponíveis','notes':'Compilação 2025 de mapas de prospectividade de áreas selecionadas; não equivale a cobertura nacional uniforme de favorabilidade mineral.','last_verified':verified},
+          ]
+
+          def append_dict_rows(path, new_rows, id_field, extra_unique=None):
+              with path.open('r', encoding='utf-8', newline='') as f:
+                  reader = csv.DictReader(f)
+                  header = reader.fieldnames
+                  rows = list(reader)
+              existing_ids = {r[id_field] for r in rows}
+              for r in new_rows:
+                  if r[id_field] in existing_ids:
+                      raise SystemExit(f'duplicate id: {r[id_field]}')
+              if extra_unique:
+                  existing = {r.get(extra_unique,'').strip() for r in rows if r.get(extra_unique,'').strip()}
+                  for r in new_rows:
+                      v = r.get(extra_unique,'').strip()
+                      if v and v in existing:
+                          raise SystemExit(f'duplicate {extra_unique}: {v}')
+              with path.open('a', encoding='utf-8', newline='') as f:
+                  w = csv.DictWriter(f, fieldnames=header, lineterminator='\n')
+                  for r in new_rows:
+                      w.writerow({k:r.get(k,'') for k in header})
+
+          append_dict_rows(products_path, products, 'product_id', 'product_page_url')
+          append_dict_rows(dists_path, dists, 'distribution_id')
+          print('appended', len(products), 'products and', len(dists), 'distributions')
+          PY
+      - name: Validate and rebuild catalog
+        shell: bash
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Read-back relational integrity
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          def read(p):
+              with Path(p).open(encoding='utf-8', newline='') as f: return list(csv.DictReader(f))
+          resources=read('data/data_resources.csv'); products=read('data/data_products.csv'); dists=read('data/product_distributions.csv')
+          rids={r['resource_id'] for r in resources}; pids={p['product_id'] for p in products}
+          assert len(rids)==len(resources)
+          assert len(pids)==len(products)
+          assert len({d['distribution_id'] for d in dists})==len(dists)
+          assert all(p['resource_id'] in rids for p in products)
+          assert all(d['product_id'] in pids for d in dists)
+          for pid in [f'DP000{i}' for i in range(356,363)]: assert pid in pids
+          for did in [f'DD000{i}' for i in range(377,384)]: assert did in {d['distribution_id'] for d in dists}
+          print('counts', len(resources), len(products), len(dists))
+          PY
+      - name: Commit materialized batch and remove one-shot workflow
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/materialize-sgb-geology-next.yml
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json data/link_role_audit.json docs/vitrine-ciencia/data_products.json docs/vitrine-ciencia/link_role_audit.json 2>/dev/null || true
+          git add -u
+          git commit -m 'Expand verified SGB analytical and geoheritage catalog'
+          git push
