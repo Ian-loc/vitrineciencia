@@ -19923,5 +19923,418 @@
     "available_protocols": [
       "HTTPS"
     ]
+  },
+  {
+    "product_id": "DP000336",
+    "resource_id": "DR0104",
+    "product_name": "GeoSGB — Sistema de Geociências do Serviço Geológico do Brasil",
+    "product_acronym": "GeoSGB",
+    "product_family": "Infraestrutura de dados geocientíficos",
+    "product_kind": "catalog",
+    "product_description": "Sistema institucional de descoberta e acesso ao acervo geocientífico do SGB, reunindo bases de geologia, afloramentos, geofísica, sensoriamento remoto, hidrologia, downloads, RIgeo e serviços de mapas.",
+    "research_areas": "Geology | Geospatial data | Hydrogeology | Environmental science",
+    "keywords": "GeoSGB | geology | geoscience | maps | WMS | ArcGIS REST | SGB | CPRM",
+    "geographic_coverage": "Brasil; cobertura varia conforme base e levantamento",
+    "covers_brazil": "sim",
+    "spatial_support": "pontos | linhas | polígonos | rasters | tabelas conforme base",
+    "spatial_resolution": "heterogênea; preservar escala e metadados por camada",
+    "temporal_coverage": "acervo histórico e atual; varia conforme base",
+    "temporal_resolution": "varia conforme base e produto",
+    "update_frequency": "contínua ou por projeto; não inferir frequência uniforme",
+    "product_status": "ativo",
+    "version_or_collection": "GeoSGB corrente; sucessor do Geobank",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://geosgb.sgb.gov.br/geosgb/",
+    "methodology_url": "https://geosgb.sgb.gov.br/geosgb/sobre_geosgb.html",
+    "primary_or_derived": "agregador",
+    "limitations": "GeoSGB é catálogo/sistema agregador, não um dataset homogêneo. Escala, data, método, formato, licença e qualidade devem ser preservados para cada base ou camada utilizada.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0104",
+      "resource_name": "Serviço Geológico do Brasil — dados e sistemas geocientíficos",
+      "acronym": "SGB/CPRM",
+      "official_identity": "Infraestrutura institucional de dados geocientíficos do Serviço Geológico do Brasil",
+      "homepage_url": "https://www.sgb.gov.br/",
+      "data_access_url": "https://geosgb.sgb.gov.br/geosgb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000357",
+        "product_id": "DP000336",
+        "distribution_name": "GeoSGB — portal, serviços de mapa e ArcGIS REST",
+        "access_url": "https://geoportal.sgb.gov.br/server/rest/services",
+        "format": "ArcGIS REST/JSON | WMS | downloads em formatos variados conforme serviço",
+        "access_protocol": "HTTPS | ArcGIS REST | OGC WMS",
+        "access_tool": "navegador web | SIG | cliente HTTP",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública aos serviços listados; condições específicas podem variar por produto",
+        "license": "portal GeoSGB sob CC BY-NC 4.0; verificar termos/metadados do produto específico",
+        "provider_attribution_required": "sim",
+        "subset_support": "por serviço | camada | atributos e operações expostas pelo endpoint",
+        "notes": "O diretório REST expõe múltiplas pastas e serviços. Esta distribuição é mecanismo de acesso ao catálogo, não transforma todas as camadas em um único dataset.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "ArcGIS REST/JSON | WMS | downloads em formatos variados conforme serviço"
+    ],
+    "available_protocols": [
+      "HTTPS | ArcGIS REST | OGC WMS"
+    ]
+  },
+  {
+    "product_id": "DP000337",
+    "resource_id": "DR0104",
+    "product_name": "Mapas de Geodiversidade do Brasil — levantamentos nacionais",
+    "product_acronym": "Geodiversidade Brasil",
+    "product_family": "Levantamento da Geodiversidade",
+    "product_kind": "map_layer_collection",
+    "product_description": "Mapas nacionais de geodiversidade produzidos pelo SGB para sintetizar unidades geológico-ambientais, limitações e potencialidades do meio físico, incluindo produtos nacionais em escalas de trabalho 1:5.000.000 e 1:2.500.000.",
+    "research_areas": "Geodiversity | Geology | Environmental planning | Physical geography",
+    "keywords": "geodiversity | geodiversidade | geology | geoenvironmental units | planning | SGB",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "unidades geológico-ambientais em mapas e SIG conforme edição",
+    "spatial_resolution": "escalas de trabalho nacionais 1:5.000.000 e 1:2.500.000",
+    "temporal_coverage": "sínteses cartográficas por edição; datas devem ser preservadas no arquivo específico",
+    "temporal_resolution": "não se aplica; produto cartográfico por edição",
+    "update_frequency": "eventual",
+    "product_status": "ativo",
+    "version_or_collection": "levantamentos nacionais disponibilizados pelo SGB; escalas 1:5.000.000 e 1:2.500.000",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.sgb.gov.br/produtos-para-download-do-levantamento-da-geodiversidade",
+    "methodology_url": "https://www.sgb.gov.br/produtos-para-download-do-levantamento-da-geodiversidade",
+    "primary_or_derived": "derivado",
+    "limitations": "Geodiversidade é síntese geológico-ambiental para planejamento e não medida direta de condição ecológica, risco, aptidão econômica ou precisão cadastral. As duas escalas nacionais não devem ser tratadas como geometrias equivalentes sem verificar edição e método.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0104",
+      "resource_name": "Serviço Geológico do Brasil — dados e sistemas geocientíficos",
+      "acronym": "SGB/CPRM",
+      "official_identity": "Infraestrutura institucional de dados geocientíficos do Serviço Geológico do Brasil",
+      "homepage_url": "https://www.sgb.gov.br/",
+      "data_access_url": "https://geosgb.sgb.gov.br/geosgb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000358",
+        "product_id": "DP000337",
+        "distribution_name": "Levantamento da Geodiversidade — mapas nacionais para download",
+        "access_url": "https://www.sgb.gov.br/produtos-para-download-do-levantamento-da-geodiversidade",
+        "format": "mapa | SIG; formato específico deve ser conferido no item",
+        "access_protocol": "HTTPS download | web",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "downloads públicos listados pelo SGB",
+        "license": "verificar licença e atribuição do arquivo; portal institucional do SGB",
+        "provider_attribution_required": "sim",
+        "subset_support": "por mapa e escala nacional",
+        "notes": "A página oficial lista separadamente os mapas nacionais 1:5.000.000 e 1:2.500.000 e outros levantamentos regionais.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "mapa | SIG; formato específico deve ser conferido no item"
+    ],
+    "available_protocols": [
+      "HTTPS download | web"
+    ]
+  },
+  {
+    "product_id": "DP000338",
+    "resource_id": "DR0104",
+    "product_name": "Mapas de Geodiversidade Estaduais — SGB",
+    "product_acronym": "Geodiversidade Estados",
+    "product_family": "Levantamento da Geodiversidade",
+    "product_kind": "map_layer_collection",
+    "product_description": "Coleção oficial de mapas estaduais de geodiversidade com mapas, livros e arquivos SIG conforme a unidade federativa, produzida para apoiar leitura integrada do meio físico e planejamento territorial.",
+    "research_areas": "Geodiversity | Geology | Environmental planning | Physical geography",
+    "keywords": "geodiversity | states | geology | geoenvironmental units | SIG | SGB",
+    "geographic_coverage": "Unidades da Federação do Brasil; produtos listados por estado e Goiás/Distrito Federal",
+    "covers_brazil": "sim",
+    "spatial_support": "unidades geológico-ambientais vetoriais e produtos cartográficos estaduais",
+    "spatial_resolution": "escalas de trabalho entre 1:750.000 e 1:1.000.000 conforme estado",
+    "temporal_coverage": "edições próprias por estado; não constitui snapshot nacional único",
+    "temporal_resolution": "por levantamento/edição estadual",
+    "update_frequency": "eventual",
+    "product_status": "ativo",
+    "version_or_collection": "coleção estadual disponibilizada pelo SGB",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.sgb.gov.br/mapas-de-geodiversidade-estaduais",
+    "methodology_url": "https://www.sgb.gov.br/produtos-para-download-do-levantamento-da-geodiversidade",
+    "primary_or_derived": "derivado",
+    "limitations": "Estados possuem edições, escalas, conteúdos e pacotes diferentes; a coleção não deve ser mosaificada como uma cobertura nacional temporal ou metodologicamente homogênea sem harmonização.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0104",
+      "resource_name": "Serviço Geológico do Brasil — dados e sistemas geocientíficos",
+      "acronym": "SGB/CPRM",
+      "official_identity": "Infraestrutura institucional de dados geocientíficos do Serviço Geológico do Brasil",
+      "homepage_url": "https://www.sgb.gov.br/",
+      "data_access_url": "https://geosgb.sgb.gov.br/geosgb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000359",
+        "product_id": "DP000338",
+        "distribution_name": "Mapas de Geodiversidade Estaduais — mapa, livro e SIG por UF",
+        "access_url": "https://www.sgb.gov.br/mapas-de-geodiversidade-estaduais",
+        "format": "Mapa | Livro | SIG | Conteúdo SIG conforme estado",
+        "access_protocol": "HTTPS web/download",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "seleção por unidade federativa e tipo de produto disponível",
+        "license": "verificar licença e atribuição do arquivo específico; portal institucional do SGB",
+        "provider_attribution_required": "sim",
+        "subset_support": "por estado e tipo de produto",
+        "notes": "A disponibilidade de Livro, SIG e Conteúdo SIG varia entre estados; não inferir formato uniforme para toda a coleção.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "Mapa | Livro | SIG | Conteúdo SIG conforme estado"
+    ],
+    "available_protocols": [
+      "HTTPS web/download"
+    ]
+  },
+  {
+    "product_id": "DP000339",
+    "resource_id": "DR0104",
+    "product_name": "Rede Integrada de Monitoramento das Águas Subterrâneas — RIMAS",
+    "product_acronym": "RIMAS",
+    "product_family": "Monitoramento de águas subterrâneas",
+    "product_kind": "dataset_series",
+    "product_description": "Rede do SGB para monitoramento de águas subterrâneas em poços, com consulta de cadastro e dados associados às estações monitoradas; o portal RimasWeb informava 507 poços cadastrados e 269 municípios atendidos em julho de 2026.",
+    "research_areas": "Hydrogeology | Groundwater | Water resources | Environmental monitoring",
+    "keywords": "RIMAS | groundwater | wells | monitoring | hydrogeology | SGB",
+    "geographic_coverage": "Brasil; rede pontual com cobertura nos municípios e aquíferos monitorados",
+    "covers_brazil": "sim",
+    "spatial_support": "poços de monitoramento pontuais e séries associadas",
+    "spatial_resolution": "ponto de poço; densidade espacial heterogênea",
+    "temporal_coverage": "séries variáveis por poço; portal atualizado em julho de 2026",
+    "temporal_resolution": "varia por poço, parâmetro e período monitorado",
+    "update_frequency": "operacional; atualização do portal observada em julho de 2026",
+    "product_status": "ativo",
+    "version_or_collection": "RimasWeb; 507 poços e 269 municípios informados em julho de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://rimasweb.sgb.gov.br/layout/",
+    "methodology_url": "https://rimasweb.sgb.gov.br/layout/",
+    "primary_or_derived": "primário",
+    "limitations": "Cobertura é uma rede de pontos e não uma superfície contínua de água subterrânea. Quantidade de poços, disponibilidade de séries, parâmetros, lacunas e representatividade hidrogeológica variam espacial e temporalmente; verificar metadados de cada poço antes da análise.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0104",
+      "resource_name": "Serviço Geológico do Brasil — dados e sistemas geocientíficos",
+      "acronym": "SGB/CPRM",
+      "official_identity": "Infraestrutura institucional de dados geocientíficos do Serviço Geológico do Brasil",
+      "homepage_url": "https://www.sgb.gov.br/",
+      "data_access_url": "https://geosgb.sgb.gov.br/geosgb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000360",
+        "product_id": "DP000339",
+        "distribution_name": "RimasWeb — consulta da rede de monitoramento de águas subterrâneas",
+        "access_url": "https://rimasweb.sgb.gov.br/layout/",
+        "format": "consulta web | dados e relatórios conforme poço/recurso disponível",
+        "access_protocol": "HTTPS web",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "desconhecido",
+        "access_conditions": "consulta pública; disponibilidade de dados detalhados deve ser verificada por poço e recurso",
+        "license": "licença específica dos dados não determinada nesta auditoria; atribuir SGB e verificar metadados",
+        "provider_attribution_required": "sim",
+        "subset_support": "por poço, município e filtros disponíveis no sistema",
+        "notes": "RimasWeb informava 507 poços cadastrados e 269 municípios atendidos em julho de 2026; cobertura da rede não equivale a cobertura espacial contínua de aquíferos.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "consulta web | dados e relatórios conforme poço/recurso disponível"
+    ],
+    "available_protocols": [
+      "HTTPS web"
+    ]
+  },
+  {
+    "product_id": "DP000340",
+    "resource_id": "DR0104",
+    "product_name": "Sistema de Informações de Águas Subterrâneas — SIAGAS",
+    "product_acronym": "SIAGAS",
+    "product_family": "Informações hidrogeológicas e cadastro de poços",
+    "product_kind": "dataset_series",
+    "product_description": "Base nacional permanentemente atualizada de pontos de água subterrânea mantida pelo SGB, com dados cadastrais, construtivos, geológicos, hidrogeológicos, testes de bombeamento e análises químicas de poços e fontes naturais.",
+    "research_areas": "Hydrogeology | Groundwater | Water resources | Environmental monitoring",
+    "keywords": "SIAGAS | groundwater | wells | hydrogeology | pumping tests | water chemistry | SGB",
+    "geographic_coverage": "Brasil; pontos cadastrados em todo o território nacional",
+    "covers_brazil": "sim",
+    "spatial_support": "poços e fontes naturais georreferenciados",
+    "spatial_resolution": "ponto de captação/fonte; densidade e precisão variam por registro",
+    "temporal_coverage": "cadastro histórico e corrente; portal informava 393.855 poços e fontes em 28/07/2026",
+    "temporal_resolution": "por registro e atualização cadastral; séries/ensaios conforme ponto",
+    "update_frequency": "permanentemente atualizado segundo documentação oficial",
+    "product_status": "ativo",
+    "version_or_collection": "SIAGAS corrente; 393.855 poços e fontes cadastrados em 28/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://siagasweb.sgb.gov.br/layout/",
+    "methodology_url": "https://sgb.gov.br/saiba-mais-sistema-de-informacoes-de-aguas-subterraneas-siagas",
+    "primary_or_derived": "misto",
+    "limitations": "SIAGAS é cadastro/base compartilhada alimentada por múltiplos atores e não censo perfeito de todos os poços existentes. Completude, atualização, precisão posicional, métodos de ensaio e disponibilidade de variáveis variam entre registros; ausência no sistema não implica ausência de captação.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0104",
+      "resource_name": "Serviço Geológico do Brasil — dados e sistemas geocientíficos",
+      "acronym": "SGB/CPRM",
+      "official_identity": "Infraestrutura institucional de dados geocientíficos do Serviço Geológico do Brasil",
+      "homepage_url": "https://www.sgb.gov.br/",
+      "data_access_url": "https://geosgb.sgb.gov.br/geosgb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000361",
+        "product_id": "DP000340",
+        "distribution_name": "SIAGAS Web — consulta e extração de informações de poços e fontes",
+        "access_url": "https://siagasweb.sgb.gov.br/layout/",
+        "format": "consulta web | relatórios e extrações conforme módulo",
+        "access_protocol": "HTTPS web",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "sistema interativo aberto ao público; filtros, variáveis e formatos dependem do módulo",
+        "license": "licença específica dos registros não determinada nesta auditoria; atribuir SGB e verificar condições do sistema",
+        "provider_attribution_required": "sim",
+        "subset_support": "por localização e atributos hidrogeológicos disponíveis no sistema",
+        "notes": "O SGB descreve o SIAGAS como base nacional permanentemente atualizada; em 28/07/2026 o portal informava 393.855 poços e fontes naturais cadastrados.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "consulta web | relatórios e extrações conforme módulo"
+    ],
+    "available_protocols": [
+      "HTTPS web"
+    ]
+  },
+  {
+    "product_id": "DP000341",
+    "resource_id": "DR0104",
+    "product_name": "Atlas Hidrogeológico do Brasil ao Milionésimo",
+    "product_acronym": "Atlas Hidrogeológico 1M",
+    "product_family": "Cartografia hidrogeológica nacional",
+    "product_kind": "map_layer_collection",
+    "product_description": "Atlas nacional composto pelas 46 folhas da Carta Internacional ao Milionésimo que cobrem o Brasil, sintetizando conhecimento geológico, hidrogeológico e hidrológico acumulado para representação das águas subterrâneas e apoio a estudos preliminares.",
+    "research_areas": "Hydrogeology | Groundwater | Geology | Water resources",
+    "keywords": "hydrogeological atlas | groundwater | 1:1000000 | CIM | shapefile | SGB",
+    "geographic_coverage": "Brasil — 46 folhas da Carta Internacional ao Milionésimo",
+    "covers_brazil": "sim",
+    "spatial_support": "folhas cartográficas | vetores SIG | encartes temáticos",
+    "spatial_resolution": "escala 1:1.000.000",
+    "temporal_coverage": "síntese de levantamentos e estudos acumulados ao longo de mais de 50 anos; referências variam por folha e insumo",
+    "temporal_resolution": "não se aplica; síntese cartográfica",
+    "update_frequency": "eventual",
+    "product_status": "ativo",
+    "version_or_collection": "46 folhas CIM em escala 1:1.000.000; edição corrente disponibilizada pelo SGB",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://sgb.gov.br/atlas-hidrogeologico-do-brasil-ao-milionesimo",
+    "methodology_url": "https://sgb.gov.br/atlas-hidrogeologico-do-brasil-ao-milionesimo",
+    "primary_or_derived": "derivado",
+    "limitations": "Atlas de síntese em escala 1:1.000.000; não substitui estudo hidrogeológico local, ensaio de aquífero ou cadastro de poços. Idade, densidade e método dos insumos variam e devem ser verificados por folha/encarte.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0104",
+      "resource_name": "Serviço Geológico do Brasil — dados e sistemas geocientíficos",
+      "acronym": "SGB/CPRM",
+      "official_identity": "Infraestrutura institucional de dados geocientíficos do Serviço Geológico do Brasil",
+      "homepage_url": "https://www.sgb.gov.br/",
+      "data_access_url": "https://geosgb.sgb.gov.br/geosgb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000362",
+        "product_id": "DP000341",
+        "distribution_name": "Atlas Hidrogeológico do Brasil ao Milionésimo — folhas PDF e SIG",
+        "access_url": "https://sgb.gov.br/atlas-hidrogeologico-do-brasil-ao-milionesimo",
+        "format": "PDF | Shapefile",
+        "access_protocol": "HTTPS web/download",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "arquivos públicos por folhas/recursos disponibilizados pelo SGB",
+        "license": "verificar licença e atribuição no arquivo; fonte institucional SGB",
+        "provider_attribution_required": "sim",
+        "subset_support": "por folha CIM e arquivo temático",
+        "notes": "A página oficial informa 46 folhas e disponibilização em PDF e shapefile; preservar a folha e os metadados efetivamente usados.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "PDF | Shapefile"
+    ],
+    "available_protocols": [
+      "HTTPS web/download"
+    ]
+  },
+  {
+    "product_id": "DP000342",
+    "resource_id": "DR0104",
+    "product_name": "Mapa de Domínios/Subdomínios Hidrogeológicos do Brasil — 2007",
+    "product_acronym": "Domínios Hidrogeológicos 2007",
+    "product_family": "Cartografia hidrogeológica nacional",
+    "product_kind": "map_layer_collection",
+    "product_description": "Mapa nacional do projeto SIG de Disponibilidade Hídrica do Brasil que agrupa unidades geológicas por afinidades hidrogeológicas em domínios e subdomínios, acompanhado de arquivos vetoriais SIG.",
+    "research_areas": "Hydrogeology | Groundwater | Geology | Water resources",
+    "keywords": "hydrogeological domains | groundwater | geology | 1:2500000 | SIG | SGB",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "polígonos de domínios e subdomínios hidrogeológicos | mapa nacional",
+    "spatial_resolution": "escala cartográfica 1:2.500.000",
+    "temporal_coverage": "produto publicado em 2007",
+    "temporal_resolution": "não se aplica; produto cartográfico histórico",
+    "update_frequency": "não se aplica à edição 2007",
+    "product_status": "arquivado",
+    "version_or_collection": "edição 2007; escala 1:2.500.000",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://rigeo.sgb.gov.br/items/5e23cd23-086e-4b78-b630-0135e18c03db",
+    "methodology_url": "https://rigeo.sgb.gov.br/items/08e1cce5-115d-46ac-9aa5-3a82171aac26",
+    "primary_or_derived": "derivado",
+    "limitations": "Regionalização hidrogeológica histórica e de pequena escala, derivada principalmente de agrupamentos litológicos; não representa transmissividade, armazenamento, profundidade, qualidade ou disponibilidade explotável medida em cada local e não deve substituir cartografia/estudos mais recentes e detalhados.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0104",
+      "resource_name": "Serviço Geológico do Brasil — dados e sistemas geocientíficos",
+      "acronym": "SGB/CPRM",
+      "official_identity": "Infraestrutura institucional de dados geocientíficos do Serviço Geológico do Brasil",
+      "homepage_url": "https://www.sgb.gov.br/",
+      "data_access_url": "https://geosgb.sgb.gov.br/geosgb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000363",
+        "product_id": "DP000342",
+        "distribution_name": "Domínios/Subdomínios Hidrogeológicos 2007 — mapa e vetores SIG",
+        "access_url": "https://rigeo.sgb.gov.br/items/5e23cd23-086e-4b78-b630-0135e18c03db",
+        "format": "PDF | ZIP de vetores SIG",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "download público pelo repositório institucional RIgeo",
+        "license": "licença específica do item não determinada nesta auditoria; citar a referência bibliográfica oficial do RIgeo",
+        "provider_attribution_required": "sim",
+        "subset_support": "arquivos do mapa nacional e vetores; recorte posterior em SIG",
+        "notes": "RIgeo documenta edição 2007, escala 1:2.500.000, mapas PDF e pacote vetorial SIG; não confundir com o Atlas Hidrogeológico 1:1.000.000.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "PDF | ZIP de vetores SIG"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
   }
 ]
