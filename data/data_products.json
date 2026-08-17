@@ -18566,5 +18566,359 @@
     "available_protocols": [
       "HTTPS / SIDRA"
     ]
+  },
+  {
+    "product_id": "DP000313",
+    "resource_id": "DR0100",
+    "product_name": "Índice Nacional de Preços ao Consumidor Amplo",
+    "product_acronym": "IPCA",
+    "product_family": "Índices de preços ao consumidor",
+    "product_kind": "dataset_series",
+    "product_description": "Índice mensal de preços ao consumidor que mede a variação de preços de uma cesta de produtos e serviços para famílias com rendimentos de 1 a 40 salários mínimos nas áreas urbanas abrangidas pelo Sistema Nacional de Índices de Preços ao Consumidor.",
+    "research_areas": "Economics | Consumer prices | Public policy | Regional development",
+    "keywords": "IPCA | inflação | preços ao consumidor | cesta | ponderação | SNIPC",
+    "geographic_coverage": "Brasil; áreas urbanas abrangidas pelo SNIPC e recortes territoriais publicados pelo IBGE",
+    "covers_brazil": "sim",
+    "spatial_support": "áreas de coleta do SNIPC | agregações nacional e regionais",
+    "spatial_resolution": "Brasil e áreas territoriais do SNIPC conforme tabela",
+    "temporal_coverage": "série histórica; edição mais recente materialmente verificada: junho de 2026",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "série corrente; junho de 2026 materialmente verificado",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html",
+    "primary_or_derived": "derivado",
+    "limitations": "O IPCA não representa o custo de vida de todos os domicílios brasileiros: possui população-objetivo, áreas de coleta, estrutura de ponderação e períodos de coleta definidos. Comparações exigem observar mudanças de pesos, metodologia e revisões.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0100",
+      "resource_name": "Preços e Custos — IBGE",
+      "acronym": "Preços e Custos IBGE",
+      "official_identity": "Família institucional de índices de preços ao consumidor, preços ao produtor e custos da construção civil do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000334",
+        "product_id": "DP000313",
+        "distribution_name": "IPCA — SIDRA, séries, tabelas e publicações mensais",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html",
+        "format": "SIDRA | XLSX | PDF | HTML",
+        "access_protocol": "HTTPS / SIDRA",
+        "access_tool": "navegador web | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar metodologia, pesos e revisões",
+        "license": "licença específica dos arquivos não determinada nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período, grupo/subgrupo/item e recorte territorial conforme divulgação",
+        "notes": "Junho de 2026 é a edição materialmente verificada nesta auditoria; preservar população-objetivo e áreas do SNIPC.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS / SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000314",
+    "resource_id": "DR0100",
+    "product_name": "Índice Nacional de Preços ao Consumidor",
+    "product_acronym": "INPC",
+    "product_family": "Índices de preços ao consumidor",
+    "product_kind": "dataset_series",
+    "product_description": "Índice mensal de preços ao consumidor voltado a famílias com rendimentos de 1 a 5 salários mínimos cuja pessoa de referência é assalariada, nas áreas urbanas abrangidas pelo SNIPC.",
+    "research_areas": "Economics | Consumer prices | Labour | Public policy",
+    "keywords": "INPC | inflação | preços ao consumidor | salários | SNIPC",
+    "geographic_coverage": "Brasil; áreas urbanas abrangidas pelo SNIPC e recortes territoriais publicados pelo IBGE",
+    "covers_brazil": "sim",
+    "spatial_support": "áreas de coleta do SNIPC | agregações nacional e regionais",
+    "spatial_resolution": "Brasil e áreas territoriais do SNIPC conforme tabela",
+    "temporal_coverage": "série histórica; edição mais recente materialmente verificada: junho de 2026",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "série corrente; junho de 2026 materialmente verificado",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9258-indice-nacional-de-precos-ao-consumidor.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9258-indice-nacional-de-precos-ao-consumidor.html",
+    "primary_or_derived": "derivado",
+    "limitations": "O INPC tem população-objetivo distinta do IPCA e não deve ser usado como sinônimo deste. Cobertura territorial, cesta, pesos e períodos de coleta precisam ser preservados na interpretação.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0100",
+      "resource_name": "Preços e Custos — IBGE",
+      "acronym": "Preços e Custos IBGE",
+      "official_identity": "Família institucional de índices de preços ao consumidor, preços ao produtor e custos da construção civil do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000335",
+        "product_id": "DP000314",
+        "distribution_name": "INPC — SIDRA, séries, tabelas e publicações mensais",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9258-indice-nacional-de-precos-ao-consumidor.html",
+        "format": "SIDRA | XLSX | PDF | HTML",
+        "access_protocol": "HTTPS / SIDRA",
+        "access_tool": "navegador web | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar metodologia, pesos e revisões",
+        "license": "licença específica dos arquivos não determinada nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período, grupo/subgrupo/item e recorte territorial conforme divulgação",
+        "notes": "Junho de 2026 é a edição materialmente verificada; população-objetivo de 1 a 5 salários mínimos não deve ser confundida com a do IPCA.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS / SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000315",
+    "resource_id": "DR0100",
+    "product_name": "Índice Nacional de Preços ao Consumidor Amplo 15",
+    "product_acronym": "IPCA-15",
+    "product_family": "Índices de preços ao consumidor",
+    "product_kind": "dataset_series",
+    "product_description": "Índice de preços ao consumidor com população-objetivo de 1 a 40 salários mínimos, calculado em período de coleta antecipado em relação ao IPCA e divulgado para conjunto próprio de áreas urbanas.",
+    "research_areas": "Economics | Consumer prices | Public policy | Regional development",
+    "keywords": "IPCA-15 | prévia da inflação | preços ao consumidor | SNIPC",
+    "geographic_coverage": "Brasil e 11 áreas urbanas abrangidas pela divulgação do IPCA-15",
+    "covers_brazil": "sim",
+    "spatial_support": "áreas de coleta do SNIPC | agregações nacional e territoriais",
+    "spatial_resolution": "Brasil e 11 áreas conforme divulgação",
+    "temporal_coverage": "série histórica; edição mais recente materialmente verificada: junho de 2026",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "série corrente; junho de 2026 materialmente verificado",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9260-indice-nacional-de-precos-ao-consumidor-amplo-15.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9260-indice-nacional-de-precos-ao-consumidor-amplo-15.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Embora compartilhe população-objetivo semelhante ao IPCA, o IPCA-15 utiliza período de coleta e cobertura geográfica próprios. Não é intercambiável com o IPCA mensal sem considerar essas diferenças.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0100",
+      "resource_name": "Preços e Custos — IBGE",
+      "acronym": "Preços e Custos IBGE",
+      "official_identity": "Família institucional de índices de preços ao consumidor, preços ao produtor e custos da construção civil do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000336",
+        "product_id": "DP000315",
+        "distribution_name": "IPCA-15 — SIDRA, séries, tabelas e publicações",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9260-indice-nacional-de-precos-ao-consumidor-amplo-15.html",
+        "format": "SIDRA | XLSX | PDF | HTML",
+        "access_protocol": "HTTPS / SIDRA",
+        "access_tool": "navegador web | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar período de coleta e cobertura próprios",
+        "license": "licença específica dos arquivos não determinada nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período, grupo/subgrupo/item e área conforme divulgação",
+        "notes": "O IPCA-15 tem janela de coleta e cobertura distintas do IPCA; junho de 2026 foi materialmente verificado.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS / SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000316",
+    "resource_id": "DR0100",
+    "product_name": "Índice Nacional de Preços ao Consumidor Amplo Especial",
+    "product_acronym": "IPCA-E",
+    "product_family": "Índices de preços ao consumidor",
+    "product_kind": "dataset_series",
+    "product_description": "Indicador trimestral correspondente ao acumulado do IPCA-15 em cada trimestre, disseminado pelo IBGE como Índice Nacional de Preços ao Consumidor Amplo Especial.",
+    "research_areas": "Economics | Consumer prices | Public policy",
+    "keywords": "IPCA-E | IPCA-15 | inflação trimestral | preços ao consumidor",
+    "geographic_coverage": "Brasil e áreas abrangidas pelo IPCA-15",
+    "covers_brazil": "sim",
+    "spatial_support": "agregações derivadas do IPCA-15",
+    "spatial_resolution": "Brasil e áreas do IPCA-15 conforme tabela",
+    "temporal_coverage": "série histórica; edição mais recente materialmente verificada: 2º trimestre de 2026",
+    "temporal_resolution": "trimestral",
+    "update_frequency": "trimestral",
+    "product_status": "ativo",
+    "version_or_collection": "série corrente; 2º trimestre de 2026 materialmente verificado",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9262-indice-nacional-de-precos-ao-consumidor-amplo-especial.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9262-indice-nacional-de-precos-ao-consumidor-amplo-especial.html",
+    "primary_or_derived": "derivado",
+    "limitations": "O IPCA-E é o acumulado trimestral do IPCA-15 e não uma pesquisa de preços independente. Herdam-se do IPCA-15 a população-objetivo, cobertura, período de coleta e demais condicionantes metodológicos.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0100",
+      "resource_name": "Preços e Custos — IBGE",
+      "acronym": "Preços e Custos IBGE",
+      "official_identity": "Família institucional de índices de preços ao consumidor, preços ao produtor e custos da construção civil do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000337",
+        "product_id": "DP000316",
+        "distribution_name": "IPCA-E — séries e tabelas trimestrais",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9262-indice-nacional-de-precos-ao-consumidor-amplo-especial.html",
+        "format": "SIDRA | XLSX | PDF | HTML",
+        "access_protocol": "HTTPS / SIDRA",
+        "access_tool": "navegador web | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; indicador derivado do acumulado trimestral do IPCA-15",
+        "license": "licença específica dos arquivos não determinada nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por trimestre e recorte disponível conforme divulgação",
+        "notes": "2º trimestre de 2026 materialmente verificado; não tratar o IPCA-E como coleta independente do IPCA-15.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS / SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000317",
+    "resource_id": "DR0100",
+    "product_name": "Índice de Preços ao Produtor — Indústrias Extrativas e de Transformação",
+    "product_acronym": "IPP",
+    "product_family": "Índices de preços ao produtor",
+    "product_kind": "dataset_series",
+    "product_description": "Índice mensal que mede a evolução dos preços recebidos pelos produtores na porta de fábrica nas indústrias extrativas e de transformação, segundo produtos e atividades industriais.",
+    "research_areas": "Economics | Industrial ecology | Producer prices | Economic geography",
+    "keywords": "IPP | preços ao produtor | indústria extrativa | transformação | porta de fábrica",
+    "geographic_coverage": "Brasil; detalhamento por atividade e produto conforme divulgação",
+    "covers_brazil": "sim",
+    "spatial_support": "empresas/produtos industriais | agregações por atividade",
+    "spatial_resolution": "Brasil; atividades e produtos conforme tabela",
+    "temporal_coverage": "série histórica mensal; edição mais recente materialmente verificada nesta auditoria: maio de 2026",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "série corrente; maio de 2026 materialmente verificado",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9282-indice-de-precos-ao-produtor-industrias-extrativas-e-de-transformacao.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9282-indice-de-precos-ao-produtor-industrias-extrativas-e-de-transformacao.html",
+    "primary_or_derived": "derivado",
+    "limitations": "O IPP mede preços recebidos pelo produtor, sem equivaler à inflação ao consumidor. Conceitos de preço na porta de fábrica, amostra de produtos/empresas, classificações e revisões devem ser preservados.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0100",
+      "resource_name": "Preços e Custos — IBGE",
+      "acronym": "Preços e Custos IBGE",
+      "official_identity": "Família institucional de índices de preços ao consumidor, preços ao produtor e custos da construção civil do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000338",
+        "product_id": "DP000317",
+        "distribution_name": "IPP — SIDRA, séries, tabelas e publicações mensais",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9282-indice-de-precos-ao-produtor-industrias-extrativas-e-de-transformacao.html",
+        "format": "SIDRA | XLSX | PDF | HTML",
+        "access_protocol": "HTTPS / SIDRA",
+        "access_tool": "navegador web | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar classificação industrial, amostra e revisões",
+        "license": "licença específica dos arquivos não determinada nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período, atividade e produto conforme divulgação",
+        "notes": "Maio de 2026 é a edição materialmente verificada nesta auditoria; índice de produtor não equivale a inflação ao consumidor.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS / SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000318",
+    "resource_id": "DR0100",
+    "product_name": "Sistema Nacional de Pesquisa de Custos e Índices da Construção Civil",
+    "product_acronym": "SINAPI",
+    "product_family": "Custos e índices da construção civil",
+    "product_kind": "dataset_series",
+    "product_description": "Sistema que produz mensalmente custos e índices da construção civil a partir de preços de materiais, equipamentos, serviços e salários, com disseminação por Brasil, Grandes Regiões e Unidades da Federação conforme tabelas.",
+    "research_areas": "Economics | Construction | Urban studies | Regional development",
+    "keywords": "SINAPI | construção civil | custos | materiais | mão de obra | índices",
+    "geographic_coverage": "Brasil; Grandes Regiões e Unidades da Federação conforme divulgação",
+    "covers_brazil": "sim",
+    "spatial_support": "insumos/composições | UF | região | Brasil",
+    "spatial_resolution": "UF, Grande Região e Brasil conforme tabela; detalhes técnicos por insumo/composição conforme sistema",
+    "temporal_coverage": "série histórica mensal; edição mais recente materialmente verificada: junho de 2026",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "série corrente; junho de 2026 materialmente verificado",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9270-sistema-nacional-de-pesquisa-de-custos-e-indices-da-construcao-civil.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9270-sistema-nacional-de-pesquisa-de-custos-e-indices-da-construcao-civil.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Os índices e custos do SINAPI seguem composições, insumos e metodologia próprios e não equivalem automaticamente ao orçamento específico de uma obra, cotação local instantânea ou custo efetivamente contratado.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0100",
+      "resource_name": "Preços e Custos — IBGE",
+      "acronym": "Preços e Custos IBGE",
+      "official_identity": "Família institucional de índices de preços ao consumidor, preços ao produtor e custos da construção civil do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000339",
+        "product_id": "DP000318",
+        "distribution_name": "SINAPI — SIDRA, custos, índices e publicações mensais",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9270-sistema-nacional-de-pesquisa-de-custos-e-indices-da-construcao-civil.html",
+        "format": "SIDRA | XLSX | PDF | HTML",
+        "access_protocol": "HTTPS / SIDRA",
+        "access_tool": "navegador web | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar metodologia, composições e recorte territorial",
+        "license": "licença específica dos arquivos não determinada nesta auditoria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período, UF, região, Brasil e componentes conforme divulgação",
+        "notes": "Junho de 2026 é a edição materialmente verificada; custos/índices não equivalem a orçamento específico de obra.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "SIDRA | XLSX | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS / SIDRA"
+    ]
   }
 ]
