@@ -29675,5 +29675,359 @@
     "available_protocols": [
       "HTTPS download | API quando oferecida pelo recurso"
     ]
+  },
+  {
+    "product_id": "DP000500",
+    "resource_id": "DR0113",
+    "product_name": "Macrorregião e Região de Saúde — Ministério da Saúde",
+    "product_acronym": "Regiões de Saúde",
+    "product_family": "referência territorial do SUS",
+    "product_kind": "dataset_series",
+    "product_description": "Base oficial de referência das Macrorregiões e Regiões de Saúde utilizadas na organização territorial do SUS, com recursos atualizados em agosto de 2026.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "região de saúde | macrorregião | SUS | territorialização | planejamento",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "unidade territorial de saúde e relação com municípios conforme recurso",
+    "spatial_resolution": "Região de Saúde/Macrorregião e unidades relacionadas",
+    "temporal_coverage": "cadastro vigente; recursos atualizados em 13/08/2026",
+    "temporal_resolution": "estado cadastral/referência",
+    "update_frequency": "conforme atualização administrativa",
+    "product_status": "ativo",
+    "version_or_collection": "recursos atualizados em 13/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/macrorregiao-de-saude",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/macrorregiao-de-saude",
+    "primary_or_derived": "primário",
+    "limitations": "Região e Macrorregião de Saúde são recortes de planejamento do SUS, não limites político-administrativos autônomos nem regiões funcionais invariantes no tempo; registrar a versão utilizada em comparações territoriais.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000525",
+        "product_id": "DP000500",
+        "distribution_name": "Regiões de Saúde — recursos oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/macrorregiao-de-saude",
+        "format": "CSV | JSON | XML | PDF/documentação conforme recursos do conjunto",
+        "access_protocol": "HTTPS download | API quando disponibilizada",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar dicionário, notas do conjunto, versões e eventuais dados anonimizados",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/competência/recorte conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial; formatos e granularidades devem ser verificados no recurso efetivamente usado.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação conforme recursos do conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando disponibilizada"
+    ]
+  },
+  {
+    "product_id": "DP000501",
+    "resource_id": "DR0113",
+    "product_name": "BNAFAR — Posição de Estoque",
+    "product_acronym": "BNAFAR Estoque",
+    "product_family": "assistência farmacêutica",
+    "product_kind": "dataset_series",
+    "product_description": "Posições de estoque informadas à Base Nacional de Dados de Ações e Serviços da Assistência Farmacêutica, com granularidade municipal indicada no portal.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "BNAFAR | estoque | medicamentos | assistência farmacêutica | município",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "município/unidade informante conforme arquivo",
+    "spatial_resolution": "município",
+    "temporal_coverage": "posição publicada em 06/06/2026; série conforme recursos",
+    "temporal_resolution": "posição de estoque",
+    "update_frequency": "quinzenal",
+    "product_status": "ativo",
+    "version_or_collection": "posição de estoque 06/06/2026; conjunto em manutenção",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/bnafar-posicao-de-estoque",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/bnafar-posicao-de-estoque",
+    "primary_or_derived": "primário",
+    "limitations": "Posição registrada no sistema não equivale a disponibilidade contínua, dispensação efetiva ou acesso do usuário. O próprio portal marca o conjunto como em manutenção; interpretar faltantes e cobertura institucional com cautela.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000526",
+        "product_id": "DP000501",
+        "distribution_name": "BNAFAR Estoque — recursos oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/bnafar-posicao-de-estoque",
+        "format": "CSV | JSON | XML | PDF/documentação conforme recursos do conjunto",
+        "access_protocol": "HTTPS download | API quando disponibilizada",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar dicionário, notas do conjunto, versões e eventuais dados anonimizados",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/competência/recorte conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial; formatos e granularidades devem ser verificados no recurso efetivamente usado.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação conforme recursos do conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando disponibilizada"
+    ]
+  },
+  {
+    "product_id": "DP000502",
+    "resource_id": "DR0113",
+    "product_name": "ESAVI — Eventos Supostamente Atribuíveis à Vacinação ou Imunização",
+    "product_acronym": "ESAVI",
+    "product_family": "farmacovigilância de vacinas e imunobiológicos",
+    "product_kind": "dataset_series",
+    "product_description": "Base nacional anonimizada de eventos médicos indesejados notificados após vacinação ou imunização no e-SUS Notifica — Módulo ESAVI, disponível desde janeiro de 2021.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "ESAVI | farmacovigilância | vacinação | imunização | segurança vacinal",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "notificação individual anonimizada",
+    "spatial_resolution": "registro individual anonimizado e agregações deriváveis",
+    "temporal_coverage": "janeiro de 2021–2026",
+    "temporal_resolution": "evento/notificação",
+    "update_frequency": "conforme atualização do portal",
+    "product_status": "ativo",
+    "version_or_collection": "base atualizada em 16/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/esavi",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/esavi",
+    "primary_or_derived": "primário",
+    "limitations": "ESAVI significa ocorrência posterior à vacinação e não implica nexo causal. Frequências dependem de notificação, investigação, exposição vacinal e completude; taxas exigem denominadores de doses/pessoas e desenho de farmacovigilância.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000527",
+        "product_id": "DP000502",
+        "distribution_name": "ESAVI — recursos oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/esavi",
+        "format": "CSV | JSON | XML | PDF/documentação conforme recursos do conjunto",
+        "access_protocol": "HTTPS download | API quando disponibilizada",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar dicionário, notas do conjunto, versões e eventuais dados anonimizados",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/competência/recorte conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial; formatos e granularidades devem ser verificados no recurso efetivamente usado.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação conforme recursos do conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando disponibilizada"
+    ]
+  },
+  {
+    "product_id": "DP000503",
+    "resource_id": "DR0113",
+    "product_name": "Programa Mais Médicos para o Brasil — dados de provimento federal",
+    "product_acronym": "PMMB",
+    "product_family": "provimento de profissionais de saúde",
+    "product_kind": "dataset_series",
+    "product_description": "Bases consolidadas e séries históricas do Programa Mais Médicos, incluindo vagas, profissionais ativos, cobertura e recortes territoriais do provimento federal.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "Mais Médicos | provimento | profissionais de saúde | atenção primária | vagas",
+    "geographic_coverage": "Brasil — nacional, estadual, municipal e DSEI conforme recurso",
+    "covers_brazil": "sim",
+    "spatial_support": "profissional/vaga e agregações territoriais conforme recurso",
+    "spatial_resolution": "nacional/UF/município/DSEI conforme base",
+    "temporal_coverage": "série histórica 2013–2026 e bases correntes",
+    "temporal_resolution": "registro/mês conforme recurso",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "recursos atualizados em 12/08/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/provimento-federal-programa-mais-medicos",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/provimento-federal-programa-mais-medicos",
+    "primary_or_derived": "primário",
+    "limitations": "Vaga cadastrada, profissional ativo e cobertura populacional são conceitos distintos. Dados administrativos do programa não medem por si só disponibilidade efetiva, qualidade do cuidado ou fixação longitudinal; preservar status e competência temporal.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000528",
+        "product_id": "DP000503",
+        "distribution_name": "PMMB — recursos oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/provimento-federal-programa-mais-medicos",
+        "format": "CSV | JSON | XML | PDF/documentação conforme recursos do conjunto",
+        "access_protocol": "HTTPS download | API quando disponibilizada",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar dicionário, notas do conjunto, versões e eventuais dados anonimizados",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/competência/recorte conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial; formatos e granularidades devem ser verificados no recurso efetivamente usado.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação conforme recursos do conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando disponibilizada"
+    ]
+  },
+  {
+    "product_id": "DP000504",
+    "resource_id": "DR0113",
+    "product_name": "MGDI — Programa Farmácia Popular do Brasil",
+    "product_acronym": "MGDI PFPB",
+    "product_family": "indicadores de acesso a medicamentos",
+    "product_kind": "indicator_family",
+    "product_description": "Família de indicadores do Programa Farmácia Popular do Brasil sobre pessoas atendidas, gratuidade/copagamento, grupos de medicamentos e recortes de políticas sociais.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "Farmácia Popular | medicamentos | acesso | gratuidade | copagamento | MGDI",
+    "geographic_coverage": "Brasil; recortes territoriais conforme indicador",
+    "covers_brazil": "sim",
+    "spatial_support": "agregações territoriais e programáticas conforme indicador",
+    "spatial_resolution": "varia por indicador",
+    "temporal_coverage": "série conforme recursos; indicadores atualizados até 03/07/2026",
+    "temporal_resolution": "período de referência do indicador",
+    "update_frequency": "conforme atualização MGDI",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto atualizado em 03/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/mgdi-programa-farmacia-popular-do-brasil",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/mgdi-programa-farmacia-popular-do-brasil",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicadores de pessoas atendidas e dispensação programática não equivalem a prevalência de doenças, necessidade terapêutica, adesão ou acesso total a medicamentos. Evitar somar categorias sobrepostas e preservar denominadores/definições de cada indicador.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000529",
+        "product_id": "DP000504",
+        "distribution_name": "MGDI PFPB — recursos oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/mgdi-programa-farmacia-popular-do-brasil",
+        "format": "CSV | JSON | XML | PDF/documentação conforme recursos do conjunto",
+        "access_protocol": "HTTPS download | API quando disponibilizada",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar dicionário, notas do conjunto, versões e eventuais dados anonimizados",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/competência/recorte conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial; formatos e granularidades devem ser verificados no recurso efetivamente usado.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação conforme recursos do conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando disponibilizada"
+    ]
+  },
+  {
+    "product_id": "DP000505",
+    "resource_id": "DR0113",
+    "product_name": "MGDI — Vigilância em Saúde Bucal — Fluoretação",
+    "product_acronym": "MGDI Fluoretação",
+    "product_family": "indicadores de fluoretação da água",
+    "product_kind": "indicator_family",
+    "product_description": "Indicadores derivados do SISAGUA sobre acesso à água fluoretada e conformidade de concentrações de fluoretos, para vigilância e gestão em saúde bucal.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "fluoretação | fluoreto | água de abastecimento | SISAGUA | saúde bucal | MGDI",
+    "geographic_coverage": "Brasil; indicadores municipais e agregados conforme recurso",
+    "covers_brazil": "sim",
+    "spatial_support": "município/sistema de abastecimento e agregações conforme indicador",
+    "spatial_resolution": "município ou agregação do indicador",
+    "temporal_coverage": "séries históricas conforme indicador; recursos atualizados até 25/06/2026",
+    "temporal_resolution": "período do indicador",
+    "update_frequency": "conforme atualização MGDI/SISAGUA",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto atualizado em 03/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.saude.gov.br/dataset/mgdi-vigilancia-em-saude-bucal-fluoretacao",
+    "methodology_url": "https://dadosabertos.saude.gov.br/dataset/mgdi-vigilancia-em-saude-bucal-fluoretacao",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicadores derivam de dados de Controle e Vigilância do SISAGUA e dependem de cobertura de cadastro e amostragem. Proporção de amostras, população com acesso e número de municípios são métricas distintas; não inferir concentração individual de exposição.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0113",
+      "resource_name": "Portal de Dados Abertos do SUS — Ministério da Saúde",
+      "acronym": "Dados Abertos SUS",
+      "official_identity": "Portal oficial de dados abertos do Sistema Único de Saúde e do Ministério da Saúde",
+      "homepage_url": "https://dadosabertos.saude.gov.br/",
+      "data_access_url": "https://dadosabertos.saude.gov.br/dataset/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000530",
+        "product_id": "DP000505",
+        "distribution_name": "MGDI Fluoretação — recursos oficiais",
+        "access_url": "https://dadosabertos.saude.gov.br/dataset/mgdi-vigilancia-em-saude-bucal-fluoretacao",
+        "format": "CSV | JSON | XML | PDF/documentação conforme recursos do conjunto",
+        "access_protocol": "HTTPS download | API quando disponibilizada",
+        "access_tool": "Portal de Dados Abertos do SUS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar dicionário, notas do conjunto, versões e eventuais dados anonimizados",
+        "license": "conteúdo do portal sob Creative Commons Atribuição-SemDerivações 3.0; verificar termos do recurso",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso/competência/recorte conforme conjunto",
+        "notes": "Distribuição aponta ao conjunto oficial; formatos e granularidades devem ser verificados no recurso efetivamente usado.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | JSON | XML | PDF/documentação conforme recursos do conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | API quando disponibilizada"
+    ]
   }
 ]
