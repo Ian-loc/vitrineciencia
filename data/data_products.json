@@ -20336,5 +20336,359 @@
     "available_protocols": [
       "HTTPS download"
     ]
+  },
+  {
+    "product_id": "DP000343",
+    "resource_id": "DR0104",
+    "product_name": "Cartografias de Suscetibilidade a Movimentos Gravitacionais de Massa e Inundações — SGB",
+    "product_acronym": "Cartas de Suscetibilidade SGB",
+    "product_family": "Prevenção de Desastres — cartografia de suscetibilidade",
+    "product_kind": "map_layer_collection",
+    "product_description": "Coleção municipal de cartografias que classifica a suscetibilidade natural a movimentos gravitacionais de massa e processos hidrológicos, com modelagem, compilação de dados e validação de campo.",
+    "research_areas": "Geology | Geospatial data | Environmental science | Hydrogeology",
+    "keywords": "susceptibility | landslides | floods | debris flow | disaster risk | SGB",
+    "geographic_coverage": "Brasil; municípios mapeados em todas as Unidades da Federação conforme disponibilidade oficial",
+    "covers_brazil": "sim",
+    "spatial_support": "polígonos de classes de suscetibilidade | mapas municipais | bases SIG",
+    "spatial_resolution": "escala de levantamento 1:25.000; em contextos específicos 1:50.000 conforme documentação do SGB",
+    "temporal_coverage": "levantamentos iniciados em 2012 e atualizados por município; coleção corrente",
+    "temporal_resolution": "por levantamento/versão municipal",
+    "update_frequency": "eventual; correções e atualizações por município",
+    "product_status": "ativo",
+    "version_or_collection": "coleção municipal corrente; página oficial lista 813 municípios mapeados na auditoria de 2026-08-17",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.sgb.gov.br/pt/cartografia-de-suscetibilidade",
+    "methodology_url": "https://www.sgb.gov.br/saiba-mais-cartas-de-suscetibilidade",
+    "primary_or_derived": "derivado",
+    "limitations": "Suscetibilidade expressa propensão natural, não risco observado, dano esperado ou previsão de evento. A escala e os insumos variam; o próprio SGB informa que versões podem ser corrigidas sem aviso prévio. Não substituir estudos locais de projeto.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0104",
+      "resource_name": "Serviço Geológico do Brasil — dados e sistemas geocientíficos",
+      "acronym": "SGB/CPRM",
+      "official_identity": "Infraestrutura institucional de dados geocientíficos do Serviço Geológico do Brasil",
+      "homepage_url": "https://www.sgb.gov.br/",
+      "data_access_url": "https://geosgb.sgb.gov.br/geosgb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000364",
+        "product_id": "DP000343",
+        "distribution_name": "Cartas de Suscetibilidade — mapas e SIG por município",
+        "access_url": "https://www.sgb.gov.br/produtos-por-estado-cartografia-de-suscetibilidade",
+        "format": "PDF | Shapefile/vetores SIG | raster/MDE e bases auxiliares conforme município",
+        "access_protocol": "HTTPS web/download",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "seleção por estado e município; disponibilidade de componentes varia por município",
+        "license": "verificar licença e atribuição do arquivo específico; fonte institucional SGB",
+        "provider_attribution_required": "sim",
+        "subset_support": "por estado, município e componente do produto",
+        "notes": "A página oficial lista mapa, SIG, base cartográfica, imagens e produtos MDE conforme município; não inferir pacote uniforme.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "PDF | Shapefile/vetores SIG | raster/MDE e bases auxiliares conforme município"
+    ],
+    "available_protocols": [
+      "HTTPS web/download"
+    ]
+  },
+  {
+    "product_id": "DP000344",
+    "resource_id": "DR0104",
+    "product_name": "Setorização de Riscos Geológicos — SGB",
+    "product_acronym": "Risco Geológico SGB",
+    "product_family": "Prevenção de Desastres — cartografia de risco geológico",
+    "product_kind": "map_layer_collection",
+    "product_description": "Mapeamentos municipais que identificam e caracterizam setores ocupados sujeitos a risco geológico alto e muito alto, associados principalmente a movimentos de massa, erosões e inundações.",
+    "research_areas": "Geology | Geospatial data | Environmental science | Hydrogeology",
+    "keywords": "geological risk | landslides | floods | occupied areas | disaster prevention | SGB",
+    "geographic_coverage": "Brasil; municípios atendidos pelo programa conforme disponibilidade oficial",
+    "covers_brazil": "sim",
+    "spatial_support": "setores/polígonos de risco em áreas ocupadas | mapas e relatórios municipais",
+    "spatial_resolution": "escala de referência 1:1.000 para setorização de riscos geológicos",
+    "temporal_coverage": "levantamentos por município e ano; coleção histórica e corrente",
+    "temporal_resolution": "por levantamento municipal",
+    "update_frequency": "eventual; novos levantamentos e atualizações municipais",
+    "product_status": "ativo",
+    "version_or_collection": "coleção municipal corrente de prevenção de desastres",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://sgb.gov.br/prevencao-de-desastres",
+    "methodology_url": "https://sgb.gov.br/prevencao-de-desastres",
+    "primary_or_derived": "derivado",
+    "limitations": "Risco combina possibilidade de ocorrência e consequências em áreas ocupadas e não é equivalente à suscetibilidade do terreno. Cobertura é seletiva por município e data; setores antigos não devem ser tratados como retrato territorial corrente sem verificar a edição.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0104",
+      "resource_name": "Serviço Geológico do Brasil — dados e sistemas geocientíficos",
+      "acronym": "SGB/CPRM",
+      "official_identity": "Infraestrutura institucional de dados geocientíficos do Serviço Geológico do Brasil",
+      "homepage_url": "https://www.sgb.gov.br/",
+      "data_access_url": "https://geosgb.sgb.gov.br/geosgb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000365",
+        "product_id": "DP000344",
+        "distribution_name": "Setorização de Riscos — produtos municipais e WebGIS",
+        "access_url": "https://www.sgb.gov.br/painel_desastres/",
+        "format": "PDF | arquivos vetoriais | WebGIS conforme município/produto",
+        "access_protocol": "HTTPS web/download | ArcGIS REST quando aplicável",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por estado, município e tipo de estudo; componentes variam por produto",
+        "license": "verificar licença e atribuição do arquivo específico; fonte institucional SGB",
+        "provider_attribution_required": "sim",
+        "subset_support": "por estado, município e estudo",
+        "notes": "O painel SGB + VIDA agrega estudos de prevenção por município; risco geológico deve permanecer distinto de suscetibilidade, perigo e pós-desastre.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "PDF | arquivos vetoriais | WebGIS conforme município/produto"
+    ],
+    "available_protocols": [
+      "HTTPS web/download | ArcGIS REST quando aplicável"
+    ]
+  },
+  {
+    "product_id": "DP000345",
+    "resource_id": "DR0104",
+    "product_name": "Cartas de Perigo Geológico — SGB",
+    "product_acronym": "Perigo Geológico SGB",
+    "product_family": "Prevenção de Desastres — cartografia de perigo geológico",
+    "product_kind": "map_layer_collection",
+    "product_description": "Cartas que representam a possibilidade de ocorrência e o provável alcance de processos geológicos destrutivos, incluindo deslizamentos, fluxos de detritos e quedas de blocos.",
+    "research_areas": "Geology | Geospatial data | Environmental science",
+    "keywords": "geological hazard | landslide | debris flow | rockfall | runout | SGB",
+    "geographic_coverage": "Brasil; municípios com cartas publicadas conforme coleção oficial",
+    "covers_brazil": "sim",
+    "spatial_support": "polígonos e zonas de perigo | mapas municipais",
+    "spatial_resolution": "escala de referência 1:10.000 na síntese oficial do SGB",
+    "temporal_coverage": "levantamentos por município e edição",
+    "temporal_resolution": "por levantamento municipal",
+    "update_frequency": "eventual",
+    "product_status": "ativo",
+    "version_or_collection": "coleção municipal corrente; metodologia derivada do projeto GIDES-JICA e atualizações do SGB",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://sgb.gov.br/prevencao-de-desastres",
+    "methodology_url": "https://www.sgb.gov.br/saiba-mais-projeto-gides-jica",
+    "primary_or_derived": "derivado",
+    "limitations": "Perigo geológico não equivale a risco: a carta representa possibilidade, trajetória e alcance de processos, enquanto risco depende também de exposição e consequências. Cobertura e edição variam por município.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0104",
+      "resource_name": "Serviço Geológico do Brasil — dados e sistemas geocientíficos",
+      "acronym": "SGB/CPRM",
+      "official_identity": "Infraestrutura institucional de dados geocientíficos do Serviço Geológico do Brasil",
+      "homepage_url": "https://www.sgb.gov.br/",
+      "data_access_url": "https://geosgb.sgb.gov.br/geosgb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000366",
+        "product_id": "DP000345",
+        "distribution_name": "Cartas de Perigo Geológico — mapas, vetores e WebGIS",
+        "access_url": "https://www.sgb.gov.br/painel_desastres/",
+        "format": "PDF | arquivos vetoriais | WebGIS conforme município",
+        "access_protocol": "HTTPS web/download | ArcGIS REST quando aplicável",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por município e tipo de estudo",
+        "license": "verificar licença e atribuição do arquivo específico; fonte institucional SGB",
+        "provider_attribution_required": "sim",
+        "subset_support": "por município",
+        "notes": "O Mapa Índice de Prevenção de Desastres publica camada específica de Carta de Perigo; não confundir com setorização de risco.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "PDF | arquivos vetoriais | WebGIS conforme município"
+    ],
+    "available_protocols": [
+      "HTTPS web/download | ArcGIS REST quando aplicável"
+    ]
+  },
+  {
+    "product_id": "DP000346",
+    "resource_id": "DR0104",
+    "product_name": "Cartografias Geotécnicas de Aptidão à Urbanização — SGB",
+    "product_acronym": "Aptidão à Urbanização SGB",
+    "product_family": "Prevenção de Desastres — cartografia geotécnica",
+    "product_kind": "map_layer_collection",
+    "product_description": "Cartografias municipais que caracterizam o meio físico e classificam a aptidão dos terrenos para usos urbanos, integrando geologia, solos/materiais inconsolidados, geomorfologia, ensaios e processos de desastre.",
+    "research_areas": "Geology | Geospatial data | Environmental science | Urban studies",
+    "keywords": "geotechnical suitability | urbanization | terrain | planning | disaster risk | SGB",
+    "geographic_coverage": "Brasil; municípios contemplados pela coleção oficial",
+    "covers_brazil": "sim",
+    "spatial_support": "unidades geotécnicas | mapas municipais | SIG e relatórios conforme município",
+    "spatial_resolution": "1:10.000 na maior parte do país; 1:50.000 em AC, AM, AP, PA, RO e RR segundo documentação oficial",
+    "temporal_coverage": "levantamentos municipais; metodologia corrente documentada em guia versão 2 de 2025",
+    "temporal_resolution": "por levantamento municipal",
+    "update_frequency": "eventual",
+    "product_status": "ativo",
+    "version_or_collection": "coleção municipal corrente; Guia de Procedimentos Técnicos versão 2 (2025)",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://sgb.gov.br/pt/cartografias-geotecnicas",
+    "methodology_url": "https://rigeo.sgb.gov.br/handle/doc/22307.2",
+    "primary_or_derived": "derivado",
+    "limitations": "A classificação de aptidão orienta planejamento territorial, mas não substitui investigação geotécnica quantitativa em escala de projeto para edificações ou infraestrutura. Escala e produtos auxiliares variam regionalmente e por município.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0104",
+      "resource_name": "Serviço Geológico do Brasil — dados e sistemas geocientíficos",
+      "acronym": "SGB/CPRM",
+      "official_identity": "Infraestrutura institucional de dados geocientíficos do Serviço Geológico do Brasil",
+      "homepage_url": "https://www.sgb.gov.br/",
+      "data_access_url": "https://geosgb.sgb.gov.br/geosgb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000367",
+        "product_id": "DP000346",
+        "distribution_name": "Cartas Geotécnicas de Aptidão — mapa e SIG por município",
+        "access_url": "https://www.sgb.gov.br/produtos-por-estado-cartografias-geotecnicas",
+        "format": "PDF/mapa | SIG vetorial | base cartográfica | relatório conforme município",
+        "access_protocol": "HTTPS web/download",
+        "access_tool": "navegador web | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "seleção por estado e município; componentes variam por levantamento",
+        "license": "verificar licença e atribuição do arquivo específico; fonte institucional SGB",
+        "provider_attribution_required": "sim",
+        "subset_support": "por estado e município",
+        "notes": "A página oficial lista produtos municipais individualmente; preservar escala e versão do levantamento usado.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "PDF/mapa | SIG vetorial | base cartográfica | relatório conforme município"
+    ],
+    "available_protocols": [
+      "HTTPS web/download"
+    ]
+  },
+  {
+    "product_id": "DP000347",
+    "resource_id": "DR0104",
+    "product_name": "Levantamentos Aerogeofísicos — SGB",
+    "product_acronym": "Aerogeofísica SGB",
+    "product_family": "Levantamentos Geofísicos e Produtos Associados",
+    "product_kind": "dataset_series",
+    "product_description": "Coleção de levantamentos aerogeofísicos geridos pelo SGB, incluindo principalmente magnetometria e gamaespectrometria e, em projetos específicos, métodos eletromagnéticos e gravimétricos, com dados originais e pós-processados.",
+    "research_areas": "Geology | Geospatial data | Environmental science",
+    "keywords": "aerogeophysics | magnetometry | gamma spectrometry | gravimetry | electromagnetics | SGB",
+    "geographic_coverage": "Brasil; cobertura parcial por projetos de levantamento",
+    "covers_brazil": "sim",
+    "spatial_support": "pontos/linhas de voo e grades/produtos derivados conforme projeto",
+    "spatial_resolution": "varia por projeto; fase moderna documentada com linhas de voo tipicamente espaçadas 500 m e altura de 100 m em vários levantamentos",
+    "temporal_coverage": "levantamentos desde a década de 1950; gestão SGB desde 1971; novos produtos incorporados continuamente",
+    "temporal_resolution": "por projeto/levantamento",
+    "update_frequency": "conforme novos levantamentos se tornam disponíveis",
+    "product_status": "ativo",
+    "version_or_collection": "coleção corrente GeoSGB; cobertura histórica heterogênea",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.sgb.gov.br/aerogeofisica",
+    "methodology_url": "https://www.sgb.gov.br/aerogeofisica",
+    "primary_or_derived": "misto",
+    "limitations": "Cobertura, método, altitude de voo, espaçamento, sistema de referência, processamento e data variam entre projetos; não mosaificar ou comparar levantamentos sem harmonização e metadados. A cobertura não é nacionalmente uniforme.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0104",
+      "resource_name": "Serviço Geológico do Brasil — dados e sistemas geocientíficos",
+      "acronym": "SGB/CPRM",
+      "official_identity": "Infraestrutura institucional de dados geocientíficos do Serviço Geológico do Brasil",
+      "homepage_url": "https://www.sgb.gov.br/",
+      "data_access_url": "https://geosgb.sgb.gov.br/geosgb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000368",
+        "product_id": "DP000347",
+        "distribution_name": "Aerogeofísica — GeoSGB downloads e serviços",
+        "access_url": "https://geosgb.sgb.gov.br/",
+        "format": "XYZ | GeoTIFF | KMZ e mapas/relatórios conforme projeto",
+        "access_protocol": "HTTPS download | ArcGIS REST",
+        "access_tool": "GeoSGB | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "seleção por projeto e produto; dados financiados pelo Governo Federal disponibilizados gratuitamente",
+        "license": "verificar licença e atribuição do projeto/arquivo específico; fonte institucional SGB",
+        "provider_attribution_required": "sim",
+        "subset_support": "por projeto, área e tipo de produto",
+        "notes": "O SGB documenta dados originais e pós-processados em XYZ e o GeoSGB publica também GeoTIFF/KMZ para projetos específicos; preservar o projeto efetivamente usado.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XYZ | GeoTIFF | KMZ e mapas/relatórios conforme projeto"
+    ],
+    "available_protocols": [
+      "HTTPS download | ArcGIS REST"
+    ]
+  },
+  {
+    "product_id": "DP000348",
+    "resource_id": "DR0104",
+    "product_name": "Sistema de Alerta de Eventos Críticos — SACE",
+    "product_acronym": "SACE",
+    "product_family": "Monitoramento e alerta hidrológico",
+    "product_kind": "data_service",
+    "product_description": "Plataforma do SGB que reúne informações dos Sistemas de Alerta Hidrológico, incluindo monitoramento automático de chuva e níveis de rios, previsões de níveis, boletins, alertas e mapas de risco para bacias monitoradas.",
+    "research_areas": "Hydrogeology | Environmental science | Geospatial data",
+    "keywords": "SACE | hydrological alert | river level | rainfall | flood | monitoring | SGB",
+    "geographic_coverage": "Brasil; bacias cobertas pelos Sistemas de Alerta Hidrológico do SGB",
+    "covers_brazil": "sim",
+    "spatial_support": "estações hidrometeorológicas | bacias monitoradas | boletins e previsões",
+    "spatial_resolution": "pontual nas estações; agregação/representação por bacia e sistema de alerta",
+    "temporal_coverage": "operacional corrente; séries e histórico variam por estação e bacia",
+    "temporal_resolution": "dados automáticos tipicamente recebidos a cada 1 hora nas estações monitoradas",
+    "update_frequency": "horária/operacional para monitoramento; boletins conforme sistema e evento",
+    "product_status": "ativo",
+    "version_or_collection": "SACE corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.sgb.gov.br/sace/",
+    "methodology_url": "https://www.sgb.gov.br/sace/",
+    "primary_or_derived": "misto",
+    "limitations": "Cobertura restringe-se às bacias e estações dos SAHs. Dados observados, previsões, níveis de alerta, manchas/mapas e boletins são objetos distintos; previsão de nível não é observação e limiares operacionais não devem ser generalizados entre bacias.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0104",
+      "resource_name": "Serviço Geológico do Brasil — dados e sistemas geocientíficos",
+      "acronym": "SGB/CPRM",
+      "official_identity": "Infraestrutura institucional de dados geocientíficos do Serviço Geológico do Brasil",
+      "homepage_url": "https://www.sgb.gov.br/",
+      "data_access_url": "https://geosgb.sgb.gov.br/geosgb/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000369",
+        "product_id": "DP000348",
+        "distribution_name": "SACE — monitoramento, previsões e boletins por bacia",
+        "access_url": "https://www.sgb.gov.br/sace/",
+        "format": "aplicação web | séries/leituras | boletins e mapas conforme bacia",
+        "access_protocol": "HTTPS web",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública por sistema/bacia; disponibilidade de download varia por componente",
+        "license": "licença específica dos dados não determinada nesta auditoria; atribuir SGB e verificar metadados do componente",
+        "provider_attribution_required": "sim",
+        "subset_support": "por bacia, estação e produto operacional",
+        "notes": "SACE integra monitoramento e previsão dos SAHs; o SGB informa recepção horária de dados automáticos em estações monitoradas.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "aplicação web | séries/leituras | boletins e mapas conforme bacia"
+    ],
+    "available_protocols": [
+      "HTTPS web"
+    ]
   }
 ]
