@@ -25743,5 +25743,477 @@
     "available_protocols": [
       "HTTPS / CKAN"
     ]
+  },
+  {
+    "product_id": "DP000434",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Percepção ambiental, política e comportamento — set/2025",
+    "product_acronym": "IFN Percepção Ambiental",
+    "product_family": "Inventário Florestal Nacional — dados socioambientais",
+    "product_kind": "dataset_series",
+    "product_description": "Dados do levantamento socioambiental do IFN sobre percepção ambiental, aspectos de política e comportamento associados às populações entrevistadas no desenho do inventário.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | socioenvironmental survey | environmental perception | policy | behavior | interviews",
+    "geographic_coverage": "Brasil — UFs com levantamento socioambiental do IFN publicado na versão set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de entrevista/levantamento socioambiental associado ao IFN",
+    "spatial_resolution": "por registro e UF conforme arquivos; precisão e confidencialidade conforme metadados",
+    "temporal_coverage": "campanhas socioambientais do IFN incorporadas à versão disp-set2025",
+    "temporal_resolution": "campanha/entrevista",
+    "update_frequency": "conforme novos ciclos e atualização dos conjuntos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-percepcao-ambiental-politica-e-comportamento_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "primário",
+    "limitations": "Respostas dependem do desenho amostral, instrumento e contexto da entrevista. Percepções e declarações não equivalem a medições biofísicas, comportamento observado continuamente ou opinião de toda a população de uma UF.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000457",
+        "product_id": "DP000434",
+        "distribution_name": "IFN — Percepção ambiental, política e comportamento — set/2025 — dados por UF e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-percepcao-ambiental-politica-e-comportamento_disp-set2025",
+        "format": "CSV | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e recurso publicado",
+        "notes": "Distribuição oficial por UF com metadados. Interpretar respostas no desenho socioambiental e no universo documentado do IFN.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000435",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Perfil socioeconômico — set/2025",
+    "product_acronym": "IFN Perfil Socioeconômico",
+    "product_family": "Inventário Florestal Nacional — dados socioambientais",
+    "product_kind": "dataset_series",
+    "product_description": "Dados de perfil socioeconômico obtidos pelo levantamento socioambiental do Inventário Florestal Nacional, distribuídos por UF com metadados e arquivos tabulares.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | socioenvironmental survey | socioeconomic profile | livelihoods | interviews",
+    "geographic_coverage": "Brasil — UFs com levantamento socioambiental do IFN publicado na versão set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de entrevista/levantamento socioambiental associado ao IFN",
+    "spatial_resolution": "por registro e UF conforme arquivos; precisão e confidencialidade conforme metadados",
+    "temporal_coverage": "campanhas socioambientais do IFN incorporadas à versão disp-set2025",
+    "temporal_resolution": "campanha/entrevista",
+    "update_frequency": "conforme novos ciclos e atualização dos conjuntos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-perfil-socioeconomico_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "primário",
+    "limitations": "O perfil representa a população alcançada pelo desenho socioambiental do IFN e não deve ser tratado como censo domiciliar ou estimativa representativa de toda a população estadual sem consultar pesos, universo e desenho amostral.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000458",
+        "product_id": "DP000435",
+        "distribution_name": "IFN — Perfil socioeconômico — set/2025 — dados por UF e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-perfil-socioeconomico_disp-set2025",
+        "format": "CSV | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e recurso publicado",
+        "notes": "Distribuição oficial por UF com metadados; não tratar o levantamento como censo socioeconômico estadual.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000436",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Serviços ambientais e mudanças climáticas — set/2025",
+    "product_acronym": "IFN Serviços Ambientais e Clima",
+    "product_family": "Inventário Florestal Nacional — dados socioambientais",
+    "product_kind": "dataset_series",
+    "product_description": "Dados do levantamento socioambiental do IFN sobre serviços ambientais e mudanças climáticas, disponibilizados por UF com metadados e arquivos tabulares.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | socioenvironmental survey | ecosystem services | climate change | perception | interviews",
+    "geographic_coverage": "Brasil — UFs com levantamento socioambiental do IFN publicado na versão set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de entrevista/levantamento socioambiental associado ao IFN",
+    "spatial_resolution": "por registro e UF conforme arquivos; precisão e confidencialidade conforme metadados",
+    "temporal_coverage": "campanhas socioambientais do IFN incorporadas à versão disp-set2025",
+    "temporal_resolution": "campanha/entrevista",
+    "update_frequency": "conforme novos ciclos e atualização dos conjuntos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-servicos-ambientais-e-mudancas-climaticas_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "primário",
+    "limitations": "Respostas sobre serviços ambientais e mudanças climáticas são dados socioambientais declarados; não equivalem à mensuração direta de serviços ecossistêmicos, variáveis climáticas, impactos ou causalidade.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000459",
+        "product_id": "DP000436",
+        "distribution_name": "IFN — Serviços ambientais e mudanças climáticas — set/2025 — dados por UF e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-servicos-ambientais-e-mudancas-climaticas_disp-set2025",
+        "format": "CSV | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e recurso publicado",
+        "notes": "Distribuição oficial por UF com metadados; variáveis socioambientais declaradas não substituem medições biofísicas ou climáticas.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000437",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Uso dos recursos, importância e renda — set/2025",
+    "product_acronym": "IFN Recursos e Renda",
+    "product_family": "Inventário Florestal Nacional — dados socioambientais",
+    "product_kind": "dataset_series",
+    "product_description": "Dados do levantamento socioambiental do IFN sobre uso de recursos florestais, importância atribuída e componentes de renda, distribuídos por UF.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | socioenvironmental survey | forest resources | use | income | livelihoods",
+    "geographic_coverage": "Brasil — UFs com levantamento socioambiental do IFN publicado na versão set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "registro de entrevista/levantamento socioambiental associado ao IFN",
+    "spatial_resolution": "por registro e UF conforme arquivos; precisão e confidencialidade conforme metadados",
+    "temporal_coverage": "campanhas socioambientais do IFN incorporadas à versão disp-set2025",
+    "temporal_resolution": "campanha/entrevista",
+    "update_frequency": "conforme novos ciclos e atualização dos conjuntos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-uso-dos-recursos-importancia-e-renda_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "primário",
+    "limitations": "Uso, importância e renda são informações declaradas no levantamento socioambiental e dependem de definições, períodos de referência e desenho amostral. Não representam automaticamente extração física medida ou contas econômicas completas.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000460",
+        "product_id": "DP000437",
+        "distribution_name": "IFN — Uso dos recursos, importância e renda — set/2025 — dados por UF e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-uso-dos-recursos-importancia-e-renda_disp-set2025",
+        "format": "CSV | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e recurso publicado",
+        "notes": "Distribuição oficial por UF com metadados; preservar períodos de referência, definições e desenho amostral das variáveis de uso e renda.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000438",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Uso do solo e observação do entorno — set/2025",
+    "product_acronym": "IFN Uso do Solo e Entorno",
+    "product_family": "Inventário Florestal Nacional — dados socioambientais",
+    "product_kind": "dataset_series",
+    "product_description": "Dados do levantamento socioambiental do IFN sobre uso do solo e observações do entorno, distribuídos por UF com metadados e arquivos tabulares.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | socioenvironmental survey | land use | surroundings | field observations | interviews",
+    "geographic_coverage": "Brasil — UFs com levantamento socioambiental do IFN publicado na versão set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "registro socioambiental e observação associada ao levantamento do IFN",
+    "spatial_resolution": "por registro e UF conforme arquivos; precisão conforme desenho e metadados",
+    "temporal_coverage": "campanhas socioambientais do IFN incorporadas à versão disp-set2025",
+    "temporal_resolution": "campanha/registro",
+    "update_frequency": "conforme novos ciclos e atualização dos conjuntos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-uso-do-solo-e-observacao-do-entorno_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "primário",
+    "limitations": "O conjunto não é mapa raster contínuo de uso e cobertura da terra. Observações do entorno e respostas socioambientais devem ser interpretadas no suporte amostral do IFN e não extrapoladas sem desenho/modelagem explícitos.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000461",
+        "product_id": "DP000438",
+        "distribution_name": "IFN — Uso do solo e observação do entorno — set/2025 — dados por UF e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-uso-do-solo-e-observacao-do-entorno_disp-set2025",
+        "format": "CSV | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e recurso publicado",
+        "notes": "Distribuição oficial por UF com metadados; dados amostrais/observacionais não formam mapa contínuo de uso da terra.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000439",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Dados consolidados para o Painel Socioambiental — set/2025",
+    "product_acronym": "IFN Painel Socioambiental Dados",
+    "product_family": "Inventário Florestal Nacional — dados consolidados para painéis",
+    "product_kind": "dataset_series",
+    "product_description": "Conjuntos tabulares consolidados pelo SFB para elaboração do painel socioambiental do IFN, incluindo perfil socioeconômico, serviços, percepção, uso de recursos, renda, uso do solo e observação do entorno.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | socioenvironmental panel | consolidated data | indicators | CSV",
+    "geographic_coverage": "Brasil — consolidações dos dados socioambientais do IFN disponíveis no pacote set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "registros e agregações preparados para painel",
+    "spatial_resolution": "conforme cada arquivo temático e agregação do painel",
+    "temporal_coverage": "dados incorporados ao pacote disp-set2025",
+    "temporal_resolution": "conforme arquivo/indicador",
+    "update_frequency": "conforme atualização do painel e novos ciclos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-painel-de-dados-socioambientais_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "derivado",
+    "limitations": "São dados preparados para o painel e podem derivar ou agregar os conjuntos socioambientais primários. Não contar registros do painel como observações independentes adicionais nem substituir metadados, universo e denominadores das bases de origem.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000462",
+        "product_id": "DP000439",
+        "distribution_name": "IFN — Painel socioambiental — pacote de dados set/2025",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-painel-de-dados-socioambientais_disp-set2025",
+        "format": "CSV",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo temático do painel",
+        "notes": "Pacote oficial de dados preparados para o painel; contém dados derivados/organizados a partir das bases socioambientais e não constitui observações independentes adicionais.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000440",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Dados consolidados para o Painel Botânico — set/2025",
+    "product_acronym": "IFN Painel Botânico Dados",
+    "product_family": "Inventário Florestal Nacional — dados consolidados para painéis",
+    "product_kind": "dataset_series",
+    "product_description": "Conjuntos preparados pelo SFB para elaboração do painel botânico do IFN, incluindo pontos modificados e pacotes de coletas botânicas em formatos tabulares e Darwin Core.",
+    "research_areas": "Biodiversity | Forest ecology | Environmental science",
+    "keywords": "IFN | botanical panel | collections | Darwin Core | consolidated data",
+    "geographic_coverage": "Brasil — registros botânicos do IFN incorporados ao pacote de painel set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "registro botânico/ponto de coleta e agregações preparadas para painel",
+    "spatial_resolution": "por registro/ponto conforme arquivo; precisão conforme metadados de origem",
+    "temporal_coverage": "dados incorporados ao pacote disp-set2025",
+    "temporal_resolution": "evento de coleta/registro",
+    "update_frequency": "conforme atualização do painel e novos ciclos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-painel-de-dados-botanicos_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "derivado",
+    "limitations": "O pacote reorganiza dados botânicos para visualização e pode sobrepor registros do conjunto primário de coletas botânicas. Não somar como ocorrências independentes; preservar identificação taxonômica, status de determinação, coordenadas e proveniência.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000463",
+        "product_id": "DP000440",
+        "distribution_name": "IFN — Painel botânico — pacote de dados set/2025",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-painel-de-dados-botanicos_disp-set2025",
+        "format": "CSV | ZIP",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/pacote publicado",
+        "notes": "Pacote oficial para o painel botânico; inclui pontos e coletas reorganizados e pode sobrepor o conjunto primário Darwin Core.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | ZIP"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000441",
+    "resource_id": "DR0107",
+    "product_name": "IFN — Dados consolidados para o Painel Biofísico — set/2025",
+    "product_acronym": "IFN Painel Biofísico Dados",
+    "product_family": "Inventário Florestal Nacional — dados consolidados para painéis",
+    "product_kind": "dataset_series",
+    "product_description": "Conjuntos preparados pelo SFB para elaboração do painel biofísico do IFN, incluindo dados de estoques, madeira caída, panorama geral e dados gerais.",
+    "research_areas": "Forest ecology | Environmental science | Environmental management",
+    "keywords": "IFN | biophysical panel | stocks | deadwood | consolidated data | CSV",
+    "geographic_coverage": "Brasil — registros e agregações biofísicas do IFN incorporados ao pacote de painel set/2025",
+    "covers_brazil": "sim",
+    "spatial_support": "registros e agregações biofísicas preparados para painel",
+    "spatial_resolution": "conforme componente e arquivo do painel",
+    "temporal_coverage": "dados incorporados ao pacote disp-set2025",
+    "temporal_resolution": "campanha/componente/indicador",
+    "update_frequency": "conforme atualização do painel e novos ciclos",
+    "product_status": "ativo",
+    "version_or_collection": "disp-set2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/ifn-painel-de-dados-biofisicos_disp-set2025",
+    "methodology_url": "https://snif.florestal.gov.br/pt-br/temas-florestais/ifn",
+    "primary_or_derived": "derivado",
+    "limitations": "O pacote consolida e reorganiza dados biofísicos que podem sobrepor os conjuntos primários do IFN e o Painel de Biomassa e Carbono. Não somar registros/estoques sem rastrear componente, unidade, equação, suporte amostral e proveniência.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0107",
+      "resource_name": "Inventário Florestal Nacional — Serviço Florestal Brasileiro",
+      "acronym": "IFN/SFB",
+      "official_identity": "Inventário Florestal Nacional coordenado pelo Serviço Florestal Brasileiro",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/ifn",
+      "data_access_url": "https://dados.florestal.gov.br/group/ifn"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000464",
+        "product_id": "DP000441",
+        "distribution_name": "IFN — Painel biofísico — pacote de dados set/2025",
+        "access_url": "https://dados.florestal.gov.br/dataset/ifn-painel-de-dados-biofisicos_disp-set2025",
+        "format": "CSV | ZIP",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/pacote publicado",
+        "notes": "Pacote oficial para o painel biofísico; inclui estoques, madeira caída e dados gerais e pode sobrepor conjuntos primários já catalogados.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "CSV | ZIP"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
   }
 ]
