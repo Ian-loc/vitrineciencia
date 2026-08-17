@@ -26215,5 +26215,241 @@
     "available_protocols": [
       "HTTPS / CKAN"
     ]
+  },
+  {
+    "product_id": "DP000442",
+    "resource_id": "DR0109",
+    "product_name": "Regularização Ambiental — Base de Referência de Hidrografia por Estado — SICAR/SFB",
+    "product_acronym": "SICAR Ref. Hidrografia",
+    "product_family": "SICAR — bases de referência para regularização ambiental",
+    "product_kind": "dataset_series",
+    "product_description": "Bases estaduais de referência de hidrografia disponibilizadas pelo SFB para apoiar análises de regularização ambiental no SICAR, acompanhadas de metadados e recursos por estado.",
+    "research_areas": "Environmental management | Environmental science | Geospatial data",
+    "keywords": "SICAR | CAR | regularização ambiental | hidrografia | APP | reference data",
+    "geographic_coverage": "Brasil — estados com bases de hidrografia disponibilizadas no conjunto; cobertura e versão variam por UF",
+    "covers_brazil": "sim",
+    "spatial_support": "feições hidrográficas/base de referência estadual",
+    "spatial_resolution": "varia por UF e base de origem; consultar metadados estaduais",
+    "temporal_coverage": "bases correntes por UF; conjunto criado em 2025 e atualizado no portal em 01/07/2026",
+    "temporal_resolution": "por versão/base estadual",
+    "update_frequency": "conforme atualização das bases de referência",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; portal atualizado em 01/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/base-de-referencia-car-hidrografia",
+    "methodology_url": "https://dados.florestal.gov.br/dataset/base-de-referencia-car-hidrografia",
+    "primary_or_derived": "derivado",
+    "limitations": "Base de referência operacional para análise de regularização ambiental. Fontes, escala, data e completude podem variar entre UFs; não tratar como hidrografia nacional homogênea nem como delimitação jurídica automática de APP sem aplicar as regras e procedimentos pertinentes.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0109",
+      "resource_name": "Cadastro Ambiental Rural e Regularização Ambiental Rural — SFB",
+      "acronym": "SICAR/CAR",
+      "official_identity": "Sistema Nacional de Cadastro Ambiental Rural e instrumentos públicos de regularização ambiental rural",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/regularizacao-ambiental",
+      "data_access_url": "https://consulta.car.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000465",
+        "product_id": "DP000442",
+        "distribution_name": "SICAR — Hidrografia — bases estaduais e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/base-de-referencia-car-hidrografia",
+        "format": "link | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF/recurso publicado",
+        "notes": "O CKAN organiza metadados e links das bases estaduais; formato e fonte efetiva devem ser conferidos no recurso de cada UF.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "link | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000443",
+    "resource_id": "DR0109",
+    "product_name": "Regularização Ambiental — Base de Referência de Relevo, APP e Uso Restrito por Estado — SICAR/SFB",
+    "product_acronym": "SICAR Ref. Relevo",
+    "product_family": "SICAR — bases de referência para regularização ambiental",
+    "product_kind": "dataset_series",
+    "product_description": "Bases estaduais de referência de relevo usadas nas análises de regularização ambiental, incluindo elementos relacionados a Áreas de Preservação Permanente e áreas de Uso Restrito conforme os recursos publicados.",
+    "research_areas": "Environmental management | Environmental science | Geospatial data",
+    "keywords": "SICAR | CAR | regularização ambiental | relevo | APP | uso restrito | reference data",
+    "geographic_coverage": "Brasil — estados com bases de relevo disponibilizadas no conjunto; cobertura e versão variam por UF",
+    "covers_brazil": "sim",
+    "spatial_support": "base estadual de relevo e feições derivadas para análise",
+    "spatial_resolution": "varia por UF, insumo e processamento; consultar metadados",
+    "temporal_coverage": "bases correntes por UF; conjunto criado em 2025 e atualizado no portal em 01/07/2026",
+    "temporal_resolution": "por versão/base estadual",
+    "update_frequency": "conforme atualização das bases de referência",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; portal atualizado em 01/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/base-de-referencia-car-relevo",
+    "methodology_url": "https://dados.florestal.gov.br/dataset/base-de-referencia-car-relevo",
+    "primary_or_derived": "derivado",
+    "limitations": "As bases são insumos de referência para análise do CAR/PRA. Escala, método e fonte variam entre UFs; feições derivadas de relevo não constituem por si só decisão jurídica definitiva sobre APP, Uso Restrito ou conformidade de um imóvel.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0109",
+      "resource_name": "Cadastro Ambiental Rural e Regularização Ambiental Rural — SFB",
+      "acronym": "SICAR/CAR",
+      "official_identity": "Sistema Nacional de Cadastro Ambiental Rural e instrumentos públicos de regularização ambiental rural",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/regularizacao-ambiental",
+      "data_access_url": "https://consulta.car.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000466",
+        "product_id": "DP000443",
+        "distribution_name": "SICAR — Relevo, APP e Uso Restrito — bases estaduais e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/base-de-referencia-car-relevo",
+        "format": "link | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF/recurso publicado",
+        "notes": "O conjunto disponibiliza recursos por UF; escala, processamento e formato do dado efetivo variam e devem ser lidos nos metadados.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "link | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000444",
+    "resource_id": "DR0109",
+    "product_name": "Regularização Ambiental — Base de Referência de Uso e Cobertura do Solo por Estado — SICAR/SFB",
+    "product_acronym": "SICAR Ref. Uso do Solo",
+    "product_family": "SICAR — bases de referência para regularização ambiental",
+    "product_kind": "dataset_series",
+    "product_description": "Bases estaduais de referência de uso e cobertura do solo disponibilizadas pelo SFB para apoiar análises de regularização ambiental no SICAR.",
+    "research_areas": "Environmental management | Environmental science | Geospatial data",
+    "keywords": "SICAR | CAR | regularização ambiental | land use | land cover | reference data",
+    "geographic_coverage": "Brasil — estados com bases de uso e cobertura do solo disponibilizadas; cobertura, data e versão variam por UF",
+    "covers_brazil": "sim",
+    "spatial_support": "classe/feição de uso e cobertura do solo em base estadual",
+    "spatial_resolution": "varia por UF, produto de origem e processamento; consultar metadados",
+    "temporal_coverage": "bases correntes por UF; conjunto criado em 2025 e atualizado no portal em 01/07/2026",
+    "temporal_resolution": "por versão/base estadual",
+    "update_frequency": "conforme atualização das bases de referência",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; portal atualizado em 01/07/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/base-de-referencia-car-uso-do-solo",
+    "methodology_url": "https://dados.florestal.gov.br/dataset/base-de-referencia-car-uso-do-solo",
+    "primary_or_derived": "derivado",
+    "limitations": "Não é uma série nacional homogênea de cobertura e uso da terra. Origem, data, legenda, resolução e método podem variar por UF; a base apoia análise administrativa e não substitui validação de campo nem prova automaticamente conformidade ambiental.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0109",
+      "resource_name": "Cadastro Ambiental Rural e Regularização Ambiental Rural — SFB",
+      "acronym": "SICAR/CAR",
+      "official_identity": "Sistema Nacional de Cadastro Ambiental Rural e instrumentos públicos de regularização ambiental rural",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/regularizacao-ambiental",
+      "data_access_url": "https://consulta.car.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000467",
+        "product_id": "DP000444",
+        "distribution_name": "SICAR — Uso e Cobertura do Solo — bases estaduais e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/base-de-referencia-car-uso-do-solo",
+        "format": "link | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF/recurso publicado",
+        "notes": "Recursos são organizados por UF; não generalizar legenda, resolução, ano ou formato entre estados sem verificar a base de origem.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "link | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000445",
+    "resource_id": "DR0109",
+    "product_name": "Regularização Ambiental — Base de Referência de Servidão Administrativa por Estado — SICAR/SFB",
+    "product_acronym": "SICAR Ref. Servidão",
+    "product_family": "SICAR — bases de referência para regularização ambiental",
+    "product_kind": "dataset_series",
+    "product_description": "Bases estaduais de referência de servidão administrativa disponibilizadas pelo SFB para apoiar as análises da regularização ambiental de imóveis inscritos no SICAR.",
+    "research_areas": "Environmental management | Environmental science | Geospatial data",
+    "keywords": "SICAR | CAR | regularização ambiental | servidão administrativa | infrastructure | reference data",
+    "geographic_coverage": "Brasil — estados com bases de servidão administrativa disponibilizadas; cobertura e versão variam por UF",
+    "covers_brazil": "sim",
+    "spatial_support": "feição de servidão administrativa/base estadual",
+    "spatial_resolution": "varia por UF e dado de origem; consultar metadados",
+    "temporal_coverage": "bases correntes por UF; conjunto criado em 2025 e atualizado no portal em 08/12/2025",
+    "temporal_resolution": "por versão/base estadual",
+    "update_frequency": "conforme atualização das bases de referência",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; portal atualizado em 08/12/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.florestal.gov.br/dataset/base-de-referencia-car-servidao-administrativa",
+    "methodology_url": "https://dados.florestal.gov.br/dataset/base-de-referencia-car-servidao-administrativa",
+    "primary_or_derived": "derivado",
+    "limitations": "A base apoia análises do SICAR e depende das fontes administrativas incorporadas em cada UF. Ausência de feição não prova inexistência jurídica de servidão, e presença na base não substitui documentação ou decisão administrativa aplicável ao imóvel.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0109",
+      "resource_name": "Cadastro Ambiental Rural e Regularização Ambiental Rural — SFB",
+      "acronym": "SICAR/CAR",
+      "official_identity": "Sistema Nacional de Cadastro Ambiental Rural e instrumentos públicos de regularização ambiental rural",
+      "homepage_url": "https://www.gov.br/florestal/pt-br/assuntos/regularizacao-ambiental",
+      "data_access_url": "https://consulta.car.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000468",
+        "product_id": "DP000445",
+        "distribution_name": "SICAR — Servidão Administrativa — bases estaduais e metadados",
+        "access_url": "https://dados.florestal.gov.br/dataset/base-de-referencia-car-servidao-administrativa",
+        "format": "link | PDF",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF/recurso publicado",
+        "notes": "Recursos estaduais funcionam como bases de referência administrativas; cobertura e formato variam conforme UF e fonte de origem.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "link | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
   }
 ]
