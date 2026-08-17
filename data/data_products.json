@@ -18920,5 +18920,359 @@
     "available_protocols": [
       "HTTPS / SIDRA"
     ]
+  },
+  {
+    "product_id": "DP000319",
+    "resource_id": "DR0101",
+    "product_name": "Sistema de Contas Nacionais — Brasil 2023",
+    "product_acronym": "SCN 2023",
+    "product_family": "Sistema de Contas Nacionais anual",
+    "product_kind": "dataset_series",
+    "product_description": "Sistema anual integrado sobre geração, distribuição e uso da renda, acumulação e relações com o resto do mundo, com Tabelas de Recursos e Usos, Contas Econômicas Integradas e tabelas sinóticas atualizadas até 2023.",
+    "research_areas": "Economics | Macroeconomics | Economic geography | Public policy",
+    "keywords": "SCN | PIB | renda | TRU | CEI | formação bruta de capital | contas nacionais",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "economia nacional | atividades e produtos",
+    "spatial_resolution": "Brasil; detalhamento por atividade/produto conforme tabela",
+    "temporal_coverage": "séries principais 2000–2023; algumas séries começam antes",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "referência 2010; resultados 2023 publicados em 2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9052-sistema-de-contas-nacionais-brasil.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9052-sistema-de-contas-nacionais-brasil.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Sistema síntese derivado de múltiplas pesquisas e registros administrativos. PIB e agregados macroeconômicos não equivalem a medidas de bem-estar, distribuição, impacto ambiental ou sustentabilidade. Revisões de referência e benchmarking devem ser preservados.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0101",
+      "resource_name": "Contas Nacionais — IBGE",
+      "acronym": "Contas Nacionais IBGE",
+      "official_identity": "Família institucional de sistemas de contas nacionais, regionais e municipais do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000340",
+        "product_id": "DP000319",
+        "distribution_name": "SCN 2023 — tabelas e publicações",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9052-sistema-de-contas-nacionais-brasil.html",
+        "format": "XLS | ODS | PDF | HTML",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "aberto; selecionar tabelas/publicações da edição",
+        "license": "não determinada especificamente para os arquivos",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tabela, atividade, produto e agregado",
+        "notes": "Inclui tabelas sinóticas, TRU, CEI e publicações; observar revisão e ano de referência.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000320",
+    "resource_id": "DR0101",
+    "product_name": "Sistema de Contas Nacionais Trimestrais — 1º trimestre de 2026",
+    "product_acronym": "SCNT 1T2026",
+    "product_family": "Contas Nacionais Trimestrais",
+    "product_kind": "dataset_series",
+    "product_description": "Sistema trimestral com valores correntes e índices de volume para PIB, valor adicionado, impostos, consumo, formação de capital, estoques, exportações e importações, incluindo séries com e sem ajuste sazonal.",
+    "research_areas": "Economics | Macroeconomics | Time series | Public policy",
+    "keywords": "SCNT | PIB trimestral | volume | ajuste sazonal | consumo | investimento | exportações | importações",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "economia nacional | atividades e componentes da demanda",
+    "spatial_resolution": "Brasil; atividades e componentes macroeconômicos",
+    "temporal_coverage": "séries trimestrais históricas; edição materialmente verificada: 1º trimestre de 2026",
+    "temporal_resolution": "trimestral",
+    "update_frequency": "trimestral",
+    "product_status": "ativo",
+    "version_or_collection": "1º trimestre de 2026; SNA 2008; benchmarking com SCN anual",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/servicos/9300-contas-nacionais-trimestrais.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/servicos/9300-contas-nacionais-trimestrais.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Estimativas trimestrais são sujeitas a revisão, ajuste sazonal e benchmarking aos totais anuais. Variações trimestrais dependem da série e comparação escolhida e não devem ser interpretadas como medida direta de bem-estar ou sustentabilidade.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0101",
+      "resource_name": "Contas Nacionais — IBGE",
+      "acronym": "Contas Nacionais IBGE",
+      "official_identity": "Família institucional de sistemas de contas nacionais, regionais e municipais do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000341",
+        "product_id": "DP000320",
+        "distribution_name": "SCNT — séries e tabelas trimestrais",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/servicos/9300-contas-nacionais-trimestrais.html",
+        "format": "XLS | ODS | SIDRA | HTML",
+        "access_protocol": "HTTPS | SIDRA",
+        "access_tool": "navegador web | SIDRA",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "aberto; selecionar série, trimestre e ajuste sazonal apropriados",
+        "license": "não determinada especificamente para os arquivos",
+        "provider_attribution_required": "sim",
+        "subset_support": "por trimestre, atividade, componente e tipo de série",
+        "notes": "Séries incluem valores correntes, índices de volume e séries com/sem ajuste sazonal; são sujeitas a revisão.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS | SIDRA | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS | SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000321",
+    "resource_id": "DR0101",
+    "product_name": "Sistema de Contas Regionais — Brasil 2023",
+    "product_acronym": "SCR 2023",
+    "product_family": "Contas Regionais",
+    "product_kind": "dataset_series",
+    "product_description": "Estimativas do PIB de cada Unidade da Federação pelas óticas da produção e da renda, coerentes entre si e compatíveis com o Sistema de Contas Nacionais.",
+    "research_areas": "Economics | Economic geography | Regional development | Public policy",
+    "keywords": "contas regionais | PIB estadual | valor adicionado | renda | UF | regiões",
+    "geographic_coverage": "Brasil; Grandes Regiões e 27 Unidades da Federação",
+    "covers_brazil": "sim",
+    "spatial_support": "Unidade da Federação",
+    "spatial_resolution": "UF; agregações por Grandes Regiões e Brasil",
+    "temporal_coverage": "série referência 2010 com resultados 2010–2023; tabelas também apresentam encadeamentos anteriores",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "resultados 2023; referência 2010",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9054-contas-regionais-do-brasil.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9054-contas-regionais-do-brasil.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Estimativas regionais são compatibilizadas ao SCN e sujeitas a revisões. PIB estadual não representa renda domiciliar, qualidade ambiental ou bem-estar e comparações históricas devem observar revisões de ano de referência.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0101",
+      "resource_name": "Contas Nacionais — IBGE",
+      "acronym": "Contas Nacionais IBGE",
+      "official_identity": "Família institucional de sistemas de contas nacionais, regionais e municipais do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000342",
+        "product_id": "DP000321",
+        "distribution_name": "SCR 2023 — tabelas completas",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9054-contas-regionais-do-brasil.html",
+        "format": "XLS | ODS | TXT | PDF",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "aberto; selecionar conta, série e UF",
+        "license": "não determinada especificamente para os arquivos",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF, atividade e tabela",
+        "notes": "Inclui Conta da Produção e tabelas especiais; versões e séries devem ser preservadas.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS | TXT | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000322",
+    "resource_id": "DR0101",
+    "product_name": "Produto Interno Bruto dos Municípios — 2022–2023",
+    "product_acronym": "PIB dos Municípios 2022–2023",
+    "product_family": "PIB municipal",
+    "product_kind": "dataset_series",
+    "product_description": "Estimativas anuais do PIB municipal, PIB per capita e valores adicionados da Agropecuária, Indústria, Serviços e Administração pública, compatíveis com Contas Regionais e Nacionais.",
+    "research_areas": "Economics | Economic geography | Regional development | Public policy",
+    "keywords": "PIB municipal | valor adicionado | agropecuária | indústria | serviços | município",
+    "geographic_coverage": "Brasil; municípios",
+    "covers_brazil": "sim",
+    "spatial_support": "município",
+    "spatial_resolution": "município; agregações nacionais e regionais conforme tabela",
+    "temporal_coverage": "base 2002–2009 e série 2010–2023; publicação conjunta 2022–2023",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "referência 2010; resultados 2022–2023; Nota Técnica 01/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9088-produto-interno-bruto-dos-municipios.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9088-produto-interno-bruto-dos-municipios.html",
+    "primary_or_derived": "derivado",
+    "limitations": "PIB municipal é uma estimativa agregada compatibilizada com os sistemas regional e nacional; não mede renda dos residentes, informalidade integral, bem-estar ou impacto ambiental local. Comparações exigem observar revisões metodológicas e territoriais.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0101",
+      "resource_name": "Contas Nacionais — IBGE",
+      "acronym": "Contas Nacionais IBGE",
+      "official_identity": "Família institucional de sistemas de contas nacionais, regionais e municipais do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000343",
+        "product_id": "DP000322",
+        "distribution_name": "PIB dos Municípios 2022–2023 — base, tabelas e mapa interativo",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9088-produto-interno-bruto-dos-municipios.html",
+        "format": "XLSX | ODS | TXT | SIDRA | HTML",
+        "access_protocol": "HTTPS | SIDRA",
+        "access_tool": "navegador web | SIDRA | mapa interativo",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "aberto; selecionar ano, município e componente",
+        "license": "não determinada especificamente para os arquivos",
+        "provider_attribution_required": "sim",
+        "subset_support": "por município, ano e componente do PIB",
+        "notes": "Base 2010–2023 e tabelas 2022–2023 disponíveis; não confundir estimativas agregadas com renda individual.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | TXT | SIDRA | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS | SIDRA"
+    ]
+  },
+  {
+    "product_id": "DP000323",
+    "resource_id": "DR0101",
+    "product_name": "Matriz de Insumo-Produto Brasil 2015",
+    "product_acronym": "MIP 2015",
+    "product_family": "Matriz de Insumo-Produto",
+    "product_kind": "dataset_series",
+    "product_description": "Matriz derivada das Tabelas de Recursos e Usos que descreve interligações setoriais da economia brasileira e permite analisar coeficientes técnicos e impactos de variações da demanda final.",
+    "research_areas": "Economics | Industrial ecology | Input-output analysis | Sustainability science",
+    "keywords": "matriz insumo-produto | input-output | coeficientes técnicos | demanda final | estrutura produtiva",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "economia nacional | atividades e produtos",
+    "spatial_resolution": "Brasil; matrizes por atividades e produtos conforme plano tabular",
+    "temporal_coverage": "ano de referência 2015",
+    "temporal_resolution": "ano de referência",
+    "update_frequency": "eventual",
+    "product_status": "ativo",
+    "version_or_collection": "MIP Brasil 2015, publicada em 2018",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9085-.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9085-.html",
+    "primary_or_derived": "derivado",
+    "limitations": "A MIP 2015 representa a estrutura produtiva do ano de referência 2015 e não deve ser tratada como estrutura tecnológica contemporânea sem atualização. Resultados de multiplicadores dependem das hipóteses do modelo insumo-produto.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0101",
+      "resource_name": "Contas Nacionais — IBGE",
+      "acronym": "Contas Nacionais IBGE",
+      "official_identity": "Família institucional de sistemas de contas nacionais, regionais e municipais do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000344",
+        "product_id": "DP000323",
+        "distribution_name": "MIP Brasil 2015 — publicação e plano tabular",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9085-.html",
+        "format": "XLS | ODS | PDF | HTML",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "aberto; utilizar matrizes e documentação metodológica conjuntamente",
+        "license": "não determinada especificamente para os arquivos",
+        "provider_attribution_required": "sim",
+        "subset_support": "por matriz, atividade e produto",
+        "notes": "Ano de referência 2015; modelo derivado das TRU e hipóteses de coeficientes técnicos devem ser preservadas.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLS | ODS | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000324",
+    "resource_id": "DR0102",
+    "product_name": "Estatísticas de Finanças Públicas e Conta Intermediária de Governo — Brasil 2024",
+    "product_acronym": "EFP/CIG 2024",
+    "product_family": "Finanças públicas e contas de governo",
+    "product_kind": "dataset_series",
+    "product_description": "Estatísticas anuais harmonizadas sobre receitas, despesas, ativos, passivos e necessidade de financiamento do Governo Geral, articuladas à Conta Intermediária de Governo e produzidas pelo IBGE com STN e Banco Central.",
+    "research_areas": "Economics | Public finance | Public policy | Macroeconomics",
+    "keywords": "finanças públicas | governo geral | receita | despesa | financiamento | GFSM 2014 | SNA 2008",
+    "geographic_coverage": "Brasil; governo central, governos estaduais e municipais no conceito de governo geral",
+    "covers_brazil": "sim",
+    "spatial_support": "esferas e subsetores do governo geral",
+    "spatial_resolution": "Brasil; níveis de governo conforme demonstrativo",
+    "temporal_coverage": "série anual; edição materialmente verificada: 2024",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "Brasil 2024, publicado em 2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/financas-publicas/9083-estatisticas-de-financas-publicas-e-conta-intermediaria-de-governo.html",
+    "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/financas-publicas/9083-estatisticas-de-financas-publicas-e-conta-intermediaria-de-governo.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Resultados harmonizados no escopo do Governo Geral não substituem estatísticas fiscais do Tesouro Nacional ou Banco Central, que podem adotar conceitos próprios. Comparações exigem preservar GFSM/SNA, consolidação e revisões.",
+    "last_verified": "2026-08-17",
+    "source": {
+      "resource_id": "DR0102",
+      "resource_name": "Finanças Públicas — IBGE",
+      "acronym": "Finanças Públicas IBGE",
+      "official_identity": "Família institucional de estatísticas de finanças públicas e conta intermediária de governo do IBGE",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/financas-publicas.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/financas-publicas.html"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000345",
+        "product_id": "DP000324",
+        "distribution_name": "EFP/CIG 2024 — demonstrativos e publicação",
+        "access_url": "https://www.ibge.gov.br/estatisticas/economicas/financas-publicas/9083-estatisticas-de-financas-publicas-e-conta-intermediaria-de-governo.html",
+        "format": "XLSX | ODS | PDF | HTML",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "aberto; interpretar segundo GFSM 2014, SNA 2008 e notas técnicas",
+        "license": "não determinada especificamente para os arquivos",
+        "provider_attribution_required": "sim",
+        "subset_support": "por demonstrativo e esfera/componente do governo geral",
+        "notes": "Conta Intermediária de Governo e demonstrativos 2024; não substituir por séries fiscais de outras instituições sem reconciliação conceitual.",
+        "last_verified": "2026-08-17"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
   }
 ]
