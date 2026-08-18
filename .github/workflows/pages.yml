@@ -37,7 +37,37 @@ jobs:
           end = src.index("\n          PY", start)
           block = src[start:end]
           block = '\n'.join(line[10:] if line.startswith('          ') else line for line in block.splitlines())
-          Path('/tmp/append_big_mosaics.py').write_text(block + '\n')
+          out=[]
+          for line in block.splitlines():
+              if "product_id='DP000711'" in line:
+                  line=line.replace("product_description='Mosaico Landsat-8/OLI do estado de São Paulo a 30 m, em cor verdadeira, composto por LCF para o período maio–outubro de 2013.'", "product_description='Coleção de mosaicos Landsat do estado de São Paulo a 30 m, composta em janelas semestrais pelo critério Least Cloud Cover First a partir de produtos Landsat Level-2.'")
+                  line=line.replace("temporal_coverage='maio–outubro de 2013'", "temporal_coverage='2013–2023 conforme coleção STAC atual'")
+                  line=line.replace("update_frequency='produto histórico'", "update_frequency='conforme coleção'")
+                  line=line.replace("version_or_collection='Landsat 6M São Paulo State Mosaic'", "version_or_collection='mosaic-landsat-sp-6m-1 v1'")
+                  line=line.replace("product_page_url='https://data.inpe.br/dados/landsat/'", "product_page_url='https://data.inpe.br/stac/browser/collections/mosaic-landsat-sp-6m-1'")
+                  line=line.replace("limitations='Produto histórico de composição temporal. A cobertura de seis meses e o LCF impedem interpretar o mosaico como fotografia de uma única data ou como série de uso da terra.'", "limitations='Cada mosaico semestral combina pixels de diferentes datas; a coleção STAC atual abrange múltiplas plataformas Landsat e não representa aquisição sinótica, mapa temático de uso da terra ou série independente das cenas Level-2 de origem.'")
+              if "distribution_id='DD000741'" in line:
+                  line=line.replace("access_url='https://data.inpe.br/dados/landsat/'", "access_url='https://data.inpe.br/bdc/stac/v1/collections/mosaic-landsat-sp-6m-1'")
+                  line=line.replace("format='Cloud Optimized GeoTIFF / visualização WMS'", "format='Cloud Optimized GeoTIFF + PNG thumbnail'")
+                  line=line.replace("access_protocol='HTTPS / OGC WMS'", "access_protocol='STAC API / HTTPS range requests'")
+                  line=line.replace("access_tool='navegador | GIS'", "access_tool='cliente STAC | GIS | Python'")
+                  line=line.replace("access_conditions='produto histórico; acesso descrito na página Landsat/BIG'", "access_conditions='consulta por período/item/asset da coleção STAC'")
+                  line=line.replace("license='verificar termos do produto'", "license='proprietary; seguir aviso legal Landsat/USGS indicado pela coleção STAC'")
+                  line=line.replace("subset_support='visualização/recorte conforme serviço'", "subset_support='por período, item e asset'")
+                  line=line.replace("notes='Mosaico estadual de maio–outubro de 2013.'", "notes='Coleção de mosaicos semestrais do estado de São Paulo; a extensão temporal corrente no STAC alcança 2013–2023.'")
+              if "product_id='DP000712'" in line:
+                  line=line.replace("version_or_collection='mosaic-cbers4a-paraiba-3m'", "version_or_collection='mosaic-cbers4a-paraiba-3m-1 v1'")
+                  line=line.replace("product_page_url='https://data.inpe.br/bdc/mosaico-cbers-4a-paraiba/'", "product_page_url='https://data.inpe.br/stac/browser/collections/mosaic-cbers4a-paraiba-3m-1'")
+              if "distribution_id='DD000742'" in line:
+                  line=line.replace("access_url='https://data.inpe.br/bdc/mosaico-cbers-4a-paraiba/'", "access_url='https://data.inpe.br/bdc/stac/v1/collections/mosaic-cbers4a-paraiba-3m-1'")
+                  line=line.replace("format='GeoTIFF 8-bit / visualização WMS'", "format='Cloud Optimized GeoTIFF + PNG thumbnail'")
+                  line=line.replace("access_protocol='HTTPS / OGC WMS'", "access_protocol='STAC API / HTTPS range requests'")
+                  line=line.replace("access_tool='navegador | GIS'", "access_tool='cliente STAC | GIS | Python'")
+                  line=line.replace("access_conditions='produto histórico; WMS layer mosaic-cbers4a-paraiba-3m'", "access_conditions='consulta por coleção/item/asset'")
+                  line=line.replace("license='CC BY-NC 3.0 conforme página temática BDC'", "license='CC BY 4.0 conforme coleção STAC atual'")
+                  line=line.replace("subset_support='visualização por área via WMS'", "subset_support='por item e asset'")
+              out.append(line)
+          Path('/tmp/append_big_mosaics.py').write_text('\n'.join(out) + '\n')
           PY
           python3 /tmp/append_big_mosaics.py
           python3 scripts/validate_brazil_scope.py
