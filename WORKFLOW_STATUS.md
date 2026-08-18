@@ -52,11 +52,11 @@ As contagens são observacionais e podem crescer; não são gates de arquitetura
 
 ### Documentação
 
-**EM ALINHAMENTO NESTE PACOTE.** Documentos que ainda descreviam o antigo estágio de 51 fontes, a migração 0.8/38 campos ou o PostgreSQL/PostGIS como destino da Vitrine estão sendo substituídos por documentação compatível com o produto atual. Arquitetura relacional do Simbiotrama permanece apenas como histórico/proveniência neste repositório.
+**CONSOLIDADO EM 18/08/2026.** A documentação ativa foi alinhada ao catálogo corrente e à separação estrutural da Vitrine. Materiais que descrevem o antigo baseline de 51 fontes, migração 0.8/38 campos, PostgreSQL/PostGIS, Instância 1, Simbiotrama ou Simbioscópio permanecem somente como histórico/proveniência quando ainda preservados na árvore ou no histórico Git.
 
 ### Drive
 
-**DERIVADO / NÃO SINCRONIZADO.** O workbook histórico do Drive não representa o estado completo de `main`. Ele não deve ser chamado de sincronizado até ser regenerado e comparado contra as três tabelas canônicas do snapshot-fonte.
+**DERIVADO / NÃO SINCRONIZADO.** O workbook histórico do Drive não representa o estado completo de `main`. Ele não deve ser chamado de sincronizado até ser regenerado e comparado contra as três tabelas canônicas do snapshot-fonte. Os documentos operacionais vivos do Drive foram realinhados ao estado atual.
 
 ### Release e DOI
 
