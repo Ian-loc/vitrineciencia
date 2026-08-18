@@ -1,0 +1,16 @@
+name: Dispatch CPTEC curator on PR
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+permissions:
+  actions: write
+  contents: read
+jobs:
+  dispatch:
+    if: startsWith(github.head_ref, 'tmp/cptec-dispatch-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch curator
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run curate_cptec_batch_20260818.yml --repo ${{ github.repository }}
