@@ -32684,5 +32684,359 @@
     "available_protocols": [
       "HTTPS | FTP conforme coleção"
     ]
+  },
+  {
+    "product_id": "DP000551",
+    "resource_id": "DR0119",
+    "product_name": "CPTEC/INPE — DSAT — visualização interativa GOES-19",
+    "product_acronym": "DSAT",
+    "product_family": "imagens de satélite meteorológico geoestacionário",
+    "product_kind": "data_service",
+    "product_description": "Aplicação da DISSM/INPE para visualização interativa, animação e análise de imagens e produtos de satélites meteorológicos geoestacionários, atualmente com foco no GOES-Leste/GOES-19.",
+    "research_areas": "Clima e Ciências Atmosféricas | Sensoriamento Remoto | Infraestruturas e Ciência de Dados",
+    "keywords": "GOES-19 | ABI | satélite meteorológico | imagens | TMS | nuvens | monitoramento",
+    "geographic_coverage": "Américas e domínios cobertos pelos produtos GOES-Leste; inclui Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "pixel/imagem raster e camadas derivadas",
+    "spatial_resolution": "varia por canal e produto; interface oferece níveis de visualização de 16 km a 500 m",
+    "temporal_coverage": "acervo e operação corrente; GOES-19 operacional desde 2025-04-07",
+    "temporal_resolution": "minutos a horas conforme canal/produto",
+    "update_frequency": "operacional conforme produto",
+    "product_status": "ativo",
+    "version_or_collection": "DSAT 1.0.0 / GOES-19 corrente em 2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://www.cptec.inpe.br/dsat/",
+    "methodology_url": "https://www.cptec.inpe.br/dsat/",
+    "primary_or_derived": "derivado",
+    "limitations": "Imagens, composições RGB e produtos derivados têm significados físicos e resoluções distintos. Temperatura de brilho não é temperatura da superfície; a visualização não substitui metadados do canal/produto. Uso comercial/reprodução depende de autorização expressa do CPTEC/INPE.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0119",
+      "resource_name": "Centro de Previsão de Tempo e Estudos Climáticos — CPTEC/INPE",
+      "acronym": "CPTEC/INPE",
+      "official_identity": "Centro de Previsão de Tempo e Estudos Climáticos do Instituto Nacional de Pesquisas Espaciais — INPE/MCTI",
+      "homepage_url": "https://www.cptec.inpe.br/",
+      "data_access_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000576",
+        "product_id": "DP000551",
+        "distribution_name": "CPTEC — DSAT GOES-19",
+        "access_url": "https://www.cptec.inpe.br/dsat/",
+        "format": "visualização web | imagens | animações | TMS",
+        "access_protocol": "HTTPS | TMS",
+        "access_tool": "DSAT",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; reprodução/uso comercial sujeitos aos termos CPTEC/INPE",
+        "license": "termos CPTEC/INPE; conteúdo do site com restrições adicionais",
+        "provider_attribution_required": "sim",
+        "subset_support": "por data | produto | overlay | intervalo temporal",
+        "notes": "GOES-19 é o satélite operacional atual; canais/produtos têm resoluções e interpretações próprias.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "visualização web | imagens | animações | TMS"
+    ],
+    "available_protocols": [
+      "HTTPS | TMS"
+    ]
+  },
+  {
+    "product_id": "DP000552",
+    "resource_id": "DR0119",
+    "product_name": "CPTEC/INPE — Produtos de Satélites e Sensores Ambientais — DISSM",
+    "product_acronym": "DISSM Satélite",
+    "product_family": "produtos ambientais derivados de satélites e radares",
+    "product_kind": "federated_catalog",
+    "product_description": "Catálogo operacional da DISSM/CPTEC com classificação de nuvens, eletricidade atmosférica, índice UV, nevoeiro, oceanografia por satélite, precipitação por radar e satélite, radiação solar, sistemas convectivos e ventos derivados de nuvens.",
+    "research_areas": "Clima e Ciências Atmosféricas | Sensoriamento Remoto | Ciências Ambientais e Ecologia",
+    "keywords": "satélite | radar | precipitação | UV | nuvens | TSM | radiação solar | GLM | ForTraCC | vento",
+    "geographic_coverage": "Brasil, América do Sul e domínios instrumentais conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "imagens raster, campos derivados e visualizações",
+    "spatial_resolution": "varia por sensor, algoritmo e produto",
+    "temporal_coverage": "operações correntes e acervos por produto",
+    "temporal_resolution": "minutos a diário conforme produto",
+    "update_frequency": "operacional conforme produto",
+    "product_status": "ativo",
+    "version_or_collection": "catálogo DISSM corrente 2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://satelite.cptec.inpe.br/",
+    "methodology_url": "https://satelite.cptec.inpe.br/",
+    "primary_or_derived": "agregador",
+    "limitations": "Catálogo reúne produtos heterogêneos. Precipitação por satélite/radar, TSM, radiação, UV, eletricidade e classificação de nuvens não são variáveis intercambiáveis; registrar algoritmo, sensor, resolução, instante e domínio do produto usado.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0119",
+      "resource_name": "Centro de Previsão de Tempo e Estudos Climáticos — CPTEC/INPE",
+      "acronym": "CPTEC/INPE",
+      "official_identity": "Centro de Previsão de Tempo e Estudos Climáticos do Instituto Nacional de Pesquisas Espaciais — INPE/MCTI",
+      "homepage_url": "https://www.cptec.inpe.br/",
+      "data_access_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000577",
+        "product_id": "DP000552",
+        "distribution_name": "CPTEC — portal DISSM de produtos de satélite e sensores",
+        "access_url": "https://satelite.cptec.inpe.br/",
+        "format": "imagens | mapas | downloads conforme produto",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal DISSM",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; downloads dependem do produto",
+        "license": "termos CPTEC/INPE; verificar produto específico",
+        "provider_attribution_required": "sim",
+        "subset_support": "por produto | data | domínio",
+        "notes": "Catálogo agrega produtos distintos de satélite, radar e algoritmos derivados.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "imagens | mapas | downloads conforme produto"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000553",
+    "resource_id": "DR0119",
+    "product_name": "CPTEC/INPE — Monitoramento Climático da América do Sul",
+    "product_acronym": "Monitoramento Climático AS",
+    "product_family": "monitoramento climático observado",
+    "product_kind": "data_service",
+    "product_description": "Portal de monitoramento climático do CPTEC para América do Sul com dados diários, mensais, climatologia trimestral e índices, incluindo mapas de precipitação e temperatura e outros campos selecionáveis.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "monitoramento climático | precipitação | temperatura | climatologia | índices | América do Sul",
+    "geographic_coverage": "América do Sul, incluindo Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "grade/mapa derivado e dados agregados",
+    "spatial_resolution": "varia por campo e fonte subjacente",
+    "temporal_coverage": "períodos históricos e operação corrente conforme campo",
+    "temporal_resolution": "diária | mensal | trimestral conforme opção",
+    "update_frequency": "operacional",
+    "product_status": "ativo",
+    "version_or_collection": "portal corrente 2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://clima.cptec.inpe.br/monitoramentobrasil/pt",
+    "methodology_url": "https://www.cptec.inpe.br/faq/como-acessar-os-dados-da-pagina-de-clima-no-site-do-cptec/",
+    "primary_or_derived": "derivado",
+    "limitations": "Mapas e índices combinam fontes e processamentos distintos. Anomalia ou climatologia não é valor observado bruto; para análise quantitativa preservar campo, período, fonte e método de geração.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0119",
+      "resource_name": "Centro de Previsão de Tempo e Estudos Climáticos — CPTEC/INPE",
+      "acronym": "CPTEC/INPE",
+      "official_identity": "Centro de Previsão de Tempo e Estudos Climáticos do Instituto Nacional de Pesquisas Espaciais — INPE/MCTI",
+      "homepage_url": "https://www.cptec.inpe.br/",
+      "data_access_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000578",
+        "product_id": "DP000553",
+        "distribution_name": "CPTEC — Monitoramento Climático América do Sul",
+        "access_url": "https://clima.cptec.inpe.br/monitoramentobrasil/pt",
+        "format": "mapas | dados diários/mensais | índices",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal Clima CPTEC",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública",
+        "license": "CC BY-ND 3.0 Unported no conteúdo do site",
+        "provider_attribution_required": "sim",
+        "subset_support": "por campo | data | período | índice",
+        "notes": "Dados e mapas são derivados de fontes diversas; registrar campo e referência temporal.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas | dados diários/mensais | índices"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000554",
+    "resource_id": "DR0119",
+    "product_name": "CPTEC/INPE — Monitoramento Climático Global",
+    "product_acronym": "Monitoramento Global CPTEC",
+    "product_family": "monitoramento climático global",
+    "product_kind": "data_service",
+    "product_description": "Portal de monitoramento global do CPTEC com dados mensais e produtos como anomalias e tendências de temperatura da superfície do mar, oscilações intrassazonais e posição da ZCIT por radiação de onda longa.",
+    "research_areas": "Clima e Ciências Atmosféricas | Recursos Hídricos e Oceanografia | Infraestruturas e Ciência de Dados",
+    "keywords": "monitoramento global | TSM | anomalia | tendência | ZCIT | ROL | oscilação intrassazonal",
+    "geographic_coverage": "global",
+    "covers_brazil": "sim",
+    "spatial_support": "grade/mapa e séries/índices derivados",
+    "spatial_resolution": "varia por campo e produto",
+    "temporal_coverage": "histórico e operação corrente conforme produto",
+    "temporal_resolution": "semanal | mensal conforme produto",
+    "update_frequency": "operacional",
+    "product_status": "ativo",
+    "version_or_collection": "portal corrente 2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://clima.cptec.inpe.br/monitoramentoglobal/pt",
+    "methodology_url": "https://clima.cptec.inpe.br/monitoramentoglobal/pt",
+    "primary_or_derived": "derivado",
+    "limitations": "Produtos são derivados e possuem domínios, climatologias e fontes próprias. TSM não equivale a temperatura do ar e anomalias dependem da referência climatológica adotada.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0119",
+      "resource_name": "Centro de Previsão de Tempo e Estudos Climáticos — CPTEC/INPE",
+      "acronym": "CPTEC/INPE",
+      "official_identity": "Centro de Previsão de Tempo e Estudos Climáticos do Instituto Nacional de Pesquisas Espaciais — INPE/MCTI",
+      "homepage_url": "https://www.cptec.inpe.br/",
+      "data_access_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000579",
+        "product_id": "DP000554",
+        "distribution_name": "CPTEC — Monitoramento Climático Global",
+        "access_url": "https://clima.cptec.inpe.br/monitoramentoglobal/pt",
+        "format": "mapas | séries | índices",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal Clima CPTEC",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública",
+        "license": "CC BY-ND 3.0 Unported no conteúdo do site",
+        "provider_attribution_required": "sim",
+        "subset_support": "por campo | mês | produto",
+        "notes": "Inclui TSM, anomalias, tendências e outros diagnósticos; metodologias variam.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas | séries | índices"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000555",
+    "resource_id": "DR0119",
+    "product_name": "CPTEC/INPE — Monitoramento El Niño–Oscilação Sul — ENOS",
+    "product_acronym": "ENOS CPTEC",
+    "product_family": "monitoramento e diagnóstico ENOS",
+    "product_kind": "indicator_family",
+    "product_description": "Portal temático do CPTEC para monitoramento do ENOS com índices oceânicos e atmosféricos, anomalias de TSM, evolução temporal, diagnóstico e informação sobre El Niño e La Niña.",
+    "research_areas": "Clima e Ciências Atmosféricas | Recursos Hídricos e Oceanografia | Ciências Ambientais e Ecologia",
+    "keywords": "ENOS | El Niño | La Niña | ONI | SOI | Niño 3.4 | TSM | Pacífico Equatorial",
+    "geographic_coverage": "Pacífico Equatorial e sínteses de impactos globais e no Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "regiões oceânicas de índices, mapas e séries temporais",
+    "spatial_resolution": "definida por cada índice/campo; não é uma grade única",
+    "temporal_coverage": "histórico e monitoramento corrente conforme produto",
+    "temporal_resolution": "semanal | mensal | trimestral conforme índice",
+    "update_frequency": "operacional/irregular conforme produto",
+    "product_status": "ativo",
+    "version_or_collection": "portal ENOS corrente; conteúdos com datas próprias",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://enos.cptec.inpe.br/",
+    "methodology_url": "https://enos.cptec.inpe.br/",
+    "primary_or_derived": "derivado",
+    "limitations": "ENOS é fenômeno acoplado diagnosticado por múltiplos indicadores. Um índice isolado ou uma anomalia pontual de TSM não deve ser interpretado como classificação definitiva do episódio; preservar período e critério do índice.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0119",
+      "resource_name": "Centro de Previsão de Tempo e Estudos Climáticos — CPTEC/INPE",
+      "acronym": "CPTEC/INPE",
+      "official_identity": "Centro de Previsão de Tempo e Estudos Climáticos do Instituto Nacional de Pesquisas Espaciais — INPE/MCTI",
+      "homepage_url": "https://www.cptec.inpe.br/",
+      "data_access_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000580",
+        "product_id": "DP000555",
+        "distribution_name": "CPTEC — portal El Niño e La Niña / ENOS",
+        "access_url": "https://enos.cptec.inpe.br/",
+        "format": "mapas | gráficos | séries | notas/diagnósticos",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal ENOS CPTEC",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; disponibilidade varia por componente",
+        "license": "termos CPTEC/INPE; verificar conteúdo específico",
+        "provider_attribution_required": "sim",
+        "subset_support": "por índice | região Niño | período | produto",
+        "notes": "Classificação ENOS requer critérios temporais e múltiplos indicadores; não inferir fase a partir de um único mapa.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas | gráficos | séries | notas/diagnósticos"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000556",
+    "resource_id": "DR0119",
+    "product_name": "CPTEC/INPE — Previsão Numérica de Ondas — WAVEWATCH",
+    "product_acronym": "WWatch CPTEC",
+    "product_family": "previsão numérica oceânica de ondas",
+    "product_kind": "data_service",
+    "product_description": "Produto operacional de previsão oceânica do CPTEC baseado em WAVEWATCH, com campos de ondas no portal de previsão numérica e sínteses por localidades litorâneas também expostas pelos serviços XML.",
+    "research_areas": "Recursos Hídricos e Oceanografia | Clima e Ciências Atmosféricas | Infraestruturas e Ciência de Dados",
+    "keywords": "ondas | WAVEWATCH | WW3 | altura de onda | direção | vento | previsão oceânica",
+    "geographic_coverage": "domínio oceânico do modelo e localidades litorâneas brasileiras cobertas",
+    "covers_brazil": "sim",
+    "spatial_support": "grade de modelo oceânico e síntese por localidade",
+    "spatial_resolution": "conforme configuração operacional WAVEWATCH",
+    "temporal_coverage": "previsão operacional corrente",
+    "temporal_resolution": "horária por horizonte; XML documenta até 6 dias e 8 horários/dia",
+    "update_frequency": "conforme ciclo operacional do modelo",
+    "product_status": "ativo",
+    "version_or_collection": "WWatch operacional corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://previsaonumerica.cptec.inpe.br/wwatch/alt_onda/bra/",
+    "methodology_url": "https://www3.cptec.inpe.br/dimnt/modelos-numericos/",
+    "primary_or_derived": "derivado",
+    "limitations": "Previsão de onda é saída modelada, não observação de boia. Resolução nominal e valor em localidade não implicam precisão costeira local; preservar ciclo, horizonte, variável e configuração do modelo.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0119",
+      "resource_name": "Centro de Previsão de Tempo e Estudos Climáticos — CPTEC/INPE",
+      "acronym": "CPTEC/INPE",
+      "official_identity": "Centro de Previsão de Tempo e Estudos Climáticos do Instituto Nacional de Pesquisas Espaciais — INPE/MCTI",
+      "homepage_url": "https://www.cptec.inpe.br/",
+      "data_access_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000581",
+        "product_id": "DP000556",
+        "distribution_name": "CPTEC — WAVEWATCH / previsão de ondas",
+        "access_url": "https://previsaonumerica.cptec.inpe.br/wwatch/alt_onda/bra/",
+        "format": "mapas de modelo | XML por localidade",
+        "access_protocol": "HTTPS | XML",
+        "access_tool": "portal previsão numérica + serviço XML",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública conforme termos CPTEC/INPE",
+        "license": "termos CPTEC/INPE; atribuição obrigatória e restrições de uso comercial no portal",
+        "provider_attribution_required": "sim",
+        "subset_support": "por variável | domínio | ciclo | horizonte | localidade litorânea",
+        "notes": "Serviço XML também expõe previsão por localidade até 6 dias; a distribuição continua sendo previsão modelada.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas de modelo | XML por localidade"
+    ],
+    "available_protocols": [
+      "HTTPS | XML"
+    ]
   }
 ]
