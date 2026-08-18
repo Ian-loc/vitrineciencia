@@ -36578,5 +36578,654 @@
     "available_protocols": [
       "HTTPS / CKAN"
     ]
+  },
+  {
+    "product_id": "DP000617",
+    "resource_id": "DR0122",
+    "product_name": "Linhas de Transmissão da Rede de Operação",
+    "product_acronym": "Linhas de Transmissão ONS",
+    "product_family": "Cadastro operacional de transmissão",
+    "product_kind": "dataset_series",
+    "product_description": "Dados cadastrais das linhas de transmissão da Rede de Operação (Rede Básica + Rede Complementar) com tensão maior ou igual a 230 kV, incluindo subsistema, UF, agente proprietário, tensão e comprimento.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "linha de transmissão | Rede Básica | Rede Complementar | tensão | cadastro",
+    "geographic_coverage": "Brasil — Rede de Operação do SIN",
+    "covers_brazil": "sim",
+    "spatial_support": "linha de transmissão",
+    "spatial_resolution": "unidade cadastral por linha",
+    "temporal_coverage": "estado corrente; sem histórico no conjunto",
+    "temporal_resolution": "estado corrente",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "versão 1.1; conjunto corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/linha-transmissao",
+    "methodology_url": "https://dados.ons.org.br/dataset/linha-transmissao",
+    "primary_or_derived": "primário",
+    "limitations": "Cadastro corrente não é série histórica nem representa fluxo, carregamento, disponibilidade ou condição física da linha. O universo é a Rede de Operação definida pelo ONS.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000642",
+        "product_id": "DP000617",
+        "distribution_name": "Linhas de Transmissão da Rede de Operação — ONS Dados Abertos",
+        "access_url": "https://dados.ons.org.br/dataset/linha-transmissao",
+        "format": "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "Portal ONS Dados Abertos; recursos e API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "Acesso aberto; observar aviso legal e termos CC BY do conjunto.",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/recurso, período e agregação conforme conjunto",
+        "notes": "Distribuição oficial ONS. Usar o dicionário de dados e preservar definição, período, agregação, unidade, estado de consistência e eventuais revisões.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000618",
+    "resource_id": "DR0122",
+    "product_name": "Subestações da Rede de Operação",
+    "product_acronym": "Subestações ONS",
+    "product_family": "Cadastro operacional de transmissão",
+    "product_kind": "dataset_series",
+    "product_description": "Dados cadastrais das subestações em operação da Rede de Operação (Rede Básica + Rede Complementar) com tensão base maior ou igual a 69 kV.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "subestação | Rede Básica | Rede Complementar | tensão | cadastro",
+    "geographic_coverage": "Brasil — Rede de Operação do SIN",
+    "covers_brazil": "sim",
+    "spatial_support": "subestação",
+    "spatial_resolution": "unidade cadastral por subestação",
+    "temporal_coverage": "estado corrente; sem histórico no conjunto",
+    "temporal_resolution": "estado corrente",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; atualização oficial em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/subestacao",
+    "methodology_url": "https://dados.ons.org.br/dataset/subestacao",
+    "primary_or_derived": "primário",
+    "limitations": "Cadastro corrente não mede carregamento, disponibilidade, falhas ou condição física; o conjunto não preserva histórico.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000643",
+        "product_id": "DP000618",
+        "distribution_name": "Subestações da Rede de Operação — ONS Dados Abertos",
+        "access_url": "https://dados.ons.org.br/dataset/subestacao",
+        "format": "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "Portal ONS Dados Abertos; recursos e API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "Acesso aberto; observar aviso legal e termos CC BY do conjunto.",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/recurso, período e agregação conforme conjunto",
+        "notes": "Distribuição oficial ONS. Usar o dicionário de dados e preservar definição, período, agregação, unidade, estado de consistência e eventuais revisões.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000619",
+    "resource_id": "DR0122",
+    "product_name": "Demanda Máxima Diária por Subsistema",
+    "product_acronym": "Demanda Máxima Diária",
+    "product_family": "Carga e demanda do SIN",
+    "product_kind": "dataset_series",
+    "product_description": "Apuração diária das demandas de carga instantâneas e integralizadas por subsistema.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "demanda máxima | carga | subsistema | SIN | pico",
+    "geographic_coverage": "Brasil — subsistemas do SIN",
+    "covers_brazil": "sim",
+    "spatial_support": "subsistema",
+    "spatial_resolution": "agregação por subsistema",
+    "temporal_coverage": "série histórica e arquivo 2026",
+    "temporal_resolution": "diária",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "recursos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/demanda_maxima_di",
+    "methodology_url": "https://dados.ons.org.br/dataset/demanda_maxima_di",
+    "primary_or_derived": "derivado",
+    "limitations": "Demanda máxima é uma estatística de carga e não consumo total de energia; valores fazem parte de processo de consistência recorrente e podem ser revisados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000644",
+        "product_id": "DP000619",
+        "distribution_name": "Demanda Máxima Diária por Subsistema — ONS Dados Abertos",
+        "access_url": "https://dados.ons.org.br/dataset/demanda_maxima_di",
+        "format": "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "Portal ONS Dados Abertos; recursos e API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "Acesso aberto; observar aviso legal e termos CC BY do conjunto.",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/recurso, período e agregação conforme conjunto",
+        "notes": "Distribuição oficial ONS. Usar o dicionário de dados e preservar definição, período, agregação, unidade, estado de consistência e eventuais revisões.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000620",
+    "resource_id": "DR0122",
+    "product_name": "Disponibilidade de Função Transmissão — Linhas e Transformadores",
+    "product_acronym": "Disponibilidade FT TR/LT",
+    "product_family": "Indicadores de disponibilidade da transmissão",
+    "product_kind": "indicator_family",
+    "product_description": "Indicadores mensais DISP, INDISPPF e INDISPFF para funções transmissão de linhas e transformadores, agregados por função e nível de tensão.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "disponibilidade | transmissão | linha | transformador | indisponibilidade",
+    "geographic_coverage": "Brasil — Rede Básica/SIN conforme indicador",
+    "covers_brazil": "sim",
+    "spatial_support": "função transmissão e nível de tensão",
+    "spatial_resolution": "agregação mensal",
+    "temporal_coverage": "série histórica; recurso 2026",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "recursos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ind_disponibilidade_ft_trlt",
+    "methodology_url": "https://dados.ons.org.br/dataset/ind_disponibilidade_ft_trlt",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicadores agregados não equivalem ao estado instantâneo de cada equipamento; indisponibilidade programada e forçada são categorias distintas e dados podem ser revisados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000645",
+        "product_id": "DP000620",
+        "distribution_name": "Disponibilidade de Função Transmissão — Linhas e Transformadores — ONS Dados Abertos",
+        "access_url": "https://dados.ons.org.br/dataset/ind_disponibilidade_ft_trlt",
+        "format": "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "Portal ONS Dados Abertos; recursos e API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "Acesso aberto; observar aviso legal e termos CC BY do conjunto.",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/recurso, período e agregação conforme conjunto",
+        "notes": "Distribuição oficial ONS. Usar o dicionário de dados e preservar definição, período, agregação, unidade, estado de consistência e eventuais revisões.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000621",
+    "resource_id": "DR0122",
+    "product_name": "Disponibilidade de Função Transmissão — Controle de Reativos",
+    "product_acronym": "Disponibilidade FT Reativo",
+    "product_family": "Indicadores de disponibilidade da transmissão",
+    "product_kind": "indicator_family",
+    "product_description": "Indicador mensal de disponibilidade de funções transmissão associadas a equipamentos de controle de reativo, agregado por função e nível de tensão.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "disponibilidade | reativo | transmissão | compensação | tensão",
+    "geographic_coverage": "Brasil — Rede de Operação/SIN conforme indicador",
+    "covers_brazil": "sim",
+    "spatial_support": "função transmissão e nível de tensão",
+    "spatial_resolution": "agregação mensal",
+    "temporal_coverage": "série histórica; recurso 2026",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "recursos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ind_disponibilidade_ft_reativo",
+    "methodology_url": "https://dados.ons.org.br/dataset/ind_disponibilidade_ft_reativo",
+    "primary_or_derived": "derivado",
+    "limitations": "Disponibilidade agregada não mede potência reativa instantânea nem desempenho elétrico detalhado do equipamento; série sujeita a consistência.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000646",
+        "product_id": "DP000621",
+        "distribution_name": "Disponibilidade de Função Transmissão — Controle de Reativos — ONS Dados Abertos",
+        "access_url": "https://dados.ons.org.br/dataset/ind_disponibilidade_ft_reativo",
+        "format": "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "Portal ONS Dados Abertos; recursos e API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "Acesso aberto; observar aviso legal e termos CC BY do conjunto.",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/recurso, período e agregação conforme conjunto",
+        "notes": "Distribuição oficial ONS. Usar o dicionário de dados e preservar definição, período, agregação, unidade, estado de consistência e eventuais revisões.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000622",
+    "resource_id": "DR0122",
+    "product_name": "Disponibilidade de Função Transmissão — Conversores",
+    "product_acronym": "Disponibilidade FT Conversores",
+    "product_family": "Indicadores de disponibilidade da transmissão",
+    "product_kind": "indicator_family",
+    "product_description": "Indicador mensal DISPFTConv de disponibilidade de funções transmissão conversora, agregado por nível de tensão.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "disponibilidade | conversor | transmissão | HVDC | tensão",
+    "geographic_coverage": "Brasil — funções conversoras do SIN conforme indicador",
+    "covers_brazil": "sim",
+    "spatial_support": "função conversora e nível de tensão",
+    "spatial_resolution": "agregação mensal",
+    "temporal_coverage": "série histórica; recurso 2026",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "recursos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ind_disponibilidade_ft_conversor",
+    "methodology_url": "https://dados.ons.org.br/dataset/ind_disponibilidade_ft_conversor",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicador agregado não equivale a estado instantâneo ou capacidade de transferência efetiva; dados podem ser revisados após publicação.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000647",
+        "product_id": "DP000622",
+        "distribution_name": "Disponibilidade de Função Transmissão — Conversores — ONS Dados Abertos",
+        "access_url": "https://dados.ons.org.br/dataset/ind_disponibilidade_ft_conversor",
+        "format": "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "Portal ONS Dados Abertos; recursos e API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "Acesso aberto; observar aviso legal e termos CC BY do conjunto.",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/recurso, período e agregação conforme conjunto",
+        "notes": "Distribuição oficial ONS. Usar o dicionário de dados e preservar definição, período, agregação, unidade, estado de consistência e eventuais revisões.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000623",
+    "resource_id": "DR0122",
+    "product_name": "Disponibilidade de Função Geração para o SIN — Base Mensal",
+    "product_acronym": "Disponibilidade Geração SIN",
+    "product_family": "Indicadores de disponibilidade da geração",
+    "product_kind": "indicator_family",
+    "product_description": "Indicadores mensais DISPF, INDISPPF e INDISPFF das funções geração agregados para o SIN.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "disponibilidade | geração | indisponibilidade | SIN | usinas",
+    "geographic_coverage": "Brasil — SIN",
+    "covers_brazil": "sim",
+    "spatial_support": "SIN agregado",
+    "spatial_resolution": "agregação mensal",
+    "temporal_coverage": "série histórica; recurso 2026",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "recursos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ind-disponibilidade-geracao-sin",
+    "methodology_url": "https://dados.ons.org.br/dataset/ind-disponibilidade-geracao-sin",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicadores agregados de disponibilidade não equivalem a geração realizada, capacidade instalada ou disponibilidade de uma usina específica.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000648",
+        "product_id": "DP000623",
+        "distribution_name": "Disponibilidade de Função Geração para o SIN — Base Mensal — ONS Dados Abertos",
+        "access_url": "https://dados.ons.org.br/dataset/ind-disponibilidade-geracao-sin",
+        "format": "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "Portal ONS Dados Abertos; recursos e API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "Acesso aberto; observar aviso legal e termos CC BY do conjunto.",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/recurso, período e agregação conforme conjunto",
+        "notes": "Distribuição oficial ONS. Usar o dicionário de dados e preservar definição, período, agregação, unidade, estado de consistência e eventuais revisões.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000624",
+    "resource_id": "DR0122",
+    "product_name": "Confiabilidade da Rede Básica — Robustez RMAL, RMCS, RRB e RRBCS",
+    "product_acronym": "Robustez Rede Básica",
+    "product_family": "Indicadores de confiabilidade da transmissão",
+    "product_kind": "indicator_family",
+    "product_description": "Indicadores de robustez da malha sistêmica e da Rede Básica, inclusive para contingências simples, em agregações territoriais e periodicidades mensal e anual.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "confiabilidade | robustez | Rede Básica | contingência | transmissão",
+    "geographic_coverage": "Brasil — SIN, subsistema, região e UF conforme indicador",
+    "covers_brazil": "sim",
+    "spatial_support": "SIN/subsistema/região/UF",
+    "spatial_resolution": "agregações territorial e temporal",
+    "temporal_coverage": "série histórica; atualização 2026",
+    "temporal_resolution": "mensal | anual",
+    "update_frequency": "periódica",
+    "product_status": "ativo",
+    "version_or_collection": "atualização oficial julho de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ind_confiarb_robustez",
+    "methodology_url": "https://dados.ons.org.br/dataset/ind_confiarb_robustez",
+    "primary_or_derived": "derivado",
+    "limitations": "Robustez é indicador de desempenho/confiabilidade definido pelos Procedimentos de Rede; não equivale a probabilidade direta de apagão ou risco físico local.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000649",
+        "product_id": "DP000624",
+        "distribution_name": "Confiabilidade da Rede Básica — Robustez RMAL, RMCS, RRB e RRBCS — ONS Dados Abertos",
+        "access_url": "https://dados.ons.org.br/dataset/ind_confiarb_robustez",
+        "format": "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "Portal ONS Dados Abertos; recursos e API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "Acesso aberto; observar aviso legal e termos CC BY do conjunto.",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/recurso, período e agregação conforme conjunto",
+        "notes": "Distribuição oficial ONS. Usar o dicionário de dados e preservar definição, período, agregação, unidade, estado de consistência e eventuais revisões.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000625",
+    "resource_id": "DR0122",
+    "product_name": "Confiabilidade da Rede Básica — DREQ e FREQ",
+    "product_acronym": "DREQ/FREQ",
+    "product_family": "Indicadores de confiabilidade da transmissão",
+    "product_kind": "indicator_family",
+    "product_description": "Indicadores de duração equivalente e frequência equivalente de interrupção de carga, apresentados para SIN, subsistema, região geográfica e UF em bases mensal e anual.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "DREQ | FREQ | interrupção de carga | confiabilidade | Rede Básica",
+    "geographic_coverage": "Brasil — SIN, subsistema, região e UF",
+    "covers_brazil": "sim",
+    "spatial_support": "SIN/subsistema/região/UF",
+    "spatial_resolution": "agregações territorial e temporal",
+    "temporal_coverage": "série histórica; atualização 2026",
+    "temporal_resolution": "mensal | anual",
+    "update_frequency": "periódica",
+    "product_status": "ativo",
+    "version_or_collection": "atualização oficial julho de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ind_confiarb_dreq_freq",
+    "methodology_url": "https://dados.ons.org.br/dataset/ind_confiarb_dreq_freq",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicadores equivalentes agregados não são contagem direta de consumidores interrompidos nem duração percebida por cada consumidor; série sujeita a consistência.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000650",
+        "product_id": "DP000625",
+        "distribution_name": "Confiabilidade da Rede Básica — DREQ e FREQ — ONS Dados Abertos",
+        "access_url": "https://dados.ons.org.br/dataset/ind_confiarb_dreq_freq",
+        "format": "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "Portal ONS Dados Abertos; recursos e API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "Acesso aberto; observar aviso legal e termos CC BY do conjunto.",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/recurso, período e agregação conforme conjunto",
+        "notes": "Distribuição oficial ONS. Usar o dicionário de dados e preservar definição, período, agregação, unidade, estado de consistência e eventuais revisões.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000626",
+    "resource_id": "DR0122",
+    "product_name": "Balanço de Energia do DESSEM — Geral",
+    "product_acronym": "DESSEM Geral",
+    "product_family": "Programação eletroenergética",
+    "product_kind": "dataset_series",
+    "product_description": "Informação simplificada da programação eletroenergética resultante do DESSEM, com demanda e geração por fontes previstas para um dia de referência em periodicidade semi-horária por subsistema.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "DESSEM | programação | demanda | geração | semi-horário",
+    "geographic_coverage": "Brasil — subsistemas do SIN",
+    "covers_brazil": "sim",
+    "spatial_support": "subsistema",
+    "spatial_resolution": "semi-horária",
+    "temporal_coverage": "série diária de resultados; recursos 2026",
+    "temporal_resolution": "semi-horária",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "recursos diários 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/balanco_dessem_geral",
+    "methodology_url": "https://dados.ons.org.br/dataset/balanco_dessem_geral",
+    "primary_or_derived": "derivado",
+    "limitations": "Saída de programação/modelo ex ante: não equivale à geração ou carga verificada. Resultados podem ser revisados e dependem das entradas e restrições do DESSEM.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000651",
+        "product_id": "DP000626",
+        "distribution_name": "Balanço de Energia do DESSEM — Geral — ONS Dados Abertos",
+        "access_url": "https://dados.ons.org.br/dataset/balanco_dessem_geral",
+        "format": "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "Portal ONS Dados Abertos; recursos e API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "Acesso aberto; observar aviso legal e termos CC BY do conjunto.",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/recurso, período e agregação conforme conjunto",
+        "notes": "Distribuição oficial ONS. Usar o dicionário de dados e preservar definição, período, agregação, unidade, estado de consistência e eventuais revisões.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000627",
+    "resource_id": "DR0122",
+    "product_name": "Balanço de Energia do DESSEM — Detalhado",
+    "product_acronym": "DESSEM Detalhado",
+    "product_family": "Programação eletroenergética",
+    "product_kind": "dataset_series",
+    "product_description": "Informação detalhada da programação eletroenergética resultante do DESSEM, com demanda e geração por fontes previstas para um dia de referência em periodicidade semi-horária por subsistema.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "DESSEM | programação detalhada | demanda | geração | semi-horário",
+    "geographic_coverage": "Brasil — subsistemas do SIN",
+    "covers_brazil": "sim",
+    "spatial_support": "subsistema e detalhamento do balanço",
+    "spatial_resolution": "semi-horária",
+    "temporal_coverage": "série diária de resultados; recursos 2026",
+    "temporal_resolution": "semi-horária",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "recursos diários 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/balanco_dessem_detalhe",
+    "methodology_url": "https://dados.ons.org.br/dataset/balanco_dessem_detalhe",
+    "primary_or_derived": "derivado",
+    "limitations": "Saída detalhada de programação/modelo ex ante: não equivale à operação realizada. Comparações com o produto geral devem preservar o nível de detalhamento e a mesma data de referência.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000652",
+        "product_id": "DP000627",
+        "distribution_name": "Balanço de Energia do DESSEM — Detalhado — ONS Dados Abertos",
+        "access_url": "https://dados.ons.org.br/dataset/balanco_dessem_detalhe",
+        "format": "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto",
+        "access_protocol": "HTTPS / CKAN",
+        "access_tool": "Portal ONS Dados Abertos; recursos e API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "Acesso aberto; observar aviso legal e termos CC BY do conjunto.",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/recurso, período e agregação conforme conjunto",
+        "notes": "Distribuição oficial ONS. Usar o dicionário de dados e preservar definição, período, agregação, unidade, estado de consistência e eventuais revisões.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON/PDF de dicionário conforme conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS / CKAN"
+    ]
   }
 ]
