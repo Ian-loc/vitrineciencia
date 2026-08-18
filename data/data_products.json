@@ -37227,5 +37227,477 @@
     "available_protocols": [
       "HTTPS / CKAN"
     ]
+  },
+  {
+    "product_id": "DP000628",
+    "resource_id": "DR0123",
+    "product_name": "BIG — catálogo de dados geoespaciais do INPE",
+    "product_acronym": "BIG",
+    "product_family": "BIG/INPE — catálogo integrado",
+    "product_kind": "catalog",
+    "product_description": "Catálogo institucional para descoberta de acervos geoespaciais do INPE, incluindo missões de observação da Terra e produtos processados disponibilizados por páginas temáticas e serviços associados.",
+    "research_areas": "Remote sensing | Geoinformatics | Data infrastructure",
+    "keywords": "BIG | catálogo | imagens de satélite | dados geoespaciais | INPE",
+    "geographic_coverage": "Brasil e outras áreas cobertas pelas coleções do INPE",
+    "covers_brazil": "sim",
+    "spatial_support": "cena | raster | coleção | catálogo",
+    "spatial_resolution": "varia por missão, sensor e coleção",
+    "temporal_coverage": "varia por missão e coleção; inclui acervos históricos e produtos correntes",
+    "temporal_resolution": "varia por coleção",
+    "update_frequency": "contínua ou periódica conforme coleção",
+    "product_status": "ativo",
+    "version_or_collection": "catálogo corrente verificado em 2026-08-18",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://data.inpe.br/dados/",
+    "methodology_url": "https://data.inpe.br/bdc/produtos-de-dados/",
+    "primary_or_derived": "agregador",
+    "limitations": "Catálogo de descoberta, não dataset homogêneo. Cada coleção mantém sensor, nível de processamento, cobertura, resolução, temporalidade, licença e proveniência próprios.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000653",
+        "product_id": "DP000628",
+        "distribution_name": "BIG — portal de dados geoespaciais",
+        "access_url": "https://data.inpe.br/dados/",
+        "format": "catálogo web | links para coleções e serviços",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; condições específicas devem ser conferidas no produto/coleção",
+        "license": "varia por produto e coleção",
+        "provider_attribution_required": "sim",
+        "subset_support": "por missão, sensor, coleção e produto",
+        "notes": "Portal de descoberta. Não usar a licença ou o formato do portal como substituto dos metadados da coleção selecionada.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "catálogo web | links para coleções e serviços"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000629",
+    "resource_id": "DR0123",
+    "product_name": "INPE STAC — serviço padronizado de descoberta e acesso",
+    "product_acronym": "STAC INPE",
+    "product_family": "BIG/BDC — serviços de descoberta",
+    "product_kind": "data_service",
+    "product_description": "Serviço STAC do INPE para descobrir coleções, itens e ativos espaço-temporais de imagens, cubos e outros produtos geoespaciais publicados por projetos e áreas do instituto.",
+    "research_areas": "Remote sensing | Geoinformatics | Data infrastructure",
+    "keywords": "STAC | API | catálogo espaço-temporal | COG | collections | assets",
+    "geographic_coverage": "varia conforme a coleção; inclui cobertura do Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "catálogo | coleção | item | asset geoespacial",
+    "spatial_resolution": "herdada de cada coleção",
+    "temporal_coverage": "herdada de cada coleção",
+    "temporal_resolution": "herdada de cada coleção",
+    "update_frequency": "contínua conforme publicação de coleções e itens",
+    "product_status": "ativo",
+    "version_or_collection": "STAC API corrente; verificada em 2026-08-18",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac-spatiotemporal-asset-catalog/",
+    "methodology_url": "https://data.inpe.br/bdc/stac-spatiotemporal-asset-catalog/",
+    "primary_or_derived": "serviço",
+    "limitations": "O serviço padroniza descoberta e acesso, não homogeneíza conteúdo científico. Metadados, licenças, resoluções, cobertura e processamento devem ser lidos na Collection/Item correspondente.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000654",
+        "product_id": "DP000629",
+        "distribution_name": "INPE STAC API",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/",
+        "format": "JSON STAC | assets GeoTIFF/COG e outros conforme coleção",
+        "access_protocol": "HTTPS | STAC API",
+        "access_tool": "cliente STAC | navegador | STAC Browser",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; disponibilidade dos assets depende da coleção",
+        "license": "varia por Collection/Asset; verificar metadados STAC",
+        "provider_attribution_required": "sim",
+        "subset_support": "busca por coleção, bbox, tempo e demais filtros STAC suportados",
+        "notes": "A API expõe Catalog, Collection, Item e Asset. A padronização do acesso não homogeneíza as propriedades científicas das coleções.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "JSON STAC | assets GeoTIFF/COG e outros conforme coleção"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC API"
+    ]
+  },
+  {
+    "product_id": "DP000630",
+    "resource_id": "DR0123",
+    "product_name": "CBERS-4 — produtos de imagens do INPE",
+    "product_acronym": "CBERS-4",
+    "product_family": "BIG — acervo de imagens CBERS",
+    "product_kind": "dataset_series",
+    "product_description": "Família de produtos de imagens CBERS-4 distribuídos pelo INPE em diferentes sensores e níveis de processamento, incluindo produtos em número digital, ortorretificados, reflectância de superfície e produtos derivados/cubos quando disponíveis.",
+    "research_areas": "Remote sensing | Land use and land cover | Environmental monitoring",
+    "keywords": "CBERS-4 | MUX | WFI | PAN | imagens | reflectância de superfície",
+    "geographic_coverage": "Brasil e demais áreas imageadas/disponibilizadas no acervo",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster | coleção STAC",
+    "spatial_resolution": "varia por sensor e produto; consultar coleção",
+    "temporal_coverage": "missão CBERS-4 até o presente disponível no acervo; varia por coleção",
+    "temporal_resolution": "por cena; composições em produtos derivados",
+    "update_frequency": "conforme aquisição e processamento",
+    "product_status": "ativo",
+    "version_or_collection": "família corrente de produtos CBERS-4 verificada em 2026-08-18",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://data.inpe.br/dados/cbers-4/",
+    "methodology_url": "https://data.inpe.br/dados/cbers-4/",
+    "primary_or_derived": "misto",
+    "limitations": "Não combinar níveis DN, ortorretificados, reflectância de superfície e cubos como se fossem a mesma variável. Resolução, bandas, correções, grade e período variam por sensor/coleção.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000655",
+        "product_id": "DP000630",
+        "distribution_name": "CBERS-4 — página de produtos e acessos BIG/STAC",
+        "access_url": "https://data.inpe.br/dados/cbers-4/",
+        "format": "GeoTIFF | COG | metadados; varia por coleção",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "portal BIG | STAC Browser | cliente STAC",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; selecionar sensor, nível e coleção apropriados",
+        "license": "varia por coleção; verificar metadados STAC",
+        "provider_attribution_required": "sim",
+        "subset_support": "por sensor, nível, cena, coleção e período",
+        "notes": "Produtos DN, ortorretificados, SR e cubos devem permanecer identificados separadamente na análise.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GeoTIFF | COG | metadados; varia por coleção"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000631",
+    "resource_id": "DR0123",
+    "product_name": "CBERS-4A — produtos de imagens do INPE",
+    "product_acronym": "CBERS-4A",
+    "product_family": "BIG — acervo de imagens CBERS",
+    "product_kind": "dataset_series",
+    "product_description": "Família de produtos de imagens CBERS-4A dos sensores WPM, MUX e WFI, com níveis L2-DN, L4-DN, reflectância de superfície em coleções aplicáveis e produtos derivados publicados no ecossistema BIG/BDC.",
+    "research_areas": "Remote sensing | Land use and land cover | Environmental monitoring",
+    "keywords": "CBERS-4A | WPM | MUX | WFI | imagens | surface reflectance",
+    "geographic_coverage": "Brasil e parte da América do Sul conforme sensor/coleção",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster | coleção STAC",
+    "spatial_resolution": "WPM 2 m pancromático/8 m multiespectral; MUX 16 m; WFI 55 m nos produtos documentados",
+    "temporal_coverage": "2020 ao presente disponível; varia por coleção",
+    "temporal_resolution": "por cena; composições em produtos derivados",
+    "update_frequency": "diária a mensal conforme produto",
+    "product_status": "ativo",
+    "version_or_collection": "família corrente de produtos CBERS-4A verificada em 2026-08-18",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://data.inpe.br/dados/cbers-4a/",
+    "methodology_url": "https://data.inpe.br/dados/cbers-4a/",
+    "primary_or_derived": "misto",
+    "limitations": "WPM, MUX e WFI têm resoluções e geometrias distintas; L2-DN, L4-DN, L4-SR e produtos derivados não são intercambiáveis. Frequência de atualização varia por coleção.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000656",
+        "product_id": "DP000631",
+        "distribution_name": "CBERS-4A — página de produtos e acessos BIG/STAC",
+        "access_url": "https://data.inpe.br/dados/cbers-4a/",
+        "format": "GeoTIFF | COG | metadados; varia por coleção",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "portal BIG | STAC Browser | cliente STAC",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; selecionar WPM, MUX ou WFI e nível de processamento",
+        "license": "coleções STAC auditadas indicam CC BY 4.0; confirmar na Collection",
+        "provider_attribution_required": "sim",
+        "subset_support": "por sensor, nível, cena, coleção e período",
+        "notes": "A página oficial documenta WPM 2/8 m, MUX 16 m e WFI 55 m; não generalizar uma resolução única para CBERS-4A.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GeoTIFF | COG | metadados; varia por coleção"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000632",
+    "resource_id": "DR0123",
+    "product_name": "Amazônia-1/WFI — produtos de imagens do INPE",
+    "product_acronym": "Amazônia-1 WFI",
+    "product_family": "BIG — acervo de imagens Amazônia-1",
+    "product_kind": "dataset_series",
+    "product_description": "Produtos do sensor WFI do Amazônia-1 distribuídos como L2-DN, L4-DN ortorretificado e L4 de reflectância de superfície, com quatro bandas visível/NIR e acesso por STAC.",
+    "research_areas": "Remote sensing | Land use and land cover | Environmental monitoring",
+    "keywords": "Amazônia-1 | WFI | L2 | L4 | reflectância de superfície | COG",
+    "geographic_coverage": "Brasil e demais áreas imageadas pelo WFI conforme coleção",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster | coleção STAC",
+    "spatial_resolution": "64 m nos produtos WFI documentados",
+    "temporal_coverage": "2021 ao presente; cobertura exata varia entre L2, L4-DN e L4-SR",
+    "temporal_resolution": "por cena",
+    "update_frequency": "conforme aquisição; novas cenas L4-SR documentadas mensalmente",
+    "product_status": "ativo",
+    "version_or_collection": "AMZ1-WFI L2/L4; coleções correntes verificadas em 2026-08-18",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://data.inpe.br/dados/amazonia-1/",
+    "methodology_url": "https://data.inpe.br/dados/amazonia-1/",
+    "primary_or_derived": "misto",
+    "limitations": "L2-DN, L4-DN e L4-SR representam níveis de processamento diferentes. Reflectância de superfície não deve ser confundida com número digital; datas finais e completude variam entre coleções.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000657",
+        "product_id": "DP000632",
+        "distribution_name": "Amazônia-1/WFI — produtos BIG/STAC",
+        "access_url": "https://data.inpe.br/dados/amazonia-1/",
+        "format": "GeoTIFF | COG | XML/metadados",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "portal BIG | STAC Browser | cliente STAC",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; escolher L2-DN, L4-DN ou L4-SR conforme objetivo",
+        "license": "coleções STAC auditadas indicam CC BY 4.0; confirmar na Collection",
+        "provider_attribution_required": "sim",
+        "subset_support": "por nível, cena, área e período conforme serviço",
+        "notes": "O WFI possui 64 m nos produtos documentados; séries e datas finais diferem entre níveis de processamento.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GeoTIFF | COG | XML/metadados"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000633",
+    "resource_id": "DR0123",
+    "product_name": "Brazil Data Cube — coleções de imagens de reflectância de superfície / ARD",
+    "product_acronym": "BDC Image Collections",
+    "product_family": "Brazil Data Cube — coleções de imagens",
+    "product_kind": "dataset_series",
+    "product_description": "Coleções ortorretificadas de reflectância de superfície e outros produtos Analysis-Ready Data organizados pelo Brazil Data Cube para uso analítico e geração de cubos, incluindo coleções de CBERS e outras missões documentadas.",
+    "research_areas": "Remote sensing | Earth observation | Data science",
+    "keywords": "Brazil Data Cube | ARD | surface reflectance | orthorectified | CEOS ARD",
+    "geographic_coverage": "Brasil e áreas adicionais conforme coleção",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster ortorretificada | coleção STAC",
+    "spatial_resolution": "varia por sensor; p.ex. CBERS-4A/WFI L4-SR 55 m",
+    "temporal_coverage": "varia por coleção e missão",
+    "temporal_resolution": "por cena",
+    "update_frequency": "conforme coleção; várias coleções recebem novas cenas periodicamente",
+    "product_status": "ativo",
+    "version_or_collection": "coleções BDC correntes verificadas em 2026-08-18",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://data.inpe.br/bdc/colecoes-de-imagens/",
+    "methodology_url": "https://data.inpe.br/bdc/colecoes-de-imagens/",
+    "primary_or_derived": "derivado",
+    "limitations": "ARD reduz etapas de pré-processamento, mas não elimina diferenças entre sensores, algoritmos de correção atmosférica, máscaras, resolução e cobertura. Confirmar Collection STAC antes de análises multissensor.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000658",
+        "product_id": "DP000633",
+        "distribution_name": "BDC — coleções de imagens ARD via STAC",
+        "access_url": "https://data.inpe.br/stac/browser/",
+        "format": "COG/GeoTIFF | JSON STAC; varia por coleção",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente STAC",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; selecionar Collection e conferir metadados/ativos",
+        "license": "varia por coleção; várias coleções INPE auditadas indicam CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por coleção, item, bbox, tempo e asset",
+        "notes": "Reflectância de superfície/ARD é processamento derivado; conferir algoritmo, máscara, bandas, grade e versão antes de combinar coleções.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "COG/GeoTIFF | JSON STAC; varia por coleção"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000634",
+    "resource_id": "DR0123",
+    "product_name": "Brazil Data Cube — cubos de dados multidimensionais",
+    "product_acronym": "BDC Data Cubes",
+    "product_family": "Brazil Data Cube — cubos de dados",
+    "product_kind": "dataset_series",
+    "product_description": "Cubos de dados multidimensionais gerados a partir de imagens prontas para análise, com grades espaciais padronizadas e composições temporais como Least Cloud-cover First ou Best Pixel.",
+    "research_areas": "Remote sensing | Time series | Data science",
+    "keywords": "data cube | LCF | best pixel | time series | COG | Brazil Data Cube",
+    "geographic_coverage": "Brasil e recortes definidos pelas grades/coleções",
+    "covers_brazil": "sim",
+    "spatial_support": "cubo raster multidimensional",
+    "spatial_resolution": "10 m a 250 m nas coleções documentadas; varia por cubo",
+    "temporal_coverage": "varia por cubo e missão",
+    "temporal_resolution": "8 dias | 16 dias | mensal | bimestral; varia por cubo",
+    "update_frequency": "periódica conforme coleção de entrada",
+    "product_status": "ativo",
+    "version_or_collection": "coleções BDC correntes; tabela verificada em 2026-08-18",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://data.inpe.br/bdc/cubo-de-dados/",
+    "methodology_url": "https://data.inpe.br/bdc/cubo-de-dados/",
+    "primary_or_derived": "derivado",
+    "limitations": "Composição temporal seleciona pixels segundo regras do cubo e não equivale a uma observação instantânea. Resolução, grade, sensor e método de composição variam entre coleções e devem ser preservados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000659",
+        "product_id": "DP000634",
+        "distribution_name": "BDC — cubos de dados via STAC/COG",
+        "access_url": "https://data.inpe.br/bdc/cubo-de-dados/",
+        "format": "COG | coleções STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "portal BDC | STAC Browser | cliente STAC",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; seleção por cubo/coleção",
+        "license": "varia por cubo e dados de origem; verificar metadados da Collection",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cubo, área, tempo e assets conforme serviço",
+        "notes": "Cubos documentados incluem composições de 8 dias, 16 dias, mensal e bimestral com diferentes grades e resoluções.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "COG | coleções STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000635",
+    "resource_id": "DR0123",
+    "product_name": "TOPODATA — Banco de Dados Geomorfométricos do Brasil",
+    "product_acronym": "TOPODATA",
+    "product_family": "TOPODATA — MDE e variáveis geomorfométricas",
+    "product_kind": "map_layer_collection",
+    "product_description": "Modelo Digital de Elevação refinado a 1 arco-segundo a partir do SRTM e conjunto nacional de derivações geomorfométricas, incluindo declividade, orientação, curvaturas, formas de terreno, relevo sombreado e drenagem/divisores.",
+    "research_areas": "Geomorphology | Remote sensing | Hydrology | Territorial planning",
+    "keywords": "TOPODATA | SRTM | DEM | slope | aspect | curvature | terrain",
+    "geographic_coverage": "território nacional brasileiro",
+    "covers_brazil": "sim",
+    "spatial_support": "grade raster por quadrícula 1° × 1,5° | planos geomorfométricos",
+    "spatial_resolution": "1 arco-segundo para MDE refinado e derivações GeoTIFF; articulação de folhas compatível com 1:250.000",
+    "temporal_coverage": "base derivada de SRTM; estado metodológico corrente dos dados disponível desde novembro de 2011",
+    "temporal_resolution": "não se aplica",
+    "update_frequency": "não regular; revisões técnicas pontuais",
+    "product_status": "ativo",
+    "version_or_collection": "versão corrente derivada da revisão de 2011; acesso revalidado em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.dsr.inpe.br/topodata/index.php?lang=pt",
+    "methodology_url": "https://www.dsr.inpe.br/topodata/documentos.php",
+    "primary_or_derived": "derivado",
+    "limitations": "É produto derivado do SRTM e não levantamento altimétrico de campo. Interpolação/refinamento não cria precisão equivalente a um sensor nativo de 30 m; derivadas geomorfométricas propagam limitações do MDE e do processamento.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000660",
+        "product_id": "DP000635",
+        "distribution_name": "TOPODATA — acesso a MDE e variáveis geomorfométricas",
+        "access_url": "https://www.dsr.inpe.br/topodata/acesso",
+        "format": "GeoTIFF | ASCII XYZ | GRD | BMP | ZIP; COG/WMS também documentados no ecossistema BIG em 2026",
+        "access_protocol": "HTTPS download | serviços web conforme acesso atual",
+        "access_tool": "navegador | SIG | scripts",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso aberto; citar a fonte INPE e observar documentação/guia de uso",
+        "license": "Creative Commons; versão não especificada na página TOPODATA; cópia e redistribuição permitidas com atribuição ao INPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por quadrícula e variável geomorfométrica",
+        "notes": "Folhas seguem articulação compatível com 1:250.000. O portal documenta arquivos do MDE e múltiplas variáveis derivadas; conferir guia e adendo.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GeoTIFF | ASCII XYZ | GRD | BMP | ZIP; COG/WMS também documentados no ecossistema BIG em 2026"
+    ],
+    "available_protocols": [
+      "HTTPS download | serviços web conforme acesso atual"
+    ]
   }
 ]
