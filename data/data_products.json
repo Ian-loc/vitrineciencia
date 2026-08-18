@@ -39495,5 +39495,595 @@
     "available_protocols": [
       "HTTPS | STAC"
     ]
+  },
+  {
+    "product_id": "DP000665",
+    "resource_id": "DR0123",
+    "product_name": "Landsat Collection 2 — Level-2 sobre o Brasil",
+    "product_acronym": "Landsat C2 L2",
+    "product_family": "BIG — acervo Landsat",
+    "product_kind": "dataset_series",
+    "product_description": "Acervo brasileiro de produtos Landsat Collection 2 Level-2, com reflectância de superfície corrigida atmosfericamente e, conforme sensor/produto, temperatura da superfície e bandas auxiliares em Cloud Optimized GeoTIFF.",
+    "research_areas": "Remote sensing | Land use and land cover | Climate science | Environmental monitoring",
+    "keywords": "Landsat | Collection 2 | Level-2 | surface reflectance | surface temperature | COG",
+    "geographic_coverage": "território brasileiro",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster | coleção STAC",
+    "spatial_resolution": "30 m para bandas ópticas principais; bandas térmicas e auxiliares conforme sensor/produto",
+    "temporal_coverage": "1985–presente na coleção INPE verificada em 2026",
+    "temporal_resolution": "por aquisição/cena",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "Landsat Collection 2 Level-2",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/dados/landsat/",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/landsat-2",
+    "primary_or_derived": "derivado",
+    "limitations": "Level-2 combina sensores e missões com características diferentes. Reflectância de superfície e temperatura da superfície são produtos processados, não observações in situ; bandas, QA e sensores devem ser preservados por cena.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000695",
+        "product_id": "DP000665",
+        "distribution_name": "Landsat Collection 2 Level-2 — STAC/COG",
+        "access_url": "https://data.inpe.br/stac/browser/collections/landsat-2",
+        "format": "COG + JSON/XML/TXT auxiliares",
+        "access_protocol": "STAC / HTTPS",
+        "access_tool": "STAC Browser / API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar termos e limites do provedor",
+        "license": "consultar termos USGS/INPE; STAC marca proprietary",
+        "provider_attribution_required": "sim",
+        "subset_support": "por coleção/cena/banda",
+        "notes": "Cenas Level-2 e assets por banda/QA; preservar metadados e nível de processamento.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "COG + JSON/XML/TXT auxiliares"
+    ],
+    "available_protocols": [
+      "STAC / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000666",
+    "resource_id": "DR0123",
+    "product_name": "Landsat Collection 2 — cubo LCF de 16 dias",
+    "product_acronym": "Landsat 16D LCF",
+    "product_family": "Brazil Data Cube — cubos Landsat",
+    "product_kind": "dataset_series",
+    "product_description": "Cubo de dados de observação da Terra gerado sobre o Brasil a partir de Landsat Collection 2 Level-2, a 30 m, em grade BDC_MD V2 e composição temporal de 16 dias pelo critério Least Cloud Cover First.",
+    "research_areas": "Remote sensing | Land use and land cover | Vegetation dynamics | Environmental monitoring",
+    "keywords": "Landsat | data cube | LCF | 16 days | surface reflectance | NDVI | EVI",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "célula raster | cubo multidimensional",
+    "spatial_resolution": "30 m",
+    "temporal_coverage": "1990–presente; coleção verificada em 2026",
+    "temporal_resolution": "16 dias",
+    "update_frequency": "aproximadamente a cada 16 dias",
+    "product_status": "ativo",
+    "version_or_collection": "LANDSAT-16D-1 / BDC_MD V2",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/LANDSAT-16D-1",
+    "methodology_url": "https://data.inpe.br/dados/landsat/",
+    "primary_or_derived": "derivado",
+    "limitations": "Composição LCF seleciona pixels dentro de janelas de 16 dias e não representa uma aquisição sinótica única. Proveniência, QA, número de observações e mudanças entre sensores Landsat devem ser considerados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000696",
+        "product_id": "DP000666",
+        "distribution_name": "Landsat 16D LCF — STAC/COG",
+        "access_url": "https://data.inpe.br/stac/browser/collections/LANDSAT-16D-1",
+        "format": "COG",
+        "access_protocol": "STAC / HTTPS",
+        "access_tool": "STAC Browser / API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar termos e limites do provedor",
+        "license": "consultar coleção",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tile/data/banda",
+        "notes": "Cubo 30 m composto a cada 16 dias; inclui bandas, índices e camadas auxiliares conforme coleção.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "COG"
+    ],
+    "available_protocols": [
+      "STAC / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000667",
+    "resource_id": "DR0123",
+    "product_name": "Landsat TSIRF — reconstrução espectral bimestral 1997–2024",
+    "product_acronym": "Landsat TSIRF bimestral",
+    "product_family": "BIG — séries Landsat reconstruídas",
+    "product_kind": "dataset_series",
+    "product_description": "Série reconstruída e livre de nuvens para o Brasil com bandas Landsat visíveis, NIR, SWIR e térmica em mosaicos COG de 30 m, em intervalos bimestrais, derivada do GLAD Landsat ARD v2 com imputação de valores ausentes.",
+    "research_areas": "Remote sensing | Land use and land cover | Climate science | Time series",
+    "keywords": "Landsat | TSIRF | reconstructed | bimonthly | gap filling | GLAD ARD",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "mosaico raster COG | grade nacional",
+    "spatial_resolution": "30 m",
+    "temporal_coverage": "1997–2024",
+    "temporal_resolution": "2 meses (6 composições por ano)",
+    "update_frequency": "por versão",
+    "product_status": "ativo",
+    "version_or_collection": "landsat-tsirf-bimonthly-1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/landsat-tsirf-bimonthly-1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/landsat-tsirf-bimonthly-1",
+    "primary_or_derived": "derivado",
+    "limitations": "Série reconstruída por agregação temporal e imputação; valores não equivalem necessariamente a observações válidas adquiridas naquela data. Bandas históricas de diferentes missões são harmonizadas pelo processamento e exigem atenção à metodologia.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000697",
+        "product_id": "DP000667",
+        "distribution_name": "Landsat TSIRF bimestral — STAC/COG",
+        "access_url": "https://data.inpe.br/stac/browser/collections/landsat-tsirf-bimonthly-1",
+        "format": "COG",
+        "access_protocol": "STAC / HTTPS",
+        "access_tool": "STAC Browser / API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar termos e limites do provedor",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por mosaico/período/banda",
+        "notes": "Série reconstruída bimestral 1997–2024; COG por bandas e células/mosaicos.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "COG"
+    ],
+    "available_protocols": [
+      "STAC / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000668",
+    "resource_id": "DR0123",
+    "product_name": "Landsat TSIRF — reconstrução espectral anual 1997–2024",
+    "product_acronym": "Landsat TSIRF anual",
+    "product_family": "BIG — séries Landsat reconstruídas",
+    "product_kind": "dataset_series",
+    "product_description": "Série anual reconstruída e livre de nuvens para o Brasil em 30 m, derivada por agregação do percentil 50 das composições bimestrais TSIRF e disponibilizada em COG.",
+    "research_areas": "Remote sensing | Land use and land cover | Climate science | Time series",
+    "keywords": "Landsat | TSIRF | reconstructed | yearly | percentile 50 | GLAD ARD",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "mosaico raster COG | grade nacional",
+    "spatial_resolution": "30 m",
+    "temporal_coverage": "1997–2024",
+    "temporal_resolution": "anual",
+    "update_frequency": "por versão",
+    "product_status": "ativo",
+    "version_or_collection": "landsat-tsirf-yearly-1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/landsat-tsirf-yearly-1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/landsat-tsirf-yearly-1",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto anual é derivado das composições bimestrais pelo percentil 50; não deve ser contado como observação independente nem interpretado como uma única cena anual sem nuvens.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000698",
+        "product_id": "DP000668",
+        "distribution_name": "Landsat TSIRF anual — STAC/COG",
+        "access_url": "https://data.inpe.br/stac/browser/collections/landsat-tsirf-yearly-1",
+        "format": "COG",
+        "access_protocol": "STAC / HTTPS",
+        "access_tool": "STAC Browser / API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar termos e limites do provedor",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por mosaico/ano/banda",
+        "notes": "Produto anual derivado do percentil 50 das composições bimestrais.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "COG"
+    ],
+    "available_protocols": [
+      "STAC / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000669",
+    "resource_id": "DR0123",
+    "product_name": "Sentinel-1 — Level-1 GRD sobre o Brasil",
+    "product_acronym": "Sentinel-1 GRD",
+    "product_family": "BIG — acervo Sentinel-1",
+    "product_kind": "dataset_series",
+    "product_description": "Acervo Sentinel-1 SAR em banda C, nível 1 Ground Range Detected, cobrindo o território brasileiro em modos SM, IW e EW e classes de resolução dependentes do modo.",
+    "research_areas": "Remote sensing | Radar remote sensing | Environmental monitoring | Disaster risk",
+    "keywords": "Sentinel-1 | SAR | C-band | GRD | IW | EW | SM | VV | VH",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "cena SAR | coleção STAC",
+    "spatial_resolution": "aprox. 3,5–40 m de pixel spacing conforme modo/classe; IW HR tipicamente 10 x 10 m",
+    "temporal_coverage": "2021/2022–presente conforme coleção/espelho",
+    "temporal_resolution": "por aquisição",
+    "update_frequency": "contínua conforme novas cenas",
+    "product_status": "ativo",
+    "version_or_collection": "Sentinel-1 Level-1 GRD / coleção INPE",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/dados/sentinel-1/",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/sentinel-1-grd-bundle-1",
+    "primary_or_derived": "primário",
+    "limitations": "GRD é dado SAR detectado e projetado em ground range, não reflectância óptica. Resolução, modo, polarização, geometria de aquisição e efeitos de speckle/topografia devem ser preservados; não confundir com RTC.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000699",
+        "product_id": "DP000669",
+        "distribution_name": "Sentinel-1 GRD — STAC/ZIP",
+        "access_url": "https://data.inpe.br/stac/browser/collections/sentinel-1-grd-bundle-1",
+        "format": "ZIP + PNG thumbnail",
+        "access_protocol": "STAC / HTTPS",
+        "access_tool": "STAC Browser / API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar termos e limites do provedor",
+        "license": "consultar termos ESA/Copernicus; STAC marca proprietary",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena/modo/polarização",
+        "notes": "GRD Level-1; modos e resoluções variam por aquisição.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "ZIP + PNG thumbnail"
+    ],
+    "available_protocols": [
+      "STAC / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000670",
+    "resource_id": "DR0123",
+    "product_name": "Sentinel-1 — Level-2 Radiometrically Terrain Corrected (RTC)",
+    "product_acronym": "Sentinel-1 RTC",
+    "product_family": "BIG — produtos Sentinel-1 derivados",
+    "product_kind": "dataset_series",
+    "product_description": "Produto Sentinel-1 Level-2 RTC derivado de GRD, calibrado radiometricamente e corrigido dos efeitos do relevo, distribuindo retroespalhamento normalizado gamma-0 em COG para aquisições IW sobre o Brasil.",
+    "research_areas": "Remote sensing | Radar remote sensing | Environmental monitoring | Geomorphology",
+    "keywords": "Sentinel-1 | SAR | RTC | gamma0 | terrain correction | IW | COG",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster SAR COG | coleção STAC",
+    "spatial_resolution": "IW High Resolution 10 m; Medium Resolution 40 m",
+    "temporal_coverage": "2024–presente na coleção; disponibilização gradual em 2026",
+    "temporal_resolution": "por aquisição",
+    "update_frequency": "gradual/operacional em 2026",
+    "product_status": "experimental",
+    "version_or_collection": "Sentinel-1 Level-2 RTC — implementação 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/dados/sentinel-1/",
+    "methodology_url": "https://data.inpe.br/dados/sentinel-1/",
+    "primary_or_derived": "derivado",
+    "limitations": "RTC está em implantação gradual em 2026 e cobre aquisições IW; gamma-0 é retroespalhamento normalizado, não uma variável biofísica direta. Não pressupor completude temporal ou equivalência com GRD.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000700",
+        "product_id": "DP000670",
+        "distribution_name": "Sentinel-1 RTC — BIG/STAC",
+        "access_url": "https://data.inpe.br/dados/sentinel-1/",
+        "format": "COG + metadados",
+        "access_protocol": "HTTPS / STAC",
+        "access_tool": "portal BIG / STAC",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar termos e limites do provedor",
+        "license": "consultar termos ESA/Copernicus/INPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena/resolução",
+        "notes": "Disponibilização gradual em 2026; IW HR/MR; gamma-0 normalizado pelo relevo.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "COG + metadados"
+    ],
+    "available_protocols": [
+      "HTTPS / STAC"
+    ]
+  },
+  {
+    "product_id": "DP000671",
+    "resource_id": "DR0123",
+    "product_name": "Sentinel-2 — Level-1C sobre o Brasil",
+    "product_acronym": "Sentinel-2 L1C",
+    "product_family": "BIG — acervo Sentinel-2",
+    "product_kind": "dataset_series",
+    "product_description": "Espelho INPE de cenas Sentinel-2/MSI Level-1C sobre o Brasil, ortorretificadas e expressas em reflectância no topo da atmosfera (TOA), com 13 bandas espectrais.",
+    "research_areas": "Remote sensing | Land use and land cover | Environmental monitoring",
+    "keywords": "Sentinel-2 | MSI | Level-1C | TOA reflectance | multispectral",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster | tile MGRS | coleção STAC",
+    "spatial_resolution": "10 m, 20 m e 60 m conforme banda",
+    "temporal_coverage": "2017–presente na coleção INPE",
+    "temporal_resolution": "por aquisição; revisita nominal até 5 dias",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "Sentinel-2 Level-1C",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/dados/sentinel-2/",
+    "methodology_url": "https://data.inpe.br/dados/sentinel-2/",
+    "primary_or_derived": "primário",
+    "limitations": "Level-1C representa reflectância TOA e não reflectância de superfície. Nuvens, aerossóis, geometria e resolução variável entre bandas devem ser considerados; não combinar diretamente com L2A sem respeitar o nível de processamento.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000701",
+        "product_id": "DP000671",
+        "distribution_name": "Sentinel-2 Level-1C — BIG/STAC",
+        "access_url": "https://data.inpe.br/dados/sentinel-2/",
+        "format": "ZIP",
+        "access_protocol": "HTTPS / STAC",
+        "access_tool": "portal BIG / STAC",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar termos e limites do provedor",
+        "license": "consultar termos ESA/Copernicus/INPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena/tile",
+        "notes": "Reflectância TOA; novas cenas disponibilizadas diariamente segundo o INPE.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "ZIP"
+    ],
+    "available_protocols": [
+      "HTTPS / STAC"
+    ]
+  },
+  {
+    "product_id": "DP000672",
+    "resource_id": "DR0123",
+    "product_name": "Sentinel-2 — Level-2A COG sobre o Brasil",
+    "product_acronym": "Sentinel-2 L2A COG",
+    "product_family": "BIG — acervo Sentinel-2",
+    "product_kind": "dataset_series",
+    "product_description": "Produto Sentinel-2/MSI Level-2A sobre o Brasil com reflectância de superfície Bottom-of-Atmosphere, ortorretificada e reorganizada em Cloud Optimized GeoTIFF para acesso parcial em nuvem.",
+    "research_areas": "Remote sensing | Land use and land cover | Vegetation dynamics | Environmental monitoring",
+    "keywords": "Sentinel-2 | MSI | Level-2A | BOA | surface reflectance | COG",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster COG | tile MGRS | coleção STAC",
+    "spatial_resolution": "10 m, 20 m e 60 m conforme banda",
+    "temporal_coverage": "2018–presente na coleção verificada",
+    "temporal_resolution": "por aquisição",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "S2_L2A-1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/S2_L2A-1",
+    "methodology_url": "https://data.inpe.br/dados/sentinel-2/",
+    "primary_or_derived": "derivado",
+    "limitations": "Reflectância BOA é resultado de correção atmosférica e depende do processamento/QA. Bandas possuem resoluções distintas; SCL, AOT e vapor d’água são auxiliares e não devem ser interpretados como observações independentes equivalentes.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000702",
+        "product_id": "DP000672",
+        "distribution_name": "Sentinel-2 Level-2A COG — STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/S2_L2A-1",
+        "format": "COG + XML/PNG auxiliares",
+        "access_protocol": "STAC / HTTPS",
+        "access_tool": "STAC Browser / API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar termos e limites do provedor",
+        "license": "consultar termos ESA/Copernicus/INPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena/tile/banda",
+        "notes": "Reflectância BOA em COG; bandas a 10/20/60 m e camadas auxiliares.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "COG + XML/PNG auxiliares"
+    ],
+    "available_protocols": [
+      "STAC / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000673",
+    "resource_id": "DR0123",
+    "product_name": "Sentinel-2/MSI — cubo Level-2A LCF de 16 dias",
+    "product_acronym": "Sentinel-2 16D LCF",
+    "product_family": "Brazil Data Cube — cubos Sentinel-2",
+    "product_kind": "dataset_series",
+    "product_description": "Cubo de dados sobre o Brasil derivado de Sentinel-2 Level-2A em COG, reamostrado para 10 m na grade BDC_SM V2 e composto a cada 16 dias pelo critério Least Cloud Cover First.",
+    "research_areas": "Remote sensing | Land use and land cover | Vegetation dynamics | Environmental monitoring",
+    "keywords": "Sentinel-2 | data cube | LCF | 16 days | BOA | NDVI | EVI | provenance",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "célula raster | cubo multidimensional",
+    "spatial_resolution": "10 m",
+    "temporal_coverage": "2017–presente; coleção verificada em 2026",
+    "temporal_resolution": "16 dias",
+    "update_frequency": "aproximadamente a cada 16 dias",
+    "product_status": "ativo",
+    "version_or_collection": "S2-16D-2 / BDC_SM V2",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/S2-16D-2",
+    "methodology_url": "https://data.inpe.br/dados/sentinel-2/",
+    "primary_or_derived": "derivado",
+    "limitations": "Composição LCF seleciona pixels dentro da janela temporal e não representa uma aquisição sinótica única. A reamostragem para 10 m não cria detalhe espacial real nas bandas originalmente de 20/60 m; usar QA e proveniência.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000703",
+        "product_id": "DP000673",
+        "distribution_name": "Sentinel-2 16D LCF — STAC/COG",
+        "access_url": "https://data.inpe.br/stac/browser/collections/S2-16D-2",
+        "format": "COG",
+        "access_protocol": "STAC / HTTPS",
+        "access_tool": "STAC Browser / API",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar termos e limites do provedor",
+        "license": "consultar coleção",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tile/data/banda",
+        "notes": "Cubo 10 m composto a cada 16 dias; inclui proveniência e QA conforme coleção.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "COG"
+    ],
+    "available_protocols": [
+      "STAC / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000674",
+    "resource_id": "DR0123",
+    "product_name": "Mosaico Sentinel-2 Brasil — composição trimestral em cores verdadeiras",
+    "product_acronym": "S2 Brasil 3M Mosaic",
+    "product_family": "Brazil Data Cube — mosaicos Sentinel-2",
+    "product_kind": "dataset_series",
+    "product_description": "Mosaicos trimestrais em cores verdadeiras cobrindo o Brasil, gerados a partir do cubo Sentinel-2 e disponibilizados para períodos janeiro–março, abril–junho, julho–setembro e outubro–dezembro.",
+    "research_areas": "Remote sensing | Environmental visualization | Land use and land cover",
+    "keywords": "Sentinel-2 | mosaic | Brazil | true color | quarterly | BDC",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "mosaico raster nacional | STAC/WMS",
+    "spatial_resolution": "10 m nominal do cubo Sentinel-2 usado no produto",
+    "temporal_coverage": "2018–2025 na série documentada",
+    "temporal_resolution": "3 meses",
+    "update_frequency": "trimestral/por edição",
+    "product_status": "ativo",
+    "version_or_collection": "Mosaico Sentinel-2 Brasil — série 2018–2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/dados/sentinel-2/",
+    "methodology_url": "https://data.inpe.br/dados/sentinel-2/",
+    "primary_or_derived": "derivado",
+    "limitations": "Mosaico é produto de visualização/composição de melhores pixels e não uma cena única nem observação simultânea de todo o país. Datas efetivas dos pixels e qualidade devem ser rastreadas ao cubo de origem quando usadas analiticamente.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000704",
+        "product_id": "DP000674",
+        "distribution_name": "Mosaico Sentinel-2 Brasil — STAC/WMS",
+        "access_url": "https://data.inpe.br/dados/sentinel-2/",
+        "format": "raster / serviço WMS",
+        "access_protocol": "STAC / OGC WMS",
+        "access_tool": "portal BIG / STAC / WMS",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar termos e limites do provedor",
+        "license": "consultar produto",
+        "provider_attribution_required": "sim",
+        "subset_support": "por trimestre/mosaico",
+        "notes": "Série trimestral documentada para 2018–2025; composição de melhores pixels.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "raster / serviço WMS"
+    ],
+    "available_protocols": [
+      "STAC / OGC WMS"
+    ]
   }
 ]
