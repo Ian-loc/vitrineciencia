@@ -1,88 +1,101 @@
-# Como contribuir
+# Como contribuir — Vitrine Ciência
 
-Contribuições são bem-vindas para corrigir registros, propor novas fontes, melhorar a interface, ampliar a camada de produtos e fortalecer validações.
+Contribuições são bem-vindas para corrigir registros, propor fontes/produtos, melhorar a interface e fortalecer validações.
 
 ## Princípios
 
-1. `data/data_resources.csv` na branch `main` é a fonte canônica.
-2. JSONs e metadados derivados não devem ser editados manualmente.
-3. Uma evidência deve sustentar a afirmação específica que será alterada.
-4. Propriedades de produto ou distribuição não devem ser generalizadas para a fonte inteira.
-5. Novas fontes devem demonstrar vínculo com o Brasil ou justificativa científica explícita.
-6. Alterações significativas devem ocorrer em branch própria e pull request revisável.
+1. `main` é a autoridade.
+2. As fontes de dados canônicas são `data/data_resources.csv`, `data/data_products.csv` e `data/product_distributions.csv`.
+3. JSONs e `_site` são derivados e não devem ser editados manualmente.
+4. Evidência deve sustentar a afirmação específica alterada.
+5. Propriedades de produto/distribuição não devem ser generalizadas para a fonte inteira.
+6. Novas fontes devem demonstrar vínculo com o Brasil ou justificativa explícita.
+7. IDs existentes são estáveis e não são reciclados.
+8. Desconhecido é preferível a inferência sem base.
 
-## Propor uma nova fonte
+## Propor nova fonte
 
-A proposta deve incluir:
+Informar:
 
-- nome oficial e instituição responsável;
-- página institucional e página de acesso aos dados;
+- nome e instituição responsável;
+- homepage e acesso aos dados;
 - vínculo territorial com o Brasil;
-- descrição objetiva dos dados oferecidos;
-- formatos e condições de acesso confirmados;
-- licença ou indicação explícita de que ela não foi localizada;
+- descrição objetiva;
+- tipos de produtos relevantes;
+- condições de acesso e autenticação;
+- licença ou indicação de que não foi localizada;
 - documentação oficial atual;
-- evidência científica ou técnica representativa, quando disponível;
-- limitações relevantes para uso acadêmico.
+- limitações relevantes;
+- classificação Brasil sugerida, quando possível.
 
-A proposta não entra automaticamente no CSV canônico. Ela deve passar por avaliação de escopo, revisão factual, validação e pull request.
+A inclusão deve passar por duplicidade/escopo, revisão factual, produtos/distribuições pertinentes e validação.
 
-## Corrigir um registro
+## Propor produto
 
-Toda correção factual deve informar:
+Indicar:
 
-- `resource_id` afetado;
-- campo atual;
+- fonte pai (`resource_id`);
+- identidade e diferença material em relação aos produtos existentes;
+- `product_kind` e `enumeration_scope`;
+- cobertura e suporte/resolução quando sustentados;
+- temporalidade/atualização;
+- coleção/versão quando relevante;
+- metodologia e limitações;
+- ao menos uma rota de distribuição.
+
+Não criar produto apenas para outro arquivo, banda, formato, tile ou endpoint equivalente.
+
+## Corrigir registro
+
+Toda correção factual deve indicar:
+
+- ID afetado (`DR`, `DP` ou `DD`);
+- campo/valor atual;
 - valor proposto;
-- URL da evidência oficial;
-- data de acesso;
+- URL da evidência;
+- data de acesso/verificação;
 - justificativa curta;
-- impacto em produtos ou distribuições relacionados.
+- impacto em relações, classificação Brasil ou distribuições.
 
-Artigos que demonstram uso científico não são evidência suficiente para confirmar licença, autenticação, endpoint ou versão atual. Para esses campos, prefira documentação oficial contemporânea.
+Artigo de aplicação não é prova suficiente para licença, endpoint, autenticação ou versão atual.
 
-## Fluxo de desenvolvimento
+## Fluxo
 
-1. crie uma branch a partir de `main`;
-2. limite o escopo da alteração;
-3. edite somente arquivos-fonte;
-4. execute as validações relevantes;
-5. abra um pull request com resumo, motivação, impacto e testes;
-6. aguarde CI verde e revisão antes da integração.
+1. criar branch a partir de `main`;
+2. limitar escopo;
+3. editar arquivos canônicos/documentação-fonte;
+4. executar validações pertinentes;
+5. revisar o diff;
+6. abrir PR com evidências e testes;
+7. aguardar gates aplicáveis;
+8. verificar publicação quando o delta for público.
 
 ## Validações principais
 
 ```bash
-python3 scripts/build_catalog.py
 python3 scripts/validate_brazil_scope.py
 python3 scripts/validate_product_catalog.py
-python3 scripts/validate_frontend.py
+python3 scripts/build_catalog.py
+python3 scripts/audit_link_roles.py --write
+python3 scripts/validate_vitrine.py
 python3 scripts/build_site_artifact.py
 ```
 
-Validadores adicionais podem ser exigidos conforme o escopo da alteração.
-
-## Alterações de dados
-
-Ao editar `data/data_resources.csv`:
-
-- preserve os `resource_id` existentes;
-- não reutilize identificadores removidos;
-- mantenha o número e a ordem dos campos canônicos;
-- use valores coerentes com o codebook;
-- atualize classificações e contratos vinculados;
-- regenere artefatos derivados somente pelo workflow;
-- atualize o changelog quando houver impacto público.
+Para frontend, execute também os checks JavaScript e QA de navegador aplicáveis.
 
 ## Pull request
 
-O pull request deve declarar:
+O PR deve declarar:
 
-- o que mudou;
-- por que mudou;
-- quais usuários ou registros são afetados;
-- quais evidências sustentam a mudança;
-- quais comandos de validação foram executados;
-- o que permanece fora do escopo.
+- o que mudou e por quê;
+- registros/usuários afetados;
+- evidências;
+- validações executadas;
+- efeitos na superfície pública;
+- o que ficou fora do escopo.
 
-Alterações não relacionadas devem ser separadas em pull requests distintos.
+Alterações sem relação direta devem ser separadas.
+
+## Drive
+
+Não corrija o workbook do Drive como fonte primária. Primeiro materialize a mudança no GitHub; depois um espelho pode ser regenerado e verificado conforme `DRIVE_MIRROR_CONTRACT.md`.
