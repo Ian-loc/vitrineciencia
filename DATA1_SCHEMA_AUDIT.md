@@ -22,4 +22,4 @@ Para decisões correntes, consultar:
 - `METHODOLOGY.md`;
 - `docs/PROJECT_STATE.md`.
 
-Snapshot de 18/08/2026: **125 fontes, 756 produtos, 787 distribuições**.
+Snapshot de 18/08/2026: **125 fontes, 752 produtos e 783 distribuições**; IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`.
