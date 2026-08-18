@@ -1,204 +1,120 @@
-# Política de seleção, exclusão, duplicidade e cobertura
+# Política de seleção, exclusão, duplicidade e cobertura — Vitrine Ciência
 
-## Objetivo
+## 1. Objetivo
 
-Explicitar por que uma fonte entra, como duplicidades são evitadas e quais lacunas permanecem. O catálogo não é declarado completo ou representativo de todo o universo ambiental.
+Explicitar por que uma fonte ou produto entra, como duplicidades são controladas e como o Brasil é priorizado. A Vitrine não é declarada completa ou representativa de todo o universo de dados científicos existente.
 
-## Escopo territorial prioritário
+## 2. Prioridade territorial
 
-O **Brasil é o escopo territorial central e prioritário** do Science Data Sources Catalog.
+O **Brasil é o escopo territorial central**. A curadoria prioriza:
 
-A curadoria, a revisão factual, o detalhamento de produtos e a busca por novas fontes devem priorizar, nesta ordem:
-
-1. fontes brasileiras com dados sobre o Brasil;
+1. fontes brasileiras com dados úteis sobre o Brasil;
 2. fontes internacionais com cobertura brasileira sistemática e diretamente pesquisável;
-3. fontes internacionais em que a presença de dados brasileiros depende do dataset, depósito, sítio, coleção ou produto;
-4. excepcionalmente, referências internacionais sem cobertura brasileira direta, quando houver valor metodológico, comparativo ou de infraestrutura claramente documentado.
+3. fontes internacionais cuja cobertura brasileira depende de coleção, sítio, depósito ou produto;
+4. excepcionalmente, referências sem cobertura brasileira direta com valor metodológico/comparativo claro.
 
-A prioridade territorial não é uma nota de qualidade científica. Ela organiza o investimento de curadoria e a descoberta pública. A qualidade e a adequação continuam sendo avaliadas no nível da fonte, do produto e da distribuição.
+Prioridade territorial não é nota de qualidade científica.
 
-## Classificação Brasil P0–P3
+## 3. Classificação P0–P3
 
-A camada curatorial `data/brazil_scope_priorities.json` classifica todos os registros canônicos:
+`data/brazil_scope_priorities.json` classifica as fontes:
 
 | Prioridade | Classe | Papel |
 |---|---|---|
-| `P0` | `fonte_brasileira` | núcleo do catálogo |
+| `P0` | `fonte_brasileira` | núcleo |
 | `P1` | `cobertura_brasil_sistematica` | complemento internacional prioritário |
-| `P2` | `cobertura_brasil_parcial` | contexto dependente do produto ou coleção |
+| `P2` | `cobertura_brasil_parcial` | contexto dependente do produto/coleção |
 | `P3` | `referencia_sem_cobertura_brasil` | referência comparativa excepcional |
 
-A classificação é manual e auditável. Não deve ser inferida apenas pelo domínio da URL, idioma da interface, nome da instituição ou alcance geográfico declarado.
+A classificação é curatorial e auditável; não deve ser inferida apenas por domínio, idioma ou nome institucional.
 
-### Regra para P0
+## 4. Critérios de inclusão de fonte
 
-Uma fonte é P0 quando sua governança principal é brasileira e ela disponibiliza dados, metadados, produtos ou serviços de descoberta pertinentes ao Brasil.
+Uma fonte deve:
 
-### Regra para P1
+- oferecer dados, metadados ou infraestrutura útil de descoberta/acesso;
+- possuir identidade e governança rastreáveis;
+- ter utilidade para pesquisa, ensino ou extensão;
+- permitir descrição honesta de cobertura, acesso, licença e limitações;
+- demonstrar vínculo com o Brasil ou justificar sua função secundária;
+- não duplicar semanticamente outra fonte sem benefício claro de descoberta.
 
-Uma fonte é P1 quando, embora internacional, inclui o Brasil de forma regular, sistemática ou diretamente consultável, e seus dados têm utilidade demonstrável para pesquisa sobre o país.
+## 5. Critérios de exclusão
 
-### Regra para P2
+Não criar fonte para:
 
-Uma fonte é P2 quando a presença de dados brasileiros é possível, mas depende de depósitos, sítios, coleções, projetos ou produtos específicos. A interface não deve sugerir cobertura brasileira uniforme.
-
-### Regra para P3
-
-Uma fonte sem dados brasileiros diretos somente pode permanecer como P3 quando:
-
-1. oferece referência metodológica ou comparativa não substituída por fonte brasileira;
-2. ajuda a compreender padrões, serviços ou arquiteturas relevantes para o catálogo;
-3. sua função secundária é explicitamente apresentada;
-4. não desloca fontes brasileiras da fila prioritária de revisão ou expansão.
-
-## Unidade de seleção
-
-A unidade elegível é uma **fonte de dados ou infraestrutura de informação** com identidade própria, responsável identificável e acesso verificável: base, repositório, catálogo, portal, plataforma, sistema, serviço, rede ou software de publicação.
-
-## Critérios mínimos de inclusão
-
-A fonte deve:
-
-1. ser relevante para pesquisa, ensino ou extensão ambiental;
-2. disponibilizar dados, metadados ou serviço de descoberta/acesso, não apenas conteúdo editorial;
-3. possuir documentação oficial verificável;
-4. ter governança identificável;
-5. oferecer utilidade distinta ou reduzir lacuna;
-6. permitir descrição no nível de fonte;
-7. permitir registro honesto de acesso, licença, limitações e incertezas;
-8. demonstrar vínculo com o escopo brasileiro ou justificar formalmente sua função estratégica secundária.
-
-## Critérios de exclusão
-
-Excluir do CSV canônico:
-
-- notícias, blogs e materiais somente didáticos;
-- artigos ou relatórios sem infraestrutura associada;
-- dataset isolado pertencente a fonte já catalogada;
-- ferramenta sem função de publicação, descoberta ou acesso;
+- notícia, blog ou material somente editorial;
+- artigo/relatório sem infraestrutura associada;
+- dataset isolado pertencente a fonte já catalogada, quando deve ser produto;
 - mirror sem governança própria;
 - recurso descontinuado sem função independente;
-- recurso cuja identidade ou função não tenha evidência suficiente;
-- fonte internacional redundante, sem dados brasileiros e sem justificativa estratégica distinta.
+- objeto cuja identidade não possa ser sustentada;
+- fonte internacional redundante sem cobertura do Brasil ou função estratégica distinta.
 
-## Recursos bibliométricos e editoriais
+## 6. Entrada de produto
 
-Bases de literatura, rankings e redes de citação exigem um portão de escopo antes da migração. A decisão deve avaliar reutilização estruturada, função de descoberta ambiental, governança, condições de acesso, utilidade distinta e destino adequado: catálogo principal, seção auxiliar, fusão ou exclusão.
+Produto recebe ID próprio quando sua distinção melhora materialmente a descoberta por finalidade, conteúdo, método, cobertura, suporte/resolução, coleção/versão ou acesso. Arquivos, bandas, tiles, formatos e endpoints não criam produtos automaticamente.
 
-### Regra derivada de G0
+O campo `enumeration_scope` evita falsa completude: `complete`, `family_level`, `external_index` ou `representative_sample`.
 
-Um recurso bibliométrico pode permanecer no catálogo principal quando:
+## 7. Duplicidade
 
-1. oferece dados ou metadados estruturados, busca, rede de citações ou função de descoberta reutilizável;
-2. possui metodologia oficial e governança identificável;
-3. tem utilidade distinta para pesquisa, ensino ou extensão ambiental;
-4. permite registrar acesso, licença e limitações com honestidade;
-5. não é apresentado como substituto de fontes ambientais primárias;
-6. sua utilidade para o Brasil ou sua função estratégica secundária está documentada.
+### Mesmo recurso, nomes ou URLs diferentes
 
-Materiais apenas narrativos, noticiosos ou didáticos, sem infraestrutura estruturada, continuam excluídos.
+Manter uma entrada e preservar o nome/rota vigente quando representam a mesma identidade e governança.
 
-A natureza bibliométrica deve ser explícita. Cobertura de publicações e citações não deve ser confundida com cobertura espacial ou temporal de observações ambientais.
+### Portal e produto
 
-### Decisão do Project COSMOS
-
-G0 confirmou a elegibilidade do Project COSMOS para o catálogo principal como infraestrutura bibliométrica. A decisão completa está em `G0_COSMOS_SCOPE_DECISION.md`.
-
-A permanência não implica que a base integral seja aberta, que exista API pública ou que o recurso forneça medições ambientais. Esses atributos permanecem descritos com suas limitações e sujeitos à revisão factual final.
-
-## Duplicidade e relação entre recursos
-
-### Mesmo recurso, nomes diferentes
-
-Manter uma linha quando nomes, siglas ou URLs representam a mesma infraestrutura e governança.
-
-### Portal e base subjacente
-
-Manter linhas separadas somente quando possuem função, documentação, acesso ou governança próprios e a separação melhora a descoberta sem duplicação integral.
+Portal/fonte e produto podem coexistir porque ocupam níveis diferentes. Não duplicar produto apenas por outra página de acesso.
 
 ### Agregador e provedor
 
-Podem coexistir, mas devem alertar sobre dupla contagem e preservar o provedor original. Quando houver alternativa brasileira original, ela recebe prioridade de descoberta sobre o agregador internacional.
+Podem coexistir quando oferecem funções distintas, mas a proveniência do provedor primário deve permanecer explícita.
 
-### Versões regionais
+### Sucessor
 
-Criar linha própria somente com governança, documentação, cobertura e acesso próprios.
+Preferir o sucessor ativo quando o anterior apenas redireciona; preservar histórico necessário sem duplicar a descoberta corrente.
 
-### Recurso sucessor
+## 8. Candidatos e inclusão
 
-Manter o sucessor ativo, registrar a relação e não conservar duas linhas quando o anterior apenas redireciona.
+Novas fontes podem ser triadas em `candidates/source_candidates.csv`, mas a inclusão no CSV canônico é permitida após evidência suficiente, verificação de duplicidade/escopo, validação estrutural e revisão proporcional ao risco. Não existe mais bloqueio geral que impeça expansão até “finalizar 51 fontes”.
 
-## Candidatos
+## 9. Fila de expansão
 
-Novas fontes entram primeiro em `candidates/source_candidates.csv`, com nome, URL, justificativa, tema, cobertura, duplicidade, evidência, prioridade e decisão: incluir, excluir, fundir ou aguardar evidência.
+Priorizar:
 
-Uma URL fornecida pelo usuário autoriza triagem inicial, não decisão final. Nenhum candidato é publicado sem revisão de elegibilidade e completude.
+1. fontes brasileiras que reduzam lacunas relevantes;
+2. fontes internacionais com cobertura sistemática do Brasil;
+3. aprofundamento de produtos de fontes já catalogadas quando isso melhora substancialmente a utilidade;
+4. coberturas parciais e metacatálogos;
+5. referências P3 somente com justificativa explícita.
 
-### Ordem da fila de expansão
+Volume bruto não substitui relevância, qualidade documental ou diferença semântica.
 
-A fila deve ser executada nesta ordem:
+## 10. Lacunas
 
-1. candidatos brasileiros de prioridade alta;
-2. candidatos internacionais de prioridade alta com dados sistemáticos sobre o Brasil;
-3. candidatos brasileiros de prioridade média;
-4. candidatos internacionais com cobertura brasileira parcial;
-5. metacatálogos e referências globais;
-6. recursos sem cobertura brasileira direta, somente após justificativa de exceção.
-
-O rótulo de prioridade do candidato deve refletir simultaneamente lacuna científica, relevância territorial, estabilidade documental e utilidade distinta.
-
-## Matriz de lacunas
-
-A cobertura deve cruzar:
+A avaliação de lacunas pode considerar:
 
 - área de pesquisa;
-- bioma, ecossistema ou região brasileira;
-- escala geográfica;
-- tipo funcional de fonte;
+- bioma/região;
+- escala e suporte;
 - natureza institucional;
-- download gratuito;
+- tipo de produto;
 - acesso programático;
-- presença e profundidade de dados do Brasil;
-- origem brasileira ou internacional;
+- gratuidade/autenticação;
+- presença e profundidade de dados brasileiros;
 - representação de produtos e distribuições.
 
-A matriz orienta busca; não cria cotas e frequência de registros não mede importância científica.
+A matriz orienta busca; não cria cotas.
 
-## Critérios de prioridade para expansão
+## 11. Revisão
 
-### Prioridade máxima
+- antes de cada lote: checar duplicidades e cobertura Brasil;
+- a cada inclusão de fonte: atualizar P0–P3;
+- periodicamente: revisar recursos descontinuados, renomeados ou incorporados;
+- imediatamente: tratar mudanças relevantes de governança/licença/acesso;
+- antes de uma release estável: resolver duplicidades materiais conhecidas ou documentar seu tratamento.
 
-- fontes federais, estaduais, municipais, universitárias ou de redes científicas brasileiras;
-- fontes de cobertura nacional ou de biomas brasileiros;
-- fontes que reduzam lacunas em biodiversidade, clima, água, solo, florestas, agricultura, oceanografia, saúde ambiental, emissões e dados socioecológicos;
-- infraestruturas com documentação estável, identificadores, metadados reutilizáveis, API ou downloads bem definidos;
-- fontes com uso científico demonstrável e produtos distinguíveis.
+## 12. Estado atual
 
-### Prioridade complementar
-
-- fontes internacionais que incluam o Brasil sistematicamente;
-- fontes latino-americanas com forte cobertura brasileira ou interoperabilidade regional útil;
-- repositórios gerais com volume relevante de dados brasileiros e meios confiáveis de descoberta.
-
-### Prioridade baixa ou excepcional
-
-- recursos redundantes;
-- fontes pouco documentadas;
-- recursos estritamente comerciais;
-- metacatálogos globais já cobertos por fonte mais estável;
-- fontes sem dados brasileiros diretos e sem função estratégica distinta.
-
-## Revisão da seleção
-
-- antes de expansão: revisar duplicidades, escopo e lacunas brasileiras;
-- a cada ciclo de inclusão: confirmar classificação P0–P3;
-- anualmente: reavaliar recursos descontinuados, incorporados ou renomeados;
-- imediatamente: atualizar fusão, sucessão ou mudança institucional;
-- antes da migração: resolver portões de escopo pendentes;
-- antes da versão 1.0.0: justificar individualmente todos os registros P3.
-
-## Estado atual
-
-O CSV 0.7.0 permanece com 51 fontes e 34 campos. A camada P0–P3 não altera o esquema canônico; ela adiciona uma classificação curatorial vinculada por `resource_id` e validada no CI.
-
-Enquanto DATA1 e DATA2 não estiverem concluídos, novas fontes permanecem fora do CSV. O portão G0 do Project COSMOS está resolvido com decisão `manter_confirmado`; W1A é o próximo ciclo de DATA1-EXT. Nenhuma inclusão automática no CSV 0.7.0 é autorizada por esta política.
+Em 18/08/2026 a Vitrine possui **125 fontes, 756 produtos e 787 distribuições** dentro do contrato de 34/24/15 campos. O catálogo está em expansão contínua e auditada. Não há requisito de migração para 38 campos ou de retornar ao baseline histórico de 51 fontes.
