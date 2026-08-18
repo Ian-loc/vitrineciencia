@@ -38584,5 +38584,916 @@
     "available_protocols": [
       "HTTPS | API web"
     ]
+  },
+  {
+    "product_id": "DP000651",
+    "resource_id": "DR0123",
+    "product_name": "Projeções Climáticas Regionais Eta/CMIP5 — RCP4.5 e RCP8.5",
+    "product_acronym": "Eta CMIP5",
+    "product_family": "BIG — projeções climáticas regionais",
+    "product_kind": "dataset_series",
+    "product_description": "Projeções climáticas regionais de alta resolução produzidas pelo INPE com downscaling dinâmico do modelo Eta para quatro modelos globais CMIP5 e cenários RCP4.5/RCP8.5.",
+    "research_areas": "Climate science | Atmospheric science | Environmental modeling",
+    "keywords": "Eta | CMIP5 | RCP4.5 | RCP8.5 | climate projection | downscaling",
+    "geographic_coverage": "América do Sul, América Central e Caribe a 20 km; Sudeste do Brasil a 5 km no Eta-HadGEM2-ES",
+    "covers_brazil": "sim",
+    "spatial_support": "grade de modelo climático regional",
+    "spatial_resolution": "20 km no domínio regional; 5 km no Sudeste do Brasil apenas para Eta-HadGEM2-ES",
+    "temporal_coverage": "histórico 1961–2005; projeções 2006–2100",
+    "temporal_resolution": "diária",
+    "update_frequency": "por versão/experimento",
+    "product_status": "ativo",
+    "version_or_collection": "Eta v1 / CMIP5 / RCP4.5 e RCP8.5",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/dados/modelo-eta/",
+    "methodology_url": "https://data.inpe.br/dados/modelo-eta/",
+    "primary_or_derived": "derivado",
+    "limitations": "Cenários climáticos não são previsões determinísticas. O downscaling herda vieses dos GCMs e do modelo regional; a grade de 5 km não existe para todos os GCMs/domínios e não implica precisão local de 5 km.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000676",
+        "product_id": "DP000651",
+        "distribution_name": "Eta/CMIP5 — arquivos NetCDF diários",
+        "access_url": "https://data.inpe.br/dados/modelo-eta/",
+        "format": "NetCDF",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | cliente NetCDF | script",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar domínio, GCM, cenário, variável e período",
+        "license": "licença específica não localizada na página auditada; verificar arquivo/metadados",
+        "provider_attribution_required": "sim",
+        "subset_support": "por domínio | GCM | RCP | variável | período",
+        "notes": "Arquivos diários seguem nomenclatura que codifica domínio, resolução, GCM, RCP, versão e período.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "NetCDF"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000652",
+    "resource_id": "DR0123",
+    "product_name": "MODIS Terra MOD13Q1 v061 — NDVI/EVI 16 dias",
+    "product_acronym": "MOD13Q1 v061",
+    "product_family": "BIG — índices de vegetação MODIS",
+    "product_kind": "dataset_series",
+    "product_description": "Produto MODIS/Terra Level-3 de índices de vegetação NDVI e EVI composto a cada 16 dias, acompanhado por bandas de qualidade, refletâncias e geometria de observação.",
+    "research_areas": "Remote sensing | Vegetation dynamics | Environmental monitoring",
+    "keywords": "MODIS | Terra | MOD13Q1 | NDVI | EVI | vegetation index | quality",
+    "geographic_coverage": "Brasil e área regional coberta pela coleção INPE",
+    "covers_brazil": "sim",
+    "spatial_support": "tile raster MODIS | coleção STAC",
+    "spatial_resolution": "250 m nominal; GSD documentado ~231,656 m",
+    "temporal_coverage": "2000-02-18–2026-06-09 na coleção verificada",
+    "temporal_resolution": "16 dias",
+    "update_frequency": "16 dias conforme disponibilidade de novos compostos",
+    "product_status": "ativo",
+    "version_or_collection": "Collection 6.1 / MOD13Q1 v061",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/mod13q1-6.1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/mod13q1-6.1",
+    "primary_or_derived": "derivado",
+    "limitations": "NDVI/EVI são índices compostos, não medições diretas de biomassa ou cobertura. A seleção do melhor pixel depende de nuvens, ângulo de visada e valor do índice; usar VI_Quality e pixel_reliability.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000677",
+        "product_id": "DP000652",
+        "distribution_name": "MOD13Q1 v061 — COG/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/mod13q1-6.1",
+        "format": "COG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente STAC | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público à coleção e assets; preservar QA e metadados do item",
+        "license": "proprietary conforme metadado da coleção STAC",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tile | data | banda | asset",
+        "notes": "NDVI, EVI, VI_Quality, pixel_reliability, refletâncias e geometria estão disponíveis como assets separados.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "COG | metadados STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000653",
+    "resource_id": "DR0123",
+    "product_name": "MODIS Aqua MYD13Q1 v061 — NDVI/EVI 16 dias",
+    "product_acronym": "MYD13Q1 v061",
+    "product_family": "BIG — índices de vegetação MODIS",
+    "product_kind": "dataset_series",
+    "product_description": "Produto MODIS/Aqua Level-3 de índices de vegetação NDVI e EVI composto a cada 16 dias, acompanhado por bandas de qualidade, refletâncias e geometria de observação.",
+    "research_areas": "Remote sensing | Vegetation dynamics | Environmental monitoring",
+    "keywords": "MODIS | Aqua | MYD13Q1 | NDVI | EVI | vegetation index | quality",
+    "geographic_coverage": "Brasil e área regional coberta pela coleção INPE",
+    "covers_brazil": "sim",
+    "spatial_support": "tile raster MODIS | coleção STAC",
+    "spatial_resolution": "250 m nominal; GSD documentado ~231,656 m",
+    "temporal_coverage": "2002-07-04–2026-06-01 na coleção verificada",
+    "temporal_resolution": "16 dias",
+    "update_frequency": "16 dias conforme disponibilidade de novos compostos",
+    "product_status": "ativo",
+    "version_or_collection": "Collection 6.1 / MYD13Q1 v061",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/myd13q1-6.1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/myd13q1-6.1",
+    "primary_or_derived": "derivado",
+    "limitations": "NDVI/EVI são índices compostos e não medições diretas de biomassa. Terra e Aqua têm horários de passagem e séries distintas; não combinar MOD13Q1 e MYD13Q1 sem harmonização temporal e controle de qualidade.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000678",
+        "product_id": "DP000653",
+        "distribution_name": "MYD13Q1 v061 — COG/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/myd13q1-6.1",
+        "format": "COG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente STAC | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público à coleção e assets; preservar QA e metadados do item",
+        "license": "proprietary conforme metadado da coleção STAC",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tile | data | banda | asset",
+        "notes": "NDVI, EVI, VI_Quality, pixel_reliability, refletâncias e geometria estão disponíveis como assets separados.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "COG | metadados STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000654",
+    "resource_id": "DR0123",
+    "product_name": "MODIS Terra MOD11A2 v061 — Temperatura da Superfície e Emissividade",
+    "product_acronym": "MOD11A2 v061",
+    "product_family": "BIG — temperatura da superfície MODIS",
+    "product_kind": "dataset_series",
+    "product_description": "Produto MODIS/Terra Level-3 com médias de 8 dias de temperatura da superfície terrestre diurna/noturna e emissividade, acompanhado por bandas de qualidade e geometria de observação.",
+    "research_areas": "Remote sensing | Climate science | Environmental monitoring",
+    "keywords": "MODIS | Terra | MOD11A2 | land surface temperature | emissivity | LST",
+    "geographic_coverage": "Brasil e área regional coberta pela coleção INPE",
+    "covers_brazil": "sim",
+    "spatial_support": "tile raster MODIS | coleção STAC",
+    "spatial_resolution": "1 km nominal; GSD documentado ~926,625 m",
+    "temporal_coverage": "2000-02-18–2026-06-17 na coleção verificada",
+    "temporal_resolution": "8 dias",
+    "update_frequency": "8 dias conforme disponibilidade de novos compostos",
+    "product_status": "ativo",
+    "version_or_collection": "Collection 6.1 / MOD11A2 v061",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/mod11a2-6.1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/mod11a2-6.1",
+    "primary_or_derived": "derivado",
+    "limitations": "Temperatura da superfície terrestre não equivale à temperatura do ar. O composto é média de pixels LST válidos do período de 8 dias; qualidade, horário local, cobertura de céu claro e emissividade devem ser preservados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000679",
+        "product_id": "DP000654",
+        "distribution_name": "MOD11A2 v061 — COG/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/mod11a2-6.1",
+        "format": "COG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente STAC | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público à coleção e assets; preservar QC, horário e cobertura de céu claro",
+        "license": "proprietary conforme metadado da coleção STAC",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tile | período de 8 dias | banda | asset",
+        "notes": "Inclui LST diurna/noturna, emissividade, QC, horário local, ângulo de visada e cobertura de céu claro.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "COG | metadados STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000655",
+    "resource_id": "DR0123",
+    "product_name": "MODIS Aqua MYD11A2 v061 — Temperatura da Superfície e Emissividade",
+    "product_acronym": "MYD11A2 v061",
+    "product_family": "BIG — temperatura da superfície MODIS",
+    "product_kind": "dataset_series",
+    "product_description": "Produto MODIS/Aqua Level-3 com médias de 8 dias de temperatura da superfície terrestre diurna/noturna e emissividade, acompanhado por bandas de qualidade e geometria de observação.",
+    "research_areas": "Remote sensing | Climate science | Environmental monitoring",
+    "keywords": "MODIS | Aqua | MYD11A2 | land surface temperature | emissivity | LST",
+    "geographic_coverage": "Brasil e área regional coberta pela coleção INPE",
+    "covers_brazil": "sim",
+    "spatial_support": "tile raster MODIS | coleção STAC",
+    "spatial_resolution": "1 km nominal; GSD documentado ~926,625 m",
+    "temporal_coverage": "2002-07-04–2026-06-17 na coleção verificada",
+    "temporal_resolution": "8 dias",
+    "update_frequency": "8 dias conforme disponibilidade de novos compostos",
+    "product_status": "ativo",
+    "version_or_collection": "Collection 6.1 / MYD11A2 v061",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/myd11a2-6.1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/myd11a2-6.1",
+    "primary_or_derived": "derivado",
+    "limitations": "LST não equivale à temperatura do ar. Terra e Aqua possuem horários de passagem diferentes; qualidade, céu claro e horário de observação condicionam comparações e séries combinadas.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000680",
+        "product_id": "DP000655",
+        "distribution_name": "MYD11A2 v061 — COG/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/myd11a2-6.1",
+        "format": "COG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente STAC | SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público à coleção e assets; preservar QC, horário e cobertura de céu claro",
+        "license": "proprietary conforme metadado da coleção STAC",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tile | período de 8 dias | banda | asset",
+        "notes": "Inclui LST diurna/noturna, emissividade, QC, horário local, ângulo de visada e cobertura de céu claro.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "COG | metadados STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000656",
+    "resource_id": "DR0123",
+    "product_name": "MERGE — Precipitação Gradeada Diária sobre a América do Sul",
+    "product_acronym": "MERGE Daily",
+    "product_family": "BIG/CPTEC — precipitação gradeada",
+    "product_kind": "dataset_series",
+    "product_description": "Precipitação diária gradeada produzida pela combinação de estimativas de precipitação por satélite com observações de superfície sobre a América do Sul.",
+    "research_areas": "Meteorology | Hydrology | Climate science",
+    "keywords": "MERGE | precipitation | GPM | rain gauge | daily | South America",
+    "geographic_coverage": "América do Sul e domínio regional da coleção; inclui todo o Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "grade raster/cubo STAC",
+    "spatial_resolution": "grade oficial da coleção; resolução espacial não inferida nesta rodada",
+    "temporal_coverage": "2000-06-01–2026-07-07 na coleção verificada",
+    "temporal_resolution": "diária",
+    "update_frequency": "operacional",
+    "product_status": "ativo",
+    "version_or_collection": "MERGE daily v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/prec_merge_daily-1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/prec_merge_daily-1",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto funde estimativas de satélite e pluviômetros; não equivale a uma medição de pluviômetro em cada célula. Mudanças nos insumos GPM e disponibilidade de estações podem afetar a série.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000681",
+        "product_id": "DP000656",
+        "distribution_name": "MERGE diário — GRIB2/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/prec_merge_daily-1",
+        "format": "GRIB2 | índice/descritor GrADS | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente GRIB2 | GrADS | script",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar data/item e preservar metadados",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por data | área via processamento do arquivo",
+        "notes": "Composição diária; a coleção documenta GPM-Early nas horas recentes e GPM-Late para dados com maior latência.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GRIB2 | índice/descritor GrADS | metadados STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000657",
+    "resource_id": "DR0123",
+    "product_name": "MERGE — Precipitação Gradeada Horária sobre a América do Sul",
+    "product_acronym": "MERGE Hourly",
+    "product_family": "BIG/CPTEC — precipitação gradeada",
+    "product_kind": "dataset_series",
+    "product_description": "Precipitação horária gradeada produzida pela combinação de estimativas de satélite com observações de superfície; nas primeiras horas usa GPM-Early.",
+    "research_areas": "Meteorology | Hydrology | Climate science",
+    "keywords": "MERGE | precipitation | GPM-Early | rain gauge | hourly | South America",
+    "geographic_coverage": "América do Sul e domínio regional da coleção; inclui o Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "grade raster/cubo STAC",
+    "spatial_resolution": "grade oficial da coleção; resolução espacial não inferida nesta rodada",
+    "temporal_coverage": "2009-12-04–2026-06-30 na coleção verificada",
+    "temporal_resolution": "horária",
+    "update_frequency": "operacional",
+    "product_status": "ativo",
+    "version_or_collection": "MERGE hourly v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/prec_merge_hourly-1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/prec_merge_hourly-1",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto fundido não é observação pontual em cada célula. A disponibilidade de pluviômetros e a latência/produto de satélite condicionam a estimativa, especialmente nas horas mais recentes.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000682",
+        "product_id": "DP000657",
+        "distribution_name": "MERGE horário — GRIB2/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/prec_merge_hourly-1",
+        "format": "GRIB2 | índice/descritor GrADS | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente GRIB2 | GrADS | script",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar hora/item e preservar metadados",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por hora | área via processamento do arquivo",
+        "notes": "Produto horário combinado com observações de superfície; primeiras horas usam GPM-Early.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GRIB2 | índice/descritor GrADS | metadados STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000658",
+    "resource_id": "DR0123",
+    "product_name": "SAMeT — Mapeamento Diário de Temperatura da América do Sul",
+    "product_acronym": "SAMeT Daily",
+    "product_family": "BIG/CPTEC — temperatura gradeada",
+    "product_kind": "dataset_series",
+    "product_description": "Campos diários de temperatura mínima, média e máxima produzidos pelo SAMeT mediante combinação de observações com reanálise ERA5 e correção por gradiente térmico vertical.",
+    "research_areas": "Meteorology | Climate science | Environmental monitoring",
+    "keywords": "SAMeT | temperature | ERA5 | observations | daily | South America",
+    "geographic_coverage": "América do Sul; domínio da coleção inclui o Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "grade raster/cubo STAC",
+    "spatial_resolution": "grade oficial da coleção; resolução espacial não inferida nesta rodada",
+    "temporal_coverage": "2000-01-01–2026-07-20 na coleção verificada",
+    "temporal_resolution": "diária",
+    "update_frequency": "operacional",
+    "product_status": "ativo",
+    "version_or_collection": "SAMeT daily v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/samet_daily-1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/samet_daily-1",
+    "primary_or_derived": "derivado",
+    "limitations": "Campo analisado combina observações e ERA5 e não equivale a medição de estação em cada célula. Topografia, densidade de observações e método de correção condicionam o resultado.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000683",
+        "product_id": "DP000658",
+        "distribution_name": "SAMeT diário — NetCDF/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/samet_daily-1",
+        "format": "NetCDF | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente NetCDF | script",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar data e variável",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por data | variável | área via processamento",
+        "notes": "Assets separados para temperatura mínima, média e máxima diária.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "NetCDF | metadados STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000659",
+    "resource_id": "DR0123",
+    "product_name": "SAMeT — Mapeamento Horário de Temperatura da América do Sul",
+    "product_acronym": "SAMeT Hourly",
+    "product_family": "BIG/CPTEC — temperatura gradeada",
+    "product_kind": "dataset_series",
+    "product_description": "Campos horários de temperatura produzidos pelo SAMeT mediante combinação de observações com reanálise ERA5 e correção por gradiente térmico vertical.",
+    "research_areas": "Meteorology | Climate science | Environmental monitoring",
+    "keywords": "SAMeT | temperature | ERA5 | observations | hourly | South America",
+    "geographic_coverage": "América do Sul; domínio operacional inclui o Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "grade raster/cubo STAC",
+    "spatial_resolution": "grade oficial da coleção; resolução espacial não inferida nesta rodada",
+    "temporal_coverage": "2022-04-30–2026-06-24 na coleção verificada",
+    "temporal_resolution": "horária",
+    "update_frequency": "operacional",
+    "product_status": "ativo",
+    "version_or_collection": "SAMeT hourly v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/samet_hourly-1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/samet_hourly-1",
+    "primary_or_derived": "derivado",
+    "limitations": "Campo analisado combina observações e ERA5; não é observação instrumental em cada célula. A série horária inicia depois da série diária e não deve ser retroprojetada para períodos anteriores.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000684",
+        "product_id": "DP000659",
+        "distribution_name": "SAMeT horário — NetCDF/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/samet_hourly-1",
+        "format": "NetCDF | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente NetCDF | script",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar hora/item",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por hora | área via processamento",
+        "notes": "Campo horário de temperatura derivado da combinação de observações com ERA5 e correção de lapse rate.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "NetCDF | metadados STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000660",
+    "resource_id": "DR0123",
+    "product_name": "MODIS-Aqua — Reflectância de Sensoriamento Remoto Oceânica (Rrs) OC-SMART",
+    "product_acronym": "MODISA Rrs",
+    "product_family": "BIG — cor do oceano MODIS-Aqua",
+    "product_kind": "dataset_series",
+    "product_description": "Reflectância de sensoriamento remoto Level-3 em oito bandas para águas oceânicas brasileiras e Atlântico Sul aberto, derivada de MODIS-Aqua com correção atmosférica OC-SMART e disponibilizada em composições diárias e mensais.",
+    "research_areas": "Aquatic ecology | Remote sensing | Oceanography",
+    "keywords": "MODIS-Aqua | Rrs | ocean color | OC-SMART | reflectance",
+    "geographic_coverage": "águas oceânicas brasileiras e Atlântico Sul aberto",
+    "covers_brazil": "parcial",
+    "spatial_support": "grade raster oceânica | coleção STAC",
+    "spatial_resolution": "1 km nominal",
+    "temporal_coverage": "2002-07-04–2022-12-31",
+    "temporal_resolution": "diária | mensal",
+    "update_frequency": "coleção histórica encerrada em 2022",
+    "product_status": "arquivado",
+    "version_or_collection": "OC-SMART Rrs v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-RRS-DAILY-1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-RRS-DAILY-1",
+    "primary_or_derived": "derivado",
+    "limitations": "Rrs é produto de correção atmosférica e não medição in situ. Produtos mensais são agregações dos diários; não devem ser somados como observações independentes.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000685",
+        "product_id": "DP000660",
+        "distribution_name": "MODIS-Aqua Rrs diário — NetCDF/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-RRS-DAILY-1",
+        "format": "NetCDF | PNG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente NetCDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público à coleção e itens",
+        "license": "CC0",
+        "provider_attribution_required": "não",
+        "subset_support": "por data | área via processamento",
+        "notes": "Rrs Level-3 diário em oito bandas após OC-SMART; mosaico diário.",
+        "last_verified": "2026-08-18"
+      },
+      {
+        "distribution_id": "DD000686",
+        "product_id": "DP000660",
+        "distribution_name": "MODIS-Aqua Rrs mensal — NetCDF/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-RRS-MONTHLY-1",
+        "format": "NetCDF | PNG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente NetCDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público à coleção e itens",
+        "license": "CC0",
+        "provider_attribution_required": "não",
+        "subset_support": "por mês | área via processamento",
+        "notes": "Produto mensal obtido por média geométrica dos dados diários Rrs.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "NetCDF | PNG | metadados STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000661",
+    "resource_id": "DR0123",
+    "product_name": "MODIS-Aqua — Clorofila-a OC-SMART/CONNECT",
+    "product_acronym": "MODISA CHL",
+    "product_family": "BIG — cor do oceano MODIS-Aqua",
+    "product_kind": "dataset_series",
+    "product_description": "Estimativas Level-3 de concentração de clorofila-a derivadas de Rrs MODIS-Aqua corrigida por OC-SMART e modelo CONNECT, em produtos diários e médias geométricas mensais.",
+    "research_areas": "Aquatic ecology | Remote sensing | Oceanography",
+    "keywords": "MODIS-Aqua | chlorophyll-a | CHL | OC-SMART | CONNECT | ocean color",
+    "geographic_coverage": "águas oceânicas brasileiras e Atlântico Sul conforme coleção",
+    "covers_brazil": "parcial",
+    "spatial_support": "grade raster oceânica | coleção STAC",
+    "spatial_resolution": "1 km nominal",
+    "temporal_coverage": "2002-07-04–2022-12-31; mensal desde 2002-07-01",
+    "temporal_resolution": "diária | mensal",
+    "update_frequency": "coleção histórica encerrada em 2022",
+    "product_status": "arquivado",
+    "version_or_collection": "OC-SMART/CONNECT CHL v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-CHL-DAILY-1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-CHL-DAILY-1",
+    "primary_or_derived": "derivado",
+    "limitations": "Clorofila-a é estimativa bio-óptica derivada de sensoriamento remoto, não concentração medida in situ. Desempenho depende da correção atmosférica e do modelo; mensal é agregação dos dados diários.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000687",
+        "product_id": "DP000661",
+        "distribution_name": "MODIS-Aqua clorofila-a diária — NetCDF/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-CHL-DAILY-1",
+        "format": "NetCDF | PNG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente NetCDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público à coleção e itens",
+        "license": "CC0",
+        "provider_attribution_required": "não",
+        "subset_support": "por data | área via processamento",
+        "notes": "Estimativa diária de clorofila-a a partir de Rrs e CONNECT.",
+        "last_verified": "2026-08-18"
+      },
+      {
+        "distribution_id": "DD000688",
+        "product_id": "DP000661",
+        "distribution_name": "MODIS-Aqua clorofila-a mensal — NetCDF/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-CHL-MONTHLY-1",
+        "format": "NetCDF | PNG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente NetCDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público à coleção e itens",
+        "license": "verificar metadado da coleção mensal; licença não inferida desta página nesta rodada",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "por mês | área via processamento",
+        "notes": "Média geométrica mensal das estimativas diárias de clorofila-a.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "NetCDF | PNG | metadados STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000662",
+    "resource_id": "DR0123",
+    "product_name": "MODIS-Aqua — Material Particulado em Suspensão OC-SMART",
+    "product_acronym": "MODISA SPM",
+    "product_family": "BIG — cor do oceano MODIS-Aqua",
+    "product_kind": "dataset_series",
+    "product_description": "Estimativas Level-3 de concentração de material particulado em suspensão derivadas de MODIS-Aqua com correção atmosférica OC-SMART e combinação de algoritmos, em produtos diários e mensais.",
+    "research_areas": "Aquatic ecology | Remote sensing | Oceanography",
+    "keywords": "MODIS-Aqua | suspended particulate matter | SPM | OC-SMART | ocean color",
+    "geographic_coverage": "águas oceânicas brasileiras e Atlântico Sul conforme coleção",
+    "covers_brazil": "parcial",
+    "spatial_support": "grade raster oceânica | coleção STAC",
+    "spatial_resolution": "1 km nominal",
+    "temporal_coverage": "2002-07-04–2022-12-31; mensal documentado a partir de 2002-08-01",
+    "temporal_resolution": "diária | mensal",
+    "update_frequency": "coleção histórica encerrada em 2022",
+    "product_status": "arquivado",
+    "version_or_collection": "OC-SMART SPM v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-SPM-DAILY-1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-SPM-DAILY-1",
+    "primary_or_derived": "derivado",
+    "limitations": "SPM é estimativa algorítmica, não concentração medida in situ. Resultados dependem da correção atmosférica e dos algoritmos; produto mensal agrega estimativas diárias.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000689",
+        "product_id": "DP000662",
+        "distribution_name": "MODIS-Aqua SPM diário — NetCDF/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-SPM-DAILY-1",
+        "format": "NetCDF | PNG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente NetCDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público à coleção e itens",
+        "license": "CC0",
+        "provider_attribution_required": "não",
+        "subset_support": "por data | área via processamento",
+        "notes": "SPM diário em g m-3 estimado por combinação de algoritmos.",
+        "last_verified": "2026-08-18"
+      },
+      {
+        "distribution_id": "DD000690",
+        "product_id": "DP000662",
+        "distribution_name": "MODIS-Aqua SPM mensal — NetCDF/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-SPM-MONTHLY-1",
+        "format": "NetCDF | PNG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente NetCDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; confirmar metadados do item/coleção",
+        "license": "verificar metadado da coleção; licença específica não inferida nesta rodada",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "por mês | área via processamento",
+        "notes": "Coleção mensal de SPM listada oficialmente no STAC do INPE; preservar agregação mensal e metadados.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "NetCDF | PNG | metadados STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000663",
+    "resource_id": "DR0123",
+    "product_name": "MODIS-Aqua — Carbono Orgânico Particulado OC-SMART",
+    "product_acronym": "MODISA POC",
+    "product_family": "BIG — cor do oceano MODIS-Aqua",
+    "product_kind": "dataset_series",
+    "product_description": "Estimativas Level-3 de carbono orgânico particulado derivadas de MODIS-Aqua com correção atmosférica OC-SMART e combinação de algoritmos, em produtos diários e mensais.",
+    "research_areas": "Aquatic ecology | Biogeochemistry | Remote sensing",
+    "keywords": "MODIS-Aqua | particulate organic carbon | POC | OC-SMART | ocean color",
+    "geographic_coverage": "águas oceânicas brasileiras e Atlântico Sul conforme coleção",
+    "covers_brazil": "parcial",
+    "spatial_support": "grade raster oceânica | coleção STAC",
+    "spatial_resolution": "1 km nominal",
+    "temporal_coverage": "2002-07-04–2022-12-31; mensal desde 2002-07",
+    "temporal_resolution": "diária | mensal",
+    "update_frequency": "coleção histórica encerrada em 2022",
+    "product_status": "arquivado",
+    "version_or_collection": "OC-SMART POC v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-POC-DAILY-1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-POC-DAILY-1",
+    "primary_or_derived": "derivado",
+    "limitations": "POC é concentração estimada por algoritmos de sensoriamento remoto, não estoque total de carbono nem medição in situ. Produto mensal é agregação dos resultados diários.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000691",
+        "product_id": "DP000663",
+        "distribution_name": "MODIS-Aqua POC diário — NetCDF/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-POC-DAILY-1",
+        "format": "NetCDF | PNG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente NetCDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público à coleção e itens",
+        "license": "CC0",
+        "provider_attribution_required": "não",
+        "subset_support": "por data | área via processamento",
+        "notes": "POC diário em mg m-3 derivado de combinação de algoritmos.",
+        "last_verified": "2026-08-18"
+      },
+      {
+        "distribution_id": "DD000692",
+        "product_id": "DP000663",
+        "distribution_name": "MODIS-Aqua POC mensal — NetCDF/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-POC-MONTHLY-1",
+        "format": "NetCDF | PNG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente NetCDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; confirmar metadados do item/coleção",
+        "license": "verificar metadado da coleção; licença específica não inferida nesta rodada",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "por mês | área via processamento",
+        "notes": "Coleção mensal de POC listada oficialmente no STAC do INPE; preservar agregação mensal e metadados.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "NetCDF | PNG | metadados STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
+  },
+  {
+    "product_id": "DP000664",
+    "resource_id": "DR0123",
+    "product_name": "MODIS-Aqua — Absorção por Matéria Orgânica Dissolvida Colorida a 443 nm",
+    "product_acronym": "MODISA aCDOM",
+    "product_family": "BIG — cor do oceano MODIS-Aqua",
+    "product_kind": "dataset_series",
+    "product_description": "Estimativas Level-3 do coeficiente de absorção por matéria orgânica dissolvida colorida a 443 nm derivadas de MODIS-Aqua com correção atmosférica OC-SMART, em produtos diários e mensais.",
+    "research_areas": "Aquatic ecology | Biogeochemistry | Remote sensing",
+    "keywords": "MODIS-Aqua | aCDOM | CDOM | 443 nm | OC-SMART | ocean color",
+    "geographic_coverage": "águas oceânicas brasileiras e Atlântico Sul conforme coleção",
+    "covers_brazil": "parcial",
+    "spatial_support": "grade raster oceânica | coleção STAC",
+    "spatial_resolution": "1 km nominal",
+    "temporal_coverage": "2002-07-04–2022-12-31; mensal desde 2002-07-01",
+    "temporal_resolution": "diária | mensal",
+    "update_frequency": "coleção histórica encerrada em 2022",
+    "product_status": "arquivado",
+    "version_or_collection": "OC-SMART aCDOM v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-aCDOM-DAILY-1",
+    "methodology_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-aCDOM-DAILY-1",
+    "primary_or_derived": "derivado",
+    "limitations": "aCDOM(443) é coeficiente de absorção estimado por algoritmo, não concentração direta de carbono orgânico dissolvido. Produto mensal agrega estimativas diárias e herda incertezas da correção atmosférica.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000693",
+        "product_id": "DP000664",
+        "distribution_name": "MODIS-Aqua aCDOM diário — NetCDF/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-aCDOM-DAILY-1",
+        "format": "NetCDF | PNG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente NetCDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público à coleção e itens",
+        "license": "CC0",
+        "provider_attribution_required": "não",
+        "subset_support": "por data | área via processamento",
+        "notes": "Coeficiente de absorção a 443 nm em m-1 estimado pelo algoritmo documentado.",
+        "last_verified": "2026-08-18"
+      },
+      {
+        "distribution_id": "DD000694",
+        "product_id": "DP000664",
+        "distribution_name": "MODIS-Aqua aCDOM mensal — NetCDF/STAC",
+        "access_url": "https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-aCDOM-MONTHLY-1",
+        "format": "NetCDF | PNG | metadados STAC",
+        "access_protocol": "HTTPS | STAC",
+        "access_tool": "STAC Browser | cliente NetCDF",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; confirmar metadados do item/coleção",
+        "license": "verificar metadado da coleção; licença específica não inferida nesta rodada",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "por mês | área via processamento",
+        "notes": "Coleção mensal de aCDOM listada oficialmente no STAC do INPE; preservar agregação mensal e metadados.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "NetCDF | PNG | metadados STAC"
+    ],
+    "available_protocols": [
+      "HTTPS | STAC"
+    ]
   }
 ]
