@@ -17,4 +17,4 @@ O conteúdo detalhado original permanece preservado no histórico Git anterior a
 - relatório automático de preenchimento: `data/data_quality_report.json`;
 - auditorias datadas específicas: `audit/` e `docs/audits/`.
 
-Snapshot corrente em 18/08/2026: **125 fontes, 756 produtos e 787 distribuições**.
+Snapshot corrente em 18/08/2026: **125 fontes, 752 produtos e 783 distribuições**. Os maiores IDs chegam a `DR0125`, `DP000756` e `DD000787` e podem conter lacunas.
