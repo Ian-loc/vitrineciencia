@@ -17,9 +17,10 @@ Foram confrontados os documentos operacionais e normativos da Vitrine com:
 
 Em 18/08/2026:
 
-- 125 fontes (`DR0001`–`DR0125`);
-- 756 produtos (`DP000001`–`DP000756`);
-- 787 distribuições (`DD000001`–`DD000787`);
+- **125 fontes**;
+- **752 produtos**;
+- **783 distribuições**;
+- identificadores correntes chegam a `DR0125`, `DP000756` e `DD000787`; lacunas são preservadas;
 - verificação das fontes registrada até 18/08/2026;
 - modelo canônico: fonte → produto → distribuição;
 - `CITATION.cff`: `unreleased`;
@@ -32,9 +33,9 @@ Em 18/08/2026:
 2. `METHODOLOGY.md`, `CODEBOOK.md`, `PRODUCT_CATALOG_MODEL.md`, `docs/PROJECT_STATE.md`, `docs/PROJECT_SCIENTIFIC_DIRECTION.md` e `docs/GOVERNANCE.md` ainda apresentavam Instância 1/PostgreSQL/PostGIS como destino ativo da Vitrine.
 3. `docs/VITRINE_OPERATING_MODEL.md` e `docs/VITRINE_CANONICAL_DATA_CONTRACT.md` ainda congelavam metas de 51 fontes/11 produtos/19 distribuições.
 4. `SELECTION_AND_COVERAGE_POLICY.md` ainda bloqueava expansão até conclusão do antigo baseline, embora a `main` já possuísse 125 fontes.
-5. `FINAL_OBJECTIVES_AND_DOI_GATES.md` estava conceitualmente atualizado, mas o snapshot 125/752/783 já estava quatro produtos/distribuições atrás do estado real.
-6. Documentos do Drive ainda descreviam a recuperação do site em 9–10 de agosto, PR #72 e erro 404 como estado corrente.
-7. O workbook do Drive permanecia legado e não deveria ser confundido com a base atual.
+5. documentos de release/DOI e alguns status confundiam maiores IDs (`DP000756`, `DD000787`) com contagens efetivas; os validadores canônicos confirmam 752 produtos e 783 distribuições.
+6. documentos do Drive ainda descreviam a recuperação do site em 9–10 de agosto, PR #72 e erro 404 como estado corrente.
+7. o workbook do Drive permanecia legado e não deveria ser confundido com a base atual.
 
 ## Decisão documental
 
@@ -52,11 +53,13 @@ A documentação passa a seguir esta hierarquia:
 ## Ajustes materializados neste pacote
 
 - identidade Vitrine Ciência restabelecida em toda documentação ativa;
-- snapshot atualizado para 125/756/787 onde contagens atuais são úteis;
+- snapshot atualizado para 125/752/783 onde contagens atuais são úteis;
+- distinção explícita entre contagem de registros e maior ID corrente;
 - remoção de metas operacionais obsoletas 51/11/19 e 38 campos;
 - PostgreSQL/PostGIS e Instâncias 1–3 retirados do caminho ativo da Vitrine;
 - expansão contínua por lotes auditados reconhecida como estado real;
 - QA reescrito com critério de suficiência e prioridade por risco;
+- papéis `Site oficial`/`homepage_url` e `Acessar dados`/`data_access_url` preservados no contrato documental requerido pela CI;
 - Drive explicitamente classificado como derivado e atualmente não sincronizado;
 - release mantida como `unreleased`; DOI continua dependente de snapshot/tag/depósito e decisão humana;
 - histórico pré-separação preservado sem autoridade normativa.
