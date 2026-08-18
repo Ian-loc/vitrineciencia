@@ -1,143 +1,103 @@
-# Governança do Simbiotrama
+# Governança — Vitrine Ciência
 
 ## 1. Finalidade
 
-O Simbiotrama é um catálogo relacional científico-operacional de produtos de dados georreferenciados sobre o Brasil. Sua fase ativa é a **Instância 1**, dedicada a identificar, definir, versionar, documentar, verificar e tornar acessíveis produtos de dados com rigor científico e operacional.
-
-Composição geográfica e contextualização por literatura permanecem como Instâncias 2 e 3 em backlog. Elas não constituem workstreams ativos.
+A governança da Vitrine protege um produto simples: catálogo público, estático, reproduzível e cientificamente defensável de fontes, produtos e formas de acesso relevantes ao Brasil.
 
 ## 2. Autoridade
 
-A hierarquia vigente é:
+Ordem vigente:
 
-1. branch `main`;
-2. `docs/PROJECT_STATE.md`;
-3. `docs/PROJECT_SCIENTIFIC_DIRECTION.md`;
-4. decisões aprovadas em `docs/decisions/`;
-5. esquema relacional, migrações e validadores executáveis;
-6. dados públicos canônicos durante a transição;
-7. evidências, auditorias e revisões curatoriais;
-8. protótipos, espelhos e documentos históricos.
+1. `main` de `Ian-loc/vitrineciencia`;
+2. três CSVs canônicos;
+3. contratos e validadores executáveis;
+4. documentação ativa indicada em `docs/PROJECT_STATE.md`;
+5. auditorias e evidências;
+6. artefatos derivados e espelhos do Drive.
 
-Durante a transição:
+O Simbiotrama é independente e não participa da autoridade, runtime ou publicação da Vitrine.
 
-- `data/data_resources.csv`, `data/data_products.csv` e `data/product_distributions.csv` sustentam a versão pública;
-- PostgreSQL/PostGIS é a arquitetura canônica de destino, mas ainda não a autoridade de produção;
-- planilhas do Google Drive são snapshots ou espelhos derivados;
-- branches não incorporadas, conversas e relatórios de sessão não constituem autoridade.
+## 3. Regime de mudança
 
-Em caso de divergência, a `main` e os documentos normativos vigentes prevalecem.
+Mudanças devem seguir um pacote coerente:
 
-## 3. Ciclo de vida dos artefatos
+`scope → evidence → implementation → validation → diff audit → public validation when relevant → integration → post-merge verification → consolidation`
 
-Todo artefato deve ser classificado como:
+Branch nova parte de `main`. Alterações não relacionadas devem permanecer separadas. O critério de conclusão deve ser explícito e proporcional ao risco.
 
-- `ACTIVE` — pertence ao caminho crítico da Instância 1;
-- `BACKLOG` — direção futura preservada, sem implementação ativa;
-- `LEGACY_OPERATIONAL` — artefato funcional mantido apenas para continuidade ou regressão;
-- `RETIRED` / `SUPERSEDED` — não orienta trabalho novo;
-- `HISTORICAL_EVIDENCE` — preservado para rastreabilidade, sem autoridade normativa.
+## 4. Classes de risco
 
-A disposição detalhada está em `docs/PROJECT_STATE.md`.
+### AUTO-SAFE
 
-## 4. Regime de mudança
+Pode avançar quando controles objetivos passam:
 
-Mudanças devem percorrer:
+- documentação e status;
+- correções de QA/CI que não relaxem gates;
+- pequenas correções factuais inequívocas com evidência oficial;
+- pequenos lotes de fontes/produtos dentro do contrato vigente;
+- saneamento reversível e sem efeito destrutivo.
 
-1. delimitação do pacote e do critério de completude;
-2. evidência e proposta explícita;
-3. branch derivada da `main` corrente;
-4. alterações limitadas ao escopo;
-5. validação automática e inspeção científica;
-6. auditoria do delta;
-7. pull request;
-8. congelamento do head;
-9. autorização humana quando exigida;
-10. incorporação em `main`, preferencialmente por squash merge;
-11. atualização de marco, estado ou changelog quando material.
+### REVIEW
 
-Cada PR deve representar uma família de produtos, um pequeno conjunto estreitamente relacionado ou uma alteração transversal indispensável. Não se devem misturar famílias independentes, limpeza de legado e mudanças arquiteturais amplas.
+Requer revisão humana do pacote:
 
-## 5. Gates humanos
+- lote grande;
+- mudança pública significativa de interface/comportamento;
+- evidência factual conflitante;
+- alteração operacional de impacto difícil de avaliar somente por testes.
 
-Exigem autorização humana explícita:
+### HUMAN-DECISION
 
-- merge de mudança científica, estrutural, executável ou pública;
-- promoção do PostgreSQL como autoridade;
-- publicação ou deploy deliberado;
-- mudança de visibilidade;
-- criação, encerramento ou migração de repositório;
-- modificação ou substituição de arquivos do Drive;
-- ação destrutiva ou irreversível;
-- decisão científica ambígua de alto impacto.
+Requer decisão explícita antes da mudança material:
 
-Microdecisões reversíveis, cobertas por contrato, evidência e teste, podem ser executadas dentro de um pacote autorizado.
+- alteração de escopo ou schema incompatível;
+- remoção destrutiva/em massa;
+- nova infraestrutura estrutural;
+- tracking/analytics de usuários ou decisão de privacidade;
+- licença, autoria ou política oficial de citação;
+- release `1.0.0`;
+- publicação de DOI/Zenodo.
+
+## 5. Curadoria
+
+Uma alteração de dados deve:
+
+- preservar IDs existentes;
+- manter integridade fonte → produto → distribuição;
+- sustentar valores factuais com evidência adequada;
+- registrar desconhecido/variável quando a evidência não permite precisão maior;
+- evitar promoção de propriedades específicas para níveis mais gerais;
+- registrar `last_verified` somente após revisão efetiva;
+- atualizar classificação Brasil e artefatos derivados quando aplicável.
 
 ## 6. Papéis
 
 ### Responsável científico e mantenedor
 
-- define missão, escopo e prioridades;
-- aprova interpretações científicas e mudanças canônicas;
-- autoriza merges e releases;
-- decide promoção de autoridade e publicação;
-- responde por identidade, autoria, licença e citação do projeto.
+Define missão, prioridades, escopo, autoria, licença, releases e decisões HUMAN-DECISION.
 
-### Curadoria e contribuição
+### Curadoria/contribuição
 
-- apresenta evidências rastreáveis;
-- preserva valores desconhecidos como desconhecidos;
-- separa fonte, família, produto, release, distribuição, ativo e capacidade;
-- registra limitações e evidência contraditória;
-- não trata CI verde como prova factual externa;
-- não generaliza metadados entre produtos, releases ou biomas.
+Propõe e verifica registros, preserva proveniência, identifica limitações e executa o contrato sem inventar metadados.
 
 ### Automação
 
-- valida estrutura, contratos, integridade e regressões;
-- gera artefatos derivados autorizados;
-- registra ocorrências e estados negativos;
-- não inventa metadados;
-- não promove unidades incompletas;
-- não atribui compatibilidade científica universal;
-- não executa gates humanos.
+Valida estrutura, relações, contratos e regressões; constrói artefatos derivados; não substitui julgamento factual externo nem decide mudanças de escopo.
 
-## 7. Curadoria e promoção
+## 7. Publicação
 
-A unidade de trabalho é **um produto ou release integralmente inspecionado**.
+O workflow de Pages deve construir apenas o artefato público definido em `docs/VITRINE_BOUNDARY.md`. Materiais internos, schemas históricos, auditorias e conteúdo do Simbiotrama não podem vazar para `_site`.
 
-Uma promoção requer, conforme aplicável:
+Publicação é considerada consolidada somente depois de build/CI e verificação pós-deploy aplicáveis.
 
-- identidade e produtor;
-- significado científico;
-- variáveis e classes;
-- método versionado;
-- perfis espacial e temporal;
-- qualidade, incerteza e limitações;
-- distribuições, ativos, endpoints e capacidades;
-- licença e citação;
-- evidências por afirmação;
-- revisão curatorial;
-- integridade relacional e idempotência.
+## 8. Drive
 
-Presença em catálogo, URL conhecida ou CI verde não é suficiente para promoção.
+Arquivos do Drive são documentação, histórico ou espelhos derivados. Não devem receber correções canônicas isoladas. Um espelho só pode ser chamado de sincronizado se declarar commit-fonte e tiver sido comparado contra o snapshot correspondente.
 
-## 8. Instâncias futuras
+## 9. Releases e DOI
 
-A política `docs/policies/SCIENTIFIC_COMPARABILITY_AND_INFERENCE_POLICY.md` é um guardrail de backlog. Ela preserva limites para futuras composições e análises, mas não autoriza motores de compatibilidade, correlação, regressão ou causalidade durante a Instância 1.
+A Vitrine viva pode continuar evoluindo entre releases. Uma release citável exige tag/commit imutável, dados e documentação coerentes, artefato reproduzível e inspeção do pacote. DOI é uma decisão humana e deve representar um snapshot arquivado, não apenas a página dinâmica.
 
-O explorador visual atual e `data/federated_layers.json` são `LEGACY_OPERATIONAL`, limitados a composição N0. Só podem receber correções de disponibilidade, segurança ou regressão enquanto a Instância 2 não for ativada.
+## 10. Evidência histórica
 
-## 9. Evidência histórica
-
-Auditorias, ocorrências, PRs, commits e propostas de transição devem ser preservados. A limpeza do repositório deve remover duplicação normativa e ambiguidade, não rastreabilidade.
-
-Achados históricos não alteram automaticamente dados canônicos. Uma correção só se torna vigente quando incorporada no local autoritativo apropriado.
-
-## 10. Releases, espelhos e publicação
-
-Releases devem ser identificáveis, reproduzíveis e coerentes com `docs/RELEASE_POLICY.md`.
-
-Espelhos do Drive devem declarar versão, commit-fonte, data de geração e verificação de correspondência. Eles não devem ser editados como fonte independente.
-
-A página pública atual permanece transitória. Mudanças no núcleo relacional não implicam automaticamente promoção, deploy ou substituição da interface.
+Documentos relacionais/Simbiotrama anteriores a 09/08/2026, auditorias antigas, PRs e decisões superadas devem ser preservados como histórico, mas não podem competir com a documentação ativa. `docs/PROJECT_STATE.md` define essa classificação.
