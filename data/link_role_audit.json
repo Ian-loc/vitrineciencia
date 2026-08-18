@@ -7,8 +7,8 @@
     "not_applicable": "Usado quando o recurso não oferece dados para consulta ou download, como software de publicação."
   },
   "counts": {
-    "separate_destinations": 78,
-    "same_destination_pending_review": 46,
+    "separate_destinations": 81,
+    "same_destination_pending_review": 43,
     "data_access_not_applicable": 1
   },
   "records_requiring_review": [
@@ -18,20 +18,6 @@
       "status": "same_destination_pending_review",
       "homepage_url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene",
       "data_access_url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene"
-    },
-    {
-      "resource_id": "DR0007",
-      "resource_name": "UrbVerde",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://urbverde.iau.usp.br/",
-      "data_access_url": "https://urbverde.iau.usp.br/"
-    },
-    {
-      "resource_id": "DR0011",
-      "resource_name": "TerraBrasilis",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://terrabrasilis.dpi.inpe.br/",
-      "data_access_url": "https://terrabrasilis.dpi.inpe.br/"
     },
     {
       "resource_id": "DR0014",
@@ -60,13 +46,6 @@
       "status": "same_destination_pending_review",
       "homepage_url": "https://bdmep.inmet.gov.br/",
       "data_access_url": "https://bdmep.inmet.gov.br/"
-    },
-    {
-      "resource_id": "DR0019",
-      "resource_name": "Google Earth Engine Data Catalog",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://developers.google.com/earth-engine/datasets",
-      "data_access_url": "https://developers.google.com/earth-engine/datasets"
     },
     {
       "resource_id": "DR0020",
