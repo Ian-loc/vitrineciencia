@@ -1,0 +1,39 @@
+name: Materialize PNAD RDPC CDR 2026
+
+on:
+  push:
+    branches: ["audit/pnad-rdpc-cdr-2026"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/pnad-rdpc-cdr-2026
+      - name: Materialize verified PNAD indicators
+        run: python3 scripts/materialize_pnad_rdpc_cdr_2026.py
+      - name: Validate canonical catalog
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+      - name: Commit materialized catalog
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/data_products.csv data/data_products.json data/product_distributions.csv data/link_role_audit.json
+          if git diff --cached --quiet; then
+            echo "No material changes"
+            exit 0
+          fi
+          git commit -m "Expand verified PNAD regional-income indicators"
+          git push origin HEAD:audit/pnad-rdpc-cdr-2026
