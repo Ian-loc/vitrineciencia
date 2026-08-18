@@ -73,6 +73,6 @@ jobs:
           git config user.name "vitrine-bot"
           git config user.email "vitrine-bot@users.noreply.github.com"
           git status --short
-          git add data/data_products.csv data/product_distributions.csv data/data_products.json data/link_role_audit.json data/build-meta.json data/data_quality_report.json
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json
           git commit -m "Expand verified BIG CBERS processing catalog"
           git push origin main
