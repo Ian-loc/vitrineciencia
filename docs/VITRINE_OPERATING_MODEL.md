@@ -22,7 +22,7 @@ A Vitrine ajuda a descobrir, compreender inicialmente, comparar metadados e aces
 - código: MIT;
 - curadoria/metadados originais: CC BY 4.0.
 
-Snapshot de 18/08/2026: **125 fontes, 756 produtos e 787 distribuições**. Essas contagens não são requisitos fixos.
+Snapshot de 18/08/2026: **125 fontes, 752 produtos e 783 distribuições**. Os maiores IDs chegam a `DR0125`, `DP000756` e `DD000787`; lacunas de IDs são preservadas. As contagens não são requisitos fixos.
 
 ## 3. Fronteira conceitual
 
