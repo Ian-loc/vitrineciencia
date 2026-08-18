@@ -1,0 +1,77 @@
+name: Curate CPTEC batch 2026-08-18
+on:
+  push:
+    paths:
+      - '.github/workflows/curate_cptec_batch_20260818.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  curate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Append verified CPTEC products and distributions
+        run: |
+          python - <<'PY'
+          import csv, pathlib
+          p=pathlib.Path('data/data_products.csv')
+          d=pathlib.Path('data/product_distributions.csv')
+          products=[
+          ['DP000551','DR0119','CPTEC/INPE — DSAT — visualização interativa GOES-19','DSAT','imagens de satélite meteorológico geoestacionário','data_service','Aplicação da DISSM/INPE para visualização interativa, animação e análise de imagens e produtos de satélites meteorológicos geoestacionários, atualmente com foco no GOES-Leste/GOES-19.','Clima e Ciências Atmosféricas | Sensoriamento Remoto | Infraestruturas e Ciência de Dados','GOES-19 | ABI | satélite meteorológico | imagens | TMS | nuvens | monitoramento','Américas e domínios cobertos pelos produtos GOES-Leste; inclui Brasil','sim','pixel/imagem raster e camadas derivadas','varia por canal e produto; interface oferece níveis de visualização de 16 km a 500 m','acervo e operação corrente; GOES-19 operacional desde 2025-04-07','minutos a horas conforme canal/produto','operacional conforme produto','ativo','DSAT 1.0.0 / GOES-19 corrente em 2026','external_index','https://www.cptec.inpe.br/dsat/','https://www.cptec.inpe.br/dsat/','derivado','Imagens, composições RGB e produtos derivados têm significados físicos e resoluções distintos. Temperatura de brilho não é temperatura da superfície; a visualização não substitui metadados do canal/produto. Uso comercial/reprodução depende de autorização expressa do CPTEC/INPE.','2026-08-18'],
+          ['DP000552','DR0119','CPTEC/INPE — Produtos de Satélites e Sensores Ambientais — DISSM','DISSM Satélite','produtos ambientais derivados de satélites e radares','federated_catalog','Catálogo operacional da DISSM/CPTEC com classificação de nuvens, eletricidade atmosférica, índice UV, nevoeiro, oceanografia por satélite, precipitação por radar e satélite, radiação solar, sistemas convectivos e ventos derivados de nuvens.','Clima e Ciências Atmosféricas | Sensoriamento Remoto | Ciências Ambientais e Ecologia','satélite | radar | precipitação | UV | nuvens | TSM | radiação solar | GLM | ForTraCC | vento','Brasil, América do Sul e domínios instrumentais conforme produto','sim','imagens raster, campos derivados e visualizações','varia por sensor, algoritmo e produto','operações correntes e acervos por produto','minutos a diário conforme produto','operacional conforme produto','ativo','catálogo DISSM corrente 2026','external_index','https://satelite.cptec.inpe.br/','https://satelite.cptec.inpe.br/','agregador','Catálogo reúne produtos heterogêneos. Precipitação por satélite/radar, TSM, radiação, UV, eletricidade e classificação de nuvens não são variáveis intercambiáveis; registrar algoritmo, sensor, resolução, instante e domínio do produto usado.','2026-08-18'],
+          ['DP000553','DR0119','CPTEC/INPE — Monitoramento Climático da América do Sul','Monitoramento Climático AS','monitoramento climático observado','data_service','Portal de monitoramento climático do CPTEC para América do Sul com dados diários, mensais, climatologia trimestral e índices, incluindo mapas de precipitação e temperatura e outros campos selecionáveis.','Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados','monitoramento climático | precipitação | temperatura | climatologia | índices | América do Sul','América do Sul, incluindo Brasil','sim','grade/mapa derivado e dados agregados','varia por campo e fonte subjacente','períodos históricos e operação corrente conforme campo','diária | mensal | trimestral conforme opção','operacional','ativo','portal corrente 2026','external_index','https://clima.cptec.inpe.br/monitoramentobrasil/pt','https://www.cptec.inpe.br/faq/como-acessar-os-dados-da-pagina-de-clima-no-site-do-cptec/','derivado','Mapas e índices combinam fontes e processamentos distintos. Anomalia ou climatologia não é valor observado bruto; para análise quantitativa preservar campo, período, fonte e método de geração.','2026-08-18'],
+          ['DP000554','DR0119','CPTEC/INPE — Monitoramento Climático Global','Monitoramento Global CPTEC','monitoramento climático global','data_service','Portal de monitoramento global do CPTEC com dados mensais e produtos como anomalias e tendências de temperatura da superfície do mar, oscilações intrassazonais e posição da ZCIT por radiação de onda longa.','Clima e Ciências Atmosféricas | Recursos Hídricos e Oceanografia | Infraestruturas e Ciência de Dados','monitoramento global | TSM | anomalia | tendência | ZCIT | ROL | oscilação intrassazonal','global','sim','grade/mapa e séries/índices derivados','varia por campo e produto','histórico e operação corrente conforme produto','semanal | mensal conforme produto','operacional','ativo','portal corrente 2026','external_index','https://clima.cptec.inpe.br/monitoramentoglobal/pt','https://clima.cptec.inpe.br/monitoramentoglobal/pt','derivado','Produtos são derivados e possuem domínios, climatologias e fontes próprias. TSM não equivale a temperatura do ar e anomalias dependem da referência climatológica adotada.','2026-08-18'],
+          ['DP000555','DR0119','CPTEC/INPE — Monitoramento El Niño–Oscilação Sul — ENOS','ENOS CPTEC','monitoramento e diagnóstico ENOS','indicator_family','Portal temático do CPTEC para monitoramento do ENOS com índices oceânicos e atmosféricos, anomalias de TSM, evolução temporal, diagnóstico e informação sobre El Niño e La Niña.','Clima e Ciências Atmosféricas | Recursos Hídricos e Oceanografia | Ciências Ambientais e Ecologia','ENOS | El Niño | La Niña | ONI | SOI | Niño 3.4 | TSM | Pacífico Equatorial','Pacífico Equatorial e sínteses de impactos globais e no Brasil','sim','regiões oceânicas de índices, mapas e séries temporais','definida por cada índice/campo; não é uma grade única','histórico e monitoramento corrente conforme produto','semanal | mensal | trimestral conforme índice','operacional/irregular conforme produto','ativo','portal ENOS corrente; conteúdos com datas próprias','external_index','https://enos.cptec.inpe.br/','https://enos.cptec.inpe.br/','derivado','ENOS é fenômeno acoplado diagnosticado por múltiplos indicadores. Um índice isolado ou uma anomalia pontual de TSM não deve ser interpretado como classificação definitiva do episódio; preservar período e critério do índice.','2026-08-18'],
+          ['DP000556','DR0119','CPTEC/INPE — Previsão Numérica de Ondas — WAVEWATCH','WWatch CPTEC','previsão numérica oceânica de ondas','data_service','Produto operacional de previsão oceânica do CPTEC baseado em WAVEWATCH, com campos de ondas no portal de previsão numérica e sínteses por localidades litorâneas também expostas pelos serviços XML.','Recursos Hídricos e Oceanografia | Clima e Ciências Atmosféricas | Infraestruturas e Ciência de Dados','ondas | WAVEWATCH | WW3 | altura de onda | direção | vento | previsão oceânica','domínio oceânico do modelo e localidades litorâneas brasileiras cobertas','sim','grade de modelo oceânico e síntese por localidade','conforme configuração operacional WAVEWATCH','previsão operacional corrente','horária por horizonte; XML documenta até 6 dias e 8 horários/dia','conforme ciclo operacional do modelo','ativo','WWatch operacional corrente 2026','complete','https://previsaonumerica.cptec.inpe.br/wwatch/alt_onda/bra/','https://www3.cptec.inpe.br/dimnt/modelos-numericos/','derivado','Previsão de onda é saída modelada, não observação de boia. Resolução nominal e valor em localidade não implicam precisão costeira local; preservar ciclo, horizonte, variável e configuração do modelo.','2026-08-18']]
+          distributions=[
+          ['DD000576','DP000551','CPTEC — DSAT GOES-19','https://www.cptec.inpe.br/dsat/','visualização web | imagens | animações | TMS','HTTPS | TMS','DSAT', 'sim','não','consulta pública; reprodução/uso comercial sujeitos aos termos CPTEC/INPE','termos CPTEC/INPE; conteúdo do site com restrições adicionais','sim','por data | produto | overlay | intervalo temporal','GOES-19 é o satélite operacional atual; canais/produtos têm resoluções e interpretações próprias.','2026-08-18'],
+          ['DD000577','DP000552','CPTEC — portal DISSM de produtos de satélite e sensores','https://satelite.cptec.inpe.br/','imagens | mapas | downloads conforme produto','HTTPS','portal DISSM', 'parcial','não','consulta pública; downloads dependem do produto','termos CPTEC/INPE; verificar produto específico','sim','por produto | data | domínio','Catálogo agrega produtos distintos de satélite, radar e algoritmos derivados.','2026-08-18'],
+          ['DD000578','DP000553','CPTEC — Monitoramento Climático América do Sul','https://clima.cptec.inpe.br/monitoramentobrasil/pt','mapas | dados diários/mensais | índices','HTTPS','portal Clima CPTEC','parcial','não','consulta pública','CC BY-ND 3.0 Unported no conteúdo do site','sim','por campo | data | período | índice','Dados e mapas são derivados de fontes diversas; registrar campo e referência temporal.','2026-08-18'],
+          ['DD000579','DP000554','CPTEC — Monitoramento Climático Global','https://clima.cptec.inpe.br/monitoramentoglobal/pt','mapas | séries | índices','HTTPS','portal Clima CPTEC','parcial','não','consulta pública','CC BY-ND 3.0 Unported no conteúdo do site','sim','por campo | mês | produto','Inclui TSM, anomalias, tendências e outros diagnósticos; metodologias variam.','2026-08-18'],
+          ['DD000580','DP000555','CPTEC — portal El Niño e La Niña / ENOS','https://enos.cptec.inpe.br/','mapas | gráficos | séries | notas/diagnósticos','HTTPS','portal ENOS CPTEC','parcial','não','consulta pública; disponibilidade varia por componente','termos CPTEC/INPE; verificar conteúdo específico','sim','por índice | região Niño | período | produto','Classificação ENOS requer critérios temporais e múltiplos indicadores; não inferir fase a partir de um único mapa.','2026-08-18'],
+          ['DD000581','DP000556','CPTEC — WAVEWATCH / previsão de ondas','https://previsaonumerica.cptec.inpe.br/wwatch/alt_onda/bra/','mapas de modelo | XML por localidade','HTTPS | XML','portal previsão numérica + serviço XML','sim','não','consulta pública conforme termos CPTEC/INPE','termos CPTEC/INPE; atribuição obrigatória e restrições de uso comercial no portal','sim','por variável | domínio | ciclo | horizonte | localidade litorânea','Serviço XML também expõe previsão por localidade até 6 dias; a distribuição continua sendo previsão modelada.','2026-08-18']]
+          for path, rows in [(p,products),(d,distributions)]:
+              with path.open('a',encoding='utf-8',newline='') as f:
+                  w=csv.writer(f,lineterminator='\n')
+                  w.writerows(rows)
+          PY
+      - name: Validate canonical catalog
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Read-back relational integrity
+        run: |
+          python - <<'PY'
+          import csv
+          R=list(csv.DictReader(open('data/data_resources.csv',encoding='utf-8')))
+          P=list(csv.DictReader(open('data/data_products.csv',encoding='utf-8')))
+          D=list(csv.DictReader(open('data/product_distributions.csv',encoding='utf-8')))
+          assert len({r['resource_id'] for r in R})==len(R)
+          assert len({p['product_id'] for p in P})==len(P)
+          assert len({d['distribution_id'] for d in D})==len(D)
+          rs={r['resource_id'] for r in R}; ps={p['product_id'] for p in P}
+          assert all(p['resource_id'] in rs for p in P)
+          assert all(d['product_id'] in ps for d in D)
+          ids={p['product_id'] for p in P}
+          assert set(f'DP{i:06d}' for i in range(551,557)) <= ids
+          dids={d['distribution_id'] for d in D}
+          assert set(f'DD{i:06d}' for i in range(576,582)) <= dids
+          print(f'counts: {len(R)} sources, {len(P)} products, {len(D)} distributions')
+          PY
+      - name: Commit materialized batch
+        run: |
+          git config user.name 'vitrine-ciencia-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json reports/link_role_audit.json 2>/dev/null || true
+          git diff --cached --quiet && exit 0
+          git commit -m 'Expand verified CPTEC monitoring catalog'
+          git push origin HEAD:main
