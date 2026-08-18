@@ -1,108 +1,136 @@
-# Objetivos finais e critérios obrigatórios antes do DOI
+# Objetivos finais e critérios para release citável e DOI
 
-## 1. Produto final
+## 1. Produto
 
-O **Ecology Data Catalog: catálogo de fontes de dados ambientais para pesquisa, ensino e extensão** será um conjunto de dados curado, versionado e citável para localizar, comparar e avaliar fontes ambientais. A unidade de registro é uma fonte ou infraestrutura, não um dataset individual.
+A **Vitrine Ciência** é um catálogo público, estático, versionado e citável de fontes e produtos de dados científicos sobre o Brasil para pesquisa, ensino e extensão.
+
+A Vitrine não hospeda, por padrão, cópias integrais dos datasets de terceiros. Seu produto científico original é a **curadoria estruturada**: identidade de fontes, produtos e distribuições; cobertura; acesso; formatos; versões; metodologia; licenças; limitações; evidências e datas de verificação.
 
 ## 2. Objetivo geral
 
-Disponibilizar catálogo público, verificável e reutilizável sobre ecologia, biodiversidade, clima, carbono, solo, vegetação, espécies, biosfera e temas relacionados, apoiando uso responsável em pesquisa, ensino e extensão.
+Facilitar a descoberta, comparação e avaliação inicial de fontes de dados científicos relevantes ao Brasil, preservando rastreabilidade, granularidade suficiente e distinções metodológicas que reduzam interpretações incorretas.
 
-## 3. Objetivos específicos finais
+## 3. Objetivos específicos
 
-1. **Descoberta:** localizar fontes por tema, cobertura, formato e acesso.
-2. **Comparação:** comparar função, escala, formatos, protocolos, ferramentas e situação institucional.
-3. **Avaliação científica:** registrar uso, limitações, evidência e data.
-4. **Transparência:** separar autodescrição, classificação curatorial e evidência.
-5. **Reprodutibilidade:** manter CSV, contratos, CI e histórico.
-6. **Acessibilidade:** oferecer interface responsiva e navegável.
-7. **Citação e preservação:** criar release estável, autoria, licença e DOI consistentes.
-8. **Manutenção sustentável:** revisar e incluir fontes por lotes sem duplicar GitHub e Drive.
+1. **Descoberta:** localizar fontes e produtos por tema, cobertura, formato e mecanismo de acesso.
+2. **Comparação:** distinguir fonte, produto, família/série, catálogo, serviço e distribuição.
+3. **Avaliação científica:** registrar escala, temporalidade, metodologia, limitações, evidência e data de verificação.
+4. **Transparência:** separar fatos documentados, classificação curatorial e lacunas/ambiguidade.
+5. **Reprodutibilidade:** manter tabelas canônicas, artefatos derivados, validadores, histórico Git e releases.
+6. **Acessibilidade:** oferecer interface pública navegável e reutilizável sem depender de infraestrutura privada.
+7. **Citação e preservação:** publicar releases estáveis com metadados coerentes e DOI.
+8. **Manutenção sustentável:** permitir crescimento contínuo sem renumerar IDs, duplicar objetos ou transformar governança em fim em si mesma.
 
-## 4. Limites deliberados
+## 4. Modelo canônico atual
 
-O catálogo não hospeda todos os datasets, não substitui documentação ou termos, não garante qualidade homogênea, não atribui DOI genérico a infraestruturas, não registra cada produto como linha e não certifica adequação metodológica universal.
+A autoridade ativa do projeto é o repositório:
 
-Recursos bibliométricos ou editoriais sem dados ambientais diretos exigem decisão explícita de elegibilidade; não são incluídos ou excluídos automaticamente.
+- https://github.com/Ian-loc/vitrineciencia
 
-## 5. Definição mínima de completude científica
+A superfície pública é:
 
-Uma fonte completa possui identidade e tipo separados, descrição, URL oficial, áreas e palavras-chave, produtos e formatos sem mistura, cobertura e escala coerentes, download e acesso programático, protocolo ou ferramenta quando aplicável, responsável, situação institucional, uso, limitações, evidência, data ISO e ausência de contradições bloqueantes.
+- https://ian-loc.github.io/vitrineciencia/
 
-Valores desconhecidos são permitidos quando explícitos e justificados. Uma URL não é presumida como evidência para todos os campos; evidências externas são registradas por afirmação e dimensão.
+As tabelas canônicas são:
 
-## 6. Critérios de qualidade da versão 1.0.0
+- `data/data_resources.csv` — fontes;
+- `data/data_products.csv` — produtos;
+- `data/product_distributions.csv` — distribuições.
 
-### 6.1 Estrutura e dados
+Artefatos JSON e o site são derivados das tabelas canônicas e devem poder ser reconstruídos deterministicamente.
 
-- 38 campos estabilizados;
-- 51 IDs preservados;
-- nenhuma decisão de migração pendente;
-- exceções resolvidas;
-- 14 regras ativas;
-- CSV, JSON e interface consistentes.
+## 5. Estado de referência desta revisão
 
-### 6.2 Auditoria das fontes
+Em 18 de agosto de 2026, o estado materializado era:
 
-- 51 fontes revisadas no esquema final;
-- links, acesso, formatos, protocolos, ferramentas, Brasil e licenças conferidos;
-- evidências, datas e revisores registrados;
-- incertezas preservadas;
-- duplicidades, versões e escopo resolvidos.
+- **125 fontes**;
+- **752 produtos**;
+- **783 distribuições**;
+- verificação das fontes chegando a **18/08/2026**.
 
-### 6.3 Interface pública
+Essas contagens são um **snapshot**, não um requisito fixo de arquitetura nem um gate de release. O catálogo continua crescendo por lotes auditados.
 
-- busca, filtros, ordenação e URLs compartilháveis funcionais;
-- 38 campos disponíveis;
-- acessibilidade e responsividade validadas;
-- versão e commit públicos;
-- deploy confirmado.
+## 6. Critério mínimo de completude
 
-### 6.4 Documentação e governança
+Uma fonte ou produto pode ser considerado suficientemente completo para materialização quando, conforme aplicável, possui:
 
-- README, metodologia, codebook, workflows, licenças e CFF coerentes;
-- changelog encerrado;
-- GitHub canônico e Drive histórico executivo;
-- inclusão, revisão e correção documentadas;
-- licenças de código e dados separadas.
+- identidade e tipo claramente definidos;
+- relação fonte → produto → distribuição válida;
+- URL oficial ou mecanismo de acesso sustentado;
+- cobertura espacial e temporal documentada ou explicitamente desconhecida;
+- versão/coleção ou referência temporal quando necessária;
+- metodologia ou natureza do objeto suficientemente descrita;
+- licença/condição de uso registrada de modo conservador;
+- limitações científicas e semânticas relevantes;
+- evidência oficial/técnica ou acadêmica apropriada;
+- data de verificação;
+- ausência de duplicação material ou inferência não sustentada.
 
-### 6.5 Arquivamento e citação
+Valores desconhecidos são permitidos quando a evidência não sustenta preenchimento mais específico.
 
-- `CITATION.cff` 1.0.0 somente na release;
-- autoria `Lara, Ian` e ORCID `0000-0003-1164-9318`;
-- tag e release `v1.0.0`;
-- depósito **Dataset** inspecionado;
-- DOI de versão e conceito propagados.
+## 7. Critérios para uma release científica estável
 
-## 7. Portões obrigatórios para DOI
+Uma release estável candidata a DOI deve satisfazer simultaneamente:
 
-1. **G1 — escopo científico:** objetivos, unidade e limites.
-2. **G2 — esquema:** 38 campos e codebook final.
-3. **G3 — migração:** 51 registros sem perda ou decisão pendente.
-4. **G4 — validação semântica:** 14 regras no CSV final.
-5. **G5 — revisão das fontes:** 51 registros auditados.
-6. **G6 — qualidade de acesso:** links e condições verificados.
-7. **G7 — interface:** campos, filtros e acessibilidade.
-8. **G8 — publicação:** deploy confirmado.
-9. **G9 — documentação:** documentação e changelog coerentes.
-10. **G10 — metadados de citação:** autor, ORCID, título, versão e data.
-11. **G11 — release imutável:** tag e release v1.0.0.
-12. **G12 — inspeção do depósito:** tipo Dataset, arquivos e metadados.
+1. tabelas canônicas validadas e sem FKs quebradas;
+2. IDs únicos e preservados;
+3. ausência de duplicações materiais conhecidas que alterem a interpretação do catálogo;
+4. artefatos derivados reconstruídos e coerentes com o snapshot;
+5. interface pública validada e publicável;
+6. README, licença, `CITATION.cff`, metodologia e documentação de release coerentes;
+7. autoria, ORCID, título e URL canônicos consistentes;
+8. changelog/release notes suficientes para identificar o snapshot;
+9. tag Git imutável da versão;
+10. pacote de depósito inspecionado antes da publicação do DOI.
 
-## 8. Regra de decisão
+Nenhum número histórico de fontes, produtos ou campos é, por si só, gate de release.
 
-- **GO para v0.8.0:** após revisão externa suficiente dos 35 casos e migração validada.
-- **GO para v1.0.0:** após DATA1, revisão das 51 fontes, interface e publicação verificável.
-- **GO para DOI:** após G1–G12 concluídos.
-- **NO-GO:** falha de CI, link crítico não verificado, decisão pendente, divergência entre artefatos ou ausência de evidência de deploy.
+## 8. Estratégia de DOI
 
-## 9. Estado atual
+A estratégia recomendada para a Vitrine Ciência é:
 
-- versão 0.7.0;
-- UX1–UX4, DATA1-A, DATA1-B, QC0, SELECT1 e projeção DATA1-BX concluídos;
-- BR1–BR5 concluídos como auditoria interna;
-- DATA1-BR-CLOSE integrado e validado por PR #29, run `29778282362`;
-- DATA1-EXT ativo, começando por G0 e W1;
-- tabela externa de evidências ainda vazia;
-- esquema 0.8.0 não aplicado;
-- v1.0.0 e DOI bloqueados.
+- **GitHub Pages:** produto vivo e navegável;
+- **GitHub:** desenvolvimento, histórico, issues e releases;
+- **Zenodo:** preservação e DOI da release científica;
+- **ORCID/Lattes:** exposição profissional e citação.
+
+O depósito deve ser do tipo **Dataset**, porque o principal objeto científico original é o catálogo curado e suas tabelas, mesmo que a release também arquive código e documentação.
+
+Quando a integração GitHub–Zenodo estiver ativa, cada release científica importante pode receber um DOI de versão; o DOI conceitual deve representar o conjunto da Vitrine ao longo das versões.
+
+## 9. Conteúdo mínimo do depósito
+
+O snapshot depositado deve incluir, no mínimo:
+
+- `data/data_resources.csv`;
+- `data/data_products.csv`;
+- `data/product_distributions.csv`;
+- JSONs derivados necessários à reutilização;
+- README;
+- metodologia/codebook relevante;
+- `CITATION.cff`;
+- `LICENSE-DATA.md` e `LICENSE`;
+- changelog ou release notes;
+- versão/tag e commit-fonte claramente identificados.
+
+O depósito não deve incluir cópias de datasets externos apenas por estarem catalogados na Vitrine.
+
+## 10. Portões objetivos para DOI
+
+- **G1 — identidade:** nome Vitrine Ciência, autoria, ORCID, URL e repositório canônicos coerentes.
+- **G2 — integridade:** tabelas, IDs e relações validados.
+- **G3 — semântica:** tipos fonte/produto/distribuição e principais limitações sem contradições bloqueantes.
+- **G4 — licenças:** licença da curadoria separada das licenças dos dados externos.
+- **G5 — documentação:** README, metodologia, citação e release notes consistentes.
+- **G6 — publicação:** site público gerado a partir do mesmo snapshot da release.
+- **G7 — imutabilidade:** tag Git criada e commit-fonte registrado.
+- **G8 — depósito:** arquivos e metadados do Zenodo conferidos antes da publicação.
+- **G9 — propagação:** DOI inserido em `CITATION.cff`, README, site e perfis acadêmicos após emissão.
+
+## 11. Regra de decisão
+
+**GO para DOI** quando G1–G8 estiverem concluídos para uma release estável e o pacote depositado puder ser reproduzido a partir do commit/tag indicado.
+
+**NO-GO** apenas para falhas materialmente relevantes: integridade quebrada, identidade incoerente, licença incorreta, snapshot não reproduzível, tag ausente ou depósito divergente da release.
+
+Pendências de curadoria não críticas, novos produtos elegíveis ou melhorias futuras não impedem uma release se o snapshot corrente estiver tecnicamente defensável e suas limitações estiverem explícitas.
