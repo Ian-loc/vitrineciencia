@@ -1,0 +1,72 @@
+name: Materialize verified INPE BIG batch
+
+on:
+  push:
+    branches: [audit/inpe-big-20260818]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/inpe-big-20260818
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Append verified catalog batch
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+
+          src_path=Path('data/data_resources.csv'); prod_path=Path('data/data_products.csv'); dist_path=Path('data/product_distributions.csv'); pri_path=Path('data/brazil_scope_priorities.json')
+          source=json.loads(Path('tmp/inpe_big_source.json').read_text(encoding='utf-8'))
+          products=json.loads(Path('tmp/inpe_big_products_a.json').read_text(encoding='utf-8'))+json.loads(Path('tmp/inpe_big_products_b.json').read_text(encoding='utf-8'))
+          distributions=json.loads(Path('tmp/inpe_big_dists_a.json').read_text(encoding='utf-8'))+json.loads(Path('tmp/inpe_big_dists_b.json').read_text(encoding='utf-8'))
+
+          def load(path):
+              with path.open(encoding='utf-8-sig', newline='') as f:
+                  r=csv.DictReader(f); return list(r.fieldnames or []), list(r)
+
+          sh,sr=load(src_path); ph,pr=load(prod_path); dh,dr=load(dist_path)
+          sids={x['resource_id'] for x in sr}; pids={x['product_id'] for x in pr}; dids={x['distribution_id'] for x in dr}; urls={x['product_page_url'].strip() for x in pr}
+          complete=(source['resource_id'] in sids and all(x['product_id'] in pids for x in products) and all(x['distribution_id'] in dids for x in distributions))
+          if not complete:
+              assert (len(sr),len(pr),len(dr))==(122,623,648), (len(sr),len(pr),len(dr))
+              assert source['resource_id'] not in sids
+              assert not any(x['product_id'] in pids for x in products)
+              assert not any(x['distribution_id'] in dids for x in distributions)
+              clashes=[x['product_page_url'] for x in products if x['product_page_url'] in urls]
+              assert not clashes, f'product_page_url already catalogued: {clashes}'
+              with src_path.open('a',encoding='utf-8',newline='') as f: csv.DictWriter(f,fieldnames=sh,lineterminator='\n').writerow(source)
+              with prod_path.open('a',encoding='utf-8',newline='') as f: csv.DictWriter(f,fieldnames=ph,lineterminator='\n').writerows(products)
+              with dist_path.open('a',encoding='utf-8',newline='') as f: csv.DictWriter(f,fieldnames=dh,lineterminator='\n').writerows(distributions)
+              reg=json.loads(pri_path.read_text(encoding='utf-8')); p0=next(x for x in reg['tiers'] if x['priority_tier']=='P0'); assert source['resource_id'] not in p0['resource_ids']; p0['resource_ids'].append(source['resource_id']); reg['reviewed_at']='2026-08-18'; pri_path.write_text(json.dumps(reg,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          _,sr2=load(src_path); _,pr2=load(prod_path); _,dr2=load(dist_path)
+          assert (len(sr2),len(pr2),len(dr2))==(123,631,656)
+          assert len({x['resource_id'] for x in sr2})==123 and len({x['product_id'] for x in pr2})==631 and len({x['distribution_id'] for x in dr2})==656
+          assert all(x['resource_id'] in {s['resource_id'] for s in sr2} for x in pr2)
+          assert all(x['product_id'] in {p['product_id'] for p in pr2} for x in dr2)
+          print('READBACK_OK 123 631 656')
+          PY
+      - name: Validate contracts and append integrity
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          git diff --check
+      - name: Commit materialized data
+        shell: bash
+        run: |
+          if git diff --quiet -- data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json; then echo 'No data diff'; exit 0; fi
+          git config user.name vitrine-science-bot
+          git config user.email actions@users.noreply.github.com
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json
+          git commit -m 'Expand verified INPE BIG and TOPODATA catalog'
+          git push origin HEAD:audit/inpe-big-20260818
