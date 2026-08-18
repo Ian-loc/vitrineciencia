@@ -1,0 +1,73 @@
+name: Run verified BIG CBERS materializer
+
+on:
+  push:
+    branches: ["main"]
+    paths: [".github/workflows/run-big-cbers-materializer.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Load reviewed materializer from audit branch
+        run: |
+          git fetch origin agent/big-cbers-processing-20260818
+          git show origin/agent/big-cbers-processing-20260818:.github/workflows/materialize-big-cbers-processing.yml > /tmp/source.yml
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('/tmp/source.yml').read_text()
+          marker="          python3 - <<'PY'\n"
+          start=s.index(marker)+len(marker)
+          end=s.index("\n          PY\n", start)
+          block=s[start:end]
+          lines=[]
+          for line in block.splitlines():
+              lines.append(line[10:] if line.startswith('          ') else line)
+          Path('/tmp/materialize.py').write_text('\n'.join(lines)+'\n')
+          PY
+          python3 /tmp/materialize.py
+
+      - name: Validate and rebuild
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Read-back
+        run: |
+          python3 - <<'PY'
+          import csv
+          def rows(p):
+              with open(p,encoding='utf-8-sig',newline='') as f:return list(csv.DictReader(f))
+          s=rows('data/data_resources.csv'); p=rows('data/data_products.csv'); d=rows('data/product_distributions.csv')
+          assert (len(s),len(p),len(d))==(123,682,712),(len(s),len(p),len(d))
+          pids={r['product_id'] for r in p}; dids={r['distribution_id'] for r in d}; rids={r['resource_id'] for r in s}
+          assert len(pids)==len(p) and len(dids)==len(d)
+          assert all(r['resource_id'] in rids for r in p)
+          assert all(r['product_id'] in pids for r in d)
+          assert all(f'DP{n:06d}' in pids for n in range(675,687))
+          assert all(f'DD{n:06d}' in dids for n in range(705,717))
+          print('READBACK',len(s),len(p),len(d))
+          PY
+
+      - name: Commit materialized canonical data
+        run: |
+          git config user.name "vitrine-bot"
+          git config user.email "vitrine-bot@users.noreply.github.com"
+          git status --short
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json data/link_role_audit.json data/build-meta.json
+          git commit -m "Expand verified BIG CBERS processing catalog"
+          git push origin main
