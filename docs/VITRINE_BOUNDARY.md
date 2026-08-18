@@ -49,7 +49,7 @@ PostgreSQL/PostGIS e jobs do Simbiotrama são dependências proibidas do grafo d
 
 ## Autoridade de dados
 
-No snapshot de 18/08/2026 a Vitrine contém 125 fontes, 756 produtos e 787 distribuições. As contagens podem crescer; o contrato público é a coerência das três tabelas, não uma contagem fixa.
+No snapshot de 18/08/2026 a Vitrine contém **125 fontes, 752 produtos e 783 distribuições**. IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`; lacunas históricas não são recicladas. As contagens podem crescer; o contrato público é a coerência das três tabelas, não uma contagem fixa.
 
 ## Material histórico
 
