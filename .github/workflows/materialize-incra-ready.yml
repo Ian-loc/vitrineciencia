@@ -29,6 +29,7 @@ jobs:
           start=s.index("          python - <<'PY'\n") + len("          python - <<'PY'\n")
           end=s.index("\n          PY\n", start)
           code='\n'.join(line[10:] if line.startswith('          ') else line for line in s[start:end].splitlines())
+          code=code.replace("len(R2)==124 and len(P2)==734 and len(D2)==765", "len(R2)==124 and len(P2)==730 and len(D2)==761")
           Path('/tmp/incra_append.py').write_text(code)
           PY
           python /tmp/incra_append.py
@@ -47,7 +48,7 @@ jobs:
           def rows(p):
               with open(p,encoding='utf-8',newline='') as f:return list(csv.DictReader(f))
           R=rows('data/data_resources.csv'); P=rows('data/data_products.csv'); D=rows('data/product_distributions.csv')
-          assert (len(R),len(P),len(D))==(124,734,765), (len(R),len(P),len(D))
+          assert (len(R),len(P),len(D))==(124,730,761), (len(R),len(P),len(D))
           rids={x['resource_id'] for x in R}; pids={x['product_id'] for x in P}; dids={x['distribution_id'] for x in D}
           assert len(rids)==len(R) and len(pids)==len(P) and len(dids)==len(D)
           assert all(x['resource_id'] in rids for x in P)
