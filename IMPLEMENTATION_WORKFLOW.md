@@ -42,7 +42,7 @@ Mudança estrutural de schema/runtime; excepcional e HUMAN-DECISION.
 4. criar branch dedicada;
 5. alterar somente o delta pertinente;
 6. rodar validadores proporcionais;
-7. revisar diff e relações;
+7. revisar o diff;
 8. executar QA renderizado/público quando necessário;
 9. integrar conforme classe de risco;
 10. verificar `main` e deploy;
@@ -123,4 +123,4 @@ Outros testes são adicionados conforme o delta.
 
 ## Estado corrente
 
-Em 18/08/2026: **125 fontes, 756 produtos e 787 distribuições**. A prioridade operacional é continuar expansão/qualidade, manter documentação e publicação coerentes e preparar uma primeira release científica quando o snapshot escolhido estiver tecnicamente defensável.
+Em 18/08/2026: **125 fontes, 752 produtos e 783 distribuições**; IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`. A prioridade operacional é continuar expansão/qualidade, manter documentação e publicação coerentes e preparar uma primeira release científica quando o snapshot escolhido estiver tecnicamente defensável.
