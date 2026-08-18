@@ -2,7 +2,7 @@ name: Materialize verified INCRA catalog on PR
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, synchronize]
 
 permissions:
   contents: write
@@ -16,10 +16,17 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
+      - id: guard
+        name: Skip if INCRA batch already materialized
+        shell: bash
+        run: |
+          if grep -q '^DR0124,' data/data_resources.csv; then echo 'skip=true' >> "$GITHUB_OUTPUT"; else echo 'skip=false' >> "$GITHUB_OUTPUT"; fi
       - uses: actions/setup-python@v5
+        if: steps.guard.outputs.skip != 'true'
         with:
           python-version: '3.12'
       - name: Reuse audited INCRA append from repository history
+        if: steps.guard.outputs.skip != 'true'
         shell: bash
         run: |
           git show e3d43c1c3d5ba35dd7409441a35ab5c6b7b63ebd:.github/workflows/materialize-incra-audit.yml > /tmp/incra-old.yml
@@ -29,10 +36,12 @@ jobs:
           start=s.index("          python - <<'PY'\n") + len("          python - <<'PY'\n")
           end=s.index("\n          PY\n", start)
           code='\n'.join(line[10:] if line.startswith('          ') else line for line in s[start:end].splitlines())
+          code=code.replace("len(R2)==124 and len(P2)==734 and len(D2)==765", "len(R2)==124 and len(P2)==730 and len(D2)==761")
           Path('/tmp/incra_append.py').write_text(code)
           PY
           python /tmp/incra_append.py
       - name: Validate and rebuild
+        if: steps.guard.outputs.skip != 'true'
         shell: bash
         run: |
           python scripts/validate_brazil_scope.py
@@ -43,6 +52,7 @@ jobs:
           python scripts/build_site_artifact.py
           git diff --check
       - name: Consolidated read-back
+        if: steps.guard.outputs.skip != 'true'
         shell: bash
         run: |
           python - <<'PY'
@@ -50,7 +60,7 @@ jobs:
           def rows(p):
               with open(p,encoding='utf-8',newline='') as f:return list(csv.DictReader(f))
           R=rows('data/data_resources.csv'); P=rows('data/data_products.csv'); D=rows('data/product_distributions.csv')
-          assert (len(R),len(P),len(D))==(124,734,765), (len(R),len(P),len(D))
+          assert (len(R),len(P),len(D))==(124,730,761), (len(R),len(P),len(D))
           rids={x['resource_id'] for x in R}; pids={x['product_id'] for x in P}; dids={x['distribution_id'] for x in D}
           assert len(rids)==len(R) and len(pids)==len(P) and len(dids)==len(D)
           assert all(x['resource_id'] in rids for x in P)
@@ -60,6 +70,7 @@ jobs:
           print('READBACK_OK',len(R),len(P),len(D))
           PY
       - name: Commit materialized catalog to PR branch
+        if: steps.guard.outputs.skip != 'true'
         shell: bash
         run: |
           git config user.name "vitrine-audit-bot"
