@@ -39,7 +39,7 @@ jobs:
         run: |
           git config user.name "vitrine-audit-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/data_products.csv data/data_products.json data/product_distributions.csv data/link_role_audit.json data/quality_report.md data/quality_report.json 2>/dev/null || true
+          git add data/data_products.csv data/data_products.json data/product_distributions.csv data/link_role_audit.json
           if git diff --cached --quiet; then
             echo 'No materialized delta to commit.'
           else
