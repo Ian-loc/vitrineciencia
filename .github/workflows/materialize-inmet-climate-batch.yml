@@ -1,0 +1,96 @@
+name: Materialize INMET climate batch
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/materialize-inmet-climate-batch.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Append verified INMET climate products
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+
+          ppath=Path('data/data_products.csv')
+          dpath=Path('data/product_distributions.csv')
+          products=list(csv.DictReader(ppath.open(encoding='utf-8', newline='')))
+          dists=list(csv.DictReader(dpath.open(encoding='utf-8', newline='')))
+          pf=list(products[0].keys()); df=list(dists[0].keys())
+
+          assert 'DR0118' in {r['resource_id'] for r in products}, 'INMET source DR0118 missing'
+          existing_p={r['product_id'] for r in products}; existing_d={r['distribution_id'] for r in dists}
+          assert not any(f'DP{i:06d}' in existing_p for i in range(536,545)), 'target product ID collision'
+          assert not any(f'DD{i:06d}' in existing_d for i in range(561,570)), 'target distribution ID collision'
+
+          rows=[
+          ['DP000536','DR0118','INMET — Prognóstico Climático Sazonal INPE/INMET/FUNCEME','Prognóstico Climático','prognóstico climático sazonal','indicator_family','Boletins mensais de previsão climática sazonal para três meses elaborados conjuntamente por INPE, INMET e FUNCEME, com prognósticos de precipitação e temperatura.','Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas','prognóstico climático | previsão sazonal | precipitação | temperatura | INMET | INPE | FUNCEME','Brasil; recortes e mapas conforme edição','sim','mapas e sínteses climáticas sazonais','varia conforme produto e edição','série mensal de prognósticos; horizonte de três meses','mensal com horizonte sazonal de 3 meses','mensal','ativo','serviço corrente 2026','complete','https://portal.inmet.gov.br/servicos/progn%C3%B3stico-clim%C3%A1tico-do-cptec-inmet-funceme','https://portal.inmet.gov.br/boletinsprog','derivado','Prognóstico climático é probabilístico e não previsão determinística do tempo ou de impactos locais. Preservar edição, horizonte, variável e incerteza; não confundir com observações meteorológicas.','2026-08-18'],
+          ['DP000537','DR0118','INMET — Anomalia de Chuva Mensal','Anomalia Chuva Mensal','anomalias climatológicas de precipitação','indicator_family','Mapas nacionais da diferença entre a precipitação total registrada em um mês e a climatologia mensal de referência usada pelo INMET.','Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia','anomalia de chuva | precipitação | climatologia | 1961-1990 | monitoramento climático','Brasil','sim','mapa/grade climatológica derivada','conforme processamento cartográfico do serviço','mapas históricos e correntes; climatologia de referência 1961–1990 segundo a carta de serviço','mensal','mensal','ativo','serviço corrente 2026','complete','https://portal.inmet.gov.br/servicos/desvio-de-chuva-mensal','https://clima.inmet.gov.br/prec','derivado','Anomalia é diferença em relação à climatologia de referência, não precipitação absoluta. A referência 1961–1990 deve ser preservada; não comparar diretamente com anomalias calculadas contra outras normais sem harmonização.','2026-08-18'],
+          ['DP000538','DR0118','INMET — Anomalia de Chuva Trimestral','Anomalia Chuva Trimestral','anomalias climatológicas de precipitação','indicator_family','Mapas nacionais da diferença entre a precipitação acumulada de um trimestre e a média histórica correspondente, com série disponibilizada desde 1961.','Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia','anomalia de chuva | trimestre | precipitação | climatologia | 1961-1990','Brasil','sim','mapa/grade climatológica derivada','conforme processamento cartográfico do serviço','desde o trimestre jan-fev-mar de 1961 conforme documentação','trimestral móvel/selecionado; atualização mensal','mensal','ativo','serviço corrente 2026','complete','https://portal.inmet.gov.br/servicos/desvio-de-chuva-trimestral','https://clima.inmet.gov.br/prec','derivado','Produto acumula três meses e usa referência climatológica histórica; não equivale à anomalia mensal nem a índice de seca. Comparações exigem manter exatamente o trimestre e a climatologia de referência.','2026-08-18'],
+          ['DP000539','DR0118','INMET — Anomalia de Temperatura Mensal','Anomalia Temperatura Mensal','anomalias climatológicas de temperatura','indicator_family','Mapas nacionais da diferença entre a temperatura média registrada no mês e a média histórica mensal usada pelo INMET.','Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia','anomalia de temperatura | temperatura média | climatologia | 1961-1990','Brasil','sim','mapa/grade climatológica derivada','conforme processamento cartográfico do serviço','série histórica e corrente conforme serviço; climatologia de referência 1961–1990','mensal','mensal','ativo','serviço corrente 2026','complete','https://portal.inmet.gov.br/servicos/anomalia-de-temperatura-mensal','https://clima.inmet.gov.br/tem','derivado','Anomalia de temperatura não é temperatura absoluta. A climatologia de referência deve ser preservada; diferenças contra outras normais não são diretamente intercambiáveis.','2026-08-18'],
+          ['DP000540','DR0118','INMET — Anomalia de Temperatura Trimestral','Anomalia Temperatura Trimestral','anomalias climatológicas de temperatura','indicator_family','Mapas nacionais da diferença entre a temperatura média observada em um trimestre e a média histórica correspondente, com série desde 1961.','Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia','anomalia de temperatura | trimestre | climatologia | 1961-1990','Brasil','sim','mapa/grade climatológica derivada','conforme processamento cartográfico do serviço','desde o trimestre jan-fev-mar de 1961 conforme documentação','trimestral móvel/selecionado; atualização mensal','mensal','ativo','serviço corrente 2026','complete','https://portal.inmet.gov.br/servicos/anomalia-de-temperatura-trimestral','https://clima.inmet.gov.br/tem','derivado','Produto trimestral não deve ser tratado como média de mapas mensais sem reproduzir o método do serviço. Manter período e climatologia de referência explícitos.','2026-08-18'],
+          ['DP000541','DR0118','INMET — Monitoramento da Temperatura da Superfície do Mar','TSM INMET','monitoramento oceânico climatológico','indicator_family','Mapas de temperatura média da superfície do mar e anomalias mensais e quinzenais usados no monitoramento de condições oceânicas relevantes ao clima.','Clima e Ciências Atmosféricas | Recursos Hídricos e Oceanografia | Ciências Ambientais e Ecologia','temperatura da superfície do mar | TSM | SST | anomalia | El Niño | La Niña | NOAA','global com uso no monitoramento climático brasileiro','sim','grade oceânica derivada','base NOAA OI SST V2 High Resolution; atualização de 2026 documenta grade de aproximadamente 0,25 grau','série conforme portal; base atualizada a partir de janeiro de 2026','quinzenal | mensal','duas vezes por mês','ativo','base NOAA OI SST V2 High Resolution adotada em 2026','complete','https://portal.inmet.gov.br/servicos/monitoramento-da-temperatura-da-superf%C3%ADcie-do-mar-tsm','https://clima.inmet.gov.br/TSM','derivado','TSM é análise oceânica integrada de satélite e medições in situ, não temperatura do ar nem medida exclusivamente in situ. Anomalias dependem da referência; a base foi atualizada em janeiro de 2026, exigindo atenção à comparabilidade.','2026-08-18'],
+          ['DP000542','DR0118','INMET — Previsão de Risco de Geada','Risco de Geada','previsão agrometeorológica de geada','data_service','Mapas de previsão diária de risco de geada com classes de intensidade, derivados de saídas de previsão numérica e disponibilizados no SISDAGRO.','Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas','geada | risco | previsão | temperatura mínima | SISDAGRO | agricultura','Brasil','sim','mapa/grade de previsão','conforme modelo e processamento operacional','previsão operacional corrente; em 2026 mapas para horizonte de até 5 dias','diária; horizonte de até 5 dias','diária','ativo','produto atualizado em maio de 2026 com mapas de 5 dias','complete','https://portal.inmet.gov.br/servicos/previs%C3%A3o-de-risco-de-geada','https://sisdagro.inmet.gov.br/','derivado','Risco previsto não equivale à ocorrência observada de geada nem ao dano agrícola efetivo. Resultado depende do modelo e do índice de temperatura mínima efetiva próxima ao solo.','2026-08-18'],
+          ['DP000543','DR0118','INMET — Risco de Incêndio — Índice de Nesterov','Risco de Incêndio INMET','risco meteorológico de incêndio','indicator_family','Painel nacional diário do grau de perigo de incêndio calculado pelo Índice de Inflamabilidade de Nesterov a partir de variáveis meteorológicas.','Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Conservação','risco de incêndio | Nesterov | inflamabilidade | temperatura | umidade | precipitação | fogo','Brasil','sim','pontos/estimativas meteorológicas e mapa derivado','conforme rede e processamento do painel','série operacional corrente','diária','diária','ativo','painel corrente 2026','complete','https://portal.inmet.gov.br/servicos/risco-de-inc%C3%AAndio','https://portal.inmet.gov.br/paginas/incendio','derivado','Índice de perigo meteorológico não é foco de calor, ocorrência confirmada de incêndio, área queimada ou previsão determinística. Depende das condições meteorológicas e regras acumulativas do índice de Nesterov.','2026-08-18'],
+          ['DP000544','DR0118','INMET — Produtos de Imagens Meteorológicas de Satélite','Satélite INMET','imagens meteorológicas de satélite','data_service','Produtos operacionais derivados de imagens de satélite, incluindo infravermelho termal, vapor de água, canal visível e realce de topo de nuvens para acompanhamento meteorológico.','Clima e Ciências Atmosféricas | Sensoriamento Remoto | Ciências Ambientais e Ecologia','GOES-16 | satélite | infravermelho | vapor de água | canal visível | topo de nuvens | meteorologia','Brasil e domínio de observação dos satélites utilizados','sim','pixel/imagem de satélite','depende do canal, sensor e produto','serviço operacional corrente','a cada 15 minutos conforme carta de serviço','15 minutos','ativo','serviço corrente 2026','complete','https://portal.inmet.gov.br/servicos/produtos-de-imagens-de-sat%C3%A9lite','https://satelite.inmet.gov.br/','derivado','Canais e produtos possuem significados físicos distintos. Temperatura de brilho/topo de nuvem não equivale à temperatura da superfície; imagem meteorológica não é automaticamente precipitação observada.','2026-08-18']]
+
+          existing_names={r['product_name'] for r in products}; existing_urls={r['product_page_url'] for r in products}
+          for vals in rows:
+              row=dict(zip(pf, vals))
+              assert row['product_name'] not in existing_names, f"duplicate name {row['product_name']}"
+              assert row['product_page_url'] not in existing_urls, f"duplicate product url {row['product_page_url']}"
+              products.append(row)
+
+          distrows=[
+          ['DD000561','DP000536','INMET — Prognóstico Climático — boletins sazonais','https://portal.inmet.gov.br/boletinsprog','PDF | HTML conforme edição','HTTPS','portal INMET','sim','não','acesso público às edições disponibilizadas','não localizada de forma inequívoca no nível de cada boletim','sim','por edição mensal','Previsão sazonal conjunta INPE/INMET/FUNCEME; preservar edição, horizonte e caráter probabilístico.','2026-08-18'],
+          ['DD000562','DP000537','INMET Clima — Anomalia de Chuva Mensal','https://clima.inmet.gov.br/prec','mapas e visualização web','HTTPS','portal climatológico INMET','parcial','não','consulta pública','não localizada de forma inequívoca no nível da distribuição','sim','por mês/ano','Anomalia calculada contra climatologia 1961–1990 conforme carta de serviço.','2026-08-18'],
+          ['DD000563','DP000538','INMET Clima — Anomalia de Chuva Trimestral','https://clima.inmet.gov.br/prec','mapas e visualização web','HTTPS','portal climatológico INMET','parcial','não','consulta pública','não localizada de forma inequívoca no nível da distribuição','sim','por trimestre/ano','Série trimestral disponível desde 1961; não confundir com anomalia mensal ou precipitação absoluta.','2026-08-18'],
+          ['DD000564','DP000539','INMET Clima — Anomalia de Temperatura Mensal','https://clima.inmet.gov.br/tem','mapas e visualização web','HTTPS','portal climatológico INMET','parcial','não','consulta pública','não localizada de forma inequívoca no nível da distribuição','sim','por mês/ano','Anomalia de temperatura média em relação à climatologia histórica do serviço.','2026-08-18'],
+          ['DD000565','DP000540','INMET Clima — Anomalia de Temperatura Trimestral','https://clima.inmet.gov.br/tem','mapas e visualização web','HTTPS','portal climatológico INMET','parcial','não','consulta pública','não localizada de forma inequívoca no nível da distribuição','sim','por trimestre/ano','Produto trimestral atualizado mensalmente; preservar trimestre e período de referência.','2026-08-18'],
+          ['DD000566','DP000541','INMET Clima — Monitoramento de TSM','https://clima.inmet.gov.br/TSM','mapas de TSM e anomalia','HTTPS','portal climatológico INMET','parcial','não','consulta pública','não localizada de forma inequívoca no nível da distribuição','sim','quinzenal e mensal conforme interface','Base atualizada em 2026 para NOAA OI SST V2 High Resolution; atenção à comparabilidade histórica.','2026-08-18'],
+          ['DD000567','DP000542','SISDAGRO — Previsão de Risco de Geada','https://sisdagro.inmet.gov.br/','mapas de previsão','HTTPS','SISDAGRO','parcial','não','acesso público; interface operacional','não localizada de forma inequívoca no nível da distribuição','sim','por dia/horizonte','Previsão de risco com horizonte operacional; não equivale a geada observada.','2026-08-18'],
+          ['DD000568','DP000543','INMET — Painel de Risco de Incêndio','https://portal.inmet.gov.br/paginas/incendio','mapa/visualização web','HTTPS','portal INMET','parcial','não','consulta pública','não localizada de forma inequívoca no nível da distribuição','sim','por data','Índice de Nesterov derivado de variáveis meteorológicas; não é dado de fogo ativo ou área queimada.','2026-08-18'],
+          ['DD000569','DP000544','INMET — Imagens Meteorológicas de Satélite','https://satelite.inmet.gov.br/','imagens web por canal/produto','HTTPS','portal satélite INMET','parcial','não','consulta pública operacional','não localizada de forma inequívoca no nível da distribuição','sim','por canal e horário','Serviço com atualização a cada 15 minutos; interpretar cada canal/produto conforme sua física e processamento.','2026-08-18']]
+          for vals in distrows:
+              dists.append(dict(zip(df, vals)))
+
+          with ppath.open('w',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=pf,lineterminator='\n'); w.writeheader(); w.writerows(products)
+          with dpath.open('w',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=df,lineterminator='\n'); w.writeheader(); w.writerows(dists)
+
+          # strict read-back
+          rp=list(csv.DictReader(ppath.open(encoding='utf-8', newline='')))
+          rd=list(csv.DictReader(dpath.open(encoding='utf-8', newline='')))
+          assert all(any(x['product_id']==f'DP{i:06d}' and x['resource_id']=='DR0118' for x in rp) for i in range(536,545))
+          assert all(any(x['distribution_id']==f'DD{i:06d}' and x['product_id']==f'DP{i-25:06d}' for x in rd) for i in range(561,570))
+          print('read-back products', len(rp), 'distributions', len(rd))
+          PY
+      - name: Validate and rebuild
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+      - name: Commit materialized batch
+        run: |
+          git config user.name "vitrine-audit-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/data_products.csv data/data_products.json data/product_distributions.csv data/link_role_audit.json data/quality_report.md data/quality_report.json 2>/dev/null || true
+          git status --short
+          git commit -m "Expand verified INMET climate catalog"
+          git push
