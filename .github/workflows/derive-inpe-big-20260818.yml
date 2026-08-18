@@ -1,0 +1,40 @@
+name: Regenerate INPE BIG derived audit
+
+on:
+  push:
+    branches: [audit/inpe-big-derived-20260818]
+
+permissions:
+  contents: write
+
+jobs:
+  derive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/inpe-big-derived-20260818
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Regenerate and validate derived artifacts
+        run: |
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/audit_link_roles.py
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+          git status --short
+      - name: Commit required derived artifacts
+        run: |
+          git config user.name vitrine-science-bot
+          git config user.email actions@users.noreply.github.com
+          git add data/link_role_audit.json data/data_products.json || true
+          if git diff --cached --quiet; then echo 'No derived diff'; exit 0; fi
+          git diff --cached --check
+          git commit -m 'Regenerate INPE BIG catalog derivatives'
+          git push origin HEAD:audit/inpe-big-derived-20260818
