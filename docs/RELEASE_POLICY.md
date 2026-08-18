@@ -6,7 +6,7 @@ Releases transformam o catálogo vivo em snapshots identificáveis, citáveis e 
 
 ## Estado atual
 
-Em 18/08/2026, `CITATION.cff` permanece com `version: unreleased`. O snapshot operacional contém **125 fontes, 756 produtos e 787 distribuições**. Essa contagem não é requisito de versão.
+Em 18/08/2026, `CITATION.cff` permanece com `version: unreleased`. O snapshot operacional contém **125 fontes, 752 produtos e 783 distribuições**. IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`; lacunas são preservadas. Essa contagem não é requisito de versão.
 
 ## Versionamento
 
