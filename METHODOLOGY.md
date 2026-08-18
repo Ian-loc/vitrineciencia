@@ -101,7 +101,8 @@ Produto previsto, observado, reanalisado e atualizado administrativamente não s
 
 Separar:
 
-- página da fonte;
+- **Site oficial** — identidade institucional ou página oficial principal da fonte (`homepage_url`);
+- **Acessar dados** — página onde os dados podem ser pesquisados, visualizados, solicitados ou baixados (`data_access_url`);
 - página do produto;
 - acesso aos dados;
 - metodologia;
