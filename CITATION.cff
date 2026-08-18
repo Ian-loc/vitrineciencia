@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "Se utilizar esta Vitrine, cite-a e cite também os datasets originais. Para análises reproduzíveis, prefira a release/tag efetivamente utilizada."
 title: "Vitrine Ciência: catálogo de fontes de dados científicos sobre o Brasil para pesquisa, ensino e extensão"
 type: dataset
+version: "unreleased"
 authors:
   - given-names: Ian
     family-names: Clemente
