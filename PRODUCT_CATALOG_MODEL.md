@@ -1,363 +1,112 @@
-# Modelo relacional do catálogo de produtos
+# Modelo do catálogo de produtos — Vitrine Ciência
 
-## 1. Decisão
+## 1. Decisão vigente
 
-A camada de produtos é o núcleo científico da Instância 1 e não é redundante com o catálogo de fontes.
-
-A fonte responde:
-
-- quem mantém;
-- qual é a infraestrutura;
-- qual papel institucional ou funcional possui;
-- quais tipos gerais de conteúdo e acesso oferece.
-
-O produto responde:
-
-- qual informação científica existe;
-- o que ela representa;
-- como foi produzida;
-- em qual versão;
-- quais variáveis contém;
-- qual é seu suporte espacial e temporal;
-- quais limitações possui;
-- como pode ser acessada.
-
-## 2. Hierarquia canônica
+A Vitrine usa um modelo deliberadamente simples e estável:
 
 ```text
-Organização
-  1 ─── N Fonte ou infraestrutura
-              1 ─── N Família de produtos
-                          1 ─── N Produto científico
-                                      1 ─── N Release, versão ou edição
-                                                  1 ─── N Distribuição
-                                                              1 ─── N Ativo
+Fonte (DR####)
+  1 ─── N Produto (DP######)
+              1 ─── N Distribuição (DD######)
 ```
 
-Relações científicas:
+Esse modelo é a arquitetura **canônica da Vitrine atual**. Não existe obrigação de promover a Vitrine para PostgreSQL/PostGIS ou para a antiga hierarquia relacional do Simbiotrama.
 
-```text
-Release
-  N ─── N Variável, classe, indicador ou banda
-              ├── método
-              ├── perfil espacial
-              ├── perfil temporal
-              ├── perfil de qualidade
-              └── interpretação científica
-```
+## 2. Fonte
 
-## 3. Entidades
+Responde principalmente:
 
-### Organização
+- quem mantém ou organiza o acesso;
+- qual é a infraestrutura/plataforma;
+- qual sua função institucional;
+- quais tipos gerais de conteúdo oferece;
+- qual a cobertura geral;
+- como localizar os dados.
 
-Instituição, consórcio, rede ou iniciativa responsável.
+Uma fonte não deve ser duplicada apenas porque possui várias coleções, páginas ou endpoints.
 
-### Fonte ou infraestrutura
+## 3. Produto
 
-Portal, repositório, catálogo, plataforma, programa, observatório, rede ou serviço que publica ou oferece acesso.
+Responde:
 
-Uma fonte pode agregar produtos de produtores diferentes. O provedor primário deve permanecer explícito.
+- qual oferta informacional materialmente distinta existe;
+- o que ela representa ou permite descobrir;
+- qual cobertura e suporte são relevantes;
+- qual coleção/versão está sendo descrita quando necessário;
+- qual sua natureza (`product_kind` e `primary_or_derived`);
+- quais limitações condicionam interpretação;
+- como chegar às distribuições.
 
-### Família de produtos
+Um produto pode ser dataset, série, catálogo, serviço, família de indicadores, coleção de camadas ou saída de software quando essa unidade melhora materialmente a descoberta.
 
-Agrupamento de produtos relacionados por missão, programa, método ou finalidade.
+## 4. Distribuição
 
-A família não transfere automaticamente resolução, legenda, período, método, licença ou qualidade aos produtos membros.
+Descreve uma rota concreta de acesso ao produto:
 
-### Produto científico
-
-Conjunto coerente e versionado de informações espaciais, produzido por metodologia definida, com significado temático, cobertura, suporte espacial e temporal, variáveis e formas de distribuição identificáveis.
-
-Exemplos:
-
-- série anual de supressão de vegetação;
-- coleção de cobertura e uso da terra;
-- série de indicadores municipais;
-- produto de biomassa modelada;
-- conjunto de alertas;
-- mapa de referência territorial;
-- coleção de ocorrências georreferenciadas.
-
-Não são produtos científicos por si sós:
-
-- catálogo genérico;
-- API genérica;
-- serviço de processamento;
-- visualizador;
-- protocolo;
-- formato;
-- página de download.
-
-### Release, versão ou edição
-
-Manifestação identificável de um produto.
-
-Pertencem a esta entidade:
-
-- versão;
-- coleção;
-- ano-base;
-- cenário;
-- edição;
-- data de release;
-- estado atual, substituído ou experimental;
-- notas de mudança.
-
-Distribuições pertencem ao release, não ao produto abstrato, porque formatos, URLs e conteúdos podem mudar entre versões.
-
-### Distribuição
-
-Forma de acesso ao release:
-
-- download direto;
+- download;
 - API;
-- serviço geoespacial;
-- registro de catálogo;
-- visualizador;
-- repositório de código;
-- formulário;
-- documentação.
+- serviço OGC/STAC;
+- catálogo;
+- aplicação web;
+- outro mecanismo verificável.
 
-### Ativo
+Pertencem à distribuição: URL, formato, protocolo, ferramenta, gratuidade, autenticação, condições, licença/atribuição, suporte a recorte e notas operacionais.
 
-Objeto concreto exposto pela distribuição:
+## 5. Granularidade
 
-- arquivo;
-- tabela;
-- endpoint;
-- camada;
-- coleção;
-- legenda;
-- arquivo de qualidade;
-- metadado;
-- esquema;
-- recurso de incerteza.
+Criar produto separado apenas quando houver diferença relevante de:
 
-### Variável ou componente informacional
+- finalidade/conteúdo;
+- método ou natureza de produção;
+- cobertura espacial/temporal;
+- suporte/resolução;
+- coleção/versão cientificamente significativa;
+- condição ou caminho de acesso que mude materialmente o objeto descoberto.
 
-Propriedade, indicador, banda, classe, métrica, atributo ou flag com significado próprio.
+Não criar produto apenas por existir:
 
-A variável possui definição canônica, enquanto a associação produto–variável preserva:
-
-- nome original;
-- papel;
-- unidade;
-- tipo;
-- definição do produtor;
-- método;
-- suporte;
-- interpretação;
-- limitações.
-
-### Método
-
-Descreve como a informação foi produzida:
-
-- medição;
-- sensoriamento remoto;
-- registro administrativo;
-- censo;
-- levantamento amostral;
-- classificação;
-- modelagem;
-- interpolação;
-- agregação;
-- índice composto.
-
-### Perfil espacial
-
-Descreve:
-
-- suporte;
-- geometria;
-- resolução;
-- escala;
-- unidade mínima;
-- CRS;
-- grade;
-- extensão;
-- unidade geográfica;
-- agregação;
-- limitações espaciais.
-
-### Perfil temporal
-
-Descreve:
-
-- período;
-- janela de observação;
-- resolução;
-- frequência;
-- latência;
-- calendário;
-- agregação;
-- limitações temporais.
-
-### Perfil de qualidade
-
-Descreve:
-
-- validação;
-- acurácia;
-- incerteza;
-- flags;
-- ausências;
-- viés de coleta;
-- artefatos;
-- representatividade.
-
-### Capacidade de acesso
-
-Registra se uma distribuição permite:
-
-- descobrir;
-- pré-visualizar;
-- visualizar;
-- consultar atributos;
-- recortar;
-- baixar;
-- processar;
-- exportar;
-- abrir em QGIS, R, Python ou Earth Engine.
-
-A capacidade pode ser disponível, condicional, indisponível ou desconhecida.
-
-### Evidência de metadados
-
-Afirmações importantes devem indicar a fonte que as sustenta.
-
-O modelo registra:
-
-- entidade;
-- campo;
-- valor;
-- URL;
-- tipo de evidência;
-- nota de suporte;
-- data de recuperação;
-- confiança curatorial.
-
-## 4. Esquema executável
-
-O esquema de referência está em:
-
-`database/schema/001_instance1_core.sql`
-
-O banco-alvo é PostgreSQL/PostGIS.
-
-Os CSVs atuais permanecem canônicos durante a transição. O banco será promovido após migração, auditoria e geração reproduzível das exportações.
-
-## 5. Mensagem informacional
-
-Todo produto deve possuir uma descrição técnica e uma **mensagem informacional**.
-
-A descrição informa o que o produto é.
-
-A mensagem informacional responde:
-
-> Que informação sobre o mundo real este produto comunica?
-
-Também deve existir `non_representations`, indicando interpretações que o produto não sustenta diretamente.
-
-Exemplo:
-
-```text
-Produto: alertas DETER
-Mensagem: localização e classe de evidências detectadas de alteração da cobertura.
-Não representa: taxa anual consolidada, data exata da ocorrência ou legalidade da alteração.
-```
-
-## 6. Escala de enumeração
-
-- `complete`: portfólio relevante enumerado integralmente;
-- `family_level`: famílias registradas, com aprofundamento progressivo;
-- `external_index`: índice integral permanece externo;
-- `representative_sample`: amostra piloto explicitamente incompleta;
-- `selective`: seleção orientada por Brasil, relevância e utilidade.
-
-Megacatálogos não devem ser copiados integralmente. Seus produtos prioritários podem ser curados seletivamente.
-
-## 7. Regras de normalização
-
-- organização não é fonte;
-- fonte não é produto;
-- família não é release;
-- produto não é arquivo;
-- distribuição não é variável;
-- formato não é protocolo;
-- serviço não é informação científica;
-- visualizador não é produto, exceto quando contém produto próprio claramente definido;
-- resolução pertence ao suporte que descreve;
-- versão pertence ao release;
-- URL de acesso pertence à distribuição ou ao ativo;
-- significado pertence ao produto e à variável;
-- método e qualidade devem ser vinculados no nível mais específico disponível;
-- licença deve ser registrada no nível mais específico sustentado pela evidência.
-
-## 8. Busca e filtros
-
-A Instância 1 deverá permitir filtros por:
-
-- tema;
-- fenômeno;
-- objeto observado;
-- produto;
-- variável ou classe;
-- natureza de produção;
-- método;
-- unidade;
-- suporte espacial;
-- resolução;
-- unidade territorial;
-- período;
-- resolução temporal;
-- incerteza disponível;
-- cobertura do Brasil;
-- gratuidade;
-- autenticação;
-- protocolo;
+- outro arquivo;
+- banda;
+- tile;
 - formato;
-- capacidade de visualização, recorte, consulta ou download;
-- versão e estado.
+- endpoint técnico equivalente;
+- página de download alternativa.
 
-A interface não deve exigir operadores booleanos. A busca textual complementa os filtros estruturados.
+## 6. Catálogos e serviços
 
-## 9. Migração dos dados atuais
+A Vitrine pode registrar catálogos e serviços como produtos quando são ofertas materialmente distintas e classificadas honestamente. Isso **não significa** que um catálogo ou API seja observação científica. `product_kind`, descrição e limitações devem explicitar sua natureza.
 
-### Estado atual
+Catálogos amplos usam `enumeration_scope=external_index`; a Vitrine não deve copiar integralmente megacatálogos.
 
-As três tabelas públicas são:
+## 7. Espaço e tempo
 
-- `data/data_resources.csv`;
-- `data/data_products.csv`;
-- `data/product_distributions.csv`.
+Produto deve separar, tanto quanto o contrato permite:
 
-### Problema identificado
+- cobertura geográfica;
+- suporte espacial;
+- resolução espacial;
+- cobertura temporal;
+- resolução temporal;
+- frequência de atualização.
 
-O piloto de produtos mistura:
+Zoom da interface não define resolução; data de atualização da página não define necessariamente a temporalidade do dado.
 
-- produtos científicos;
-- catálogos;
-- serviços interoperáveis;
-- infraestruturas de processamento.
+## 8. Origem e derivação
 
-### Regra de correção
+`primary_or_derived` distingue `primário`, `derivado`, `agregador`, `serviço`, `misto` e `desconhecido`. Essa classificação é semântica e não um julgamento de qualidade.
 
-- catálogos e infraestruturas migram para `sources`;
-- serviços genéricos migram para `distributions` e `access_capabilities`;
-- produtos científicos permanecem em `products`;
-- versões migram para `product_releases`;
-- variáveis migram para `variables` e `product_variables`;
-- URLs e formatos migram para `distributions` e `data_assets`.
+## 9. Versão
 
-## 10. Instâncias futuras
+O modelo corrente não possui entidade `release` independente. Versão/coleção pertinente é registrada em `version_or_collection`. Quando uma plataforma tem histórico complexo, a Vitrine pode registrar o produto em nível de família/coleção e direcionar o usuário ao índice externo em vez de normalizar cada release.
 
-### Instância 2
+## 10. Variáveis
 
-Consumirá releases, variáveis, distribuições e capacidades da Instância 1 para resolver camadas visualizáveis.
+Variáveis normalizadas permanecem **deferred** no contrato `product-catalog-v0.1`. A necessidade de uma tabela de variáveis deve ser demonstrada por ganho real de descoberta e não pela mera existência de bandas/colunas nos datasets externos.
 
-### Instância 3
+## 11. Relação com a arquitetura histórica
 
-Consumirá significado científico, taxonomias, escala, território e método para recuperar e sintetizar literatura relevante.
+Documentos antigos deste repositório descrevem organização → fonte → família → produto → release → distribuição → ativo e banco PostgreSQL/PostGIS. Essa arquitetura pertence à fase pré-separação/Simbiotrama e é preservada por proveniência. Não é modelo ativo da Vitrine.
 
-Essas extensões não alteram a prioridade atual: o catálogo deve primeiro ser profundo, preciso, relacional e útil por si só.
+## 12. Snapshot
+
+Em 18/08/2026 o modelo continha **125 fontes, 756 produtos e 787 distribuições**. O crescimento de linhas é permitido sem alterar o schema.
