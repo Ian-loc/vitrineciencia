@@ -1,2 +1,2 @@
 Temporary trigger for the 2026-08-18 CPTEC curation batch. Do not merge.
-retry=2
+retry=3
