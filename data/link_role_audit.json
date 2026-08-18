@@ -7,8 +7,8 @@
     "not_applicable": "Usado quando o recurso não oferece dados para consulta ou download, como software de publicação."
   },
   "counts": {
-    "separate_destinations": 81,
-    "same_destination_pending_review": 43,
+    "separate_destinations": 83,
+    "same_destination_pending_review": 41,
     "data_access_not_applicable": 1
   },
   "records_requiring_review": [
@@ -25,20 +25,6 @@
       "status": "same_destination_pending_review",
       "homepage_url": "https://www.sibbr.gov.br/",
       "data_access_url": "https://www.sibbr.gov.br/"
-    },
-    {
-      "resource_id": "DR0015",
-      "resource_name": "Banco de Dados e Informações Ambientais",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://bdiaweb.ibge.gov.br/",
-      "data_access_url": "https://bdiaweb.ibge.gov.br/"
-    },
-    {
-      "resource_id": "DR0017",
-      "resource_name": "Sistema Nacional de Informações sobre Recursos Hídricos / HidroWeb",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.snirh.gov.br/hidroweb/",
-      "data_access_url": "https://www.snirh.gov.br/hidroweb/"
     },
     {
       "resource_id": "DR0018",
