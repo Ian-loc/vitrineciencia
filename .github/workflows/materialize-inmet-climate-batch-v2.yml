@@ -4,7 +4,7 @@ on:
   push:
     branches: ["main"]
     paths:
-      - ".github/materializers/inmet_climate_batch.py"
+      - ".github/materializers/**"
 
 permissions:
   contents: write
