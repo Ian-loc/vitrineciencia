@@ -10,7 +10,10 @@ jobs:
     if: startsWith(github.head_ref, 'tmp/cptec-dispatch-')
     runs-on: ubuntu-latest
     steps:
-      - name: Dispatch curator
+      - name: Dispatch curator and report run
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run curate_cptec_batch_20260818.yml --repo ${{ github.repository }}
+        run: |
+          gh workflow run curate_cptec_batch_20260818.yml --repo ${{ github.repository }}
+          sleep 5
+          gh run list --repo ${{ github.repository }} --workflow curate_cptec_batch_20260818.yml --limit 1 --json databaseId,status,conclusion,headSha,event,name
