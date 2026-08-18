@@ -30,7 +30,7 @@
       "acronym": "TerraBrasilis",
       "official_identity": "Plataforma de dados geográficos",
       "homepage_url": "https://terrabrasilis.dpi.inpe.br/",
-      "data_access_url": "https://terrabrasilis.dpi.inpe.br/"
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/downloads/"
     },
     "distributions": [
       {
@@ -108,7 +108,7 @@
       "acronym": "TerraBrasilis",
       "official_identity": "Plataforma de dados geográficos",
       "homepage_url": "https://terrabrasilis.dpi.inpe.br/",
-      "data_access_url": "https://terrabrasilis.dpi.inpe.br/"
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/downloads/"
     },
     "distributions": [
       {
@@ -167,7 +167,7 @@
       "acronym": "TerraBrasilis",
       "official_identity": "Plataforma de dados geográficos",
       "homepage_url": "https://terrabrasilis.dpi.inpe.br/",
-      "data_access_url": "https://terrabrasilis.dpi.inpe.br/"
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/downloads/"
     },
     "distributions": [
       {
@@ -226,7 +226,7 @@
       "acronym": "TerraBrasilis",
       "official_identity": "Plataforma de dados geográficos",
       "homepage_url": "https://terrabrasilis.dpi.inpe.br/",
-      "data_access_url": "https://terrabrasilis.dpi.inpe.br/"
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/downloads/"
     },
     "distributions": [
       {
@@ -285,7 +285,7 @@
       "acronym": "TerraBrasilis",
       "official_identity": "Plataforma de dados geográficos",
       "homepage_url": "https://terrabrasilis.dpi.inpe.br/",
-      "data_access_url": "https://terrabrasilis.dpi.inpe.br/"
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/downloads/"
     },
     "distributions": [
       {
@@ -344,7 +344,7 @@
       "acronym": "TerraBrasilis",
       "official_identity": "Plataforma de dados geográficos",
       "homepage_url": "https://terrabrasilis.dpi.inpe.br/",
-      "data_access_url": "https://terrabrasilis.dpi.inpe.br/"
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/downloads/"
     },
     "distributions": [
       {
@@ -403,7 +403,7 @@
       "acronym": "TerraBrasilis",
       "official_identity": "Plataforma de dados geográficos",
       "homepage_url": "https://terrabrasilis.dpi.inpe.br/",
-      "data_access_url": "https://terrabrasilis.dpi.inpe.br/"
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/downloads/"
     },
     "distributions": [
       {
@@ -517,7 +517,7 @@
       "acronym": "GEE",
       "official_identity": "Catálogo de dados do Google Earth Engine",
       "homepage_url": "https://developers.google.com/earth-engine/datasets",
-      "data_access_url": "https://developers.google.com/earth-engine/datasets"
+      "data_access_url": "https://developers.google.com/earth-engine/datasets/catalog"
     },
     "distributions": [
       {
@@ -576,7 +576,7 @@
       "acronym": "GEE",
       "official_identity": "Catálogo de dados do Google Earth Engine",
       "homepage_url": "https://developers.google.com/earth-engine/datasets",
-      "data_access_url": "https://developers.google.com/earth-engine/datasets"
+      "data_access_url": "https://developers.google.com/earth-engine/datasets/catalog"
     },
     "distributions": [
       {
@@ -635,7 +635,7 @@
       "acronym": "GEE",
       "official_identity": "Catálogo de dados do Google Earth Engine",
       "homepage_url": "https://developers.google.com/earth-engine/datasets",
-      "data_access_url": "https://developers.google.com/earth-engine/datasets"
+      "data_access_url": "https://developers.google.com/earth-engine/datasets/catalog"
     },
     "distributions": [
       {
@@ -713,7 +713,7 @@
       "acronym": "GEE",
       "official_identity": "Catálogo de dados do Google Earth Engine",
       "homepage_url": "https://developers.google.com/earth-engine/datasets",
-      "data_access_url": "https://developers.google.com/earth-engine/datasets"
+      "data_access_url": "https://developers.google.com/earth-engine/datasets/catalog"
     },
     "distributions": [
       {
@@ -4107,7 +4107,7 @@
       "acronym": "UrbVerde",
       "official_identity": "Plataforma de inteligência territorial para sustentabilidade urbana",
       "homepage_url": "https://urbverde.iau.usp.br/",
-      "data_access_url": "https://urbverde.iau.usp.br/"
+      "data_access_url": "https://urbverde.iau.usp.br/mapa"
     },
     "distributions": [
       {
@@ -4166,7 +4166,7 @@
       "acronym": "UrbVerde",
       "official_identity": "Plataforma de inteligência territorial para sustentabilidade urbana",
       "homepage_url": "https://urbverde.iau.usp.br/",
-      "data_access_url": "https://urbverde.iau.usp.br/"
+      "data_access_url": "https://urbverde.iau.usp.br/mapa"
     },
     "distributions": [
       {
@@ -4225,7 +4225,7 @@
       "acronym": "UrbVerde",
       "official_identity": "Plataforma de inteligência territorial para sustentabilidade urbana",
       "homepage_url": "https://urbverde.iau.usp.br/",
-      "data_access_url": "https://urbverde.iau.usp.br/"
+      "data_access_url": "https://urbverde.iau.usp.br/mapa"
     },
     "distributions": [
       {
@@ -4284,7 +4284,7 @@
       "acronym": "UrbVerde",
       "official_identity": "Plataforma de inteligência territorial para sustentabilidade urbana",
       "homepage_url": "https://urbverde.iau.usp.br/",
-      "data_access_url": "https://urbverde.iau.usp.br/"
+      "data_access_url": "https://urbverde.iau.usp.br/mapa"
     },
     "distributions": [
       {
@@ -19306,7 +19306,7 @@
       "acronym": "TerraBrasilis",
       "official_identity": "Plataforma de dados geográficos",
       "homepage_url": "https://terrabrasilis.dpi.inpe.br/",
-      "data_access_url": "https://terrabrasilis.dpi.inpe.br/"
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/downloads/"
     },
     "distributions": [
       {
@@ -19365,7 +19365,7 @@
       "acronym": "TerraBrasilis",
       "official_identity": "Plataforma de dados geográficos",
       "homepage_url": "https://terrabrasilis.dpi.inpe.br/",
-      "data_access_url": "https://terrabrasilis.dpi.inpe.br/"
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/downloads/"
     },
     "distributions": [
       {
@@ -19424,7 +19424,7 @@
       "acronym": "TerraBrasilis",
       "official_identity": "Plataforma de dados geográficos",
       "homepage_url": "https://terrabrasilis.dpi.inpe.br/",
-      "data_access_url": "https://terrabrasilis.dpi.inpe.br/"
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/downloads/"
     },
     "distributions": [
       {
@@ -19483,7 +19483,7 @@
       "acronym": "TerraBrasilis",
       "official_identity": "Plataforma de dados geográficos",
       "homepage_url": "https://terrabrasilis.dpi.inpe.br/",
-      "data_access_url": "https://terrabrasilis.dpi.inpe.br/"
+      "data_access_url": "https://terrabrasilis.dpi.inpe.br/downloads/"
     },
     "distributions": [
       {
