@@ -19,15 +19,13 @@ Corrigir erros e incertezas que afetam descoberta, acesso ou interpretação sem
 
 ## Snapshot de qualidade — 18/08/2026
 
-O catálogo possui 125 fontes; `data_quality_report.json` registra:
+O catálogo possui 125 fontes; `data/data_quality_report.json` registra, entre os sinais explicitamente consolidados:
 
 - 49 fontes com licença desconhecida/variável;
 - 72 com alguma incerteza de acesso;
-- 47 com resolução espacial desconhecida/variável;
-- 40 com cobertura temporal desconhecida/variável;
-- 33 com acesso programático desconhecido/variável.
+- data máxima de verificação `2026-08-18`.
 
-Esses números orientam prioridade, mas não significam que os datasets externos sejam deficientes.
+Esses números orientam prioridade, mas não significam que os datasets externos sejam deficientes. Outros campos podem ser avaliados diretamente no catálogo quando necessário, sem transformar estimativas ad hoc em métricas oficiais.
 
 ## Priorização
 
