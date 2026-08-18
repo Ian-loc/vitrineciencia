@@ -36,8 +36,9 @@ JSONs e o site são derivados deterministicamente.
 Em **18 de agosto de 2026**:
 
 - **125 fontes**;
-- **756 produtos**;
-- **787 distribuições**;
+- **752 produtos**;
+- **783 distribuições**;
+- IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`, com lacunas preservadas;
 - verificações de fonte registradas até **2026-08-18**.
 
 Essas contagens são snapshot, não gate, teto ou requisito arquitetural.
