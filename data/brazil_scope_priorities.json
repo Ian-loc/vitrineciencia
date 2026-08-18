@@ -1,7 +1,7 @@
 {
   "registry_version": "1.0.0",
   "scope_statement": "O catálogo prioriza fontes brasileiras e fontes que oferecem dados efetivos sobre o Brasil. Recursos sem cobertura brasileira direta são secundários e exigem justificativa estratégica explícita.",
-  "reviewed_at": "2026-08-17",
+  "reviewed_at": "2026-08-18",
   "tier_order": [
     "P0",
     "P1",
@@ -100,7 +100,8 @@
         "DR0116",
         "DR0117",
         "DR0118",
-        "DR0119"
+        "DR0119",
+        "DR0120"
       ]
     },
     {

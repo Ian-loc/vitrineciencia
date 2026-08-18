@@ -33038,5 +33038,654 @@
     "available_protocols": [
       "HTTPS | XML"
     ]
+  },
+  {
+    "product_id": "DP000557",
+    "resource_id": "DR0120",
+    "product_name": "SIGA — Sistema de Informações de Geração da ANEEL",
+    "product_acronym": "SIGA",
+    "product_family": "geração centralizada",
+    "product_kind": "dataset_series",
+    "product_description": "Extração oficial do SIGA com informações de empreendimentos de geração elétrica em diferentes fases, desde etapas anteriores à outorga até revogação, incluindo capacidade e atributos do parque gerador nacional.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "SIGA | geração | usinas | capacidade instalada | empreendimento | outorga",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "empreendimento de geração; atributos territoriais conforme registro",
+    "spatial_resolution": "empreendimento/usina",
+    "temporal_coverage": "cadastro corrente e histórico de fases do empreendimento",
+    "temporal_resolution": "registro administrativo; atualização frequente",
+    "update_frequency": "diária nos recursos correntes auditados",
+    "product_status": "ativo",
+    "version_or_collection": "SIGA v1.1; portal atualizado em julho de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.aneel.gov.br/dataset/siga-sistema-de-informacoes-de-geracao-da-aneel",
+    "methodology_url": "https://www.aneel.gov.br/siga",
+    "primary_or_derived": "primário",
+    "limitations": "Cadastro regulatório de empreendimentos e fases administrativas; capacidade instalada/cadastrada não equivale a geração elétrica efetivamente produzida. Fases pré-outorga, operação e revogação devem permanecer distinguíveis.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0120",
+      "resource_name": "Portal de Dados Abertos e Sistemas do Setor Elétrico — ANEEL",
+      "acronym": "ANEEL Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas regulatórios da Agência Nacional de Energia Elétrica — ANEEL",
+      "homepage_url": "https://www.gov.br/aneel/pt-br",
+      "data_access_url": "https://dadosabertos.aneel.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000582",
+        "product_id": "DP000557",
+        "distribution_name": "SIGA — CSV/XML e dicionário",
+        "access_url": "https://dadosabertos.aneel.gov.br/dataset/siga-sistema-de-informacoes-de-geracao-da-aneel",
+        "format": "CSV | XML | PDF",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão e data de atualização do recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso e filtros/API CKAN quando disponíveis",
+        "notes": "recursos correntes e diários conforme arquivo",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000558",
+    "resource_id": "DR0120",
+    "product_name": "Relação de empreendimentos de Mini e Micro Geração Distribuída — MMGD",
+    "product_acronym": "MMGD",
+    "product_family": "geração distribuída",
+    "product_kind": "dataset_series",
+    "product_description": "Relação nacional de conexões de microgeração e minigeração distribuída por unidade consumidora, com distribuidora, titular, fonte, potência instalada, data de conexão, município e UF, além de informações técnicas por tecnologia.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "MMGD | microgeração | minigeração | geração distribuída | solar | eólica | hidrelétrica | termelétrica",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "unidade consumidora/empreendimento conectado",
+    "spatial_resolution": "município e UF; registro por empreendimento",
+    "temporal_coverage": "desde dezembro de 2008",
+    "temporal_resolution": "diária",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "v2.1; atualizado em julho de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.aneel.gov.br/dataset/relacao-de-empreendimentos-de-geracao-distribuida",
+    "methodology_url": "https://dadosabertos.aneel.gov.br/dataset/relacao-de-empreendimentos-de-geracao-distribuida",
+    "primary_or_derived": "primário",
+    "limitations": "Registra conexões/cadastros de MMGD e potência instalada; não mede geração efetiva, energia compensada em cada período, autoconsumo instantâneo ou desempenho técnico do sistema. Dados cadastrais podem ser revisados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0120",
+      "resource_name": "Portal de Dados Abertos e Sistemas do Setor Elétrico — ANEEL",
+      "acronym": "ANEEL Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas regulatórios da Agência Nacional de Energia Elétrica — ANEEL",
+      "homepage_url": "https://www.gov.br/aneel/pt-br",
+      "data_access_url": "https://dadosabertos.aneel.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000583",
+        "product_id": "DP000558",
+        "distribution_name": "MMGD — CSV/ZIP/Parquet e informações técnicas",
+        "access_url": "https://dadosabertos.aneel.gov.br/dataset/relacao-de-empreendimentos-de-geracao-distribuida",
+        "format": "CSV | ZIP | PARQUET | PDF",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão e data de atualização do recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso e filtros/API CKAN quando disponíveis",
+        "notes": "arquivo nacional e recursos técnicos por tecnologia",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | ZIP | PARQUET | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000559",
+    "resource_id": "DR0120",
+    "product_name": "Capacidade Instalada de Geração por Unidade da Federação",
+    "product_acronym": "Capacidade UF",
+    "product_family": "estatísticas de geração",
+    "product_kind": "dataset_series",
+    "product_description": "Série trimestral da quantidade de empreendimentos em operação comercial e potência instalada de geração elétrica por Unidade da Federação e fonte de geração.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "capacidade instalada | geração | UF | fonte elétrica | potência",
+    "geographic_coverage": "Brasil — Unidades da Federação",
+    "covers_brazil": "sim",
+    "spatial_support": "UF",
+    "spatial_resolution": "Unidade da Federação",
+    "temporal_coverage": "a partir de 2006",
+    "temporal_resolution": "trimestral",
+    "update_frequency": "trimestral",
+    "product_status": "ativo",
+    "version_or_collection": "v1.0; atualizado em julho de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.aneel.gov.br/dataset/capacidade-instalada-por-unidade-da-federacao",
+    "methodology_url": "https://dadosabertos.aneel.gov.br/dataset/capacidade-instalada-por-unidade-da-federacao",
+    "primary_or_derived": "derivado",
+    "limitations": "Potência instalada é capacidade nominal/regulatória e não energia efetivamente gerada. Agregação por UF perde localização de empreendimento e usinas em divisas seguem a regra administrativa descrita pela ANEEL.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0120",
+      "resource_name": "Portal de Dados Abertos e Sistemas do Setor Elétrico — ANEEL",
+      "acronym": "ANEEL Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas regulatórios da Agência Nacional de Energia Elétrica — ANEEL",
+      "homepage_url": "https://www.gov.br/aneel/pt-br",
+      "data_access_url": "https://dadosabertos.aneel.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000584",
+        "product_id": "DP000559",
+        "distribution_name": "Capacidade instalada por UF — CSV",
+        "access_url": "https://dadosabertos.aneel.gov.br/dataset/capacidade-instalada-por-unidade-da-federacao",
+        "format": "CSV | PDF",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão e data de atualização do recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso e filtros/API CKAN quando disponíveis",
+        "notes": "tabela por UF/fonte e dicionário",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000560",
+    "resource_id": "DR0120",
+    "product_name": "Quantidade de empreendimentos de geração de energia em operação — histórico",
+    "product_acronym": "Empreendimentos em operação",
+    "product_family": "estatísticas de geração",
+    "product_kind": "dataset_series",
+    "product_description": "Histórico trimestral do número de empreendimentos de geração em operação e potência instalada por tipos/fontes de geração no Brasil.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "usinas em operação | geração | potência instalada | histórico",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "agregação nacional",
+    "spatial_resolution": "nacional",
+    "temporal_coverage": "a partir de 2001",
+    "temporal_resolution": "trimestral",
+    "update_frequency": "trimestral",
+    "product_status": "ativo",
+    "version_or_collection": "v1.1; atualizado em junho de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.aneel.gov.br/dataset/empreendimentos-em-operacao",
+    "methodology_url": "https://dadosabertos.aneel.gov.br/dataset/empreendimentos-em-operacao",
+    "primary_or_derived": "derivado",
+    "limitations": "Série agregada de empreendimentos em operação e capacidade; não substitui o cadastro individual do SIGA nem mede fator de capacidade ou energia gerada. Mudanças cadastrais e classificatórias podem afetar comparações.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0120",
+      "resource_name": "Portal de Dados Abertos e Sistemas do Setor Elétrico — ANEEL",
+      "acronym": "ANEEL Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas regulatórios da Agência Nacional de Energia Elétrica — ANEEL",
+      "homepage_url": "https://www.gov.br/aneel/pt-br",
+      "data_access_url": "https://dadosabertos.aneel.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000585",
+        "product_id": "DP000560",
+        "distribution_name": "Empreendimentos em operação — histórico CSV",
+        "access_url": "https://dadosabertos.aneel.gov.br/dataset/empreendimentos-em-operacao",
+        "format": "CSV | PDF",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão e data de atualização do recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso e filtros/API CKAN quando disponíveis",
+        "notes": "série histórica agregada",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000561",
+    "resource_id": "DR0120",
+    "product_name": "Atos de Outorgas de Geração",
+    "product_acronym": "Outorgas Geração",
+    "product_family": "outorgas de geração",
+    "product_kind": "dataset_series",
+    "product_description": "Base oficial dos atos de outorga emitidos pela ANEEL para empreendimentos de geração a partir de 2015.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "outorga | geração | concessão | autorização | atos ANEEL",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "empreendimento/ato administrativo",
+    "spatial_resolution": "registro de outorga",
+    "temporal_coverage": "a partir de 2015",
+    "temporal_resolution": "ato administrativo",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "v1.0; atualizado em julho de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.aneel.gov.br/dataset/atos-de-outorgas-de-geracao",
+    "methodology_url": "https://dadosabertos.aneel.gov.br/dataset/atos-de-outorgas-de-geracao",
+    "primary_or_derived": "primário",
+    "limitations": "Ato de outorga é registro jurídico-regulatório; não comprova que a usina foi construída, entrou em operação, gerou energia ou permaneceu operacional. Situação posterior deve ser verificada em sistemas apropriados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0120",
+      "resource_name": "Portal de Dados Abertos e Sistemas do Setor Elétrico — ANEEL",
+      "acronym": "ANEEL Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas regulatórios da Agência Nacional de Energia Elétrica — ANEEL",
+      "homepage_url": "https://www.gov.br/aneel/pt-br",
+      "data_access_url": "https://dadosabertos.aneel.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000586",
+        "product_id": "DP000561",
+        "distribution_name": "Atos de Outorga de Geração — CSV",
+        "access_url": "https://dadosabertos.aneel.gov.br/dataset/atos-de-outorgas-de-geracao",
+        "format": "CSV | PDF",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão e data de atualização do recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso e filtros/API CKAN quando disponíveis",
+        "notes": "atos a partir de 2015",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000562",
+    "resource_id": "DR0120",
+    "product_name": "Liberação para operação comercial de empreendimentos de geração",
+    "product_acronym": "Liberação Operação Comercial",
+    "product_family": "operação comercial de geração",
+    "product_kind": "dataset_series",
+    "product_description": "Registros de capacidade e unidades geradoras liberadas para operação comercial, com série anual agregada desde 1997 e registros detalhados por data, unidade geradora, CEG, usina e UF.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "operação comercial | unidade geradora | potência liberada | expansão da oferta",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "unidade geradora e agregação nacional",
+    "spatial_resolution": "unidade geradora/UF no recurso detalhado; nacional no agregado",
+    "temporal_coverage": "1997 até o presente",
+    "temporal_resolution": "data de liberação e agregação anual",
+    "update_frequency": "quinzenal",
+    "product_status": "ativo",
+    "version_or_collection": "v1.0; atualizado em julho de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.aneel.gov.br/dataset/liberacao-para-operacao-comercial-de-empreendimentos-de-geracao",
+    "methodology_url": "https://dadosabertos.aneel.gov.br/dataset/liberacao-para-operacao-comercial-de-empreendimentos-de-geracao",
+    "primary_or_derived": "primário",
+    "limitations": "Liberação regulatória para operação comercial não equivale a geração contínua ou energia produzida. O conjunto contém recursos com granularidades distintas; não misturar série agregada anual com registros detalhados de unidades.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0120",
+      "resource_name": "Portal de Dados Abertos e Sistemas do Setor Elétrico — ANEEL",
+      "acronym": "ANEEL Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas regulatórios da Agência Nacional de Energia Elétrica — ANEEL",
+      "homepage_url": "https://www.gov.br/aneel/pt-br",
+      "data_access_url": "https://dadosabertos.aneel.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000587",
+        "product_id": "DP000562",
+        "distribution_name": "Liberação para operação comercial — CSV/XML",
+        "access_url": "https://dadosabertos.aneel.gov.br/dataset/liberacao-para-operacao-comercial-de-empreendimentos-de-geracao",
+        "format": "CSV | XML | PDF",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão e data de atualização do recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso e filtros/API CKAN quando disponíveis",
+        "notes": "recursos agregado e detalhado",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000563",
+    "resource_id": "DR0120",
+    "product_name": "Agentes de Geração de Energia Elétrica",
+    "product_acronym": "Agentes de Geração",
+    "product_family": "cadastro de agentes de geração",
+    "product_kind": "dataset_series",
+    "product_description": "Relação de agentes de geração com usinas, CEG, CNPJ, percentual de participação na propriedade do empreendimento e regime de exploração.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "agentes | geração | CNPJ | CEG | propriedade | regime de exploração",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "agente–empreendimento",
+    "spatial_resolution": "registro de participação por usina/agente",
+    "temporal_coverage": "cadastro corrente; cobertura temporal não especificada no conjunto",
+    "temporal_resolution": "registro administrativo",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "v1.0; atualizado em julho de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.aneel.gov.br/dataset/agentes-de-geracao-de-energia-eletrica",
+    "methodology_url": "https://dadosabertos.aneel.gov.br/dataset/agentes-de-geracao-de-energia-eletrica",
+    "primary_or_derived": "primário",
+    "limitations": "Participação societária/regime de exploração não mede produção, receita, controle efetivo ou impacto ambiental. CNPJ e estrutura de propriedade podem mudar; preservar a data de extração.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0120",
+      "resource_name": "Portal de Dados Abertos e Sistemas do Setor Elétrico — ANEEL",
+      "acronym": "ANEEL Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas regulatórios da Agência Nacional de Energia Elétrica — ANEEL",
+      "homepage_url": "https://www.gov.br/aneel/pt-br",
+      "data_access_url": "https://dadosabertos.aneel.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000588",
+        "product_id": "DP000563",
+        "distribution_name": "Agentes de Geração — CSV",
+        "access_url": "https://dadosabertos.aneel.gov.br/dataset/agentes-de-geracao-de-energia-eletrica",
+        "format": "CSV | PDF",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão e data de atualização do recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso e filtros/API CKAN quando disponíveis",
+        "notes": "agente–usina/CEG",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000564",
+    "resource_id": "DR0120",
+    "product_name": "SIGET — Sistema de Gestão da Transmissão",
+    "product_acronym": "SIGET",
+    "product_family": "transmissão de energia elétrica",
+    "product_kind": "federated_catalog",
+    "product_description": "Conjunto de tabelas e registros do sistema de gestão da transmissão da ANEEL, cobrindo concessões, autorizações, funções de transmissão, módulos, instalações, operação comercial, receita anual permitida e acompanhamento regulatório.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "SIGET | transmissão | linhas | subestações | RAP | concessão | operação",
+    "geographic_coverage": "Brasil — sistema de transmissão regulado pela ANEEL",
+    "covers_brazil": "sim",
+    "spatial_support": "instalação, função de transmissão, contrato, módulo ou registro regulatório conforme recurso",
+    "spatial_resolution": "varia por recurso",
+    "temporal_coverage": "a partir de 2005",
+    "temporal_resolution": "registro e séries administrativas",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "v1.0; atualizado em julho de 2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://dadosabertos.aneel.gov.br/dataset/sistema-de-gestao-da-transmissao-siget",
+    "methodology_url": "https://dadosabertos.aneel.gov.br/dataset/sistema-de-gestao-da-transmissao-siget",
+    "primary_or_derived": "agregador",
+    "limitations": "SIGET reúne tabelas regulatórias heterogêneas. Outorga, módulo previsto, obra concluída, termo de liberação, operação e receita são estados/objetos distintos; não tratar o catálogo como uma única rede física homogênea ou como fluxo elétrico medido.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0120",
+      "resource_name": "Portal de Dados Abertos e Sistemas do Setor Elétrico — ANEEL",
+      "acronym": "ANEEL Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas regulatórios da Agência Nacional de Energia Elétrica — ANEEL",
+      "homepage_url": "https://www.gov.br/aneel/pt-br",
+      "data_access_url": "https://dadosabertos.aneel.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000589",
+        "product_id": "DP000564",
+        "distribution_name": "SIGET — recursos CSV e dicionários",
+        "access_url": "https://dadosabertos.aneel.gov.br/dataset/sistema-de-gestao-da-transmissao-siget",
+        "format": "CSV | PDF",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão e data de atualização do recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso e filtros/API CKAN quando disponíveis",
+        "notes": "múltiplas tabelas regulatórias",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000565",
+    "resource_id": "DR0120",
+    "product_name": "FSB — Fiscalização de Segurança de Barragens de usinas hidrelétricas",
+    "product_acronym": "FSB",
+    "product_family": "segurança de barragens",
+    "product_kind": "dataset_series",
+    "product_description": "Base de fiscalização da ANEEL sobre conformidade e classificação de segurança de barragens, diques e estruturas associadas de usinas hidrelétricas sob sua competência regulatória.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "barragens | segurança | hidrelétricas | fiscalização | risco | ANEEL",
+    "geographic_coverage": "Brasil — estruturas fiscalizadas pela ANEEL",
+    "covers_brazil": "sim",
+    "spatial_support": "barragem/estrutura associada",
+    "spatial_resolution": "coordenadas geográficas por estrutura",
+    "temporal_coverage": "a partir de 2016",
+    "temporal_resolution": "anual nos registros classificados; atualização do conjunto mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "v1.0; atualizado em julho de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.aneel.gov.br/dataset/fsb-fiscalizacao-de-seguranca-de-barragens",
+    "methodology_url": "https://dadosabertos.aneel.gov.br/dataset/fsb-fiscalizacao-de-seguranca-de-barragens",
+    "primary_or_derived": "primário",
+    "limitations": "Fiscalização e classificação regulatória não constituem medição independente contínua de estabilidade nem previsão de ruptura. A base cobre estruturas sob competência da ANEEL e não todas as barragens brasileiras.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0120",
+      "resource_name": "Portal de Dados Abertos e Sistemas do Setor Elétrico — ANEEL",
+      "acronym": "ANEEL Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas regulatórios da Agência Nacional de Energia Elétrica — ANEEL",
+      "homepage_url": "https://www.gov.br/aneel/pt-br",
+      "data_access_url": "https://dadosabertos.aneel.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000590",
+        "product_id": "DP000565",
+        "distribution_name": "FSB — fiscalização de segurança de barragens",
+        "access_url": "https://dadosabertos.aneel.gov.br/dataset/fsb-fiscalizacao-de-seguranca-de-barragens",
+        "format": "CSV | PDF",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão e data de atualização do recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso e filtros/API CKAN quando disponíveis",
+        "notes": "registro por estrutura fiscalizada",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000566",
+    "resource_id": "DR0120",
+    "product_name": "CFURH — Compensação Financeira pela Utilização de Recursos Hídricos e Royalties de Itaipu",
+    "product_acronym": "CFURH",
+    "product_family": "compensação financeira hidrelétrica",
+    "product_kind": "dataset_series",
+    "product_description": "Conjunto mensal sobre compensação financeira pelo uso de recursos hídricos para geração hidrelétrica e royalties de Itaipu, incluindo beneficiários, coeficientes de distribuição, áreas alagadas e dados de cascata.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "CFURH | royalties | hidrelétrica | municípios | área alagada | recursos hídricos",
+    "geographic_coverage": "Brasil — municípios, UFs e usinas/áreas relacionadas aos repasses",
+    "covers_brazil": "sim",
+    "spatial_support": "município, usina, reservatório e beneficiário conforme recurso",
+    "spatial_resolution": "municipal e empreendimento/reservatório conforme tabela",
+    "temporal_coverage": "a partir de 1993",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; atualizado em julho de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.aneel.gov.br/dataset/cfurh",
+    "methodology_url": "https://www.gov.br/aneel/pt-br/assuntos/geracao/compensacao-financeira/criterios-para-rateio",
+    "primary_or_derived": "derivado",
+    "limitations": "Repasses financeiros e coeficientes não medem diretamente impacto socioambiental ou condição ecológica. CFURH e Royalties de Itaipu possuem bases legais e sistemáticas próprias e não devem ser somados/interpretados sem preservar essa distinção.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0120",
+      "resource_name": "Portal de Dados Abertos e Sistemas do Setor Elétrico — ANEEL",
+      "acronym": "ANEEL Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas regulatórios da Agência Nacional de Energia Elétrica — ANEEL",
+      "homepage_url": "https://www.gov.br/aneel/pt-br",
+      "data_access_url": "https://dadosabertos.aneel.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000591",
+        "product_id": "DP000566",
+        "distribution_name": "CFURH — tabelas mensais e Parquet",
+        "access_url": "https://dadosabertos.aneel.gov.br/dataset/cfurh",
+        "format": "CSV | ZIP | PARQUET | PDF",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão e data de atualização do recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso e filtros/API CKAN quando disponíveis",
+        "notes": "beneficiários, áreas, coeficientes e royalties",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | ZIP | PARQUET | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
+  },
+  {
+    "product_id": "DP000567",
+    "resource_id": "DR0120",
+    "product_name": "Empreendimentos hidrelétricos em estudo — fases de pré-outorga",
+    "product_acronym": "Hidrelétricos em estudo",
+    "product_family": "estudos hidrelétricos pré-outorga",
+    "product_kind": "dataset_series",
+    "product_description": "Cadastro de possíveis empreendimentos hidrelétricos em estudo e respectivas fases de pré-outorga.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "hidrelétrica | estudo | pré-outorga | DRI | DRS | inventário hidrelétrico",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "empreendimento em estudo",
+    "spatial_resolution": "coordenadas geográficas por empreendimento",
+    "temporal_coverage": "cadastro corrente; fase conforme registro",
+    "temporal_resolution": "registro administrativo",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "v1.0; atualizado em julho de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.aneel.gov.br/dataset/empreendimento-hidreletrico-em-estudo",
+    "methodology_url": "https://dadosabertos.aneel.gov.br/dataset/empreendimento-hidreletrico-em-estudo",
+    "primary_or_derived": "primário",
+    "limitations": "Empreendimento em estudo é hipótese/projeto em fase pré-outorga; não equivale a usina autorizada, construída ou operacional, nem implica viabilidade ambiental, econômica ou energética confirmada.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0120",
+      "resource_name": "Portal de Dados Abertos e Sistemas do Setor Elétrico — ANEEL",
+      "acronym": "ANEEL Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos e sistemas regulatórios da Agência Nacional de Energia Elétrica — ANEEL",
+      "homepage_url": "https://www.gov.br/aneel/pt-br",
+      "data_access_url": "https://dadosabertos.aneel.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000592",
+        "product_id": "DP000567",
+        "distribution_name": "Empreendimentos hidrelétricos em estudo — CSV/XML",
+        "access_url": "https://dadosabertos.aneel.gov.br/dataset/empreendimento-hidreletrico-em-estudo",
+        "format": "CSV | XML | PDF",
+        "access_protocol": "HTTPS download | CKAN API",
+        "access_tool": "navegador web | API CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar dicionário, versão e data de atualização do recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso e filtros/API CKAN quando disponíveis",
+        "notes": "empreendimentos e fases de estudo",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XML | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN API"
+    ]
   }
 ]
