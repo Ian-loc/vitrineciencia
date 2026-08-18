@@ -34100,5 +34100,477 @@
     "available_protocols": [
       "HTTPS download"
     ]
+  },
+  {
+    "product_id": "DP000575",
+    "resource_id": "DR0121",
+    "product_name": "Plano Nacional de Energia 2055 — estudos e cenários de longo prazo",
+    "product_acronym": "PNE 2055",
+    "product_family": "Planejamento energético de longo prazo",
+    "product_kind": "indicator_family",
+    "product_description": "Instrumento de planejamento energético integrado de longo prazo da EPE/MME que avalia trajetórias e futuros possíveis do sistema energético brasileiro até 2055, reunindo cadernos de cenários, potencial de recursos, síntese estratégica, workbooks e estudos complementares publicados entre 2025 e 2026.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "PNE 2055 | planejamento energético | cenários de longo prazo | recursos energéticos | transição energética | 2055",
+    "geographic_coverage": "Brasil; sistema energético nacional e recortes setoriais/territoriais conforme caderno",
+    "covers_brazil": "sim",
+    "spatial_support": "nacional, setorial, regional e recursos/infraestruturas conforme estudo",
+    "spatial_resolution": "varia por caderno, workbook, cenário e insumo",
+    "temporal_coverage": "horizonte prospectivo até 2055; estudos publicados 2025–2026",
+    "temporal_resolution": "por cenário, horizonte e estudo",
+    "update_frequency": "por ciclo de planejamento",
+    "product_status": "ativo",
+    "version_or_collection": "PNE 2055; estudos 2025–2026; consulta pública fev–mar 2026; versões de cadernos até jun 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/plano-nacional-de-energia-2055",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/plano-nacional-de-energia-2055",
+    "primary_or_derived": "derivado",
+    "limitations": "Cenários e trajetórias de longo prazo não são previsões determinísticas. Potencial técnico, econômico ou socioambiental não equivale a projeto autorizado, investimento contratado ou infraestrutura executada. Diferentes cadernos e versões devem ser citados explicitamente.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000600",
+        "product_id": "DP000575",
+        "distribution_name": "PNE 2055 — cadernos, workbooks e materiais complementares",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/plano-nacional-de-energia-2055",
+        "format": "PDF | XLSX | conteúdo web",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web | download direto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; citar versão/caderno efetivamente utilizado",
+        "license": "CC BY 4.0 para conteúdo do site EPE; verificar eventuais materiais de terceiros",
+        "provider_attribution_required": "sim",
+        "subset_support": "por caderno, versão, workbook e estudo complementar",
+        "notes": "Página reúne versões sucessivas de cadernos; preservar versão e data. Cenários não são previsões determinísticas.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "PDF | XLSX | conteúdo web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000576",
+    "resource_id": "DR0121",
+    "product_name": "Consumo Mensal de Energia Elétrica por Classe — regiões e subsistemas",
+    "product_acronym": "Consumo Mensal EPE",
+    "product_family": "Estatísticas mensais do mercado de energia elétrica",
+    "product_kind": "dataset_series",
+    "product_description": "Série histórica mensal e anual do consumo de energia elétrica, disponibilizada pela EPE desde 2004 em níveis nacional, regional e por subsistemas, segmentada por classes de consumo e ambientes de contratação, com dados coletados mensalmente dos agentes via SAM e consolidados no âmbito da COPAM.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "consumo de eletricidade | mercado de energia | classes de consumo | SAM | COPAM | mercado livre | mercado cativo",
+    "geographic_coverage": "Brasil; regiões geográficas, subsistemas e UFs conforme indicador",
+    "covers_brazil": "sim",
+    "spatial_support": "nacional, região, subsistema, UF e classe conforme arquivo/painel",
+    "spatial_resolution": "agregações territoriais e setoriais; não espacialmente contínuo",
+    "temporal_coverage": "2004–presente conforme atualização da série",
+    "temporal_resolution": "mensal; agregações anuais associadas",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "série corrente; dados abertos e painel atualizados pela EPE",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/consumo-de-energia-eletrica",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/dados-abertos/dados-do-consumo-mensal-de-energia-eletrica",
+    "primary_or_derived": "derivado",
+    "limitations": "Consumo reportado/consolidado via agentes e SAM/COPAM não é telemetria instantânea. Classes, mercado cativo/livre, subsistemas, regiões e número de consumidores têm conceitos e denominadores próprios; preservar revisões e data de extração.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000601",
+        "product_id": "DP000576",
+        "distribution_name": "Consumo Mensal de Energia Elétrica — dados brutos, dicionário e painel",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/dados-abertos/dados-do-consumo-mensal-de-energia-eletrica",
+        "format": "arquivo tabular para download | dicionário de dados | painel web",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web | download direto | painel interativo",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "filtros por classe, região, subsistema, ambiente de contratação e período conforme ferramenta",
+        "notes": "Série atualizada pela EPE a partir do SAM/COPAM; preservar revisão e data de extração.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "arquivo tabular para download | dicionário de dados | painel web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000577",
+    "resource_id": "DR0121",
+    "product_name": "Mercado de Distribuição — consumo, MMGD injetada e perdas",
+    "product_acronym": "Mercado de Distribuição EPE",
+    "product_family": "Mercado de distribuição de energia elétrica",
+    "product_kind": "dataset_series",
+    "product_description": "Dados anuais do mercado de distribuição coletados pela EPE no SIMPLES Projeções Anuais, incluindo consumo, energia injetada por micro e minigeração distribuída e perdas totais, com agregações por região, subsistema e classe e estimativas para o ano corrente do ciclo de coleta.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "distribuição de energia | consumo | MMGD | perdas elétricas | SIMPLES | COPAM",
+    "geographic_coverage": "Brasil; regiões geográficas, subsistemas e classes de consumo",
+    "covers_brazil": "sim",
+    "spatial_support": "nacional, região, subsistema e classe de consumo",
+    "spatial_resolution": "agregações administrativas/setoriais; não espacialmente contínuo",
+    "temporal_coverage": "série anual conforme ciclos SIMPLES; ano corrente pode conter estimativas",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "painel e dados abertos correntes; coleta anual em agosto",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/areas-de-atuacao/energia-eletrica/consumo-de-energia-el%C3%A9trica/mercado-de-distribuicao",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/dados-abertos/dados-do-mercado-de-distribuicao",
+    "primary_or_derived": "derivado",
+    "limitations": "Valores medidos de MMGD/perdas e estimativas agregadas do ano corrente têm naturezas distintas. Dados do mercado de distribuição não equivalem à geração total do sistema, fluxo físico em tempo real nem perdas técnicas isoladamente.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000602",
+        "product_id": "DP000577",
+        "distribution_name": "Mercado de Distribuição — dados brutos, dicionário e painel",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/dados-abertos/dados-do-mercado-de-distribuicao",
+        "format": "arquivo tabular para download | dicionário de dados | painel web",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web | download direto | painel interativo",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por região, subsistema, classe, consumo, MMGD e perdas conforme recurso",
+        "notes": "Coleta anual via SIMPLES Projeções Anuais; ano corrente pode incluir estimativas agregadas e deve ser distinguido dos valores medidos.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "arquivo tabular para download | dicionário de dados | painel web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000578",
+    "resource_id": "DR0121",
+    "product_name": "OBEPE — Observatório Brasileiro de Erradicação da Pobreza Energética",
+    "product_acronym": "OBEPE",
+    "product_family": "Pobreza e justiça energética",
+    "product_kind": "indicator_family",
+    "product_description": "Observatório EPE/MME/BID que organiza indicadores, determinantes, vulnerabilidades, estatísticas adicionais, dados e microdados para diagnóstico e monitoramento multidimensional da pobreza energética no Brasil.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "pobreza energética | desigualdade | indicadores | microdados | acesso à energia | justiça energética",
+    "geographic_coverage": "Brasil; UFs e demais recortes disponíveis por indicador",
+    "covers_brazil": "sim",
+    "spatial_support": "nacional, UF e recortes sociodemográficos conforme indicador/microdado",
+    "spatial_resolution": "agregação estatística definida por indicador e fonte primária",
+    "temporal_coverage": "períodos variados conforme as bases públicas usadas na construção dos indicadores",
+    "temporal_resolution": "varia por indicador e fonte",
+    "update_frequency": "irregular conforme atualização do observatório",
+    "product_status": "ativo",
+    "version_or_collection": "OBEPE versão operacional acessível em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/obepe-observatorio-brasileiro-de-erradicacao-da-pobreza-energetica",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/obepe-observatorio-brasileiro-de-erradicacao-da-pobreza-energetica",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicadores combinam fontes públicas com universos, anos e metodologias diferentes. Pobreza energética é multidimensional; nenhum indicador isolado deve ser tratado como classificação universal. Microdados preservam limitações das pesquisas de origem e exigem uso de pesos/desenhos quando aplicável.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000603",
+        "product_id": "DP000578",
+        "distribution_name": "OBEPE — dashboard, indicadores, microdados e metadados",
+        "access_url": "https://dashboard.epe.gov.br/apps/OBEPE/",
+        "format": "dashboard web | CSV | metadados | documentos técnicos",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web | download direto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar condições e desenho das bases de origem dos microdados",
+        "license": "CC BY 4.0 para conteúdo EPE; verificar licenças/termos das bases primárias incorporadas",
+        "provider_attribution_required": "sim",
+        "subset_support": "downloads de indicadores, microdados e metadados; filtros territoriais e temáticos no dashboard",
+        "notes": "Indicadores e microdados têm fontes e universos distintos; metadados do OBEPE são essenciais para interpretação.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "dashboard web | CSV | metadados | documentos técnicos"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000579",
+    "resource_id": "DR0121",
+    "product_name": "Resenha Mensal do Mercado de Energia Elétrica",
+    "product_acronym": "Resenha Mensal EPE",
+    "product_family": "Acompanhamento mensal do mercado de eletricidade",
+    "product_kind": "dataset_series",
+    "product_description": "Publicação mensal da EPE que consolida e interpreta o consumo de energia elétrica do mês anterior por classes e regiões, com destaques do comportamento do mercado e vínculo aos dados mensais coletados via SAM/COPAM.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "resenha mensal | consumo de eletricidade | mercado de energia | classes | regiões | COPAM",
+    "geographic_coverage": "Brasil; regiões e classes conforme edição",
+    "covers_brazil": "sim",
+    "spatial_support": "nacional e agregações regionais/setoriais",
+    "spatial_resolution": "agregações regionais e por classe",
+    "temporal_coverage": "série mensal histórica; edições de 2026 publicadas",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "série corrente; edição Junho 2026 disponível na auditoria",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/resenha-mensal-do-mercado-de-energia-eletrica",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/resenha-e-boletim-do-mercado-de-energia-eletrica",
+    "primary_or_derived": "derivado",
+    "limitations": "A Resenha é síntese analítica derivada dos dados mensais e não uma fonte independente de telemetria. Comparações exigem preservar classe, região, ambiente de contratação, revisões e o mês de referência.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000604",
+        "product_id": "DP000579",
+        "distribution_name": "Resenha Mensal do Mercado de Energia Elétrica — edições e arquivos",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/resenha-mensal-do-mercado-de-energia-eletrica",
+        "format": "PDF | conteúdo web",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web | download direto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "CC BY 4.0 para conteúdo do site EPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por edição mensal",
+        "notes": "Publicação analítica derivada dos dados mensais; usar a série de dados abertos quando forem necessários valores estruturados.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "PDF | conteúdo web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000580",
+    "resource_id": "DR0121",
+    "product_name": "Boletim Trimestral de Consumo de Eletricidade",
+    "product_acronym": "Boletim Trimestral EPE",
+    "product_family": "Acompanhamento trimestral do consumo de eletricidade",
+    "product_kind": "dataset_series",
+    "product_description": "Relatório trimestral da EPE, publicado desde 2020, que complementa a Resenha Mensal com análises consolidadas do consumo de eletricidade e do mercado por classes, regiões e outros recortes disponíveis.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "boletim trimestral | consumo de eletricidade | mercado de energia | COPAM | classes | regiões",
+    "geographic_coverage": "Brasil; regiões, subsistemas e classes conforme edição",
+    "covers_brazil": "sim",
+    "spatial_support": "nacional e agregações regionais/setoriais",
+    "spatial_resolution": "agregações regionais, subsistemas e classes conforme indicador",
+    "temporal_coverage": "2020–presente; edições de 2026 disponíveis",
+    "temporal_resolution": "trimestral",
+    "update_frequency": "trimestral",
+    "product_status": "ativo",
+    "version_or_collection": "série corrente; Ano VII em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/boletim-trimestral-de-consumo-de-eletricidade",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/resenha-e-boletim-do-mercado-de-energia-eletrica",
+    "primary_or_derived": "derivado",
+    "limitations": "Boletim é síntese analítica dos registros consolidados do mercado e não observação operacional independente. Séries e taxas devem manter mês/trimestre de referência, classe, região e eventuais revisões.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000605",
+        "product_id": "DP000580",
+        "distribution_name": "Boletim Trimestral de Consumo de Eletricidade — edições",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/boletim-trimestral-de-consumo-de-eletricidade",
+        "format": "PDF | conteúdo web",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web | download direto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "CC BY 4.0 para conteúdo do site EPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por edição trimestral",
+        "notes": "Relatório complementar à Resenha; valores estruturados devem ser rastreados aos dados mensais/anuais associados.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "PDF | conteúdo web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000581",
+    "resource_id": "DR0121",
+    "product_name": "PET/PELP — Programa de Expansão da Transmissão / Plano de Expansão de Longo Prazo — Ciclo 2026 1º semestre",
+    "product_acronym": "PET/PELP 2026-1",
+    "product_family": "Planejamento da expansão da transmissão",
+    "product_kind": "indicator_family",
+    "product_description": "Documento semestral de planejamento da expansão do Sistema Interligado Nacional que reúne instalações de transmissão recomendadas ainda não autorizadas ou licitadas; o PET tem caráter determinativo para os primeiros seis anos e o PELP caráter indicativo a partir do sétimo ano.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "transmissão | PET | PELP | SIN | expansão | linhas | subestações | planejamento",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional",
+    "covers_brazil": "sim",
+    "spatial_support": "empreendimentos e instalações de transmissão planejados",
+    "spatial_resolution": "por instalação/obra e região elétrica conforme estudo",
+    "temporal_coverage": "ciclo 2026 — 1º semestre; horizonte plurianual conforme PET e PELP",
+    "temporal_resolution": "por ciclo e horizonte de entrada em operação planejada",
+    "update_frequency": "semestral",
+    "product_status": "ativo",
+    "version_or_collection": "Ciclo 2026 — 1º semestre; estudos concluídos até maio de 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/programa-de-expansao-da-transmissao-plano-de-expansao-de-longo-prazo-pet-pelp",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/programa-de-expansao-da-transmissao-plano-de-expansao-de-longo-prazo-pet-pelp",
+    "primary_or_derived": "derivado",
+    "limitations": "Recomendação de planejamento não equivale a autorização, licitação, licença ambiental, obra iniciada ou ativo em operação. PET e PELP têm horizontes e caráter decisório distintos e não devem ser colapsados em uma única categoria operacional.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000606",
+        "product_id": "DP000581",
+        "distribution_name": "PET/PELP — documentos do Ciclo 2026 1º semestre",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/programa-de-expansao-da-transmissao-plano-de-expansao-de-longo-prazo-pet-pelp",
+        "format": "PDF | conteúdo web",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web | download direto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar ciclo e horizonte PET/PELP",
+        "license": "CC BY 4.0 para conteúdo do site EPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ciclo/documento",
+        "notes": "Inclui obras recomendadas ainda não autorizadas ou licitadas; PET e PELP possuem caráter e horizonte distintos.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "PDF | conteúdo web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000582",
+    "resource_id": "DR0121",
+    "product_name": "Painel de Dados de Micro e Minigeração Distribuída — PDGD",
+    "product_acronym": "PDGD",
+    "product_family": "Micro e minigeração distribuída",
+    "product_kind": "data_service",
+    "product_description": "Painel interativo da EPE que consolida dados históricos e indicadores de micro e minigeração distribuída no Brasil, incluindo capacidade instalada, número de instalações/consumidores, potência típica, investimentos, geração estimada e projeções, com download dos dados exibidos.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "MMGD | geração distribuída | capacidade instalada | geração elétrica | investimentos | projeções | ANEEL",
+    "geographic_coverage": "Brasil; UFs, municípios, fontes, classes e modalidades conforme aba",
+    "covers_brazil": "sim",
+    "spatial_support": "nacional, UF, município e segmentos de MMGD conforme indicador",
+    "spatial_resolution": "agregação administrativa e por projeto/segmento conforme fonte do painel",
+    "temporal_coverage": "histórico até 2025 para indicadores atualizados; projeções conforme PDE exibido no painel",
+    "temporal_resolution": "anual e por horizonte de projeção",
+    "update_frequency": "periódica/irregular conforme atualização das bases e estudos EPE",
+    "product_status": "ativo",
+    "version_or_collection": "painel atualizado em 10/04/2026 com dados históricos de 2025; base ANEEL consultada em 18/03/2026 para módulos indicados",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/painel-de-dados-de-micro-e-minigeracao-distribuida-pdgd-",
+    "methodology_url": "https://dashboard.epe.gov.br/apps/pdgd/",
+    "primary_or_derived": "misto",
+    "limitations": "O painel mistura dados administrativos da ANEEL, estimativas EPE e projeções de planejamento. Capacidade instalada não equivale a geração; geração pode ser estimada; projeções não são observações futuras. Preservar fonte, data-base e versão de cada aba.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000607",
+        "product_id": "DP000582",
+        "distribution_name": "PDGD — painel interativo e download dos dados dos gráficos",
+        "access_url": "https://dashboard.epe.gov.br/apps/pdgd/",
+        "format": "dashboard web | arquivos de dados para download",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web | download pelo painel",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "CC BY 4.0 para conteúdo EPE; dados de terceiros preservam proveniência",
+        "provider_attribution_required": "sim",
+        "subset_support": "por aba, fonte, classe, modalidade, UF/município e indicador conforme painel",
+        "notes": "Painel mistura dados ANEEL, estimativas e projeções EPE; registrar data-base de cada módulo.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "dashboard web | arquivos de dados para download"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
   }
 ]
