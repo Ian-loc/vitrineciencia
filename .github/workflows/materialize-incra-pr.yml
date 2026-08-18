@@ -37,6 +37,7 @@ jobs:
           end=s.index("\n          PY\n", start)
           code='\n'.join(line[10:] if line.startswith('          ') else line for line in s[start:end].splitlines())
           code=code.replace("len(R2)==124 and len(P2)==734 and len(D2)==765", "len(R2)==124 and len(P2)==730 and len(D2)==761")
+          code=code.replace("w=csv.DictWriter(f, fieldnames=record_list[0].keys())", "w=csv.DictWriter(f, fieldnames=record_list[0].keys(), lineterminator='\\n')")
           Path('/tmp/incra_append.py').write_text(code)
           PY
           python /tmp/incra_append.py
