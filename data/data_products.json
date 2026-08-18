@@ -42327,5 +42327,477 @@
     "available_protocols": [
       "STAC API / HTTPS range requests"
     ]
+  },
+  {
+    "product_id": "DP000713",
+    "resource_id": "DR0123",
+    "product_name": "BDC — classificação LULC Landsat-8 da Amazônia",
+    "product_acronym": "BDC LULC L8 Amazon",
+    "product_family": "Brazil Data Cube — classificações LULC",
+    "product_kind": "dataset_series",
+    "product_description": "Mapa classificado de uso e cobertura da terra para o bioma Amazônia gerado pelo Brazil Data Cube a partir de séries temporais Landsat-8/OLI e métodos de aprendizado de máquina.",
+    "research_areas": "Land use and land cover | Forest ecology | Remote sensing | Environmental monitoring",
+    "keywords": "Landsat-8 | OLI | LULC | classification | Amazon | machine learning",
+    "geographic_coverage": "Bioma Amazônia — Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "célula raster classificada | coleção STAC",
+    "spatial_resolution": "30 m",
+    "temporal_coverage": "coleção histórica; consultar itens/metadados STAC",
+    "temporal_resolution": "produto classificado por período da coleção",
+    "update_frequency": "sem atualização confirmada",
+    "product_status": "ativo",
+    "version_or_collection": "LCC_L8_30_16D_STK_Amazonia-TC-1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_L8_30_16D_STK_Amazonia-TC-1",
+    "methodology_url": "https://data.inpe.br/bdc/classificacoes-de-uso-e-cobertura-da-terra/",
+    "primary_or_derived": "derivado",
+    "limitations": "Classificação derivada de cubos Landsat-8 e amostras de treinamento; classes e acurácia dependem do modelo, amostras e período. Não tratar como observação de campo, TerraClass ou PRODES.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000743",
+        "product_id": "DP000713",
+        "distribution_name": "BDC LULC Landsat Amazônia — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_L8_30_16D_STK_Amazonia-TC-1",
+        "format": "raster classificado / assets STAC",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | GIS | Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "verificar termos da coleção",
+        "provider_attribution_required": "sim",
+        "subset_support": "por item/asset",
+        "notes": "Classificação BDC da Amazônia derivada de série Landsat-8; consultar legenda e metadados do item.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "raster classificado / assets STAC"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000714",
+    "resource_id": "DR0123",
+    "product_name": "BDC — classificação LULC Landsat-8 da Caatinga",
+    "product_acronym": "BDC LULC L8 Caatinga",
+    "product_family": "Brazil Data Cube — classificações LULC",
+    "product_kind": "dataset_series",
+    "product_description": "Mapa classificado de uso e cobertura da terra para o bioma Caatinga gerado pelo Brazil Data Cube a partir de séries temporais Landsat-8/OLI e aprendizado de máquina.",
+    "research_areas": "Land use and land cover | Remote sensing | Environmental monitoring",
+    "keywords": "Landsat-8 | OLI | LULC | classification | Caatinga | machine learning",
+    "geographic_coverage": "Bioma Caatinga — Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "célula raster classificada | coleção STAC",
+    "spatial_resolution": "30 m",
+    "temporal_coverage": "coleção histórica; consultar itens/metadados STAC",
+    "temporal_resolution": "produto classificado por período da coleção",
+    "update_frequency": "sem atualização confirmada",
+    "product_status": "ativo",
+    "version_or_collection": "LCC_L8_30_16D_STK_Caatinga-1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_L8_30_16D_STK_Caatinga-1",
+    "methodology_url": "https://brazil-data-cube.github.io/products/classifications.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Classificação derivada; não inferir condição ecológica local sem considerar legenda, amostras, período e desempenho por classe. Não é observação independente das imagens/cubos de origem.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000744",
+        "product_id": "DP000714",
+        "distribution_name": "BDC LULC Landsat Caatinga — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_L8_30_16D_STK_Caatinga-1",
+        "format": "raster classificado / assets STAC",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | GIS | Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "verificar termos da coleção",
+        "provider_attribution_required": "sim",
+        "subset_support": "por item/asset",
+        "notes": "Classificação BDC da Caatinga; consultar legenda, período e metadados do item.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "raster classificado / assets STAC"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000715",
+    "resource_id": "DR0123",
+    "product_name": "BDC — classificação LULC Landsat-8 do Cerrado",
+    "product_acronym": "BDC LULC L8 Cerrado",
+    "product_family": "Brazil Data Cube — classificações LULC",
+    "product_kind": "dataset_series",
+    "product_description": "Mapa classificado de uso e cobertura da terra para o bioma Cerrado gerado pelo Brazil Data Cube a partir de séries temporais Landsat-8/OLI e aprendizado de máquina.",
+    "research_areas": "Land use and land cover | Savanna ecology | Remote sensing | Environmental monitoring",
+    "keywords": "Landsat-8 | OLI | LULC | classification | Cerrado | machine learning",
+    "geographic_coverage": "Bioma Cerrado — Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "célula raster classificada | coleção STAC",
+    "spatial_resolution": "30 m",
+    "temporal_coverage": "coleção histórica; consultar itens/metadados STAC",
+    "temporal_resolution": "produto classificado por período da coleção",
+    "update_frequency": "sem atualização confirmada",
+    "product_status": "ativo",
+    "version_or_collection": "LCC_L8_30_16D_STK_Cerrado-1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_L8_30_16D_STK_Cerrado-1",
+    "methodology_url": "https://data.inpe.br/bdc/classificacoes-de-uso-e-cobertura-da-terra/",
+    "primary_or_derived": "derivado",
+    "limitations": "Classificação derivada de séries temporais e amostras de treinamento; não confundir com TerraClass Cerrado, MapBiomas ou observação de campo. Comparações exigem compatibilidade de legenda e período.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000745",
+        "product_id": "DP000715",
+        "distribution_name": "BDC LULC Landsat Cerrado — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_L8_30_16D_STK_Cerrado-1",
+        "format": "raster classificado / assets STAC",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | GIS | Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "verificar termos da coleção",
+        "provider_attribution_required": "sim",
+        "subset_support": "por item/asset",
+        "notes": "Classificação BDC do Cerrado; distinta do TerraClass e de outras séries LULC.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "raster classificado / assets STAC"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000716",
+    "resource_id": "DR0123",
+    "product_name": "BDC — classificação LULC Landsat-8 da Mata Atlântica",
+    "product_acronym": "BDC LULC L8 Mata Atlantica",
+    "product_family": "Brazil Data Cube — classificações LULC",
+    "product_kind": "dataset_series",
+    "product_description": "Mapa classificado de uso e cobertura da terra para o bioma Mata Atlântica gerado pelo Brazil Data Cube a partir de séries temporais Landsat-8/OLI e aprendizado de máquina.",
+    "research_areas": "Land use and land cover | Forest ecology | Remote sensing | Environmental monitoring",
+    "keywords": "Landsat-8 | OLI | LULC | classification | Atlantic Forest | machine learning",
+    "geographic_coverage": "Bioma Mata Atlântica — Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "célula raster classificada | coleção STAC",
+    "spatial_resolution": "30 m",
+    "temporal_coverage": "coleção histórica; consultar itens/metadados STAC",
+    "temporal_resolution": "produto classificado por período da coleção",
+    "update_frequency": "sem atualização confirmada",
+    "product_status": "ativo",
+    "version_or_collection": "LCC_L8_30_16D_STK_MataAtlantica-1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_L8_30_16D_STK_MataAtlantica-1",
+    "methodology_url": "https://brazil-data-cube.github.io/products/classifications.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto classificado derivado; não pressupor atualização corrente, equivalência de classes com outros programas ou acurácia espacial uniforme em todo o bioma.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000746",
+        "product_id": "DP000716",
+        "distribution_name": "BDC LULC Landsat Mata Atlântica — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_L8_30_16D_STK_MataAtlantica-1",
+        "format": "raster classificado / assets STAC",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | GIS | Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "verificar termos da coleção",
+        "provider_attribution_required": "sim",
+        "subset_support": "por item/asset",
+        "notes": "Classificação BDC da Mata Atlântica; consultar legenda e metadados da coleção.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "raster classificado / assets STAC"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000717",
+    "resource_id": "DR0123",
+    "product_name": "BDC — classificação LULC Landsat-8 do Pampa",
+    "product_acronym": "BDC LULC L8 Pampa",
+    "product_family": "Brazil Data Cube — classificações LULC",
+    "product_kind": "dataset_series",
+    "product_description": "Mapa classificado de uso e cobertura da terra para o bioma Pampa gerado pelo Brazil Data Cube a partir de séries temporais Landsat-8/OLI e aprendizado de máquina.",
+    "research_areas": "Land use and land cover | Grassland ecology | Remote sensing | Environmental monitoring",
+    "keywords": "Landsat-8 | OLI | LULC | classification | Pampa | machine learning",
+    "geographic_coverage": "Bioma Pampa — Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "célula raster classificada | coleção STAC",
+    "spatial_resolution": "30 m",
+    "temporal_coverage": "coleção histórica; consultar itens/metadados STAC",
+    "temporal_resolution": "produto classificado por período da coleção",
+    "update_frequency": "sem atualização confirmada",
+    "product_status": "ativo",
+    "version_or_collection": "LCC_L8_30_16D_STK_Pampa-1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_L8_30_16D_STK_Pampa-1",
+    "methodology_url": "https://brazil-data-cube.github.io/products/classifications.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Classificação derivada; classes campestres e agrícolas dependem da legenda e do treinamento. Não usar como substituto automático de levantamentos de campo ou de outras séries LULC.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000747",
+        "product_id": "DP000717",
+        "distribution_name": "BDC LULC Landsat Pampa — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_L8_30_16D_STK_Pampa-1",
+        "format": "raster classificado / assets STAC",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | GIS | Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "verificar termos da coleção",
+        "provider_attribution_required": "sim",
+        "subset_support": "por item/asset",
+        "notes": "Classificação BDC do Pampa; consultar legenda, treinamento e metadados.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "raster classificado / assets STAC"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000718",
+    "resource_id": "DR0123",
+    "product_name": "BDC — classificação LULC Landsat-8 do Pantanal",
+    "product_acronym": "BDC LULC L8 Pantanal",
+    "product_family": "Brazil Data Cube — classificações LULC",
+    "product_kind": "dataset_series",
+    "product_description": "Mapa classificado de uso e cobertura da terra para o bioma Pantanal gerado pelo Brazil Data Cube a partir de séries temporais Landsat-8/OLI e aprendizado de máquina.",
+    "research_areas": "Land use and land cover | Wetland ecology | Remote sensing | Environmental monitoring",
+    "keywords": "Landsat-8 | OLI | LULC | classification | Pantanal | machine learning",
+    "geographic_coverage": "Bioma Pantanal — Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "célula raster classificada | coleção STAC",
+    "spatial_resolution": "30 m",
+    "temporal_coverage": "coleção histórica; consultar itens/metadados STAC",
+    "temporal_resolution": "produto classificado por período da coleção",
+    "update_frequency": "sem atualização confirmada",
+    "product_status": "ativo",
+    "version_or_collection": "LCC_L8_30_16D_STK_Pantanal-1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_L8_30_16D_STK_Pantanal-1",
+    "methodology_url": "https://data.inpe.br/bdc/classificacoes-de-uso-e-cobertura-da-terra/",
+    "primary_or_derived": "derivado",
+    "limitations": "Classificação derivada; dinâmica de inundação e sazonalidade podem afetar separabilidade das classes. Não interpretar classe como condição hidrológica instantânea.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000748",
+        "product_id": "DP000718",
+        "distribution_name": "BDC LULC Landsat Pantanal — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_L8_30_16D_STK_Pantanal-1",
+        "format": "raster classificado / assets STAC",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | GIS | Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "verificar termos da coleção",
+        "provider_attribution_required": "sim",
+        "subset_support": "por item/asset",
+        "notes": "Classificação BDC do Pantanal; sazonalidade e inundação devem ser consideradas.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "raster classificado / assets STAC"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000719",
+    "resource_id": "DR0123",
+    "product_name": "BDC — classificação LULC Sentinel-2 da Amazônia",
+    "product_acronym": "BDC LULC S2 Amazon",
+    "product_family": "Brazil Data Cube — classificações LULC",
+    "product_kind": "dataset_series",
+    "product_description": "Mapa classificado de uso e cobertura da terra para o bioma Amazônia gerado pelo Brazil Data Cube com séries temporais Sentinel-2/MSI e aprendizado de máquina.",
+    "research_areas": "Land use and land cover | Forest ecology | Remote sensing | Environmental monitoring",
+    "keywords": "Sentinel-2 | MSI | LULC | classification | Amazon | machine learning",
+    "geographic_coverage": "Bioma Amazônia — Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "célula raster classificada | coleção STAC",
+    "spatial_resolution": "10 m",
+    "temporal_coverage": "coleção histórica; consultar itens/metadados STAC",
+    "temporal_resolution": "produto classificado por período da coleção",
+    "update_frequency": "sem atualização confirmada",
+    "product_status": "ativo",
+    "version_or_collection": "LCC_S2_10_16D_STK_Amazonia-1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_S2_10_16D_STK_Amazonia-1",
+    "methodology_url": "https://brazil-data-cube.github.io/products/classifications.html",
+    "primary_or_derived": "derivado",
+    "limitations": "Classificação derivada de Sentinel-2; não é observação independente das imagens/cubos de origem e não deve ser tratada como equivalente à classificação Landsat sem harmonizar legenda, resolução, amostras e período.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000749",
+        "product_id": "DP000719",
+        "distribution_name": "BDC LULC Sentinel-2 Amazônia — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/LCC_S2_10_16D_STK_Amazonia-1",
+        "format": "raster classificado / assets STAC",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | GIS | Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "verificar termos da coleção",
+        "provider_attribution_required": "sim",
+        "subset_support": "por item/asset",
+        "notes": "Classificação BDC Sentinel-2 da Amazônia a 10 m; não equiparar automaticamente à série Landsat.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "raster classificado / assets STAC"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000720",
+    "resource_id": "DR0123",
+    "product_name": "Brazil Data Cube — cubo Landsat multissensor mensal histórico",
+    "product_acronym": "LANDSAT-MOZ 1M",
+    "product_family": "Brazil Data Cube — cubos Landsat",
+    "product_kind": "dataset_series",
+    "product_description": "Cubo multidimensional Landsat histórico do Brazil Data Cube composto por melhor pixel em janelas temporais mensais/bimestrais conforme a versão, integrando sensores de diferentes missões Landsat em grade BDC_MOZ.",
+    "research_areas": "Remote sensing | Land use and land cover | Vegetation dynamics | Environmental monitoring",
+    "keywords": "Landsat | TM | ETM | OLI | data cube | LCF | monthly | BDC_MOZ",
+    "geographic_coverage": "Brasil conforme cobertura da coleção",
+    "covers_brazil": "sim",
+    "spatial_support": "célula raster | cubo multidimensional",
+    "spatial_resolution": "30 m",
+    "temporal_coverage": "coleção histórica; consultar metadados STAC",
+    "temporal_resolution": "composição temporal da coleção",
+    "update_frequency": "coleção histórica",
+    "product_status": "ativo",
+    "version_or_collection": "LANDSAT-MOZ_30_1M_STK-1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/LANDSAT-MOZ_30_1M_STK-1",
+    "methodology_url": "https://data.inpe.br/bdc/cubo-de-dados/",
+    "primary_or_derived": "derivado",
+    "limitations": "Cubo composto a partir de múltiplas plataformas Landsat; sensores, disponibilidade e qualidade variam no tempo. LCF/STK seleciona pixels e não representa aquisição sinótica. A documentação atual apresenta discrepância entre o nome 1M e tabela que descreve 2 meses; manter a coleção pelo ID e consultar metadados antes de análise temporal.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000750",
+        "product_id": "DP000720",
+        "distribution_name": "LANDSAT-MOZ — STAC/COG",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/LANDSAT-MOZ_30_1M_STK-1",
+        "format": "Cloud Optimized GeoTIFF / assets STAC",
+        "access_protocol": "STAC API / HTTPS range requests",
+        "access_tool": "cliente STAC | GIS | Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "verificar termos da coleção",
+        "provider_attribution_required": "sim",
+        "subset_support": "por item/asset",
+        "notes": "Cubo Landsat multissensor histórico; usar metadados da coleção para resolver periodicidade e proveniência por período.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "Cloud Optimized GeoTIFF / assets STAC"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS range requests"
+    ]
   }
 ]
