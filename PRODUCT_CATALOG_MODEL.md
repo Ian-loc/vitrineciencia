@@ -109,4 +109,4 @@ Documentos antigos deste repositório descrevem organização → fonte → fam�
 
 ## 12. Snapshot
 
-Em 18/08/2026 o modelo continha **125 fontes, 756 produtos e 787 distribuições**. O crescimento de linhas é permitido sem alterar o schema.
+Em 18/08/2026 o modelo contém **125 fontes, 752 produtos e 783 distribuições**. Os maiores IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`, pois lacunas são preservadas. O crescimento de linhas é permitido sem alterar o schema.
