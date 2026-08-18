@@ -35516,5 +35516,595 @@
     "available_protocols": [
       "HTTPS download | CKAN"
     ]
+  },
+  {
+    "product_id": "DP000599",
+    "resource_id": "DR0122",
+    "product_name": "ENA Diário por Reservatório",
+    "product_acronym": "ENA por Reservatório",
+    "product_family": "Energia Natural Afluente",
+    "product_kind": "dataset_series",
+    "product_description": "Energia Natural Afluente bruta e armazenável em periodicidade diária por reservatório, derivada de vazões naturais e produtividades das usinas.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "ENA | reservatório | vazão natural | produtividade | hidrelétrica",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "reservatório",
+    "spatial_resolution": "diária",
+    "temporal_coverage": "série histórica e corrente",
+    "temporal_resolution": "diária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ena-diario-por-reservatorio",
+    "methodology_url": "https://dados.ons.org.br/dataset/ena-diario-por-reservatorio",
+    "primary_or_derived": "derivado",
+    "limitations": "ENA por reservatório é grandeza energética derivada, não vazão observada ou volume de água. A comparação com outras escalas exige preservar a agregação e a definição de ENA bruta/armazenável.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000624",
+        "product_id": "DP000599",
+        "distribution_name": "ENA Diário por Reservatório — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/ena-diario-por-reservatorio",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar dicionário de dados e preservar período, unidade, escala de agregação, modalidade operativa e revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000600",
+    "resource_id": "DR0122",
+    "product_name": "ENA Diário por REE — Reservatório Equivalente de Energia",
+    "product_acronym": "ENA por REE",
+    "product_family": "Energia Natural Afluente",
+    "product_kind": "dataset_series",
+    "product_description": "Energia Natural Afluente diária agregada por Reservatório Equivalente de Energia, uma representação energética utilizada na operação e nos estudos do SIN.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "ENA | REE | reservatório equivalente | energia afluente",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "Reservatório Equivalente de Energia (REE)",
+    "spatial_resolution": "diária",
+    "temporal_coverage": "série histórica e corrente",
+    "temporal_resolution": "diária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ena-diario-por-ree-reservatorio-equivalente-de-energia",
+    "methodology_url": "https://dados.ons.org.br/dataset/ena-diario-por-ree-reservatorio-equivalente-de-energia",
+    "primary_or_derived": "derivado",
+    "limitations": "REE é agregação energética/modelada, não reservatório físico individual nem bacia hidrográfica. Não misturar diretamente com ENA por reservatório, bacia ou subsistema sem preservar a escala.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000625",
+        "product_id": "DP000600",
+        "distribution_name": "ENA Diário por REE — Reservatório Equivalente de Energia — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/ena-diario-por-ree-reservatorio-equivalente-de-energia",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar dicionário de dados e preservar período, unidade, escala de agregação, modalidade operativa e revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000601",
+    "resource_id": "DR0122",
+    "product_name": "ENA Diário por Subsistema",
+    "product_acronym": "ENA por Subsistema",
+    "product_family": "Energia Natural Afluente",
+    "product_kind": "dataset_series",
+    "product_description": "Energia Natural Afluente diária agregada por subsistema elétrico, disponibilizada como visão estruturada para estudos energéticos.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "ENA | subsistema | hidrologia energética | SIN",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "subsistema",
+    "spatial_resolution": "diária",
+    "temporal_coverage": "série histórica e corrente",
+    "temporal_resolution": "diária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ena-diario-por-subsistema",
+    "methodology_url": "https://dados.ons.org.br/dataset/ena-diario-por-subsistema",
+    "primary_or_derived": "derivado",
+    "limitations": "ENA por subsistema é agregação energética e não vazão física do conjunto de bacias. Mudanças de composição e revisões operacionais devem ser consideradas em séries longas.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000626",
+        "product_id": "DP000601",
+        "distribution_name": "ENA Diário por Subsistema — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/ena-diario-por-subsistema",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar dicionário de dados e preservar período, unidade, escala de agregação, modalidade operativa e revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000602",
+    "resource_id": "DR0122",
+    "product_name": "EAR Diário por Reservatório",
+    "product_acronym": "EAR por Reservatório",
+    "product_family": "Energia Armazenada",
+    "product_kind": "dataset_series",
+    "product_description": "Energia Armazenada diária por reservatório, associada ao volume disponível e à produtividade na própria usina e nas usinas a jusante.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "EAR | reservatório | armazenamento | hidrelétrica",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "reservatório",
+    "spatial_resolution": "diária",
+    "temporal_coverage": "série histórica e corrente",
+    "temporal_resolution": "diária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ear-diario-por-reservatorio",
+    "methodology_url": "https://dados.ons.org.br/dataset/ear-diario-por-reservatorio",
+    "primary_or_derived": "derivado",
+    "limitations": "EAR é energia potencial associada ao armazenamento e à cascata, não o volume físico armazenado isoladamente. Comparações devem preservar reservatório, produtividade e representação do sistema.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000627",
+        "product_id": "DP000602",
+        "distribution_name": "EAR Diário por Reservatório — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/ear-diario-por-reservatorio",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar dicionário de dados e preservar período, unidade, escala de agregação, modalidade operativa e revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000603",
+    "resource_id": "DR0122",
+    "product_name": "EAR Diário por Bacia Hidroenergética",
+    "product_acronym": "EAR por Bacia",
+    "product_family": "Energia Armazenada",
+    "product_kind": "dataset_series",
+    "product_description": "Energia Armazenada diária agregada por bacias hidroenergéticas, considerando volumes disponíveis e aproveitamento energético ao longo das cascatas.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "EAR | bacia hidroenergética | reservatórios | armazenamento",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "bacia hidroenergética",
+    "spatial_resolution": "diária",
+    "temporal_coverage": "série histórica e corrente",
+    "temporal_resolution": "diária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ear-diario-por-bacia",
+    "methodology_url": "https://dados.ons.org.br/dataset/ear-diario-por-bacia",
+    "primary_or_derived": "derivado",
+    "limitations": "A bacia hidroenergética é recorte operacional/energético; EAR não equivale a armazenamento hidrológico total ou volume natural de água da bacia.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000628",
+        "product_id": "DP000603",
+        "distribution_name": "EAR Diário por Bacia Hidroenergética — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/ear-diario-por-bacia",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar dicionário de dados e preservar período, unidade, escala de agregação, modalidade operativa e revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000604",
+    "resource_id": "DR0122",
+    "product_name": "EAR Diário por REE — Reservatório Equivalente de Energia",
+    "product_acronym": "EAR por REE",
+    "product_family": "Energia Armazenada",
+    "product_kind": "dataset_series",
+    "product_description": "Energia Armazenada diária por Reservatório Equivalente de Energia, agregação utilizada para representar o potencial energético de conjuntos de reservatórios.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "EAR | REE | reservatório equivalente | armazenamento",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "Reservatório Equivalente de Energia (REE)",
+    "spatial_resolution": "diária",
+    "temporal_coverage": "série histórica e corrente",
+    "temporal_resolution": "diária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ear-diario-por-ree-reservatorio-equivalente-de-energia",
+    "methodology_url": "https://dados.ons.org.br/dataset/ear-diario-por-ree-reservatorio-equivalente-de-energia",
+    "primary_or_derived": "derivado",
+    "limitations": "REE é entidade agregada da modelagem energética e não um corpo hídrico físico. Não converter EAR de REE em volume de reservatório ou condição ambiental sem modelo apropriado.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000629",
+        "product_id": "DP000604",
+        "distribution_name": "EAR Diário por REE — Reservatório Equivalente de Energia — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/ear-diario-por-ree-reservatorio-equivalente-de-energia",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar dicionário de dados e preservar período, unidade, escala de agregação, modalidade operativa e revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000605",
+    "resource_id": "DR0122",
+    "product_name": "Geração Térmica por Motivo de Despacho",
+    "product_acronym": "Geração Térmica por Despacho",
+    "product_family": "Operação térmica",
+    "product_kind": "dataset_series",
+    "product_description": "Dados programados e verificados de geração de usinas térmicas despachadas pelo ONS, discriminados por motivo de despacho em base horária.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "geração térmica | despacho | usina | motivo de despacho | horário",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "usina térmica e motivo de despacho",
+    "spatial_resolution": "horária",
+    "temporal_coverage": "2013–presente; arquivos mensais a partir de 2022",
+    "temporal_resolution": "horária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos até julho de 2026 auditados",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/geracao-termica-despacho-2",
+    "methodology_url": "https://dados.ons.org.br/dataset/geracao-termica-despacho-2",
+    "primary_or_derived": "misto",
+    "limitations": "Programado e verificado são estados distintos; motivo de despacho é classificação operativa e não causa ambiental/econômica isolada. Dados são revisáveis.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000630",
+        "product_id": "DP000605",
+        "distribution_name": "Geração Térmica por Motivo de Despacho — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/geracao-termica-despacho-2",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar dicionário de dados e preservar período, unidade, escala de agregação, modalidade operativa e revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000606",
+    "resource_id": "DR0122",
+    "product_name": "Dados de Disponibilidade de Usinas",
+    "product_acronym": "Disponibilidade de Usinas",
+    "product_family": "Disponibilidade operacional",
+    "product_kind": "dataset_series",
+    "product_description": "Disponibilidade horária de usinas hidráulicas e térmicas das modalidades operativas Tipo I e II-A monitoradas pelo ONS.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "disponibilidade | usina | hidrelétrica | termelétrica | operação",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "usina Tipo I ou II-A",
+    "spatial_resolution": "horária",
+    "temporal_coverage": "série histórica e corrente",
+    "temporal_resolution": "horária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto operacional corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/disponibilidade_usina",
+    "methodology_url": "https://dados.ons.org.br/dataset/disponibilidade_usina",
+    "primary_or_derived": "primário",
+    "limitations": "Cobertura é restrita às modalidades Tipo I e II-A; disponibilidade declarada/operacional não equivale a geração, fator de capacidade ou confiabilidade de todo o parque elétrico.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000631",
+        "product_id": "DP000606",
+        "distribution_name": "Dados de Disponibilidade de Usinas — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/disponibilidade_usina",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar dicionário de dados e preservar período, unidade, escala de agregação, modalidade operativa e revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000607",
+    "resource_id": "DR0122",
+    "product_name": "Valores da Programação Diária — carga e geração",
+    "product_acronym": "Programação Diária ONS",
+    "product_family": "Programação eletroenergética",
+    "product_kind": "dataset_series",
+    "product_description": "Valores de carga e geração considerados no fechamento da programação diária, por submercado, em base semi-horária.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "programação diária | carga | geração | submercado | DESSEM",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "submercado",
+    "spatial_resolution": "semi-horária",
+    "temporal_coverage": "série diária corrente; recursos 2026",
+    "temporal_resolution": "semi-horária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos diários 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/programacao_diaria",
+    "methodology_url": "https://dados.ons.org.br/dataset/programacao_diaria",
+    "primary_or_derived": "derivado",
+    "limitations": "Programação diária é plano operativo e não geração/carga verificada. Valores podem ser revisados e devem ser comparados à realização apenas com alinhamento temporal e metodológico.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000632",
+        "product_id": "DP000607",
+        "distribution_name": "Valores da Programação Diária — carga e geração — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/programacao_diaria",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar dicionário de dados e preservar período, unidade, escala de agregação, modalidade operativa e revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000608",
+    "resource_id": "DR0122",
+    "product_name": "Previsão versus Programado — Eólicas e Solares",
+    "product_acronym": "Previsão x Programado Eol/Sol",
+    "product_family": "Previsão e programação renovável",
+    "product_kind": "dataset_series",
+    "product_description": "Valores de previsão comparados aos valores programados de usinas eólicas e solares no processo de programação eletroenergética.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "previsão | programação | eólica | solar | renováveis",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "usina/conjunto conforme conjunto",
+    "spatial_resolution": "operacional; arquivos por data",
+    "temporal_coverage": "série operacional e histórica",
+    "temporal_resolution": "por data/intervalo operativo",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "recursos 2026 no portal",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/programacao_x_previsao",
+    "methodology_url": "https://dados.ons.org.br/dataset/programacao_x_previsao",
+    "primary_or_derived": "derivado",
+    "limitations": "Previsão e programação são grandezas ex ante distintas de geração verificada. Diferença entre ambas não é erro de geração nem curtailment e requer contexto do processo operativo.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000633",
+        "product_id": "DP000608",
+        "distribution_name": "Previsão versus Programado — Eólicas e Solares — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/programacao_x_previsao",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar dicionário de dados e preservar período, unidade, escala de agregação, modalidade operativa e revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
   }
 ]
