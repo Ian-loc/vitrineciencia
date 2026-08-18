@@ -7,7 +7,7 @@ O projeto segue versionamento semântico. A `main` pode avançar entre releases;
 ### Consolidação e expansão — 10 a 18 de agosto de 2026
 
 - contrato público estabilizado em três tabelas: fonte → produto → distribuição;
-- catálogo ampliado para **125 fontes, 756 produtos e 787 distribuições** no snapshot de 18/08/2026;
+- catálogo ampliado para **125 fontes, 752 produtos e 783 distribuições** no snapshot de 18/08/2026; os IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`, com lacunas preservadas;
 - expansão Brasil-primeiro com novas fontes institucionais e produtos de clima, saúde, energia, sensoriamento remoto, governança fundiária, educação e outros domínios;
 - classificação territorial P0–P3 mantida como camada curatorial vinculada às fontes;
 - aprofundamento da camada de produtos e distribuições sem aumento do schema 34/24/15;
