@@ -1,0 +1,142 @@
+name: One-shot INPE BIG materializer 2026-08-18
+
+on:
+  push:
+    paths:
+      - '.github/workflows/tmp-inpe-big-materialize-20260818.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Append verified INPE BIG products and distributions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, re
+          from pathlib import Path
+
+          products_path = Path('data/data_products.csv')
+          dists_path = Path('data/product_distributions.csv')
+
+          with products_path.open(encoding='utf-8', newline='') as f:
+              existing_products = list(csv.DictReader(f))
+          with dists_path.open(encoding='utf-8', newline='') as f:
+              existing_dists = list(csv.DictReader(f))
+
+          existing_names = {r['product_name'] for r in existing_products}
+          max_pid = max(int(re.search(r'(\d+)$', r['product_id']).group(1)) for r in existing_products)
+          max_did = max(int(re.search(r'(\d+)$', r['distribution_id']).group(1)) for r in existing_dists)
+
+          product_specs = [
+            {
+              'product_name':'CBERS-2B — produtos históricos de imagens do INPE','product_acronym':'CBERS-2B','product_family':'BIG — acervo histórico CBERS','product_kind':'dataset_series',
+              'product_description':'Acervo histórico de imagens CBERS-2B distribuído pelo INPE para os sensores CCD, WFI e HRC em produtos Level-2-DN, preservando resoluções, faixas de imageamento e períodos próprios de cada câmera.',
+              'research_areas':'Remote sensing | Land use and land cover | Environmental monitoring','keywords':'CBERS-2B | CCD | WFI | HRC | Level-2-DN | historical imagery','geographic_coverage':'Brasil e demais áreas imageadas/disponíveis no acervo','covers_brazil':'sim','spatial_support':'cena raster | coleção STAC','spatial_resolution':'CCD 20 m | WFI 260 m | HRC 2,7 m','temporal_coverage':'missão CBERS-2B: 2007-09-19 a 2010-04-16; disponibilidade por coleção','temporal_resolution':'por cena; revisita varia por câmera','update_frequency':'acervo histórico; sem novas aquisições','product_status':'arquivado','version_or_collection':'CBERS-2B CCD/WFI/HRC Level-2-DN; acervo revalidado em 2026-08-18','enumeration_scope':'family_level','product_page_url':'https://data.inpe.br/dados/cbers-2b/','methodology_url':'https://data.inpe.br/dados/cbers-2b/','primary_or_derived':'misto','limitations':'Missão encerrada. CCD, WFI e HRC têm resoluções, bandas, faixas e revisitas diferentes; Level-2-DN não equivale a reflectância de superfície e não deve ser combinado entre sensores sem harmonização.','dist_name':'CBERS-2B — acesso BIG/STAC','dist_url':'https://data.inpe.br/dados/cbers-2b/','format':'produtos de imagem Level-2-DN | metadados STAC; formato de asset conforme coleção','protocol':'HTTPS | STAC','tool':'portal BIG | STAC Browser | cliente STAC','license':'consultar metadados da coleção e termos do produto/missão','subset':'por sensor, cena, bbox, tempo e asset conforme serviço','dist_notes':'Acervo histórico com CCD, WFI e HRC; preservar sensor, nível de processamento, resolução e data da cena.'
+            },
+            {
+              'product_name':'CBERS-2 — produtos históricos de imagens do INPE','product_acronym':'CBERS-2','product_family':'BIG — acervo histórico CBERS','product_kind':'dataset_series',
+              'product_description':'Acervo histórico de imagens CBERS-2 do INPE, com produtos dos sensores CCD, WFI e IRMSS e suas características espectrais e espaciais próprias.',
+              'research_areas':'Remote sensing | Land use and land cover | Environmental monitoring','keywords':'CBERS-2 | CCD | WFI | IRMSS | thermal infrared | historical imagery','geographic_coverage':'Brasil e demais áreas imageadas/disponíveis no acervo','covers_brazil':'sim','spatial_support':'cena raster | coleção','spatial_resolution':'CCD 20 m | WFI 260 m | IRMSS 80 m SWIR e 160 m termal conforme documentação','temporal_coverage':'missão CBERS-2: 2003-10-21 a 2009-01-15; disponibilidade por coleção','temporal_resolution':'por cena; varia por sensor','update_frequency':'acervo histórico; sem novas aquisições','product_status':'arquivado','version_or_collection':'acervo CBERS-2 corrente na BIG; revalidado em 2026-08-18','enumeration_scope':'family_level','product_page_url':'https://data.inpe.br/dados/cbers-2/','methodology_url':'https://data.inpe.br/dados/cbers-2/','primary_or_derived':'misto','limitations':'Missão encerrada. Sensores CCD, WFI e IRMSS não são intercambiáveis; bandas térmicas/SWIR e resoluções diferem, e os níveis de processamento devem ser preservados por cena.','dist_name':'CBERS-2 — acesso BIG','dist_url':'https://data.inpe.br/dados/cbers-2/','format':'produtos de imagem e metadados; varia por sensor/coleção','protocol':'HTTPS | serviços BIG conforme coleção','tool':'portal BIG | ferramentas de catálogo','license':'consultar metadados da coleção e termos do produto/missão','subset':'por sensor, coleção e cena conforme disponibilidade','dist_notes':'Acervo histórico; verificar sensor, nível, resolução e formato de cada coleção antes do uso.'
+            },
+            {
+              'product_name':'Sentinel-3/OLCI — Level-1 Full Resolution distribuído pelo INPE','product_acronym':'Sentinel-3 OLCI L1','product_family':'BIG — acervo Sentinel-3','product_kind':'dataset_series',
+              'product_description':'Espelho aberto do INPE para Sentinel-3A/3B OLCI Level-1B Full Resolution (OL_1_EFR), com 21 bandas entre 400 e 1020 nm, radiância TOA em número digital, parâmetros de calibração e metadados originais Copernicus.',
+              'research_areas':'Remote sensing | Aquatic ecology | Environmental monitoring','keywords':'Sentinel-3 | OLCI | Level-1B | radiance | water colour | Copernicus','geographic_coverage':'território brasileiro','covers_brazil':'sim','spatial_support':'cena raster | bundle | coleção STAC','spatial_resolution':'300 m Full Resolution','temporal_coverage':'desde 2017-01-02; cenas correntes em 2026','temporal_resolution':'por cena; revisita combinada inferior a 2 dias nominalmente','update_frequency':'diária','product_status':'ativo','version_or_collection':'sentinel-3-olci-l1-bundle-1 / OL_1_EFR; verificado em 2026-08-18','enumeration_scope':'complete','product_page_url':'https://data.inpe.br/dados/sentinel-3/','methodology_url':'https://data.inpe.br/dados/sentinel-3/','primary_or_derived':'primário','limitations':'Level-1B representa radiância TOA acompanhada de parâmetros de calibração, não reflectância de superfície ou concentração de constituintes da água. Qualidade e máscaras devem ser preservadas por cena.','dist_name':'Sentinel-3/OLCI Level-1 — acesso BIG/STAC','dist_url':'https://data.inpe.br/dados/sentinel-3/','format':'ZIP bundle | metadados STAC','protocol':'HTTPS | STAC','tool':'portal BIG | STAC Browser | cliente STAC','license':'Copernicus Sentinel Data Legal Notice; INPE atua como hospedagem','subset':'por cena, bbox, tempo e asset conforme STAC','dist_notes':'Novas cenas são disponibilizadas diariamente; bundle inclui bandas e metadados originais do produto Copernicus.'
+            },
+            {
+              'product_name':'Sentinel-3/OLCI — produtos aquáticos derivados (Rrs e ficocianina)','product_acronym':'Sentinel-3 Aquatic','product_family':'BIG — produtos aquáticos Sentinel-3','product_kind':'dataset_series',
+              'product_description':'Família de produtos derivados do OLCI para ambientes aquáticos selecionados no Brasil, incluindo reflectância de sensoriamento remoto Rrs após correção atmosférica ACOLITE e estimativas bio-ópticas como ficocianina nos reservatórios da Cascata do Tietê.',
+              'research_areas':'Aquatic ecology | Water quality | Remote sensing','keywords':'Sentinel-3 | OLCI | Rrs | phycocyanin | water quality | ACOLITE | bio-optical','geographic_coverage':'locais selecionados do Brasil; inclui Cascata dos Reservatórios do Tietê','covers_brazil':'parcial','spatial_support':'cena raster | produto derivado STAC','spatial_resolution':'herdada do OLCI e processamento; base OLCI Full Resolution 300 m','temporal_coverage':'conforme coleções derivadas disponíveis; produto em expansão em 2026','temporal_resolution':'por cena/produto','update_frequency':'em desenvolvimento / expansão','product_status':'experimental','version_or_collection':'coleções aquáticas Sentinel-3/OLCI correntes verificadas em 2026-08-18','enumeration_scope':'family_level','product_page_url':'https://data.inpe.br/dados/sentinel-3/','methodology_url':'https://data.inpe.br/dados/sentinel-3/','primary_or_derived':'derivado','limitations':'Produtos derivados estão disponíveis apenas para áreas selecionadas e dependem de correção atmosférica e algoritmos bio-ópticos. Rrs e ficocianina não são medições in situ e não devem ser extrapoladas para corpos d’água sem cobertura/validação.','dist_name':'Sentinel-3 aquático — acesso BIG/STAC','dist_url':'https://data.inpe.br/dados/sentinel-3/','format':'assets raster | metadados STAC; varia por produto derivado','protocol':'HTTPS | STAC','tool':'portal BIG | STAC Browser','license':'verificar Collection STAC e termos Copernicus/INPE do produto derivado','subset':'por coleção derivada, área, tempo e asset','dist_notes':'Inclui Rrs e produto de ficocianina documentados; cobertura está em desenvolvimento e expansão.'
+            },
+            {
+              'product_name':'GOES-13/16/19 — acervo de imagens meteorológicas da BIG','product_acronym':'GOES BIG','product_family':'BIG — acervo GOES','product_kind':'dataset_series',
+              'product_description':'Acervo integrado de imagens meteorológicas geoestacionárias GOES catalogadas pelo INPE, incluindo GOES-13 Imager, GOES-16 ABI e GOES-19 ABI com períodos e formatos próprios.',
+              'research_areas':'Meteorology | Remote sensing | Atmospheric science','keywords':'GOES-13 | GOES-16 | GOES-19 | ABI | Imager | geostationary | meteorology','geographic_coverage':'América do Sul e setores full-disk conforme satélite/coleção','covers_brazil':'sim','spatial_support':'imagem geoestacionária | cena | coleção STAC','spatial_resolution':'GOES-13: 1–4 km; GOES-16/19 ABI: 0,5–2 km conforme canal','temporal_coverage':'GOES-13 2011-11-25–2018-01-08; GOES-16 2017-04-26–2025-04-07; GOES-19 desde 2025-04-02 ao presente','temporal_resolution':'GOES-R full-disk até 10 min; GOES-13 full-disk ~30 min','update_frequency':'operacional para GOES-19; histórico para GOES-13/16','product_status':'ativo','version_or_collection':'três coleções GOES correntes na BIG; verificado em 2026-08-18','enumeration_scope':'family_level','product_page_url':'https://data.inpe.br/dados/goes/','methodology_url':'https://data.inpe.br/dados/goes/','primary_or_derived':'misto','limitations':'Satélites, sensores, canais, resoluções, projeções e formatos mudam entre GOES-13 e a série GOES-R. Temperatura de brilho/canais infravermelhos não equivalem automaticamente à temperatura da superfície ou do ar.','dist_name':'GOES — acesso BIG/STAC','dist_url':'https://data.inpe.br/dados/goes/','format':'NetCDF para GOES-R bruto documentado | produtos/imagens e metadados STAC; varia por coleção','protocol':'HTTPS | STAC','tool':'portal BIG | STAC Browser | DSAT conforme produto','license':'verificar metadados da coleção e termos NOAA/INPE aplicáveis','subset':'por satélite, canal/produto, tempo e asset','dist_notes':'GOES-19 é a coleção operacional corrente; GOES-13 e GOES-16 são acervos históricos com características diferentes.'
+            },
+            {
+              'product_name':'Radiação Solar — Modelo GL1.2','product_acronym':'GL1.2','product_family':'BIG — produtos meteorológicos derivados','product_kind':'dataset_series',
+              'product_description':'Série operacional de estimativas de irradiância solar diária para a América do Sul e regiões oceânicas adjacentes, gerada pelo modelo GL1.2 a partir de imagens VIS da série GOES.',
+              'research_areas':'Solar energy | Meteorology | Climate science | Remote sensing','keywords':'solar radiation | irradiance | GL1.2 | GOES | daily | South America','geographic_coverage':'América do Sul, América Central e regiões oceânicas adjacentes; inclui todo o Brasil','covers_brazil':'sim','spatial_support':'grade raster','spatial_resolution':'0,04° em grade geográfica EPSG:4326 documentada','temporal_coverage':'1998–presente; mudança para GOES-16/19 a partir de 2018','temporal_resolution':'diária','update_frequency':'operacional','product_status':'ativo','version_or_collection':'Modelo GL1.2; operação desde 1998; verificado em 2026-08-18','enumeration_scope':'complete','product_page_url':'https://data.inpe.br/dados/radiacao-solar/','methodology_url':'https://data.inpe.br/dados/radiacao-solar/','primary_or_derived':'derivado','limitations':'Estimativa modelada de irradiância derivada de imagens GOES, não medição de piranômetro em cada célula. Mudanças de satélite/sensor e frequência de aquisição ao longo da série devem ser consideradas em análises temporais.','dist_name':'Radiação Solar GL1.2 — acesso BIG','dist_url':'https://data.inpe.br/dados/radiacao-solar/','format':'raster/grade e metadados conforme coleção BIG','protocol':'HTTPS | serviços BIG conforme coleção','tool':'portal BIG | ferramentas geoespaciais','license':'verificar metadados da coleção e termos INPE aplicáveis','subset':'por data, área e asset conforme serviço','dist_notes':'Série diária desde 1998; mudança de geração GOES clássicos para ABI/GOES-R a partir de 2018.'
+            },
+            {
+              'product_name':'Brazil Data Cube — Web Time Series Service (WTSS)','product_acronym':'WTSS','product_family':'Brazil Data Cube — serviços web','product_kind':'data_service',
+              'product_description':'Serviço web para recuperar séries temporais de dados de imagens/cubos em uma localização e intervalo temporal, com operações de listagem, descrição de coverages e extração de time series.',
+              'research_areas':'Remote sensing | Time series | Data infrastructure','keywords':'WTSS | time series | web service | coverage | BDC | API','geographic_coverage':'conforme coverages/cubos disponíveis; inclui Brasil','covers_brazil':'sim','spatial_support':'ponto consultado sobre coverage/cubo','spatial_resolution':'herdada da coverage/cubo consultado','temporal_coverage':'herdada da coverage/cubo consultado','temporal_resolution':'herdada da coverage/cubo consultado','update_frequency':'contínua conforme coverages publicadas','product_status':'ativo','version_or_collection':'serviço WTSS corrente verificado em 2026-08-18','enumeration_scope':'complete','product_page_url':'https://data.inpe.br/bdc/web/wtss-web-time-series-service/','methodology_url':'https://data.inpe.br/bdc/web/wtss-web-time-series-service/','primary_or_derived':'serviço','limitations':'WTSS recupera valores das coverages subjacentes; não cria observações novas nem homogeneíza sensores, máscaras, composição temporal ou qualidade. Interpretação depende da coleção consultada.','dist_name':'WTSS — serviço e documentação','dist_url':'https://data.inpe.br/bdc/web/wtss-web-time-series-service/','format':'API web | JSON conforme implementação | clientes Python/R/QGIS documentados','protocol':'HTTPS | API web','tool':'WTSS | clientes Python/R | plugin QGIS','license':'serviço institucional; licenças dos dados permanecem as das coverages subjacentes','subset':'por coverage, localização e intervalo temporal','dist_notes':'Operações principais documentadas: list_coverages, describe_coverage e time_series.'
+            },
+            {
+              'product_name':'Brazil Data Cube — WLTS e WLCSS para trajetórias e harmonização LULC','product_acronym':'WLTS/WLCSS','product_family':'Brazil Data Cube — serviços web','product_kind':'data_service',
+              'product_description':'Serviços web do BDC para integrar coleções de uso e cobertura da terra com sistemas de classificação distintos, recuperar metadados/classificações e obter trajetórias LULC por localização espacial.',
+              'research_areas':'Land use and land cover | Remote sensing | Data integration','keywords':'WLTS | WLCSS | LULC | trajectory | classification system | harmonization','geographic_coverage':'conforme coleções LULC integradas; inclui coleções brasileiras','covers_brazil':'sim','spatial_support':'ponto de consulta | trajetória temporal | sistema de classes','spatial_resolution':'herdada de cada coleção LULC integrada','temporal_coverage':'herdada de cada coleção LULC integrada','temporal_resolution':'por observação/mapa disponível em cada coleção','update_frequency':'conforme serviços e coleções integradas','product_status':'ativo','version_or_collection':'serviços WLTS/WLCSS correntes verificados em 2026-08-18','enumeration_scope':'complete','product_page_url':'https://data.inpe.br/bdc/wlts-web-land-trajectory-service/','methodology_url':'https://data.inpe.br/bdc/wlts-web-land-trajectory-service/','primary_or_derived':'serviço','limitations':'Integração e mapeamento de sistemas de classes não tornam equivalentes coleções com diferentes resoluções, datas, métodos e semânticas. Trajetória por ponto herda as incertezas e mudanças de cada produto-fonte.','dist_name':'WLTS/WLCSS — serviços de trajetória e classificação','dist_url':'https://data.inpe.br/bdc/wlts-web-land-trajectory-service/','format':'API web | metadados e trajetórias LULC','protocol':'HTTPS | API web','tool':'WLTS | WLCSS | BDC Explorer','license':'serviço institucional; licenças e atribuições permanecem as das coleções integradas','subset':'por coleção, localização e trajetória/sistema de classes','dist_notes':'WLTS oferece list_collections, describe_collection e trajetória; WLCSS apoia mapeamento entre sistemas de classificação.'
+            }
+          ]
+
+          product_fields = ['product_id','resource_id','product_name','product_acronym','product_family','product_kind','product_description','research_areas','keywords','geographic_coverage','covers_brazil','spatial_support','spatial_resolution','temporal_coverage','temporal_resolution','update_frequency','product_status','version_or_collection','enumeration_scope','product_page_url','methodology_url','primary_or_derived','limitations','last_verified']
+          dist_fields = ['distribution_id','product_id','distribution_name','access_url','format','access_protocol','access_tool','free_download','authentication_required','access_conditions','license','provider_attribution_required','subset_support','notes','last_verified']
+
+          added=[]
+          with products_path.open('a', encoding='utf-8', newline='') as pf, dists_path.open('a', encoding='utf-8', newline='') as df:
+              pw=csv.DictWriter(pf, fieldnames=product_fields, lineterminator='\n')
+              dw=csv.DictWriter(df, fieldnames=dist_fields, lineterminator='\n')
+              for spec in product_specs:
+                  if spec['product_name'] in existing_names:
+                      continue
+                  max_pid += 1; max_did += 1
+                  pid=f'DP{max_pid:06d}'; did=f'DD{max_did:06d}'
+                  row={k:spec[k] for k in product_fields if k in spec}
+                  row.update({'product_id':pid,'resource_id':'DR0123','last_verified':'2026-08-18'})
+                  pw.writerow(row)
+                  drow={
+                    'distribution_id':did,'product_id':pid,'distribution_name':spec['dist_name'],'access_url':spec['dist_url'],'format':spec['format'],'access_protocol':spec['protocol'],'access_tool':spec['tool'],'free_download':'sim','authentication_required':'não','access_conditions':'acesso aberto; preservar metadados e condições específicas da coleção/produto','license':spec['license'],'provider_attribution_required':'sim','subset_support':spec['subset'],'notes':spec['dist_notes'],'last_verified':'2026-08-18'
+                  }
+                  dw.writerow(drow)
+                  added.append((pid,did,spec['product_name']))
+          print('ADDED', len(added))
+          for x in added: print(*x)
+          if not added:
+              raise SystemExit('No new products to materialize')
+          PY
+      - name: Validate catalog and rebuild derivatives
+        shell: bash
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Read-back relational integrity
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          with open('data/data_resources.csv',encoding='utf-8',newline='') as f: R=list(csv.DictReader(f))
+          with open('data/data_products.csv',encoding='utf-8',newline='') as f: P=list(csv.DictReader(f))
+          with open('data/product_distributions.csv',encoding='utf-8',newline='') as f: D=list(csv.DictReader(f))
+          rids={r['resource_id'] for r in R}; pids={p['product_id'] for p in P}; dids={d['distribution_id'] for d in D}
+          assert len(rids)==len(R); assert len(pids)==len(P); assert len(dids)==len(D)
+          assert all(p['resource_id'] in rids for p in P)
+          assert all(d['product_id'] in pids for d in D)
+          names=['CBERS-2B — produtos históricos de imagens do INPE','CBERS-2 — produtos históricos de imagens do INPE','Sentinel-3/OLCI — Level-1 Full Resolution distribuído pelo INPE','Sentinel-3/OLCI — produtos aquáticos derivados (Rrs e ficocianina)','GOES-13/16/19 — acervo de imagens meteorológicas da BIG','Radiação Solar — Modelo GL1.2','Brazil Data Cube — Web Time Series Service (WTSS)','Brazil Data Cube — WLTS e WLCSS para trajetórias e harmonização LULC']
+          found=[p for p in P if p['product_name'] in names]
+          assert len(found)==len(names), (len(found), names)
+          assert all(any(d['product_id']==p['product_id'] for d in D) for p in found)
+          print('COUNTS',len(R),len(P),len(D))
+          print('NEW_IDS',[(p['product_id'],p['product_name']) for p in found])
+          PY
+      - name: Commit materialized batch
+        shell: bash
+        run: |
+          git config user.name 'Vitrine Ciência Curator'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json data/link_role_audit.json
+          git diff --cached --check
+          git commit -m 'Expand verified INPE BIG historical and service catalog'
+          git push origin HEAD:main
