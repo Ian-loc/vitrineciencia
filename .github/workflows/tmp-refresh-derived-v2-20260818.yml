@@ -1,0 +1,43 @@
+name: Retry derived artifact refresh 2026-08-18
+on:
+  push:
+    paths:
+      - '.derived-refresh-trigger'
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Rebuild validate and commit derivatives
+        shell: bash
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+          python - <<'PY'
+          import csv,json
+          R=list(csv.DictReader(open('data/data_resources.csv',encoding='utf-8')))
+          P=list(csv.DictReader(open('data/data_products.csv',encoding='utf-8')))
+          D=list(csv.DictReader(open('data/product_distributions.csv',encoding='utf-8')))
+          q=json.load(open('data/data_quality_report.json',encoding='utf-8'))
+          b=json.load(open('data/build-meta.json',encoding='utf-8'))
+          assert q['records']==len(R)
+          assert (b['records'],b['products'],b['distributions'])==(len(R),len(P),len(D))
+          print('COUNTS',len(R),len(P),len(D))
+          PY
+          git config user.name 'Vitrine Ciência Curator'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/data_resources.json data/data_products.json data/data_quality_report.json data/build-meta.json data/link_role_audit.json
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh canonical derived catalog artifacts'
+            git push origin HEAD:main
+          fi
