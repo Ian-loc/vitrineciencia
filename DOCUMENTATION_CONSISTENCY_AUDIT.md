@@ -1,73 +1,83 @@
 # Auditoria de consistência documental
 
-Data da inspeção inicial: 2026-07-20  
-Follow-up: 2026-07-21
+## Revisão corrente — 18 de agosto de 2026
 
-## Escopo inspecionado
+### Escopo
 
-Foram confrontados `README.md`, `WORKFLOW_STATUS.md`, `IMPLEMENTATION_WORKFLOW.md`, `QUALITY_CORRECTION_WORKFLOW.md`, `AUDIT_WORKFLOW.md`, `METHODOLOGY.md`, `CODEBOOK.md`, `SELECTION_AND_COVERAGE_POLICY.md`, `DATA1_SCHEMA_AUDIT.md`, `FINAL_OBJECTIVES_AND_DOI_GATES.md`, `release/doi_readiness.json`, documentos de `migration/`, validadores e histórico de pull requests.
+Foram confrontados os documentos operacionais e normativos da Vitrine com:
 
-No follow-up, também foram comparados o CSV canônico e as estruturas `data_resources` da planilha nativa e do `.xlsx` mantidos no Drive.
+- `main` de `Ian-loc/vitrineciencia`;
+- três tabelas canônicas;
+- `data/data_quality_report.json`;
+- contrato `schema/product-catalog-v0.1.json`;
+- build público e fronteira do GitHub Pages;
+- documentação do Drive do projeto.
 
-## Hierarquia documental
+### Estado factual usado como referência
 
-1. `WORKFLOW_STATUS.md` registra o estado operacional comprovado e a próxima execução.
-2. `IMPLEMENTATION_WORKFLOW.md` descreve a sequência de implementação e dependências.
-3. `QUALITY_CORRECTION_WORKFLOW.md` explica a justificativa científica e os checkpoints de reordenação.
-4. `FINAL_OBJECTIVES_AND_DOI_GATES.md` define o produto final e os portões de release e DOI.
-5. `METHODOLOGY.md` e `CODEBOOK.md` definem interpretação e significado dos campos.
-6. `DRIVE_MIRROR_CONTRACT.md` define a geração e verificação dos espelhos do Drive.
-7. Contratos JSON, matrizes CSV e validadores são a representação executável das decisões.
-8. O Google Drive mantém changelog executivo, histórico e espelhos derivados; não é fonte canônica.
+Em 18/08/2026:
 
-Em caso de divergência, o estado comprovado no GitHub, os contratos executáveis e o CSV canônico prevalecem sobre textos históricos e espelhos.
+- 125 fontes (`DR0001`–`DR0125`);
+- 756 produtos (`DP000001`–`DP000756`);
+- 787 distribuições (`DD000001`–`DD000787`);
+- verificação das fontes registrada até 18/08/2026;
+- modelo canônico: fonte → produto → distribuição;
+- `CITATION.cff`: `unreleased`;
+- site público: GitHub Pages independente;
+- Drive: derivado/histórico; workbook legado não sincronizado com o snapshot corrente.
 
-## Problemas encontrados em 2026-07-20
+## Problemas encontrados nesta revisão
 
-- `QUALITY_CORRECTION_WORKFLOW.md` e `IMPLEMENTATION_WORKFLOW.md` ainda apresentavam DATA1-BX como incompleto e DATA1-BR como bloqueado, apesar da conclusão interna de BR1–BR5.
-- `WORKFLOW_STATUS.md` no branch declarava DATA1-BR-CLOSE concluído antes de PR, CI, merge e changelog.
-- `migration/data1br_review_batches.csv` mantinha uma distribuição antiga e incompatível com os contratos reais BR1–BR5; `validate_doi_readiness.py` ainda dependia desse arquivo.
-- a primeira fila externa somava número de flags e dimensões, favorecendo lotes com taxonomias mais detalhadas;
-- problemas de links, esforço documental, risco científico e decisão de escopo estavam misturados em uma única pontuação;
-- uma única URL de evidência por fonte era insuficiente para sustentar identidade, API, licença, formato, resolução, atualização e método;
-- `access_protocols` precisava distinguir o uso atual no esquema 0.7.0 da separação futura entre protocolos e ferramentas no esquema 0.8.0.
+1. `WORKFLOW_STATUS.md`, `IMPLEMENTATION_WORKFLOW.md` e `QUALITY_CORRECTION_WORKFLOW.md` ainda descreviam o baseline de 51 fontes e ciclos DATA1/38 campos já superados.
+2. `METHODOLOGY.md`, `CODEBOOK.md`, `PRODUCT_CATALOG_MODEL.md`, `docs/PROJECT_STATE.md`, `docs/PROJECT_SCIENTIFIC_DIRECTION.md` e `docs/GOVERNANCE.md` ainda apresentavam Instância 1/PostgreSQL/PostGIS como destino ativo da Vitrine.
+3. `docs/VITRINE_OPERATING_MODEL.md` e `docs/VITRINE_CANONICAL_DATA_CONTRACT.md` ainda congelavam metas de 51 fontes/11 produtos/19 distribuições.
+4. `SELECTION_AND_COVERAGE_POLICY.md` ainda bloqueava expansão até conclusão do antigo baseline, embora a `main` já possuísse 125 fontes.
+5. `FINAL_OBJECTIVES_AND_DOI_GATES.md` estava conceitualmente atualizado, mas o snapshot 125/752/783 já estava quatro produtos/distribuições atrás do estado real.
+6. Documentos do Drive ainda descreviam a recuperação do site em 9–10 de agosto, PR #72 e erro 404 como estado corrente.
+7. O workbook do Drive permanecia legado e não deveria ser confundido com a base atual.
 
-## Ajustes decididos em 2026-07-20
+## Decisão documental
 
-- remover a matriz antiga de lotes e usar somente `br_batch_registry.json`, contratos BR1–BR5 e suas matrizes;
-- separar `scientific_priority_tier` de `execution_wave`;
-- usar apenas impacto e risco, comparáveis em todos os lotes, para a prioridade científica;
-- tratar links e documentação ausente apenas como critérios operacionais de onda;
-- tratar COSMOS em um portão de escopo `G0`, sem pontos artificiais;
-- criar `external_review_evidence.csv` em formato longo, permitindo várias evidências por fonte e dimensão;
-- manter todas as correções canônicas bloqueadas até evidência oficial, data e revisor;
-- atualizar os documentos de estado e os validadores no mesmo PR.
+A documentação passa a seguir esta hierarquia:
 
-## Follow-up de 2026-07-21 — STATE-SYNC
+1. `docs/PROJECT_STATE.md` — estado canônico e ciclo de vida dos artefatos;
+2. `docs/PROJECT_SCIENTIFIC_DIRECTION.md` — missão e princípios;
+3. `docs/VITRINE_CANONICAL_DATA_CONTRACT.md` — unidades/campos/relações;
+4. `docs/VITRINE_OPERATING_MODEL.md` e `docs/GOVERNANCE.md` — operação e gates;
+5. `WORKFLOW_STATUS.md` — estado temporal e prioridades;
+6. `METHODOLOGY.md`, `CODEBOOK.md`, `PRODUCT_CATALOG_MODEL.md` e política de seleção — interpretação do catálogo;
+7. release/DOI e changelog — preservação/citação;
+8. documentos datados, roadmaps relacionais antigos e materiais Simbiotrama — `HISTORICAL_EVIDENCE`.
 
-A nova inspeção confirmou que `WORKFLOW_STATUS.md` estava atualizado, mas os dois workflows secundários ainda preservavam o estado anterior à integração de DATA1-BR-CLOSE. Também identificou divergência entre os arquivos do Drive.
+## Ajustes materializados neste pacote
 
-O PR #32 integrou o contrato e o alinhamento documental no commit `f35b2c766043308d9e19751539a2c99972df949b`. O run `29836549232` passou integralmente.
+- identidade Vitrine Ciência restabelecida em toda documentação ativa;
+- snapshot atualizado para 125/756/787 onde contagens atuais são úteis;
+- remoção de metas operacionais obsoletas 51/11/19 e 38 campos;
+- PostgreSQL/PostGIS e Instâncias 1–3 retirados do caminho ativo da Vitrine;
+- expansão contínua por lotes auditados reconhecida como estado real;
+- QA reescrito com critério de suficiência e prioridade por risco;
+- Drive explicitamente classificado como derivado e atualmente não sincronizado;
+- release mantida como `unreleased`; DOI continua dependente de snapshot/tag/depósito e decisão humana;
+- histórico pré-separação preservado sem autoridade normativa.
 
-### Correção após concorrência no Drive
+## Regra de manutenção documental
 
-Durante o fechamento, outra operação atualizou a planilha nativa e acrescentou ao changelog uma linha declarando sincronização dos dois arquivos. A verificação direta mostrou:
+Documentação ativa deve ser atualizada quando houver mudança material de:
 
-- planilha nativa: 51 recursos × 34 campos, com cabeçalhos canônicos;
-- `.xlsx`: 51 recursos × 22 campos no arquivo bruto baixado do Drive;
-- a substituição do `.xlsx` por export da planilha nativa falhou duas vezes por proxy interno `407`;
-- uma nova linha do changelog corrigiu a declaração anterior e preservou o histórico.
+- identidade/escopo;
+- modelo/schema;
+- autoridade;
+- estado de publicação/release;
+- estratégia de Drive/DOI;
+- contagens quando um documento optar por registrar um snapshot.
 
-Ações consolidadas:
+Documentos históricos datados **não devem ser reescritos para parecer atuais**. Devem ser preservados como evidência e claramente subordinados ao estado canônico.
 
-1. DATA1-BR-CLOSE aparece como `concluído` e DATA1-EXT como `ativo`;
-2. W1 é subdividida em W1A–W1C apenas para limitar o tamanho dos PRs;
-3. `DRIVE_MIRROR_CONTRACT.md` registra autoridade, fluxo unidirecional, metadados e verificações;
-4. `validate_quality_correction_plan.py` exige STATE-SYNC e o diagnóstico separado dos espelhos;
-5. STATE-SYNC é encerrado como ciclo de coerência e diagnóstico;
-6. o reparo do arquivo bruto é isolado em MIRROR-XLSX e não bloqueia DATA1-EXT;
-7. nenhuma linha do CSV, candidato, interface, versão ou portão de DOI é alterado.
+## Histórico anterior
 
-## Estado protegido
+### 20–21 de julho de 2026
 
-Nenhum ajuste desta auditoria altera `data/data_resources.csv`, os 51 `resource_id`, os 34 campos, a versão 0.7.0, os candidatos, a interface pública ou a autorização de DOI.
+A auditoria documental original tratou o baseline de 51 fontes, sincronização de planilha 51×34 versus `.xlsx` 51×22, planos DATA1/0.8 e filas de revisão. Essas decisões foram válidas no estágio correspondente, mas foram superadas pelo crescimento do catálogo e pela separação estrutural entre Vitrine Ciência e Simbiotrama em agosto de 2026.
+
+Os PRs, commits, matrizes e relatórios daquele período permanecem no histórico Git para rastreabilidade; não são requisitos do estado corrente.
