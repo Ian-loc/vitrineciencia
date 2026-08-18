@@ -1,152 +1,100 @@
-# Workflow de correções de qualidade
+# Workflow de correções de qualidade — Vitrine Ciência
 
 ## Objetivo
 
-Corrigir fragilidades antes de migrar para 0.8.0, expandir fontes ou preparar v1.0.0 e DOI. Controle de processo não substitui verificação científica: CI verde comprova estrutura, não atualidade ou correção de links, APIs, licenças, formatos e resoluções.
+Corrigir erros e incertezas que afetam descoberta, acesso ou interpretação sem transformar controle de qualidade em redesenho permanente do projeto.
 
-## Regras de prioridade
+## Regra central
 
-1. corrigir contradições entre documentos, contratos e validadores;
-2. revisar as 51 fontes atuais antes de expandir;
-3. separar risco científico, esforço operacional e decisão de escopo;
-4. registrar evidência por afirmação e dimensão;
-5. não alterar CSV, versão ou DOI enquanto os portões estiverem bloqueados;
-6. reavaliar a ordem após cada ciclo relevante;
-7. manter RES1 e EDU1 como enriquecimentos não bloqueantes;
-8. tratar planilha nativa e `.xlsx` como espelhos derivados, conforme `DRIVE_MIRROR_CONTRACT.md`.
+**Qualidade é proporcional ao risco.** O objetivo é um catálogo tecnicamente defensável e útil, não eliminar toda lacuna documental existente nos provedores externos.
 
-## Ordem operacional atual
+## Fontes de diagnóstico
 
-| Ordem | Ciclo | Estado | Produto/critério |
-|---:|---|---|---|
-| 1 | QC0 | concluído | 14 regras semânticas alinhadas |
-| 2 | SELECT1 | concluído | política de seleção e cobertura |
-| 3 | DATA1-BX | projeção concluída | 51 × 5 dimensões; confiança desconhecida |
-| 4 | DATA1-BR | auditoria interna concluída | BR1–BR5 cobrem 35 casos |
-| 5 | DATA1-BR-CLOSE | concluído | fila comparável e evidência longa |
-| 6 | STATE-SYNC | concluído | estados coerentes, contrato e verificação dos espelhos |
-| 7 | MIRROR-XLSX | bloqueado por upload | substituir o espelho histórico de 22 campos |
-| 8 | DATA1-EXT | ativo | revisão factual por ondas |
-| 9 | G0 | concluído | elegibilidade do Project COSMOS |
-| 10 | W1A | ativo | TerraBrasilis e Google Earth Engine Data Catalog |
-| 11 | W1B | planejado | SiBBr, BDiA e HidroWeb |
-| 12 | W1C | planejado | SIRENE e Global Carbon Atlas |
-| 13 | DATA1-C | bloqueado | migração atômica para 38 campos |
-| 14 | DATA1-D | planejado | 14 regras no CSV final |
-| 15 | DATA2 | planejado | revisão das 51 fontes no esquema final |
-| 16 | UX5 | parcial | 38 campos e testes funcionais |
-| 17 | RELEASE2 | bloqueado | v1.0.0 e deploy confirmado |
-| 18 | DOI | bloqueado | G1–G12 concluídos |
-| 19 | RES1 | P3 | resolução por produto |
-| 20 | EDU1 | P3 | página didática referenciada |
+- `data/data_quality_report.json` — preenchimento e campos desconhecidos/variáveis;
+- `data/link_role_audit.json` — papéis e sobreposição de URLs;
+- `scripts/validate_product_catalog.py` — integridade fonte/produto/distribuição;
+- `scripts/validate_brazil_scope.py` — cobertura da classificação P0–P3;
+- auditorias específicas em `audit/` e `docs/audits/`;
+- falhas reais observadas na interface ou no acesso externo.
 
-## G0 — decisão de escopo
+## Snapshot de qualidade — 18/08/2026
 
-O Project COSMOS cumpre a unidade de seleção como infraestrutura bibliométrica de informação climática. A decisão mantém o recurso no catálogo principal, sem tratá-lo como fonte de medições ambientais.
+O catálogo possui 125 fontes; `data_quality_report.json` registra:
 
-A decisão exige:
+- 49 fontes com licença desconhecida/variável;
+- 72 com alguma incerteza de acesso;
+- 47 com resolução espacial desconhecida/variável;
+- 40 com cobertura temporal desconhecida/variável;
+- 33 com acesso programático desconhecido/variável.
 
-- metodologia e governança identificáveis;
-- função estruturada de descoberta e análise bibliométrica;
-- utilidade distinta para pesquisa e ensino climático;
-- declaração de que a base integral não é aberta;
-- não generalização da licença do conteúdo público para a base integral;
-- não comparação com disponibilidade de dados ambientais empíricos;
-- preservação do CSV 0.7.0 até ciclo autorizado.
+Esses números orientam prioridade, mas não significam que os datasets externos sejam deficientes.
 
-G0 resolveu elegibilidade, não todos os atributos factuais. A tabela de evidências permanece vazia porque nenhuma nova alegação canônica foi verificada ou alterada neste portão.
+## Priorização
 
-O PR #34, commit `6f48a7265be2757eac223c6e768e98faa2579da8`, passou no run `29838354760` e foi registrado no changelog. G0 está concluído; W1A está ativo. O documento completo é `G0_COSMOS_SCOPE_DECISION.md`.
+### P0 — erro material
 
-## STATE-SYNC
+Corrigir primeiro:
 
-A inspeção confirmou duas classes de divergência:
+- ID/relação quebrada;
+- identidade errada ou duplicação material;
+- URL que aponta para objeto incorreto;
+- licença afirmada incorretamente;
+- cobertura Brasil falsa;
+- confusão entre observação, previsão, classificação, modelo ou registro administrativo;
+- resolução/temporalidade inventada.
 
-- workflows secundários ainda indicavam DATA1-BR-CLOSE como pendente, embora `WORKFLOW_STATUS.md` e a `main` comprovassem seu encerramento;
-- os dois arquivos do Drive não estavam no mesmo estado.
+### P1 — acesso e interpretação
 
-Estado verificado após os PRs #32 e #33:
+- autenticação, gratuidade, protocolo e formato;
+- página de acesso desatualizada;
+- limitações ausentes que podem induzir uso incorreto;
+- granularidade de produto inadequada.
 
-- GitHub: 51 × 34;
-- planilha nativa: 51 × 34, com os 34 cabeçalhos canônicos;
-- `.xlsx`: 51 × 22;
-- a substituição do `.xlsx` foi tentada duas vezes e falhou por proxy `407`;
-- o changelog recebeu uma linha corretiva para impedir declaração indevida de sincronização total.
+### P2 — completude útil
 
-STATE-SYNC está concluído como ciclo de coerência, contrato e diagnóstico. O reparo do arquivo bruto permanece isolado em MIRROR-XLSX e não bloqueia a revisão científica.
+- metodologia/documentação adicional;
+- detalhamento de versões;
+- refinamento de usos e palavras-chave;
+- melhoria de evidências representativas.
 
-## DATA1-BR-CLOSE
+P2 não deve bloquear publicação de um snapshot defensável.
 
-A primeira proposta de fila somava quantidade de flags e dimensões. Isso era inadequado porque BR1–BR5 foram descritos com granularidades diferentes.
+## Processo de correção
 
-O modelo corrigido usa:
+1. identificar achado material;
+2. localizar evidência oficial/primária atual;
+3. determinar nível correto: fonte, produto ou distribuição;
+4. propor alteração mínima;
+5. preservar `desconhecido` quando não há base suficiente;
+6. validar IDs, relações, enums e URLs;
+7. auditar o diff;
+8. publicar/verificar quando aplicável;
+9. encerrar o achado quando o risco relevante estiver tratado.
 
-- `scientific_priority_tier`: somente impacto e risco científico;
-- `execution_wave`: escopo, papéis dos links, documentação ausente e sequência;
-- `external_review_evidence.csv`: várias evidências por fonte, dimensão e afirmação.
+## Regras anti-inferência
 
-## DATA1-EXT
+- homepage não comprova licença de dataset;
+- visualizador não comprova resolução nativa;
+- endpoint existente não implica acesso gratuito;
+- ausência de documentação não implica ausência do atributo;
+- licença do portal não deve ser transferida automaticamente às distribuições;
+- produto derivado não deve ser apresentado como observação primária.
 
-Cada evidência factual deve registrar:
+## Duplicidades
 
-- fonte e dimensão revisada;
-- afirmação e valor atual;
-- valor observado oficialmente;
-- URL e tipo de evidência;
-- data, revisor e organização;
-- suporte ao valor atual;
-- ação e valor propostos;
-- limitações.
+Duplicidades de nome ou identidade devem ser revisadas semanticamente. IDs estáveis não são apagados ou reciclados silenciosamente. Quando necessário, uma consolidação deve preservar rastreabilidade e definir alias/tombstone ou outra estratégia explícita.
 
-Documentação oficial sustenta API, formato, licença e autenticação. Literatura revisada por pares confronta identidade, uso efetivo, limitações e interpretação; não substitui documentação técnica atual.
+## Drive
 
-A onda W1 é executada em três PRs pequenos, sem alterar sua composição:
+O workbook do Drive não deve receber uma “correção” isolada. Primeiro corrige-se `main`; depois o espelho pode ser regenerado integralmente. Divergência do espelho é problema de sincronização, não evidência contra os CSVs canônicos.
 
-- W1A: TerraBrasilis e Google Earth Engine Data Catalog;
-- W1B: SiBBr, BDiA e HidroWeb;
-- W1C: SIRENE e Global Carbon Atlas.
+## Critério de suficiência
 
-O checkpoint científico ocorre após o conjunto W1A–W1C, não após cada arquivo isolado.
+Uma rodada de QA termina quando:
 
-## Migração e revisão final
+- não há erro material conhecido no escopo revisado;
+- os validadores aplicáveis passam;
+- limitações remanescentes estão explícitas;
+- o retorno marginal de nova revisão é baixo em relação a outras prioridades do catálogo.
 
-DATA1-C somente começa quando decisões críticas estiverem resolvidas. A migração deve preservar 51 IDs, todo o conteúdo científico e produzir 38 campos. DATA1-D ativa as 14 regras no CSV final. DATA2 revisa as 51 fontes no esquema estabilizado.
-
-## Espelhamento do Drive
-
-Não se deve copiar manualmente alterações entre GitHub, planilha nativa e `.xlsx`.
-
-- o CSV em `main` é a autoridade;
-- a planilha nativa 51 × 34 é o espelho operacional verificado;
-- o `.xlsx` 51 × 22 permanece histórico até substituição e nova comparação;
-- a falha do upload deve ser tratada como incidente operacional, não como evidência de sincronização;
-- a regeneração completa 51 × 38 ocorre após DATA1-C e DATA1-D.
-
-## RES1 — resolução por produto
-
-Não é cientificamente seguro inferir resolução pelo zoom de um visualizador. Distinguir célula raster, escala cartográfica, precisão de coordenadas, suporte espacial, resolução temporal e limite de exibição.
-
-A tabela futura `data/product_resolution_examples.csv` deve registrar produto, tipo de resolução, valores mais fino e mais grosseiro, unidade ou escala, versão, evidência, data, confiança e notas. Faixas só podem ser comparadas quando usam a mesma dimensão e unidade.
-
-RES1 é não bloqueante para v1.0.0 e DOI, salvo quando revelar erro factual no valor atual.
-
-## EDU1 — página didática
-
-A página didática deve explicar fenômeno, medição, tipos de dados, limitações, fontes relacionadas e referências. Linguagem acessível não autoriza simplificação enganosa ou inferência causal por visualização.
-
-EDU1 é não bloqueante para v1.0.0 e DOI e deve começar após DATA2 ou com capacidade editorial separada.
-
-## Checkpoints de reordenação
-
-Reavaliar após W1A–W1C, eventual reparo MIRROR-XLSX, migração 0.8.0, regeneração dos espelhos, primeiros lotes DATA2 e testes funcionais. Uma tarefa sobe quando bloqueia dependências, evita perda, corrige informação pública ou reduz retrabalho; desce quando é apenas enriquecimento ou pode ser entregue com segurança depois.
-
-## Estado protegido
-
-- versão formal 0.7.0;
-- CSV 51 × 34 até DATA1-C;
-- `doi_allowed = false`;
-- nenhuma nova fonte entra diretamente no catálogo;
-- candidatos permanecem fora do CSV;
-- planilha nativa e `.xlsx` não substituem o CSV canônico;
-- G0 não autoriza alteração automática do CSV;
-- RES1 e EDU1 não desbloqueiam nem bloqueiam o DOI.
+Novos achados futuros reabrem o registro específico; não tornam todo o catálogo perpetuamente provisório.
