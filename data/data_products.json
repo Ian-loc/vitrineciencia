@@ -34572,5 +34572,241 @@
     "available_protocols": [
       "HTTPS"
     ]
+  },
+  {
+    "product_id": "DP000583",
+    "resource_id": "DR0121",
+    "product_name": "Sistema AMA — séries anemométricas e climatológicas agregadas",
+    "product_acronym": "Sistema AMA",
+    "product_family": "Medições anemométricas e climatológicas para energia eólica",
+    "product_kind": "dataset_series",
+    "product_description": "Séries horárias agregadas derivadas do Sistema de Acompanhamento de Medições Anemométricas da EPE, construídas a partir de mais de 650 torres cadastradas e organizadas em 27 agrupamentos de parques com comportamento semelhante do vento, incluindo velocidade e direção do vento, temperatura, pressão e umidade relativa.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "Sistema AMA | vento | anemometria | temperatura | umidade | pressão | energia eólica | séries horárias",
+    "geographic_coverage": "Brasil — regiões com parques eólicos/torres participantes do Sistema AMA",
+    "covers_brazil": "parcial",
+    "spatial_support": "agrupamentos de torres/parques eólicos e regiões derivadas",
+    "spatial_resolution": "27 clusters definidos por similaridade do comportamento do vento; não representa grade espacial contínua",
+    "temporal_coverage": "séries históricas do Sistema AMA; dashboard atualizado com dados até dezembro de 2025",
+    "temporal_resolution": "horária; ocorrência de direção por setor",
+    "update_frequency": "periódica/irregular conforme atualização pública do dashboard",
+    "product_status": "ativo",
+    "version_or_collection": "NT EPE/DEE/SGR/051/2025-R0; dashboard atualizado em 08/04/2026 com dados até dez/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/metodologia-de-agregacao-de-dados-anemometricos-sistema-ama-disponibilizacao-das-series-de-dados-anemometricos-e-climatologicos-nt-epe-dee-sgr-051-2025-r0",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/metodologia-de-agregacao-de-dados-anemometricos-sistema-ama-disponibilizacao-das-series-de-dados-anemometricos-e-climatologicos-nt-epe-dee-sgr-051-2025-r0",
+    "primary_or_derived": "derivado",
+    "limitations": "As séries públicas são agregadas por clusters de torres com comportamento semelhante e não equivalem aos dados brutos de cada torre. Cobertura depende dos parques participantes; clusters não representam o território nacional de forma contínua. Preservar metodologia de agregação, período e controles de qualidade.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000608",
+        "product_id": "DP000583",
+        "distribution_name": "Sistema AMA — Nota Técnica e dashboard de séries agregadas",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/metodologia-de-agregacao-de-dados-anemometricos-sistema-ama-disponibilizacao-das-series-de-dados-anemometricos-e-climatologicos-nt-epe-dee-sgr-051-2025-r0",
+        "format": "dashboard web | séries horárias para download | PDF",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web | download pelo dashboard",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; citar metodologia e preservar cluster/período",
+        "license": "CC BY 4.0 para conteúdo do site EPE; verificar metadados dos arquivos baixados",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cluster, variável e período conforme dashboard",
+        "notes": "Séries públicas agregadas em 27 clusters; inclui velocidade/direção do vento, temperatura, pressão e umidade relativa.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "dashboard web | séries horárias para download | PDF"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000584",
+    "resource_id": "DR0121",
+    "product_name": "Boletim da Energia Eólica — índices de energia e produção",
+    "product_acronym": "Boletim Eólico",
+    "product_family": "Monitoramento do recurso eólico",
+    "product_kind": "indicator_family",
+    "product_description": "Boletim interativo da EPE, publicado originalmente desde 2014 e atualmente derivado dos dados do Sistema AMA, com índices mensais de Energia e de Produção que caracterizam o comportamento do recurso eólico e seu potencial de conversão em eletricidade em regiões eólicas selecionadas.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "energia eólica | índice de energia | índice de produção | vento | Sistema AMA | sazonalidade",
+    "geographic_coverage": "Brasil — regiões eólicas selecionadas; atualização 2026 cobre Interior do Nordeste, Litoral do Nordeste e Rio Grande do Sul",
+    "covers_brazil": "parcial",
+    "spatial_support": "regiões eólicas derivadas de agrupamentos do Sistema AMA",
+    "spatial_resolution": "regional; não espacialmente contínuo",
+    "temporal_coverage": "série interativa com período de análise jan/2017–dez/2025 na atualização de 08/04/2026",
+    "temporal_resolution": "mensal",
+    "update_frequency": "trimestral/periódica conforme publicação do boletim",
+    "product_status": "ativo",
+    "version_or_collection": "atualização 08/04/2026; dados até dez/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/imprensa/noticias/epe-atualiza-boletim-da-energia-eolica-e-dashboard-do-sistema-ama-com-dados-ate-dezembro-de-2025",
+    "methodology_url": "https://www.epe.gov.br/pt/imprensa/noticias/boletim-interativo-da-energia-eolica-e-atualizacao-dos-dados-abertos-do-sistema-ama",
+    "primary_or_derived": "derivado",
+    "limitations": "Índice de Energia e Índice de Produção são métricas normalizadas derivadas de vento e curva de potência, não velocidade do vento bruta nem geração elétrica efetivamente medida. A composição regional e o período-base devem ser preservados entre versões.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000609",
+        "product_id": "DP000584",
+        "distribution_name": "Boletim interativo da Energia Eólica",
+        "access_url": "https://dashboard.epe.gov.br/apps/boletimeol",
+        "format": "dashboard web | gráficos/índices interativos",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "CC BY 4.0 para conteúdo EPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "por índice, região e mês conforme dashboard",
+        "notes": "Índices derivados do Sistema AMA; atualização de 08/04/2026 cobre jan/2017–dez/2025 e três regiões no boletim corrente.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "dashboard web | gráficos/índices interativos"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000585",
+    "resource_id": "DR0121",
+    "product_name": "Painel de Dados sobre Eólicas Offshore",
+    "product_acronym": "Eólicas Offshore EPE",
+    "product_family": "Planejamento e potencial eólico offshore",
+    "product_kind": "data_service",
+    "product_description": "Ferramenta geoespacial interativa da EPE para visualizar potencial eólico offshore ao longo da costa brasileira, infraestrutura portuária, pontos de conexão à rede e projetos em licenciamento no Ibama, apresentados em mapas e gráficos para apoio ao planejamento.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "eólica offshore | potencial eólico | portos | transmissão | licenciamento | Ibama | planejamento",
+    "geographic_coverage": "Zona costeira e marítima brasileira e infraestruturas terrestres associadas conforme camada",
+    "covers_brazil": "sim",
+    "spatial_support": "camadas geoespaciais de potencial, projetos e infraestruturas",
+    "spatial_resolution": "varia por camada e fonte primária; consultar metadados do painel",
+    "temporal_coverage": "corrente conforme atualização das camadas incorporadas",
+    "temporal_resolution": "varia por camada",
+    "update_frequency": "irregular conforme atualização do painel e fontes",
+    "product_status": "ativo",
+    "version_or_collection": "painel operacional acessível em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/painel-de-dados-sobre-eolicas-offshore",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/painel-de-dados-sobre-eolicas-offshore",
+    "primary_or_derived": "agregador",
+    "limitations": "Potencial eólico técnico não equivale a viabilidade econômica, ambiental ou empreendimento autorizado. Projeto em licenciamento não implica licença concedida ou operação. Portos, conexão à rede, projetos e potencial têm fontes, datas e escalas distintas.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000610",
+        "product_id": "DP000585",
+        "distribution_name": "Painel de Dados sobre Eólicas Offshore — mapas e gráficos",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/painel-de-dados-sobre-eolicas-offshore",
+        "format": "aplicação web geoespacial | mapas | gráficos",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "CC BY 4.0 para conteúdo EPE; preservar proveniência das camadas de terceiros",
+        "provider_attribution_required": "sim",
+        "subset_support": "filtros e camadas temáticas conforme painel",
+        "notes": "Combina potencial eólico offshore, portos, conexão à rede e projetos em licenciamento; não homogeneizar escala/data entre camadas.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "aplicação web geoespacial | mapas | gráficos"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000586",
+    "resource_id": "DR0121",
+    "product_name": "Painel de Dados de Potencial Técnico de Produção de Hidrogênio",
+    "product_acronym": "Potencial H2 EPE",
+    "product_family": "Hidrogênio e transição energética",
+    "product_kind": "data_service",
+    "product_description": "Aplicação geoespacial da EPE que apresenta o potencial técnico de produção de hidrogênio no Brasil por diferentes rotas tecnológicas e localiza projetos e infraestrutura existente para armazenamento e/ou escoamento.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "hidrogênio | H2 | potencial técnico | rotas tecnológicas | infraestrutura | projetos | transição energética",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "camadas geoespaciais de potencial, projetos e infraestrutura",
+    "spatial_resolution": "varia por rota tecnológica e camada/fonte primária",
+    "temporal_coverage": "corrente conforme versão e fontes incorporadas ao painel",
+    "temporal_resolution": "não se aplica para potencial estático; varia para cadastros/projetos",
+    "update_frequency": "irregular conforme atualização da ferramenta e insumos",
+    "product_status": "ativo",
+    "version_or_collection": "painel operacional acessível em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/painel-de-dados-de-potencial-tecnico-de-producao-de-hidrogenio",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/painel-de-dados-de-potencial-tecnico-de-producao-de-hidrogenio",
+    "primary_or_derived": "agregador",
+    "limitations": "Potencial técnico não equivale a potencial econômico, produção efetiva ou projeto viável. Rotas tecnológicas possuem hipóteses, eficiências, insumos e restrições próprias. Localização de projeto ou infraestrutura não comprova estado operacional ou decisão de investimento.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000611",
+        "product_id": "DP000586",
+        "distribution_name": "Painel de Potencial Técnico de Produção de Hidrogênio — aplicação geoespacial",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/painel-de-dados-de-potencial-tecnico-de-producao-de-hidrogenio",
+        "format": "aplicação web geoespacial | mapas | indicadores",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público",
+        "license": "CC BY 4.0 para conteúdo EPE; preservar proveniência das fontes incorporadas",
+        "provider_attribution_required": "sim",
+        "subset_support": "por rota tecnológica, camada, projeto e infraestrutura conforme painel",
+        "notes": "Potencial técnico, projetos e infraestrutura são objetos distintos e não indicam produção/viabilidade econômica efetiva.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "aplicação web geoespacial | mapas | indicadores"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
   }
 ]
