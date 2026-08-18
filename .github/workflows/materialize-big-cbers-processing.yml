@@ -1,0 +1,143 @@
+name: Materialize verified BIG CBERS processing batch
+
+on:
+  push:
+    branches: ["agent/big-cbers-processing-20260818"]
+    paths: [".github/workflows/materialize-big-cbers-processing.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: agent/big-cbers-processing-20260818
+
+      - name: Append verified products and distributions
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+
+          product_path = Path('data/data_products.csv')
+          dist_path = Path('data/product_distributions.csv')
+          with product_path.open(encoding='utf-8-sig', newline='') as f:
+              products = list(csv.DictReader(f))
+          with dist_path.open(encoding='utf-8-sig', newline='') as f:
+              dists = list(csv.DictReader(f))
+          pids = {r['product_id'] for r in products}
+          dids = {r['distribution_id'] for r in dists}
+          urls = {r['product_page_url'].strip() for r in products}
+          if max(int(x[2:]) for x in pids) != 674:
+              raise SystemExit('Unexpected max product id; refusing append')
+          if max(int(x[2:]) for x in dids) != 704:
+              raise SystemExit('Unexpected max distribution id; refusing append')
+          if 'DP000632' not in pids or 'DP000631' not in pids:
+              raise SystemExit('Expected BIG family-level anchors absent')
+
+          P = [
+          ['DP000675','DR0123','Amazônia-1/WFI — Level-2-DN','AMZ1 WFI L2-DN','BIG — Amazônia-1/WFI','dataset_series','Cenas Amazônia-1/WFI em número digital no nível 2, com correções radiométrica e geométrica de sistema baseadas em efemérides e atitude do satélite.','Remote sensing | Land use and land cover | Environmental monitoring','Amazonia-1 | WFI | Level-2 | digital number | earth observation','Brasil e demais áreas imageadas/disponíveis na coleção','sim','cena raster | coleção STAC','64 m','2021-03-03–2026-07-06 na coleção STAC verificada','por aquisição; revisita nominal até 5 dias','conforme aquisição','ativo','AMZ1-WFI-L2-DN-1 v1','complete','https://data.inpe.br/bdc/stac/v1/collections/AMZ1-WFI-L2-DN-1','https://data.inpe.br/dados/amazonia-1/','primário','Número digital corrigido radiometricamente/geometricamente não equivale a reflectância de superfície. Preservar bandas, metadados, geometria e nível de processamento; cobertura temporal depende das cenas disponíveis.','2026-08-18'],
+          ['DP000676','DR0123','Amazônia-1/WFI — Level-4-DN ortorretificado','AMZ1 WFI L4-DN','BIG — Amazônia-1/WFI','dataset_series','Cenas Amazônia-1/WFI em número digital no nível 4, derivadas do L2 e ortorretificadas, mantendo quatro bandas visível/NIR a 64 m.','Remote sensing | Land use and land cover | Environmental monitoring','Amazonia-1 | WFI | Level-4 | orthorectified | digital number','Brasil e demais áreas imageadas/disponíveis na coleção','sim','cena raster ortorretificada | coleção STAC','64 m','2021–2026 conforme coleção STAC corrente','por aquisição','conforme aquisição','ativo','AMZ1-WFI-L4-DN-1 v1','complete','https://data.inpe.br/bdc/stac/v1/collections/AMZ1-WFI-L4-DN-1','https://data.inpe.br/dados/amazonia-1/','derivado','Ortorretificação corrige geometria, mas os valores continuam em número digital e não são reflectância de superfície. Não combinar diretamente com L4-SR sem respeitar a transformação radiométrica.','2026-08-18'],
+          ['DP000677','DR0123','Amazônia-1/WFI — Level-4-SR em COG','AMZ1 WFI L4-SR','BIG — Amazônia-1/WFI','dataset_series','Cenas Amazônia-1/WFI ortorretificadas em reflectância de superfície Level-4, distribuídas como Cloud Optimized GeoTIFF com quatro bandas e máscara de nuvem.','Remote sensing | Land use and land cover | Vegetation dynamics | Environmental monitoring','Amazonia-1 | WFI | Level-4 | surface reflectance | COG | CMASK','Brasil e demais áreas cobertas pela coleção','sim','cena raster COG | coleção STAC','64 m','2021–2026 conforme coleção STAC corrente','por aquisição','novas cenas documentadas mensalmente','ativo','AMZ1-WFI-L4-SR-1 v1','complete','https://data.inpe.br/bdc/stac/v1/collections/AMZ1-WFI-L4-SR-1','https://data.inpe.br/dados/amazonia-1/','derivado','Reflectância de superfície depende do processamento atmosférico e da máscara de nuvem; não equivale ao DN dos níveis L2/L4 nem a observação in situ.','2026-08-18'],
+          ['DP000678','DR0123','CBERS-4A/WPM — Level-2-DN','CB4A WPM L2-DN','BIG — CBERS-4A/WPM','dataset_series','Cenas CBERS-4A/WPM Level-2 em número digital com correções radiométrica e geométrica de sistema, incluindo banda pancromática e quatro bandas multiespectrais.','Remote sensing | Land use and land cover | Environmental monitoring','CBERS-4A | WPM | Level-2 | digital number | panchromatic | multispectral','Brasil e demais áreas imageadas/disponíveis na coleção','sim','cena raster | coleção STAC','2 m pancromático | 8 m multiespectral','2019-12-29–2026-08-14 na coleção STAC verificada','por aquisição; revisita nominal 31 dias','conforme aquisição','ativo','CB4A-WPM-L2-DN-1 v1','complete','https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-L2-DN-1','https://data.inpe.br/dados/cbers-4a/','primário','L2-DN não é reflectância de superfície nem produto ortorretificado final. Banda PAN e bandas multiespectrais têm resoluções diferentes e não devem ser tratadas como uma única grade nativa.','2026-08-18'],
+          ['DP000679','DR0123','CBERS-4A/WPM — Level-4-DN ortorretificado','CB4A WPM L4-DN','BIG — CBERS-4A/WPM','dataset_series','Cenas CBERS-4A/WPM Level-4 em número digital, ortorretificadas, com banda pancromática de 2 m e quatro bandas multiespectrais de 8 m.','Remote sensing | Land use and land cover | Environmental monitoring','CBERS-4A | WPM | Level-4 | orthorectified | digital number','Brasil e parte da América do Sul conforme acervo','sim','cena raster ortorretificada | coleção STAC','2 m pancromático | 8 m multiespectral','2019-12-29–2026-08-15 na coleção STAC verificada','por aquisição','conforme aquisição','ativo','CB4A-WPM-L4-DN-1 v1','complete','https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-L4-DN-1','https://data.inpe.br/dados/cbers-4a/','derivado','Produto é ortorretificado, mas permanece em DN. Resolução de 2 m aplica-se à pancromática; bandas multiespectrais são de 8 m e não ganham resolução espectral/espacial por simples reamostragem.','2026-08-18'],
+          ['DP000680','DR0123','CBERS-4A/MUX — Level-2-DN','CB4A MUX L2-DN','BIG — CBERS-4A/MUX','dataset_series','Cenas CBERS-4A/MUX Level-2 em número digital com correções radiométrica e geométrica de sistema nas quatro bandas visível/NIR.','Remote sensing | Land use and land cover | Environmental monitoring','CBERS-4A | MUX | Level-2 | digital number | multispectral','Brasil e demais áreas imageadas/disponíveis na coleção','sim','cena raster | coleção STAC','16 m','2019-12-27–2026-08-14 na coleção STAC verificada','por aquisição; revisita nominal 31 dias','conforme aquisição','ativo','CB4A-MUX-L2-DN-1 v1','complete','https://data.inpe.br/bdc/stac/v1/collections/CB4A-MUX-L2-DN-1','https://data.inpe.br/dados/cbers-4a/','primário','DN de nível 2 não equivale a reflectância de superfície; georreferenciamento de sistema não deve ser confundido com ortorretificação Level-4.','2026-08-18'],
+          ['DP000681','DR0123','CBERS-4A/MUX — Level-4-DN ortorretificado','CB4A MUX L4-DN','BIG — CBERS-4A/MUX','dataset_series','Cenas CBERS-4A/MUX Level-4 em número digital e ortorretificadas, com quatro bandas multiespectrais visível/NIR.','Remote sensing | Land use and land cover | Environmental monitoring','CBERS-4A | MUX | Level-4 | orthorectified | digital number','Brasil e demais áreas imageadas/disponíveis na coleção','sim','cena raster ortorretificada | coleção STAC','16 m','2019-12-27–2026-08-13 na coleção STAC verificada','por aquisição','conforme aquisição','ativo','CB4A-MUX-L4-DN-1 v1','complete','https://data.inpe.br/bdc/stac/v1/collections/CB4A-MUX-L4-DN-1','https://data.inpe.br/dados/cbers-4a/','derivado','Ortorretificação melhora a geometria, mas não transforma DN em reflectância física. Comparações radiométricas exigem processamento apropriado e metadados de aquisição.','2026-08-18'],
+          ['DP000682','DR0123','CBERS-4A/WFI — Level-2-DN','CB4A WFI L2-DN','BIG — CBERS-4A/WFI','dataset_series','Cenas CBERS-4A/WFI Level-2 em número digital com correções radiométrica e geométrica de sistema nas quatro bandas visível/NIR.','Remote sensing | Land use and land cover | Environmental monitoring','CBERS-4A | WFI | Level-2 | digital number | wide field','Brasil e demais áreas imageadas/disponíveis na coleção','sim','cena raster | coleção STAC','55 m','2019-12-27–2026-08-14 na coleção STAC verificada','por aquisição; revisita nominal até 5 dias','conforme aquisição','ativo','CB4A-WFI-L2-DN-1 v1','complete','https://data.inpe.br/bdc/stac/v1/collections/CB4A-WFI-L2-DN-1','https://data.inpe.br/dados/cbers-4a/','primário','L2-DN não é reflectância de superfície. Ampla faixa e revisita não garantem cobertura livre de nuvens ou observação válida em cada ciclo.','2026-08-18'],
+          ['DP000683','DR0123','CBERS-4A/WFI — Level-4-DN ortorretificado','CB4A WFI L4-DN','BIG — CBERS-4A/WFI','dataset_series','Cenas CBERS-4A/WFI Level-4 em número digital e ortorretificadas, mantendo as quatro bandas visível/NIR.','Remote sensing | Land use and land cover | Environmental monitoring','CBERS-4A | WFI | Level-4 | orthorectified | digital number','Brasil e parte da América do Sul conforme acervo','sim','cena raster ortorretificada | coleção STAC','55 m','2020-07-04–2026-08-14 na coleção STAC verificada','por aquisição','conforme aquisição','ativo','CB4A-WFI-L4-DN-1 v1','complete','https://data.inpe.br/bdc/stac/v1/collections/CB4A-WFI-L4-DN-1','https://data.inpe.br/dados/cbers-4a/','derivado','Produto ortorretificado continua em DN. Não interpretar como reflectância de superfície nem somar com L2/L4-SR como observações independentes da mesma aquisição.','2026-08-18'],
+          ['DP000684','DR0123','CBERS-4A/WFI — Level-4-SR em COG','CB4A WFI L4-SR','BIG — CBERS-4A/WFI','dataset_series','Cenas CBERS-4A/WFI Level-4 em reflectância de superfície, ortorretificadas e distribuídas em COG com quatro bandas e CMASK.','Remote sensing | Land use and land cover | Vegetation dynamics | Environmental monitoring','CBERS-4A | WFI | Level-4 | surface reflectance | COG | CMASK','Brasil e parte da América do Sul conforme coleção','sim','cena raster COG | coleção STAC','55 m','2020-01-01–2026-08-09 na coleção STAC verificada','por aquisição','novas cenas documentadas mensalmente','ativo','CB4A-WFI-L4-SR-1 v1','complete','https://data.inpe.br/bdc/stac/v1/collections/CB4A-WFI-L4-SR-1','https://data.inpe.br/dados/cbers-4a/','derivado','Reflectância de superfície é produto processado; usar CMASK e metadados de aquisição. Não confundir com DN L2/L4 nem inferir ausência de mudança em pixels sem observação válida.','2026-08-18'],
+          ['DP000685','DR0123','CBERS-4A/WPM — fusão pancromática/multiespectral PCA em RGB','CB4A WPM PCA Fused','BIG — produtos derivados CBERS-4A','dataset_series','Produto RGB de 2 m derivado do CBERS-4A/WPM Level-4-DN por fusão de componentes principais (PCA) entre informação pancromática e multiespectral, distribuído em COG para visualização.','Remote sensing | Cartography | Environmental visualization','CBERS-4A | WPM | pansharpening | PCA | fused | RGB | COG','Brasil e área coberta pelas cenas processadas','sim','cena raster RGB COG | coleção STAC','2 m','2023-03-02–2026-08-14 na coleção STAC verificada','por aquisição derivada','novas cenas documentadas diariamente','ativo','CB4A-WPM-PCA-FUSED-1 v1','complete','https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-PCA-FUSED-1','https://data.inpe.br/dados/cbers-4a/','derivado','Produto PCA é voltado à visualização, codificado em 8 bits, e não preserva diretamente os valores radiométricos multiespectrais originais. Não usar como substituto quantitativo do Level-4-DN ou reflectância de superfície.','2026-08-18'],
+          ['DP000686','DR0123','CBERS/WFI — cubo Level-4-SR LCF de 8 dias','CBERS WFI 8D','Brazil Data Cube — cubos CBERS/WFI','dataset_series','Cubo de observação da Terra sobre o Brasil derivado de reflectância de superfície WFI dos satélites CBERS-4 e CBERS-4A, composto a cada 8 dias pelo critério Least Cloud Cover First e distribuído em COG.','Remote sensing | Vegetation dynamics | Land use and land cover | Environmental monitoring','CBERS-4 | CBERS-4A | WFI | data cube | LCF | 8 days | NDVI | EVI','Brasil','sim','célula raster | cubo multidimensional','64 m','2020-01-01–2026-05-24 na coleção STAC verificada','8 dias','aproximadamente a cada 8 dias conforme insumos','ativo','CBERS-WFI-8D-1 v1 / BDC_LG_V2','complete','https://data.inpe.br/bdc/stac/v1/collections/CBERS-WFI-8D-1','https://data.inpe.br/dados/cbers-4a/','derivado','Cubo combina WFI de CBERS-4 e CBERS-4A; Datasource e Provenance devem ser preservados. LCF seleciona melhor pixel dentro da janela e não representa aquisição sinótica única; NDVI/EVI são derivados.','2026-08-18'],
+          ]
+
+          D = [
+          ['DD000705','DP000675','Amazônia-1/WFI L2-DN — STAC e GeoTIFF','https://data.inpe.br/bdc/stac/v1/collections/AMZ1-WFI-L2-DN-1','GeoTIFF + XML + PNG thumbnail','STAC API / HTTPS','cliente STAC | navegador | GIS/Python','sim','não','consulta por coleção/item/asset','CC BY 4.0','sim','por cena, data e footprint','Coleção STAC expõe bandas de 64 m e metadados XML; usar nível L2-DN explicitamente.','2026-08-18'],
+          ['DD000706','DP000676','Amazônia-1/WFI L4-DN — STAC','https://data.inpe.br/bdc/stac/v1/collections/AMZ1-WFI-L4-DN-1','GeoTIFF + metadados','STAC API / HTTPS','cliente STAC | navegador | GIS/Python','sim','não','consulta por coleção/item/asset','CC BY 4.0','sim','por cena, data e footprint','Acesso ao produto ortorretificado em número digital; confirmar assets e metadados no item.','2026-08-18'],
+          ['DD000707','DP000677','Amazônia-1/WFI L4-SR — STAC/COG','https://data.inpe.br/bdc/stac/v1/collections/AMZ1-WFI-L4-SR-1','Cloud Optimized GeoTIFF','STAC API / HTTPS range requests','cliente STAC | GIS | Python','sim','não','consulta/subset por item e asset COG','CC BY 4.0','sim','por cena, data, footprint e banda','Reflectância de superfície com CMASK; COG permite acesso parcial, sem alterar o significado científico do produto.','2026-08-18'],
+          ['DD000708','DP000678','CBERS-4A/WPM L2-DN — STAC','https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-L2-DN-1','GeoTIFF + XML + PNG thumbnail','STAC API / HTTPS','cliente STAC | navegador | GIS/Python','sim','não','consulta por coleção/item/asset','CC BY 4.0','sim','por cena, data, footprint e banda','Banda pancromática 2 m e multiespectrais 8 m são assets separados.','2026-08-18'],
+          ['DD000709','DP000679','CBERS-4A/WPM L4-DN — STAC','https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-L4-DN-1','GeoTIFF + XML + PNG thumbnail','STAC API / HTTPS','cliente STAC | navegador | GIS/Python','sim','não','consulta por coleção/item/asset','CC BY 4.0','sim','por cena, data, footprint e banda','Produto ortorretificado; PAN 2 m e multiespectral 8 m permanecem resoluções distintas.','2026-08-18'],
+          ['DD000710','DP000680','CBERS-4A/MUX L2-DN — STAC','https://data.inpe.br/bdc/stac/v1/collections/CB4A-MUX-L2-DN-1','GeoTIFF + XML + PNG thumbnail','STAC API / HTTPS','cliente STAC | navegador | GIS/Python','sim','não','consulta por coleção/item/asset','CC BY 4.0','sim','por cena, data, footprint e banda','Quatro bandas MUX a 16 m; nível L2-DN.','2026-08-18'],
+          ['DD000711','DP000681','CBERS-4A/MUX L4-DN — STAC','https://data.inpe.br/bdc/stac/v1/collections/CB4A-MUX-L4-DN-1','GeoTIFF + XML + PNG thumbnail','STAC API / HTTPS','cliente STAC | navegador | GIS/Python','sim','não','consulta por coleção/item/asset','CC BY 4.0','sim','por cena, data, footprint e banda','Quatro bandas MUX ortorretificadas a 16 m em DN.','2026-08-18'],
+          ['DD000712','DP000682','CBERS-4A/WFI L2-DN — STAC','https://data.inpe.br/bdc/stac/v1/collections/CB4A-WFI-L2-DN-1','GeoTIFF/COG + XML + PNG thumbnail','STAC API / HTTPS','cliente STAC | navegador | GIS/Python','sim','não','consulta por coleção/item/asset','CC BY 4.0','sim','por cena, data, footprint e banda','Coleção de WFI a 55 m em DN Level-2.','2026-08-18'],
+          ['DD000713','DP000683','CBERS-4A/WFI L4-DN — STAC','https://data.inpe.br/bdc/stac/v1/collections/CB4A-WFI-L4-DN-1','GeoTIFF/COG + XML + PNG thumbnail','STAC API / HTTPS','cliente STAC | navegador | GIS/Python','sim','não','consulta por coleção/item/asset','CC BY 4.0','sim','por cena, data, footprint e banda','Coleção WFI ortorretificada a 55 m em número digital.','2026-08-18'],
+          ['DD000714','DP000684','CBERS-4A/WFI L4-SR — STAC/COG','https://data.inpe.br/bdc/stac/v1/collections/CB4A-WFI-L4-SR-1','Cloud Optimized GeoTIFF','STAC API / HTTPS range requests','cliente STAC | GIS | Python','sim','não','consulta/subset por item e asset COG','CC BY 4.0','sim','por cena, data, footprint e banda','Reflectância de superfície a 55 m com CMASK.','2026-08-18'],
+          ['DD000715','DP000685','CBERS-4A/WPM PCA fused RGB — STAC/COG','https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-PCA-FUSED-1','Cloud Optimized GeoTIFF RGB + PNG thumbnail','STAC API / HTTPS range requests','cliente STAC | GIS | navegador','sim','não','consulta/subset por item COG','CC BY 4.0','sim','por cena, data e footprint','Produto derivado de visualização RGB 2 m; não substitui bandas radiométricas originais.','2026-08-18'],
+          ['DD000716','DP000686','CBERS/WFI 8D LCF — STAC/COG','https://data.inpe.br/bdc/stac/v1/collections/CBERS-WFI-8D-1','Cloud Optimized GeoTIFF','STAC API / HTTPS range requests','cliente STAC | BDC Explorer | GIS/Python','sim','não','consulta por tile/data/banda; subset por asset COG','CC BY 4.0','sim','por tile, janela de 8 dias e banda','Inclui reflectância, CMASK, ClearOB, TotalOB, Provenance, Datasource, NDVI e EVI; preservar proveniência do satélite.','2026-08-18'],
+          ]
+
+          if any(r[19] in urls for r in P):
+              dup = [r[19] for r in P if r[19] in urls]
+              raise SystemExit(f'Canonical product URL already cataloged: {dup}')
+
+          with product_path.open('a', encoding='utf-8', newline='') as f:
+              w = csv.writer(f, lineterminator='\n')
+              for row in P:
+                  if row[0] in pids: raise SystemExit(f'duplicate product id {row[0]}')
+                  w.writerow(row)
+          with dist_path.open('a', encoding='utf-8', newline='') as f:
+              w = csv.writer(f, lineterminator='\n')
+              for row in D:
+                  if row[0] in dids: raise SystemExit(f'duplicate distribution id {row[0]}')
+                  w.writerow(row)
+
+          with product_path.open(encoding='utf-8-sig', newline='') as f:
+              p2=list(csv.DictReader(f))
+          with dist_path.open(encoding='utf-8-sig', newline='') as f:
+              d2=list(csv.DictReader(f))
+          assert len(p2)==682 and len(d2)==712
+          assert max(int(r['product_id'][2:]) for r in p2)==686
+          assert max(int(r['distribution_id'][2:]) for r in d2)==716
+          pset={r['product_id'] for r in p2}
+          assert all(r['product_id'] in pset for r in d2)
+          print('OK append', len(P), len(D), len(p2), len(d2))
+          PY
+
+      - name: Validate and rebuild
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Read-back integrity
+        run: |
+          python3 - <<'PY'
+          import csv, json
+          from pathlib import Path
+          def rows(p):
+              with open(p,encoding='utf-8-sig',newline='') as f: return list(csv.DictReader(f))
+          s=rows('data/data_resources.csv'); p=rows('data/data_products.csv'); d=rows('data/product_distributions.csv')
+          assert len(s)==123 and len(p)==682 and len(d)==712
+          assert len({r['product_id'] for r in p})==len(p)
+          assert len({r['distribution_id'] for r in d})==len(d)
+          rids={r['resource_id'] for r in s}; pids={r['product_id'] for r in p}
+          assert all(r['resource_id'] in rids for r in p)
+          assert all(r['product_id'] in pids for r in d)
+          for n in range(675,687): assert f'DP{n:06d}' in pids
+          dids={r['distribution_id'] for r in d}
+          for n in range(705,717): assert f'DD{n:06d}' in dids
+          print('READBACK',len(s),len(p),len(d))
+          PY
+
+      - name: Commit materialized data
+        run: |
+          git config user.name "vitrine-bot"
+          git config user.email "vitrine-bot@users.noreply.github.com"
+          git status --short
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json data/link_role_audit.json data/build-meta.json
+          if git diff --cached --quiet; then
+            echo "No material changes"
+            exit 1
+          fi
+          git commit -m "Expand verified BIG CBERS processing catalog"
+          git push origin HEAD:agent/big-cbers-processing-20260818
