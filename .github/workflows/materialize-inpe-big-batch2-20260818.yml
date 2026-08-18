@@ -1,0 +1,65 @@
+name: Materialize verified INPE BIG batch 2
+
+on:
+  push:
+    branches: [audit/inpe-big-batch2-20260818]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/inpe-big-batch2-20260818
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Append, rebuild and validate batch
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          pp=Path('data/data_products.csv'); dp=Path('data/product_distributions.csv')
+          products=json.loads(Path('tmp/inpe_big_batch2_products.json').read_text(encoding='utf-8'))
+          dists=json.loads(Path('tmp/inpe_big_batch2_dists.json').read_text(encoding='utf-8'))
+          def load(p):
+              with p.open(encoding='utf-8-sig',newline='') as f:
+                  r=csv.DictReader(f); return list(r.fieldnames or []),list(r)
+          ph,pr=load(pp); dh,dr=load(dp)
+          pids={r['product_id'] for r in pr}; dids={r['distribution_id'] for r in dr}; urls={r['product_page_url'].strip() for r in pr}
+          complete=all(x['product_id'] in pids for x in products) and all(x['distribution_id'] in dids for x in dists)
+          if not complete:
+              assert (len(pr),len(dr))==(631,656),(len(pr),len(dr))
+              assert not any(x['product_id'] in pids for x in products)
+              assert not any(x['distribution_id'] in dids for x in dists)
+              clashes=[x['product_page_url'] for x in products if x['product_page_url'] in urls]
+              assert not clashes,clashes
+              with pp.open('a',encoding='utf-8',newline='') as f: csv.DictWriter(f,fieldnames=ph,lineterminator='\n').writerows(products)
+              with dp.open('a',encoding='utf-8',newline='') as f: csv.DictWriter(f,fieldnames=dh,lineterminator='\n').writerows(dists)
+          _,pr2=load(pp); _,dr2=load(dp)
+          assert (len(pr2),len(dr2))==(638,663)
+          assert len({x['product_id'] for x in pr2})==638 and len({x['distribution_id'] for x in dr2})==663
+          assert all(x['product_id'] in {p['product_id'] for p in pr2} for x in dr2)
+          print('READBACK_OK 123 638 663')
+          PY
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/audit_link_roles.py
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Commit materialized batch and required derivatives
+        run: |
+          git config user.name vitrine-science-bot
+          git config user.email actions@users.noreply.github.com
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json data/link_role_audit.json
+          if git diff --cached --quiet; then echo 'No data diff'; exit 0; fi
+          git diff --cached --check
+          git commit -m 'Expand verified INPE BIG observation catalog'
+          git push origin HEAD:audit/inpe-big-batch2-20260818
