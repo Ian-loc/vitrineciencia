@@ -32330,5 +32330,359 @@
     "available_protocols": [
       "HTTPS"
     ]
+  },
+  {
+    "product_id": "DP000545",
+    "resource_id": "DR0119",
+    "product_name": "CPTEC/INPE — Previsão Numérica de Tempo",
+    "product_acronym": "PNT CPTEC",
+    "product_family": "previsão numérica de tempo",
+    "product_kind": "data_service",
+    "product_description": "Serviço operacional de previsão numérica do tempo do CPTEC/INPE, com visualização por localidades e campos de modelos como WRF, BRAMS, BAM e Eta.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "previsão numérica | WRF | BRAMS | BAM | Eta | precipitação | temperatura | vento",
+    "geographic_coverage": "Brasil e domínios de modelagem associados",
+    "covers_brazil": "sim",
+    "spatial_support": "grade de modelo e síntese por localidade",
+    "spatial_resolution": "varia por modelo e configuração; o portal operacional apresenta múltiplos modelos",
+    "temporal_coverage": "previsão operacional corrente",
+    "temporal_resolution": "horária e por horizonte conforme produto/modelo",
+    "update_frequency": "operacional; conforme ciclo de cada modelo",
+    "product_status": "ativo",
+    "version_or_collection": "serviço operacional 2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://previsaonumerica.cptec.inpe.br/",
+    "methodology_url": "https://www.cptec.inpe.br/",
+    "primary_or_derived": "derivado",
+    "limitations": "Previsão modelada não é observação. Modelos, resoluções, ciclos e horizontes não são intercambiáveis; resultados devem ser avaliados por variável, horizonte e domínio.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0119",
+      "resource_name": "Centro de Previsão de Tempo e Estudos Climáticos — CPTEC/INPE",
+      "acronym": "CPTEC/INPE",
+      "official_identity": "Centro de Previsão de Tempo e Estudos Climáticos do Instituto Nacional de Pesquisas Espaciais — INPE/MCTI",
+      "homepage_url": "https://www.cptec.inpe.br/",
+      "data_access_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000570",
+        "product_id": "DP000545",
+        "distribution_name": "CPTEC — portal de Previsão Numérica de Tempo",
+        "access_url": "https://previsaonumerica.cptec.inpe.br/",
+        "format": "mapas | gráficos | meteogramas web",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal operacional CPTEC",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; observar termos de uso dos produtos CPTEC/INPE",
+        "license": "termos CPTEC/INPE; verificar uso comercial e atribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por localidade, modelo, variável, ciclo e horizonte conforme interface",
+        "notes": "Múltiplos modelos operacionais; preservar modelo/ciclo/horizonte e não confundir previsão com observação.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas | gráficos | meteogramas web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000546",
+    "resource_id": "DR0119",
+    "product_name": "CPTEC/INPE — Previsão Numérica Subsazonal — BAM 1.2",
+    "product_acronym": "BAM Subsazonal",
+    "product_family": "previsão numérica subsazonal",
+    "product_kind": "data_service",
+    "product_description": "Sistema de previsão numérica subsazonal do CPTEC/INPE baseado no BAM 1.2, com variáveis atmosféricas, campos calibrados e acesso programático documentado.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "subsazonal | BAM 1.2 | precipitação | temperatura | circulação | API | previsão",
+    "geographic_coverage": "domínios e regiões oferecidos pelo sistema, incluindo Brasil e América do Sul",
+    "covers_brazil": "sim",
+    "spatial_support": "grade de modelo numérico",
+    "spatial_resolution": "conforme configuração BAM 1.2 e produto selecionado",
+    "temporal_coverage": "previsões operacionais e inicializações disponíveis no portal",
+    "temporal_resolution": "semanal/subsazonal conforme produto",
+    "update_frequency": "conforme ciclos operacionais do sistema",
+    "product_status": "ativo",
+    "version_or_collection": "BAM 1.2 — portal corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://subsazonal.cptec.inpe.br/",
+    "methodology_url": "https://subsazonal.cptec.inpe.br/",
+    "primary_or_derived": "derivado",
+    "limitations": "Previsões subsazonais são probabilísticas/modeladas e não observações futuras. Variáveis calibradas e não calibradas são produtos distintos; preservar inicialização, horizonte, membro/campo e método.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0119",
+      "resource_name": "Centro de Previsão de Tempo e Estudos Climáticos — CPTEC/INPE",
+      "acronym": "CPTEC/INPE",
+      "official_identity": "Centro de Previsão de Tempo e Estudos Climáticos do Instituto Nacional de Pesquisas Espaciais — INPE/MCTI",
+      "homepage_url": "https://www.cptec.inpe.br/",
+      "data_access_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000571",
+        "product_id": "DP000546",
+        "distribution_name": "CPTEC — portal/API de Previsão Subsazonal BAM 1.2",
+        "access_url": "https://subsazonal.cptec.inpe.br/",
+        "format": "mapas | downloads | API Python conforme documentação",
+        "access_protocol": "HTTPS | API",
+        "access_tool": "portal e API do CPTEC",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público conforme portal; observar termos CPTEC/INPE",
+        "license": "termos CPTEC/INPE; verificar produto/download",
+        "provider_attribution_required": "sim",
+        "subset_support": "região | variável | campo | produto | inicialização",
+        "notes": "Variáveis calibradas e não calibradas são distintas; preservar configuração da consulta.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas | downloads | API Python conforme documentação"
+    ],
+    "available_protocols": [
+      "HTTPS | API"
+    ]
+  },
+  {
+    "product_id": "DP000547",
+    "resource_id": "DR0119",
+    "product_name": "CPTEC/INPE — Previsão Numérica Sazonal — BAM 1.2",
+    "product_acronym": "BAM Sazonal",
+    "product_family": "previsão numérica sazonal",
+    "product_kind": "data_service",
+    "product_description": "Sistema de previsão numérica sazonal do CPTEC/INPE baseado no BAM 1.2, com previsão, avaliação, verificação, downloads e API Python para múltiplas variáveis atmosféricas.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "sazonal | BAM 1.2 | precipitação | temperatura | circulação | API | climatologia",
+    "geographic_coverage": "domínios e regiões oferecidos pelo sistema, incluindo Brasil e América do Sul",
+    "covers_brazil": "sim",
+    "spatial_support": "grade de modelo numérico",
+    "spatial_resolution": "conforme configuração BAM 1.2 e produto selecionado",
+    "temporal_coverage": "previsões sazonais operacionais e arquivos disponíveis",
+    "temporal_resolution": "mensal/sazonal conforme produto",
+    "update_frequency": "conforme ciclos sazonais do sistema",
+    "product_status": "ativo",
+    "version_or_collection": "BAM 1.2 — portal corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://sazonal.cptec.inpe.br/",
+    "methodology_url": "https://sazonal.cptec.inpe.br/",
+    "primary_or_derived": "derivado",
+    "limitations": "Previsão sazonal não é previsão determinística do estado diário. Preservar inicialização, horizonte, variável, calibração, ensemble e documentação de avaliação/verificação.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0119",
+      "resource_name": "Centro de Previsão de Tempo e Estudos Climáticos — CPTEC/INPE",
+      "acronym": "CPTEC/INPE",
+      "official_identity": "Centro de Previsão de Tempo e Estudos Climáticos do Instituto Nacional de Pesquisas Espaciais — INPE/MCTI",
+      "homepage_url": "https://www.cptec.inpe.br/",
+      "data_access_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000572",
+        "product_id": "DP000547",
+        "distribution_name": "CPTEC — portal/API de Previsão Sazonal BAM 1.2",
+        "access_url": "https://sazonal.cptec.inpe.br/",
+        "format": "mapas | downloads | API Python conforme documentação",
+        "access_protocol": "HTTPS | API",
+        "access_tool": "portal e API do CPTEC",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público conforme portal; observar termos CPTEC/INPE",
+        "license": "termos CPTEC/INPE; verificar produto/download",
+        "provider_attribution_required": "sim",
+        "subset_support": "variável | produto | inicialização | avaliação/verificação",
+        "notes": "Portal disponibiliza previsão, avaliação, verificação, downloads e instruções Python.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas | downloads | API Python conforme documentação"
+    ],
+    "available_protocols": [
+      "HTTPS | API"
+    ]
+  },
+  {
+    "product_id": "DP000548",
+    "resource_id": "DR0119",
+    "product_name": "CPTEC/INPE — Banco de Dados Climatológicos",
+    "product_acronym": "Banco Climatológico CPTEC",
+    "product_family": "séries meteorológicas e climatológicas históricas",
+    "product_kind": "dataset_series",
+    "product_description": "Interface do Banco de Dados do CPTEC para consulta de dados climatológicos por cidade, estação ou localização, com dados diários e disponibilidade de download condicionada ao conjunto.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "dados climatológicos | estações | séries históricas | meteorologia | banco de dados",
+    "geographic_coverage": "Brasil e estações de outras entidades conforme registros disponíveis",
+    "covers_brazil": "sim",
+    "spatial_support": "ponto de estação meteorológica",
+    "spatial_resolution": "pontual",
+    "temporal_coverage": "varia por estação e entidade provedora",
+    "temporal_resolution": "diária no fluxo documentado; mensal indicado como não disponível na FAQ auditada",
+    "update_frequency": "varia conforme fonte e estação",
+    "product_status": "ativo",
+    "version_or_collection": "interface corrente documentada em 2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://www.cptec.inpe.br/faq/como-acessar-os-dados-da-pagina-de-banco-de-dados-do-cptec/",
+    "methodology_url": "https://www.cptec.inpe.br/faq/como-acessar-os-dados-da-pagina-de-banco-de-dados-do-cptec/",
+    "primary_or_derived": "primário",
+    "limitations": "Disponibilidade, período, entidade proprietária e possibilidade de download variam por estação. A FAQ auditada informa que a opção mensal ainda não estava disponível; não extrapolar cobertura ou completude.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0119",
+      "resource_name": "Centro de Previsão de Tempo e Estudos Climáticos — CPTEC/INPE",
+      "acronym": "CPTEC/INPE",
+      "official_identity": "Centro de Previsão de Tempo e Estudos Climáticos do Instituto Nacional de Pesquisas Espaciais — INPE/MCTI",
+      "homepage_url": "https://www.cptec.inpe.br/",
+      "data_access_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000573",
+        "product_id": "DP000548",
+        "distribution_name": "CPTEC — Banco de Dados Climatológicos",
+        "access_url": "https://www.cptec.inpe.br/faq/como-acessar-os-dados-da-pagina-de-banco-de-dados-do-cptec/",
+        "format": "consulta web | gráficos | downloads quando liberados",
+        "access_protocol": "HTTP",
+        "access_tool": "consulta por cidade, estação ou localização",
+        "free_download": "parcial",
+        "authentication_required": "desconhecido",
+        "access_conditions": "downloads dependem da estação/conjunto; a interface sinaliza disponibilidade",
+        "license": "verificar entidade proprietária e termos do conjunto",
+        "provider_attribution_required": "sim",
+        "subset_support": "cidade | estação | localização | mês | ano",
+        "notes": "A FAQ oficial documenta consulta diária e informa indisponibilidade da opção mensal no fluxo auditado.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "consulta web | gráficos | downloads quando liberados"
+    ],
+    "available_protocols": [
+      "HTTP"
+    ]
+  },
+  {
+    "product_id": "DP000549",
+    "resource_id": "DR0119",
+    "product_name": "CPTEC/INPE — Serviços Web XML de Tempo, IUV e Ondas",
+    "product_acronym": "CPTEC XML",
+    "product_family": "webservices meteorológicos e oceânicos",
+    "product_kind": "data_service",
+    "product_description": "Serviços web XML para busca de localidades, condições atuais, previsão de tempo, índice ultravioleta e previsão de ondas por localidade.",
+    "research_areas": "Clima e Ciências Atmosféricas | Recursos Hídricos e Oceanografia | Infraestruturas e Ciência de Dados",
+    "keywords": "XML | API | previsão do tempo | IUV | ondas | localidades | webservice",
+    "geographic_coverage": "municípios/localidades cobertos pelo CPTEC; ondas para localidades litorâneas",
+    "covers_brazil": "sim",
+    "spatial_support": "localidade/município e produto associado",
+    "spatial_resolution": "por localidade; depende do produto que alimenta o serviço",
+    "temporal_coverage": "serviço dinâmico corrente",
+    "temporal_resolution": "condição atual e horizontes de 4, 7 dias, estendido e ondas até 6 dias conforme endpoint",
+    "update_frequency": "dinâmica conforme produto",
+    "product_status": "ativo",
+    "version_or_collection": "serviço XML corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://servicos.cptec.inpe.br/XML/",
+    "methodology_url": "https://servicos.cptec.inpe.br/XML/",
+    "primary_or_derived": "serviço",
+    "limitations": "Resposta XML redistribui previsões e condições produzidas por sistemas subjacentes; não melhora a resolução ou a incerteza científica desses produtos. Termos de uso e códigos de localidade devem ser preservados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0119",
+      "resource_name": "Centro de Previsão de Tempo e Estudos Climáticos — CPTEC/INPE",
+      "acronym": "CPTEC/INPE",
+      "official_identity": "Centro de Previsão de Tempo e Estudos Climáticos do Instituto Nacional de Pesquisas Espaciais — INPE/MCTI",
+      "homepage_url": "https://www.cptec.inpe.br/",
+      "data_access_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000574",
+        "product_id": "DP000549",
+        "distribution_name": "CPTEC — Serviços XML de previsão, IUV e ondas",
+        "access_url": "https://servicos.cptec.inpe.br/XML/",
+        "format": "XML",
+        "access_protocol": "HTTPS/XML",
+        "access_tool": "requisições por URL documentadas",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "uso conforme termos documentados pelo CPTEC/INPE",
+        "license": "termos do serviço CPTEC/INPE",
+        "provider_attribution_required": "sim",
+        "subset_support": "código de localidade | endpoint | horizonte",
+        "notes": "Inclui busca de localidades, previsões de 4/7 dias e estendida, IUV e ondas para localidades litorâneas.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XML"
+    ],
+    "available_protocols": [
+      "HTTPS/XML"
+    ]
+  },
+  {
+    "product_id": "DP000550",
+    "resource_id": "DR0119",
+    "product_name": "CPTEC/INPE — Base de Dados de Modelagem Numérica do Sistema Terrestre",
+    "product_acronym": "DMN CPTEC",
+    "product_family": "base de modelagem numérica e dados de entrada",
+    "product_kind": "federated_catalog",
+    "product_description": "Catálogo técnico de previsões CPTEC/GFS, dados de entrada, análises, reanálises e observações utilizados e disseminados pela área de modelagem numérica do CPTEC/INPE.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "modelagem numérica | BAM | BRAMS | Eta | WRF | WAVEWATCH | reanálise | observações | FTP",
+    "geographic_coverage": "global, América do Sul e Brasil conforme conjunto/modelo",
+    "covers_brazil": "sim",
+    "spatial_support": "grades, campos e observações conforme conjunto",
+    "spatial_resolution": "varia por modelo e base",
+    "temporal_coverage": "varia por coleção; inclui produtos operacionais recentes e arquivos históricos",
+    "temporal_resolution": "varia por conjunto",
+    "update_frequency": "varia por conjunto e modelo",
+    "product_status": "ativo",
+    "version_or_collection": "catálogo técnico corrente 2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/",
+    "methodology_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/previsoes-cptec/",
+    "primary_or_derived": "agregador",
+    "limitations": "Catálogo reúne objetos heterogêneos e não deve ser tratado como dataset único. Para cada uso registrar modelo/conjunto, ciclo, versão, domínio, variável, resolução, formato e termos de acesso.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0119",
+      "resource_name": "Centro de Previsão de Tempo e Estudos Climáticos — CPTEC/INPE",
+      "acronym": "CPTEC/INPE",
+      "official_identity": "Centro de Previsão de Tempo e Estudos Climáticos do Instituto Nacional de Pesquisas Espaciais — INPE/MCTI",
+      "homepage_url": "https://www.cptec.inpe.br/",
+      "data_access_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000575",
+        "product_id": "DP000550",
+        "distribution_name": "CPTEC — Base técnica de dados e modelos",
+        "access_url": "https://www3.cptec.inpe.br/dimnt/base-de-dados/",
+        "format": "arquivos de modelos | análises | reanálises | observações; varia por coleção",
+        "access_protocol": "HTTPS | FTP conforme coleção",
+        "access_tool": "índice técnico e endpoints por conjunto/modelo",
+        "free_download": "sim",
+        "authentication_required": "desconhecido",
+        "access_conditions": "varia por coleção e infraestrutura; verificar documentação específica",
+        "license": "varia por conjunto e provedor",
+        "provider_attribution_required": "sim",
+        "subset_support": "por categoria, modelo e coleção",
+        "notes": "Catálogo referencia previsões, GFS, entradas, análises, reanálises e observações; preservar proveniência por coleção.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "arquivos de modelos | análises | reanálises | observações; varia por coleção"
+    ],
+    "available_protocols": [
+      "HTTPS | FTP conforme coleção"
+    ]
   }
 ]
