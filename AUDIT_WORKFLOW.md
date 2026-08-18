@@ -1,76 +1,95 @@
-# Workflow de verificação do catálogo
+# Workflow de verificação do catálogo — Vitrine Ciência
 
 ## Governança
 
-`data/data_resources.csv` é a única fonte canônica. O JSON do site é gerado no build. O Drive mantém somente changelog executivo e histórico.
+As três tabelas CSV da `main` são a autoridade. JSONs/site são derivados; Drive é histórico/espelho. Auditoria serve à correção e manutenção do produto, não cria uma autoridade paralela.
 
-## Preparação
+## Tipos de auditoria
 
-1. localizar a fonte na fila `migration/external_review_queue.csv`;
-2. confirmar se existe portão de escopo ou relação de duplicidade;
-3. revisar o foco herdado do lote BR;
-4. não editar o CSV antes de registrar evidências e decisão.
+### Fonte
 
-## Revisão por fonte
+Verificar:
 
-1. confirmar nome, identidade, objetivo, função e responsável;
-2. testar homepage, acesso aos dados e documentação técnica separadamente;
-3. conferir produtos, formatos, visualizações, cobertura, versão e atualização;
-4. distinguir download, API/protocolo, ferramenta cliente, autenticação e restrições;
-5. verificar resolução, escala ou suporte no nível do produto;
-6. conferir licença, orientação de citação e atribuição da fonte original;
-7. localizar literatura representativa de uso ou avaliação;
-8. registrar limitações, sobreposição e incerteza;
-9. atualizar `last_verified` somente após decisão canônica aprovada.
+1. nome, identidade, função e responsável;
+2. homepage e rota de acesso;
+3. cobertura Brasil e classificação P0–P3;
+4. tipos gerais de conteúdo;
+5. acesso programático, autenticação e condições;
+6. licença no nível que puder ser sustentado;
+7. cobertura/resolução/temporalidade apenas quando generalizáveis;
+8. evidência representativa e limitações;
+9. data de verificação.
 
-## Evidência em formato longo
+### Produto
 
-Cada linha de `migration/external_review_evidence.csv` sustenta uma afirmação específica. Registrar:
+Verificar:
 
-- `resource_id`, dimensão e afirmação;
-- valor atual e valor observado;
-- URL, tipo de evidência e fonte oficial;
-- data e revisor;
-- se a evidência sustenta o valor atual;
-- ação e valor propostos;
-- limitações.
+1. identidade e fonte pai;
+2. `product_kind` e `enumeration_scope`;
+3. descrição e natureza primária/derivada;
+4. cobertura e suporte/resolução;
+5. cobertura temporal, resolução temporal e atualização;
+6. coleção/versão quando relevante;
+7. metodologia e limitações;
+8. ao menos uma distribuição válida.
 
-Uma fonte pode exigir várias linhas. Uma homepage não comprova automaticamente API, licença, formato, resolução ou atualização.
+### Distribuição
 
-## Decisão
+Verificar:
 
-- `manter`: evidência sustenta o valor;
-- `corrigir`: evidência oficial contradiz o valor e há proposta explícita;
-- `marcar_desconhecido`: informação insuficiente;
-- `documentar_variabilidade`: atributo varia por dataset, produto, sítio ou coleção;
-- `avaliar_exclusão_ou_fusão`: problema de elegibilidade, sucessão ou duplicidade.
+- URL;
+- formato;
+- protocolo;
+- ferramenta;
+- gratuidade;
+- autenticação;
+- condições;
+- licença/atribuição;
+- suporte a recorte;
+- data de verificação.
 
-Nenhuma decisão é aplicada automaticamente ao CSV.
+## Evidência
+
+Use a fonte mais específica e autoritativa disponível. Uma única página não deve sustentar automaticamente identidade, API, licença, resolução, método e atualização.
+
+Prioridade: documentação oficial → metadados/API oficiais → metodologia/termos → publicação científica primária quando necessária → apoio secundário.
+
+## Decisões
+
+- `manter` — evidência sustenta o valor;
+- `corrigir` — evidência sustenta valor diferente;
+- `desconhecido/não localizado` — evidência insuficiente;
+- `variável` — propriedade não é homogênea no nível representado;
+- `fundir/alias/tombstone` — duplicidade material comprovada, com preservação de rastreabilidade;
+- `descontinuado/arquivado` — estado sustentado pela fonte.
 
 ## Controle automático
 
 ```bash
-python3 scripts/validate_quality_correction_plan.py
-python3 scripts/validate_candidate_queue.py
+python3 scripts/validate_brazil_scope.py
+python3 scripts/validate_product_catalog.py
 python3 scripts/build_catalog.py
-python3 scripts/audit_link_roles.py
-python3 scripts/validate_schema_draft.py
-python3 scripts/validate_migration_matrix.py
-python3 scripts/validate_data1bx_matrix.py
-python3 scripts/load_data1bx_from_canonical.py
-python3 scripts/validate_br_batches.py
-python3 scripts/validate_br_completion.py
-python3 scripts/validate_external_review_evidence.py
-python3 scripts/validate_external_review_queue.py
-python3 scripts/validate_doi_readiness.py
-python3 scripts/validate_frontend.py
+python3 scripts/audit_link_roles.py --write
+python3 scripts/validate_vitrine.py
+python3 scripts/build_site_artifact.py
 ```
 
-## Frequência
+Testes de frontend/JavaScript e QA visual são adicionados quando a mudança puder afetar a superfície pública.
 
-- trimestral: links, acesso, autenticação e disponibilidade;
-- anual: conteúdo, evidência acadêmica, versões e áreas;
-- imediata: mudança de licença, API, formato, cobertura ou responsável;
-- por pull request: validação estrutural e inspeção científica do diff.
+## Frequência orientativa
 
-Respostas 401, 403 e 429 não provam indisponibilidade para usuários; podem refletir autenticação, cotas ou bloqueio a robôs.
+- por pull request: integridade e diff;
+- periodicamente: links, autenticação, acesso e disponibilidade;
+- por mudança observada: licença, versão, endpoint, responsável ou cobertura;
+- por lote de expansão: identidade, duplicidade e classificação territorial;
+- antes de release: auditoria focal nos erros materiais e consistência documental.
+
+Não é necessário reauditar todos os registros em toda rodada.
+
+## Interpretação de respostas HTTP
+
+401/403/429 ou bloqueio de robôs não provam indisponibilidade ao usuário. Diferenciar autenticação, quota, WAF/anti-bot e recurso realmente removido.
+
+## Critério de encerramento
+
+Uma auditoria é concluída quando o risco material do escopo foi resolvido ou explicitamente documentado, os validadores aplicáveis passam e não há evidência de que novas verificações mudariam materialmente a decisão naquele momento.
