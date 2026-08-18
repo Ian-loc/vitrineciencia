@@ -13,7 +13,7 @@ As três tabelas canônicas são:
 2. `data/data_products.csv` — produtos;
 3. `data/product_distributions.csv` — distribuições/acessos.
 
-Snapshot de 18/08/2026: **125 fontes, 756 produtos e 787 distribuições**. As contagens são estado, não contrato.
+Snapshot de 18/08/2026: **125 fontes, 752 produtos e 783 distribuições**. Os identificadores correntes chegam a `DR0125`, `DP000756` e `DD000787`, porque lacunas históricas não são recicladas. As contagens são estado, não contrato.
 
 ## 2. Unidades semânticas
 
@@ -138,4 +138,4 @@ CI comprova conformidade estrutural, não verdade factual externa.
 
 ## 12. Estabilidade
 
-O contrato é estável e permite crescimento de linhas. Nenhuma contagem histórica — 51/11/19, 125/756/787 ou outra — é requisito para manutenção ou release. Mudança incompatível do schema exige decisão separada e documentação coordenada.
+O contrato é estável e permite crescimento de linhas. Nenhuma contagem histórica — 51/11/19, 125/752/783 ou outra — é requisito para manutenção ou release. Mudança incompatível do schema exige decisão separada e documentação coordenada.
