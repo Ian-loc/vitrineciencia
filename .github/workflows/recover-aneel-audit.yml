@@ -1,0 +1,58 @@
+name: Recover ANEEL audit materialization
+on:
+  pull_request:
+    types: [synchronize, reopened]
+permissions:
+  contents: write
+jobs:
+  recover:
+    if: github.head_ref == 'audit/aneel-2026-08-18'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/aneel-2026-08-18
+          fetch-depth: 0
+      - name: Re-run verified append block
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          lines=Path('.github/workflows/materialize-aneel-audit.yml').read_text(encoding='utf-8').splitlines()
+          start=next(i for i,l in enumerate(lines) if '- name: Append verified ANEEL source, products and distributions' in l)
+          run_i=next(i for i in range(start+1,len(lines)) if lines[i].strip()=='run: |')
+          body=[]
+          for l in lines[run_i+1:]:
+              if l.startswith('      - name:'):
+                  break
+              body.append(l[10:] if l.startswith('          ') else l)
+          Path('/tmp/append_aneel.sh').write_text('\n'.join(body)+'\n',encoding='utf-8')
+          PY
+          bash /tmp/append_aneel.sh
+      - name: Validate and read back
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+          python3 - <<'PY'
+          import csv
+          R=list(csv.DictReader(open('data/data_resources.csv',encoding='utf-8')))
+          P=list(csv.DictReader(open('data/data_products.csv',encoding='utf-8')))
+          D=list(csv.DictReader(open('data/product_distributions.csv',encoding='utf-8')))
+          assert 'DR0120' in {r['resource_id'] for r in R}
+          assert set(f'DP{i:06d}' for i in range(557,568)) <= {p['product_id'] for p in P}
+          assert set(f'DD{i:06d}' for i in range(582,593)) <= {d['distribution_id'] for d in D}
+          print(f'counts: {len(R)} sources, {len(P)} products, {len(D)} distributions')
+          PY
+      - name: Commit canonical changes
+        run: |
+          git config user.name 'vitrine-audit-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A data reports
+          git diff --cached --quiet && exit 0
+          git commit -m 'Expand verified ANEEL energy catalog'
+          git push origin HEAD:audit/aneel-2026-08-18
