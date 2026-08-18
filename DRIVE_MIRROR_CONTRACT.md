@@ -13,7 +13,7 @@ Autoridade ativa:
 
 ## Estado corrente — 18/08/2026
 
-O catálogo canônico possui **125 fontes, 756 produtos e 787 distribuições**.
+O catálogo canônico possui **125 fontes, 752 produtos e 783 distribuições**. Os maiores IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`; lacunas de identificadores são preservadas.
 
 O workbook legado existente no Drive foi criado em fase anterior e **não está sincronizado com esse snapshot**. Ele não deve ser apresentado como cópia corrente da base. A divergência é conhecida e não invalida os dados canônicos do GitHub.
 
