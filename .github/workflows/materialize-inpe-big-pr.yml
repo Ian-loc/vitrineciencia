@@ -1,0 +1,36 @@
+name: Materialize INPE BIG batch on PR
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.head_ref == 'audit/inpe-big-20260818'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/inpe-big-20260818
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Materialize and validate
+        run: |
+          python tmp/materialize_inpe_big.py
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          git diff --check
+      - name: Commit canonical data
+        run: |
+          if git diff --quiet -- data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json; then echo 'No data diff'; exit 0; fi
+          git config user.name vitrine-science-bot
+          git config user.email actions@users.noreply.github.com
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json
+          git commit -m 'Expand verified INPE BIG and TOPODATA catalog'
+          git push origin HEAD:audit/inpe-big-20260818
