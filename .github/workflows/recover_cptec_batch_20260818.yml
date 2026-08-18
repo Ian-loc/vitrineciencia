@@ -17,7 +17,19 @@ jobs:
           python-version: '3.12'
       - name: Re-run verified append block
         run: |
-          awk '/- name: Append verified CPTEC products and distributions/{flag=1;next}/- name: Validate canonical catalog/{flag=0} flag {sub(/^        /,""); print}' .github/workflows/curate_cptec_batch_20260818.yml | bash
+          python - <<'PY'
+          from pathlib import Path
+          lines=Path('.github/workflows/curate_cptec_batch_20260818.yml').read_text(encoding='utf-8').splitlines()
+          start=next(i for i,l in enumerate(lines) if '- name: Append verified CPTEC products and distributions' in l)
+          run_i=next(i for i in range(start+1,len(lines)) if lines[i].strip()=='run: |')
+          body=[]
+          for l in lines[run_i+1:]:
+              if l.startswith('      - name:'):
+                  break
+              body.append(l[10:] if l.startswith('          ') else l)
+          Path('/tmp/append_cptec.sh').write_text('\n'.join(body)+'\n',encoding='utf-8')
+          PY
+          bash /tmp/append_cptec.sh
       - name: Validate and read back
         run: |
           python scripts/validate_brazil_scope.py
@@ -36,8 +48,9 @@ jobs:
           assert len({d['distribution_id'] for d in D})==len(D)
           assert set(f'DP{i:06d}' for i in range(551,557)) <= {p['product_id'] for p in P}
           assert set(f'DD{i:06d}' for i in range(576,582)) <= {d['distribution_id'] for d in D}
-          assert all(p['resource_id'] in {r['resource_id'] for r in R} for p in P)
-          assert all(d['product_id'] in {p['product_id'] for p in P} for d in D)
+          rs={r['resource_id'] for r in R}; ps={p['product_id'] for p in P}
+          assert all(p['resource_id'] in rs for p in P)
+          assert all(d['product_id'] in ps for d in D)
           print(f'counts: {len(R)} sources, {len(P)} products, {len(D)} distributions')
           PY
       - name: Commit canonical changes
