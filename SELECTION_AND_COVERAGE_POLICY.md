@@ -117,4 +117,4 @@ A matriz orienta busca; não cria cotas.
 
 ## 12. Estado atual
 
-Em 18/08/2026 a Vitrine possui **125 fontes, 756 produtos e 787 distribuições** dentro do contrato de 34/24/15 campos. O catálogo está em expansão contínua e auditada. Não há requisito de migração para 38 campos ou de retornar ao baseline histórico de 51 fontes.
+Em 18/08/2026 a Vitrine possui **125 fontes, 752 produtos e 783 distribuições** dentro do contrato de 34/24/15 campos. IDs chegam a `DR0125`, `DP000756` e `DD000787` porque lacunas históricas são preservadas. O catálogo está em expansão contínua e auditada. Não há requisito de migração para 38 campos ou de retornar ao baseline histórico de 51 fontes.
