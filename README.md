@@ -18,9 +18,10 @@ A Vitrine Ciência organiza fontes, produtos e formas de acesso com busca, filtr
 
 ### Snapshot de 18 de agosto de 2026
 
-- **125 fontes** (`DR0001`–`DR0125`);
-- **756 produtos** (`DP000001`–`DP000756`);
-- **787 distribuições** (`DD000001`–`DD000787`);
+- **125 fontes**;
+- **752 produtos**;
+- **783 distribuições**;
+- os identificadores correntes chegam a `DR0125`, `DP000756` e `DD000787`, pois IDs removidos/consolidados não são reciclados;
 - verificações de fontes registradas até **2026-08-18**.
 
 Essas contagens são um snapshot operacional, não limites arquiteturais. A autoridade é sempre o conteúdo validado da `main`.
