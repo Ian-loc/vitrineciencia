@@ -3,7 +3,7 @@ name: Run verified BIG CBERS materializer
 on:
   push:
     branches: ["main"]
-    paths: [".github/workflows/run-big-cbers-materializer.yml"]
+    paths: [".github/workflows/run-big-cbers-materializer.yml", ".big-cbers-trigger"]
   workflow_dispatch:
 
 permissions:
