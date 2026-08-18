@@ -44234,5 +44234,713 @@
     "available_protocols": [
       "HTTP download"
     ]
+  },
+  {
+    "product_id": "DP000745",
+    "resource_id": "DR0124",
+    "product_name": "Certificado de Cadastro de Imóvel Rural — CCIR 2026",
+    "product_acronym": "CCIR 2026",
+    "product_family": "Sistema Nacional de Cadastro Rural — SNCR",
+    "product_kind": "data_service",
+    "product_description": "Serviço oficial do Incra para emissão do Certificado de Cadastro de Imóvel Rural do exercício 2026, documento anual de regularidade cadastral do imóvel rural no SNCR.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Agricultura, Florestas e Uso da Terra | Infraestruturas e Ciência de Dados",
+    "keywords": "CCIR | SNCR | imóvel rural | cadastro rural | regularidade cadastral | 2026",
+    "geographic_coverage": "Brasil — imóveis rurais regularmente cadastrados no SNCR",
+    "covers_brazil": "sim",
+    "spatial_support": "imóvel rural cadastrado; certificado individual",
+    "spatial_resolution": "registro cadastral do imóvel; não é geometria pública de parcela",
+    "temporal_coverage": "exercício 2026",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/cadastro-imovel-rural",
+    "methodology_url": "https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/cadastro-imovel-rural",
+    "primary_or_derived": "serviço",
+    "limitations": "O CCIR comprova regularidade cadastral e contém dados declaratórios; não legitima domínio ou posse, não substitui registro imobiliário, certificação SIGEF ou regularidade ambiental. A emissão válida depende da situação cadastral e da quitação da taxa do exercício.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0124",
+      "resource_name": "Acervo Fundiário, SIGEF e Cadastro Rural — INCRA",
+      "acronym": "INCRA Fundiário",
+      "official_identity": "Instituto Nacional de Colonização e Reforma Agrária — INCRA / sistemas e dados de governança fundiária",
+      "homepage_url": "https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/governanca-fundiaria",
+      "data_access_url": "https://acervofundiario.incra.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000776",
+        "product_id": "DP000745",
+        "distribution_name": "CCIR 2026 — emissão oficial",
+        "access_url": "https://sncr.serpro.gov.br/ccir/emissao",
+        "format": "PDF",
+        "access_protocol": "HTTPS",
+        "access_tool": "formulário web",
+        "free_download": "não",
+        "authentication_required": "não",
+        "access_conditions": "emissão por imóvel mediante identificação cadastral; certificado válido depende de quitação da Taxa de Serviços Cadastrais e inexistência de pendências",
+        "license": "não se aplica como licença de dataset; documento cadastral individual sujeito às regras do serviço",
+        "provider_attribution_required": "desconhecido",
+        "subset_support": "por imóvel rural mediante código e dados do titular/localização",
+        "notes": "Serviço oficial de emissão do exercício 2026. O CCIR substitui o exercício anterior e não constitui título de domínio ou posse.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "PDF"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000746",
+    "resource_id": "DR0124",
+    "product_name": "Índices Básicos Cadastrais por Município — Módulo Fiscal, FMP e limite para estrangeiros",
+    "product_acronym": "Índices Básicos",
+    "product_family": "Sistema Nacional de Cadastro Rural — SNCR",
+    "product_kind": "dataset",
+    "product_description": "Parâmetros cadastrais oficiais fixados pelo Incra por município, incluindo Módulo Fiscal, Fração Mínima de Parcelamento e limite de aquisição por estrangeiro, além de outros índices básicos definidos normativamente.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Agricultura, Florestas e Uso da Terra | Infraestruturas e Ciência de Dados",
+    "keywords": "módulo fiscal | fração mínima de parcelamento | FMP | índices básicos | SNCR | estrangeiros | município",
+    "geographic_coverage": "Brasil — valores definidos por município",
+    "covers_brazil": "sim",
+    "spatial_support": "município",
+    "spatial_resolution": "unidade municipal; valores em hectares conforme índice",
+    "temporal_coverage": "Instrução Especial 05/2022, alterada pela Instrução Especial 06/2025",
+    "temporal_resolution": "conforme alteração normativa",
+    "update_frequency": "quando houver alteração normativa",
+    "product_status": "ativo",
+    "version_or_collection": "IE 05/2022 + IE 06/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/governanca-fundiaria/modulo-fiscal",
+    "methodology_url": "https://www.gov.br/incra/pt-br/centrais-de-conteudos/legislacao/instrucao-especial",
+    "primary_or_derived": "primário",
+    "limitations": "São parâmetros cadastrais e normativos por município, não medidas de produtividade, preço da terra, área típica observada ou aptidão agrícola. Mudanças municipais e atos normativos devem ser considerados em comparações temporais.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0124",
+      "resource_name": "Acervo Fundiário, SIGEF e Cadastro Rural — INCRA",
+      "acronym": "INCRA Fundiário",
+      "official_identity": "Instituto Nacional de Colonização e Reforma Agrária — INCRA / sistemas e dados de governança fundiária",
+      "homepage_url": "https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/governanca-fundiaria",
+      "data_access_url": "https://acervofundiario.incra.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000777",
+        "product_id": "DP000746",
+        "distribution_name": "Índices Básicos — consulta por município",
+        "access_url": "https://www.gov.br/pt-br/servicos/consultar-indices-basicos",
+        "format": "consulta web | valores em hectares",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública por UF e município; captcha pode ser exigido",
+        "license": "licença específica do conjunto não localizada; conteúdo oficial público do Incra",
+        "provider_attribution_required": "sim",
+        "subset_support": "por UF e município",
+        "notes": "Consulta pública informa Módulo Fiscal, Fração Mínima de Parcelamento e Limite de Aquisição por Estrangeiro; a norma vigente deve ser preservada na análise.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "consulta web | valores em hectares"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000747",
+    "resource_id": "DR0125",
+    "product_name": "Adequação da Formação Docente 2025",
+    "product_acronym": "AFD 2025",
+    "product_family": "Adequação da Formação Docente",
+    "product_kind": "indicator_family",
+    "product_description": "Indicador derivado do Censo Escolar que classifica a adequação entre formação do docente e disciplina/etapa em que atua, divulgado para a edição 2025.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "adequação da formação docente | professores | formação | Censo Escolar",
+    "geographic_coverage": "Brasil; Brasil, regiões, UFs, municípios e escolas conforme arquivo",
+    "covers_brazil": "sim",
+    "spatial_support": "agregação educacional e territorial; escola quando divulgado",
+    "spatial_resolution": "não se aplica como resolução cartográfica; nível territorial/institucional conforme arquivo",
+    "temporal_coverage": "edição 2025",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual/por edição",
+    "product_status": "ativo",
+    "version_or_collection": "2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/adequacao-da-formacao-docente",
+    "methodology_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/adequacao-da-formacao-docente",
+    "primary_or_derived": "derivado",
+    "limitations": "Adequação é uma classificação metodológica do vínculo formação–atuação; não mede isoladamente qualidade docente, desempenho pedagógico ou aprendizagem.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0125",
+      "resource_name": "Dados Abertos, Avaliações e Indicadores Educacionais — INEP",
+      "acronym": "INEP Dados Abertos",
+      "official_identity": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira — dados abertos, censos, avaliações e indicadores",
+      "homepage_url": "https://www.gov.br/inep/pt-br",
+      "data_access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000778",
+        "product_id": "DP000747",
+        "distribution_name": "Adequação da Formação Docente 2025 — planilhas oficiais INEP",
+        "access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/adequacao-da-formacao-docente",
+        "format": "XLSX | ODS",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar o recorte/arquivo da edição 2025 e preservar notas técnicas e critérios de divulgação",
+        "license": "conteúdo da página oficial sob Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada; verificar os termos específicos do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | regiões | UFs | municípios | escolas conforme arquivo",
+        "notes": "Planilhas oficiais do indicador. Estrutura, denominadores e regras metodológicas devem ser preservados; não combinar séries sem verificar mudanças de cálculo e cobertura.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000748",
+    "resource_id": "DR0125",
+    "product_name": "Regularidade do Corpo Docente 2025",
+    "product_acronym": "IRD 2025",
+    "product_family": "Regularidade do Corpo Docente",
+    "product_kind": "indicator_family",
+    "product_description": "Indicador derivado do Censo Escolar que sintetiza a permanência/regularidade dos docentes nas escolas ao longo do período metodológico definido pelo Inep, na edição 2025.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "regularidade docente | professores | permanência | Censo Escolar",
+    "geographic_coverage": "Brasil; Brasil, regiões, UFs, municípios e escolas conforme arquivo",
+    "covers_brazil": "sim",
+    "spatial_support": "agregação educacional e territorial; escola quando divulgado",
+    "spatial_resolution": "não se aplica como resolução cartográfica; nível territorial/institucional conforme arquivo",
+    "temporal_coverage": "edição 2025",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual/por edição",
+    "product_status": "ativo",
+    "version_or_collection": "2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/regularidade-do-corpo-docente",
+    "methodology_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/regularidade-do-corpo-docente",
+    "primary_or_derived": "derivado",
+    "limitations": "O indicador resume regularidade do vínculo do docente com a escola segundo regras próprias; não mede estabilidade contratual, qualidade do trabalho ou causalidade sobre desempenho escolar.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0125",
+      "resource_name": "Dados Abertos, Avaliações e Indicadores Educacionais — INEP",
+      "acronym": "INEP Dados Abertos",
+      "official_identity": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira — dados abertos, censos, avaliações e indicadores",
+      "homepage_url": "https://www.gov.br/inep/pt-br",
+      "data_access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000779",
+        "product_id": "DP000748",
+        "distribution_name": "Regularidade do Corpo Docente 2025 — planilhas oficiais INEP",
+        "access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/regularidade-do-corpo-docente",
+        "format": "XLSX | ODS",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar o recorte/arquivo da edição 2025 e preservar notas técnicas e critérios de divulgação",
+        "license": "conteúdo da página oficial sob Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada; verificar os termos específicos do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | regiões | UFs | municípios | escolas conforme arquivo",
+        "notes": "Planilhas oficiais do indicador. Estrutura, denominadores e regras metodológicas devem ser preservados; não combinar séries sem verificar mudanças de cálculo e cobertura.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000749",
+    "resource_id": "DR0125",
+    "product_name": "Esforço Docente 2025",
+    "product_acronym": "IED 2025",
+    "product_family": "Esforço Docente",
+    "product_kind": "indicator_family",
+    "product_description": "Indicador derivado do Censo Escolar que classifica o esforço associado às condições de exercício docente segundo número de escolas, turnos, etapas e estudantes atendidos, na edição 2025.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "esforço docente | professores | carga de trabalho | Censo Escolar",
+    "geographic_coverage": "Brasil; Brasil, regiões, UFs, municípios e escolas conforme arquivo",
+    "covers_brazil": "sim",
+    "spatial_support": "agregação educacional e territorial; escola quando divulgado",
+    "spatial_resolution": "não se aplica como resolução cartográfica; nível territorial/institucional conforme arquivo",
+    "temporal_coverage": "edição 2025",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual/por edição",
+    "product_status": "ativo",
+    "version_or_collection": "2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/esforco-docente",
+    "methodology_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/esforco-docente",
+    "primary_or_derived": "derivado",
+    "limitations": "É indicador composto das condições registradas no Censo Escolar; não equivale a carga horária contratual individual, intensidade subjetiva do trabalho ou qualidade do ensino.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0125",
+      "resource_name": "Dados Abertos, Avaliações e Indicadores Educacionais — INEP",
+      "acronym": "INEP Dados Abertos",
+      "official_identity": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira — dados abertos, censos, avaliações e indicadores",
+      "homepage_url": "https://www.gov.br/inep/pt-br",
+      "data_access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000780",
+        "product_id": "DP000749",
+        "distribution_name": "Esforço Docente 2025 — planilhas oficiais INEP",
+        "access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/esforco-docente",
+        "format": "XLSX | ODS",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar o recorte/arquivo da edição 2025 e preservar notas técnicas e critérios de divulgação",
+        "license": "conteúdo da página oficial sob Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada; verificar os termos específicos do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | regiões | UFs | municípios | escolas conforme arquivo",
+        "notes": "Planilhas oficiais do indicador. Estrutura, denominadores e regras metodológicas devem ser preservados; não combinar séries sem verificar mudanças de cálculo e cobertura.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000750",
+    "resource_id": "DR0125",
+    "product_name": "Complexidade de Gestão da Escola 2025",
+    "product_acronym": "ICG 2025",
+    "product_family": "Complexidade de Gestão da Escola",
+    "product_kind": "indicator_family",
+    "product_description": "Indicador derivado do Censo Escolar que classifica escolas por níveis de complexidade de gestão a partir de características como porte, etapas/modalidades e turnos, na edição 2025.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "complexidade de gestão | escola | porte | etapas | turnos | Censo Escolar",
+    "geographic_coverage": "Brasil; Brasil, regiões, UFs, municípios e escolas conforme arquivo",
+    "covers_brazil": "sim",
+    "spatial_support": "agregação educacional e territorial; escola quando divulgado",
+    "spatial_resolution": "não se aplica como resolução cartográfica; nível territorial/institucional conforme arquivo",
+    "temporal_coverage": "edição 2025",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual/por edição",
+    "product_status": "ativo",
+    "version_or_collection": "2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/complexidade-de-gestao-da-escola",
+    "methodology_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/complexidade-de-gestao-da-escola",
+    "primary_or_derived": "derivado",
+    "limitations": "Complexidade de gestão é classificação estrutural derivada; não constitui avaliação de qualidade da gestão, eficiência administrativa ou desempenho da escola.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0125",
+      "resource_name": "Dados Abertos, Avaliações e Indicadores Educacionais — INEP",
+      "acronym": "INEP Dados Abertos",
+      "official_identity": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira — dados abertos, censos, avaliações e indicadores",
+      "homepage_url": "https://www.gov.br/inep/pt-br",
+      "data_access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000781",
+        "product_id": "DP000750",
+        "distribution_name": "Complexidade de Gestão da Escola 2025 — planilhas oficiais INEP",
+        "access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/complexidade-de-gestao-da-escola",
+        "format": "XLSX | ODS",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar o recorte/arquivo da edição 2025 e preservar notas técnicas e critérios de divulgação",
+        "license": "conteúdo da página oficial sob Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada; verificar os termos específicos do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | regiões | UFs | municípios | escolas conforme arquivo",
+        "notes": "Planilhas oficiais do indicador. Estrutura, denominadores e regras metodológicas devem ser preservados; não combinar séries sem verificar mudanças de cálculo e cobertura.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000751",
+    "resource_id": "DR0125",
+    "product_name": "Taxas de Distorção Idade-série 2025",
+    "product_acronym": "TDI 2025",
+    "product_family": "Taxas de Distorção Idade-série",
+    "product_kind": "indicator_family",
+    "product_description": "Indicador educacional de 2025 que expressa a proporção de matrículas de estudantes com idade acima da recomendada para a etapa/série, conforme regras do Inep e dados do Censo Escolar.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "distorção idade-série | atraso escolar | matrícula | Censo Escolar",
+    "geographic_coverage": "Brasil; Brasil, regiões, UFs, municípios e escolas conforme arquivo",
+    "covers_brazil": "sim",
+    "spatial_support": "agregação educacional e territorial; escola quando divulgado",
+    "spatial_resolution": "não se aplica como resolução cartográfica; nível territorial/institucional conforme arquivo",
+    "temporal_coverage": "edição 2025",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual/por edição",
+    "product_status": "ativo",
+    "version_or_collection": "2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/taxas-de-distorcao-idade-serie",
+    "methodology_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/taxas-de-distorcao-idade-serie",
+    "primary_or_derived": "derivado",
+    "limitations": "A taxa descreve defasagem idade–série segundo critérios educacionais e idade de referência; não identifica causa do atraso nem acompanha necessariamente a trajetória individual do estudante.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0125",
+      "resource_name": "Dados Abertos, Avaliações e Indicadores Educacionais — INEP",
+      "acronym": "INEP Dados Abertos",
+      "official_identity": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira — dados abertos, censos, avaliações e indicadores",
+      "homepage_url": "https://www.gov.br/inep/pt-br",
+      "data_access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000782",
+        "product_id": "DP000751",
+        "distribution_name": "Taxas de Distorção Idade-série 2025 — planilhas oficiais INEP",
+        "access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/taxas-de-distorcao-idade-serie",
+        "format": "XLSX | ODS",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar o recorte/arquivo da edição 2025 e preservar notas técnicas e critérios de divulgação",
+        "license": "conteúdo da página oficial sob Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada; verificar os termos específicos do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | regiões | UFs | municípios | escolas conforme arquivo",
+        "notes": "Planilhas oficiais do indicador. Estrutura, denominadores e regras metodológicas devem ser preservados; não combinar séries sem verificar mudanças de cálculo e cobertura.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000752",
+    "resource_id": "DR0125",
+    "product_name": "Média de Alunos por Turma 2025",
+    "product_acronym": "ATU 2025",
+    "product_family": "Média de Alunos por Turma",
+    "product_kind": "indicator_family",
+    "product_description": "Indicador de 2025 derivado do Censo Escolar que informa o número médio de alunos por turma em etapas, redes e recortes territoriais definidos pelo Inep.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "alunos por turma | tamanho da turma | Censo Escolar | educação básica",
+    "geographic_coverage": "Brasil; Brasil, regiões, UFs, municípios e escolas conforme arquivo",
+    "covers_brazil": "sim",
+    "spatial_support": "agregação educacional e territorial; escola quando divulgado",
+    "spatial_resolution": "não se aplica como resolução cartográfica; nível territorial/institucional conforme arquivo",
+    "temporal_coverage": "edição 2025",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual/por edição",
+    "product_status": "ativo",
+    "version_or_collection": "2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/media-de-alunos-por-turma",
+    "methodology_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/media-de-alunos-por-turma",
+    "primary_or_derived": "derivado",
+    "limitations": "Média de alunos por turma é uma razão agregada; não descreve a distribuição completa dos tamanhos de turma, lotação física das salas ou qualidade pedagógica.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0125",
+      "resource_name": "Dados Abertos, Avaliações e Indicadores Educacionais — INEP",
+      "acronym": "INEP Dados Abertos",
+      "official_identity": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira — dados abertos, censos, avaliações e indicadores",
+      "homepage_url": "https://www.gov.br/inep/pt-br",
+      "data_access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000783",
+        "product_id": "DP000752",
+        "distribution_name": "Média de Alunos por Turma 2025 — planilhas oficiais INEP",
+        "access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/media-de-alunos-por-turma",
+        "format": "XLSX | ODS",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar o recorte/arquivo da edição 2025 e preservar notas técnicas e critérios de divulgação",
+        "license": "conteúdo da página oficial sob Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada; verificar os termos específicos do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | regiões | UFs | municípios | escolas conforme arquivo",
+        "notes": "Planilhas oficiais do indicador. Estrutura, denominadores e regras metodológicas devem ser preservados; não combinar séries sem verificar mudanças de cálculo e cobertura.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000753",
+    "resource_id": "DR0125",
+    "product_name": "Média de Horas-aula Diária 2025",
+    "product_acronym": "HAD 2025",
+    "product_family": "Média de Horas-aula Diária",
+    "product_kind": "indicator_family",
+    "product_description": "Indicador de 2025 derivado do Censo Escolar que estima o tempo médio diário de permanência do aluno em turmas de escolarização para diferentes etapas e agregações.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "horas-aula | jornada escolar | tempo na escola | Censo Escolar",
+    "geographic_coverage": "Brasil; Brasil, regiões, UFs, municípios e escolas conforme arquivo",
+    "covers_brazil": "sim",
+    "spatial_support": "agregação educacional e territorial; escola quando divulgado",
+    "spatial_resolution": "não se aplica como resolução cartográfica; nível territorial/institucional conforme arquivo",
+    "temporal_coverage": "edição 2025",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual/por edição",
+    "product_status": "ativo",
+    "version_or_collection": "2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/media-de-horas-aula-diaria",
+    "methodology_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/media-de-horas-aula-diaria",
+    "primary_or_derived": "derivado",
+    "limitations": "A média refere-se ao tempo diário calculado segundo turmas de escolarização e regras do indicador; não equivale a tempo efetivo de aprendizagem, frequência individual ou jornada extracurricular.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0125",
+      "resource_name": "Dados Abertos, Avaliações e Indicadores Educacionais — INEP",
+      "acronym": "INEP Dados Abertos",
+      "official_identity": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira — dados abertos, censos, avaliações e indicadores",
+      "homepage_url": "https://www.gov.br/inep/pt-br",
+      "data_access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000784",
+        "product_id": "DP000753",
+        "distribution_name": "Média de Horas-aula Diária 2025 — planilhas oficiais INEP",
+        "access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/media-de-horas-aula-diaria",
+        "format": "XLSX | ODS",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar o recorte/arquivo da edição 2025 e preservar notas técnicas e critérios de divulgação",
+        "license": "conteúdo da página oficial sob Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada; verificar os termos específicos do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | regiões | UFs | municípios | escolas conforme arquivo",
+        "notes": "Planilhas oficiais do indicador. Estrutura, denominadores e regras metodológicas devem ser preservados; não combinar séries sem verificar mudanças de cálculo e cobertura.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000754",
+    "resource_id": "DR0125",
+    "product_name": "Percentual de Docentes com Curso Superior 2025",
+    "product_acronym": "DSU 2025",
+    "product_family": "Percentual de Docentes com Curso Superior",
+    "product_kind": "indicator_family",
+    "product_description": "Indicador de 2025 derivado do Censo Escolar que apresenta o percentual de docentes em exercício com curso superior completo nos recortes divulgados pelo Inep.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "docentes | curso superior | formação | Censo Escolar",
+    "geographic_coverage": "Brasil; Brasil, regiões, UFs, municípios e escolas conforme arquivo",
+    "covers_brazil": "sim",
+    "spatial_support": "agregação educacional e territorial; escola quando divulgado",
+    "spatial_resolution": "não se aplica como resolução cartográfica; nível territorial/institucional conforme arquivo",
+    "temporal_coverage": "edição 2025",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual/por edição",
+    "product_status": "ativo",
+    "version_or_collection": "2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/percentual-de-docentes-com-curso-superior",
+    "methodology_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/percentual-de-docentes-com-curso-superior",
+    "primary_or_derived": "derivado",
+    "limitations": "O mesmo docente pode ser contabilizado em cada etapa e escola em que atua conforme a metodologia; o percentual não mede adequação específica da formação à disciplina nem qualidade docente.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0125",
+      "resource_name": "Dados Abertos, Avaliações e Indicadores Educacionais — INEP",
+      "acronym": "INEP Dados Abertos",
+      "official_identity": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira — dados abertos, censos, avaliações e indicadores",
+      "homepage_url": "https://www.gov.br/inep/pt-br",
+      "data_access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000785",
+        "product_id": "DP000754",
+        "distribution_name": "Percentual de Docentes com Curso Superior 2025 — planilhas oficiais INEP",
+        "access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/percentual-de-docentes-com-curso-superior",
+        "format": "XLSX | ODS",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar o recorte/arquivo da edição 2025 e preservar notas técnicas e critérios de divulgação",
+        "license": "conteúdo da página oficial sob Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada; verificar os termos específicos do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | regiões | UFs | municípios | escolas conforme arquivo",
+        "notes": "Planilhas oficiais do indicador. Estrutura, denominadores e regras metodológicas devem ser preservados; não combinar séries sem verificar mudanças de cálculo e cobertura.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000755",
+    "resource_id": "DR0125",
+    "product_name": "Taxas de Rendimento Escolar 2025",
+    "product_acronym": "Rendimento 2025",
+    "product_family": "Taxas de Rendimento Escolar",
+    "product_kind": "indicator_family",
+    "product_description": "Indicadores de aprovação, reprovação e abandono referentes ao ano letivo de 2025, derivados da etapa Situação do Aluno do Censo Escolar.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "rendimento escolar | aprovação | reprovação | abandono | Censo Escolar",
+    "geographic_coverage": "Brasil; Brasil, regiões, UFs, municípios e escolas conforme arquivo",
+    "covers_brazil": "sim",
+    "spatial_support": "agregação educacional e territorial; escola quando divulgado",
+    "spatial_resolution": "não se aplica como resolução cartográfica; nível territorial/institucional conforme arquivo",
+    "temporal_coverage": "edição 2025",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual/por edição",
+    "product_status": "ativo",
+    "version_or_collection": "2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/taxas-de-rendimento-escolar",
+    "methodology_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/taxas-de-rendimento-escolar",
+    "primary_or_derived": "derivado",
+    "limitations": "Taxas de rendimento são derivadas do status informado no Censo Escolar e não equivalem a taxas longitudinais de transição ou a medidas diretas de aprendizagem. Revisões e critérios de fechamento da Situação do Aluno devem ser preservados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0125",
+      "resource_name": "Dados Abertos, Avaliações e Indicadores Educacionais — INEP",
+      "acronym": "INEP Dados Abertos",
+      "official_identity": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira — dados abertos, censos, avaliações e indicadores",
+      "homepage_url": "https://www.gov.br/inep/pt-br",
+      "data_access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000786",
+        "product_id": "DP000755",
+        "distribution_name": "Taxas de Rendimento Escolar 2025 — planilhas oficiais INEP",
+        "access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/taxas-de-rendimento-escolar",
+        "format": "XLSX | ODS",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar o recorte/arquivo da edição 2025 e preservar notas técnicas e critérios de divulgação",
+        "license": "conteúdo da página oficial sob Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada; verificar os termos específicos do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | regiões | UFs | municípios | escolas conforme arquivo",
+        "notes": "Planilhas oficiais do indicador. Estrutura, denominadores e regras metodológicas devem ser preservados; não combinar séries sem verificar mudanças de cálculo e cobertura.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000756",
+    "resource_id": "DR0125",
+    "product_name": "Taxas de Não-resposta 2025",
+    "product_acronym": "TNR 2025",
+    "product_family": "Taxas de Não-resposta",
+    "product_kind": "indicator_family",
+    "product_description": "Indicadores de não-resposta de 2025 divulgados pelo Inep para qualificar a cobertura/completude de informações educacionais em níveis territoriais e escolares.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "não-resposta | completude | qualidade de dados | Censo Escolar | indicador",
+    "geographic_coverage": "Brasil; Brasil, regiões, UFs, municípios e escolas conforme arquivo",
+    "covers_brazil": "sim",
+    "spatial_support": "agregação educacional e territorial; escola quando divulgado",
+    "spatial_resolution": "não se aplica como resolução cartográfica; nível territorial/institucional conforme arquivo",
+    "temporal_coverage": "edição 2025",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual/por edição",
+    "product_status": "ativo",
+    "version_or_collection": "2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/taxas-de-nao-resposta",
+    "methodology_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/taxas-de-nao-resposta",
+    "primary_or_derived": "derivado",
+    "limitations": "Taxa de não-resposta é indicador de cobertura/completude informacional; não deve ser confundida com abandono escolar, ausência do estudante ou inexistência do fenômeno medido.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0125",
+      "resource_name": "Dados Abertos, Avaliações e Indicadores Educacionais — INEP",
+      "acronym": "INEP Dados Abertos",
+      "official_identity": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira — dados abertos, censos, avaliações e indicadores",
+      "homepage_url": "https://www.gov.br/inep/pt-br",
+      "data_access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000787",
+        "product_id": "DP000756",
+        "distribution_name": "Taxas de Não-resposta 2025 — planilhas oficiais INEP",
+        "access_url": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/taxas-de-nao-resposta",
+        "format": "XLSX | ODS",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; selecionar o recorte/arquivo da edição 2025 e preservar notas técnicas e critérios de divulgação",
+        "license": "conteúdo da página oficial sob Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada; verificar os termos específicos do arquivo",
+        "provider_attribution_required": "sim",
+        "subset_support": "Brasil | regiões | UFs | municípios | escolas conforme arquivo",
+        "notes": "Planilhas oficiais do indicador. Estrutura, denominadores e regras metodológicas devem ser preservados; não combinar séries sem verificar mudanças de cálculo e cobertura.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XLSX | ODS"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
   }
 ]
