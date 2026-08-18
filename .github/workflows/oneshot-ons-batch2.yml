@@ -1,0 +1,77 @@
+name: One-shot ONS catalog batch 2
+on:
+  push:
+    paths:
+      - '.github/workflows/oneshot-ons-batch2.yml'
+permissions:
+  contents: write
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Append second verified ONS batch
+        run: |
+          python - <<'PY'
+          import csv
+          def read(path):
+              with open(path,encoding='utf-8',newline='') as f:
+                  r=csv.DictReader(f); return r.fieldnames,list(r)
+          def write(path,fields,rows):
+              with open(path,'w',encoding='utf-8',newline='') as f:
+                  w=csv.DictWriter(f,fieldnames=fields,lineterminator='\n'); w.writeheader(); w.writerows(rows)
+          pf,products=read('data/data_products.csv'); df,dists=read('data/product_distributions.csv')
+          pids={p['product_id'] for p in products}; urls={p['product_page_url'] for p in products}
+          assert all(f'DP{i:06d}' not in pids for i in range(599,609))
+          common={'resource_id':'DR0122','research_areas':'Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados','geographic_coverage':'Brasil — Sistema Interligado Nacional, com recorte conforme produto','covers_brazil':'sim','update_frequency':'operacional/periódica conforme conjunto','product_status':'ativo','enumeration_scope':'complete','last_verified':'2026-08-18'}
+          specs=[
+          ('DP000599','ENA Diário por Reservatório','ENA por Reservatório','Energia Natural Afluente','dataset_series','Energia Natural Afluente bruta e armazenável em periodicidade diária por reservatório, derivada de vazões naturais e produtividades das usinas.','ENA | reservatório | vazão natural | produtividade | hidrelétrica','reservatório','diária','série histórica e corrente','diária','arquivos 2026 disponíveis','https://dados.ons.org.br/dataset/ena-diario-por-reservatorio','derivado','ENA por reservatório é grandeza energética derivada, não vazão observada ou volume de água. A comparação com outras escalas exige preservar a agregação e a definição de ENA bruta/armazenável.'),
+          ('DP000600','ENA Diário por REE — Reservatório Equivalente de Energia','ENA por REE','Energia Natural Afluente','dataset_series','Energia Natural Afluente diária agregada por Reservatório Equivalente de Energia, uma representação energética utilizada na operação e nos estudos do SIN.','ENA | REE | reservatório equivalente | energia afluente','Reservatório Equivalente de Energia (REE)','diária','série histórica e corrente','diária','arquivos 2026 disponíveis','https://dados.ons.org.br/dataset/ena-diario-por-ree-reservatorio-equivalente-de-energia','derivado','REE é agregação energética/modelada, não reservatório físico individual nem bacia hidrográfica. Não misturar diretamente com ENA por reservatório, bacia ou subsistema sem preservar a escala.'),
+          ('DP000601','ENA Diário por Subsistema','ENA por Subsistema','Energia Natural Afluente','dataset_series','Energia Natural Afluente diária agregada por subsistema elétrico, disponibilizada como visão estruturada para estudos energéticos.','ENA | subsistema | hidrologia energética | SIN','subsistema','diária','série histórica e corrente','diária','arquivos 2026 disponíveis','https://dados.ons.org.br/dataset/ena-diario-por-subsistema','derivado','ENA por subsistema é agregação energética e não vazão física do conjunto de bacias. Mudanças de composição e revisões operacionais devem ser consideradas em séries longas.'),
+          ('DP000602','EAR Diário por Reservatório','EAR por Reservatório','Energia Armazenada','dataset_series','Energia Armazenada diária por reservatório, associada ao volume disponível e à produtividade na própria usina e nas usinas a jusante.','EAR | reservatório | armazenamento | hidrelétrica','reservatório','diária','série histórica e corrente','diária','arquivos 2026 disponíveis','https://dados.ons.org.br/dataset/ear-diario-por-reservatorio','derivado','EAR é energia potencial associada ao armazenamento e à cascata, não o volume físico armazenado isoladamente. Comparações devem preservar reservatório, produtividade e representação do sistema.'),
+          ('DP000603','EAR Diário por Bacia Hidroenergética','EAR por Bacia','Energia Armazenada','dataset_series','Energia Armazenada diária agregada por bacias hidroenergéticas, considerando volumes disponíveis e aproveitamento energético ao longo das cascatas.','EAR | bacia hidroenergética | reservatórios | armazenamento','bacia hidroenergética','diária','série histórica e corrente','diária','arquivos 2026 disponíveis','https://dados.ons.org.br/dataset/ear-diario-por-bacia','derivado','A bacia hidroenergética é recorte operacional/energético; EAR não equivale a armazenamento hidrológico total ou volume natural de água da bacia.'),
+          ('DP000604','EAR Diário por REE — Reservatório Equivalente de Energia','EAR por REE','Energia Armazenada','dataset_series','Energia Armazenada diária por Reservatório Equivalente de Energia, agregação utilizada para representar o potencial energético de conjuntos de reservatórios.','EAR | REE | reservatório equivalente | armazenamento','Reservatório Equivalente de Energia (REE)','diária','série histórica e corrente','diária','arquivos 2026 disponíveis','https://dados.ons.org.br/dataset/ear-diario-por-ree-reservatorio-equivalente-de-energia','derivado','REE é entidade agregada da modelagem energética e não um corpo hídrico físico. Não converter EAR de REE em volume de reservatório ou condição ambiental sem modelo apropriado.'),
+          ('DP000605','Geração Térmica por Motivo de Despacho','Geração Térmica por Despacho','Operação térmica','dataset_series','Dados programados e verificados de geração de usinas térmicas despachadas pelo ONS, discriminados por motivo de despacho em base horária.','geração térmica | despacho | usina | motivo de despacho | horário','usina térmica e motivo de despacho','horária','2013–presente; arquivos mensais a partir de 2022','horária','arquivos até julho de 2026 auditados','https://dados.ons.org.br/dataset/geracao-termica-despacho-2','misto','Programado e verificado são estados distintos; motivo de despacho é classificação operativa e não causa ambiental/econômica isolada. Dados são revisáveis.'),
+          ('DP000606','Dados de Disponibilidade de Usinas','Disponibilidade de Usinas','Disponibilidade operacional','dataset_series','Disponibilidade horária de usinas hidráulicas e térmicas das modalidades operativas Tipo I e II-A monitoradas pelo ONS.','disponibilidade | usina | hidrelétrica | termelétrica | operação','usina Tipo I ou II-A','horária','série histórica e corrente','horária','conjunto operacional corrente','https://dados.ons.org.br/dataset/disponibilidade_usina','primário','Cobertura é restrita às modalidades Tipo I e II-A; disponibilidade declarada/operacional não equivale a geração, fator de capacidade ou confiabilidade de todo o parque elétrico.'),
+          ('DP000607','Valores da Programação Diária — carga e geração','Programação Diária ONS','Programação eletroenergética','dataset_series','Valores de carga e geração considerados no fechamento da programação diária, por submercado, em base semi-horária.','programação diária | carga | geração | submercado | DESSEM','submercado','semi-horária','série diária corrente; recursos 2026','semi-horária','arquivos diários 2026','https://dados.ons.org.br/dataset/programacao_diaria','derivado','Programação diária é plano operativo e não geração/carga verificada. Valores podem ser revisados e devem ser comparados à realização apenas com alinhamento temporal e metodológico.'),
+          ('DP000608','Previsão versus Programado — Eólicas e Solares','Previsão x Programado Eol/Sol','Previsão e programação renovável','dataset_series','Valores de previsão comparados aos valores programados de usinas eólicas e solares no processo de programação eletroenergética.','previsão | programação | eólica | solar | renováveis','usina/conjunto conforme conjunto','operacional; arquivos por data','série operacional e histórica','por data/intervalo operativo','recursos 2026 no portal','https://dados.ons.org.br/dataset/programacao_x_previsao','derivado','Previsão e programação são grandezas ex ante distintas de geração verificada. Diferença entre ambas não é erro de geração nem curtailment e requer contexto do processo operativo.')]
+          keys=['product_id','product_name','product_acronym','product_family','product_kind','product_description','keywords','spatial_support','spatial_resolution','temporal_coverage','temporal_resolution','version_or_collection','product_page_url','primary_or_derived','limitations']
+          new=[]
+          for vals in specs:
+              r=common.copy(); r.update(dict(zip(keys,vals))); r['methodology_url']=r['product_page_url']
+              assert r['product_page_url'] not in urls, r['product_page_url']
+              assert set(r)==set(pf), (r['product_id'],set(pf)-set(r),set(r)-set(pf))
+              products.append(r); urls.add(r['product_page_url']); new.append(r)
+          existing_d={d['distribution_id'] for d in dists}
+          assert all(f'DD{i:06d}' not in existing_d for i in range(624,634))
+          for i,p in enumerate(new,start=624):
+              d={'distribution_id':f'DD{i:06d}','product_id':p['product_id'],'distribution_name':p['product_name']+' — portal e arquivos oficiais','access_url':p['product_page_url'],'format':'CSV | XLSX | PARQUET | JSON | PDF','access_protocol':'HTTPS download | CKAN','access_tool':'navegador web | CKAN','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto','license':'Creative Commons Atribuição (CC BY)','provider_attribution_required':'sim','subset_support':'por período e recorte conforme recursos do conjunto','notes':'Usar dicionário de dados e preservar período, unidade, escala de agregação, modalidade operativa e revisões do ONS.','last_verified':'2026-08-18'}
+              assert set(d)==set(df); dists.append(d)
+          write('data/data_products.csv',pf,products); write('data/product_distributions.csv',df,dists)
+          # relational read-back
+          _,pp=read('data/data_products.csv'); _,dd=read('data/product_distributions.csv')
+          assert len({p['product_id'] for p in pp})==len(pp)
+          assert len({d['distribution_id'] for d in dd})==len(dd)
+          assert all(f'DP{i:06d}' in {p['product_id'] for p in pp} for i in range(599,609))
+          assert all(f'DD{i:06d}' in {d['distribution_id'] for d in dd} for i in range(624,634))
+          print('BATCH2_COUNTS',len(pp),len(dd))
+          PY
+      - name: Validate catalog and Vitrine
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Commit materialized batch
+        run: |
+          git config user.name 'vitrine-catalog-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/data_products.csv data/product_distributions.csv data/data_products.json
+          git commit -m 'Expand verified ONS hydrology and operations catalog'
+          git push origin HEAD:main
