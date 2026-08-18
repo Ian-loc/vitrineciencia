@@ -1,0 +1,155 @@
+name: Materialize verified BIG climate and ocean batch
+
+on:
+  push:
+    branches: ["main"]
+    paths: [".github/workflows/materialize-big-batch.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Append verified products and distributions
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+
+          root = Path('.')
+          product_path = root / 'data' / 'data_products.csv'
+          dist_path = root / 'data' / 'product_distributions.csv'
+
+          with product_path.open(encoding='utf-8-sig', newline='') as f:
+              products = list(csv.DictReader(f))
+          with dist_path.open(encoding='utf-8-sig', newline='') as f:
+              dists = list(csv.DictReader(f))
+
+          product_fields = list(products[0].keys())
+          dist_fields = list(dists[0].keys())
+          product_ids = {r['product_id'] for r in products}
+          dist_ids = {r['distribution_id'] for r in dists}
+          urls = {r['product_page_url'] for r in products}
+
+          if 'DR0123' not in {r['resource_id'] for r in products}:
+              raise SystemExit('DR0123 absent from product catalog')
+          if max(int(x[2:]) for x in product_ids) != 650:
+              raise SystemExit('Unexpected current max product id; refusing non-atomic append')
+          if max(int(x[2:]) for x in dist_ids) != 675:
+              raise SystemExit('Unexpected current max distribution id; refusing non-atomic append')
+
+          P = [
+          ['DP000651','DR0123','Projeções Climáticas Regionais Eta/CMIP5 — RCP4.5 e RCP8.5','Eta CMIP5','BIG — projeções climáticas regionais','dataset_series','Projeções climáticas regionais de alta resolução produzidas pelo INPE com downscaling dinâmico do modelo Eta para quatro modelos globais CMIP5 e cenários RCP4.5/RCP8.5.','Climate science | Atmospheric science | Environmental modeling','Eta | CMIP5 | RCP4.5 | RCP8.5 | climate projection | downscaling','América do Sul, América Central e Caribe a 20 km; Sudeste do Brasil a 5 km no Eta-HadGEM2-ES','sim','grade de modelo climático regional','20 km no domínio regional; 5 km no Sudeste do Brasil apenas para Eta-HadGEM2-ES','histórico 1961–2005; projeções 2006–2100','diária','por versão/experimento','ativo','Eta v1 / CMIP5 / RCP4.5 e RCP8.5','complete','https://data.inpe.br/dados/modelo-eta/','https://data.inpe.br/dados/modelo-eta/','derivado','Cenários climáticos não são previsões determinísticas. O downscaling herda vieses dos GCMs e do modelo regional; a grade de 5 km não existe para todos os GCMs/domínios e não implica precisão local de 5 km.','2026-08-18'],
+          ['DP000652','DR0123','MODIS Terra MOD13Q1 v061 — NDVI/EVI 16 dias','MOD13Q1 v061','BIG — índices de vegetação MODIS','dataset_series','Produto MODIS/Terra Level-3 de índices de vegetação NDVI e EVI composto a cada 16 dias, acompanhado por bandas de qualidade, refletâncias e geometria de observação.','Remote sensing | Vegetation dynamics | Environmental monitoring','MODIS | Terra | MOD13Q1 | NDVI | EVI | vegetation index | quality','Brasil e área regional coberta pela coleção INPE','sim','tile raster MODIS | coleção STAC','250 m nominal; GSD documentado ~231,656 m','2000-02-18–2026-06-09 na coleção verificada','16 dias','16 dias conforme disponibilidade de novos compostos','ativo','Collection 6.1 / MOD13Q1 v061','complete','https://data.inpe.br/stac/browser/collections/mod13q1-6.1','https://data.inpe.br/stac/browser/collections/mod13q1-6.1','derivado','NDVI/EVI são índices compostos, não medições diretas de biomassa ou cobertura. A seleção do melhor pixel depende de nuvens, ângulo de visada e valor do índice; usar VI_Quality e pixel_reliability.','2026-08-18'],
+          ['DP000653','DR0123','MODIS Aqua MYD13Q1 v061 — NDVI/EVI 16 dias','MYD13Q1 v061','BIG — índices de vegetação MODIS','dataset_series','Produto MODIS/Aqua Level-3 de índices de vegetação NDVI e EVI composto a cada 16 dias, acompanhado por bandas de qualidade, refletâncias e geometria de observação.','Remote sensing | Vegetation dynamics | Environmental monitoring','MODIS | Aqua | MYD13Q1 | NDVI | EVI | vegetation index | quality','Brasil e área regional coberta pela coleção INPE','sim','tile raster MODIS | coleção STAC','250 m nominal; GSD documentado ~231,656 m','2002-07-04–2026-06-01 na coleção verificada','16 dias','16 dias conforme disponibilidade de novos compostos','ativo','Collection 6.1 / MYD13Q1 v061','complete','https://data.inpe.br/stac/browser/collections/myd13q1-6.1','https://data.inpe.br/stac/browser/collections/myd13q1-6.1','derivado','NDVI/EVI são índices compostos e não medições diretas de biomassa. Terra e Aqua têm horários de passagem e séries distintas; não combinar MOD13Q1 e MYD13Q1 sem harmonização temporal e controle de qualidade.','2026-08-18'],
+          ['DP000654','DR0123','MODIS Terra MOD11A2 v061 — Temperatura da Superfície e Emissividade','MOD11A2 v061','BIG — temperatura da superfície MODIS','dataset_series','Produto MODIS/Terra Level-3 com médias de 8 dias de temperatura da superfície terrestre diurna/noturna e emissividade, acompanhado por bandas de qualidade e geometria de observação.','Remote sensing | Climate science | Environmental monitoring','MODIS | Terra | MOD11A2 | land surface temperature | emissivity | LST','Brasil e área regional coberta pela coleção INPE','sim','tile raster MODIS | coleção STAC','1 km nominal; GSD documentado ~926,625 m','2000-02-18–2026-06-17 na coleção verificada','8 dias','8 dias conforme disponibilidade de novos compostos','ativo','Collection 6.1 / MOD11A2 v061','complete','https://data.inpe.br/stac/browser/collections/mod11a2-6.1','https://data.inpe.br/stac/browser/collections/mod11a2-6.1','derivado','Temperatura da superfície terrestre não equivale à temperatura do ar. O composto é média de pixels LST válidos do período de 8 dias; qualidade, horário local, cobertura de céu claro e emissividade devem ser preservados.','2026-08-18'],
+          ['DP000655','DR0123','MODIS Aqua MYD11A2 v061 — Temperatura da Superfície e Emissividade','MYD11A2 v061','BIG — temperatura da superfície MODIS','dataset_series','Produto MODIS/Aqua Level-3 com médias de 8 dias de temperatura da superfície terrestre diurna/noturna e emissividade, acompanhado por bandas de qualidade e geometria de observação.','Remote sensing | Climate science | Environmental monitoring','MODIS | Aqua | MYD11A2 | land surface temperature | emissivity | LST','Brasil e área regional coberta pela coleção INPE','sim','tile raster MODIS | coleção STAC','1 km nominal; GSD documentado ~926,625 m','2002-07-04–2026-06-17 na coleção verificada','8 dias','8 dias conforme disponibilidade de novos compostos','ativo','Collection 6.1 / MYD11A2 v061','complete','https://data.inpe.br/stac/browser/collections/myd11a2-6.1','https://data.inpe.br/stac/browser/collections/myd11a2-6.1','derivado','LST não equivale à temperatura do ar. Terra e Aqua possuem horários de passagem diferentes; qualidade, céu claro e horário de observação condicionam comparações e séries combinadas.','2026-08-18'],
+          ['DP000656','DR0123','MERGE — Precipitação Gradeada Diária sobre a América do Sul','MERGE Daily','BIG/CPTEC — precipitação gradeada','dataset_series','Precipitação diária gradeada produzida pela combinação de estimativas de precipitação por satélite com observações de superfície sobre a América do Sul.','Meteorology | Hydrology | Climate science','MERGE | precipitation | GPM | rain gauge | daily | South America','América do Sul e domínio regional da coleção; inclui todo o Brasil','sim','grade raster/cubo STAC','grade oficial da coleção; resolução espacial não inferida nesta rodada','2000-06-01–2026-07-07 na coleção verificada','diária','operacional','ativo','MERGE daily v1','complete','https://data.inpe.br/stac/browser/collections/prec_merge_daily-1','https://data.inpe.br/stac/browser/collections/prec_merge_daily-1','derivado','Produto funde estimativas de satélite e pluviômetros; não equivale a uma medição de pluviômetro em cada célula. Mudanças nos insumos GPM e disponibilidade de estações podem afetar a série.','2026-08-18'],
+          ['DP000657','DR0123','MERGE — Precipitação Gradeada Horária sobre a América do Sul','MERGE Hourly','BIG/CPTEC — precipitação gradeada','dataset_series','Precipitação horária gradeada produzida pela combinação de estimativas de satélite com observações de superfície; nas primeiras horas usa GPM-Early.','Meteorology | Hydrology | Climate science','MERGE | precipitation | GPM-Early | rain gauge | hourly | South America','América do Sul e domínio regional da coleção; inclui o Brasil','sim','grade raster/cubo STAC','grade oficial da coleção; resolução espacial não inferida nesta rodada','2009-12-04–2026-06-30 na coleção verificada','horária','operacional','ativo','MERGE hourly v1','complete','https://data.inpe.br/stac/browser/collections/prec_merge_hourly-1','https://data.inpe.br/stac/browser/collections/prec_merge_hourly-1','derivado','Produto fundido não é observação pontual em cada célula. A disponibilidade de pluviômetros e a latência/produto de satélite condicionam a estimativa, especialmente nas horas mais recentes.','2026-08-18'],
+          ['DP000658','DR0123','SAMeT — Mapeamento Diário de Temperatura da América do Sul','SAMeT Daily','BIG/CPTEC — temperatura gradeada','dataset_series','Campos diários de temperatura mínima, média e máxima produzidos pelo SAMeT mediante combinação de observações com reanálise ERA5 e correção por gradiente térmico vertical.','Meteorology | Climate science | Environmental monitoring','SAMeT | temperature | ERA5 | observations | daily | South America','América do Sul; domínio da coleção inclui o Brasil','sim','grade raster/cubo STAC','grade oficial da coleção; resolução espacial não inferida nesta rodada','2000-01-01–2026-07-20 na coleção verificada','diária','operacional','ativo','SAMeT daily v1','complete','https://data.inpe.br/stac/browser/collections/samet_daily-1','https://data.inpe.br/stac/browser/collections/samet_daily-1','derivado','Campo analisado combina observações e ERA5 e não equivale a medição de estação em cada célula. Topografia, densidade de observações e método de correção condicionam o resultado.','2026-08-18'],
+          ['DP000659','DR0123','SAMeT — Mapeamento Horário de Temperatura da América do Sul','SAMeT Hourly','BIG/CPTEC — temperatura gradeada','dataset_series','Campos horários de temperatura produzidos pelo SAMeT mediante combinação de observações com reanálise ERA5 e correção por gradiente térmico vertical.','Meteorology | Climate science | Environmental monitoring','SAMeT | temperature | ERA5 | observations | hourly | South America','América do Sul; domínio operacional inclui o Brasil','sim','grade raster/cubo STAC','grade oficial da coleção; resolução espacial não inferida nesta rodada','2022-04-30–2026-06-24 na coleção verificada','horária','operacional','ativo','SAMeT hourly v1','complete','https://data.inpe.br/stac/browser/collections/samet_hourly-1','https://data.inpe.br/stac/browser/collections/samet_hourly-1','derivado','Campo analisado combina observações e ERA5; não é observação instrumental em cada célula. A série horária inicia depois da série diária e não deve ser retroprojetada para períodos anteriores.','2026-08-18'],
+          ['DP000660','DR0123','MODIS-Aqua — Reflectância de Sensoriamento Remoto Oceânica (Rrs) OC-SMART','MODISA Rrs','BIG — cor do oceano MODIS-Aqua','dataset_series','Reflectância de sensoriamento remoto Level-3 em oito bandas para águas oceânicas brasileiras e Atlântico Sul aberto, derivada de MODIS-Aqua com correção atmosférica OC-SMART e disponibilizada em composições diárias e mensais.','Aquatic ecology | Remote sensing | Oceanography','MODIS-Aqua | Rrs | ocean color | OC-SMART | reflectance','águas oceânicas brasileiras e Atlântico Sul aberto','parcial','grade raster oceânica | coleção STAC','1 km nominal','2002-07-04–2022-12-31','diária | mensal','coleção histórica encerrada em 2022','arquivado','OC-SMART Rrs v1','complete','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-RRS-DAILY-1','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-RRS-DAILY-1','derivado','Rrs é produto de correção atmosférica e não medição in situ. Produtos mensais são agregações dos diários; não devem ser somados como observações independentes.','2026-08-18'],
+          ['DP000661','DR0123','MODIS-Aqua — Clorofila-a OC-SMART/CONNECT','MODISA CHL','BIG — cor do oceano MODIS-Aqua','dataset_series','Estimativas Level-3 de concentração de clorofila-a derivadas de Rrs MODIS-Aqua corrigida por OC-SMART e modelo CONNECT, em produtos diários e médias geométricas mensais.','Aquatic ecology | Remote sensing | Oceanography','MODIS-Aqua | chlorophyll-a | CHL | OC-SMART | CONNECT | ocean color','águas oceânicas brasileiras e Atlântico Sul conforme coleção','parcial','grade raster oceânica | coleção STAC','1 km nominal','2002-07-04–2022-12-31; mensal desde 2002-07-01','diária | mensal','coleção histórica encerrada em 2022','arquivado','OC-SMART/CONNECT CHL v1','complete','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-CHL-DAILY-1','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-CHL-DAILY-1','derivado','Clorofila-a é estimativa bio-óptica derivada de sensoriamento remoto, não concentração medida in situ. Desempenho depende da correção atmosférica e do modelo; mensal é agregação dos dados diários.','2026-08-18'],
+          ['DP000662','DR0123','MODIS-Aqua — Material Particulado em Suspensão OC-SMART','MODISA SPM','BIG — cor do oceano MODIS-Aqua','dataset_series','Estimativas Level-3 de concentração de material particulado em suspensão derivadas de MODIS-Aqua com correção atmosférica OC-SMART e combinação de algoritmos, em produtos diários e mensais.','Aquatic ecology | Remote sensing | Oceanography','MODIS-Aqua | suspended particulate matter | SPM | OC-SMART | ocean color','águas oceânicas brasileiras e Atlântico Sul conforme coleção','parcial','grade raster oceânica | coleção STAC','1 km nominal','2002-07-04–2022-12-31; mensal documentado a partir de 2002-08-01','diária | mensal','coleção histórica encerrada em 2022','arquivado','OC-SMART SPM v1','complete','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-SPM-DAILY-1','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-SPM-DAILY-1','derivado','SPM é estimativa algorítmica, não concentração medida in situ. Resultados dependem da correção atmosférica e dos algoritmos; produto mensal agrega estimativas diárias.','2026-08-18'],
+          ['DP000663','DR0123','MODIS-Aqua — Carbono Orgânico Particulado OC-SMART','MODISA POC','BIG — cor do oceano MODIS-Aqua','dataset_series','Estimativas Level-3 de carbono orgânico particulado derivadas de MODIS-Aqua com correção atmosférica OC-SMART e combinação de algoritmos, em produtos diários e mensais.','Aquatic ecology | Biogeochemistry | Remote sensing','MODIS-Aqua | particulate organic carbon | POC | OC-SMART | ocean color','águas oceânicas brasileiras e Atlântico Sul conforme coleção','parcial','grade raster oceânica | coleção STAC','1 km nominal','2002-07-04–2022-12-31; mensal desde 2002-07','diária | mensal','coleção histórica encerrada em 2022','arquivado','OC-SMART POC v1','complete','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-POC-DAILY-1','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-POC-DAILY-1','derivado','POC é concentração estimada por algoritmos de sensoriamento remoto, não estoque total de carbono nem medição in situ. Produto mensal é agregação dos resultados diários.','2026-08-18'],
+          ['DP000664','DR0123','MODIS-Aqua — Absorção por Matéria Orgânica Dissolvida Colorida a 443 nm','MODISA aCDOM','BIG — cor do oceano MODIS-Aqua','dataset_series','Estimativas Level-3 do coeficiente de absorção por matéria orgânica dissolvida colorida a 443 nm derivadas de MODIS-Aqua com correção atmosférica OC-SMART, em produtos diários e mensais.','Aquatic ecology | Biogeochemistry | Remote sensing','MODIS-Aqua | aCDOM | CDOM | 443 nm | OC-SMART | ocean color','águas oceânicas brasileiras e Atlântico Sul conforme coleção','parcial','grade raster oceânica | coleção STAC','1 km nominal','2002-07-04–2022-12-31; mensal desde 2002-07-01','diária | mensal','coleção histórica encerrada em 2022','arquivado','OC-SMART aCDOM v1','complete','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-aCDOM-DAILY-1','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-aCDOM-DAILY-1','derivado','aCDOM(443) é coeficiente de absorção estimado por algoritmo, não concentração direta de carbono orgânico dissolvido. Produto mensal agrega estimativas diárias e herda incertezas da correção atmosférica.','2026-08-18']]
+
+          for row in P:
+              if row[0] in product_ids:
+                  raise SystemExit(f'duplicate product id {row[0]}')
+              if row[19] in urls:
+                  raise SystemExit(f'product URL already cataloged: {row[19]}')
+          with product_path.open('a', encoding='utf-8', newline='') as f:
+              w = csv.writer(f, lineterminator='\n')
+              w.writerows(P)
+
+          D = [
+          ['DD000676','DP000651','Eta/CMIP5 — arquivos NetCDF diários','https://data.inpe.br/dados/modelo-eta/','NetCDF','HTTPS download','navegador web | cliente NetCDF | script','sim','não','acesso público; selecionar domínio, GCM, cenário, variável e período','licença específica não localizada na página auditada; verificar arquivo/metadados','sim','por domínio | GCM | RCP | variável | período','Arquivos diários seguem nomenclatura que codifica domínio, resolução, GCM, RCP, versão e período.','2026-08-18'],
+          ['DD000677','DP000652','MOD13Q1 v061 — COG/STAC','https://data.inpe.br/stac/browser/collections/mod13q1-6.1','COG | metadados STAC','HTTPS | STAC','STAC Browser | cliente STAC | SIG','sim','não','acesso público à coleção e assets; preservar QA e metadados do item','proprietary conforme metadado da coleção STAC','sim','por tile | data | banda | asset','NDVI, EVI, VI_Quality, pixel_reliability, refletâncias e geometria estão disponíveis como assets separados.','2026-08-18'],
+          ['DD000678','DP000653','MYD13Q1 v061 — COG/STAC','https://data.inpe.br/stac/browser/collections/myd13q1-6.1','COG | metadados STAC','HTTPS | STAC','STAC Browser | cliente STAC | SIG','sim','não','acesso público à coleção e assets; preservar QA e metadados do item','proprietary conforme metadado da coleção STAC','sim','por tile | data | banda | asset','NDVI, EVI, VI_Quality, pixel_reliability, refletâncias e geometria estão disponíveis como assets separados.','2026-08-18'],
+          ['DD000679','DP000654','MOD11A2 v061 — COG/STAC','https://data.inpe.br/stac/browser/collections/mod11a2-6.1','COG | metadados STAC','HTTPS | STAC','STAC Browser | cliente STAC | SIG','sim','não','acesso público à coleção e assets; preservar QC, horário e cobertura de céu claro','proprietary conforme metadado da coleção STAC','sim','por tile | período de 8 dias | banda | asset','Inclui LST diurna/noturna, emissividade, QC, horário local, ângulo de visada e cobertura de céu claro.','2026-08-18'],
+          ['DD000680','DP000655','MYD11A2 v061 — COG/STAC','https://data.inpe.br/stac/browser/collections/myd11a2-6.1','COG | metadados STAC','HTTPS | STAC','STAC Browser | cliente STAC | SIG','sim','não','acesso público à coleção e assets; preservar QC, horário e cobertura de céu claro','proprietary conforme metadado da coleção STAC','sim','por tile | período de 8 dias | banda | asset','Inclui LST diurna/noturna, emissividade, QC, horário local, ângulo de visada e cobertura de céu claro.','2026-08-18'],
+          ['DD000681','DP000656','MERGE diário — GRIB2/STAC','https://data.inpe.br/stac/browser/collections/prec_merge_daily-1','GRIB2 | índice/descritor GrADS | metadados STAC','HTTPS | STAC','STAC Browser | cliente GRIB2 | GrADS | script','sim','não','acesso público; selecionar data/item e preservar metadados','CC BY 4.0','sim','por data | área via processamento do arquivo','Composição diária; a coleção documenta GPM-Early nas horas recentes e GPM-Late para dados com maior latência.','2026-08-18'],
+          ['DD000682','DP000657','MERGE horário — GRIB2/STAC','https://data.inpe.br/stac/browser/collections/prec_merge_hourly-1','GRIB2 | índice/descritor GrADS | metadados STAC','HTTPS | STAC','STAC Browser | cliente GRIB2 | GrADS | script','sim','não','acesso público; selecionar hora/item e preservar metadados','CC BY 4.0','sim','por hora | área via processamento do arquivo','Produto horário combinado com observações de superfície; primeiras horas usam GPM-Early.','2026-08-18'],
+          ['DD000683','DP000658','SAMeT diário — NetCDF/STAC','https://data.inpe.br/stac/browser/collections/samet_daily-1','NetCDF | metadados STAC','HTTPS | STAC','STAC Browser | cliente NetCDF | script','sim','não','acesso público; selecionar data e variável','CC BY 4.0','sim','por data | variável | área via processamento','Assets separados para temperatura mínima, média e máxima diária.','2026-08-18'],
+          ['DD000684','DP000659','SAMeT horário — NetCDF/STAC','https://data.inpe.br/stac/browser/collections/samet_hourly-1','NetCDF | metadados STAC','HTTPS | STAC','STAC Browser | cliente NetCDF | script','sim','não','acesso público; selecionar hora/item','CC BY 4.0','sim','por hora | área via processamento','Campo horário de temperatura derivado da combinação de observações com ERA5 e correção de lapse rate.','2026-08-18'],
+          ['DD000685','DP000660','MODIS-Aqua Rrs diário — NetCDF/STAC','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-RRS-DAILY-1','NetCDF | PNG | metadados STAC','HTTPS | STAC','STAC Browser | cliente NetCDF','sim','não','acesso público à coleção e itens','CC0','não','por data | área via processamento','Rrs Level-3 diário em oito bandas após OC-SMART; mosaico diário.','2026-08-18'],
+          ['DD000686','DP000660','MODIS-Aqua Rrs mensal — NetCDF/STAC','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-RRS-MONTHLY-1','NetCDF | PNG | metadados STAC','HTTPS | STAC','STAC Browser | cliente NetCDF','sim','não','acesso público à coleção e itens','CC0','não','por mês | área via processamento','Produto mensal obtido por média geométrica dos dados diários Rrs.','2026-08-18'],
+          ['DD000687','DP000661','MODIS-Aqua clorofila-a diária — NetCDF/STAC','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-CHL-DAILY-1','NetCDF | PNG | metadados STAC','HTTPS | STAC','STAC Browser | cliente NetCDF','sim','não','acesso público à coleção e itens','CC0','não','por data | área via processamento','Estimativa diária de clorofila-a a partir de Rrs e CONNECT.','2026-08-18'],
+          ['DD000688','DP000661','MODIS-Aqua clorofila-a mensal — NetCDF/STAC','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-CHL-MONTHLY-1','NetCDF | PNG | metadados STAC','HTTPS | STAC','STAC Browser | cliente NetCDF','sim','não','acesso público à coleção e itens','verificar metadado da coleção mensal; licença não inferida desta página nesta rodada','desconhecido','por mês | área via processamento','Média geométrica mensal das estimativas diárias de clorofila-a.','2026-08-18'],
+          ['DD000689','DP000662','MODIS-Aqua SPM diário — NetCDF/STAC','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-SPM-DAILY-1','NetCDF | PNG | metadados STAC','HTTPS | STAC','STAC Browser | cliente NetCDF','sim','não','acesso público à coleção e itens','CC0','não','por data | área via processamento','SPM diário em g m-3 estimado por combinação de algoritmos.','2026-08-18'],
+          ['DD000690','DP000662','MODIS-Aqua SPM mensal — NetCDF/STAC','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-SPM-MONTHLY-1','NetCDF | PNG | metadados STAC','HTTPS | STAC','STAC Browser | cliente NetCDF','sim','não','acesso público; confirmar metadados do item/coleção','verificar metadado da coleção; licença específica não inferida nesta rodada','desconhecido','por mês | área via processamento','Coleção mensal de SPM listada oficialmente no STAC do INPE; preservar agregação mensal e metadados.','2026-08-18'],
+          ['DD000691','DP000663','MODIS-Aqua POC diário — NetCDF/STAC','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-POC-DAILY-1','NetCDF | PNG | metadados STAC','HTTPS | STAC','STAC Browser | cliente NetCDF','sim','não','acesso público à coleção e itens','CC0','não','por data | área via processamento','POC diário em mg m-3 derivado de combinação de algoritmos.','2026-08-18'],
+          ['DD000692','DP000663','MODIS-Aqua POC mensal — NetCDF/STAC','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-POC-MONTHLY-1','NetCDF | PNG | metadados STAC','HTTPS | STAC','STAC Browser | cliente NetCDF','sim','não','acesso público; confirmar metadados do item/coleção','verificar metadado da coleção; licença específica não inferida nesta rodada','desconhecido','por mês | área via processamento','Coleção mensal de POC listada oficialmente no STAC do INPE; preservar agregação mensal e metadados.','2026-08-18'],
+          ['DD000693','DP000664','MODIS-Aqua aCDOM diário — NetCDF/STAC','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-aCDOM-DAILY-1','NetCDF | PNG | metadados STAC','HTTPS | STAC','STAC Browser | cliente NetCDF','sim','não','acesso público à coleção e itens','CC0','não','por data | área via processamento','Coeficiente de absorção a 443 nm em m-1 estimado pelo algoritmo documentado.','2026-08-18'],
+          ['DD000694','DP000664','MODIS-Aqua aCDOM mensal — NetCDF/STAC','https://data.inpe.br/stac/browser/collections/MODISA-OCSMART-aCDOM-MONTHLY-1','NetCDF | PNG | metadados STAC','HTTPS | STAC','STAC Browser | cliente NetCDF','sim','não','acesso público; confirmar metadados do item/coleção','verificar metadado da coleção; licença específica não inferida nesta rodada','desconhecido','por mês | área via processamento','Coleção mensal de aCDOM listada oficialmente no STAC do INPE; preservar agregação mensal e metadados.','2026-08-18']]
+
+          for row in D:
+              if row[0] in dist_ids:
+                  raise SystemExit(f'duplicate distribution id {row[0]}')
+              if row[1] not in {x[0] for x in P}:
+                  raise SystemExit(f'distribution references unexpected product {row[1]}')
+          with dist_path.open('a', encoding='utf-8', newline='') as f:
+              w = csv.writer(f, lineterminator='\n')
+              w.writerows(D)
+
+          # Fast read-back before project validators.
+          with product_path.open(encoding='utf-8-sig', newline='') as f:
+              p2 = list(csv.DictReader(f))
+          with dist_path.open(encoding='utf-8-sig', newline='') as f:
+              d2 = list(csv.DictReader(f))
+          assert len(p2) == len(products) + len(P)
+          assert len(d2) == len(dists) + len(D)
+          assert {x[0] for x in P}.issubset({x['product_id'] for x in p2})
+          assert {x[0] for x in D}.issubset({x['distribution_id'] for x in d2})
+          print(f'APPEND_OK sources=123 products={len(p2)} distributions={len(d2)}')
+          PY
+
+      - name: Validate and rebuild
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Consolidated read-back
+        run: |
+          python3 - <<'PY'
+          import csv, json
+          from pathlib import Path
+          def rows(p):
+              with Path(p).open(encoding='utf-8-sig', newline='') as f: return list(csv.DictReader(f))
+          s=rows('data/data_resources.csv'); p=rows('data/data_products.csv'); d=rows('data/product_distributions.csv')
+          assert len(s)==123 and len(p)==660 and len(d)==690, (len(s),len(p),len(d))
+          sids={r['resource_id'] for r in s}; pids={r['product_id'] for r in p}; dids={r['distribution_id'] for r in d}
+          assert len(sids)==len(s) and len(pids)==len(p) and len(dids)==len(d)
+          assert all(r['resource_id'] in sids for r in p)
+          assert all(r['product_id'] in pids for r in d)
+          for n in range(651,665): assert f'DP{n:06d}' in pids
+          for n in range(676,695): assert f'DD{n:06d}' in dids
+          q=json.loads(Path('data/data_quality_report.json').read_text())
+          assert q['records']==123 and q['brazil_applicable_records']==120
+          print('READBACK_OK 123 sources / 660 products / 690 distributions')
+          PY
+
+      - name: Commit materialized batch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u data
+          git diff --cached --check
+          git diff --cached --quiet && { echo 'No material changes'; exit 1; }
+          git commit -m "Expand verified BIG climate and ocean catalog"
+          git push
