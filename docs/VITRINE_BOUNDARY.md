@@ -1,88 +1,70 @@
-# Vitrine Ciência — operational boundary
+# Vitrine Ciência — fronteira operacional
 
-Decision date: 2026-08-09
-Structural separation merge: PR #70 → `36211e96edc86fa0e2bb31c703141cd7c5df5480`
+Decisão de separação: **2026-08-09**  
+Revisão da fronteira: **2026-08-18**
 
 ## Status
 
-This repository is the authoritative home of the **Vitrine Ciência**, the continuously available public static catalog.
+`Ian-loc/vitrineciencia` é a autoridade da **Vitrine Ciência**, catálogo público estático e continuamente publicável. O **Simbiotrama** é um projeto independente em `Ian-loc/simbiotrama` e não pode ser dependência de runtime, CI ou publicação da Vitrine.
 
-The **Simbiotrama** is now an independent work front in `Ian-loc/simbiotrama`. Its migration is governed separately and must not become a runtime or deployment dependency of this repository.
+## Contrato do artefato público
 
-## Public artifact contract
-
-GitHub Pages may publish only:
+O GitHub Pages publica somente a superfície necessária ao produto:
 
 - `index.html`;
 - `products.html`;
 - `analytics.html`;
 - `about.html`;
-- the CSS/JS assets required by those pages;
-- static catalog datasets explicitly required by those pages;
-- licenses and optional site metadata.
+- CSS/JavaScript necessários;
+- três tabelas canônicas e JSONs/metadata estritamente necessários à interface;
+- classificação territorial Brasil;
+- licenças e metadados opcionais de site.
 
-The Pages artifact must not include:
+O builder executável é `scripts/build_site_artifact.py`.
 
-- Simbiotrama/Simbioscópio explorer or roadmap pages;
-- relational database/schema material;
-- migration or curation runtime scripts;
-- internal docs/audits;
-- Simbiotrama CI/configuration;
-- `data/federated_layers.json`.
+## Material proibido no artefato público
 
-## CI and availability contract
+- documentação operacional/auditorias internas;
+- scripts, workflows e configurações de desenvolvimento;
+- schemas ou material de banco relacional;
+- migrações/filas curatoriais internas;
+- páginas/artefatos do Simbiotrama ou Simbioscópio;
+- `data/federated_layers.json` e outros legados não requeridos pela Vitrine;
+- segredos, logs ou credenciais.
 
-Vitrine CI owns only:
+## CI e disponibilidade
 
-1. validation of the static catalog inputs;
-2. deterministic generation of public JSON/build metadata;
-3. HTML/CSS/JavaScript integrity and accessibility checks;
-4. search/filter product-interface contracts;
-5. construction of the isolated `_site` artifact;
-6. GitHub Pages deployment.
+A CI da Vitrine deve validar:
 
-PostgreSQL/PostGIS, Simbiotrama schemas, migration scripts and Instance 1 jobs are forbidden dependencies of the Vitrine deployment graph.
+1. contrato e integridade dos dados;
+2. classificação Brasil;
+3. geração determinística dos artefatos;
+4. integridade HTML/CSS/JavaScript;
+5. contratos de busca/filtros/comparação quando aplicáveis;
+6. construção isolada de `_site`;
+7. deploy do GitHub Pages;
+8. smoke externo pós-deploy.
 
-A failure in Simbiotrama must not block a Vitrine deployment. A failure in the Vitrine must not alter or block Simbiotrama development.
+PostgreSQL/PostGIS e jobs do Simbiotrama são dependências proibidas do grafo de deploy.
 
-## Repository ownership
+## Autoridade de dados
 
-The following are owned by the Vitrine:
+No snapshot de 18/08/2026 a Vitrine contém 125 fontes, 756 produtos e 787 distribuições. As contagens podem crescer; o contrato público é a coerência das três tabelas, não uma contagem fixa.
 
-- public catalog interface;
-- public static datasets used by the interface;
-- Vitrine-specific build/validation scripts;
-- GitHub Pages workflow;
-- Vitrine citation, licensing and public-method documentation.
+## Material histórico
 
-The following are not owned by the Vitrine:
+Arquivos relacionais/Simbiotrama anteriores à separação podem permanecer na árvore Git como evidência histórica. `docs/PROJECT_STATE.md` os classifica como `HISTORICAL_EVIDENCE`. Eles não devem ser apresentados como direção ativa nem copiados para `_site`.
 
-- Simbiotrama relational architecture and database;
-- Simbiotrama curatorial/evidence pipelines;
-- future Simbiotrama Instances 2 and 3;
-- Simbiotrama migration/governance state.
+## Teste de regressão da separação
 
-## Migration safeguard
+A fronteira permanece válida enquanto:
 
-Historical Simbiotrama branches, PRs and files may remain temporarily in this Git history while protected migration is completed. They are **preservation evidence**, not active Vitrine authority.
+1. Vitrine CI passa sem jobs do Simbiotrama;
+2. Pages contém somente o artefato da Vitrine;
+3. site, pesquisa, filtros, produtos, análise e downloads permanecem funcionais;
+4. URL canônica é `https://ian-loc.github.io/vitrineciencia/`;
+5. falha no Simbiotrama não bloqueia/remove a Vitrine;
+6. falha na Vitrine não altera o Simbiotrama;
+7. nenhuma página pública apresenta Simbiotrama como identidade ativa da Vitrine.
 
-Rules until migration closure:
-
-- do not merge Simbiotrama work into Vitrine `main`;
-- do not delete source branches/PRs before target coverage is verified in `Ian-loc/simbiotrama`;
-- do not make public Vitrine code depend on migration-preserved files;
-- remove remaining Simbiotrama-owned active-tree material only through a later cleanup PR after migration verification.
-
-## Completion and regression test
-
-The separation remains valid only while all statements below are true:
-
-1. Vitrine CI passes without any Simbiotrama job;
-2. Pages publishes only the Vitrine artifact;
-3. homepage, navigation, search, filters, product comparison, analytics and downloads remain functional;
-4. the canonical public URL is `https://ian-loc.github.io/vitrineciencia/`;
-5. a Simbiotrama failure cannot block or remove the Vitrine;
-6. a Vitrine failure cannot corrupt or block Simbiotrama;
-7. no public page presents Simbiotrama as the identity or continuation of the Vitrine.
-
-See `docs/STRUCTURAL_SEPARATION_MILESTONE_2026-08-09.md` for the milestone record.
+O marco original permanece registrado em `docs/STRUCTURAL_SEPARATION_MILESTONE_2026-08-09.md`.
