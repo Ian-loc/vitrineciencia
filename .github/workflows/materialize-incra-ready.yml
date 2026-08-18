@@ -1,0 +1,66 @@
+name: Materialize verified INCRA catalog on ready PR
+
+on:
+  pull_request:
+    types: [ready_for_review]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.number == 174
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reuse audited INCRA append from repository history
+        shell: bash
+        run: |
+          git show e3d43c1c3d5ba35dd7409441a35ab5c6b7b63ebd:.github/workflows/materialize-incra-audit.yml > /tmp/incra-old.yml
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('/tmp/incra-old.yml').read_text()
+          start=s.index("          python - <<'PY'\n") + len("          python - <<'PY'\n")
+          end=s.index("\n          PY\n", start)
+          code='\n'.join(line[10:] if line.startswith('          ') else line for line in s[start:end].splitlines())
+          Path('/tmp/incra_append.py').write_text(code)
+          PY
+          python /tmp/incra_append.py
+      - name: Validate, rebuild and read back
+        shell: bash
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+          python - <<'PY'
+          import csv
+          def rows(p):
+              with open(p,encoding='utf-8',newline='') as f:return list(csv.DictReader(f))
+          R=rows('data/data_resources.csv'); P=rows('data/data_products.csv'); D=rows('data/product_distributions.csv')
+          assert (len(R),len(P),len(D))==(124,734,765), (len(R),len(P),len(D))
+          rids={x['resource_id'] for x in R}; pids={x['product_id'] for x in P}; dids={x['distribution_id'] for x in D}
+          assert len(rids)==len(R) and len(pids)==len(P) and len(dids)==len(D)
+          assert all(x['resource_id'] in rids for x in P)
+          assert all(x['product_id'] in pids for x in D)
+          assert {x['product_id'] for x in P if x['resource_id']=='DR0124'}=={f'DP{i:06d}' for i in range(728,735)}
+          assert {x['distribution_id'] for x in D if x['product_id'] in {f'DP{i:06d}' for i in range(728,735)}}=={f'DD{i:06d}' for i in range(758,766)}
+          print('READBACK_OK',len(R),len(P),len(D))
+          PY
+      - name: Commit materialized catalog to PR branch
+        shell: bash
+        run: |
+          git config user.name "vitrine-audit-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          git commit -m "Expand verified INCRA land-governance catalog"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
