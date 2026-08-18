@@ -31799,5 +31799,536 @@
     "available_protocols": [
       "HTTPS download"
     ]
+  },
+  {
+    "product_id": "DP000536",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Prognóstico Climático Sazonal INPE/INMET/FUNCEME",
+    "product_acronym": "Prognóstico Climático",
+    "product_family": "prognóstico climático sazonal",
+    "product_kind": "indicator_family",
+    "product_description": "Boletins mensais de previsão climática sazonal para três meses elaborados conjuntamente por INPE, INMET e FUNCEME, com prognósticos de precipitação e temperatura.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas",
+    "keywords": "prognóstico climático | previsão sazonal | precipitação | temperatura | INMET | INPE | FUNCEME",
+    "geographic_coverage": "Brasil; recortes e mapas conforme edição",
+    "covers_brazil": "sim",
+    "spatial_support": "mapas e sínteses climáticas sazonais",
+    "spatial_resolution": "varia conforme produto e edição",
+    "temporal_coverage": "série mensal de prognósticos; horizonte de três meses",
+    "temporal_resolution": "mensal com horizonte sazonal de 3 meses",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "serviço corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/progn%C3%B3stico-clim%C3%A1tico-do-cptec-inmet-funceme",
+    "methodology_url": "https://portal.inmet.gov.br/boletinsprog",
+    "primary_or_derived": "derivado",
+    "limitations": "Prognóstico climático é probabilístico e não previsão determinística do tempo ou de impactos locais. Preservar edição, horizonte, variável e incerteza; não confundir com observações meteorológicas.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000561",
+        "product_id": "DP000536",
+        "distribution_name": "INMET — Prognóstico Climático — boletins sazonais",
+        "access_url": "https://portal.inmet.gov.br/boletinsprog",
+        "format": "PDF | HTML conforme edição",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal INMET",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público às edições disponibilizadas",
+        "license": "não localizada de forma inequívoca no nível de cada boletim",
+        "provider_attribution_required": "sim",
+        "subset_support": "por edição mensal",
+        "notes": "Previsão sazonal conjunta INPE/INMET/FUNCEME; preservar edição, horizonte e caráter probabilístico.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "PDF | HTML conforme edição"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000537",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Anomalia de Chuva Mensal",
+    "product_acronym": "Anomalia Chuva Mensal",
+    "product_family": "anomalias climatológicas de precipitação",
+    "product_kind": "indicator_family",
+    "product_description": "Mapas nacionais da diferença entre a precipitação total registrada em um mês e a climatologia mensal de referência usada pelo INMET.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia",
+    "keywords": "anomalia de chuva | precipitação | climatologia | 1961-1990 | monitoramento climático",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "mapa/grade climatológica derivada",
+    "spatial_resolution": "conforme processamento cartográfico do serviço",
+    "temporal_coverage": "mapas históricos e correntes; climatologia de referência 1961–1990 segundo a carta de serviço",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "serviço corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/desvio-de-chuva-mensal",
+    "methodology_url": "https://clima.inmet.gov.br/prec",
+    "primary_or_derived": "derivado",
+    "limitations": "Anomalia é diferença em relação à climatologia de referência, não precipitação absoluta. A referência 1961–1990 deve ser preservada; não comparar diretamente com anomalias calculadas contra outras normais sem harmonização.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000562",
+        "product_id": "DP000537",
+        "distribution_name": "INMET Clima — Anomalia de Chuva Mensal",
+        "access_url": "https://clima.inmet.gov.br/prec",
+        "format": "mapas e visualização web",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal climatológico INMET",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por mês/ano",
+        "notes": "Anomalia calculada contra climatologia 1961–1990 conforme carta de serviço.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas e visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000538",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Anomalia de Chuva Trimestral",
+    "product_acronym": "Anomalia Chuva Trimestral",
+    "product_family": "anomalias climatológicas de precipitação",
+    "product_kind": "indicator_family",
+    "product_description": "Mapas nacionais da diferença entre a precipitação acumulada de um trimestre e a média histórica correspondente, com série disponibilizada desde 1961.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia",
+    "keywords": "anomalia de chuva | trimestre | precipitação | climatologia | 1961-1990",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "mapa/grade climatológica derivada",
+    "spatial_resolution": "conforme processamento cartográfico do serviço",
+    "temporal_coverage": "desde o trimestre jan-fev-mar de 1961 conforme documentação",
+    "temporal_resolution": "trimestral móvel/selecionado; atualização mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "serviço corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/desvio-de-chuva-trimestral",
+    "methodology_url": "https://clima.inmet.gov.br/prec",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto acumula três meses e usa referência climatológica histórica; não equivale à anomalia mensal nem a índice de seca. Comparações exigem manter exatamente o trimestre e a climatologia de referência.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000563",
+        "product_id": "DP000538",
+        "distribution_name": "INMET Clima — Anomalia de Chuva Trimestral",
+        "access_url": "https://clima.inmet.gov.br/prec",
+        "format": "mapas e visualização web",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal climatológico INMET",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por trimestre/ano",
+        "notes": "Série trimestral disponível desde 1961; não confundir com anomalia mensal ou precipitação absoluta.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas e visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000539",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Anomalia de Temperatura Mensal",
+    "product_acronym": "Anomalia Temperatura Mensal",
+    "product_family": "anomalias climatológicas de temperatura",
+    "product_kind": "indicator_family",
+    "product_description": "Mapas nacionais da diferença entre a temperatura média registrada no mês e a média histórica mensal usada pelo INMET.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia",
+    "keywords": "anomalia de temperatura | temperatura média | climatologia | 1961-1990",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "mapa/grade climatológica derivada",
+    "spatial_resolution": "conforme processamento cartográfico do serviço",
+    "temporal_coverage": "série histórica e corrente conforme serviço; climatologia de referência 1961–1990",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "serviço corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/anomalia-de-temperatura-mensal",
+    "methodology_url": "https://clima.inmet.gov.br/tem",
+    "primary_or_derived": "derivado",
+    "limitations": "Anomalia de temperatura não é temperatura absoluta. A climatologia de referência deve ser preservada; diferenças contra outras normais não são diretamente intercambiáveis.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000564",
+        "product_id": "DP000539",
+        "distribution_name": "INMET Clima — Anomalia de Temperatura Mensal",
+        "access_url": "https://clima.inmet.gov.br/tem",
+        "format": "mapas e visualização web",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal climatológico INMET",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por mês/ano",
+        "notes": "Anomalia de temperatura média em relação à climatologia histórica do serviço.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas e visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000540",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Anomalia de Temperatura Trimestral",
+    "product_acronym": "Anomalia Temperatura Trimestral",
+    "product_family": "anomalias climatológicas de temperatura",
+    "product_kind": "indicator_family",
+    "product_description": "Mapas nacionais da diferença entre a temperatura média observada em um trimestre e a média histórica correspondente, com série desde 1961.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia",
+    "keywords": "anomalia de temperatura | trimestre | climatologia | 1961-1990",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "mapa/grade climatológica derivada",
+    "spatial_resolution": "conforme processamento cartográfico do serviço",
+    "temporal_coverage": "desde o trimestre jan-fev-mar de 1961 conforme documentação",
+    "temporal_resolution": "trimestral móvel/selecionado; atualização mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "serviço corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/anomalia-de-temperatura-trimestral",
+    "methodology_url": "https://clima.inmet.gov.br/tem",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto trimestral não deve ser tratado como média de mapas mensais sem reproduzir o método do serviço. Manter período e climatologia de referência explícitos.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000565",
+        "product_id": "DP000540",
+        "distribution_name": "INMET Clima — Anomalia de Temperatura Trimestral",
+        "access_url": "https://clima.inmet.gov.br/tem",
+        "format": "mapas e visualização web",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal climatológico INMET",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por trimestre/ano",
+        "notes": "Produto trimestral atualizado mensalmente; preservar trimestre e período de referência.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas e visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000541",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Monitoramento da Temperatura da Superfície do Mar",
+    "product_acronym": "TSM INMET",
+    "product_family": "monitoramento oceânico climatológico",
+    "product_kind": "indicator_family",
+    "product_description": "Mapas de temperatura média da superfície do mar e anomalias mensais e quinzenais usados no monitoramento de condições oceânicas relevantes ao clima.",
+    "research_areas": "Clima e Ciências Atmosféricas | Recursos Hídricos e Oceanografia | Ciências Ambientais e Ecologia",
+    "keywords": "temperatura da superfície do mar | TSM | SST | anomalia | El Niño | La Niña | NOAA",
+    "geographic_coverage": "global com uso no monitoramento climático brasileiro",
+    "covers_brazil": "sim",
+    "spatial_support": "grade oceânica derivada",
+    "spatial_resolution": "base NOAA OI SST V2 High Resolution; atualização de 2026 documenta resolução aproximada de 0,25 grau",
+    "temporal_coverage": "série conforme portal; base atualizada a partir de janeiro de 2026",
+    "temporal_resolution": "quinzenal | mensal",
+    "update_frequency": "duas vezes por mês",
+    "product_status": "ativo",
+    "version_or_collection": "base NOAA OI SST V2 High Resolution adotada em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/monitoramento-da-temperatura-da-superf%C3%ADcie-do-mar-tsm",
+    "methodology_url": "https://clima.inmet.gov.br/TSM",
+    "primary_or_derived": "derivado",
+    "limitations": "TSM é análise oceânica integrada de satélite e medições in situ, não temperatura do ar nem medida exclusivamente in situ. Anomalias dependem da referência; a base foi atualizada em janeiro de 2026, exigindo atenção à comparabilidade.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000566",
+        "product_id": "DP000541",
+        "distribution_name": "INMET Clima — Monitoramento de TSM",
+        "access_url": "https://clima.inmet.gov.br/TSM",
+        "format": "mapas de TSM e anomalia",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal climatológico INMET",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "quinzenal e mensal conforme interface",
+        "notes": "Base atualizada em 2026 para NOAA OI SST V2 High Resolution; atenção à comparabilidade histórica.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas de TSM e anomalia"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000542",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Previsão de Risco de Geada",
+    "product_acronym": "Risco de Geada",
+    "product_family": "previsão agrometeorológica de geada",
+    "product_kind": "data_service",
+    "product_description": "Mapas de previsão diária de risco de geada com classes de intensidade, derivados de saídas de previsão numérica e disponibilizados no SISDAGRO.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Planejamento Territorial e Políticas Públicas",
+    "keywords": "geada | risco | previsão | temperatura mínima | SISDAGRO | agricultura",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "mapa/grade de previsão",
+    "spatial_resolution": "conforme modelo e processamento operacional",
+    "temporal_coverage": "previsão operacional corrente; em 2026 mapas para horizonte de até 5 dias",
+    "temporal_resolution": "diária; horizonte de até 5 dias",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "produto atualizado em maio de 2026 com mapas de 5 dias",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/previs%C3%A3o-de-risco-de-geada",
+    "methodology_url": "https://sisdagro.inmet.gov.br/",
+    "primary_or_derived": "derivado",
+    "limitations": "Risco previsto não equivale à ocorrência observada de geada nem ao dano agrícola efetivo. Resultado depende do modelo e do índice de temperatura mínima efetiva próxima ao solo.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000567",
+        "product_id": "DP000542",
+        "distribution_name": "SISDAGRO — Previsão de Risco de Geada",
+        "access_url": "https://sisdagro.inmet.gov.br/",
+        "format": "mapas de previsão",
+        "access_protocol": "HTTPS",
+        "access_tool": "SISDAGRO",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; interface operacional",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por dia/horizonte",
+        "notes": "Previsão de risco com horizonte operacional; não equivale a geada observada.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapas de previsão"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000543",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Risco de Incêndio — Índice de Nesterov",
+    "product_acronym": "Risco de Incêndio INMET",
+    "product_family": "risco meteorológico de incêndio",
+    "product_kind": "indicator_family",
+    "product_description": "Painel nacional diário do grau de perigo de incêndio calculado pelo Índice de Inflamabilidade de Nesterov a partir de variáveis meteorológicas.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia",
+    "keywords": "risco de incêndio | Nesterov | inflamabilidade | temperatura | umidade | precipitação | fogo",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "pontos/estimativas meteorológicas e mapa derivado",
+    "spatial_resolution": "conforme rede e processamento do painel",
+    "temporal_coverage": "série operacional corrente",
+    "temporal_resolution": "diária",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "painel corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/risco-de-inc%C3%AAndio",
+    "methodology_url": "https://portal.inmet.gov.br/paginas/incendio",
+    "primary_or_derived": "derivado",
+    "limitations": "Índice de perigo meteorológico não é foco de calor, ocorrência confirmada de incêndio, área queimada ou previsão determinística. Depende das condições meteorológicas e regras acumulativas do índice de Nesterov.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000568",
+        "product_id": "DP000543",
+        "distribution_name": "INMET — Painel de Risco de Incêndio",
+        "access_url": "https://portal.inmet.gov.br/paginas/incendio",
+        "format": "mapa/visualização web",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal INMET",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por data",
+        "notes": "Índice de Nesterov derivado de variáveis meteorológicas; não é dado de fogo ativo ou área queimada.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "mapa/visualização web"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000544",
+    "resource_id": "DR0118",
+    "product_name": "INMET — Produtos de Imagens Meteorológicas de Satélite",
+    "product_acronym": "Satélite INMET",
+    "product_family": "imagens meteorológicas de satélite",
+    "product_kind": "data_service",
+    "product_description": "Produtos operacionais derivados de imagens de satélite, incluindo infravermelho termal, vapor de água, canal visível e realce de topo de nuvens para acompanhamento meteorológico.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "GOES-16 | satélite | infravermelho | vapor de água | canal visível | topo de nuvens | meteorologia",
+    "geographic_coverage": "Brasil e domínio de observação dos satélites utilizados",
+    "covers_brazil": "sim",
+    "spatial_support": "pixel/imagem de satélite",
+    "spatial_resolution": "depende do canal, sensor e produto",
+    "temporal_coverage": "serviço operacional corrente",
+    "temporal_resolution": "a cada 15 minutos conforme carta de serviço",
+    "update_frequency": "15 minutos",
+    "product_status": "ativo",
+    "version_or_collection": "serviço corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/produtos-de-imagens-de-sat%C3%A9lite",
+    "methodology_url": "https://satelite.inmet.gov.br/",
+    "primary_or_derived": "derivado",
+    "limitations": "Canais e produtos possuem significados físicos distintos. Temperatura de brilho/topo de nuvem não equivale à temperatura da superfície; imagem meteorológica não é automaticamente precipitação observada.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0118",
+      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
+      "acronym": "INMET",
+      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
+      "homepage_url": "https://portal.inmet.gov.br/",
+      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000569",
+        "product_id": "DP000544",
+        "distribution_name": "INMET — Imagens Meteorológicas de Satélite",
+        "access_url": "https://satelite.inmet.gov.br/",
+        "format": "imagens web por canal/produto",
+        "access_protocol": "HTTPS",
+        "access_tool": "portal satélite INMET",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública operacional",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
+        "provider_attribution_required": "sim",
+        "subset_support": "por canal e horário",
+        "notes": "Serviço com atualização a cada 15 minutos; interpretar cada canal/produto conforme sua física e processamento.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "imagens web por canal/produto"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
   }
 ]
