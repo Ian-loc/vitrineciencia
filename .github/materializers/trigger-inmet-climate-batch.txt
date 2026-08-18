@@ -1,1 +1,0 @@
-Trigger the verified INMET climate materializer on merge to main.
