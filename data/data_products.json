@@ -34808,5 +34808,713 @@
     "available_protocols": [
       "HTTPS"
     ]
+  },
+  {
+    "product_id": "DP000587",
+    "resource_id": "DR0122",
+    "product_name": "Carga de Energia Verificada",
+    "product_acronym": "Carga verificada",
+    "product_family": "Carga e demanda elétrica",
+    "product_kind": "dataset_series",
+    "product_description": "Carga verificada em periodicidade semi-horária por área de carga, incluindo componentes supervisionadas pelo ONS, medição de diferentes modalidades de geração/intercâmbio, parcela de geração Tipo III, MMGD, redução de demanda e consistências usadas em previsão.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "carga | demanda | MMGD | medição | área de carga | SIN",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "área de carga e componentes",
+    "spatial_resolution": "semi-horária",
+    "temporal_coverage": "série operacional; conjunto atualizado no portal até 2025/2026 conforme recurso",
+    "temporal_resolution": "semi-horária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "série corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/carga-energia-verificada",
+    "methodology_url": "https://dados.ons.org.br/dataset/carga-energia-verificada",
+    "primary_or_derived": "misto",
+    "limitations": "Carga verificada combina componentes de origens distintas e pode sofrer consistência/revisão. Não equivale automaticamente a consumo faturado ou demanda de todos os consumidores.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000612",
+        "product_id": "DP000587",
+        "distribution_name": "Carga de Energia Verificada — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/carga-energia-verificada",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN/API conforme conjunto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar o dicionário de dados e preservar período, unidade, agregação, modalidade operacional e eventuais revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000588",
+    "resource_id": "DR0122",
+    "product_name": "Carga de Energia Diária por Subsistema",
+    "product_acronym": "Carga diária ONS",
+    "product_family": "Carga e demanda elétrica",
+    "product_kind": "dataset_series",
+    "product_description": "Série diária de carga de energia por subsistema em MWmed, cuja metodologia incorporou progressivamente previsão de usinas não despachadas e, desde 29/04/2023, estimativa de MMGD.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "carga | subsistema | MWmed | MMGD | série diária",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "subsistema",
+    "spatial_resolution": "diária",
+    "temporal_coverage": "série histórica com mudança metodológica documentada em 2021 e 2023",
+    "temporal_resolution": "diária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "série corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/carga-energia",
+    "methodology_url": "https://dados.ons.org.br/dataset/carga-energia",
+    "primary_or_derived": "misto",
+    "limitations": "Há quebras metodológicas: até fev/2021, mar/2021–abr/2023 e desde 29/04/2023 usam componentes diferentes. MMGD é estimada; não concatenar períodos como série homogênea sem ajuste.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000613",
+        "product_id": "DP000588",
+        "distribution_name": "Carga de Energia Diária por Subsistema — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/carga-energia",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN/API conforme conjunto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar o dicionário de dados e preservar período, unidade, agregação, modalidade operacional e eventuais revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000589",
+    "resource_id": "DR0122",
+    "product_name": "Geração por Usina em Base Horária",
+    "product_acronym": "Geração por Usina",
+    "product_family": "Geração elétrica observada e estimada",
+    "product_kind": "dataset_series",
+    "product_description": "Geração verificada de usinas e conjuntos de usinas e geração prevista para grupos de pequenas usinas, em base horária, com arquivos históricos desde 2000.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "geração | usina | conjuntos | pequenas usinas | horário",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "usina, conjunto ou grupo de pequenas usinas",
+    "spatial_resolution": "horária",
+    "temporal_coverage": "2000–presente; arquivos mensais a partir de 2022",
+    "temporal_resolution": "horária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos até julho de 2026 auditados",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/geracao-usina-2",
+    "methodology_url": "https://dados.ons.org.br/dataset/geracao-usina-2",
+    "primary_or_derived": "misto",
+    "limitations": "A série mistura geração verificada para usinas/conjuntos monitorados e previsão para grupos de pequenas usinas Tipo III; esses componentes não devem ser tratados como equivalentes.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000614",
+        "product_id": "DP000589",
+        "distribution_name": "Geração por Usina em Base Horária — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/geracao-usina-2",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN/API conforme conjunto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar o dicionário de dados e preservar período, unidade, agregação, modalidade operacional e eventuais revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000590",
+    "resource_id": "DR0122",
+    "product_name": "Dados Hidráulicos por Reservatório — Base diária",
+    "product_acronym": "Hidráulicos diários",
+    "product_family": "Hidrologia energética de reservatórios",
+    "product_kind": "dataset_series",
+    "product_description": "Dados hidráulicos verificados e consolidados pelo ONS por reservatório em periodicidade diária, com múltiplas atualizações intradiárias do portal.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "reservatório | hidrologia | nível | vazão | volume | diário",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "reservatório",
+    "spatial_resolution": "diária",
+    "temporal_coverage": "série histórica e dados correntes",
+    "temporal_resolution": "diária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/dados-hidrologicos-res",
+    "methodology_url": "https://dados.ons.org.br/dataset/dados-hidrologicos-res",
+    "primary_or_derived": "primário",
+    "limitations": "São dados consolidados no contexto operacional do ONS e sujeitos a consistência recorrente. Variáveis hidráulicas e unidades devem ser interpretadas pelo dicionário; não equivalem diretamente a disponibilidade hídrica natural da bacia.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000615",
+        "product_id": "DP000590",
+        "distribution_name": "Dados Hidráulicos por Reservatório — Base diária — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/dados-hidrologicos-res",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN/API conforme conjunto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar o dicionário de dados e preservar período, unidade, agregação, modalidade operacional e eventuais revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000591",
+    "resource_id": "DR0122",
+    "product_name": "Dados Hidráulicos por Reservatório — Base horária",
+    "product_acronym": "Hidráulicos horários",
+    "product_family": "Hidrologia energética de reservatórios",
+    "product_kind": "dataset_series",
+    "product_description": "Dados hidráulicos horários recebidos dos agentes de geração, publicados como réplica não consistida e atualizados aproximadamente a cada 15 minutos.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "reservatório | hidrologia | horário | agentes de geração | telemetria",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "reservatório",
+    "spatial_resolution": "horária",
+    "temporal_coverage": "série corrente e histórica conforme arquivos",
+    "temporal_resolution": "horária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/dados_hidrologicos_ho",
+    "methodology_url": "https://dados.ons.org.br/dataset/dados_hidrologicos_ho",
+    "primary_or_derived": "primário",
+    "limitations": "Produto explicitamente não consistido: pode conter lacunas e alterações posteriores. Não substituir a base diária verificada nem tratar valores horários como consolidados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000616",
+        "product_id": "DP000591",
+        "distribution_name": "Dados Hidráulicos por Reservatório — Base horária — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/dados_hidrologicos_ho",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN/API conforme conjunto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar o dicionário de dados e preservar período, unidade, agregação, modalidade operacional e eventuais revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000592",
+    "resource_id": "DR0122",
+    "product_name": "ENA Diário por Bacia Hidroenergética",
+    "product_acronym": "ENA por Bacia",
+    "product_family": "Energia Natural Afluente",
+    "product_kind": "dataset_series",
+    "product_description": "Energia Natural Afluente bruta e armazenável em base diária agregada por bacias hidroenergéticas, calculada a partir de vazões naturais e produtividades das usinas.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "ENA | energia natural afluente | vazão natural | bacia hidroenergética",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "bacia hidroenergética",
+    "spatial_resolution": "diária",
+    "temporal_coverage": "série histórica e corrente",
+    "temporal_resolution": "diária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ena-diario-por-bacia",
+    "methodology_url": "https://dados.ons.org.br/dataset/ena-diario-por-bacia",
+    "primary_or_derived": "derivado",
+    "limitations": "ENA é uma grandeza energética derivada de vazões naturais e produtividades, não vazão observada nem disponibilidade hídrica em volume. A ENA armazenável desconta vertimentos e depende da representação do sistema.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000617",
+        "product_id": "DP000592",
+        "distribution_name": "ENA Diário por Bacia Hidroenergética — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/ena-diario-por-bacia",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN/API conforme conjunto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar o dicionário de dados e preservar período, unidade, agregação, modalidade operacional e eventuais revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000593",
+    "resource_id": "DR0122",
+    "product_name": "EAR Diário por Subsistema",
+    "product_acronym": "EAR por Subsistema",
+    "product_family": "Energia Armazenada",
+    "product_kind": "dataset_series",
+    "product_description": "Energia Armazenada diária por subsistema, associada ao volume de água disponível nos reservatórios e ao potencial de conversão em energia ao longo das cascatas.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "EAR | energia armazenada | reservatórios | subsistema | hidrelétrica",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "subsistema",
+    "spatial_resolution": "diária",
+    "temporal_coverage": "série histórica e corrente",
+    "temporal_resolution": "diária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/ear-diario-por-subsistema",
+    "methodology_url": "https://dados.ons.org.br/dataset/ear-diario-por-subsistema",
+    "primary_or_derived": "derivado",
+    "limitations": "EAR é grandeza energética derivada do armazenamento e da produtividade ao longo da cascata; não equivale a volume físico total de água nem a armazenamento ambiental da bacia.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000618",
+        "product_id": "DP000593",
+        "distribution_name": "EAR Diário por Subsistema — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/ear-diario-por-subsistema",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN/API conforme conjunto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar o dicionário de dados e preservar período, unidade, agregação, modalidade operacional e eventuais revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000594",
+    "resource_id": "DR0122",
+    "product_name": "Dados de Intercâmbio de Energia por Modalidade",
+    "product_acronym": "Intercâmbio por Modalidade",
+    "product_family": "Intercâmbio de energia",
+    "product_kind": "dataset_series",
+    "product_description": "Histórico horário de intercâmbio de energia por modalidade, conversora e montante em MWh entre sistemas/mercados representados pelo ONS.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "intercâmbio | energia | conversora | MWh | SIN",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "conversora/modalidade de intercâmbio",
+    "spatial_resolution": "horária",
+    "temporal_coverage": "série histórica e arquivos 2026",
+    "temporal_resolution": "horária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos 2026 disponíveis",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/intercambio_modalidade",
+    "methodology_url": "https://dados.ons.org.br/dataset/intercambio_modalidade",
+    "primary_or_derived": "primário",
+    "limitations": "Intercâmbio físico/contabilizado por modalidade não deve ser confundido com geração, carga local ou fluxo em toda linha de transmissão. Dados podem ser revisados após publicação.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000619",
+        "product_id": "DP000594",
+        "distribution_name": "Dados de Intercâmbio de Energia por Modalidade — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/intercambio_modalidade",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN/API conforme conjunto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar o dicionário de dados e preservar período, unidade, agregação, modalidade operacional e eventuais revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000595",
+    "resource_id": "DR0122",
+    "product_name": "Restrição de Operação por Constrained-off de Usinas Eólicas",
+    "product_acronym": "Constrained-off Eólico",
+    "product_family": "Restrições operativas de renováveis",
+    "product_kind": "dataset_series",
+    "product_description": "Informações de apuração das restrições de operação por constrained-off em usinas eólicas classificadas nas modalidades operativas Tipo I, II-B e II-C.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "constrained-off | eólica | curtailment | restrição operativa | usina",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "usina/modalidade operativa",
+    "spatial_resolution": "mensal com registros operacionais internos ao período",
+    "temporal_coverage": "série histórica; arquivos mensais 2026",
+    "temporal_resolution": "mensal/registro",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos até julho de 2026 auditados",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/restricao_coff_eolica_usi",
+    "methodology_url": "https://dados.ons.org.br/dataset/restricao_coff_eolica_usi",
+    "primary_or_derived": "derivado",
+    "limitations": "Constrained-off é apuração de restrição operacional no universo de usinas/modalidades coberto pelo ONS; não equivale automaticamente a potencial eólico perdido, dano econômico ou restrição ambiental.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000620",
+        "product_id": "DP000595",
+        "distribution_name": "Restrição de Operação por Constrained-off de Usinas Eólicas — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/restricao_coff_eolica_usi",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN/API conforme conjunto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar o dicionário de dados e preservar período, unidade, agregação, modalidade operacional e eventuais revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000596",
+    "resource_id": "DR0122",
+    "product_name": "Restrição de Operação por Constrained-off de Usinas Fotovoltaicas",
+    "product_acronym": "Constrained-off Solar",
+    "product_family": "Restrições operativas de renováveis",
+    "product_kind": "dataset_series",
+    "product_description": "Informações de apuração das restrições de operação por constrained-off em usinas fotovoltaicas classificadas nas modalidades operativas Tipo I, II-B e II-C.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "constrained-off | solar | fotovoltaica | curtailment | restrição operativa",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "usina/modalidade operativa",
+    "spatial_resolution": "mensal com registros operacionais internos ao período",
+    "temporal_coverage": "série histórica; arquivos mensais 2026",
+    "temporal_resolution": "mensal/registro",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos até julho de 2026 auditados",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/restricao_coff_fotovoltaica",
+    "methodology_url": "https://dados.ons.org.br/dataset/restricao_coff_fotovoltaica",
+    "primary_or_derived": "derivado",
+    "limitations": "Constrained-off é apuração operacional para o universo coberto pelo ONS; não equivale a irradiância perdida, potencial solar ou impacto econômico/ambiental sem análise adicional.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000621",
+        "product_id": "DP000596",
+        "distribution_name": "Restrição de Operação por Constrained-off de Usinas Fotovoltaicas — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/restricao_coff_fotovoltaica",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN/API conforme conjunto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar o dicionário de dados e preservar período, unidade, agregação, modalidade operacional e eventuais revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000597",
+    "resource_id": "DR0122",
+    "product_name": "Fator de Capacidade de Geração Eólica e Solar",
+    "product_acronym": "Fator de Capacidade Eólico/Solar",
+    "product_family": "Desempenho de geração renovável",
+    "product_kind": "indicator_family",
+    "product_description": "Fator de capacidade horário de usinas e conjuntos eólicos e solares despachados pelo ONS, calculado como relação entre geração e capacidade instalada.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "fator de capacidade | eólica | solar | geração | capacidade instalada",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "usina ou conjunto de usinas",
+    "spatial_resolution": "horária",
+    "temporal_coverage": "2009–presente; arquivos mensais a partir de 2022",
+    "temporal_resolution": "horária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos até julho de 2026 auditados",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/fator-capacidade-2",
+    "methodology_url": "https://dados.ons.org.br/dataset/fator-capacidade-2",
+    "primary_or_derived": "derivado",
+    "limitations": "Fator de capacidade é razão entre geração e capacidade instalada; não é fator de disponibilidade, recurso meteorológico bruto ou eficiência física do equipamento. Universo restrito às usinas/conjuntos cobertos.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000622",
+        "product_id": "DP000597",
+        "distribution_name": "Fator de Capacidade de Geração Eólica e Solar — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/fator-capacidade-2",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN/API conforme conjunto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar o dicionário de dados e preservar período, unidade, agregação, modalidade operacional e eventuais revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
+  },
+  {
+    "product_id": "DP000598",
+    "resource_id": "DR0122",
+    "product_name": "Energia Vertida Turbinável",
+    "product_acronym": "Energia Vertida Turbinável",
+    "product_family": "Vertimento e hidrologia energética",
+    "product_kind": "dataset_series",
+    "product_description": "Energia vertida turbinável consolidada pelo ONS por reservatório em periodicidade horária, com arquivos mensais individualizados a partir de 2024.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "vertimento | reservatório | energia vertida | hidrelétrica | horário",
+    "geographic_coverage": "Brasil — Sistema Interligado Nacional, com recorte conforme produto",
+    "covers_brazil": "sim",
+    "spatial_support": "reservatório",
+    "spatial_resolution": "horária",
+    "temporal_coverage": "série histórica; arquivos mensais desde 2024 e recursos 2026",
+    "temporal_resolution": "horária",
+    "update_frequency": "operacional/periódica conforme conjunto",
+    "product_status": "ativo",
+    "version_or_collection": "arquivos até julho de 2026 auditados",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dados.ons.org.br/dataset/energia-vertida-turbinavel",
+    "methodology_url": "https://dados.ons.org.br/dataset/energia-vertida-turbinavel",
+    "primary_or_derived": "derivado",
+    "limitations": "Energia vertida turbinável é uma grandeza energética consolidada; não equivale diretamente ao volume vertido, vazão natural, dano ambiental ou energia que necessariamente poderia ter sido gerada sob qualquer condição operacional.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0122",
+      "resource_name": "Portal de Dados Abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "acronym": "ONS Dados Abertos",
+      "official_identity": "Portal oficial de dados abertos do Operador Nacional do Sistema Elétrico — ONS",
+      "homepage_url": "https://www.ons.org.br/",
+      "data_access_url": "https://dados.ons.org.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000623",
+        "product_id": "DP000598",
+        "distribution_name": "Energia Vertida Turbinável — portal e arquivos oficiais",
+        "access_url": "https://dados.ons.org.br/dataset/energia-vertida-turbinavel",
+        "format": "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto",
+        "access_protocol": "HTTPS download | CKAN",
+        "access_tool": "navegador web | CKAN/API conforme conjunto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; dados sujeitos a consistência e revisão conforme aviso do conjunto",
+        "license": "Creative Commons Atribuição (CC BY)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por período e recorte conforme recursos do conjunto",
+        "notes": "Usar o dicionário de dados e preservar período, unidade, agregação, modalidade operacional e eventuais revisões do ONS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | PARQUET | JSON | PDF; API quando indicada no conjunto"
+    ],
+    "available_protocols": [
+      "HTTPS download | CKAN"
+    ]
   }
 ]
