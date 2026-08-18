@@ -8,7 +8,7 @@ A Vitrine usa três tabelas CSV canônicas na `main`:
 - `data/data_products.csv` — produtos;
 - `data/product_distributions.csv` — distribuições.
 
-Snapshot de 18/08/2026: **125 fontes, 756 produtos e 787 distribuições**. Os JSONs e o site são derivados. O Drive é espelho/histórico derivado.
+Snapshot de 18/08/2026: **125 fontes, 752 produtos e 783 distribuições**. Os JSONs e o site são derivados. O Drive é espelho/histórico derivado.
 
 ## 2. Fontes — 34 campos
 
@@ -121,8 +121,8 @@ Quando a evidência não permite preenchimento específico, preservar estados co
 
 ## 7. Papéis dos links
 
-- `homepage_url` — identidade institucional/oficial;
-- `data_access_url` — descoberta/acesso aos dados;
+- **Site oficial** (`homepage_url`) — identidade institucional ou página oficial principal da fonte;
+- **Acessar dados** (`data_access_url`) — página onde os dados podem ser pesquisados, visualizados, solicitados ou baixados;
 - `access_documentation_url` — documentação técnica do acesso;
 - `product_page_url` — página do produto;
 - `methodology_url` — metodologia específica;
