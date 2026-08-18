@@ -1,50 +1,54 @@
 # UX6 — descoberta e comparação de produtos
 
+## Status
+
+**Implementado e ampliado.** Este documento descreve a camada pública de produtos da Vitrine após a fase piloto. Em 18/08/2026, a interface opera sobre **125 fontes, 752 produtos e 783 distribuições**; os maiores IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`. A camada não está mais restrita a TerraBrasilis/Google Earth Engine nem ao antigo baseline de 51 fontes.
+
 ## Objetivo
 
-Transformar a camada fonte → produto → distribuição em uma experiência pública de descoberta científica, sem alterar o CSV canônico de 51 fontes × 34 campos.
+Transformar a camada fonte → produto → distribuição em experiência pública de descoberta científica sem expandir desnecessariamente o schema.
 
 ## Produto implementado
 
 - página `products.html` separada do catálogo de fontes;
-- geração de `data/data_products.json` no build;
-- associação explícita entre produto, fonte e distribuições;
-- busca por nomes, descrições, fenômenos, palavras-chave, fonte, formatos e protocolos;
-- expansão controlada de sinônimos em português e inglês;
-- filtros representados na URL;
-- comparação de dois ou três produtos;
-- exposição de suporte e resolução espacial, cobertura e resolução temporal, versão, origem, limitações e última verificação;
-- detalhamento de cada distribuição com URL, formato, protocolo, ferramenta, autenticação, licença e condições de acesso;
+- `data/data_products.json` gerado no build;
+- associação explícita produto → fonte → distribuições;
+- busca por nomes, descrições, palavras-chave, fonte, formatos e protocolos;
+- filtros e estado navegável;
+- comparação de produtos;
+- exposição de suporte/resolução espacial, cobertura/temporalidade, versão/coleção, origem e limitações;
+- detalhamento das distribuições com URL, formato, protocolo, ferramenta, autenticação, licença e acesso;
 - navegação integrada entre Fontes, Produtos, Análise e Método.
 
-## Regras preservadas
+## Regras vigentes
 
-- fonte, produto e distribuição não são tratados como unidades equivalentes;
-- o CSV de fontes permanece canônico e inalterado;
-- o JSON de produtos é artefato derivado gerado no workflow;
-- formatos diferentes do mesmo produto não geram produtos duplicados;
-- resolução não é inferida a partir do visualizador;
-- alerta operacional não é apresentado como resultado anual consolidado;
-- licença e provedor são apresentados no nível mais específico disponível;
-- catálogos muito grandes permanecem como índices externos ou famílias selecionadas.
+- fonte, produto e distribuição são unidades distintas;
+- três CSVs são canônicos; JSONs são derivados;
+- formatos diferentes do mesmo produto não geram produto novo por si só;
+- resolução não é inferida pelo visualizador;
+- observação, previsão, indicador, classificação, catálogo e serviço permanecem semanticamente distintos;
+- licença/provedor são registrados no nível mais específico disponível;
+- megacatálogos usam enumeração seletiva ou `external_index`;
+- a interface não certifica comparabilidade científica universal.
 
 ## Validação
 
-O workflow passa a exigir:
+O pipeline deve exigir, conforme o delta:
 
-1. validação da camada de produtos;
-2. geração dos JSONs de fontes e produtos;
-3. existência das páginas e dos artefatos publicáveis;
-4. sintaxe válida de todos os arquivos JavaScript;
-5. estrutura HTML e acessibilidade;
-6. produtos com fonte existente e pelo menos uma distribuição;
-7. orçamento de peso da interface;
-8. publicação pelo workflow oficial do GitHub Pages.
+1. `validate_brazil_scope.py`;
+2. `validate_product_catalog.py`;
+3. `build_catalog.py`;
+4. auditoria de papéis dos links;
+5. validação geral da Vitrine;
+6. build de `_site`;
+7. sintaxe JavaScript;
+8. QA de navegador/visual quando a interface mudar;
+9. smoke pós-deploy.
 
-## Limite do pacote
+## Evolução
 
-O piloto continua restrito a TerraBrasilis e Google Earth Engine. A expansão para outras fontes deve ocorrer em ciclos curatoriais, com documentação oficial, produto identificável, resolução e cobertura específicas e distribuição verificável.
+A expansão ocorre fonte por fonte e produto por produto dentro do contrato 34/24/15. Melhorias futuras devem priorizar usabilidade, busca, filtros e clareza de metadados; mudança de schema só deve ocorrer se houver necessidade material recorrente.
 
-## Dependência administrativa externa ao código
+## GitHub Pages
 
-O repositório precisa ter `Settings → Pages → Build and deployment → Source` configurado como `GitHub Actions`. Essa configuração não é representada por arquivo versionado e deve ser confirmada por um administrador do repositório.
+A publicação oficial usa GitHub Actions. O artefato público e sua fronteira são definidos em `docs/VITRINE_BOUNDARY.md` e `scripts/build_site_artifact.py`.

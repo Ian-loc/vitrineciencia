@@ -1,8 +1,7 @@
-# Roadmap legado — redirecionamento
+# Roadmap histórico do Simbioscópio
 
-**Status:** `RETIRED_ALIAS`  
-**Substituído por:** [`SIMBIOTRAMA_IMPLEMENTATION_ROADMAP.md`](SIMBIOTRAMA_IMPLEMENTATION_ROADMAP.md)
+**Classificação:** `RETIRED / HISTORICAL_EVIDENCE`.
 
-Este caminho é preservado apenas para evitar links quebrados em auditorias, commits e documentos históricos. Ele não deve receber novas decisões, fases ou instruções operacionais.
+“Simbioscópio” não é identidade, fase ativa ou roadmap da Vitrine Ciência. O arquivo é preservado apenas como registro histórico do desenvolvimento anterior à separação entre Vitrine e Simbiotrama.
 
-O nome **Simbioscópio** permanece apenas como referência histórica ao protótipo de composição visual. O projeto e o roadmap ativos usam **Simbiotrama**.
+Para o estado corrente da Vitrine, consultar `docs/PROJECT_STATE.md` e `WORKFLOW_STATUS.md`. Para desenvolvimento do Simbiotrama, usar o repositório `Ian-loc/simbiotrama`.
