@@ -1,0 +1,42 @@
+name: Run EPE batch on PR
+
+on:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.head_ref == 'audit/epe-2026-batch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/epe-2026-batch
+          fetch-depth: 0
+      - name: Execute verified batch payload
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('.github/workflows/materialize-epe-batch.yml')
+          lines=p.read_text().splitlines()
+          start=next(i for i,l in enumerate(lines) if 'Append verified EPE source' in l)
+          r=next(i for i in range(start,len(lines)) if lines[i].strip()=='run: |')+1
+          end=next(i for i in range(r,len(lines)) if lines[i].startswith('      - name: Commit canonical'))
+          block=lines[r:end]
+          nonblank=[l for l in block if l.strip()]
+          indent=min(len(l)-len(l.lstrip()) for l in nonblank)
+          Path('/tmp/epe-batch.sh').write_text('\n'.join(l[indent:] if l.strip() else '' for l in block)+'\n')
+          PY
+          bash /tmp/epe-batch.sh
+      - name: Commit validated canonical delta
+        run: |
+          git config user.name "vitrine-catalog-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f .epe-materialize-trigger
+          git rm .github/workflows/materialize-epe-batch.yml .github/workflows/materialize-epe-pr.yml
+          git add data/data_resources.csv data/data_resources.json data/data_products.csv data/data_products.json data/product_distributions.csv data/brazil_scope_priorities.json data/data_quality_report.json data/link_role_audit.json
+          git commit -m "Expand verified EPE energy-planning catalog"
+          git push origin HEAD:audit/epe-2026-batch
