@@ -40085,5 +40085,713 @@
     "available_protocols": [
       "STAC / OGC WMS"
     ]
+  },
+  {
+    "product_id": "DP000675",
+    "resource_id": "DR0123",
+    "product_name": "Amazônia-1/WFI — Level-2-DN",
+    "product_acronym": "AMZ1 WFI L2-DN",
+    "product_family": "BIG — Amazônia-1/WFI",
+    "product_kind": "dataset_series",
+    "product_description": "Cenas Amazônia-1/WFI em número digital no nível 2, com correções radiométrica e geométrica de sistema baseadas em efemérides e atitude do satélite.",
+    "research_areas": "Remote sensing | Land use and land cover | Environmental monitoring",
+    "keywords": "Amazonia-1 | WFI | Level-2 | digital number | earth observation",
+    "geographic_coverage": "Brasil e demais áreas imageadas/disponíveis na coleção",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster | coleção STAC",
+    "spatial_resolution": "64 m",
+    "temporal_coverage": "2021-03-03–2026-07-06 na coleção STAC verificada",
+    "temporal_resolution": "por aquisição; revisita nominal até 5 dias",
+    "update_frequency": "conforme aquisição",
+    "product_status": "ativo",
+    "version_or_collection": "AMZ1-WFI-L2-DN-1 v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/AMZ1-WFI-L2-DN-1",
+    "methodology_url": "https://data.inpe.br/dados/amazonia-1/",
+    "primary_or_derived": "primário",
+    "limitations": "Número digital corrigido radiometricamente/geometricamente não equivale a reflectância de superfície. Preservar bandas, metadados, geometria e nível de processamento; cobertura temporal depende das cenas disponíveis.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000705",
+        "product_id": "DP000675",
+        "distribution_name": "Amazônia-1/WFI L2-DN — STAC e GeoTIFF",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/AMZ1-WFI-L2-DN-1",
+        "format": "GeoTIFF + XML + PNG thumbnail",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | navegador | GIS/Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena, data e footprint",
+        "notes": "Coleção STAC expõe bandas de 64 m e metadados XML; usar nível L2-DN explicitamente.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GeoTIFF + XML + PNG thumbnail"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000676",
+    "resource_id": "DR0123",
+    "product_name": "Amazônia-1/WFI — Level-4-DN ortorretificado",
+    "product_acronym": "AMZ1 WFI L4-DN",
+    "product_family": "BIG — Amazônia-1/WFI",
+    "product_kind": "dataset_series",
+    "product_description": "Cenas Amazônia-1/WFI em número digital no nível 4, derivadas do L2 e ortorretificadas, mantendo quatro bandas visível/NIR a 64 m.",
+    "research_areas": "Remote sensing | Land use and land cover | Environmental monitoring",
+    "keywords": "Amazonia-1 | WFI | Level-4 | orthorectified | digital number",
+    "geographic_coverage": "Brasil e demais áreas imageadas/disponíveis na coleção",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster ortorretificada | coleção STAC",
+    "spatial_resolution": "64 m",
+    "temporal_coverage": "2021–2026 conforme coleção STAC corrente",
+    "temporal_resolution": "por aquisição",
+    "update_frequency": "conforme aquisição",
+    "product_status": "ativo",
+    "version_or_collection": "AMZ1-WFI-L4-DN-1 v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/AMZ1-WFI-L4-DN-1",
+    "methodology_url": "https://data.inpe.br/dados/amazonia-1/",
+    "primary_or_derived": "derivado",
+    "limitations": "Ortorretificação corrige geometria, mas os valores continuam em número digital e não são reflectância de superfície. Não combinar diretamente com L4-SR sem respeitar a transformação radiométrica.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000706",
+        "product_id": "DP000676",
+        "distribution_name": "Amazônia-1/WFI L4-DN — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/AMZ1-WFI-L4-DN-1",
+        "format": "GeoTIFF + metadados",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | navegador | GIS/Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena, data e footprint",
+        "notes": "Acesso ao produto ortorretificado em número digital; confirmar assets e metadados no item.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GeoTIFF + metadados"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000677",
+    "resource_id": "DR0123",
+    "product_name": "Amazônia-1/WFI — Level-4-SR em COG",
+    "product_acronym": "AMZ1 WFI L4-SR",
+    "product_family": "BIG — Amazônia-1/WFI",
+    "product_kind": "dataset_series",
+    "product_description": "Cenas Amazônia-1/WFI ortorretificadas em reflectância de superfície Level-4, distribuídas como Cloud Optimized GeoTIFF com quatro bandas e máscara de nuvem.",
+    "research_areas": "Remote sensing | Land use and land cover | Vegetation dynamics | Environmental monitoring",
+    "keywords": "Amazonia-1 | WFI | Level-4 | surface reflectance | COG | CMASK",
+    "geographic_coverage": "Brasil e demais áreas cobertas pela coleção",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster COG | coleção STAC",
+    "spatial_resolution": "64 m",
+    "temporal_coverage": "2021–2026 conforme coleção STAC corrente",
+    "temporal_resolution": "por aquisição",
+    "update_frequency": "novas cenas documentadas mensalmente",
+    "product_status": "ativo",
+    "version_or_collection": "AMZ1-WFI-L4-SR-1 v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/AMZ1-WFI-L4-SR-1",
+    "methodology_url": "https://data.inpe.br/dados/amazonia-1/",
+    "primary_or_derived": "derivado",
+    "limitations": "Reflectância de superfície depende do processamento atmosférico e da máscara de nuvem; não equivale ao DN dos níveis L2/L4 nem a observação in situ.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000707",
+        "product_id": "DP000677",
+        "distribution_name": "Amazônia-1/WFI L4-SR — STAC/COG",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/AMZ1-WFI-L4-SR-1",
+        "format": "Cloud Optimized GeoTIFF",
+        "access_protocol": "STAC API / HTTPS range requests",
+        "access_tool": "cliente STAC | GIS | Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta/subset por item e asset COG",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena, data, footprint e banda",
+        "notes": "Reflectância de superfície com CMASK; COG permite acesso parcial, sem alterar o significado científico do produto.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "Cloud Optimized GeoTIFF"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS range requests"
+    ]
+  },
+  {
+    "product_id": "DP000678",
+    "resource_id": "DR0123",
+    "product_name": "CBERS-4A/WPM — Level-2-DN",
+    "product_acronym": "CB4A WPM L2-DN",
+    "product_family": "BIG — CBERS-4A/WPM",
+    "product_kind": "dataset_series",
+    "product_description": "Cenas CBERS-4A/WPM Level-2 em número digital com correções radiométrica e geométrica de sistema, incluindo banda pancromática e quatro bandas multiespectrais.",
+    "research_areas": "Remote sensing | Land use and land cover | Environmental monitoring",
+    "keywords": "CBERS-4A | WPM | Level-2 | digital number | panchromatic | multispectral",
+    "geographic_coverage": "Brasil e demais áreas imageadas/disponíveis na coleção",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster | coleção STAC",
+    "spatial_resolution": "2 m pancromático | 8 m multiespectral",
+    "temporal_coverage": "2019-12-29–2026-08-14 na coleção STAC verificada",
+    "temporal_resolution": "por aquisição; revisita nominal 31 dias",
+    "update_frequency": "conforme aquisição",
+    "product_status": "ativo",
+    "version_or_collection": "CB4A-WPM-L2-DN-1 v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-L2-DN-1",
+    "methodology_url": "https://data.inpe.br/dados/cbers-4a/",
+    "primary_or_derived": "primário",
+    "limitations": "L2-DN não é reflectância de superfície nem produto ortorretificado final. Banda PAN e bandas multiespectrais têm resoluções diferentes e não devem ser tratadas como uma única grade nativa.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000708",
+        "product_id": "DP000678",
+        "distribution_name": "CBERS-4A/WPM L2-DN — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-L2-DN-1",
+        "format": "GeoTIFF + XML + PNG thumbnail",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | navegador | GIS/Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena, data, footprint e banda",
+        "notes": "Banda pancromática 2 m e multiespectrais 8 m são assets separados.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GeoTIFF + XML + PNG thumbnail"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000679",
+    "resource_id": "DR0123",
+    "product_name": "CBERS-4A/WPM — Level-4-DN ortorretificado",
+    "product_acronym": "CB4A WPM L4-DN",
+    "product_family": "BIG — CBERS-4A/WPM",
+    "product_kind": "dataset_series",
+    "product_description": "Cenas CBERS-4A/WPM Level-4 em número digital, ortorretificadas, com banda pancromática de 2 m e quatro bandas multiespectrais de 8 m.",
+    "research_areas": "Remote sensing | Land use and land cover | Environmental monitoring",
+    "keywords": "CBERS-4A | WPM | Level-4 | orthorectified | digital number",
+    "geographic_coverage": "Brasil e parte da América do Sul conforme acervo",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster ortorretificada | coleção STAC",
+    "spatial_resolution": "2 m pancromático | 8 m multiespectral",
+    "temporal_coverage": "2019-12-29–2026-08-15 na coleção STAC verificada",
+    "temporal_resolution": "por aquisição",
+    "update_frequency": "conforme aquisição",
+    "product_status": "ativo",
+    "version_or_collection": "CB4A-WPM-L4-DN-1 v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-L4-DN-1",
+    "methodology_url": "https://data.inpe.br/dados/cbers-4a/",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto é ortorretificado, mas permanece em DN. Resolução de 2 m aplica-se à pancromática; bandas multiespectrais são de 8 m e não ganham resolução espectral/espacial por simples reamostragem.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000709",
+        "product_id": "DP000679",
+        "distribution_name": "CBERS-4A/WPM L4-DN — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-L4-DN-1",
+        "format": "GeoTIFF + XML + PNG thumbnail",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | navegador | GIS/Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena, data, footprint e banda",
+        "notes": "Produto ortorretificado; PAN 2 m e multiespectral 8 m permanecem resoluções distintas.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GeoTIFF + XML + PNG thumbnail"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000680",
+    "resource_id": "DR0123",
+    "product_name": "CBERS-4A/MUX — Level-2-DN",
+    "product_acronym": "CB4A MUX L2-DN",
+    "product_family": "BIG — CBERS-4A/MUX",
+    "product_kind": "dataset_series",
+    "product_description": "Cenas CBERS-4A/MUX Level-2 em número digital com correções radiométrica e geométrica de sistema nas quatro bandas visível/NIR.",
+    "research_areas": "Remote sensing | Land use and land cover | Environmental monitoring",
+    "keywords": "CBERS-4A | MUX | Level-2 | digital number | multispectral",
+    "geographic_coverage": "Brasil e demais áreas imageadas/disponíveis na coleção",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster | coleção STAC",
+    "spatial_resolution": "16 m",
+    "temporal_coverage": "2019-12-27–2026-08-14 na coleção STAC verificada",
+    "temporal_resolution": "por aquisição; revisita nominal 31 dias",
+    "update_frequency": "conforme aquisição",
+    "product_status": "ativo",
+    "version_or_collection": "CB4A-MUX-L2-DN-1 v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-MUX-L2-DN-1",
+    "methodology_url": "https://data.inpe.br/dados/cbers-4a/",
+    "primary_or_derived": "primário",
+    "limitations": "DN de nível 2 não equivale a reflectância de superfície; georreferenciamento de sistema não deve ser confundido com ortorretificação Level-4.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000710",
+        "product_id": "DP000680",
+        "distribution_name": "CBERS-4A/MUX L2-DN — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-MUX-L2-DN-1",
+        "format": "GeoTIFF + XML + PNG thumbnail",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | navegador | GIS/Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena, data, footprint e banda",
+        "notes": "Quatro bandas MUX a 16 m; nível L2-DN.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GeoTIFF + XML + PNG thumbnail"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000681",
+    "resource_id": "DR0123",
+    "product_name": "CBERS-4A/MUX — Level-4-DN ortorretificado",
+    "product_acronym": "CB4A MUX L4-DN",
+    "product_family": "BIG — CBERS-4A/MUX",
+    "product_kind": "dataset_series",
+    "product_description": "Cenas CBERS-4A/MUX Level-4 em número digital e ortorretificadas, com quatro bandas multiespectrais visível/NIR.",
+    "research_areas": "Remote sensing | Land use and land cover | Environmental monitoring",
+    "keywords": "CBERS-4A | MUX | Level-4 | orthorectified | digital number",
+    "geographic_coverage": "Brasil e demais áreas imageadas/disponíveis na coleção",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster ortorretificada | coleção STAC",
+    "spatial_resolution": "16 m",
+    "temporal_coverage": "2019-12-27–2026-08-13 na coleção STAC verificada",
+    "temporal_resolution": "por aquisição",
+    "update_frequency": "conforme aquisição",
+    "product_status": "ativo",
+    "version_or_collection": "CB4A-MUX-L4-DN-1 v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-MUX-L4-DN-1",
+    "methodology_url": "https://data.inpe.br/dados/cbers-4a/",
+    "primary_or_derived": "derivado",
+    "limitations": "Ortorretificação melhora a geometria, mas não transforma DN em reflectância física. Comparações radiométricas exigem processamento apropriado e metadados de aquisição.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000711",
+        "product_id": "DP000681",
+        "distribution_name": "CBERS-4A/MUX L4-DN — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-MUX-L4-DN-1",
+        "format": "GeoTIFF + XML + PNG thumbnail",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | navegador | GIS/Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena, data, footprint e banda",
+        "notes": "Quatro bandas MUX ortorretificadas a 16 m em DN.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GeoTIFF + XML + PNG thumbnail"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000682",
+    "resource_id": "DR0123",
+    "product_name": "CBERS-4A/WFI — Level-2-DN",
+    "product_acronym": "CB4A WFI L2-DN",
+    "product_family": "BIG — CBERS-4A/WFI",
+    "product_kind": "dataset_series",
+    "product_description": "Cenas CBERS-4A/WFI Level-2 em número digital com correções radiométrica e geométrica de sistema nas quatro bandas visível/NIR.",
+    "research_areas": "Remote sensing | Land use and land cover | Environmental monitoring",
+    "keywords": "CBERS-4A | WFI | Level-2 | digital number | wide field",
+    "geographic_coverage": "Brasil e demais áreas imageadas/disponíveis na coleção",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster | coleção STAC",
+    "spatial_resolution": "55 m",
+    "temporal_coverage": "2019-12-27–2026-08-14 na coleção STAC verificada",
+    "temporal_resolution": "por aquisição; revisita nominal até 5 dias",
+    "update_frequency": "conforme aquisição",
+    "product_status": "ativo",
+    "version_or_collection": "CB4A-WFI-L2-DN-1 v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WFI-L2-DN-1",
+    "methodology_url": "https://data.inpe.br/dados/cbers-4a/",
+    "primary_or_derived": "primário",
+    "limitations": "L2-DN não é reflectância de superfície. Ampla faixa e revisita não garantem cobertura livre de nuvens ou observação válida em cada ciclo.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000712",
+        "product_id": "DP000682",
+        "distribution_name": "CBERS-4A/WFI L2-DN — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WFI-L2-DN-1",
+        "format": "GeoTIFF/COG + XML + PNG thumbnail",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | navegador | GIS/Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena, data, footprint e banda",
+        "notes": "Coleção de WFI a 55 m em DN Level-2.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GeoTIFF/COG + XML + PNG thumbnail"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000683",
+    "resource_id": "DR0123",
+    "product_name": "CBERS-4A/WFI — Level-4-DN ortorretificado",
+    "product_acronym": "CB4A WFI L4-DN",
+    "product_family": "BIG — CBERS-4A/WFI",
+    "product_kind": "dataset_series",
+    "product_description": "Cenas CBERS-4A/WFI Level-4 em número digital e ortorretificadas, mantendo as quatro bandas visível/NIR.",
+    "research_areas": "Remote sensing | Land use and land cover | Environmental monitoring",
+    "keywords": "CBERS-4A | WFI | Level-4 | orthorectified | digital number",
+    "geographic_coverage": "Brasil e parte da América do Sul conforme acervo",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster ortorretificada | coleção STAC",
+    "spatial_resolution": "55 m",
+    "temporal_coverage": "2020-07-04–2026-08-14 na coleção STAC verificada",
+    "temporal_resolution": "por aquisição",
+    "update_frequency": "conforme aquisição",
+    "product_status": "ativo",
+    "version_or_collection": "CB4A-WFI-L4-DN-1 v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WFI-L4-DN-1",
+    "methodology_url": "https://data.inpe.br/dados/cbers-4a/",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto ortorretificado continua em DN. Não interpretar como reflectância de superfície nem somar com L2/L4-SR como observações independentes da mesma aquisição.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000713",
+        "product_id": "DP000683",
+        "distribution_name": "CBERS-4A/WFI L4-DN — STAC",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WFI-L4-DN-1",
+        "format": "GeoTIFF/COG + XML + PNG thumbnail",
+        "access_protocol": "STAC API / HTTPS",
+        "access_tool": "cliente STAC | navegador | GIS/Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por coleção/item/asset",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena, data, footprint e banda",
+        "notes": "Coleção WFI ortorretificada a 55 m em número digital.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "GeoTIFF/COG + XML + PNG thumbnail"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000684",
+    "resource_id": "DR0123",
+    "product_name": "CBERS-4A/WFI — Level-4-SR em COG",
+    "product_acronym": "CB4A WFI L4-SR",
+    "product_family": "BIG — CBERS-4A/WFI",
+    "product_kind": "dataset_series",
+    "product_description": "Cenas CBERS-4A/WFI Level-4 em reflectância de superfície, ortorretificadas e distribuídas em COG com quatro bandas e CMASK.",
+    "research_areas": "Remote sensing | Land use and land cover | Vegetation dynamics | Environmental monitoring",
+    "keywords": "CBERS-4A | WFI | Level-4 | surface reflectance | COG | CMASK",
+    "geographic_coverage": "Brasil e parte da América do Sul conforme coleção",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster COG | coleção STAC",
+    "spatial_resolution": "55 m",
+    "temporal_coverage": "2020-01-01–2026-08-09 na coleção STAC verificada",
+    "temporal_resolution": "por aquisição",
+    "update_frequency": "novas cenas documentadas mensalmente",
+    "product_status": "ativo",
+    "version_or_collection": "CB4A-WFI-L4-SR-1 v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WFI-L4-SR-1",
+    "methodology_url": "https://data.inpe.br/dados/cbers-4a/",
+    "primary_or_derived": "derivado",
+    "limitations": "Reflectância de superfície é produto processado; usar CMASK e metadados de aquisição. Não confundir com DN L2/L4 nem inferir ausência de mudança em pixels sem observação válida.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000714",
+        "product_id": "DP000684",
+        "distribution_name": "CBERS-4A/WFI L4-SR — STAC/COG",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WFI-L4-SR-1",
+        "format": "Cloud Optimized GeoTIFF",
+        "access_protocol": "STAC API / HTTPS range requests",
+        "access_tool": "cliente STAC | GIS | Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta/subset por item e asset COG",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena, data, footprint e banda",
+        "notes": "Reflectância de superfície a 55 m com CMASK.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "Cloud Optimized GeoTIFF"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS range requests"
+    ]
+  },
+  {
+    "product_id": "DP000685",
+    "resource_id": "DR0123",
+    "product_name": "CBERS-4A/WPM — fusão pancromática/multiespectral PCA em RGB",
+    "product_acronym": "CB4A WPM PCA Fused",
+    "product_family": "BIG — produtos derivados CBERS-4A",
+    "product_kind": "dataset_series",
+    "product_description": "Produto RGB de 2 m derivado do CBERS-4A/WPM Level-4-DN por fusão de componentes principais (PCA) entre informação pancromática e multiespectral, distribuído em COG para visualização.",
+    "research_areas": "Remote sensing | Cartography | Environmental visualization",
+    "keywords": "CBERS-4A | WPM | pansharpening | PCA | fused | RGB | COG",
+    "geographic_coverage": "Brasil e área coberta pelas cenas processadas",
+    "covers_brazil": "sim",
+    "spatial_support": "cena raster RGB COG | coleção STAC",
+    "spatial_resolution": "2 m",
+    "temporal_coverage": "2023-03-02–2026-08-14 na coleção STAC verificada",
+    "temporal_resolution": "por aquisição derivada",
+    "update_frequency": "novas cenas documentadas diariamente",
+    "product_status": "ativo",
+    "version_or_collection": "CB4A-WPM-PCA-FUSED-1 v1",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-PCA-FUSED-1",
+    "methodology_url": "https://data.inpe.br/dados/cbers-4a/",
+    "primary_or_derived": "derivado",
+    "limitations": "Produto PCA é voltado à visualização, codificado em 8 bits, e não preserva diretamente os valores radiométricos multiespectrais originais. Não usar como substituto quantitativo do Level-4-DN ou reflectância de superfície.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000715",
+        "product_id": "DP000685",
+        "distribution_name": "CBERS-4A/WPM PCA fused RGB — STAC/COG",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-PCA-FUSED-1",
+        "format": "Cloud Optimized GeoTIFF RGB + PNG thumbnail",
+        "access_protocol": "STAC API / HTTPS range requests",
+        "access_tool": "cliente STAC | GIS | navegador",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta/subset por item COG",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cena, data e footprint",
+        "notes": "Produto derivado de visualização RGB 2 m; não substitui bandas radiométricas originais.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "Cloud Optimized GeoTIFF RGB + PNG thumbnail"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS range requests"
+    ]
+  },
+  {
+    "product_id": "DP000686",
+    "resource_id": "DR0123",
+    "product_name": "CBERS/WFI — cubo Level-4-SR LCF de 8 dias",
+    "product_acronym": "CBERS WFI 8D",
+    "product_family": "Brazil Data Cube — cubos CBERS/WFI",
+    "product_kind": "dataset_series",
+    "product_description": "Cubo de observação da Terra sobre o Brasil derivado de reflectância de superfície WFI dos satélites CBERS-4 e CBERS-4A, composto a cada 8 dias pelo critério Least Cloud Cover First e distribuído em COG.",
+    "research_areas": "Remote sensing | Vegetation dynamics | Land use and land cover | Environmental monitoring",
+    "keywords": "CBERS-4 | CBERS-4A | WFI | data cube | LCF | 8 days | NDVI | EVI",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "célula raster | cubo multidimensional",
+    "spatial_resolution": "64 m",
+    "temporal_coverage": "2020-01-01–2026-05-24 na coleção STAC verificada",
+    "temporal_resolution": "8 dias",
+    "update_frequency": "aproximadamente a cada 8 dias conforme insumos",
+    "product_status": "ativo",
+    "version_or_collection": "CBERS-WFI-8D-1 v1 / BDC_LG_V2",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://data.inpe.br/bdc/stac/v1/collections/CBERS-WFI-8D-1",
+    "methodology_url": "https://data.inpe.br/dados/cbers-4a/",
+    "primary_or_derived": "derivado",
+    "limitations": "Cubo combina WFI de CBERS-4 e CBERS-4A; Datasource e Provenance devem ser preservados. LCF seleciona melhor pixel dentro da janela e não representa aquisição sinótica única; NDVI/EVI são derivados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0123",
+      "resource_name": "Base de Informações Georreferenciadas e Brazil Data Cube — INPE",
+      "acronym": "BIG / BDC",
+      "official_identity": "Infraestrutura do INPE para descoberta, acesso, processamento e disseminação de dados geoespaciais e produtos de observação da Terra",
+      "homepage_url": "https://data.inpe.br/",
+      "data_access_url": "https://data.inpe.br/dados/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000716",
+        "product_id": "DP000686",
+        "distribution_name": "CBERS/WFI 8D LCF — STAC/COG",
+        "access_url": "https://data.inpe.br/bdc/stac/v1/collections/CBERS-WFI-8D-1",
+        "format": "Cloud Optimized GeoTIFF",
+        "access_protocol": "STAC API / HTTPS range requests",
+        "access_tool": "cliente STAC | BDC Explorer | GIS/Python",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "consulta por tile/data/banda; subset por asset COG",
+        "license": "CC BY 4.0",
+        "provider_attribution_required": "sim",
+        "subset_support": "por tile, janela de 8 dias e banda",
+        "notes": "Inclui reflectância, CMASK, ClearOB, TotalOB, Provenance, Datasource, NDVI e EVI; preservar proveniência do satélite.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "Cloud Optimized GeoTIFF"
+    ],
+    "available_protocols": [
+      "STAC API / HTTPS range requests"
+    ]
   }
 ]
