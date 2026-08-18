@@ -1,0 +1,183 @@
+name: Materialize verified INCRA catalog
+
+on:
+  push:
+    paths:
+      - '.incra-audit-trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Append verified INCRA source, products and distributions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, json, pathlib, sys
+          from datetime import date
+
+          root = pathlib.Path('.')
+          rpath = root/'data/data_resources.csv'
+          ppath = root/'data/data_products.csv'
+          dpath = root/'data/product_distributions.csv'
+          bpath = root/'data/brazil_scope_priorities.json'
+          verified = '2026-08-18'
+
+          def rows(path):
+              with path.open(encoding='utf-8', newline='') as f:
+                  return list(csv.DictReader(f))
+          R, P, D = rows(rpath), rows(ppath), rows(dpath)
+          if any(x['resource_id']=='DR0124' for x in R):
+              raise SystemExit('DR0124 already exists; abort safely')
+          if any(x['product_id'] in {f'DP{i:06d}' for i in range(728,735)} for x in P):
+              raise SystemExit('planned product IDs already exist; abort safely')
+          if any(x['distribution_id'] in {f'DD{i:06d}' for i in range(758,766)} for x in D):
+              raise SystemExit('planned distribution IDs already exist; abort safely')
+
+          existing_product_urls={x['product_page_url'].strip() for x in P if x['product_page_url'].strip()}
+          planned_urls={
+            'https://acervofundiario.incra.gov.br/',
+            'https://www.gov.br/pt-br/servicos/obter-coordenadas-e-baixar-os-arquivos-dos-imoveis-ruras-certificados',
+            'https://www.gov.br/incra/pt-br/assuntos/reforma-agraria/assentamentos-relacao-de-projetos',
+            'https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/quilombolas',
+            'https://acervofundiario.incra.gov.br/acervo/dados_acervo_3.php',
+            'https://sncr2.serpro.gov.br/sncr-web/consultaPublica.jsf',
+            'https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/estrutura-fundiaria',
+          }
+          dup=existing_product_urls & planned_urls
+          if dup:
+              raise SystemExit(f'product_page_url already cataloged: {sorted(dup)}')
+
+          resource = {
+            'resource_id':'DR0124',
+            'resource_name':'Acervo Fundiário, SIGEF e Cadastro Rural — INCRA',
+            'acronym':'INCRA Fundiário',
+            'official_identity':'Instituto Nacional de Colonização e Reforma Agrária — INCRA / sistemas e dados de governança fundiária',
+            'description':'Fonte institucional brasileira para dados geoespaciais e cadastrais de governança fundiária, incluindo Acervo Fundiário, certificação de imóveis rurais, assentamentos, territórios quilombolas, regularização fundiária e consulta pública do SNCR.',
+            'homepage_url':'https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/governanca-fundiaria',
+            'data_access_url':'https://acervofundiario.incra.gov.br/',
+            'research_areas':'Planejamento Territorial e Políticas Públicas | Agricultura, Florestas e Uso da Terra | Sensoriamento Remoto e Geoinformação',
+            'keywords':'INCRA | governança fundiária | imóvel rural | SIGEF | SNCI | SNCR | assentamentos | territórios quilombolas | regularização fundiária',
+            'data_product_types':'cadastros administrativos | polígonos georreferenciados | tabelas | catálogos | serviços geoespaciais',
+            'data_formats':'SHP | CSV | XLSX | PDF | WMS | WFS | formatos variáveis conforme produto',
+            'visualization_types':'mapa interativo | tabelas | consultas públicas',
+            'geographic_coverage':'Brasil — imóveis rurais, assentamentos, territórios e recortes fundiários conforme produto',
+            'covers_brazil':'sim',
+            'spatial_resolution':'parcela/imóvel, polígono de assentamento ou território; estatísticas agregadas conforme produto',
+            'temporal_coverage':'cadastros históricos e correntes; SIGEF a partir de 2013 e SNCI anterior; datas variam por produto',
+            'temporal_resolution':'cadastral/evento administrativo; atualizações variam por sistema e conjunto',
+            'data_sources':'declarações e cadastros fundiários | certificação georreferenciada | processos administrativos do INCRA | registros do SNCR',
+            'free_download':'parcial',
+            'access_conditions':'Acervo Fundiário passou a exigir autenticação GOV.BR; consultas e downloads públicos específicos permanecem disponíveis conforme serviço; preservar regras e data de cada produto.',
+            'programmatic_access':'sim',
+            'access_protocols':'HTTPS download | WMS | WFS | consulta web',
+            'authentication_required':'parcial',
+            'access_documentation_url':'https://acervofundiario.incra.gov.br/',
+            'license':'Creative Commons Attribution declarada para o conjunto Acervo Fundiário no Portal Brasileiro de Dados Abertos; verificar termos específicos dos demais serviços/arquivos',
+            'institutional_status':'público',
+            'owner_or_manager':'Instituto Nacional de Colonização e Reforma Agrária — INCRA / Governo Federal do Brasil',
+            'academic_uses':'Estrutura fundiária, reforma agrária, governança territorial, conflitos e sobreposições, agricultura, conservação, regularização fundiária e análises socioambientais rurais.',
+            'limitations':'Cadastros administrativos e declaratórios não equivalem automaticamente a domínio jurídico definitivo, ocupação efetiva, uso da terra observado ou conformidade ambiental. Cobertura, atualização, precisão e status jurídico variam entre SIGEF, SNCI, SNCR e demais camadas; preservar fonte e etapa administrativa.',
+            'academic_evidence_type':'documentação técnica oficial',
+            'academic_evidence_url':'https://acervofundiario.incra.gov.br/',
+            'academic_evidence_note':'O INCRA documenta o Acervo Fundiário como acesso a dados geoespaciais de certificação, assentamentos, territórios quilombolas e outras bases, com download e serviços OGC; páginas oficiais mantêm consulta SNCR e produtos de reforma agrária.',
+            'verification_url':'https://acervofundiario.incra.gov.br/',
+            'last_verified':verified,
+          }
+
+          areas='Planejamento Territorial e Políticas Públicas | Agricultura, Florestas e Uso da Terra | Sensoriamento Remoto e Geoinformação'
+          products=[
+            {'product_id':'DP000728','resource_id':'DR0124','product_name':'Acervo Fundiário — INCRA','product_acronym':'Acervo Fundiário','product_family':'Governança fundiária — INCRA','product_kind':'federated_catalog','product_description':'Infraestrutura de acesso aos dados fundiários geoespaciais produzidos pelo INCRA, com navegação cartográfica, download e webservices OGC para diferentes camadas fundiárias.','research_areas':areas,'keywords':'Acervo Fundiário | INCRA | i3Geo | WMS | WFS | download | geoprocessamento','geographic_coverage':'Brasil — camadas fundiárias disponibilizadas pelo INCRA','covers_brazil':'sim','spatial_support':'catálogo de camadas vetoriais | feições fundiárias','spatial_resolution':'varia por camada; predominantemente limites de imóveis, assentamentos e territórios','temporal_coverage':'acervo histórico e corrente; depende da camada','temporal_resolution':'atualização por sistema/camada','update_frequency':'o Portal Brasileiro de Dados Abertos registra atualização diária do conjunto Acervo Fundiário','product_status':'ativo','version_or_collection':'Acervo Fundiário corrente; acesso auditado em 2026-08-18','enumeration_scope':'external_index','product_page_url':'https://acervofundiario.incra.gov.br/','methodology_url':'https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/governanca-fundiaria','primary_or_derived':'agregador','limitations':'O Acervo é infraestrutura agregadora, não dataset homogêneo. Escala, data, origem, status jurídico e precisão variam por camada. O acesso atual requer GOV.BR, embora o conjunto permaneça catalogado na política de dados abertos.','last_verified':verified},
+            {'product_id':'DP000729','resource_id':'DR0124','product_name':'Imóveis rurais certificados — SIGEF e SNCI','product_acronym':'SIGEF/SNCI certificados','product_family':'Certificação georreferenciada de imóveis rurais','product_kind':'dataset_series','product_description':'Polígonos e coordenadas de imóveis rurais certificados pelo INCRA, com registros do SIGEF desde 2013 e do sistema anterior SNCI, disponibilizados para consulta e download geoespacial.','research_areas':areas,'keywords':'SIGEF | SNCI | certificação | imóvel rural | georreferenciamento | parcela','geographic_coverage':'Brasil — imóveis rurais certificados nos sistemas SIGEF e SNCI','covers_brazil':'sim','spatial_support':'polígono de imóvel/parcela rural | vértices e coordenadas','spatial_resolution':'limite cadastral/georreferenciado do imóvel certificado','temporal_coverage':'SNCI histórico e SIGEF desde 2013; registros correntes conforme certificação','temporal_resolution':'evento/cadastro de certificação','update_frequency':'contínua conforme certificações; conjunto Acervo reportado como atualização diária','product_status':'ativo','version_or_collection':'SIGEF corrente + acervo SNCI histórico','enumeration_scope':'complete','product_page_url':'https://www.gov.br/pt-br/servicos/obter-coordenadas-e-baixar-os-arquivos-dos-imoveis-ruras-certificados','methodology_url':'https://sigef.incra.gov.br/','primary_or_derived':'primário','limitations':'Certificação georreferenciada atesta requisitos do processo de certificação e impede sobreposição no procedimento, mas não equivale por si só a prova de domínio, ocupação efetiva, uso da terra ou regularidade ambiental. SIGEF e SNCI são sistemas de épocas e procedimentos distintos.','last_verified':verified},
+            {'product_id':'DP000730','resource_id':'DR0124','product_name':'Projetos de Assentamento da Reforma Agrária — INCRA','product_acronym':'Assentamentos INCRA','product_family':'Reforma agrária — INCRA','product_kind':'dataset_series','product_description':'Relação e representação geoespacial de projetos de assentamento criados e reconhecidos pelo INCRA, com arquivos tabulares oficiais e camada fundiária para análise territorial.','research_areas':areas,'keywords':'assentamentos | reforma agrária | projetos de assentamento | INCRA | beneficiários','geographic_coverage':'Brasil — projetos de assentamento criados ou reconhecidos pelo INCRA','covers_brazil':'sim','spatial_support':'projeto de assentamento | polígono e registro tabular','spatial_resolution':'projeto de assentamento','temporal_coverage':'projetos históricos e correntes; relação oficial auditada com relatório de 2026-03-06','temporal_resolution':'evento administrativo de criação/reconhecimento e atualização cadastral','update_frequency':'periódica conforme atualização da relação e do Acervo Fundiário','product_status':'ativo','version_or_collection':'Relação oficial modificada em 2026-03-11; relatório gerado em 2026-03-06','enumeration_scope':'complete','product_page_url':'https://www.gov.br/incra/pt-br/assuntos/reforma-agraria/assentamentos-relacao-de-projetos','methodology_url':'https://www.gov.br/incra/pt-br/assuntos/reforma-agraria','primary_or_derived':'primário','limitations':'Projeto criado/reconhecido é unidade administrativa da política de reforma agrária e não equivale a ocupação homogênea, uso da terra observado ou condição socioeconômica dos beneficiários. Geometria e atributos devem ser usados com a data da extração.','last_verified':verified},
+            {'product_id':'DP000731','resource_id':'DR0124','product_name':'Territórios Quilombolas — regularização fundiária e camada geoespacial do INCRA','product_acronym':'Territórios Quilombolas INCRA','product_family':'Regularização de territórios quilombolas — INCRA','product_kind':'dataset_series','product_description':'Dados administrativos e geoespaciais sobre territórios quilombolas no âmbito da competência federal do INCRA, vinculados às etapas de identificação, delimitação, regularização e titulação.','research_areas':areas,'keywords':'quilombolas | territórios quilombolas | regularização fundiária | titulação | INCRA','geographic_coverage':'Brasil — processos e territórios quilombolas sob atuação federal do INCRA','covers_brazil':'sim','spatial_support':'território/processo administrativo | polígono quando disponível','spatial_resolution':'território quilombola e respectivas etapas administrativas','temporal_coverage':'processos históricos e correntes; página oficial atualizada em 2026','temporal_resolution':'evento/etapa administrativa','update_frequency':'periódica conforme processos de regularização e atualização institucional','product_status':'ativo','version_or_collection':'página oficial modificada em 2026-06-10; Acervo corrente','enumeration_scope':'complete','product_page_url':'https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/quilombolas','methodology_url':'https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/quilombolas','primary_or_derived':'primário','limitations':'Etapas como processo aberto, identificação, delimitação, titulação e polígono cadastrado não são equivalentes. A competência de regularização é concorrente entre entes federativos; o conjunto do INCRA não representa automaticamente todos os territórios quilombolas titulados por qualquer órgão.','last_verified':verified},
+            {'product_id':'DP000732','resource_id':'DR0124','product_name':'Convênios e polígonos de regularização fundiária — Acervo Fundiário INCRA','product_acronym':'Regularização Fundiária INCRA','product_family':'Regularização fundiária — INCRA','product_kind':'dataset_series','product_description':'Camadas fundiárias do Acervo associadas a ações e convênios de regularização fundiária conduzidos ou disponibilizados pelo INCRA.','research_areas':areas,'keywords':'regularização fundiária | convênios | terras públicas | polígonos | INCRA','geographic_coverage':'Brasil — áreas disponibilizadas no Acervo conforme ações/convênios de regularização','covers_brazil':'sim','spatial_support':'polígono de área vinculada à regularização fundiária','spatial_resolution':'feição cadastral; precisão varia por origem e projeto','temporal_coverage':'acervo histórico e corrente','temporal_resolution':'evento/projeto administrativo','update_frequency':'conforme atualização do Acervo e dos processos','product_status':'ativo','version_or_collection':'camada corrente do Acervo Fundiário auditada em 2026-08-18','enumeration_scope':'complete','product_page_url':'https://acervofundiario.incra.gov.br/acervo/dados_acervo_3.php','methodology_url':'https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/governanca-fundiaria','primary_or_derived':'primário','limitations':'Polígono associado a convênio ou ação de regularização não implica titulação concluída, domínio pleno, ocupação efetiva ou regularidade ambiental. Origem, escala e etapa processual devem ser preservadas.','last_verified':verified},
+            {'product_id':'DP000733','resource_id':'DR0124','product_name':'Consulta Pública de Imóveis Rurais — SNCR','product_acronym':'SNCR Consulta Pública','product_family':'Sistema Nacional de Cadastro Rural — SNCR','product_kind':'dataset_series','product_description':'Consulta pública de dados gerais dos imóveis rurais cadastrados no SNCR, com extração por UF ou município e atributos cadastrais como código, denominação, área, município e relações de detenção.','research_areas':areas,'keywords':'SNCR | imóvel rural | cadastro rural | área | titularidade cadastral | município','geographic_coverage':'Brasil — imóveis rurais cadastrados no SNCR','covers_brazil':'sim','spatial_support':'registro cadastral de imóvel rural; referência municipal','spatial_resolution':'imóvel cadastrado; sem geometria pública necessariamente associada nesta consulta','temporal_coverage':'cadastro corrente; consulta auditada com geração de 2026-07-01','temporal_resolution':'estado cadastral na data de geração','update_frequency':'periódica; registrar a Data da Última Geração exibida pela consulta','product_status':'ativo','version_or_collection':'Data da Última Geração: 2026-07-01','enumeration_scope':'complete','product_page_url':'https://sncr2.serpro.gov.br/sncr-web/consultaPublica.jsf','methodology_url':'https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/estrutura-fundiaria','primary_or_derived':'primário','limitations':'As informações são declaratórias. Um imóvel com múltiplos detentores gera múltiplas linhas; área ausente ou zero pode indicar pendência de atualização. Cadastro no SNCR não prova domínio, limite georreferenciado, ocupação ou conformidade ambiental.','last_verified':verified},
+            {'product_id':'DP000734','resource_id':'DR0124','product_name':'Estatísticas da Estrutura Fundiária — SNCR/INCRA','product_acronym':'Estrutura Fundiária INCRA','product_family':'Sistema Nacional de Cadastro Rural — SNCR','product_kind':'indicator_family','product_description':'Tabelas estatísticas históricas do INCRA derivadas do SNCR sobre estrutura fundiária, imóveis rurais e índices cadastrais em níveis nacional, estadual e, em conjuntos selecionados, municipal.','research_areas':areas,'keywords':'estrutura fundiária | SNCR | imóveis rurais | módulo fiscal | estatísticas cadastrais','geographic_coverage':'Brasil; agregações nacional, estadual e conjuntos municipais selecionados','covers_brazil':'sim','spatial_support':'Brasil | UF | município conforme tabela','spatial_resolution':'agregação territorial tabular; não é limite georreferenciado de imóvel','temporal_coverage':'edições históricas listadas para 2012, 2016, 2018 e indicadores selecionados de 2020','temporal_resolution':'por edição/ano de referência','update_frequency':'histórica/não uniforme na página auditada','product_status':'ativo','version_or_collection':'coleção histórica disponível na página Estrutura Fundiária','enumeration_scope':'external_index','product_page_url':'https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/estrutura-fundiaria','methodology_url':'https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/estrutura-fundiaria','primary_or_derived':'derivado','limitations':'As tabelas refletem o estado do cadastro e conceitos do SNCR na edição indicada; não representam automaticamente concentração fundiária observada fora do universo cadastrado nem substituem microdados/limites de imóveis. Comparações temporais exigem verificar mudanças cadastrais e de cobertura.','last_verified':verified},
+          ]
+
+          distributions=[
+            {'distribution_id':'DD000758','product_id':'DP000728','distribution_name':'Acervo Fundiário — mapa, downloads e webservices','access_url':'https://acervofundiario.incra.gov.br/','format':'SHP | visualização web | WMS | WFS; varia por camada','access_protocol':'HTTPS | WMS | WFS','access_tool':'Acervo Fundiário / i3Geo / clientes SIG compatíveis','free_download':'parcial','authentication_required':'sim','access_conditions':'O acesso atual ao Acervo requer credencial GOV.BR; estrutura de consulta, download e webservices é mantida conforme documentação do portal.','license':'Creative Commons Attribution declarada para o conjunto Acervo Fundiário no Portal Brasileiro de Dados Abertos','provider_attribution_required':'sim','subset_support':'sim — por camada, estado, atributos ou localização conforme ferramenta','notes':'Distribuição agregadora; cada camada mantém origem, atualização, precisão e status administrativo próprios.','last_verified':verified},
+            {'distribution_id':'DD000759','product_id':'DP000729','distribution_name':'Imóveis rurais certificados — coordenadas e shapefiles','access_url':'https://www.gov.br/pt-br/servicos/obter-coordenadas-e-baixar-os-arquivos-dos-imoveis-ruras-certificados','format':'SHP | XLS | CSV | XML conforme operação','access_protocol':'HTTPS | aplicação web','access_tool':'Acervo Fundiário / Disponibilizador de Coordenadas / Download Shapefiles','free_download':'sim','authentication_required':'parcial','access_conditions':'Consulta e download conforme fluxo atual do Acervo; selecionar camada e estado para shapefiles ou certificação para coordenadas.','license':'verificar termos do Acervo/arquivo; conjunto Acervo catalogado como Creative Commons Attribution','provider_attribution_required':'sim','subset_support':'sim — por camada, UF ou certificação conforme ferramenta','notes':'Manter identificada a origem SIGEF versus SNCI e a data da extração.','last_verified':verified},
+            {'distribution_id':'DD000760','product_id':'DP000730','distribution_name':'Assentamentos — relação oficial CSV','access_url':'https://www.gov.br/incra/pt-br/assuntos/reforma-agraria/assentamentosgeral.csv','format':'CSV','access_protocol':'HTTPS download','access_tool':'planilha/software estatístico','free_download':'sim','authentication_required':'não','access_conditions':'download público direto; usar dicionário de dados e data do relatório divulgada pelo INCRA','license':'conteúdo gov.br; verificar termos específicos do arquivo','provider_attribution_required':'sim','subset_support':'sim — filtragem local por atributos após download','notes':'Relação de projetos criados e reconhecidos; não equivale à geometria do assentamento nem à lista de beneficiários.','last_verified':verified},
+            {'distribution_id':'DD000761','product_id':'DP000730','distribution_name':'Assentamentos — camada geoespacial no Acervo Fundiário','access_url':'https://acervofundiario.incra.gov.br/','format':'SHP | WMS | WFS conforme acesso','access_protocol':'HTTPS | WMS | WFS','access_tool':'Acervo Fundiário / cliente SIG','free_download':'parcial','authentication_required':'sim','access_conditions':'Acesso atual ao Acervo via GOV.BR; selecionar a camada de assentamentos.','license':'Creative Commons Attribution declarada para o conjunto Acervo Fundiário','provider_attribution_required':'sim','subset_support':'sim — por camada/localização/atributos','notes':'Usar em conjunto com a relação tabular quando forem necessários atributos administrativos atualizados.','last_verified':verified},
+            {'distribution_id':'DD000762','product_id':'DP000731','distribution_name':'Territórios Quilombolas — camada e consulta do INCRA','access_url':'https://acervofundiario.incra.gov.br/','format':'SHP | WMS | WFS | consulta web conforme recurso','access_protocol':'HTTPS | WMS | WFS','access_tool':'Acervo Fundiário / portal INCRA','free_download':'parcial','authentication_required':'sim','access_conditions':'Acervo requer GOV.BR; página institucional de Quilombolas fornece acompanhamento e documentos de processos sem equivaler ao download espacial.','license':'Creative Commons Attribution para o conjunto Acervo; verificar documentos específicos','provider_attribution_required':'sim','subset_support':'sim — por camada/território/atributos conforme ferramenta','notes':'Preservar a etapa administrativa do território/processo e não inferir titulação concluída a partir da mera presença de geometria.','last_verified':verified},
+            {'distribution_id':'DD000763','product_id':'DP000732','distribution_name':'Regularização fundiária — polígonos no Acervo Fundiário','access_url':'https://acervofundiario.incra.gov.br/','format':'SHP | WMS | WFS conforme camada','access_protocol':'HTTPS | WMS | WFS','access_tool':'Acervo Fundiário / cliente SIG','free_download':'parcial','authentication_required':'sim','access_conditions':'Acesso atual via GOV.BR; selecionar a camada pertinente de regularização/convênios.','license':'Creative Commons Attribution declarada para o conjunto Acervo Fundiário','provider_attribution_required':'sim','subset_support':'sim — por camada, estado e atributos quando suportado','notes':'A camada é administrativa; registrar origem e etapa do processo antes de análise fundiária.','last_verified':verified},
+            {'distribution_id':'DD000764','product_id':'DP000733','distribution_name':'SNCR — Consulta Pública de Imóveis Rurais','access_url':'https://sncr2.serpro.gov.br/sncr-web/consultaPublica.jsf','format':'CSV gerado pela consulta','access_protocol':'HTTPS | aplicação web','access_tool':'navegador web / planilha / software estatístico','free_download':'sim','authentication_required':'não','access_conditions':'Selecionar UF ou município; a consulta informa a Data da Última Geração e observações sobre natureza declaratória e multiplicidade de detentores.','license':'não localizada de forma inequívoca no nível do arquivo; atribuir INCRA e preservar termos da consulta','provider_attribution_required':'sim','subset_support':'sim — UF ou município na consulta pública','notes':'Um imóvel pode gerar várias linhas quando possui vários detentores; não tratar linhas como imóveis únicos sem deduplicação pelo código do imóvel.','last_verified':verified},
+            {'distribution_id':'DD000765','product_id':'DP000734','distribution_name':'Estrutura Fundiária — tabelas históricas e índices cadastrais','access_url':'https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/estrutura-fundiaria','format':'XLS/XLSX | tabelas e documentos; varia por edição','access_protocol':'HTTPS download','access_tool':'navegador web / planilha','free_download':'sim','authentication_required':'não','access_conditions':'downloads públicos; selecionar ano e recorte territorial disponível','license':'conteúdo gov.br; verificar termos específicos do arquivo','provider_attribution_required':'sim','subset_support':'parcial — depende das tabelas publicadas para cada edição/UF/município','notes':'Coleção histórica não uniforme; preservar ano de referência, universo cadastral e definição dos indicadores.','last_verified':verified},
+          ]
+
+          def append(path, record_list):
+              with path.open('a', encoding='utf-8', newline='') as f:
+                  w=csv.DictWriter(f, fieldnames=record_list[0].keys())
+                  for rec in record_list: w.writerow(rec)
+
+          # enforce exact headers/order
+          with rpath.open(encoding='utf-8', newline='') as f: rfields=next(csv.reader(f))
+          with ppath.open(encoding='utf-8', newline='') as f: pfields=next(csv.reader(f))
+          with dpath.open(encoding='utf-8', newline='') as f: dfields=next(csv.reader(f))
+          if list(resource.keys()) != rfields: raise SystemExit(f'resource fields mismatch: {list(resource.keys())} != {rfields}')
+          if list(products[0].keys()) != pfields: raise SystemExit('product fields mismatch')
+          if list(distributions[0].keys()) != dfields: raise SystemExit('distribution fields mismatch')
+
+          append(rpath,[resource]); append(ppath,products); append(dpath,distributions)
+
+          reg=json.loads(bpath.read_text(encoding='utf-8'))
+          p0=next(t for t in reg['tiers'] if t['priority_tier']=='P0')
+          if 'DR0124' not in p0['resource_ids']: p0['resource_ids'].append('DR0124')
+          reg['reviewed_at']=verified
+          bpath.write_text(json.dumps(reg,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          # relational read-back before validators
+          R2,P2,D2=rows(rpath),rows(ppath),rows(dpath)
+          assert len(R2)==124 and len(P2)==734 and len(D2)==765, (len(R2),len(P2),len(D2))
+          rids={x['resource_id'] for x in R2}; pids={x['product_id'] for x in P2}; dids={x['distribution_id'] for x in D2}
+          assert len(rids)==len(R2) and len(pids)==len(P2) and len(dids)==len(D2)
+          assert all(x['resource_id'] in rids for x in P2)
+          assert all(x['product_id'] in pids for x in D2)
+          print('APPEND_OK',len(R2),len(P2),len(D2))
+          PY
+      - name: Validate Brazil scope
+        run: python scripts/validate_brazil_scope.py
+      - name: Validate product catalog
+        run: python scripts/validate_product_catalog.py
+      - name: Rebuild catalog derivatives
+        run: python scripts/build_catalog.py
+      - name: Regenerate link-role audit
+        run: python scripts/audit_link_roles.py --write
+      - name: Validate Vitrine
+        run: python scripts/validate_vitrine.py
+      - name: Build public artifact
+        run: python scripts/build_site_artifact.py
+      - name: Check whitespace and read-back
+        shell: bash
+        run: |
+          git diff --check
+          python - <<'PY'
+          import csv, json
+          def n(p):
+              with open(p,encoding='utf-8',newline='') as f:return sum(1 for _ in csv.DictReader(f))
+          assert (n('data/data_resources.csv'),n('data/data_products.csv'),n('data/product_distributions.csv'))==(124,734,765)
+          with open('data/data_products.csv',encoding='utf-8',newline='') as f: P=list(csv.DictReader(f))
+          with open('data/product_distributions.csv',encoding='utf-8',newline='') as f: D=list(csv.DictReader(f))
+          assert {x['product_id'] for x in P if x['resource_id']=='DR0124'}=={f'DP{i:06d}' for i in range(728,735)}
+          assert {x['distribution_id'] for x in D if x['product_id'] in {f'DP{i:06d}' for i in range(728,735)}}=={f'DD{i:06d}' for i in range(758,766)}
+          print('READBACK_OK')
+          PY
+      - name: Commit materialized data
+        shell: bash
+        run: |
+          git config user.name "vitrine-audit-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          git commit -m "Expand verified INCRA land-governance catalog"
+          git push origin HEAD:main
