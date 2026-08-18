@@ -12670,8 +12670,8 @@
   {
     "product_id": "DP000213",
     "resource_id": "DR0087",
-    "product_name": "Levantamento Sistemático da Produção Agrícola — LSPA — junho de 2026",
-    "product_acronym": "LSPA 06/2026",
+    "product_name": "Levantamento Sistemático da Produção Agrícola — LSPA — julho de 2026",
+    "product_acronym": "LSPA 07/2026",
     "product_family": "Previsão e acompanhamento mensal das safras agrícolas",
     "product_kind": "dataset_series",
     "product_description": "Operação mensal do IBGE de previsão e acompanhamento de área, produção e rendimento médio dos produtos agrícolas de maior importância econômica e social, com estimativas atualizadas ao longo do ano civil.",
@@ -12681,17 +12681,17 @@
     "covers_brazil": "sim",
     "spatial_support": "agregações territoriais da operação estatística",
     "spatial_resolution": "variável conforme produto e tabela",
-    "temporal_coverage": "edição materialmente verificada junho de 2026; série mensal",
+    "temporal_coverage": "edição materialmente verificada julho de 2026; série mensal",
     "temporal_resolution": "mensal",
     "update_frequency": "mensal",
     "product_status": "ativo",
-    "version_or_collection": "junho de 2026 — última edição materialmente confirmada na página oficial consultada",
+    "version_or_collection": "julho de 2026 — divulgação oficial em 13/08/2026",
     "enumeration_scope": "complete",
     "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9201-levantamento-sistematico-da-producao-agricola.html",
     "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9201-levantamento-sistematico-da-producao-agricola.html?t=conceitos-e-metodos",
     "primary_or_derived": "primário",
-    "limitations": "Estimativas são conjunturais e revisadas mensalmente; não equivalem aos resultados anuais consolidados da PAM. Em 16/08/2026, o calendário oficial indicava 13/08/2026 para julho/2026, mas a página de resultados ainda materializava junho/2026; por isso julho não foi promovido sem evidência de publicação efetiva.",
-    "last_verified": "2026-08-16",
+    "limitations": "Estimativas são conjunturais e revisadas mensalmente; não equivalem aos resultados anuais consolidados da PAM. O calendário oficial conjuntural do IBGE registra a divulgação de julho/2026 em 13/08/2026. As estimativas seguem sujeitas a revisão mensal e não equivalem à PAM consolidada.",
+    "last_verified": "2026-08-18",
     "source": {
       "resource_id": "DR0087",
       "resource_name": "Estatísticas Agropecuárias — IBGE",
@@ -12704,7 +12704,7 @@
       {
         "distribution_id": "DD000234",
         "product_id": "DP000213",
-        "distribution_name": "LSPA — edição junho de 2026 e série oficial",
+        "distribution_name": "LSPA — edição julho de 2026 e série oficial",
         "access_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9201-levantamento-sistematico-da-producao-agricola.html?t=resultados",
         "format": "publicação digital | tabelas | série histórica | arquivos conforme edição",
         "access_protocol": "HTTPS",
@@ -12715,8 +12715,8 @@
         "license": "não inferida no nível desta distribuição",
         "provider_attribution_required": "sim",
         "subset_support": "por edição e tabela conforme interface",
-        "notes": "Em 16/08/2026 a página oficial consultada ainda mostrava junho/2026 como edição materializada; o calendário isolado não foi usado para inferir julho/2026 como disponível.",
-        "last_verified": "2026-08-16"
+        "notes": "O calendário oficial conjuntural do IBGE registra julho/2026 como divulgado em 13/08/2026; preservar a natureza revisável das estimativas mensais.",
+        "last_verified": "2026-08-18"
       }
     ],
     "available_formats": [
@@ -18463,17 +18463,17 @@
     "covers_brazil": "sim",
     "spatial_support": "empresa | UF | agregações por atividade",
     "spatial_resolution": "UF; grupos/subgrupos de atividades para Brasil e subconjunto de UFs conforme metodologia",
-    "temporal_coverage": "indicadores a partir de janeiro de 2012; edição mais recente materialmente verificada: maio de 2026",
+    "temporal_coverage": "indicadores a partir de janeiro de 2012; edição mais recente materialmente verificada: junho de 2026",
     "temporal_resolution": "mensal",
     "update_frequency": "mensal",
     "product_status": "ativo",
-    "version_or_collection": "série corrente; maio de 2026 materialmente verificado",
+    "version_or_collection": "série corrente; junho de 2026 materialmente verificado",
     "enumeration_scope": "complete",
     "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/servicos/9229-pesquisa-mensal-de-servicos.html",
     "methodology_url": "https://metadados.ibge.gov.br/consulta/estatisticos/operacoes-estatisticas/SC",
     "primary_or_derived": "derivado",
-    "limitations": "Investiga empresas formalmente constituídas com 20 ou mais pessoas ocupadas e atividade principal em serviços não financeiros, excluindo Saúde e Educação. Índices de volume/receita, ajustes sazonais e revisões não equivalem a níveis absolutos ou ao conjunto de serviços informais. A divulgação de junho/2026 aparecia apenas como prevista na página auditada.",
-    "last_verified": "2026-08-16",
+    "limitations": "Investiga empresas formalmente constituídas com 20 ou mais pessoas ocupadas e atividade principal em serviços não financeiros, excluindo Saúde e Educação. Índices de volume/receita, ajustes sazonais e revisões não equivalem a níveis absolutos ou ao conjunto de serviços informais. O calendário oficial conjuntural do IBGE registra junho/2026 como divulgado em 12/08/2026.",
+    "last_verified": "2026-08-18",
     "source": {
       "resource_id": "DR0099",
       "resource_name": "Indicadores Conjunturais de Atividade Econômica — IBGE",
@@ -18497,8 +18497,8 @@
         "license": "licença específica dos arquivos não determinada nesta auditoria",
         "provider_attribution_required": "sim",
         "subset_support": "por período, índice, grupo de atividade e UF conforme divulgação",
-        "notes": "A página auditada materializa maio/2026; junho/2026 constava como próxima divulgação e não foi promovido sem evidência material na página.",
-        "last_verified": "2026-08-16"
+        "notes": "A página auditada materializa junho/2026; junho/2026 consta no calendário oficial como divulgado em 12/08/2026.",
+        "last_verified": "2026-08-18"
       }
     ],
     "available_formats": [
@@ -18522,17 +18522,17 @@
     "covers_brazil": "sim",
     "spatial_support": "unidade local industrial | Brasil | região/UF | agregações por atividade",
     "spatial_resolution": "Brasil e UFs/região elegíveis conforme participação industrial e desenho vigente",
-    "temporal_coverage": "séries históricas encadeadas; série reformulada em 2023 desde janeiro de 2022; edição materialmente verificada: maio de 2026",
+    "temporal_coverage": "séries históricas encadeadas; série reformulada em 2023 desde janeiro de 2022; edição materialmente verificada: junho de 2026",
     "temporal_resolution": "mensal",
     "update_frequency": "mensal",
     "product_status": "ativo",
-    "version_or_collection": "série reformulada em 2023; maio de 2026 materialmente verificado",
+    "version_or_collection": "série reformulada em 2023; junho de 2026 materialmente verificado",
     "enumeration_scope": "complete",
     "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/industria/9294-pesquisa-industrial-mensal-producao-fisica.html",
     "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/industria/9294-pesquisa-industrial-mensal-producao-fisica.html",
     "primary_or_derived": "derivado",
     "limitations": "A amostra vigente é não probabilística e cobre unidades locais formalmente constituídas das seções B e C da CNAE 2.0. O índice aproxima a evolução de curto prazo do valor adicionado industrial, não mede diretamente valor adicionado ou produção física exaustiva. Reformulações e encadeamentos de série devem ser preservados.",
-    "last_verified": "2026-08-16",
+    "last_verified": "2026-08-18",
     "source": {
       "resource_id": "DR0099",
       "resource_name": "Indicadores Conjunturais de Atividade Econômica — IBGE",
@@ -18556,8 +18556,8 @@
         "license": "licença específica dos arquivos não determinada nesta auditoria",
         "provider_attribution_required": "sim",
         "subset_support": "por período, atividade/categoria e recorte Brasil/Regional conforme série",
-        "notes": "A página auditada materializa maio/2026 e documenta a série reformulada em 2023; componentes Brasil e Regional possuem coberturas próprias.",
-        "last_verified": "2026-08-16"
+        "notes": "A página auditada materializa junho/2026 e documenta a série reformulada em 2023; componentes Brasil e Regional possuem coberturas próprias.",
+        "last_verified": "2026-08-18"
       }
     ],
     "available_formats": [
@@ -18581,17 +18581,17 @@
     "covers_brazil": "sim",
     "spatial_support": "áreas de coleta do SNIPC | agregações nacional e regionais",
     "spatial_resolution": "Brasil e áreas territoriais do SNIPC conforme tabela",
-    "temporal_coverage": "série histórica; edição mais recente materialmente verificada: junho de 2026",
+    "temporal_coverage": "série histórica; edição mais recente materialmente verificada: julho de 2026",
     "temporal_resolution": "mensal",
     "update_frequency": "mensal",
     "product_status": "ativo",
-    "version_or_collection": "série corrente; junho de 2026 materialmente verificado",
+    "version_or_collection": "série corrente; julho de 2026 materialmente verificado",
     "enumeration_scope": "complete",
     "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html",
     "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html",
     "primary_or_derived": "derivado",
     "limitations": "O IPCA não representa o custo de vida de todos os domicílios brasileiros: possui população-objetivo, áreas de coleta, estrutura de ponderação e períodos de coleta definidos. Comparações exigem observar mudanças de pesos, metodologia e revisões.",
-    "last_verified": "2026-08-17",
+    "last_verified": "2026-08-18",
     "source": {
       "resource_id": "DR0100",
       "resource_name": "Preços e Custos — IBGE",
@@ -18615,8 +18615,8 @@
         "license": "licença específica dos arquivos não determinada nesta auditoria",
         "provider_attribution_required": "sim",
         "subset_support": "por período, grupo/subgrupo/item e recorte territorial conforme divulgação",
-        "notes": "Junho de 2026 é a edição materialmente verificada nesta auditoria; preservar população-objetivo e áreas do SNIPC.",
-        "last_verified": "2026-08-17"
+        "notes": "Julho de 2026 é a edição materialmente verificada nesta auditoria; preservar população-objetivo e áreas do SNIPC.",
+        "last_verified": "2026-08-18"
       }
     ],
     "available_formats": [
@@ -18640,17 +18640,17 @@
     "covers_brazil": "sim",
     "spatial_support": "áreas de coleta do SNIPC | agregações nacional e regionais",
     "spatial_resolution": "Brasil e áreas territoriais do SNIPC conforme tabela",
-    "temporal_coverage": "série histórica; edição mais recente materialmente verificada: junho de 2026",
+    "temporal_coverage": "série histórica; edição mais recente materialmente verificada: julho de 2026",
     "temporal_resolution": "mensal",
     "update_frequency": "mensal",
     "product_status": "ativo",
-    "version_or_collection": "série corrente; junho de 2026 materialmente verificado",
+    "version_or_collection": "série corrente; julho de 2026 materialmente verificado",
     "enumeration_scope": "complete",
     "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9258-indice-nacional-de-precos-ao-consumidor.html",
     "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9258-indice-nacional-de-precos-ao-consumidor.html",
     "primary_or_derived": "derivado",
     "limitations": "O INPC tem população-objetivo distinta do IPCA e não deve ser usado como sinônimo deste. Cobertura territorial, cesta, pesos e períodos de coleta precisam ser preservados na interpretação.",
-    "last_verified": "2026-08-17",
+    "last_verified": "2026-08-18",
     "source": {
       "resource_id": "DR0100",
       "resource_name": "Preços e Custos — IBGE",
@@ -18674,8 +18674,8 @@
         "license": "licença específica dos arquivos não determinada nesta auditoria",
         "provider_attribution_required": "sim",
         "subset_support": "por período, grupo/subgrupo/item e recorte territorial conforme divulgação",
-        "notes": "Junho de 2026 é a edição materialmente verificada; população-objetivo de 1 a 5 salários mínimos não deve ser confundida com a do IPCA.",
-        "last_verified": "2026-08-17"
+        "notes": "Julho de 2026 é a edição materialmente verificada; população-objetivo de 1 a 5 salários mínimos não deve ser confundida com a do IPCA.",
+        "last_verified": "2026-08-18"
       }
     ],
     "available_formats": [
@@ -18699,17 +18699,17 @@
     "covers_brazil": "sim",
     "spatial_support": "áreas de coleta do SNIPC | agregações nacional e territoriais",
     "spatial_resolution": "Brasil e 11 áreas conforme divulgação",
-    "temporal_coverage": "série histórica; edição mais recente materialmente verificada: junho de 2026",
+    "temporal_coverage": "série histórica; edição mais recente materialmente verificada: julho de 2026",
     "temporal_resolution": "mensal",
     "update_frequency": "mensal",
     "product_status": "ativo",
-    "version_or_collection": "série corrente; junho de 2026 materialmente verificado",
+    "version_or_collection": "série corrente; julho de 2026 materialmente verificado",
     "enumeration_scope": "complete",
     "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9260-indice-nacional-de-precos-ao-consumidor-amplo-15.html",
     "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9260-indice-nacional-de-precos-ao-consumidor-amplo-15.html",
     "primary_or_derived": "derivado",
     "limitations": "Embora compartilhe população-objetivo semelhante ao IPCA, o IPCA-15 utiliza período de coleta e cobertura geográfica próprios. Não é intercambiável com o IPCA mensal sem considerar essas diferenças.",
-    "last_verified": "2026-08-17",
+    "last_verified": "2026-08-18",
     "source": {
       "resource_id": "DR0100",
       "resource_name": "Preços e Custos — IBGE",
@@ -18733,8 +18733,8 @@
         "license": "licença específica dos arquivos não determinada nesta auditoria",
         "provider_attribution_required": "sim",
         "subset_support": "por período, grupo/subgrupo/item e área conforme divulgação",
-        "notes": "O IPCA-15 tem janela de coleta e cobertura distintas do IPCA; junho de 2026 foi materialmente verificado.",
-        "last_verified": "2026-08-17"
+        "notes": "O IPCA-15 tem janela de coleta e cobertura distintas do IPCA; julho de 2026 foi materialmente verificado.",
+        "last_verified": "2026-08-18"
       }
     ],
     "available_formats": [
@@ -18817,17 +18817,17 @@
     "covers_brazil": "sim",
     "spatial_support": "empresas/produtos industriais | agregações por atividade",
     "spatial_resolution": "Brasil; atividades e produtos conforme tabela",
-    "temporal_coverage": "série histórica mensal; edição mais recente materialmente verificada nesta auditoria: maio de 2026",
+    "temporal_coverage": "série histórica mensal; edição mais recente materialmente verificada nesta auditoria: junho de 2026",
     "temporal_resolution": "mensal",
     "update_frequency": "mensal",
     "product_status": "ativo",
-    "version_or_collection": "série corrente; maio de 2026 materialmente verificado",
+    "version_or_collection": "série corrente; junho de 2026 materialmente verificado",
     "enumeration_scope": "complete",
     "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9282-indice-de-precos-ao-produtor-industrias-extrativas-e-de-transformacao.html",
     "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9282-indice-de-precos-ao-produtor-industrias-extrativas-e-de-transformacao.html",
     "primary_or_derived": "derivado",
     "limitations": "O IPP mede preços recebidos pelo produtor, sem equivaler à inflação ao consumidor. Conceitos de preço na porta de fábrica, amostra de produtos/empresas, classificações e revisões devem ser preservados.",
-    "last_verified": "2026-08-17",
+    "last_verified": "2026-08-18",
     "source": {
       "resource_id": "DR0100",
       "resource_name": "Preços e Custos — IBGE",
@@ -18851,8 +18851,8 @@
         "license": "licença específica dos arquivos não determinada nesta auditoria",
         "provider_attribution_required": "sim",
         "subset_support": "por período, atividade e produto conforme divulgação",
-        "notes": "Maio de 2026 é a edição materialmente verificada nesta auditoria; índice de produtor não equivale a inflação ao consumidor.",
-        "last_verified": "2026-08-17"
+        "notes": "Junho de 2026 é a edição materialmente verificada nesta auditoria; índice de produtor não equivale a inflação ao consumidor.",
+        "last_verified": "2026-08-18"
       }
     ],
     "available_formats": [
@@ -18876,17 +18876,17 @@
     "covers_brazil": "sim",
     "spatial_support": "insumos/composições | UF | região | Brasil",
     "spatial_resolution": "UF, Grande Região e Brasil conforme tabela; detalhes técnicos por insumo/composição conforme sistema",
-    "temporal_coverage": "série histórica mensal; edição mais recente materialmente verificada: junho de 2026",
+    "temporal_coverage": "série histórica mensal; edição mais recente materialmente verificada: julho de 2026",
     "temporal_resolution": "mensal",
     "update_frequency": "mensal",
     "product_status": "ativo",
-    "version_or_collection": "série corrente; junho de 2026 materialmente verificado",
+    "version_or_collection": "série corrente; julho de 2026 materialmente verificado",
     "enumeration_scope": "complete",
     "product_page_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9270-sistema-nacional-de-pesquisa-de-custos-e-indices-da-construcao-civil.html",
     "methodology_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9270-sistema-nacional-de-pesquisa-de-custos-e-indices-da-construcao-civil.html",
     "primary_or_derived": "derivado",
     "limitations": "Os índices e custos do SINAPI seguem composições, insumos e metodologia próprios e não equivalem automaticamente ao orçamento específico de uma obra, cotação local instantânea ou custo efetivamente contratado.",
-    "last_verified": "2026-08-17",
+    "last_verified": "2026-08-18",
     "source": {
       "resource_id": "DR0100",
       "resource_name": "Preços e Custos — IBGE",
@@ -18910,8 +18910,8 @@
         "license": "licença específica dos arquivos não determinada nesta auditoria",
         "provider_attribution_required": "sim",
         "subset_support": "por período, UF, região, Brasil e componentes conforme divulgação",
-        "notes": "Junho de 2026 é a edição materialmente verificada; custos/índices não equivalem a orçamento específico de obra.",
-        "last_verified": "2026-08-17"
+        "notes": "Julho de 2026 é a edição materialmente verificada; custos/índices não equivalem a orçamento específico de obra.",
+        "last_verified": "2026-08-18"
       }
     ],
     "available_formats": [
