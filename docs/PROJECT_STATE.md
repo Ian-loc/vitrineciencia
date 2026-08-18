@@ -19,9 +19,10 @@ JSONs, páginas públicas e relatórios de qualidade são artefatos derivados. O
 
 Snapshot observado em 18/08/2026:
 
-- 125 fontes (`DR0001`–`DR0125`);
-- 756 produtos (`DP000001`–`DP000756`);
-- 787 distribuições (`DD000001`–`DD000787`);
+- **125 fontes**;
+- **752 produtos**;
+- **783 distribuições**;
+- identificadores correntes chegam a `DR0125`, `DP000756` e `DD000787`; lacunas históricas de IDs são preservadas;
 - fontes verificadas até 18/08/2026.
 
 As contagens podem crescer sem mudança de schema.
@@ -65,7 +66,7 @@ A separação estrutural ocorreu em 09/08/2026. O Simbiotrama é um projeto inde
 
 - `README.md` — entrada pública;
 - `docs/PROJECT_STATE.md` — este estado canônico;
-- `docs/PROJECT_SCIENTIFIC_DIRECTION.md` — missão e princípios;
+- `docs/PROJECT_SCIENTIFIC_DIRECTION.md` — direção científica;
 - `docs/GOVERNANCE.md` — autoridade e gates;
 - `docs/VITRINE_BOUNDARY.md` — fronteira de publicação;
 - `docs/VITRINE_CANONICAL_DATA_CONTRACT.md` — schema vigente;
