@@ -22,8 +22,9 @@ A Vitrine Ciência é um **catálogo público, estático e delimitado para desco
 Em 18/08/2026:
 
 - **125 fontes**;
-- **756 produtos**;
-- **787 distribuições**;
+- **752 produtos**;
+- **783 distribuições**;
+- os maiores identificadores correntes são `DR0125`, `DP000756` e `DD000787`; lacunas de IDs são preservadas e não recicladas;
 - `data_quality_report.json`: 125 registros de fonte; verificação máxima `2026-08-18`;
 - incerteza de acesso registrada em 72 fontes e de licença em 49 fontes — sinais de curadoria pendente, não falhas estruturais.
 
