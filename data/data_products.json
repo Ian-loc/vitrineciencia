@@ -33687,5 +33687,418 @@
     "available_protocols": [
       "HTTPS download | CKAN API"
     ]
+  },
+  {
+    "product_id": "DP000568",
+    "resource_id": "DR0121",
+    "product_name": "Balanço Energético Nacional 2026 — ano-base 2025 e séries históricas",
+    "product_acronym": "BEN 2026",
+    "product_family": "Balanço Energético Nacional",
+    "product_kind": "dataset_series",
+    "product_description": "Contabilidade energética anual da oferta, transformação e consumo de energia no Brasil, com relatório 2026 referente ao ano-base 2025 e séries históricas/matrizes consolidadas desde 1970.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "BEN | matriz energética | oferta de energia | consumo de energia | transformação | séries históricas",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "nacional e setores/energéticos conforme tabela",
+    "spatial_resolution": "nacional; desagregação setorial e por energético conforme capítulo/tabela",
+    "temporal_coverage": "1970–2025 nas séries históricas consolidadas; edição BEN 2026 com ano-base 2025",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "BEN 2026; ano-base 2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/Balanco-Energetico-Nacional-2026",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/dados-abertos/dados-abertos-do-balan%C3%A7o-energ%C3%A9tico-nacional-ben",
+    "primary_or_derived": "derivado",
+    "limitations": "Contabilidade energética integra múltiplas fontes e conversões; não confundir oferta, transformação e consumo final. Valores em tep e unidades comerciais exigem preservar definições e fatores de conversão da edição.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000593",
+        "product_id": "DP000568",
+        "distribution_name": "BEN 2026 — relatório, dados abertos, matrizes e ferramentas interativas",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/dados-abertos/dados-abertos-do-balan%C3%A7o-energ%C3%A9tico-nacional-ben",
+        "format": "XLSX | tabelas web | PDF | downloads em formato matriz e tabela",
+        "access_protocol": "HTTPS download | aplicação web",
+        "access_tool": "navegador web | planilha | ferramenta de análise",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar ano-base, unidade energética, tabela/capítulo e edição",
+        "license": "Creative Commons Atribuição 4.0 Internacional (CC BY 4.0) para conteúdo EPE; verificar arquivos de terceiros quando aplicável",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano-base, capítulo, tabela e energético conforme ferramenta",
+        "notes": "Os anexos IX e X oferecem matrizes consolidadas desde 1970 em mil tep e unidades comerciais; downloads em formato tradicional e tabular.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XLSX | tabelas web | PDF | downloads em formato matriz e tabela"
+    ],
+    "available_protocols": [
+      "HTTPS download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000569",
+    "resource_id": "DR0121",
+    "product_name": "Anuário Estatístico de Energia Elétrica 2026 — ano-base 2025",
+    "product_acronym": "Anuário Elétrico 2026",
+    "product_family": "Estatísticas de energia elétrica",
+    "product_kind": "dataset_series",
+    "product_description": "Panorama estatístico anual do setor elétrico brasileiro, com séries consolidadas de consumo nos mercados cativo e livre, regiões, subsistemas e classes, além de demanda, carga, preços e tarifas.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "energia elétrica | consumo | carga | demanda | tarifas | mercado livre | mercado cativo",
+    "geographic_coverage": "Brasil; agregações por região, subsistema e classe conforme indicador",
+    "covers_brazil": "sim",
+    "spatial_support": "nacional e agregações territoriais/setoriais",
+    "spatial_resolution": "região, subsistema, classe e demais recortes conforme tabela",
+    "temporal_coverage": "séries históricas consolidadas até 2025; edição 2026 ano-base 2025",
+    "temporal_resolution": "anual e mensal em ferramentas associadas conforme indicador",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "edição 2026; ano-base 2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/imprensa/noticias/epe-publica-o-anuario-estatistico-de-energia-eletrica-2026-ano-base-2025-",
+    "methodology_url": "https://www.epe.gov.br/pt/areas-de-atuacao/estatisticas",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicadores de consumo, carga, demanda, preços e tarifas têm conceitos, fontes e denominadores próprios; não tratar o anuário como medição operacional em tempo real nem misturar mercados/recortes sem harmonização.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000594",
+        "product_id": "DP000569",
+        "distribution_name": "Anuário Elétrico 2026 — relatório online, workbook, painel e dados abertos",
+        "access_url": "https://www.epe.gov.br/pt/imprensa/noticias/epe-publica-o-anuario-estatistico-de-energia-eletrica-2026-ano-base-2025-",
+        "format": "XLSX | dados abertos | relatório web | painel interativo",
+        "access_protocol": "HTTPS download | aplicação web",
+        "access_tool": "navegador web | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar indicador, recorte territorial/setorial, período e fonte",
+        "license": "Creative Commons Atribuição 4.0 Internacional (CC BY 4.0)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por mercado, região, subsistema, classe e indicador conforme ferramenta",
+        "notes": "A edição 2026 disponibiliza relatório online, Workbook, Anuário Interativo, Painel de Monitoramento do Consumo e dados abertos.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XLSX | dados abertos | relatório web | painel interativo"
+    ],
+    "available_protocols": [
+      "HTTPS download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000570",
+    "resource_id": "DR0121",
+    "product_name": "Plano Decenal de Expansão de Energia 2035 — dados, cenários e resultados",
+    "product_acronym": "PDE 2035",
+    "product_family": "Planejamento energético decenal",
+    "product_kind": "indicator_family",
+    "product_description": "Plano integrado de expansão energética para 2026–2035, com cenários e resultados de oferta, demanda, geração, capacidade, transmissão, combustíveis, biocombustíveis, emissões, investimentos e estudos socioambientais.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "PDE 2035 | planejamento energético | cenários | expansão | transmissão | geração | emissões | investimentos",
+    "geographic_coverage": "Brasil; Sistema Interligado Nacional e recortes setoriais/territoriais conforme estudo",
+    "covers_brazil": "sim",
+    "spatial_support": "nacional, regional, sistema elétrico e empreendimentos planejados conforme caderno",
+    "spatial_resolution": "varia por estudo, modelo, cenário e empreendimento",
+    "temporal_coverage": "2026–2035; elaborado em 2025 e aprovado em junho de 2026",
+    "temporal_resolution": "anual e por horizonte/cenário conforme estudo",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "PDE 2035; aprovado pela Portaria MME nº 923/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/plano-decenal-de-expansao-de-energia-2035",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/plano-decenal-de-expansao-de-energia-2035",
+    "primary_or_derived": "derivado",
+    "limitations": "Cenários e resultados do PDE são instrumentos de planejamento e não previsões determinísticas. Empreendimentos, investimentos e capacidades projetadas não equivalem a outorga, contratação, construção ou operação efetiva.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000595",
+        "product_id": "DP000570",
+        "distribution_name": "PDE 2035 — painel, dados brutos, relatório final e estudos complementares",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/plano-decenal-de-expansao-de-energia-2035",
+        "format": "XLSX/arquivos de dados | PDF | arquivos de modelos | painel interativo",
+        "access_protocol": "HTTPS download | aplicação web",
+        "access_tool": "navegador web | planilha | softwares de modelagem conforme arquivo",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar cenário, caso-base/referência, horizonte, caderno e versão",
+        "license": "Creative Commons Atribuição 4.0 Internacional (CC BY 4.0) para conteúdo EPE; arquivos técnicos podem exigir leitura de documentação própria",
+        "provider_attribution_required": "sim",
+        "subset_support": "por cenário, tema/caderno e conjunto de resultados",
+        "notes": "A página oficial oferece dados brutos do painel, dados do relatório final, cadernos e arquivos complementares de modelagem.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "XLSX/arquivos de dados | PDF | arquivos de modelos | painel interativo"
+    ],
+    "available_protocols": [
+      "HTTPS download | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000571",
+    "resource_id": "DR0121",
+    "product_name": "WEBMAP EPE — sistema energético brasileiro",
+    "product_acronym": "WEBMAP EPE",
+    "product_family": "Geoinformação do planejamento energético",
+    "product_kind": "federated_catalog",
+    "product_description": "Aplicação SIG da EPE para consulta, visualização, medição, download e serviços WMS de camadas do sistema energético existente e planejado, combustíveis, petróleo e gás, biocombustíveis, meio ambiente e recursos energéticos.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "Webmap | energia | geoinformação | WMS | geração | transmissão | petróleo | gás | biocombustíveis",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "camadas vetoriais e raster; empreendimentos, linhas, áreas e recursos conforme tema",
+    "spatial_resolution": "varia por camada e fonte primária; consultar metadados",
+    "temporal_coverage": "corrente e histórica/planejada conforme camada",
+    "temporal_resolution": "varia por camada",
+    "update_frequency": "irregular conforme camada",
+    "product_status": "ativo",
+    "version_or_collection": "versão atualizada disponível em 2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/webmap-epe",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/webmap-epe",
+    "primary_or_derived": "agregador",
+    "limitations": "O Webmap agrega camadas de múltiplas fontes e estados do sistema energético. Existente, planejado, potencial e recurso ambiental são categorias distintas; resolução, data, precisão, licença e provedor devem ser herdados dos metadados de cada camada.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000596",
+        "product_id": "DP000571",
+        "distribution_name": "WEBMAP EPE — visualizador, downloads e serviço WMS",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/webmap-epe",
+        "format": "vetor | raster | WMS | metadados; varia conforme camada",
+        "access_protocol": "HTTPS | OGC WMS",
+        "access_tool": "navegador web | cliente SIG",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; consultar metadados, fonte primária, escala, atualização e licença de cada camada",
+        "license": "conteúdo EPE sob CC BY 4.0; licença/proveniência pode variar por camada de origem",
+        "provider_attribution_required": "sim",
+        "subset_support": "por grupo temático, camada, área de interesse e serviço WMS",
+        "notes": "O Webmap permite consulta, download vetorial/raster, medições, impressão, inclusão de dados próprios e compartilhamento de camadas via WMS.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "vetor | raster | WMS | metadados; varia conforme camada"
+    ],
+    "available_protocols": [
+      "HTTPS | OGC WMS"
+    ]
+  },
+  {
+    "product_id": "DP000572",
+    "resource_id": "DR0121",
+    "product_name": "Atlas de Eficiência Energética Brasil 2025 — Relatório de Indicadores",
+    "product_acronym": "Atlas EE 2025",
+    "product_family": "Eficiência energética",
+    "product_kind": "indicator_family",
+    "product_description": "Relatório e planilha de indicadores para monitoramento do progresso da eficiência energética no Brasil, com dados até 2024 e capítulo especial sobre o Programa de Eficiência Energética da ANEEL.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "eficiência energética | indicadores | intensidade energética | PEE | consumo | setores",
+    "geographic_coverage": "Brasil; setores econômicos e energéticos conforme indicador",
+    "covers_brazil": "sim",
+    "spatial_support": "nacional e setorial",
+    "spatial_resolution": "nacional/setorial conforme indicador",
+    "temporal_coverage": "séries de indicadores com dados até 2024; edição 2025",
+    "temporal_resolution": "anual conforme indicador",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "Atlas de Eficiência Energética Brasil 2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/atlas-de-eficiencia-energetica-brasil-2025",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/atlas-da-eficiencia-energetica-brasil",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicadores de eficiência e intensidade dependem de atividade, estrutura econômica, clima e metodologia; não interpretar redução de intensidade automaticamente como ganho físico de eficiência sem decomposição apropriada.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000597",
+        "product_id": "DP000572",
+        "distribution_name": "Atlas de Eficiência Energética 2025 — relatório e planilha de dados",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/atlas-de-eficiencia-energetica-brasil-2025",
+        "format": "PDF | XLSX",
+        "access_protocol": "HTTPS download",
+        "access_tool": "navegador web | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar definição, denominador e metodologia de cada indicador",
+        "license": "Creative Commons Atribuição 4.0 Internacional (CC BY 4.0)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por indicador/setor conforme planilha",
+        "notes": "A edição 2025 contém relatório de indicadores e planilha de dados com séries até 2024.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "PDF | XLSX"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
+  },
+  {
+    "product_id": "DP000573",
+    "resource_id": "DR0121",
+    "product_name": "BiodivEPE — Biodiversidade no Planejamento de Projetos de Energia",
+    "product_acronym": "BiodivEPE",
+    "product_family": "Biodiversidade e planejamento energético",
+    "product_kind": "data_service",
+    "product_description": "Ferramenta SIG para análise de sobreposição e apoio à escolha locacional de projetos de energia, integrando camadas de áreas relevantes para biodiversidade e uma camada-síntese, com geração de relatórios.",
+    "research_areas": "Biodiversidade e Conservação | Planejamento Territorial e Políticas Públicas | Sensoriamento Remoto e Geoinformação",
+    "keywords": "biodiversidade | energia | áreas protegidas | Ramsar | KBA | IBA | sobreposição | planejamento locacional",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "polígonos de áreas sensíveis e geometria fornecida pelo usuário",
+    "spatial_resolution": "varia conforme a camada temática e fonte primária",
+    "temporal_coverage": "camadas atualizadas periodicamente; revisão técnica 04 em 2026",
+    "temporal_resolution": "não se aplica; atributos e versões conforme camada",
+    "update_frequency": "anual para atualização documentada da ferramenta",
+    "product_status": "ativo",
+    "version_or_collection": "Informativo Técnico Revisão 04 (2026); atualização anual divulgada em 22/05/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/biodivepe-biodiversidade-no-planejamento-de-projetos-de-energia",
+    "methodology_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/biodivepe-biodiversidade-no-planejamento-de-projetos-de-energia",
+    "primary_or_derived": "serviço",
+    "limitations": "Sobreposição espacial indica potencial interação territorial, não impacto ambiental observado, licenciamento aprovado ou inviabilidade automática. Cada camada mantém fonte, data, escala, definição e licença próprias; a camada-síntese não elimina essas diferenças.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000598",
+        "product_id": "DP000573",
+        "distribution_name": "BiodivEPE — ferramenta SIG, relatórios e metadados",
+        "access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/biodivepe-biodiversidade-no-planejamento-de-projetos-de-energia",
+        "format": "aplicação SIG web | tabelas de atributos | relatórios | metadados PDF",
+        "access_protocol": "HTTPS | aplicação web",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; preservar metadados e fonte/licença das oito camadas temáticas e da camada-síntese",
+        "license": "conteúdo EPE sob CC BY 4.0; camadas temáticas mantêm proveniência e condições próprias",
+        "provider_attribution_required": "sim",
+        "subset_support": "por camada, geometria de projeto e análise de sobreposição",
+        "notes": "A ferramenta permite inserir geometria do projeto, medir, analisar sobreposições e gerar relatórios; revisão técnica 04 disponível em 2026.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "aplicação SIG web | tabelas de atributos | relatórios | metadados PDF"
+    ],
+    "available_protocols": [
+      "HTTPS | aplicação web"
+    ]
+  },
+  {
+    "product_id": "DP000574",
+    "resource_id": "DR0121",
+    "product_name": "Bases de Dados de Planejamento Elétrico do SIN — casos de referência PDE 2035",
+    "product_acronym": "Bases Elétricas PDE 2035",
+    "product_family": "Modelagem do sistema elétrico",
+    "product_kind": "dataset",
+    "product_description": "Conjunto de casos de referência para estudos de fluxo de potência, curto-circuito e estabilidade eletromecânica do Sistema Interligado Nacional, atualizado pela EPE em dezembro de 2025 para o ciclo do PDE 2035.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "SIN | ANAREDE | ANAFAS | ANATEM | estabilidade | curto-circuito | fluxo de potência | planejamento elétrico",
+    "geographic_coverage": "Sistema Interligado Nacional — Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "modelo de rede elétrica do SIN e componentes representados nos casos de referência",
+    "spatial_resolution": "barras, circuitos, usinas e modelos conforme arquivo/programa; não é resolução geográfica uniforme",
+    "temporal_coverage": "casos de planejamento atualizados em dezembro de 2025 para o ciclo PDE 2035",
+    "temporal_resolution": "cenário/caso de estudo",
+    "update_frequency": "por ciclo de planejamento/estudo",
+    "product_status": "ativo",
+    "version_or_collection": "bases atualizadas em dezembro de 2025; alinhadas ao PDE 2035",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.epe.gov.br/pt/imprensa/noticias/epe-disponibiliza-bases-de-dados-de-planejamento-eletrico-atualizadas",
+    "methodology_url": "https://www.epe.gov.br/pt/imprensa/noticias/epe-disponibiliza-bases-de-dados-de-planejamento-eletrico-atualizadas",
+    "primary_or_derived": "derivado",
+    "limitations": "Casos de planejamento são modelos técnicos, não fotografia operacional em tempo real do SIN. Topologia, parâmetros e modelos de usinas podem ser atualizados; resultados dependem do programa, cenário, premissas e versão utilizados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0121",
+      "resource_name": "Empresa de Pesquisa Energética — dados, estudos e ferramentas de planejamento",
+      "acronym": "EPE",
+      "official_identity": "Empresa de Pesquisa Energética — EPE / Ministério de Minas e Energia",
+      "homepage_url": "https://www.epe.gov.br/",
+      "data_access_url": "https://www.epe.gov.br/pt/publicacoes-dados-abertos"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000599",
+        "product_id": "DP000574",
+        "distribution_name": "Bases elétricas EPE — arquivos para ANAREDE, ANAFAS e ANATEM",
+        "access_url": "https://www.epe.gov.br/pt/imprensa/noticias/epe-disponibiliza-bases-de-dados-de-planejamento-eletrico-atualizadas",
+        "format": "arquivos de casos/modelos para softwares elétricos | documentação técnica",
+        "access_protocol": "HTTPS download",
+        "access_tool": "ANAREDE | ANAFAS | ANATEM | ferramentas compatíveis conforme conjunto",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar programa, caso, cenário, premissas e documentação técnica da versão",
+        "license": "conteúdo EPE sob CC BY 4.0; verificar condições de softwares e arquivos específicos",
+        "provider_attribution_required": "sim",
+        "subset_support": "por estudo/programa/caso conforme pacote publicado",
+        "notes": "Bases atualizadas em dezembro de 2025 para fluxo de potência, curto-circuito e estabilidade eletromecânica, alinhadas ao ciclo PDE 2035.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "arquivos de casos/modelos para softwares elétricos | documentação técnica"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
   }
 ]
