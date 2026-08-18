@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/pr-materialize-cptec.yml"
       - ".github/materializers/cptec_batch.py"
+      - ".github/materializers/cptec_batch_v2.py"
 
 permissions:
   contents: write
@@ -24,7 +25,7 @@ jobs:
           if grep -q '^DR0119,' data/data_resources.csv; then
             echo 'Batch already materialized; validating branch.'
           else
-            python3 .github/materializers/cptec_batch.py
+            python3 .github/materializers/cptec_batch_v2.py
           fi
       - name: Validate and rebuild
         run: |
