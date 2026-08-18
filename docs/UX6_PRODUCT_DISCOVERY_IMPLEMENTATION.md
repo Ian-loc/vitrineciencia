@@ -2,7 +2,7 @@
 
 ## Status
 
-**Implementado e ampliado.** Este documento descreve a camada pública de produtos da Vitrine após a fase piloto. Em 18/08/2026, a interface opera sobre **125 fontes, 756 produtos e 787 distribuições**; não está mais restrita a TerraBrasilis/Google Earth Engine nem ao antigo baseline de 51 fontes.
+**Implementado e ampliado.** Este documento descreve a camada pública de produtos da Vitrine após a fase piloto. Em 18/08/2026, a interface opera sobre **125 fontes, 752 produtos e 783 distribuições**; os maiores IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`. A camada não está mais restrita a TerraBrasilis/Google Earth Engine nem ao antigo baseline de 51 fontes.
 
 ## Objetivo
 
