@@ -4,7 +4,9 @@ Atualização: **2026-08-19** (`America/Sao_Paulo`)
 
 ## Direção ativa
 
-A Vitrine Ciência é um **catálogo público, estático, versionado e delimitado para descoberta de dados científicos relevantes ao Brasil**. O modelo conceitual está estável em três unidades: fonte → produto → distribuição. O trabalho corrente prioriza crescimento de conteúdo, precisão factual, qualidade de metadados, usabilidade e releases reproduzíveis.
+A Vitrine Ciência é um **catálogo público, estático, versionado e delimitado para descoberta de dados científicos relevantes ao Brasil**. O modelo conceitual está estável em três unidades: fonte → produto → distribuição.
+
+A fase corrente é de **QA/QC e manutenção**, com prioridade para disponibilidade pública, integridade canônica, correções factuais e semânticas, robustez de build/CI, documentação/citação, acessibilidade e bugs reais de UX. **A expansão de novas fontes, produtos ou distribuições está pausada** e só deve ser retomada mediante instrução humana explícita.
 
 ## Autoridade
 
@@ -47,13 +49,13 @@ As contagens caracterizam o snapshot candidato e não são gates de arquitetura.
 - relações obrigatórias `produto → fonte` e `distribuição → produto`;
 - classificação Brasil P0–P3 vinculada por `resource_id`.
 
-### Curadoria
+### Curadoria e QA/QC
 
-**ATIVA.** Novas fontes e produtos podem entrar em pequenos lotes na `main` quando possuem identidade rastreável, relevância para o Brasil, evidência oficial suficiente e representação honesta no contrato vigente. Valores desconhecidos ou variáveis permanecem explícitos. Depois da tag `v1.0.0`, novas mudanças pertencem a releases posteriores e não alteram retroativamente o snapshot publicado.
+**ATIVOS, SEM EXPANSÃO DE ESCOPO.** O trabalho corrente corrige apenas o catálogo já existente: duplicatas comprovadas, metadados contraditórios, papéis de links, versões, cobertura, metodologia, licenças, citações, limitações, derivados e defeitos técnicos. Valores desconhecidos ou variáveis permanecem explícitos. Novas fontes, produtos ou distribuições não entram durante esta fase sem instrução humana explícita.
 
 ### Documentação
 
-**ALINHADA PARA v1.0.0.** README, citação, changelog, licença da curadoria, política de release, estado do projeto, release notes e gates de DOI foram atualizados para o snapshot candidato de 19/08/2026.
+**ALINHADA PARA v1.0.0 E MANUTENÇÃO.** README, citação, changelog, licença da curadoria, política de release, estado do projeto, release notes e gates de DOI descrevem o snapshot científico; documentos operacionais devem refletir a fase atual de QA/QC.
 
 ### Drive
 
@@ -61,35 +63,34 @@ As contagens caracterizam o snapshot candidato e não são gates de arquitetura.
 
 ### Release e DOI
 
-**RELEASE v1.0.0 EM PREPARAÇÃO FORMAL.** A branch `release/v1.0.0` contém a documentação do primeiro snapshot científico estável. A publicação definitiva exige validação final, integração na `main`, tag Git imutável `v1.0.0`, GitHub Release, pacote de depósito inspecionado e Zenodo Dataset. O DOI ainda não foi emitido.
+**v1.0.0 PREPARADA; DOI NÃO EMITIDO.** Qualquer criação de nova tag/release, depósito no Zenodo ou emissão/propagação de DOI requer instrução humana explícita e os gates de release aplicáveis. A manutenção corrente não deve criar nova release ou DOI automaticamente.
 
 ## Gates proporcionais ao risco
 
-- **AUTO-SAFE:** documentação, QA/CI, correção factual inequívoca, inclusão pequena dentro do contrato e saneamento reversível;
-- **REVIEW:** lotes grandes, mudança pública relevante ou evidência factual materialmente ambígua;
-- **HUMAN-DECISION:** mudança de escopo/schema, ação destrutiva, licença/autoria/citação oficial, tracking/privacidade, release `1.0.0` e DOI.
+- **AUTO-SAFE:** documentação, QA/CI, correção factual inequívoca, saneamento reversível e correções de publicação/UX de baixo risco;
+- **REVIEW:** mudanças públicas relevantes, lotes grandes de correções ou evidência factual materialmente ambígua;
+- **HUMAN-DECISION:** mudança de escopo/schema, ação destrutiva, licença/autoria/citação oficial, tracking/privacidade, nova release/tag e DOI.
 
-A decisão humana de preparar `v1.0.0` foi registrada em 19/08/2026. A emissão do DOI continua condicionada aos gates objetivos.
+Pipeline de manutenção:
 
-Pipeline:
-
-`scope → evidence → implementation → validation → diff audit → public validation when relevant → integration → post-merge verification → release/tag → deposit → DOI propagation`
+`estado vivo → defeito/risco material → evidência → correção mínima → validação → read-back → publicação quando aplicável → encerramento`
 
 ## Prioridades atuais
 
-1. concluir CI e auditoria do diff da PR de `v1.0.0`;
-2. garantir que nenhum dado científico canônico tenha sido alterado inadvertidamente pela preparação da release;
-3. materializar e inspecionar o pacote Zenodo do commit final;
-4. criar tag/release GitHub `v1.0.0` após integração;
-5. depositar como **Dataset** no Zenodo;
-6. incorporar o DOI ao repositório e perfis após emissão;
-7. retomar a expansão Brasil-primeiro na `main` em versões posteriores.
+1. garantir disponibilidade da GitHub Pages e consistência entre commit publicado e smoke pós-deploy;
+2. manter zero FKs inválidas, órfãos ou duplicatas semânticas comprovadas;
+3. reduzir ambiguidades reais de metadados e papéis homepage/acesso sem fabricar diferenças;
+4. eliminar referências legadas e manter identidade, citação, release e documentação coerentes;
+5. fortalecer validadores e workflows, removendo gates legados, falsos positivos e flakiness;
+6. corrigir bugs reais de busca, filtros, comparação, links, responsividade e acessibilidade;
+7. **não expandir o catálogo** até nova decisão humana explícita.
 
 ## Fora do caminho ativo
 
+- mapeamento de novas fontes, produtos ou distribuições;
 - migração da Vitrine para PostgreSQL/PostGIS;
 - Instâncias 1–3 do Simbiotrama;
 - expansão obrigatória para 38 campos;
 - qualquer requisito fixo de 51 fontes / 11 produtos / 19 distribuições.
 
-Esses elementos aparecem apenas em documentação histórica anterior à separação dos projetos.
+Esses elementos aparecem apenas em documentação histórica anterior à separação dos projetos ou permanecem deliberadamente pausados.
