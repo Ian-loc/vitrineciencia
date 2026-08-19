@@ -57,6 +57,9 @@ def product_public_areas(product_value: str, source_value: str, schema: dict) ->
     return matched[:3]
 
 
+# Regras deliberadamente sem termos de apresentação como mapa, gráfico, tabela,
+# prancha ou publicação. Esses termos descrevem a forma de apresentação, não o
+# suporte espacial da informação.
 SPATIAL_RULES: list[tuple[str, tuple[str, ...]]] = [
     ("ponto", ("ponto", "point", "coordenad")),
     ("estação ou local", ("estacao", "station", "posto de monitoramento", "local de monitoramento")),
@@ -64,10 +67,21 @@ SPATIAL_RULES: list[tuple[str, tuple[str, ...]]] = [
     ("célula raster", ("celula raster", "pixel", "raster")),
     ("grade", ("grade", "grid")),
     ("linha ou transecto", ("transect", "transecto", "trajeto", "linha amostral")),
-    ("unidade administrativa", ("municipio", "municipal", "setor censitario", "distrito", "unidade federativa", " uf ", "estado", "pais")),
-    ("região ou zona", ("regiao", "regional", "bioma", "zona", "area de estudo", "recorte territorial")),
+    ("unidade administrativa", (
+        "municipio", "municipal", "setor censitario", "distrito", "unidade federativa",
+        "unidades da federacao", " uf ", "estado", "pais"
+    )),
+    ("região ou zona", (
+        "regiao", "regional", "bioma", "zona", "area de estudo", "recorte territorial",
+        "recortes territoriais", "agregacao territorial", "agregacoes territoriais",
+        "unidades geomorfologicas", "unidade geomorfologica", "unidades de relevo",
+        "unidades de vegetacao", "unidade de vegetacao", "unidades de solos", "unidade de solo",
+        "recorte costeiro", "recortes costeiros", "recorte oceanico", "recortes oceanicos",
+        "terra indigena", "terras indigenas", "unidade de conservacao", "unidades de conservacao",
+        "area protegida", "areas protegidas"
+    )),
     ("bacia ou corpo d'água", ("bacia", "curso d'agua", "corpo d'agua", "rio", "reservatorio", "lago", "hidrograf")),
-    ("polígono ou feição", ("poligono", "polygon", "feicao", "imovel", "territorio", "limite cadastral")),
+    ("polígono ou feição", ("poligono", "polygon", "feicao", "imovel", "limite cadastral")),
     ("registro tabular sem geometria", ("sem geometria", "registro tabular", "registro cadastral")),
 ]
 
@@ -102,7 +116,10 @@ UPDATE_RULES: list[tuple[str, tuple[str, ...]]] = [
     ("semestral", ("semestral", "semiannual", "semi-annual")),
     ("anual", ("anual", "anualmente", "annual")),
     ("plurianual", ("bienal", "bianual", "quinquenal", "decenal", "a cada dois anos", "a cada cinco anos", "cinco anos", "ten-year")),
-    ("por edição ou evento", ("por edicao", "edicao especifica", "por evento", "por campanha", "por ciclo", "censitaria", "ano-base")),
+    ("por edição ou evento", (
+        "por edicao", "edicao especifica", "por evento", "por campanha", "por ciclo", "censitaria",
+        "ano-base", "eventual", "por divulgacao", "por publicacao", "por levantamento", "por censo"
+    )),
     ("sob demanda", ("sob demanda", "on demand")),
     ("irregular", ("irregular", "nao uniforme", "não uniforme")),
 ]
@@ -112,7 +129,7 @@ def update_frequency_class(value: str, schema: dict) -> str:
     text = norm(value)
     if "nao se aplica" in text:
         return "não se aplica"
-    if any(term in text for term in ("sem atualizacao", "sem atualização", "sem nova edicao", "sem nova edição")):
+    if any(term in text for term in ("sem atualizacao", "sem nova edicao")):
         return "sem atualização prevista"
     found: list[str] = []
     for label, terms in UPDATE_RULES:
@@ -123,7 +140,7 @@ def update_frequency_class(value: str, schema: dict) -> str:
         result = "múltipla"
     elif found:
         result = found[0]
-    elif "periodic" in text or "periodic" in norm(text) or "periodica" in text or "periodico" in text:
+    elif "periodic" in text or "periodica" in text or "periodico" in text:
         result = "periódica não especificada"
     elif any(term in text for term in ("nao definida", "sem periodicidade", "desconhecid", "nao inferida")):
         result = "desconhecida"
