@@ -48697,5 +48697,241 @@
     "available_protocols": [
       "HTTPS | consulta web"
     ]
+  },
+  {
+    "product_id": "DP000834",
+    "resource_id": "DR0131",
+    "product_name": "IVS — Municípios e UFs, Censos 2000 e 2010",
+    "product_acronym": "IVS Censo Municípios",
+    "product_family": "IVS baseado nos Censos Demográficos",
+    "product_kind": "indicator_family",
+    "product_description": "IVS e seus componentes calculados para municípios e UFs com base nos Censos de 2000 e 2010.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "vulnerabilidade social | IVS | desigualdade | políticas públicas | Ipea",
+    "geographic_coverage": "Brasil — municípios e UFs",
+    "covers_brazil": "sim",
+    "spatial_support": "município | UF",
+    "spatial_resolution": "administrativo/estatístico conforme produto; UDH quando aplicável",
+    "temporal_coverage": "2000 e 2010",
+    "temporal_resolution": "decenal/censitária",
+    "update_frequency": "por nova edição censitária",
+    "product_status": "ativo",
+    "version_or_collection": "Atlas da Vulnerabilidade Social nos Municípios Brasileiros — 2015",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://repositorio.ipea.gov.br/handle/11058/4381",
+    "methodology_url": "https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicador derivado do Censo; não inferir dinâmica anual nem concatenar diretamente à série PNAD/PNAD Contínua.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0131",
+      "resource_name": "Atlas da Vulnerabilidade Social — Ipea",
+      "acronym": "AVS / IVS",
+      "official_identity": "Instituto de Pesquisa Econômica Aplicada — Atlas da Vulnerabilidade Social",
+      "homepage_url": "https://repositorio.ipea.gov.br/entities/publication/293af692-22ab-41da-8a6a-7eabc7a3ef54",
+      "data_access_url": "https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000867",
+        "product_id": "DP000834",
+        "distribution_name": "IVS — Municípios e UFs, Censos 2000 e 2010 — publicação/dados oficiais",
+        "access_url": "https://repositorio.ipea.gov.br/handle/11058/4381",
+        "format": "tabelas | PDF | arquivos complementares conforme edição",
+        "access_protocol": "HTTPS | consulta web | download conforme recurso",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público aos materiais consultados; preservar citação, edição, metodologia e termos do recurso específico",
+        "license": "materiais oficiais do Ipea permitem reprodução com citação da fonte; verificar restrições do recurso específico",
+        "provider_attribution_required": "sim",
+        "subset_support": "por território, indicador, período ou desagregação conforme produto",
+        "notes": "Preservar desenho amostral/censitário, versão metodológica e recorte territorial. Ausência de dado não implica vulnerabilidade zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "tabelas | PDF | arquivos complementares conforme edição"
+    ],
+    "available_protocols": [
+      "HTTPS | consulta web | download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000835",
+    "resource_id": "DR0131",
+    "product_name": "IVS — Regiões Metropolitanas e UDHs, Censos 2000 e 2010",
+    "product_acronym": "IVS RM/UDH",
+    "product_family": "IVS intrametropolitano",
+    "product_kind": "indicator_family",
+    "product_description": "IVS para regiões metropolitanas, RIDEs e Unidades de Desenvolvimento Humano, permitindo análise intramunicipal e metropolitana com base em censos.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "vulnerabilidade social | IVS | desigualdade | políticas públicas | Ipea",
+    "geographic_coverage": "Brasil — regiões metropolitanas, RIDEs e UDHs cobertas",
+    "covers_brazil": "sim",
+    "spatial_support": "RM | RIDE | UDH",
+    "spatial_resolution": "administrativo/estatístico conforme produto; UDH quando aplicável",
+    "temporal_coverage": "2000 e 2010",
+    "temporal_resolution": "decenal/censitária",
+    "update_frequency": "por nova edição/metodologia territorial",
+    "product_status": "ativo",
+    "version_or_collection": "Atlas da Vulnerabilidade Social nas Regiões Metropolitanas — 2015",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://repositorio.ipea.gov.br/handle/11058/5257",
+    "methodology_url": "https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52",
+    "primary_or_derived": "derivado",
+    "limitations": "UDHs são recortes analíticos específicos e não equivalem a bairros ou unidades administrativas; limites devem ser preservados.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0131",
+      "resource_name": "Atlas da Vulnerabilidade Social — Ipea",
+      "acronym": "AVS / IVS",
+      "official_identity": "Instituto de Pesquisa Econômica Aplicada — Atlas da Vulnerabilidade Social",
+      "homepage_url": "https://repositorio.ipea.gov.br/entities/publication/293af692-22ab-41da-8a6a-7eabc7a3ef54",
+      "data_access_url": "https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000868",
+        "product_id": "DP000835",
+        "distribution_name": "IVS — Regiões Metropolitanas e UDHs, Censos 2000 e 2010 — publicação/dados oficiais",
+        "access_url": "https://repositorio.ipea.gov.br/handle/11058/5257",
+        "format": "tabelas | PDF | arquivos complementares conforme edição",
+        "access_protocol": "HTTPS | consulta web | download conforme recurso",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público aos materiais consultados; preservar citação, edição, metodologia e termos do recurso específico",
+        "license": "materiais oficiais do Ipea permitem reprodução com citação da fonte; verificar restrições do recurso específico",
+        "provider_attribution_required": "sim",
+        "subset_support": "por território, indicador, período ou desagregação conforme produto",
+        "notes": "Preservar desenho amostral/censitário, versão metodológica e recorte territorial. Ausência de dado não implica vulnerabilidade zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "tabelas | PDF | arquivos complementares conforme edição"
+    ],
+    "available_protocols": [
+      "HTTPS | consulta web | download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000836",
+    "resource_id": "DR0131",
+    "product_name": "IVS — série PNAD 2011–2015 e desagregações",
+    "product_acronym": "IVS PNAD 2011–2015",
+    "product_family": "IVS anual por PNAD",
+    "product_kind": "indicator_family",
+    "product_description": "Série anual do IVS construída com a PNAD para 2011–2015, incluindo desagregações por sexo, cor e situação do domicílio.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "vulnerabilidade social | IVS | desigualdade | políticas públicas | Ipea",
+    "geographic_coverage": "Brasil; agregados e desagregações suportados pela PNAD",
+    "covers_brazil": "sim",
+    "spatial_support": "agregado amostral conforme desenho",
+    "spatial_resolution": "administrativo/estatístico conforme produto; UDH quando aplicável",
+    "temporal_coverage": "2011–2015",
+    "temporal_resolution": "anual",
+    "update_frequency": "histórico",
+    "product_status": "arquivado",
+    "version_or_collection": "série PNAD 2011–2015",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://repositorio.ipea.gov.br/handle/11058/9477",
+    "methodology_url": "https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52",
+    "primary_or_derived": "derivado",
+    "limitations": "Estimativas amostrais dependem de pesos e desenho; não tratar como censitárias ou diretamente comparáveis à PNAD Contínua.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0131",
+      "resource_name": "Atlas da Vulnerabilidade Social — Ipea",
+      "acronym": "AVS / IVS",
+      "official_identity": "Instituto de Pesquisa Econômica Aplicada — Atlas da Vulnerabilidade Social",
+      "homepage_url": "https://repositorio.ipea.gov.br/entities/publication/293af692-22ab-41da-8a6a-7eabc7a3ef54",
+      "data_access_url": "https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000869",
+        "product_id": "DP000836",
+        "distribution_name": "IVS — série PNAD 2011–2015 e desagregações — publicação/dados oficiais",
+        "access_url": "https://repositorio.ipea.gov.br/handle/11058/9477",
+        "format": "tabelas | PDF | arquivos complementares conforme edição",
+        "access_protocol": "HTTPS | consulta web | download conforme recurso",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público aos materiais consultados; preservar citação, edição, metodologia e termos do recurso específico",
+        "license": "materiais oficiais do Ipea permitem reprodução com citação da fonte; verificar restrições do recurso específico",
+        "provider_attribution_required": "sim",
+        "subset_support": "por território, indicador, período ou desagregação conforme produto",
+        "notes": "Preservar desenho amostral/censitário, versão metodológica e recorte territorial. Ausência de dado não implica vulnerabilidade zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "tabelas | PDF | arquivos complementares conforme edição"
+    ],
+    "available_protocols": [
+      "HTTPS | consulta web | download conforme recurso"
+    ]
+  },
+  {
+    "product_id": "DP000837",
+    "resource_id": "DR0131",
+    "product_name": "IVS — série PNAD Contínua 2016–2023, metodologia ajustada 2025",
+    "product_acronym": "IVS PNADC 2016–2023",
+    "product_family": "IVS anual por PNAD Contínua",
+    "product_kind": "indicator_family",
+    "product_description": "Série do IVS baseada na PNAD Contínua, com ajustes metodológicos documentados em 2025 para pesos e compatibilização com a atualização censitária.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "vulnerabilidade social | IVS | desigualdade | políticas públicas | Ipea",
+    "geographic_coverage": "Brasil; agregados suportados pela PNAD Contínua",
+    "covers_brazil": "sim",
+    "spatial_support": "agregado amostral conforme desenho",
+    "spatial_resolution": "administrativo/estatístico conforme produto; UDH quando aplicável",
+    "temporal_coverage": "2016–2023",
+    "temporal_resolution": "anual",
+    "update_frequency": "conforme atualização da série",
+    "product_status": "ativo",
+    "version_or_collection": "ajustes metodológicos 2025; série documentada até 2023",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52",
+    "methodology_url": "https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52",
+    "primary_or_derived": "derivado",
+    "limitations": "A revisão de 2025 altera pesos e componentes em relação a cálculos anteriores; usar a mesma versão metodológica em comparações.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0131",
+      "resource_name": "Atlas da Vulnerabilidade Social — Ipea",
+      "acronym": "AVS / IVS",
+      "official_identity": "Instituto de Pesquisa Econômica Aplicada — Atlas da Vulnerabilidade Social",
+      "homepage_url": "https://repositorio.ipea.gov.br/entities/publication/293af692-22ab-41da-8a6a-7eabc7a3ef54",
+      "data_access_url": "https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000870",
+        "product_id": "DP000837",
+        "distribution_name": "IVS — série PNAD Contínua 2016–2023, metodologia ajustada 2025 — publicação/dados oficiais",
+        "access_url": "https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52",
+        "format": "tabelas | PDF | arquivos complementares conforme edição",
+        "access_protocol": "HTTPS | consulta web | download conforme recurso",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público aos materiais consultados; preservar citação, edição, metodologia e termos do recurso específico",
+        "license": "materiais oficiais do Ipea permitem reprodução com citação da fonte; verificar restrições do recurso específico",
+        "provider_attribution_required": "sim",
+        "subset_support": "por território, indicador, período ou desagregação conforme produto",
+        "notes": "Preservar desenho amostral/censitário, versão metodológica e recorte territorial. Ausência de dado não implica vulnerabilidade zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "tabelas | PDF | arquivos complementares conforme edição"
+    ],
+    "available_protocols": [
+      "HTTPS | consulta web | download conforme recurso"
+    ]
   }
 ]
