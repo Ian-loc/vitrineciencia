@@ -8,8 +8,8 @@
   },
   "counts": {
     "separate_destinations": 93,
-    "same_destination_reviewed_exception": 17,
-    "same_destination_pending_review": 24,
+    "same_destination_reviewed_exception": 24,
+    "same_destination_pending_review": 17,
     "data_access_not_applicable": 1
   },
   "records_requiring_review": [
@@ -19,27 +19,6 @@
       "status": "same_destination_pending_review",
       "homepage_url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene",
       "data_access_url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene"
-    },
-    {
-      "resource_id": "DR0063",
-      "resource_name": "Informações Geocientíficas Experimentais — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/investigacoes-experimentais-geo/informacoes-geocientificas-experimentais.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/investigacoes-experimentais-geo/informacoes-geocientificas-experimentais.html"
-    },
-    {
-      "resource_id": "DR0065",
-      "resource_name": "Contas Econômicas Ambientais — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/20207-contas-economicas-ambientais-da-agua-brasil.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/20207-contas-economicas-ambientais-da-agua-brasil.html"
-    },
-    {
-      "resource_id": "DR0068",
-      "resource_name": "População em Áreas de Risco no Brasil — IBGE/CEMADEN",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/21538-populacao-em-areas-de-risco-no-brasil.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/21538-populacao-em-areas-de-risco-no-brasil.html"
     },
     {
       "resource_id": "DR0072",
@@ -61,20 +40,6 @@
       "status": "same_destination_pending_review",
       "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais.html",
       "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais.html"
-    },
-    {
-      "resource_id": "DR0079",
-      "resource_name": "Banco de Nomes Geográficos do Brasil — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/metodos-e-outros-documentos-de-referencia/vocabulario-e-glossarios/42080-banco-de-nomes-geograficos-do-brasil.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/metodos-e-outros-documentos-de-referencia/vocabulario-e-glossarios/42080-banco-de-nomes-geograficos-do-brasil.html"
-    },
-    {
-      "resource_id": "DR0080",
-      "resource_name": "Mapas Municipais e Estatísticos — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais.html"
     },
     {
       "resource_id": "DR0081",
@@ -124,20 +89,6 @@
       "status": "same_destination_pending_review",
       "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
       "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html"
-    },
-    {
-      "resource_id": "DR0096",
-      "resource_name": "Estatísticas do Registro Civil — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9110-estatisticas-do-registro-civil.html",
-      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9110-estatisticas-do-registro-civil.html"
-    },
-    {
-      "resource_id": "DR0097",
-      "resource_name": "Cadastro Central de Empresas — Estatísticas — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
-      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html"
     },
     {
       "resource_id": "DR0098",
@@ -294,6 +245,16 @@
       "exception_reviewed_at": "2026-08-19"
     },
     {
+      "resource_id": "DR0063",
+      "resource_name": "Informações Geocientíficas Experimentais — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/investigacoes-experimentais-geo/informacoes-geocientificas-experimentais.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/investigacoes-experimentais-geo/informacoes-geocientificas-experimentais.html",
+      "exception_rationale": "Informações Geocientíficas Experimentais é uma família temática do portal IBGE. A landing page organiza os estudos experimentais e os próprios produtos filhos exibem Acesso ao produto/Downloads; no nível da fonte-família, a mesma URL é legitimamente apresentação e ponto de descoberta dos acessos, sem um único arquivo representativo.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/investigacoes-experimentais-geo/informacoes-geocientificas-experimentais.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
       "resource_id": "DR0064",
       "resource_name": "Contas de Ecossistemas — IBGE",
       "status": "same_destination_reviewed_exception",
@@ -301,6 +262,16 @@
       "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/28920-contas-de-ecossistemas.html",
       "exception_rationale": "A página Contas de Ecossistemas reúne descrição, edições e seções de Acesso ao produto com SIDRA, vetores, tabelas, mapas e downloads. A igualdade entre homepage e acesso é estrutural ao produto/família no portal IBGE.",
       "exception_evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/28920-contas-de-ecossistemas.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0065",
+      "resource_name": "Contas Econômicas Ambientais — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/20207-contas-economicas-ambientais-da-agua-brasil.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/20207-contas-economicas-ambientais-da-agua-brasil.html",
+      "exception_rationale": "A página Contas Econômicas Ambientais do IBGE reúne a apresentação da família e, na própria estrutura por edição/produto, seções Acesso ao produto com SIDRA, publicações, mapas, vetores e Downloads. No nível da fonte-família, manter a mesma landing page evita escolher arbitrariamente uma conta específica como acesso representativo.",
+      "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/28920-contas-de-ecossistemas.html",
       "exception_reviewed_at": "2026-08-19"
     },
     {
@@ -321,6 +292,16 @@
       "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/31653-bacias-e-divisoes-hidrograficas-do-brasil.html",
       "exception_rationale": "A página Bacias e Divisões Hidrográficas do Brasil contém diretamente Acesso ao produto para BHB250 e DHN250, incluindo vetores, tabelas e mapas, além de Downloads. A mesma URL cumpre legitimamente apresentação e acesso.",
       "exception_evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/31653-bacias-e-divisoes-hidrograficas-do-brasil.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0068",
+      "resource_name": "População em Áreas de Risco no Brasil — IBGE/CEMADEN",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/21538-populacao-em-areas-de-risco-no-brasil.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/21538-populacao-em-areas-de-risco-no-brasil.html",
+      "exception_rationale": "A própria página oficial População em áreas de risco no Brasil contém descrição, publicação e uma seção Acesso ao produto com Plataforma Geográfica Interativa, bases/tabelas e mapas SHP, além de Downloads. Assim, a mesma URL desempenha de forma comprovada os papéis de apresentação e acesso.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/21538-populacao-em-areas-de-risco-no-brasil.html",
       "exception_reviewed_at": "2026-08-19"
     },
     {
@@ -351,6 +332,46 @@
       "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html",
       "exception_rationale": "A página Serviços para Posicionamento Geodésico é o índice institucional e operacional dos serviços hgeoHNOR, Homologar Marcos, IBGE-PPP, ProGriD, BDG e RBMC-IP. Como a fonte representa a família de serviços, a mesma landing page cumpre os dois papéis legitimamente.",
       "exception_evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0079",
+      "resource_name": "Banco de Nomes Geográficos do Brasil — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/metodos-e-outros-documentos-de-referencia/vocabulario-e-glossarios/42080-banco-de-nomes-geograficos-do-brasil.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/metodos-e-outros-documentos-de-referencia/vocabulario-e-glossarios/42080-banco-de-nomes-geograficos-do-brasil.html",
+      "exception_rationale": "A página oficial do BNGB apresenta o banco e contém diretamente Acesso ao produto para o aplicativo web e para a API BNGB. A mesma página é, portanto, simultaneamente a ficha institucional e o ponto documentado de acesso operacional.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/folhas-topograficas/42080-banco-de-nomes-geograficos-do-brasil.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0080",
+      "resource_name": "Mapas Municipais e Estatísticos — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais.html",
+      "exception_rationale": "Mapas Municipais é uma família do portal IBGE que reúne coleções e atualizações; as páginas dos produtos filhos contêm diretamente Acesso ao produto por UF e Downloads. No nível da fonte-família, a landing page funciona legitimamente como apresentação e índice de acesso, sem um único arquivo que represente todas as coleções.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais/31452-colecao-de-mapas-municipais.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0096",
+      "resource_name": "Estatísticas do Registro Civil — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9110-estatisticas-do-registro-civil.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9110-estatisticas-do-registro-civil.html",
+      "exception_rationale": "A página oficial do Sistema de Estatísticas Vitais/Registro Civil reúne descrição metodológica, tabelas, séries históricas e Downloads do produto. O próprio IBGE documenta nela os resultados administrativos e caminhos de acesso; manter a mesma URL para apresentação e acesso é deliberado.",
+      "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9110-estatisticas-do-registro-civil.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0097",
+      "resource_name": "Cadastro Central de Empresas — Estatísticas — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
+      "exception_rationale": "A página Estatísticas do Cadastro Central de Empresas - CEMPRE reúne a descrição do produto, edições, séries históricas, tabelas e Downloads. Como a própria ficha oficial é também a interface de obtenção dos resultados, a igualdade entre homepage e acesso é legítima.",
+      "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
       "exception_reviewed_at": "2026-08-19"
     }
   ],
