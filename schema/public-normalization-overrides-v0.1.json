@@ -1,69 +1,55 @@
 {
   "schema_version": "public-normalization-overrides-v0.1",
   "status": "stable",
-  "purpose": "Registrar classificações públicas explícitas para resíduos cuja classe é sustentada pelo próprio texto canônico, sem reescrever o valor original.",
+  "purpose": "Registrar classificações e limpezas públicas explícitas para resíduos cuja correção é sustentada pelo próprio texto canônico, sem reescrever o valor original.",
   "spatial_support": {
-    "DP000191": {
-      "class": "variável por produto",
-      "evidence_contains": "unidades variam por tema",
-      "note": "O atlas declara explicitamente variação das unidades conforme o tema."
-    },
-    "DP000198": {
-      "class": "região ou zona",
-      "evidence_contains": "recortes regionais",
-      "note": "O suporte espacial explicitamente inclui recortes regionais."
-    }
+    "DP000191": {"class": "variável por produto", "evidence_contains": "unidades variam por tema", "note": "O atlas declara explicitamente variação das unidades conforme o tema."},
+    "DP000198": {"class": "região ou zona", "evidence_contains": "recortes regionais", "note": "O suporte espacial explicitamente inclui recortes regionais."}
   },
   "update_frequency": {
-    "DP000107": {
-      "class": "por edição ou evento",
-      "evidence_contains": "por projeto",
-      "note": "A coleção é atualizada no contexto de projetos específicos."
-    },
-    "DP000109": {
-      "class": "por edição ou evento",
-      "evidence_contains": "por revisão",
-      "note": "A atualização ocorre por revisão cartográfica."
-    },
-    "DP000163": {
-      "class": "por edição ou evento",
-      "evidence_contains": "conforme alteração normativa",
-      "note": "A atualização depende de evento normativo."
-    },
-    "DP000169": {
-      "class": "por edição ou evento",
-      "evidence_contains": "quando houver alteração legal",
-      "note": "A atualização depende de alteração legal."
-    },
-    "DP000348": {
-      "class": "horária",
-      "evidence_contains": "horária/operacional",
-      "note": "A própria descrição da frequência declara atualização horária para monitoramento."
-    },
-    "DP000456": {
-      "class": "sob demanda",
-      "evidence_contains": "por solicitação",
-      "note": "A obtenção é explicitamente acionada por solicitação."
-    },
-    "DP000635": {
-      "class": "irregular",
-      "evidence_contains": "não regular",
-      "note": "O valor canônico declara atualização não regular."
-    },
-    "DP000639": {
-      "class": "irregular",
-      "evidence_contains": "não regular",
-      "note": "O valor canônico declara atualização não regular."
-    },
-    "DP000643": {
-      "class": "sem atualização prevista",
-      "evidence_contains": "sem novas aquisições",
-      "note": "O acervo é histórico e não recebe novas aquisições."
-    },
-    "DP000644": {
-      "class": "sem atualização prevista",
-      "evidence_contains": "sem novas aquisições",
-      "note": "O acervo é histórico e não recebe novas aquisições."
-    }
+    "DP000107": {"class": "por edição ou evento", "evidence_contains": "por projeto", "note": "A coleção é atualizada no contexto de projetos específicos."},
+    "DP000109": {"class": "por edição ou evento", "evidence_contains": "por revisão", "note": "A atualização ocorre por revisão cartográfica."},
+    "DP000163": {"class": "por edição ou evento", "evidence_contains": "conforme alteração normativa", "note": "A atualização depende de evento normativo."},
+    "DP000169": {"class": "por edição ou evento", "evidence_contains": "quando houver alteração legal", "note": "A atualização depende de alteração legal."},
+    "DP000348": {"class": "horária", "evidence_contains": "horária/operacional", "note": "A própria descrição da frequência declara atualização horária para monitoramento."},
+    "DP000456": {"class": "sob demanda", "evidence_contains": "por solicitação", "note": "A obtenção é explicitamente acionada por solicitação."},
+    "DP000635": {"class": "irregular", "evidence_contains": "não regular", "note": "O valor canônico declara atualização não regular."},
+    "DP000639": {"class": "irregular", "evidence_contains": "não regular", "note": "O valor canônico declara atualização não regular."},
+    "DP000643": {"class": "sem atualização prevista", "evidence_contains": "sem novas aquisições", "note": "O acervo é histórico e não recebe novas aquisições."},
+    "DP000644": {"class": "sem atualização prevista", "evidence_contains": "sem novas aquisições", "note": "O acervo é histórico e não recebe novas aquisições."}
+  },
+  "spatial_resolution": {
+    "DP000588": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "subsistema", "note": "Diária é granularidade temporal; o suporte espacial é subsistema."},
+    "DP000590": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "reservatório", "note": "Diária é granularidade temporal; o suporte espacial é reservatório."},
+    "DP000592": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "bacia hidroenergética", "note": "Diária é granularidade temporal; o suporte espacial é bacia hidroenergética."},
+    "DP000593": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "subsistema", "note": "Diária é granularidade temporal; o suporte espacial é subsistema."},
+    "DP000595": {"value": "não se aplica", "evidence_contains": "mensal", "context_field": "spatial_support_detail", "context_contains": "usina/modalidade operativa", "note": "Mensal é granularidade temporal; o suporte espacial é a unidade operacional."},
+    "DP000596": {"value": "não se aplica", "evidence_contains": "mensal", "context_field": "spatial_support_detail", "context_contains": "usina/modalidade operativa", "note": "Mensal é granularidade temporal; o suporte espacial é a unidade operacional."},
+    "DP000599": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "reservatório", "note": "Diária é granularidade temporal; o suporte espacial é reservatório."},
+    "DP000600": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "reservatório equivalente de energia", "note": "Diária é granularidade temporal; o suporte espacial é REE."},
+    "DP000601": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "subsistema", "note": "Diária é granularidade temporal; o suporte espacial é subsistema."},
+    "DP000602": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "reservatório", "note": "Diária é granularidade temporal; o suporte espacial é reservatório."},
+    "DP000603": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "bacia hidroenergética", "note": "Diária é granularidade temporal; o suporte espacial é bacia hidroenergética."},
+    "DP000604": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "reservatório equivalente de energia", "note": "Diária é granularidade temporal; o suporte espacial é REE."},
+    "DP000620": {"value": "não se aplica", "evidence_contains": "agregação mensal", "context_field": "spatial_support_detail", "context_contains": "função transmissão", "note": "Mensal é granularidade temporal; o suporte espacial é função de transmissão."},
+    "DP000621": {"value": "não se aplica", "evidence_contains": "agregação mensal", "context_field": "spatial_support_detail", "context_contains": "função transmissão", "note": "Mensal é granularidade temporal; o suporte espacial é função de transmissão."},
+    "DP000622": {"value": "não se aplica", "evidence_contains": "agregação mensal", "context_field": "spatial_support_detail", "context_contains": "função conversora", "note": "Mensal é granularidade temporal; o suporte espacial é função conversora."},
+    "DP000623": {"value": "não se aplica", "evidence_contains": "agregação mensal", "context_field": "spatial_support_detail", "context_contains": "SIN agregado", "note": "Mensal é granularidade temporal; o suporte espacial é o SIN agregado."}
+  },
+  "temporal_coverage": {
+    "DP000510": {"value": "cadastro dinâmico", "evidence_contains": "cadastro dinâmico; atualização diária", "note": "A atualização diária pertence a update_frequency, não à cobertura temporal."}
+  },
+  "temporal_resolution": {
+    "DP000031": {"value": "evento", "evidence_contains": "evento; estados ativo/em observação atualizados operacionalmente", "note": "A resolução é por evento; estado operacional é nota de atualização."},
+    "DP000470": {"value": "não se aplica", "evidence_contains": "conforme atualização cadastral", "note": "O campo descrevia atualização cadastral e frequência do portal, não uma resolução temporal intrínseca."},
+    "DP000471": {"value": "anual por registro", "evidence_contains": "anual por registro; portal atualizado mensalmente", "note": "A resolução do registro é anual; mensal é frequência de atualização do portal."}
+  },
+  "version_or_collection": {
+    "DP000612": {"value": "conjunto corrente", "evidence_contains": "conjunto corrente; atualização diária", "note": "Atualização diária pertence a update_frequency."},
+    "DP000613": {"value": "versão 1.1", "evidence_contains": "versão 1.1; atualização diária", "note": "Atualização diária pertence a update_frequency."},
+    "DP000614": {"value": "conjunto corrente", "evidence_contains": "conjunto corrente; atualização diária", "note": "Atualização diária pertence a update_frequency."},
+    "DP000615": {"value": "conjunto corrente", "evidence_contains": "conjunto corrente; atualização diária", "note": "Atualização diária pertence a update_frequency."},
+    "DP000728": {"value": "Acervo Fundiário corrente", "evidence_contains": "acesso auditado em 2026-08-18", "note": "Data de auditoria não é versão ou coleção."},
+    "DP000841": {"value": "catálogo corrente", "evidence_contains": "auditado em 2026-08-19", "note": "Data de auditoria não é versão ou coleção."}
   }
 }
