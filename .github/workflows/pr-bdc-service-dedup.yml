@@ -27,18 +27,14 @@ jobs:
           with pp.open(encoding='utf-8',newline='') as f: ps=list(csv.DictReader(f)); pf=list(ps[0])
           with dp.open(encoding='utf-8',newline='') as f: ds=list(csv.DictReader(f)); df=list(ds[0])
           assert (len(ps),len(ds))==(785,816), (len(ps),len(ds))
-          pairs=[
-            ('DP000629','DP000722','DD000654','DD000752'),
-            ('DP000641','DP000723','DD000666','DD000753'),
-            ('DP000642','DP000721','DD000667','DD000751'),
-          ]
+          pairs=[('DP000629','DP000722','DD000654','DD000752'),('DP000641','DP000723','DD000666','DD000753'),('DP000642','DP000721','DD000667','DD000751')]
           byp={p['product_id']:p for p in ps}; byd={d['distribution_id']:d for d in ds}
           for oldp,newp,oldd,newd in pairs:
               assert oldp in byp and newp in byp and oldd in byd and newd in byd
               assert byp[oldp]['resource_id']==byp[newp]['resource_id']=='DR0123'
               assert byd[oldd]['product_id']==oldp and byd[newd]['product_id']==newp
           assert 'STAC' in byp['DP000629']['product_name'] and 'STAC' in byp['DP000722']['product_name']
-          assert 'SAMPLE' in byp['DP000641']['short_name'].upper() and 'SAMPLE' in byp['DP000723']['short_name'].upper()
+          assert 'SAMPLE' in byp['DP000641']['product_acronym'].upper() and 'SAMPLE' in byp['DP000723']['product_acronym'].upper()
           assert 'Explorer' in byp['DP000642']['product_name'] and 'Explorer' in byp['DP000721']['product_name']
           delete_p=set(); delete_d=set(); repl_p={}; repl_d={}
           for oldp,newp,oldd,newd in pairs:
