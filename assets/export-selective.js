@@ -132,8 +132,8 @@
           controls.className = "select-export-toggle";
           controls.dataset.sourceExportControls = "";
           controls.innerHTML = `<input type="checkbox" data-select-source="${esc(id)}"><span>Selecionar para exportar</span>`;
-          const actions = card.querySelector(".card-actions");
-          if (actions) actions.insertAdjacentElement("afterend", controls);
+          const cardActions = card.querySelector(".card-actions");
+          if (cardActions) cardActions.insertAdjacentElement("afterend", controls);
           else card.appendChild(controls);
         }
         const checkbox = controls.querySelector("[data-select-source]");
