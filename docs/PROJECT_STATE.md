@@ -21,8 +21,8 @@ JSONs, páginas públicas e relatórios de qualidade são artefatos derivados. O
 Snapshot candidato a `v1.0.0`, observado em 19/08/2026:
 
 - **135 fontes**;
-- **833 produtos**;
-- **866 distribuições**;
+- **843 produtos**;
+- **876 distribuições**;
 - identificadores correntes chegam a `DR0135`, `DP000861` e `DD000894`; lacunas históricas de IDs são preservadas;
 - fontes verificadas até 19/08/2026;
 - schema vigente: 34 campos de fonte, 24 de produto e 15 de distribuição.
