@@ -1,31 +1,33 @@
 # Estado canônico e disposição dos artefatos — Vitrine Ciência
 
-**Data de referência:** 18 de agosto de 2026  
+**Data de referência:** 19 de agosto de 2026  
 **Fuso:** `America/Sao_Paulo`  
-**Estado global:** catálogo público operacional; contrato fonte → produto → distribuição estável; expansão e revisão factual contínuas.
+**Estado global:** catálogo público operacional; contrato fonte → produto → distribuição estável; primeira release científica `v1.0.0` em preparação formal.
 
 ## 1. Autoridade
 
-1. `main` de `Ian-loc/vitrineciencia`;
-2. três tabelas canônicas: `data_resources.csv`, `data_products.csv`, `product_distributions.csv`;
-3. contratos e validadores executáveis da Vitrine;
-4. documentação ativa listada abaixo;
-5. auditorias/evidências históricas;
-6. espelhos do Drive e outros snapshots derivados.
+1. `main` de `Ian-loc/vitrineciencia` para desenvolvimento corrente;
+2. tags/releases imutáveis para snapshots científicos publicados;
+3. três tabelas canônicas: `data_resources.csv`, `data_products.csv`, `product_distributions.csv`;
+4. contratos e validadores executáveis da Vitrine;
+5. documentação ativa listada abaixo;
+6. auditorias/evidências históricas;
+7. espelhos do Drive e outros snapshots derivados.
 
 JSONs, páginas públicas e relatórios de qualidade são artefatos derivados. O Google Drive não é autoridade concorrente.
 
 ## 2. Estado do catálogo
 
-Snapshot observado em 18/08/2026:
+Snapshot candidato a `v1.0.0`, observado em 19/08/2026:
 
-- **125 fontes**;
-- **752 produtos**;
-- **783 distribuições**;
-- identificadores correntes chegam a `DR0125`, `DP000756` e `DD000787`; lacunas históricas de IDs são preservadas;
-- fontes verificadas até 18/08/2026.
+- **135 fontes**;
+- **833 produtos**;
+- **866 distribuições**;
+- identificadores correntes chegam a `DR0135`, `DP000861` e `DD000894`; lacunas históricas de IDs são preservadas;
+- fontes verificadas até 19/08/2026;
+- schema vigente: 34 campos de fonte, 24 de produto e 15 de distribuição.
 
-As contagens podem crescer sem mudança de schema.
+As contagens podem crescer na `main` após a release sem mudar o significado do snapshot `v1.0.0`.
 
 ## 3. Ciclo de vida dos artefatos
 
@@ -76,22 +78,23 @@ A separação estrutural ocorreu em 09/08/2026. O Simbiotrama é um projeto inde
 - `PRODUCT_CATALOG_MODEL.md` — modelo fonte/produto/distribuição;
 - `SELECTION_AND_COVERAGE_POLICY.md` — seleção e prioridade Brasil;
 - `WORKFLOW_STATUS.md` — estado corrente;
-- `FINAL_OBJECTIVES_AND_DOI_GATES.md` e `docs/RELEASE_POLICY.md` — release/DOI.
+- `FINAL_OBJECTIVES_AND_DOI_GATES.md` e `docs/RELEASE_POLICY.md` — release/DOI;
+- `RELEASE_NOTES_v1.0.0.md` — escopo, citação e gates da primeira release estável.
 
 ## 6. Estado operacional
 
 - site público: operacional e publicado por GitHub Pages;
 - CI: valida dados, frontend e artefato público;
 - smoke externo: executado após deploy;
-- release científica: ainda `unreleased`;
+- release científica: `v1.0.0` preparada na branch `release/v1.0.0`, pendente de validação final, merge e tag imutável;
 - DOI: ainda não emitido;
-- Drive: contém documentação/histórico e um workbook legado; o workbook não está sincronizado com o catálogo atual.
+- Drive: contém documentação/histórico e um workbook legado; o workbook não está sincronizado com o catálogo corrente e não é gate da release.
 
 ## 7. Critério de sanidade contínua
 
 Antes de cada pacote:
 
-1. partir do `main` atual;
+1. partir de um commit explicitamente identificado;
 2. preservar IDs e relações;
 3. usar evidência proporcional à afirmação;
 4. não promover propriedades de um produto para a fonte inteira;
@@ -99,4 +102,5 @@ Antes de cada pacote:
 6. registrar desconhecido em vez de inferir;
 7. executar validação proporcional ao delta;
 8. verificar publicação quando o artefato público puder mudar;
-9. encerrar o pacote quando o critério de suficiência estiver atendido.
+9. para release, registrar commit, tag, conteúdo do pacote e resultado dos gates;
+10. encerrar o pacote quando o critério de suficiência estiver atendido.
