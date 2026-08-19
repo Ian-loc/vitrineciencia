@@ -1,0 +1,56 @@
+name: Materializar lote PDET em PR
+
+on:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - name: Aplicar lote PDET
+        run: python3 scripts/one_shot_pdet.py
+      - name: Validar e reconstruir
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+          def read(p):
+              with Path(p).open(encoding='utf-8-sig', newline='') as f:
+                  return list(csv.DictReader(f))
+          s=read('data/data_resources.csv'); p=read('data/data_products.csv'); d=read('data/product_distributions.csv')
+          assert len(s)==127, len(s)
+          assert len(p)==790, len(p)
+          assert len(d)==823, len(d)
+          assert any(x['resource_id']=='DR0127' for x in s)
+          assert all(any(x['product_id']==f'DP{i:06d}' for x in p) for i in range(801,809))
+          assert all(any(x['distribution_id']==f'DD{i:06d}' for x in d) for i in range(832,842))
+          assert len({x['resource_id'] for x in s})==len(s)
+          assert len({x['product_id'] for x in p})==len(p)
+          assert len({x['distribution_id'] for x in d})==len(d)
+          print('READBACK_OK', len(s), len(p), len(d))
+          PY
+      - name: Persistir lote no branch e remover one-shot
+        run: |
+          git config user.name "Vitrine Science Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git rm scripts/one_shot_pdet.py .github/workflows/pdet-pr-materialize.yml
+          git add data/data_resources.csv data/data_resources.json data/data_products.csv data/data_products.json data/product_distributions.csv data/brazil_scope_priorities.json data/data_quality_report.json data/link_role_audit.json
+          git commit -m "Expand verified MTE labor-statistics catalog"
+          git push origin HEAD:${{ github.head_ref }}
