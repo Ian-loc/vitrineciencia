@@ -38,6 +38,7 @@ jobs:
           start=next(i for i,l in enumerate(lines) if "python - <<'PY'" in l)+1
           end=next(i for i in range(start,len(lines)) if lines[i].strip()=='PY')
           code='\n'.join((l[10:] if l.startswith('          ') else l) for l in lines[start:end])
+          code=code.replace('http://www.ipeadata.gov.br/Default.aspx','https://www.ipeadata.gov.br/Default.aspx')
           exec(compile(code, str(p), 'exec'))
           PY
           python3 scripts/validate_brazil_scope.py
