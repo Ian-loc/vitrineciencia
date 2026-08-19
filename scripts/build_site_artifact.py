@@ -26,6 +26,7 @@ REQUIRED_FILES = (
     "assets/products.css",
     "assets/visual-refinement.css",
     "assets/app.js",
+    "assets/ptbr.js",
     "assets/products.js",
     "assets/analytics.js",
     "data/data_resources.csv",
