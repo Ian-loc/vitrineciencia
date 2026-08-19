@@ -1,0 +1,103 @@
+name: Audit BCB credit conditions batch
+
+on:
+  push:
+    branches: ["main"]
+    paths: [".github/workflows/audit-bcb-credit-conditions.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Append verified BCB credit-condition products
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+
+          ppath=Path('data/data_products.csv')
+          dpath=Path('data/product_distributions.csv')
+          with ppath.open(encoding='utf-8', newline='') as f:
+              pr=list(csv.DictReader(f)); pfields=list(pr[0])
+          with dpath.open(encoding='utf-8', newline='') as f:
+              dr=list(csv.DictReader(f)); dfields=list(dr[0])
+          assert len(pr)==786, len(pr)
+          assert len(dr)==817, len(dr)
+          assert max(int(r['product_id'][2:]) for r in pr)==790
+          assert max(int(r['distribution_id'][2:]) for r in dr)==821
+          urls={r['product_page_url'] for r in pr}
+
+          common={
+            'resource_id':'DR0126','research_areas':'Economics | Finance | Public policy | Data infrastructure',
+            'geographic_coverage':'Brasil','covers_brazil':'sim','spatial_support':'série temporal nacional de crédito',
+            'spatial_resolution':'não espacial','temporal_resolution':'mensal','update_frequency':'mensal',
+            'product_status':'ativo','enumeration_scope':'complete','primary_or_derived':'derivado','last_verified':'2026-08-19'
+          }
+          specs=[
+            ('DP000791','Saldo da carteira de crédito com recursos livres — Pessoas físicas — Total','Crédito livre PF — saldo','Crédito com recursos livres','Saldo mensal em final de período das operações de crédito com recursos livres contratadas por pessoas físicas no Sistema Financeiro Nacional.','crédito livre | pessoas físicas | saldo | carteira de crédito | SGS','março de 2007–presente','SGS código 20570 — série corrente','https://dadosabertos.bcb.gov.br/dataset/20570-saldo-da-carteira-de-credito-com-recursos-livres---pessoas-fisicas---total','Saldo de carteira mede estoque em final de período, não novas concessões. Recursos livres excluem operações com taxas regulamentadas, BNDES e outras fontes compulsórias ou governamentais.'),
+            ('DP000792','Saldo da carteira de crédito com recursos livres — Pessoas jurídicas — Total','Crédito livre PJ — saldo','Crédito com recursos livres','Saldo mensal em final de período das operações de crédito com recursos livres contratadas por pessoas jurídicas no Sistema Financeiro Nacional.','crédito livre | pessoas jurídicas | saldo | carteira de crédito | SGS','março de 2007–presente','SGS código 20543 — série corrente','https://dadosabertos.bcb.gov.br/dataset/20543-saldo-da-carteira-de-credito-com-recursos-livres---pessoas-juridicas---total','Saldo de carteira mede estoque em final de período, não novas concessões. Recursos livres excluem operações com taxas regulamentadas, BNDES e outras fontes compulsórias ou governamentais.'),
+            ('DP000793','Concessões de crédito com recursos livres — Pessoas físicas — Total','Crédito livre PF — concessões','Crédito com recursos livres','Valor mensal das novas operações de crédito com recursos livres contratadas por pessoas físicas no período de referência.','crédito livre | pessoas físicas | concessões | novas operações | SGS','março de 2011–presente','SGS código 20662 — série corrente','https://dadosabertos.bcb.gov.br/dataset/20662-concessoes-de-credito-com-recursos-livres---pessoas-fisicas---total','Concessões são fluxo de novas operações no período e não equivalem ao saldo da carteira. Recursos livres excluem crédito direcionado e outras operações lastreadas em recursos regulamentados.'),
+            ('DP000794','Concessões de crédito com recursos livres — Pessoas jurídicas — Total','Crédito livre PJ — concessões','Crédito com recursos livres','Valor mensal das novas operações de crédito com recursos livres contratadas por pessoas jurídicas no período de referência.','crédito livre | pessoas jurídicas | concessões | novas operações | SGS','março de 2011–presente','SGS código 20635 — série corrente','https://dadosabertos.bcb.gov.br/dataset/20635-concessoes-de-credito-com-recursos-livres---pessoas-juridicas---total','Concessões são fluxo de novas operações no período e não equivalem ao saldo da carteira. Recursos livres excluem crédito direcionado e outras operações lastreadas em recursos regulamentados.'),
+            ('DP000795','Inadimplência da carteira de crédito com recursos livres — Pessoas físicas — Total','Inadimplência crédito livre PF','Crédito com recursos livres','Percentual mensal da carteira de crédito livre de pessoas físicas com pelo menos uma parcela em atraso superior a 90 dias.','inadimplência | pessoas físicas | atraso acima de 90 dias | crédito livre | SGS','março de 2011–presente','SGS código 21112 — série corrente','https://dadosabertos.bcb.gov.br/dataset/21112-inadimplencia-da-carteira-de-credito-com-recursos-livres---pessoas-fisicas---total','Indicador é percentual da carteira com atraso superior a 90 dias; não mede número de pessoas inadimplentes nem qualquer atraso. O denominador e o universo restringem-se ao crédito com recursos livres.'),
+            ('DP000796','Inadimplência da carteira de crédito com recursos livres — Pessoas jurídicas — Total','Inadimplência crédito livre PJ','Crédito com recursos livres','Percentual mensal da carteira de crédito livre de pessoas jurídicas com pelo menos uma parcela em atraso superior a 90 dias.','inadimplência | pessoas jurídicas | atraso acima de 90 dias | crédito livre | SGS','março de 2011–presente','SGS código 21086 — série corrente','https://dadosabertos.bcb.gov.br/dataset/21086-inadimplencia-da-carteira-de-credito-com-recursos-livres---pessoas-juridicas---total','Indicador é percentual da carteira com atraso superior a 90 dias; não mede número de empresas inadimplentes nem qualquer atraso. O denominador e o universo restringem-se ao crédito com recursos livres.'),
+            ('DP000797','Prazo médio das concessões de crédito com recursos livres — Pessoas físicas — Total','Prazo médio crédito livre PF','Condições do crédito','Prazo a decorrer médio, em meses, das novas operações de crédito livre contratadas por pessoas físicas no período de referência.','prazo médio | pessoas físicas | concessões | crédito livre | meses | SGS','março de 2011–presente','SGS código 20878 — série corrente','https://dadosabertos.bcb.gov.br/dataset/20878-prazo-medio-das-concessoes-de-credito-com-recursos-livres---pessoas-fisicas---total','Prazo médio é calculado sobre novas concessões e não representa maturidade do estoque da carteira nem prazo contratual de qualquer operação individual.'),
+            ('DP000798','Prazo médio das concessões de crédito com recursos livres — Pessoas jurídicas — Total','Prazo médio crédito livre PJ','Condições do crédito','Prazo a decorrer médio, em meses, das novas operações de crédito livre contratadas por pessoas jurídicas no período de referência.','prazo médio | pessoas jurídicas | concessões | crédito livre | meses | SGS','março de 2011–presente','SGS código 20856 — série corrente','https://dadosabertos.bcb.gov.br/dataset/20856-prazo-medio-das-concessoes-de-credito-com-recursos-livres---pessoas-juridicas---total','Prazo médio é calculado sobre novas concessões e não representa maturidade do estoque da carteira nem prazo contratual de qualquer operação individual.'),
+            ('DP000799','Spread médio das operações de crédito com recursos livres — Pessoas físicas — Total','Spread crédito livre PF','Condições do crédito','Diferença mensal, em pontos percentuais, entre a taxa média de juros das novas operações de crédito livre para pessoas físicas e o custo de captação referencial médio.','spread | pessoas físicas | juros | custo de captação | crédito livre | SGS','março de 2011–presente','SGS código 20809 — série corrente','https://dadosabertos.bcb.gov.br/dataset/20809-spread-medio-das-operacoes-de-credito-com-recursos-livres---pessoas-fisicas---total','Spread é diferença entre taxa de concessão e custo referencial de captação; não equivale à margem líquida ou lucro das instituições e não descreve o custo de qualquer contrato individual.'),
+            ('DP000800','Spread médio das operações de crédito com recursos livres — Pessoas jurídicas — Total','Spread crédito livre PJ','Condições do crédito','Diferença mensal, em pontos percentuais, entre a taxa média de juros das novas operações de crédito livre para pessoas jurídicas e o custo de captação referencial médio.','spread | pessoas jurídicas | juros | custo de captação | crédito livre | SGS','março de 2011–presente','SGS código 20787 — série corrente','https://dadosabertos.bcb.gov.br/dataset/20787-spread-medio-das-operacoes-de-credito-com-recursos-livres---pessoas-juridicas---total','Spread é diferença entre taxa de concessão e custo referencial de captação; não equivale à margem líquida ou lucro das instituições e não descreve o custo de qualquer contrato individual.')
+          ]
+          new=[]
+          for pid,name,acro,fam,desc,kw,tcov,ver,url,lim in specs:
+              assert url not in urls, url
+              r=dict(common,product_id=pid,product_name=name,product_acronym=acro,product_family=fam,product_kind='dataset_series',product_description=desc,keywords=kw,temporal_coverage=tcov,version_or_collection=ver,product_page_url=url,methodology_url=url,limitations=lim)
+              new.append(r)
+          with ppath.open('a',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=pfields,lineterminator='\n')
+              for r in new: w.writerow(r)
+
+          dcommon={
+            'format':'JSON | CSV | HTML | WSDL','access_protocol':'HTTPS | BCData/SGS REST | SOAP',
+            'access_tool':'navegador web | script | cliente HTTP','free_download':'sim','authentication_required':'não',
+            'access_conditions':'acesso público; consultas programáticas sujeitas aos parâmetros e limites documentados pelo BCB',
+            'license':'Open Data Commons Open Database License (ODbL)','provider_attribution_required':'sim',
+            'subset_support':'por código da série e intervalo temporal conforme serviço','last_verified':'2026-08-19'
+          }
+          with dpath.open('a',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=dfields,lineterminator='\n')
+              for i,r in enumerate(new, start=822):
+                  d=dict(dcommon,distribution_id=f'DD{i:06d}',product_id=r['product_id'],distribution_name=r['product_name']+' — dados e API SGS',access_url=r['product_page_url'],notes='O portal fornece metadados e recursos JSON/CSV/HTML e WSDL/SGS. Preservar código da série, unidade, periodicidade, universo e definição conceitual.')
+                  w.writerow(d)
+
+          with ppath.open(encoding='utf-8', newline='') as f: p2=list(csv.DictReader(f))
+          with dpath.open(encoding='utf-8', newline='') as f: d2=list(csv.DictReader(f))
+          assert len(p2)==796 and len(d2)==827
+          assert [r['product_id'] for r in p2[-10:]]==[f'DP{i:06d}' for i in range(791,801)]
+          assert [r['distribution_id'] for r in d2[-10:]]==[f'DD{i:06d}' for i in range(822,832)]
+          print('OK append',len(new),len(p2),len(d2))
+          PY
+      - name: Validate catalog and public artifact
+        shell: bash
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+      - name: Commit verified batch
+        shell: bash
+        run: |
+          git config user.name "Ian-loc"
+          git config user.email "lara.clemente@ufla.br"
+          git add data
+          git diff --cached --check
+          git commit -m "Expand verified BCB credit conditions catalog"
+          git push origin HEAD:main
