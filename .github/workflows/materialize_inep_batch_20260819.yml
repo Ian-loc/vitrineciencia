@@ -1,0 +1,160 @@
+name: Materialize verified INEP batch 2026-08-19
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/materialize_inep_batch_20260819.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Append verified INEP products and distributions
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+
+          products_path = Path('data/data_products.csv')
+          dists_path = Path('data/product_distributions.csv')
+
+          product_rows = [
+            {
+              'product_id':'DP000842','resource_id':'DR0125','product_name':'Sinopse Estatística da Educação Básica 2025','product_acronym':'Sinopse Educação Básica 2025','product_family':'Censo Escolar — síntese estatística','product_kind':'dataset_series','product_description':'Síntese estatística oficial da educação básica referente a 2025, publicada pelo Inep a partir dos resultados do Censo Escolar, com tabelas consolidadas para múltiplos recortes e dimensões do sistema educacional.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'educação básica | Censo Escolar | sinopse estatística | matrículas | escolas | docentes | 2025','geographic_coverage':'Brasil; recortes nacional, regional, UF e outros agregados disponibilizados nas tabelas','covers_brazil':'sim','spatial_support':'agregado estatístico conforme tabela','spatial_resolution':'Brasil | região | UF | outros recortes conforme tabela','temporal_coverage':'2025','temporal_resolution':'anual','update_frequency':'anual','product_status':'ativo','version_or_collection':'Sinopse Estatística da Educação Básica 2025 — atualizada em julho de 2026','enumeration_scope':'complete','product_page_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/sinopses-estatisticas/educacao-basica','methodology_url':'https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/censo-escolar','primary_or_derived':'derivado','limitations':'Síntese derivada do Censo Escolar; não substitui os microdados nem preserva toda a granularidade das bases primárias. Comparações temporais exigem observar mudanças de conceitos, cobertura e regras da edição.','last_verified':'2026-08-19'
+            },
+            {
+              'product_id':'DP000843','resource_id':'DR0125','product_name':'Inep Data — painéis de Business Intelligence','product_acronym':'Inep Data','product_family':'painéis de disseminação do Inep','product_kind':'data_service','product_description':'Conjunto de painéis de BI mantidos pelo Inep para facilitar consulta a estatísticas e indicadores produzidos pelo Instituto, incluindo Censo Escolar, Censo da Educação Superior, Saeb, Enem e monitoramento do PNE.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'Inep Data | painéis | BI | educação | Censo Escolar | educação superior | Saeb | Enem','geographic_coverage':'Brasil; cobertura e recortes variam conforme o painel','covers_brazil':'sim','spatial_support':'agregados estatísticos conforme painel','spatial_resolution':'varia conforme painel e operação estatística','temporal_coverage':'varia conforme painel; inclui séries históricas e edições correntes','temporal_resolution':'varia conforme painel','update_frequency':'conforme atualização das operações subjacentes','product_status':'ativo','version_or_collection':'catálogo corrente auditado em 2026-08-19','enumeration_scope':'external_index','product_page_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/inep-data','methodology_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos','primary_or_derived':'agregador','limitations':'Inep Data é infraestrutura de visualização, não uma base observacional homogênea. Cada painel herda universo, periodicidade, metodologia, sigilo e limitações da operação estatística de origem.','last_verified':'2026-08-19'
+            },
+            {
+              'product_id':'DP000844','resource_id':'DR0125','product_name':'Indicadores de Fluxo da Educação Superior — 2010–2024','product_acronym':'Fluxo Educação Superior 2010–2024','product_family':'indicadores de fluxo da educação superior','product_kind':'indicator_family','product_description':'Indicadores quantitativos do fluxo discente entre anos consecutivos do Censo da Educação Superior, incluindo evasão, conclusão, retenção e permanência, com série documentada de 2010 a 2024.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'educação superior | fluxo | evasão | retenção | conclusão | permanência | Censo da Educação Superior','geographic_coverage':'Brasil; desagregações por região, UF e atributos de estudantes conforme indicador','covers_brazil':'sim','spatial_support':'sistema de educação superior | agregados territoriais e sociodemográficos','spatial_resolution':'Brasil | região | UF; demais recortes conforme arquivo','temporal_coverage':'2010–2024','temporal_resolution':'anual/longitudinal entre anos consecutivos','update_frequency':'anual','product_status':'ativo','version_or_collection':'Indicadores de Fluxo da Educação Superior 2010–2024','enumeration_scope':'complete','product_page_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-de-fluxo-da-educacao-superior','methodology_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-de-fluxo-da-educacao-superior','primary_or_derived':'derivado','limitations':'Indicadores derivam do acompanhamento de vínculos declarados ao Censo da Educação Superior. Evasão, conclusão, retenção e permanência possuem definições próprias e não constituem medidas causais de qualidade institucional.','last_verified':'2026-08-19'
+            },
+            {
+              'product_id':'DP000845','resource_id':'DR0125','product_name':'Indicadores de Trajetória da Educação Superior — coortes acompanhadas até 2024','product_acronym':'Trajetória Educação Superior','product_family':'indicadores longitudinais de trajetória discente','product_kind':'indicator_family','product_description':'Indicadores longitudinais que acompanham coortes de ingressantes em cursos de graduação até 2024, distinguindo permanência, desistência e conclusão no curso de ingresso.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'educação superior | trajetória | permanência | desistência | conclusão | coorte | Censo da Educação Superior','geographic_coverage':'Brasil; cursos e instituições da educação superior cobertos pelo Censo da Educação Superior','covers_brazil':'sim','spatial_support':'curso de graduação | instituição | agregados conforme arquivo','spatial_resolution':'curso | IES | agregados territoriais conforme edição','temporal_coverage':'coortes com acompanhamento até 2024','temporal_resolution':'longitudinal/anual','update_frequency':'anual','product_status':'ativo','version_or_collection':'trajetórias atualizadas até 2024','enumeration_scope':'complete','product_page_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-de-trajetoria-da-educacao-superior','methodology_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-de-trajetoria-da-educacao-superior','primary_or_derived':'derivado','limitations':'A unidade de análise é o curso de ingresso e o indicador depende da vinculação longitudinal registrada no Censo da Educação Superior. Desistência do curso não equivale necessariamente a abandono definitivo da educação superior.','last_verified':'2026-08-19'
+            },
+            {
+              'product_id':'DP000846','resource_id':'DR0125','product_name':'Indicadores de Qualidade da Educação Superior 2025 — Conceito Enade','product_acronym':'Qualidade ES 2025','product_family':'indicadores de qualidade da educação superior','product_kind':'indicator_family','product_description':'Resultados 2025 atualmente publicados pelo Inep para o Conceito Enade de Medicina e Licenciaturas, com arquivos XLSX e ODS atualizados em 2026.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'educação superior | Conceito Enade | Medicina | Licenciaturas | avaliação | 2025','geographic_coverage':'Brasil — cursos e instituições abrangidos pelas avaliações correspondentes','covers_brazil':'sim','spatial_support':'curso | instituição | área avaliada','spatial_resolution':'curso/IES conforme arquivo','temporal_coverage':'2025','temporal_resolution':'por ciclo avaliativo','update_frequency':'conforme ciclo de avaliação','product_status':'ativo','version_or_collection':'Indicadores de Qualidade da Educação Superior 2025 — arquivos atualizados até 07/07/2026','enumeration_scope':'complete','product_page_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-de-qualidade-da-educacao-superior/2025','methodology_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-de-qualidade-da-educacao-superior','primary_or_derived':'derivado','limitations':'A página 2025 materializa Conceito Enade para Medicina e Licenciaturas; não generalizar a edição como se todos os indicadores de qualidade da educação superior (como CPC ou IGC) tivessem a mesma referência temporal ou universo.','last_verified':'2026-08-19'
+            },
+            {
+              'product_id':'DP000847','resource_id':'DR0125','product_name':'Percentual de Docentes com Pós-Graduação stricto sensu — Educação Superior 2024','product_acronym':'Docentes Stricto Sensu 2024','product_family':'qualificação docente na educação superior','product_kind':'indicator_family','product_description':'Indicadores anuais da proporção de docentes em exercício na educação superior com mestrado e/ou doutorado, com edição 2024 e desagregações territoriais, institucionais e por curso.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'educação superior | docentes | mestrado | doutorado | pós-graduação | qualificação docente','geographic_coverage':'Brasil; região, UF, município, IES e cursos conforme arquivo','covers_brazil':'sim','spatial_support':'docentes agregados por território, instituição ou curso','spatial_resolution':'Brasil | região | UF | município | IES | curso','temporal_coverage':'2010–2024; edição corrente 2024','temporal_resolution':'anual','update_frequency':'anual','product_status':'ativo','version_or_collection':'2024','enumeration_scope':'complete','product_page_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/percentual-de-docentes-com-pos-graduacao-stricto-sensu','methodology_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/percentual-de-docentes-com-pos-graduacao-stricto-sensu','primary_or_derived':'derivado','limitations':'O indicador mede titulação formal entre docentes em exercício no universo do Censo da Educação Superior; não mede qualidade de ensino, desempenho científico ou adequação da formação à disciplina ministrada.','last_verified':'2026-08-19'
+            },
+            {
+              'product_id':'DP000848','resource_id':'DR0125','product_name':'Indicador de Nível Socioeconômico (Inse) — 2023','product_acronym':'Inse 2023','product_family':'indicador socioeconômico educacional','product_kind':'indicator_family','product_description':'Indicador de nível socioeconômico produzido pelo Inep para contextualizar resultados educacionais, com edição mais recente publicada para 2023 e séries anteriores documentadas.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'Inse | nível socioeconômico | Saeb | escolas | municípios | educação | desigualdade','geographic_coverage':'Brasil; escolas e agregados territoriais disponibilizados na edição','covers_brazil':'sim','spatial_support':'escola | município | UF | Brasil conforme arquivo','spatial_resolution':'escola e agregados territoriais conforme edição','temporal_coverage':'2011–2013 | 2015 | 2019 | 2021 | 2023','temporal_resolution':'por edição do indicador','update_frequency':'conforme ciclo de atualização','product_status':'ativo','version_or_collection':'Inse 2023','enumeration_scope':'complete','product_page_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/nivel-socioeconomico','methodology_url':'https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/saeb/outros-documentos','primary_or_derived':'derivado','limitations':'Inse é indicador contextual derivado de informações socioeconômicas e metodologia própria; não equivale diretamente a renda domiciliar observada nem deve ser tratado como escala invariável entre edições sem verificar a nota técnica correspondente.','last_verified':'2026-08-19'
+            },
+            {
+              'product_id':'DP000849','resource_id':'DR0125','product_name':'Indicadores Financeiros Educacionais — investimento público em educação 2000–2021','product_acronym':'Indicadores Financeiros Educacionais','product_family':'financiamento da educação','product_kind':'indicator_family','product_description':'Família de indicadores de investimento público em educação produzida pelo Inep segundo metodologia de comparabilidade internacional, incluindo percentuais do PIB, gasto por estudante, natureza da despesa e distribuição por nível de ensino.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'financiamento da educação | investimento público | gasto por aluno | PIB | Siafi | Siope | OCDE','geographic_coverage':'Brasil; desagregações por nível de ensino e natureza de despesa conforme indicador','covers_brazil':'sim','spatial_support':'agregados nacionais e educacionais conforme indicador','spatial_resolution':'nacional; demais recortes conforme tabela','temporal_coverage':'2000–2021','temporal_resolution':'anual','update_frequency':'anual/conforme atualização institucional','product_status':'ativo','version_or_collection':'série publicada até 2021 na página auditada','enumeration_scope':'complete','product_page_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-financeiros-educacionais','methodology_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-financeiros-educacionais','primary_or_derived':'derivado','limitations':'Os indicadores combinam fontes contábeis públicas e conceitos específicos de investimento total/direto. Valores, deflatores, denominadores e itens incluídos diferem entre indicadores; não somar ou comparar categorias sem preservar a definição metodológica.','last_verified':'2026-08-19'
+            },
+            {
+              'product_id':'DP000850','resource_id':'DR0125','product_name':'Remuneração Média dos Docentes da Educação Básica — 2014–2021','product_acronym':'Remuneração Docente 2014–2021','product_family':'remuneração docente na educação básica','product_kind':'indicator_family','product_description':'Indicador produzido pelo pareamento entre Censo Escolar e RAIS para estimar remuneração mensal bruta e remuneração padronizada para 40 horas semanais dos docentes em exercício na educação básica.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'docentes | remuneração | Censo Escolar | RAIS | educação básica | salário | Meta 17 PNE','geographic_coverage':'Brasil; município, UF e Brasil por dependência administrativa conforme arquivo','covers_brazil':'sim','spatial_support':'docentes pareados e agregados por território/dependência administrativa','spatial_resolution':'município | UF | Brasil','temporal_coverage':'2014–2021','temporal_resolution':'anual','update_frequency':'conforme atualização do indicador','product_status':'ativo','version_or_collection':'série publicada até 2021','enumeration_scope':'complete','product_page_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/remuneracao-media-dos-docentes','methodology_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/remuneracao-media-dos-docentes','primary_or_derived':'derivado','limitations':'O indicador depende do pareamento entre Censo Escolar e RAIS e cobre docentes encontrados nas duas bases segundo a metodologia do Inep. Remuneração média agregada não representa contrato individual nem inclui automaticamente profissionais fora do universo pareado.','last_verified':'2026-08-19'
+            },
+            {
+              'product_id':'DP000851','resource_id':'DR0125','product_name':'Taxas de Transição Escolar — 2007–2008 a 2021–2022','product_acronym':'Taxas de Transição','product_family':'fluxo escolar na educação básica','product_kind':'indicator_family','product_description':'Indicadores de transição escolar estimados pelo acompanhamento longitudinal dos registros de alunos do Censo Escolar entre anos consecutivos, com série publicada de 2007–2008 a 2021–2022.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'fluxo escolar | transição | promoção | repetência | evasão | Censo Escolar | educação básica','geographic_coverage':'Brasil; agregações disponibilizadas pelo Inep conforme edição','covers_brazil':'sim','spatial_support':'alunos acompanhados longitudinalmente e agregados estatísticos','spatial_resolution':'agregados educacionais/territoriais conforme arquivo','temporal_coverage':'2007–2008 a 2021–2022','temporal_resolution':'transição entre anos consecutivos','update_frequency':'conforme atualização da série','product_status':'ativo','version_or_collection':'série publicada até 2021–2022','enumeration_scope':'complete','product_page_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/taxas-de-transicao','methodology_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/taxas-de-transicao','primary_or_derived':'derivado','limitations':'As taxas derivam do pareamento longitudinal de registros do Censo Escolar e possuem definições próprias de promoção, repetência, evasão e migração. Não equivalem automaticamente às taxas de rendimento do mesmo ano letivo.','last_verified':'2026-08-19'
+            }
+          ]
+
+          dist_rows = [
+            {'distribution_id':'DD000875','product_id':'DP000842','distribution_name':'Sinopse Estatística da Educação Básica 2025 — planilhas oficiais','access_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/sinopses-estatisticas/educacao-basica','format':'planilha | arquivo compactado conforme recurso','access_protocol':'HTTPS','access_tool':'navegador web | download','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; preservar edição, cabeçalhos, notas e conceitos das tabelas','license':'conteúdo da página gov.br sob CC BY-ND 3.0; verificar termos do arquivo específico','provider_attribution_required':'sim','subset_support':'por tabela/arquivo e recorte disponibilizado','notes':'Sinopse 2025 atualizada em julho de 2026; é síntese do Censo Escolar e não substitui os microdados.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000876','product_id':'DP000843','distribution_name':'Inep Data — catálogo de painéis BI','access_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/inep-data','format':'painel web | visualização interativa','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'parcial','authentication_required':'não','access_conditions':'consulta pública; exportação e granularidade variam conforme painel','license':'conteúdo gov.br sob CC BY-ND 3.0; verificar termos dos dados subjacentes','provider_attribution_required':'sim','subset_support':'por painel, filtro e recorte suportado','notes':'Serviço de visualização; resultados devem ser citados com a operação estatística e edição de origem.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000877','product_id':'DP000844','distribution_name':'Indicadores de Fluxo da Educação Superior 2010–2024 — arquivos oficiais','access_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-de-fluxo-da-educacao-superior','format':'planilhas | documentos metodológicos','access_protocol':'HTTPS','access_tool':'navegador web | download','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; preservar definição do indicador, coorte/período e recortes','license':'conteúdo gov.br sob CC BY-ND 3.0; verificar termos do arquivo','provider_attribution_required':'sim','subset_support':'por indicador, ano e recorte disponibilizado','notes':'Fluxo entre anos consecutivos; não confundir com trajetória de coortes de ingresso.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000878','product_id':'DP000845','distribution_name':'Indicadores de Trajetória da Educação Superior — arquivos por coorte','access_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-de-trajetoria-da-educacao-superior','format':'planilhas | documentos metodológicos','access_protocol':'HTTPS','access_tool':'navegador web | download','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; preservar coorte de ingresso, curso e horizonte de acompanhamento','license':'conteúdo gov.br sob CC BY-ND 3.0; verificar termos do arquivo','provider_attribution_required':'sim','subset_support':'por coorte, curso e recortes disponibilizados','notes':'Trajetória é longitudinal no curso de ingresso e não equivale ao indicador de fluxo entre anos consecutivos.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000879','product_id':'DP000846','distribution_name':'Indicadores de Qualidade da Educação Superior 2025 — Conceito Enade','access_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-de-qualidade-da-educacao-superior/2025','format':'XLSX | ODS','access_protocol':'HTTPS','access_tool':'navegador web | download','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; preservar área avaliada, edição e eventuais atualizações do documento','license':'conteúdo gov.br sob CC BY-ND 3.0; verificar termos dos arquivos','provider_attribution_required':'sim','subset_support':'por arquivo/área avaliada','notes':'A página 2025 contém Conceito Enade Medicina e Licenciaturas; arquivos foram atualizados em maio/julho de 2026.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000880','product_id':'DP000847','distribution_name':'Percentual de Docentes com Pós-Graduação stricto sensu — 2024','access_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/percentual-de-docentes-com-pos-graduacao-stricto-sensu','format':'planilhas','access_protocol':'HTTPS','access_tool':'navegador web | download','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; preservar ano, nível de agregação e definição de titulação','license':'conteúdo gov.br sob CC BY-ND 3.0; verificar termos do arquivo','provider_attribution_required':'sim','subset_support':'por território, instituição, curso e categoria de titulação conforme arquivo','notes':'Indicadores Total, Mestrado e Doutorado são proporções entre docentes em exercício no Censo da Educação Superior.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000881','product_id':'DP000848','distribution_name':'Indicador de Nível Socioeconômico (Inse) 2023 — arquivos e notas técnicas','access_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/nivel-socioeconomico','format':'planilhas | PDF metodológico','access_protocol':'HTTPS','access_tool':'navegador web | download','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; usar a nota técnica correspondente à edição','license':'conteúdo gov.br sob CC BY-ND 3.0; verificar termos do arquivo','provider_attribution_required':'sim','subset_support':'por escola e agregados disponibilizados na edição','notes':'A página lista 2023 como edição mais recente e preserva séries 2021, 2019, 2015 e 2011–2013.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000882','product_id':'DP000849','distribution_name':'Indicadores Financeiros Educacionais — séries 2000–2021','access_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-financeiros-educacionais','format':'tabelas | planilhas','access_protocol':'HTTPS','access_tool':'navegador web | download','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; preservar conceito de investimento, denominador, deflator e nível de ensino','license':'conteúdo gov.br sob CC BY-ND 3.0; verificar termos do arquivo/base','provider_attribution_required':'sim','subset_support':'por indicador, ano e nível de ensino','notes':'Séries da página auditada cobrem 2000–2021 e usam fontes contábeis como Siafi e Siope segundo metodologia Inep/OCDE.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000883','product_id':'DP000850','distribution_name':'Remuneração Média dos Docentes — séries 2014–2021','access_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/remuneracao-media-dos-docentes','format':'XLSX | ODS | documentação','access_protocol':'HTTPS','access_tool':'navegador web | download','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; preservar dependência administrativa, carga horária padronizada e método de pareamento','license':'conteúdo gov.br sob CC BY-ND 3.0; verificar termos do arquivo','provider_attribution_required':'sim','subset_support':'por município, UF, Brasil e dependência administrativa conforme arquivo','notes':'Indicador deriva do pareamento Censo Escolar–RAIS e inclui remuneração bruta e padronizada para 40 horas semanais.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000884','product_id':'DP000851','distribution_name':'Taxas de Transição Escolar — série 2007–2008 a 2021–2022','access_url':'https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/taxas-de-transicao','format':'planilhas | nota técnica','access_protocol':'HTTPS','access_tool':'navegador web | download','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; preservar par de anos e definições de transição','license':'conteúdo gov.br sob CC BY-ND 3.0; verificar termos do arquivo','provider_attribution_required':'sim','subset_support':'por período e agregados disponibilizados','notes':'A série publicada vai de 2007–2008 a 2021–2022 e resulta do acompanhamento longitudinal de registros do Censo Escolar.','last_verified':'2026-08-19'}
+          ]
+
+          def read_ids(path, field):
+              with path.open(newline='', encoding='utf-8') as f:
+                  return {r[field] for r in csv.DictReader(f)}
+
+          existing_p = read_ids(products_path, 'product_id')
+          existing_d = read_ids(dists_path, 'distribution_id')
+          assert not (existing_p & {r['product_id'] for r in product_rows}), 'product id collision'
+          assert not (existing_d & {r['distribution_id'] for r in dist_rows}), 'distribution id collision'
+
+          with products_path.open(newline='', encoding='utf-8') as f:
+              reader = csv.DictReader(f)
+              pfields = reader.fieldnames
+              existing_urls = {r['product_page_url'] for r in reader if r.get('product_page_url')}
+          proposed_urls = [r['product_page_url'] for r in product_rows]
+          duplicates = sorted(set(proposed_urls) & existing_urls)
+          assert not duplicates, f'product URL already cataloged: {duplicates}'
+
+          with products_path.open('a', newline='', encoding='utf-8') as f:
+              w = csv.DictWriter(f, fieldnames=pfields, lineterminator='\n')
+              for row in product_rows:
+                  assert set(row) == set(pfields), (row['product_id'], set(pfields)-set(row), set(row)-set(pfields))
+                  w.writerow(row)
+
+          with dists_path.open(newline='', encoding='utf-8') as f:
+              dfields = csv.DictReader(f).fieldnames
+          with dists_path.open('a', newline='', encoding='utf-8') as f:
+              w = csv.DictWriter(f, fieldnames=dfields, lineterminator='\n')
+              for row in dist_rows:
+                  assert set(row) == set(dfields), (row['distribution_id'], set(dfields)-set(row), set(row)-set(dfields))
+                  w.writerow(row)
+
+          with products_path.open(newline='', encoding='utf-8') as f:
+              products = list(csv.DictReader(f))
+          with dists_path.open(newline='', encoding='utf-8') as f:
+              dists = list(csv.DictReader(f))
+          pids = {r['product_id'] for r in products}
+          assert all(r['product_id'] in pids for r in dist_rows)
+          assert len(products) == 833, len(products)
+          assert len(dists) == 866, len(dists)
+          print('APPEND_OK', len(product_rows), len(dist_rows), len(products), len(dists))
+          PY
+
+      - name: Run canonical validators and rebuild
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/audit_descriptive_fields.py
+          python3 scripts/build_catalog.py
+          python3 scripts/build_public_discovery.py
+          python3 scripts/report_normalization_coverage.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/audit_link_roles.py
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Read back new relations
+        run: |
+          python3 - <<'PY'
+          import csv
+          products=list(csv.DictReader(open('data/data_products.csv', encoding='utf-8')))
+          dists=list(csv.DictReader(open('data/product_distributions.csv', encoding='utf-8')))
+          ids={f'DP{i:06d}' for i in range(842,852)}
+          dids={f'DD{i:06d}' for i in range(875,885)}
+          got={r['product_id'] for r in products if r['product_id'] in ids}
+          gdd={r['distribution_id'] for r in dists if r['distribution_id'] in dids}
+          assert got == ids, (ids-got)
+          assert gdd == dids, (dids-gdd)
+          for r in dists:
+              if r['distribution_id'] in dids:
+                  assert r['product_id'] in ids
+          print('READBACK_OK', len(products), len(dists), sorted(got), sorted(gdd))
+          PY
+
+      - name: Commit materialized verified batch and remove one-shot workflow
+        run: |
+          rm -f .github/workflows/materialize_inep_batch_20260819.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git status --short
+          git commit -m "Expand verified INEP education indicators catalog"
+          git push origin HEAD:main
