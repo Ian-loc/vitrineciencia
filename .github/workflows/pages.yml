@@ -36,6 +36,7 @@ jobs:
           node --check assets/ptbr.js
           node --check assets/products.js
           node --check assets/analytics.js
+          node --check assets/export-selective.js
           node --check assets/quality-summary.js
           node --check assets/build-meta.js
 
@@ -51,16 +52,18 @@ jobs:
           test -s _site/analytics.html
           test -s _site/about.html
           test -s _site/assets/visual-refinement.css
+          test -s _site/assets/export-selective.css
           test -s _site/assets/app.js
           test -s _site/assets/ptbr.js
           test -s _site/assets/products.js
           test -s _site/assets/analytics.js
-          test -s _site/data/data_resources.csv
+          test -s _site/assets/export-selective.js
           test -s _site/data/data_resources.json
-          test -s _site/data/data_products.csv
           test -s _site/data/data_products.json
-          test -s _site/data/product_distributions.csv
           test -s _site/data/brazil_scope_priorities.json
+          test ! -e _site/data/data_resources.csv
+          test ! -e _site/data/data_products.csv
+          test ! -e _site/data/product_distributions.csv
           test ! -e _site/explorer.html
           test ! -e _site/abordagens.html
           test ! -e _site/data/federated_layers.json
@@ -76,6 +79,7 @@ jobs:
           test ! -e _site/docs
           test ! -e _site/config
           ! grep -R -n -E 'Simbiotrama|Simbioscópio|Simbioscopio' _site/index.html _site/products.html _site/analytics.html _site/about.html
+          ! grep -R -n -E 'data/data_resources\.csv|data/data_products\.csv|data/product_distributions\.csv' _site/index.html _site/products.html _site/analytics.html _site/about.html
 
   deploy:
     if: github.event_name != 'pull_request'
@@ -96,6 +100,7 @@ jobs:
           python3 scripts/audit_link_roles.py
           python3 scripts/validate_vitrine.py
           node --check assets/ptbr.js
+          node --check assets/export-selective.js
           python3 scripts/build_site_artifact.py
 
       - name: Configurar GitHub Pages
