@@ -18,7 +18,7 @@
 <form class="hero-search" id="product-search" role="search" aria-label="Busca de produtos">
 <label for="product-q">Buscar produtos</label>
 <div class="search-row"><input id="product-q" type="search" autocomplete="off" enterkeyhint="search" aria-describedby="product-search-help" placeholder="Tema, produto, fonte, formato ou protocolo…"><button type="submit">Buscar produtos</button></div>
-<p class="search-help" id="product-search-help">A busca também reconhece alguns termos equivalentes em português e inglês.</p>
+<p class="search-help" id="product-search-help">A busca reconhece equivalências em português e inglês para os principais temas do catálogo.</p>
 </form>
 <div class="quick-search" aria-label="Buscas sugeridas"><span>Exemplos:</span><button type="button" data-product-query="desmatamento">desmatamento</button><button type="button" data-product-query="alertas">alertas</button><button type="button" data-product-query="uso da terra">uso da terra</button><button type="button" data-product-query="WMS">WMS</button></div>
 <div class="hero-links"><a href="index.html#catalogo">Explorar fontes</a><a href="data/data_products.csv" download>Baixar produtos (CSV)</a><a href="about.html">Entender o método</a></div>
@@ -53,12 +53,12 @@
 <label><span>Origem</span><select id="product-origin"><option value="">Primário ou derivado</option></select></label>
 </fieldset>
 </details>
-<div class="filter-footer"><p id="product-filter-note">Use os filtros para comparar produtos; confirme versão e condições de uso na fonte original.</p><button type="button" id="product-clear">Limpar busca e filtros</button></div>
+<div class="filter-footer"><p id="product-filter-note">Use os filtros para comparar produtos e confirme versão e condições de uso na fonte original. Nomes oficiais de bases, serviços e produtos são preservados no idioma adotado pelo provedor; a interface e as classificações editoriais da Vitrine são apresentadas em português (Brasil).</p><button type="button" id="product-clear">Limpar busca e filtros</button></div>
 </form>
 <div class="active-filters" id="product-active-filters" role="region" aria-label="Filtros ativos de produtos" aria-live="polite" hidden></div>
 <div id="product-list" class="cards product-cards" role="list" aria-busy="true" aria-describedby="product-count"></div>
 <div class="results-more" id="product-results-more" hidden><button type="button" id="product-show-more" aria-controls="product-list">Mostrar mais produtos</button><span id="product-shown-count" role="status" aria-live="polite"></span></div>
-<div id="product-empty" class="empty" role="status" hidden><h3>Nenhum produto corresponde à busca</h3><p>Remova um filtro ou use um termo mais amplo.</p></div>
+<div id="product-empty" class="empty" role="status" hidden><h3>Nenhum produto corresponde à combinação atual</h3><p>Remova um filtro, limpe uma restrição ou tente um termo mais amplo. A busca aceita termos em português mesmo quando o nome oficial do produto está em outro idioma.</p></div>
 <noscript><div class="noscript"><h3>A busca interativa requer JavaScript</h3><p>Você ainda pode <a href="data/data_products.csv" download>baixar o CSV de produtos</a>, consultar as <a href="index.html#catalogo">fontes</a> ou ler a <a href="about.html">metodologia</a>.</p></div></noscript>
 </section>
 <section class="wrap about"><div><p class="eyebrow">Antes de usar</p><h2>Confirme a versão e as condições do produto</h2></div><p>Resolução, período, metodologia, licença e forma de acesso podem variar entre produtos da mesma fonte. Consulte a documentação original antes da análise.</p></section>
@@ -72,5 +72,6 @@
 <div id="compare-content"></div>
 </dialog>
 <footer class="wrap"><p><strong>Vitrine Ciência</strong> · Ian Clemente · <a href="index.html#catalogo">Fontes</a> · <a href="about.html">Método e citação</a> · <a href="analytics.html">Visão do catálogo</a></p><p>Brasil · Dados: CC BY 4.0 · Código: MIT</p></footer>
+<script src="assets/ptbr.js" defer></script>
 <script src="assets/products.js" defer></script>
 </body></html>
