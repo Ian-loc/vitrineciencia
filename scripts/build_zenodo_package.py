@@ -21,7 +21,7 @@ ZIP_PATH = DIST / f"{PACKAGE_NAME}.zip"
 CANONICAL = {
     "data/data_resources.csv": {
         "dest": "data/sources.csv",
-        "blob": "6277d8f68a446b3ba71c8778bb52f90c954488e2",
+        "blob": "164a0d1a9f79dc8329c09d76d242c4d759e8ea92",
         "rows": 135,
         "id": "resource_id",
         "pattern": r"^DR\d{4}$",
