@@ -1,34 +1,35 @@
 # Estado do workflow — Vitrine Ciência
 
-Atualização: **2026-08-18** (`America/Sao_Paulo`)
+Atualização: **2026-08-19** (`America/Sao_Paulo`)
 
 ## Direção ativa
 
-A Vitrine Ciência é um **catálogo público, estático e delimitado para descoberta de dados científicos relevantes ao Brasil**. O modelo conceitual está estável em três unidades: fonte → produto → distribuição. O trabalho corrente prioriza crescimento de conteúdo, precisão factual, qualidade de metadados, usabilidade e preparação de releases reproduzíveis.
+A Vitrine Ciência é um **catálogo público, estático, versionado e delimitado para descoberta de dados científicos relevantes ao Brasil**. O modelo conceitual está estável em três unidades: fonte → produto → distribuição. O trabalho corrente prioriza crescimento de conteúdo, precisão factual, qualidade de metadados, usabilidade e releases reproduzíveis.
 
 ## Autoridade
 
 - repositório: `Ian-loc/vitrineciencia`;
-- branch: `main`;
+- branch canônica de desenvolvimento: `main`;
+- branch de preparação da primeira release estável: `release/v1.0.0`;
 - site: `https://ian-loc.github.io/vitrineciencia/`;
 - fontes: `data/data_resources.csv`;
 - produtos: `data/data_products.csv`;
 - distribuições: `data/product_distributions.csv`;
 - Drive: espelho/histórico derivado, não canônico;
-- versão de citação: `unreleased` até release explícita.
+- versão de citação candidata: `1.0.0`.
 
-## Snapshot corrente
+## Snapshot candidato v1.0.0
 
-Em 18/08/2026:
+Em 19/08/2026:
 
-- **125 fontes**;
-- **752 produtos**;
-- **783 distribuições**;
-- os maiores identificadores correntes são `DR0125`, `DP000756` e `DD000787`; lacunas de IDs são preservadas e não recicladas;
-- `data_quality_report.json`: 125 registros de fonte; verificação máxima `2026-08-18`;
-- incerteza de acesso registrada em 72 fontes e de licença em 49 fontes — sinais de curadoria pendente, não falhas estruturais.
+- **135 fontes**;
+- **843 produtos**;
+- **876 distribuições**;
+- os maiores identificadores correntes são `DR0135`, `DP000861` e `DD000894`; lacunas de IDs são preservadas e não recicladas;
+- `data_quality_report.json`: 135 registros de fonte; verificação máxima `2026-08-19`;
+- incertezas de acesso/licença permanecem registradas explicitamente e são sinais de curadoria, não falhas estruturais.
 
-As contagens são observacionais e podem crescer; não são gates de arquitetura.
+As contagens caracterizam o snapshot candidato e não são gates de arquitetura.
 
 ## Estado consolidado
 
@@ -48,19 +49,19 @@ As contagens são observacionais e podem crescer; não são gates de arquitetura
 
 ### Curadoria
 
-**ATIVA.** Novas fontes e produtos podem entrar em pequenos lotes quando possuem identidade rastreável, relevância para o Brasil, evidência oficial suficiente e representação honesta no contrato vigente. Valores desconhecidos ou variáveis permanecem explícitos.
+**ATIVA.** Novas fontes e produtos podem entrar em pequenos lotes na `main` quando possuem identidade rastreável, relevância para o Brasil, evidência oficial suficiente e representação honesta no contrato vigente. Valores desconhecidos ou variáveis permanecem explícitos. Depois da tag `v1.0.0`, novas mudanças pertencem a releases posteriores e não alteram retroativamente o snapshot publicado.
 
 ### Documentação
 
-**CONSOLIDADO EM 18/08/2026.** A documentação ativa foi alinhada ao catálogo corrente e à separação estrutural da Vitrine. Materiais que descrevem o antigo baseline de 51 fontes, migração 0.8/38 campos, PostgreSQL/PostGIS, Instância 1, Simbiotrama ou Simbioscópio permanecem somente como histórico/proveniência quando ainda preservados na árvore ou no histórico Git.
+**ALINHADA PARA v1.0.0.** README, citação, changelog, licença da curadoria, política de release, estado do projeto, release notes e gates de DOI foram atualizados para o snapshot candidato de 19/08/2026.
 
 ### Drive
 
-**DERIVADO / NÃO SINCRONIZADO.** O workbook histórico do Drive não representa o estado completo de `main`. Ele não deve ser chamado de sincronizado até ser regenerado e comparado contra as três tabelas canônicas do snapshot-fonte. Os documentos operacionais vivos do Drive foram realinhados ao estado atual.
+**DERIVADO / NÃO SINCRONIZADO.** O workbook histórico do Drive não representa o estado completo da release. Ele não é gate de DOI e não deve ser chamado de sincronizado até ser regenerado e comparado contra as três tabelas canônicas.
 
 ### Release e DOI
 
-**NÃO LANÇADO.** A Vitrine ainda não possui uma release científica congelada com DOI. O caminho previsto é GitHub tag/release + snapshot reproduzível + depósito Dataset no Zenodo, após os gates objetivos de `FINAL_OBJECTIVES_AND_DOI_GATES.md` e decisão humana de publicação.
+**RELEASE v1.0.0 EM PREPARAÇÃO FORMAL.** A branch `release/v1.0.0` contém a documentação do primeiro snapshot científico estável. A publicação definitiva exige validação final, integração na `main`, tag Git imutável `v1.0.0`, GitHub Release, pacote de depósito inspecionado e Zenodo Dataset. O DOI ainda não foi emitido.
 
 ## Gates proporcionais ao risco
 
@@ -68,19 +69,21 @@ As contagens são observacionais e podem crescer; não são gates de arquitetura
 - **REVIEW:** lotes grandes, mudança pública relevante ou evidência factual materialmente ambígua;
 - **HUMAN-DECISION:** mudança de escopo/schema, ação destrutiva, licença/autoria/citação oficial, tracking/privacidade, release `1.0.0` e DOI.
 
+A decisão humana de preparar `v1.0.0` foi registrada em 19/08/2026. A emissão do DOI continua condicionada aos gates objetivos.
+
 Pipeline:
 
-`scope → evidence → implementation → validation → diff audit → public validation when relevant → integration → post-merge verification → consolidation`
+`scope → evidence → implementation → validation → diff audit → public validation when relevant → integration → post-merge verification → release/tag → deposit → DOI propagation`
 
 ## Prioridades atuais
 
-1. manter a documentação ativa sincronizada com o catálogo real;
-2. continuar expansão Brasil-primeiro em lotes auditados;
-3. reduzir incertezas materiais de licença, acesso, resolução e cobertura sem inventar valores;
-4. revisar duplicidades/identidades quando puderem alterar a descoberta;
-5. preservar CI, smoke pós-deploy e QA visual proporcional ao risco;
-6. preparar uma release estável e citável quando o snapshot estiver tecnicamente defensável;
-7. regenerar o espelho do Drive quando isso trouxer utilidade operacional, sem bloquear a release.
+1. concluir CI e auditoria do diff da PR de `v1.0.0`;
+2. garantir que nenhum dado científico canônico tenha sido alterado inadvertidamente pela preparação da release;
+3. materializar e inspecionar o pacote Zenodo do commit final;
+4. criar tag/release GitHub `v1.0.0` após integração;
+5. depositar como **Dataset** no Zenodo;
+6. incorporar o DOI ao repositório e perfis após emissão;
+7. retomar a expansão Brasil-primeiro na `main` em versões posteriores.
 
 ## Fora do caminho ativo
 

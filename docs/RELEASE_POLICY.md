@@ -6,7 +6,7 @@ Releases transformam o catálogo vivo em snapshots identificáveis, citáveis e 
 
 ## Estado atual
 
-Em 18/08/2026, `CITATION.cff` permanece com `version: unreleased`. O snapshot operacional contém **125 fontes, 752 produtos e 783 distribuições**. IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`; lacunas são preservadas. Essa contagem não é requisito de versão.
+Em 19/08/2026, a primeira release científica estável está sendo preparada como `v1.0.0`. O snapshot candidato contém **135 fontes, 843 produtos e 876 distribuições**. IDs correntes chegam a `DR0135`, `DP000861` e `DD000894`; lacunas são preservadas. Essa contagem não é requisito de versão.
 
 ## Versionamento
 
@@ -50,7 +50,7 @@ Mudança incompatível exige decisão própria, atualização coordenada de cont
 
 ## Release estável e DOI
 
-Uma release `1.0.0` representa um snapshot científico e operacional tecnicamente defensável; não exige “curadoria perfeita” nem encerra a expansão futura.
+A release `1.0.0` representa o primeiro snapshot científico e operacional tecnicamente defensável da Vitrine. Ela não exige “curadoria perfeita” nem encerra a expansão futura.
 
 DOI deve identificar um snapshot imutável arquivado como **Dataset**. Requisitos adicionais:
 
@@ -62,13 +62,13 @@ DOI deve identificar um snapshot imutável arquivado como **Dataset**. Requisito
 - correspondência entre tag e arquivos depositados;
 - decisão humana explícita de publicação.
 
-Consulte `FINAL_OBJECTIVES_AND_DOI_GATES.md`.
+A decisão explícita de preparar `v1.0.0` foi tomada em 19/08/2026. A publicação com DOI permanece condicionada aos gates objetivos de `FINAL_OBJECTIVES_AND_DOI_GATES.md`.
 
 ## Google Drive
 
 O Drive é opcional para release. Um espelho pode ser regenerado para conveniência, mas não deve bloquear uma release válida. Se incluído/atualizado, deve declarar commit-fonte, data, escopo e contagens e passar comparação contra as tabelas canônicas.
 
-O workbook legado atualmente no Drive não está sincronizado com a Vitrine de 18/08/2026 e deve permanecer rotulado como histórico até regeneração integral.
+O workbook legado no Drive não é a autoridade corrente e deve permanecer rotulado como histórico até regeneração integral.
 
 ## Pós-release
 

@@ -1,6 +1,6 @@
 # Vitrine Ciência
 
-**Catálogo público e estático de fontes e produtos de dados científicos relevantes ao Brasil para pesquisa, ensino e extensão.**
+**Catálogo público, estático, versionado e citável de fontes e produtos de dados científicos relevantes ao Brasil para pesquisa, ensino e extensão.**
 
 A Vitrine Ciência organiza fontes, produtos e formas de acesso com busca, filtros, cobertura, formatos, temporalidade, limitações, evidências e links para os provedores originais. Ela é uma infraestrutura de **descoberta e triagem**: não substitui os datasets originais, sua documentação ou sua citação.
 
@@ -8,7 +8,8 @@ A Vitrine Ciência organiza fontes, produtos e formas de acesso com busca, filtr
 
 - site: https://ian-loc.github.io/vitrineciencia/
 - repositório canônico: https://github.com/Ian-loc/vitrineciencia
-- branch canônica: `main`
+- branch canônica de desenvolvimento: `main`
+- primeira release científica estável: `v1.0.0`
 - fontes: `data/data_resources.csv`
 - produtos: `data/data_products.csv`
 - distribuições/acessos: `data/product_distributions.csv`
@@ -16,15 +17,15 @@ A Vitrine Ciência organiza fontes, produtos e formas de acesso com busca, filtr
 - código: MIT
 - metadados e curadoria original: CC BY 4.0
 
-### Snapshot de 18 de agosto de 2026
+### Snapshot v1.0.0 — 19 de agosto de 2026
 
-- **125 fontes**;
-- **752 produtos**;
-- **783 distribuições**;
-- os identificadores correntes chegam a `DR0125`, `DP000756` e `DD000787`, pois IDs removidos/consolidados não são reciclados;
-- verificações de fontes registradas até **2026-08-18**.
+- **135 fontes**;
+- **843 produtos**;
+- **876 distribuições**;
+- os identificadores correntes chegam a `DR0135`, `DP000861` e `DD000894`, pois IDs removidos/consolidados não são reciclados;
+- verificações de fontes registradas até **2026-08-19**.
 
-Essas contagens são um snapshot operacional, não limites arquiteturais. A autoridade é sempre o conteúdo validado da `main`.
+Essas contagens descrevem o snapshot da release e não são limites arquiteturais. O desenvolvimento pode continuar na `main`; análises reproduzíveis devem registrar a release/tag ou o commit efetivamente utilizado.
 
 ## Modelo vigente
 
@@ -69,12 +70,15 @@ Documentação ativa:
 - `docs/VITRINE_CANONICAL_DATA_CONTRACT.md` — contrato de dados;
 - `docs/VITRINE_OPERATING_MODEL.md` — operação e gates;
 - `WORKFLOW_STATUS.md` — estado corrente e prioridades;
-- `FINAL_OBJECTIVES_AND_DOI_GATES.md` — release citável e DOI.
+- `FINAL_OBJECTIVES_AND_DOI_GATES.md` — release citável e DOI;
+- `RELEASE_NOTES_v1.0.0.md` — notas da primeira release científica estável.
 
 ## Release e citação
 
-O projeto está em desenvolvimento contínuo e `CITATION.cff` permanece com `version: unreleased` até uma release científica explicitamente congelada. Para análises reproduzíveis, cite a release/tag ou commit efetivamente utilizado e também a fonte/dataset original.
+A `v1.0.0` é o primeiro snapshot científico estável deliberadamente congelado da Vitrine Ciência. Para análises reproduzíveis, cite a release/tag ou commit efetivamente utilizado e também a fonte/dataset original.
 
-> CLEMENTE, Ian. *Vitrine Ciência: catálogo de fontes de dados científicos sobre o Brasil para pesquisa, ensino e extensão*. GitHub, 2026. https://ian-loc.github.io/vitrineciencia/
+> CLEMENTE, Ian. *Vitrine Ciência: catálogo de fontes de dados científicos sobre o Brasil para pesquisa, ensino e extensão*. Version 1.0.0. 2026.
 
 ORCID: https://orcid.org/0000-0003-1164-9318
+
+Após a emissão do DOI, o identificador persistente deve ser incorporado ao README, `CITATION.cff`, release do GitHub e perfis acadêmicos sem alterar retroativamente o conteúdo científico do snapshot.

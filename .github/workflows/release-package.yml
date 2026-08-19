@@ -1,0 +1,68 @@
+name: Build v1.0.0 Zenodo candidate
+
+on:
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "data/**"
+      - "schema/**"
+      - "scripts/build_zenodo_package.py"
+      - "README.md"
+      - "CODEBOOK.md"
+      - "METHODOLOGY.md"
+      - "CITATION.cff"
+      - "CHANGELOG.md"
+      - "DATA_LICENSE.md"
+      - "LICENSE"
+      - "RELEASE_NOTES_v1.0.0.md"
+      - "FINAL_OBJECTIVES_AND_DOI_GATES.md"
+      - "docs/RELEASE_POLICY.md"
+      - ".github/workflows/release-package.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate canonical Vitrine
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/audit_descriptive_fields.py
+          python3 scripts/build_catalog.py
+          python3 scripts/build_public_discovery.py
+          python3 scripts/report_normalization_coverage.py
+          python3 scripts/audit_link_roles.py
+          python3 scripts/validate_vitrine.py
+
+      - name: Build deterministic Zenodo package
+        run: |
+          mkdir -p dist
+          python3 -m py_compile scripts/build_zenodo_package.py
+          python3 scripts/build_zenodo_package.py | tee dist/v1.0.0-package-build.json
+          test -s dist/vitrine-ciencia-v1.0.0.zip
+          test -s dist/vitrine-ciencia-v1.0.0/metadata/validation_report.json
+          test -s dist/vitrine-ciencia-v1.0.0/metadata/manifest.csv
+          test -s dist/vitrine-ciencia-v1.0.0/metadata/provenance.csv
+
+      - name: Upload Zenodo candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitrine-ciencia-v1.0.0-zenodo-candidate
+          path: |
+            dist/vitrine-ciencia-v1.0.0.zip
+            dist/v1.0.0-package-build.json
+            dist/vitrine-ciencia-v1.0.0/metadata/validation_report.json
+            dist/vitrine-ciencia-v1.0.0/metadata/manifest.csv
+            dist/vitrine-ciencia-v1.0.0/metadata/provenance.csv
+          if-no-files-found: error
+          retention-days: 30

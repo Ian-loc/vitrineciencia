@@ -1,22 +1,28 @@
 # Histórico de mudanças
 
-O projeto segue versionamento semântico. A `main` pode avançar entre releases; itens ainda não congelados permanecem em **Não lançado**.
+O projeto segue versionamento semântico. A `main` pode avançar entre releases; itens posteriores ao último snapshot congelado permanecem em **Não lançado**.
 
 ## Não lançado
 
-### Consolidação e expansão — 10 a 18 de agosto de 2026
+- Nenhuma alteração registrada após a preparação da `v1.0.0`.
+
+## 1.0.0 — 19 de agosto de 2026
+
+Primeira release científica estável e candidata a preservação com DOI.
 
 - contrato público estabilizado em três tabelas: fonte → produto → distribuição;
-- catálogo ampliado para **125 fontes, 752 produtos e 783 distribuições** no snapshot de 18/08/2026; os IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`, com lacunas preservadas;
-- expansão Brasil-primeiro com novas fontes institucionais e produtos de clima, saúde, energia, sensoriamento remoto, governança fundiária, educação e outros domínios;
+- snapshot congelado com **135 fontes, 843 produtos e 876 distribuições**;
+- identificadores correntes até `DR0135`, `DP000861` e `DD000894`, com lacunas históricas preservadas e IDs não reciclados;
+- schema estável de **34 campos para fontes, 24 para produtos e 15 para distribuições**;
+- expansão Brasil-primeiro com fontes institucionais e produtos de ambiente, biodiversidade, clima, água, geociências, agricultura, florestas, sensoriamento remoto, saúde, educação, território e políticas públicas;
 - classificação territorial P0–P3 mantida como camada curatorial vinculada às fontes;
-- aprofundamento da camada de produtos e distribuições sem aumento do schema 34/24/15;
-- inclusão de serviços e produtos OpenWeather com acesso/licença registrados no nível mais específico verificável;
+- camada pública derivada com seis áreas amplas e normalização conservadora de suporte espacial e frequência de atualização, preservando o texto detalhado original;
 - fortalecimento da validação relacional, papéis de links, build isolado, QA visual e smoke pós-deploy;
-- documentação de DOI/release atualizada para tratar a Vitrine como **Dataset** curado e manter `CITATION.cff` em `unreleased` até snapshot explicitamente congelado;
-- Drive reafirmado como espelho/histórico derivado; workbook legado reconhecido como não sincronizado com o catálogo atual;
-- documentação ativa realinhada em 18/08/2026 para remover referências operacionais obsoletas a 51 fontes, migração para 38 campos e PostgreSQL/PostGIS como destino da Vitrine;
-- materiais relacionais anteriores à separação reclassificados como histórico/proveniência do Simbiotrama.
+- separação explícita entre licenciamento do código (MIT), curadoria/metadados originais (CC BY 4.0) e licenças dos datasets externos catalogados;
+- `CITATION.cff` promovido de `unreleased` para `1.0.0`;
+- documentação de release/DOI consolidada e pacote de depósito definido como **Dataset**;
+- Drive reafirmado como espelho/histórico derivado, não como autoridade concorrente;
+- Vitrine Ciência e Simbiotrama mantidos como projetos estruturalmente independentes.
 
 ### Separação estrutural — Vitrine Ciência × Simbiotrama — 9 de agosto de 2026
 
@@ -50,4 +56,4 @@ Antes de 09/08/2026, este repositório também abrigou desenvolvimento do Simbio
 - revisadas identidade, utilidade, limitações, links e acesso;
 - adicionadas validação automática e geração do JSON público.
 
-> Nota: versões 0.6/0.7 e o baseline de 51 fontes são marcos históricos. A `main` atual permanece `unreleased` para a próxima release científica formal.
+> Nota: versões 0.6/0.7 e o baseline de 51 fontes são marcos históricos anteriores à primeira release científica estável `v1.0.0`.
