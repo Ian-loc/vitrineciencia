@@ -1,0 +1,96 @@
+name: automation-ivs-batch
+on:
+  push:
+    branches: ["automation/ivs-batch-final"]
+    paths: [".automation-ivs-trigger"]
+permissions:
+  contents: write
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: automation/ivs-batch-final
+      - name: Append verified Ipea IVS source and products
+        run: |
+          python3 - <<'PY'
+          import csv, json, re
+          from pathlib import Path
+          today='2026-08-19'
+          def max_id(path,col,prefix):
+              with open(path,encoding='utf-8',newline='') as f:
+                  rows=list(csv.DictReader(f))
+              nums=[int(r[col][len(prefix):]) for r in rows if r[col].startswith(prefix)]
+              return max(nums), rows
+          rmax, resources=max_id('data/data_resources.csv','resource_id','DR')
+          pmax, products=max_id('data/data_products.csv','product_id','DP')
+          dmax, dists=max_id('data/product_distributions.csv','distribution_id','DD')
+          if any('Atlas da Vulnerabilidade Social' in r['resource_name'] for r in resources):
+              raise SystemExit('source already exists')
+          rid=f'DR{rmax+1:04d}'
+          source={
+            'resource_id':rid,'resource_name':'Atlas da Vulnerabilidade Social — Ipea','acronym':'AVS / IVS','official_identity':'Instituto de Pesquisa Econômica Aplicada — Atlas da Vulnerabilidade Social','description':'Plataforma e família de indicadores do Ipea para mensurar vulnerabilidade social no Brasil por meio do Índice de Vulnerabilidade Social (IVS), suas dimensões e desagregações territoriais e sociodemográficas.','homepage_url':'http://ivs.ipea.gov.br/','data_access_url':'http://ivs.ipea.gov.br/index.php/pt/','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'vulnerabilidade social | IVS | desigualdade | municípios | regiões metropolitanas | UDH | PNAD | PNAD Contínua','data_product_types':'indicadores | séries temporais | mapas | tabelas | plataforma web','data_formats':'visualização web | tabelas | PDF; varia conforme produto','visualization_types':'mapas | gráficos | tabelas | consultas','geographic_coverage':'Brasil; municípios, UFs, regiões metropolitanas, RIDEs, UDHs e agregados conforme produto','covers_brazil':'sim','spatial_resolution':'município | UF | região metropolitana | RIDE | UDH | Brasil conforme produto','temporal_coverage':'Censos 2000 e 2010; PNAD 2011–2015; PNAD Contínua 2016–2023 na série metodologicamente ajustada consultada','temporal_resolution':'censitária | anual conforme produto','data_sources':'Censos Demográficos | PNAD | PNAD Contínua | indicadores derivados pelo Ipea','free_download':'parcial','access_conditions':'acesso público à plataforma, relatórios e dados/indicadores disponibilizados; verificar formato e cobertura por produto','programmatic_access':'desconhecido','access_protocols':'HTTPS | visualização web | downloads conforme produto','authentication_required':'não','access_documentation_url':'https://repositorio.ipea.gov.br/entities/publication/293af692-22ab-41da-8a6a-7eabc7a3ef54','license':'reprodução dos dados e publicações permitida com citação da fonte nos materiais oficiais consultados; verificar termos do recurso específico','institutional_status':'público','owner_or_manager':'Instituto de Pesquisa Econômica Aplicada — Ipea','academic_uses':'Análise de vulnerabilidade e desigualdade socioespacial, diagnóstico territorial, avaliação de políticas públicas, estudos urbanos e regionais e comparação de condições sociais.','limitations':'O IVS é indicador composto e depende da fonte e metodologia de cada série. Censos, PNAD e PNAD Contínua não são automaticamente comparáveis; preservar edição, universo, pesos, recorte territorial e regras metodológicas. IVS não mede causalidade, pobreza monetária isolada ou qualidade geral de políticas públicas.','academic_evidence_type':'documentação técnica oficial','academic_evidence_url':'https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52','academic_evidence_note':'O Ipea documenta o IVS, suas três dimensões, recortes territoriais e ajustes metodológicos recentes para a série baseada na PNAD Contínua.','verification_url':'https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52','last_verified':today
+          }
+          def append_dict(path,row):
+              with open(path,encoding='utf-8',newline='') as f: fields=next(csv.reader(f))
+              missing=[k for k in row if k not in fields]
+              if missing: raise SystemExit(f'unknown fields {missing}')
+              with open(path,'a',encoding='utf-8',newline='') as f:
+                  w=csv.DictWriter(f,fieldnames=fields,lineterminator='\n')
+                  w.writerow({k:row.get(k,'') for k in fields})
+          append_dict('data/data_resources.csv',source)
+          base='Social policy | Public policy | Territorial analysis | Data infrastructure'
+          common_kw='vulnerabilidade social | IVS | desigualdade | políticas públicas | Ipea'
+          specs=[
+            ('Atlas da Vulnerabilidade Social — plataforma e indicadores','Atlas IVS','Atlas da Vulnerabilidade Social','data_service','Plataforma digital do Ipea para consulta do IVS, seus subíndices e indicadores em diferentes recortes territoriais brasileiros. O serviço reúne séries produzidas a partir de censos e pesquisas domiciliares e deve ser usado preservando a fonte e metodologia de cada indicador.','Brasil; 5.565 municípios, 27 UFs, 21 regiões metropolitanas, 3 RIDEs, UDHs e agregado nacional conforme a edição documentada','território/indicador conforme consulta','séries e edições conforme fonte; plataforma consolidada a partir de 2015','varia por série','conforme atualização metodológica e das bases','ativo','plataforma corrente consultada em 2026','external_index','http://ivs.ipea.gov.br/','https://repositorio.ipea.gov.br/entities/publication/293af692-22ab-41da-8a6a-7eabc7a3ef54','derivado','A plataforma agrega indicadores com fontes, períodos e recortes diferentes; não tratar o conjunto como uma série homogênea nem comparar valores sem verificar metodologia da edição.'),
+            ('IVS — Municípios e UFs, Censos 2000 e 2010','IVS Censo Municípios','IVS baseado nos Censos Demográficos','indicator_family','Índice de Vulnerabilidade Social e seus componentes calculados para municípios e Unidades da Federação com base nos Censos Demográficos de 2000 e 2010, conforme metodologia do Atlas da Vulnerabilidade Social.','Brasil — municípios e UFs','município | UF','2000 e 2010','decenal/censitária','por nova edição censitária','ativo','Atlas da Vulnerabilidade Social nos Municípios Brasileiros — 2015','complete','https://repositorio.ipea.gov.br/handle/11058/4381','https://repositorio.ipea.gov.br/entities/publication/293af692-22ab-41da-8a6a-7eabc7a3ef54','derivado','Indicador composto derivado do Censo; não inferir dinâmica anual entre 2000 e 2010 nem comparar diretamente com a série PNAD/PNAD Contínua sem compatibilização metodológica.'),
+            ('IVS — Regiões Metropolitanas e UDHs, Censos 2000 e 2010','IVS RM/UDH','IVS intrametropolitano','indicator_family','IVS e indicadores associados para regiões metropolitanas, RIDEs e Unidades de Desenvolvimento Humano, permitindo análise intramunicipal e metropolitana com base em dados censitários de 2000 e 2010.','Brasil — regiões metropolitanas, RIDEs e UDHs cobertas pelo projeto','RM | RIDE | UDH','2000 e 2010','decenal/censitária','por nova edição/metodologia territorial','ativo','Atlas da Vulnerabilidade Social nas Regiões Metropolitanas — 2015','complete','https://repositorio.ipea.gov.br/handle/11058/5257','https://repositorio.ipea.gov.br/entities/publication/293af692-22ab-41da-8a6a-7eabc7a3ef54','derivado','UDHs são recortes analíticos específicos e não equivalem a bairros ou unidades administrativas. Limites e metodologia territorial devem ser preservados; comparações com novos recortes censitários exigem compatibilização.'),
+            ('IVS — série PNAD 2011–2015 e desagregações','IVS PNAD 2011–2015','IVS anual por PNAD','indicator_family','Série anual do IVS construída com a PNAD para 2011–2015, incluindo desagregações por sexo, cor e situação do domicílio para análise de vulnerabilidades e desigualdades sociais.','Brasil; agregados e desagregações suportados pela PNAD','agregado amostral conforme desenho e desagregação','2011–2015','anual','histórico','arquivado','série PNAD 2011–2015 publicada na nova plataforma IVS','complete','https://repositorio.ipea.gov.br/handle/11058/9477','https://repositorio.ipea.gov.br/entities/publication/293af692-22ab-41da-8a6a-7eabc7a3ef54','derivado','Estimativas amostrais dependem de pesos e desenho da PNAD. Desagregações podem ter precisão distinta e não devem ser tratadas como censitárias ou diretamente concatenadas à PNAD Contínua sem ajuste.'),
+            ('IVS — série PNAD Contínua 2016–2023, metodologia ajustada 2025','IVS PNADC 2016–2023','IVS anual por PNAD Contínua','indicator_family','Série do Índice de Vulnerabilidade Social baseada na PNAD Contínua, com ajustes metodológicos documentados em 2025 para recalibração dos pesos e compatibilização com a futura atualização baseada no Censo 2022.','Brasil; agregados suportados pelo desenho da PNAD Contínua','agregado amostral conforme desenho da PNAD Contínua','2016–2023','anual','conforme atualização da série','ativo','ajustes metodológicos de 2025; série documentada até 2023','complete','https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52','https://repositorio.ipea.gov.br/entities/publication/0acfbd34-b732-4982-809e-f73e21af9d52','derivado','A revisão de 2025 altera pesos e alguns componentes em relação a cálculos anteriores. Comparações devem usar a mesma versão metodológica; PNAD Contínua não reproduz exatamente o universo e variáveis dos Censos ou da PNAD anual.')
+          ]
+          newp=[]
+          for i,s in enumerate(specs,1):
+              pid=f'DP{pmax+i:06d}'
+              row={'product_id':pid,'resource_id':rid,'product_name':s[0],'product_acronym':s[1],'product_family':s[2],'product_kind':s[3],'product_description':s[4],'research_areas':base,'keywords':common_kw,'geographic_coverage':s[5],'covers_brazil':'sim','spatial_support':s[6],'spatial_resolution':'administrativo/estatístico conforme produto; UDH quando aplicável','temporal_coverage':s[7],'temporal_resolution':s[8],'update_frequency':s[9],'product_status':s[10],'version_or_collection':s[11],'enumeration_scope':s[12],'product_page_url':s[13],'methodology_url':s[14],'primary_or_derived':s[15],'limitations':s[16],'last_verified':today}
+              append_dict('data/data_products.csv',row); newp.append((pid,s))
+          for i,(pid,s) in enumerate(newp,1):
+              did=f'DD{dmax+i:06d}'
+              access=s[13]
+              fmt='visualização web | tabelas | PDF conforme produto'
+              row={'distribution_id':did,'product_id':pid,'distribution_name':s[0]+' — acesso oficial','access_url':access,'format':fmt,'access_protocol':'HTTPS | consulta web | download conforme recurso','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'acesso público aos materiais consultados; preservar citação, edição, metodologia e termos do recurso específico','license':'materiais oficiais do Ipea permitem reprodução com citação da fonte; verificar restrições do recurso específico, especialmente para uso comercial e obras derivadas','provider_attribution_required':'sim','subset_support':'por território, indicador, período ou desagregação conforme produto','notes':'Produto derivado de fontes estatísticas oficiais; preservar desenho amostral/censitário, versão metodológica e recorte territorial. Ausência de dado não deve ser interpretada como vulnerabilidade zero.','last_verified':today}
+              append_dict('data/product_distributions.csv',row)
+          p=Path('data/brazil_scope_priorities.json')
+          obj=json.loads(p.read_text(encoding='utf-8'))
+          p0=next(t for t in obj['tiers'] if t['priority_tier']=='P0')
+          if rid not in p0['resource_ids']: p0['resource_ids'].append(rid)
+          obj['reviewed_at']=today
+          p.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('APPENDED',rid,[x[0] for x in newp])
+          PY
+      - name: Validate and rebuild
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+      - name: Read-back integrity
+        run: |
+          python3 - <<'PY'
+          import csv
+          for p,k in [('data/data_resources.csv','resource_id'),('data/data_products.csv','product_id'),('data/product_distributions.csv','distribution_id')]:
+              rows=list(csv.DictReader(open(p,encoding='utf-8')))
+              ids=[r[k] for r in rows]
+              assert len(ids)==len(set(ids)), p
+              print(p,len(rows),ids[-6:])
+          PY
+      - name: Commit materialized batch
+        run: |
+          git config user.name "Vitrine Audit Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json data/data_products.json data/link_role_audit.json 2>/dev/null || true
+          git commit -m "Expand verified Ipea social-vulnerability catalog"
+          git push origin HEAD:automation/ivs-batch-final
