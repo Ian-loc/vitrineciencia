@@ -1,0 +1,69 @@
+{
+  "schema_version": "public-normalization-overrides-v0.1",
+  "status": "stable",
+  "purpose": "Registrar classificações públicas explícitas para resíduos cuja classe é sustentada pelo próprio texto canônico, sem reescrever o valor original.",
+  "spatial_support": {
+    "DP000191": {
+      "class": "variável por produto",
+      "evidence_contains": "unidades variam por tema",
+      "note": "O atlas declara explicitamente variação das unidades conforme o tema."
+    },
+    "DP000198": {
+      "class": "região ou zona",
+      "evidence_contains": "recortes regionais",
+      "note": "O suporte espacial explicitamente inclui recortes regionais."
+    }
+  },
+  "update_frequency": {
+    "DP000107": {
+      "class": "por edição ou evento",
+      "evidence_contains": "por projeto",
+      "note": "A coleção é atualizada no contexto de projetos específicos."
+    },
+    "DP000109": {
+      "class": "por edição ou evento",
+      "evidence_contains": "por revisão",
+      "note": "A atualização ocorre por revisão cartográfica."
+    },
+    "DP000163": {
+      "class": "por edição ou evento",
+      "evidence_contains": "conforme alteração normativa",
+      "note": "A atualização depende de evento normativo."
+    },
+    "DP000169": {
+      "class": "por edição ou evento",
+      "evidence_contains": "quando houver alteração legal",
+      "note": "A atualização depende de alteração legal."
+    },
+    "DP000348": {
+      "class": "horária",
+      "evidence_contains": "horária/operacional",
+      "note": "A própria descrição da frequência declara atualização horária para monitoramento."
+    },
+    "DP000456": {
+      "class": "sob demanda",
+      "evidence_contains": "por solicitação",
+      "note": "A obtenção é explicitamente acionada por solicitação."
+    },
+    "DP000635": {
+      "class": "irregular",
+      "evidence_contains": "não regular",
+      "note": "O valor canônico declara atualização não regular."
+    },
+    "DP000639": {
+      "class": "irregular",
+      "evidence_contains": "não regular",
+      "note": "O valor canônico declara atualização não regular."
+    },
+    "DP000643": {
+      "class": "sem atualização prevista",
+      "evidence_contains": "sem novas aquisições",
+      "note": "O acervo é histórico e não recebe novas aquisições."
+    },
+    "DP000644": {
+      "class": "sem atualização prevista",
+      "evidence_contains": "sem novas aquisições",
+      "note": "O acervo é histórico e não recebe novas aquisições."
+    }
+  }
+}
