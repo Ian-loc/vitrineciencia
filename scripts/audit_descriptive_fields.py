@@ -63,6 +63,11 @@ def contains_any(value: str, patterns: tuple[str, ...]) -> bool:
     return any(pattern in text for pattern in patterns)
 
 
+def contains_word(value: str, words: tuple[str, ...]) -> bool:
+    text = norm(value)
+    return any(re.search(rf"(?<!\w){re.escape(word)}(?!\w)", text) for word in words)
+
+
 def audit_sources(rows: list[dict[str, str]], issues: list[dict[str, str]]) -> None:
     for row in rows:
         rid = row.get("resource_id", "?")
@@ -94,7 +99,7 @@ def audit_sources(rows: list[dict[str, str]], issues: list[dict[str, str]]) -> N
 
 
 def audit_products(rows: list[dict[str, str]], issues: list[dict[str, str]]) -> None:
-    temporal_tokens = ("diária", "diaria", "mensal", "anual", "semanal", "trimestral", "por edição", "por edicao")
+    temporal_resolution_words = ("diária", "diaria", "mensal", "anual", "semanal", "trimestral")
     for row in rows:
         pid = row.get("product_id", "?")
         audit_max_chars(issues, "product", pid, "product_description", row.get("product_description", ""), 360)
@@ -107,7 +112,7 @@ def audit_products(rows: list[dict[str, str]], issues: list[dict[str, str]]) -> 
             add_issue(issues, "product", pid, "spatial_support", "support_mixes_unit_and_presentation", spatial_support)
 
         spatial_resolution = row.get("spatial_resolution", "")
-        if contains_any(spatial_resolution, temporal_tokens):
+        if contains_word(spatial_resolution, temporal_resolution_words):
             add_issue(issues, "product", pid, "spatial_resolution", "mixes_spatial_and_temporal", spatial_resolution)
 
         temporal_coverage = row.get("temporal_coverage", "")

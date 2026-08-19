@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """Gera a camada pública concentrada e comparável da Vitrine Ciência.
 
-A camada canônica permanece intacta. Os JSONs usados pela interface recebem:
-- áreas públicas amplas e controladas;
-- cópia das áreas detalhadas originais;
-- classe normalizada de suporte espacial;
-- classe normalizada de frequência de atualização;
-- cópia dos textos descritivos originais para rastreabilidade.
+A camada canônica permanece intacta. Os JSONs usados pela interface recebem
+classes públicas controladas e, quando necessário, valores descritivos limpos.
+Toda exceção manual é validada contra um trecho do valor canônico; alguns casos
+também validam um campo de contexto. Assim, a correção falha se a evidência de
+origem mudar e exige nova curadoria.
 """
 from __future__ import annotations
 
@@ -18,6 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_PATH = ROOT / "schema" / "public-discovery-v0.1.json"
+OVERRIDE_PATH = ROOT / "schema" / "public-normalization-overrides-v0.1.json"
 SOURCE_JSON = ROOT / "data" / "data_resources.json"
 PRODUCT_JSON = ROOT / "data" / "data_products.json"
 
@@ -52,14 +52,9 @@ def product_public_areas(product_value: str, source_value: str, schema: dict) ->
             matched.append(area)
     if not matched:
         matched = source_public_areas(source_value, schema)
-    # Evita transformar cartões em listas extensas; até três eixos amplos são suficientes
-    # para descoberta. Os termos detalhados continuam preservados separadamente.
     return matched[:3]
 
 
-# Regras deliberadamente sem termos de apresentação como mapa, gráfico, tabela,
-# prancha ou publicação. Esses termos descrevem a forma de apresentação, não o
-# suporte espacial da informação.
 SPATIAL_RULES: list[tuple[str, tuple[str, ...]]] = [
     ("ponto", ("ponto", "point", "coordenad")),
     ("estação ou local", ("estacao", "station", "posto de monitoramento", "local de monitoramento")),
@@ -109,6 +104,7 @@ UPDATE_RULES: list[tuple[str, tuple[str, ...]]] = [
     ("quase em tempo real", ("quase em tempo real", "near real time", "near-real-time")),
     ("tempo real", ("tempo real", "real time", "real-time")),
     ("contínua", ("continua", "continuamente", "continuous")),
+    ("horária", ("horaria", "hourly")),
     ("diária", ("diaria", "diariamente", "daily")),
     ("semanal", ("semanal", "weekly")),
     ("mensal", ("mensal", "monthly")),
@@ -121,7 +117,7 @@ UPDATE_RULES: list[tuple[str, tuple[str, ...]]] = [
         "ano-base", "eventual", "por divulgacao", "por publicacao", "por levantamento", "por censo"
     )),
     ("sob demanda", ("sob demanda", "on demand")),
-    ("irregular", ("irregular", "nao uniforme", "não uniforme")),
+    ("irregular", ("irregular", "nao uniforme")),
 ]
 
 
@@ -151,10 +147,67 @@ def update_frequency_class(value: str, schema: dict) -> str:
     return result
 
 
+def validate_evidence(group: str, product_id: str, entry: dict, raw_value: str, product: dict) -> None:
+    evidence = entry.get("evidence_contains", "")
+    if not evidence:
+        raise SystemExit(f"ERRO: override {group}/{product_id} não declara evidence_contains")
+    if norm(evidence) not in norm(raw_value):
+        raise SystemExit(
+            f"ERRO: evidência do override {group}/{product_id} não está mais presente no valor canônico"
+        )
+    context_field = entry.get("context_field", "")
+    if context_field:
+        context_contains = entry.get("context_contains", "")
+        if not context_contains:
+            raise SystemExit(f"ERRO: override {group}/{product_id} declara contexto sem context_contains")
+        if norm(context_contains) not in norm(product.get(context_field, "")):
+            raise SystemExit(
+                f"ERRO: contexto do override {group}/{product_id} não está mais presente em {context_field}"
+            )
+
+
+def validated_class_override(
+    overrides: dict,
+    group: str,
+    product_id: str,
+    raw_value: str,
+    allowed: list[str],
+    product: dict,
+) -> str | None:
+    entry = overrides.get(group, {}).get(product_id)
+    if entry is None:
+        return None
+    target = entry.get("class", "")
+    if target not in allowed:
+        raise SystemExit(f"ERRO: override {group}/{product_id} usa classe inválida: {target}")
+    validate_evidence(group, product_id, entry, raw_value, product)
+    return target
+
+
+def validated_text_override(
+    overrides: dict,
+    group: str,
+    product_id: str,
+    raw_value: str,
+    product: dict,
+) -> str | None:
+    entry = overrides.get(group, {}).get(product_id)
+    if entry is None:
+        return None
+    target = str(entry.get("value", "")).strip()
+    if not target:
+        raise SystemExit(f"ERRO: override {group}/{product_id} não declara value")
+    validate_evidence(group, product_id, entry, raw_value, product)
+    return target
+
+
 def main() -> None:
     schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+    overrides = json.loads(OVERRIDE_PATH.read_text(encoding="utf-8"))
     if schema.get("status") != "stable":
         raise SystemExit("ERRO: public-discovery-v0.1 deve estar stable")
+    if overrides.get("status") != "stable":
+        raise SystemExit("ERRO: public-normalization-overrides-v0.1 deve estar stable")
 
     sources = json.loads(SOURCE_JSON.read_text(encoding="utf-8"))
     products = json.loads(PRODUCT_JSON.read_text(encoding="utf-8"))
@@ -169,25 +222,37 @@ def main() -> None:
         source["research_areas"] = " | ".join(grouped)
 
     for product in products:
+        pid = product.get("product_id", "")
         source = source_by_id.get(product.get("resource_id"))
         if source is None:
-            raise SystemExit(f"ERRO: produto sem fonte durante classificação pública: {product.get('product_id')}")
+            raise SystemExit(f"ERRO: produto sem fonte durante classificação pública: {pid}")
         source_detail = source.get("research_areas_detail", source.get("research_areas", ""))
         area_detail = product.get("research_areas", "")
         grouped = product_public_areas(area_detail, source_detail, schema)
         if not grouped:
-            raise SystemExit(f"ERRO: produto sem área pública: {product.get('product_id')}")
+            raise SystemExit(f"ERRO: produto sem área pública: {pid}")
 
         product["research_areas_detail"] = area_detail
         product["research_areas"] = " | ".join(grouped)
 
         raw_support = product.get("spatial_support", "")
         product["spatial_support_detail"] = raw_support
-        product["spatial_support"] = spatial_support_classes(raw_support, schema)
+        product["spatial_support"] = validated_class_override(
+            overrides, "spatial_support", pid, raw_support, schema["spatial_support_classes"], product
+        ) or spatial_support_classes(raw_support, schema)
 
         raw_update = product.get("update_frequency", "")
         product["update_frequency_detail"] = raw_update
-        product["update_frequency"] = update_frequency_class(raw_update, schema)
+        product["update_frequency"] = validated_class_override(
+            overrides, "update_frequency", pid, raw_update, schema["update_frequency_classes"], product
+        ) or update_frequency_class(raw_update, schema)
+
+        for field in ("spatial_resolution", "temporal_coverage", "temporal_resolution", "version_or_collection"):
+            raw_value = product.get(field, "")
+            replacement = validated_text_override(overrides, field, pid, raw_value, product)
+            if replacement is not None:
+                product[f"{field}_detail"] = raw_value
+                product[field] = replacement
 
     SOURCE_JSON.write_text(json.dumps(sources, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     PRODUCT_JSON.write_text(json.dumps(products, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -199,7 +264,7 @@ def main() -> None:
     print(
         "OK: camada pública concentrada gerada — "
         f"{len(schema['public_research_areas'])} áreas amplas; "
-        f"{len(products)} produtos com suporte e atualização normalizados."
+        f"{len(products)} produtos com campos comparáveis normalizados."
     )
     print("Áreas públicas:")
     for area in schema["public_research_areas"]:
