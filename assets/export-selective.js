@@ -70,16 +70,17 @@
       [...select.options].forEach(option => {
         if (!option.value) return;
         const translated = labelArea(option.value);
-        option.textContent = withCount(option.textContent, () => translated);
-        option.dataset.label = translated;
+        const nextText = withCount(option.textContent, () => translated);
+        if (option.textContent !== nextText) option.textContent = nextText;
+        if (option.dataset.label !== translated) option.dataset.label = translated;
       });
     }
     document.querySelectorAll('#product-active-filters [data-remove="area"]').forEach(button => {
       const raw = button.textContent.replace(/\s*×\s*$/, "").replace(/^Área:\s*/, "").trim();
       const translated = `Área: ${labelArea(raw)}`;
       const textNode = [...button.childNodes].find(node => node.nodeType === Node.TEXT_NODE);
-      if (textNode) textNode.textContent = `${translated} `;
-      button.setAttribute("aria-label", `Remover ${translated}`);
+      if (textNode && textNode.textContent !== `${translated} `) textNode.textContent = `${translated} `;
+      if (button.getAttribute("aria-label") !== `Remover ${translated}`) button.setAttribute("aria-label", `Remover ${translated}`);
     });
   }
 
