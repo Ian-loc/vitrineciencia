@@ -31,17 +31,18 @@ Facilitar descoberta, comparação de metadados e avaliação inicial de fontes 
 
 JSONs e o site são derivados deterministicamente.
 
-## 5. Snapshot de referência
+## 5. Snapshot v1.0.0
 
-Em **18 de agosto de 2026**:
+Snapshot candidato congelado em **19 de agosto de 2026**:
 
-- **125 fontes**;
-- **752 produtos**;
-- **783 distribuições**;
-- IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`, com lacunas preservadas;
-- verificações de fonte registradas até **2026-08-18**.
+- **135 fontes**;
+- **833 produtos**;
+- **866 distribuições**;
+- IDs correntes chegam a `DR0135`, `DP000861` e `DD000894`, com lacunas preservadas;
+- verificações de fonte registradas até **2026-08-19**;
+- schema vigente: 34/24/15 campos em fonte/produto/distribuição.
 
-Essas contagens são snapshot, não gate, teto ou requisito arquitetural.
+Essas contagens caracterizam a release `v1.0.0`; não são gate, teto ou requisito arquitetural para releases futuras.
 
 ## 6. Completude suficiente
 
@@ -112,9 +113,23 @@ Não incluir cópias de datasets externos apenas por estarem catalogados.
 - **G8 — depósito:** arquivos/metadados do Zenodo conferidos antes de publicar.
 - **G9 — propagação:** DOI inserido no projeto e perfis após emissão.
 
-## 11. Regra de decisão
+## 11. Estado dos gates para v1.0.0
 
-**GO para DOI** quando G1–G8 estiverem concluídos para um snapshot estável, reproduzível e tecnicamente defensável, após decisão humana explícita de release/depósito.
+Na preparação da branch `release/v1.0.0` em 19/08/2026:
+
+- G1: preparado;
+- G2: requer execução final dos validadores no commit candidato;
+- G3: contrato estável e estados desconhecidos/variáveis preservados; revisão final pelo CI;
+- G4: preparado;
+- G5: preparado na branch de release;
+- G6: requer build/deploy correspondente ao commit final;
+- G7: pendente de merge e criação da tag imutável `v1.0.0`;
+- G8: pendente de materialização e inspeção do pacote final;
+- G9: somente após emissão do DOI.
+
+## 12. Regra de decisão
+
+**GO para DOI** quando G1–G8 estiverem concluídos para o snapshot `v1.0.0`, reproduzível e tecnicamente defensável, após a decisão humana explícita já registrada de preparar esta release.
 
 **NO-GO** para falhas materialmente relevantes: integridade quebrada, identidade incoerente, licença do próprio catálogo incorreta, snapshot não reproduzível, tag ausente ou depósito divergente.
 
