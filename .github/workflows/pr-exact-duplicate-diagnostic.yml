@@ -1,48 +1,101 @@
-name: PR diagnose exact catalog duplicates
+name: PR materialize verified exact duplicate batch
 
 on:
   pull_request:
     branches: ["main"]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  diagnose:
+  materialize:
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-      - name: Report exact duplicate URLs and names
+          fetch-depth: 0
+      - name: Consolidate ten proven duplicate product/distribution pairs
         shell: bash
         run: |
           python3 - <<'PY'
-          import csv,collections
-          ps=list(csv.DictReader(open('data/data_products.csv',encoding='utf-8')))
-          ds=list(csv.DictReader(open('data/product_distributions.csv',encoding='utf-8')))
-          rs=list(csv.DictReader(open('data/data_resources.csv',encoding='utf-8')))
-          def norm(s): return (s or '').strip().rstrip('/').lower()
-          def groups(rows,key):
-              g=collections.defaultdict(list)
-              for r in rows:
-                  v=norm(r.get(key,''))
-                  if v: g[v].append(r)
-              return [(k,v) for k,v in g.items() if len(v)>1]
-          print('COUNTS',len(rs),len(ps),len(ds))
-          print('=== DUPLICATE PRODUCT PAGE URLS ===')
-          for k,v in sorted(groups(ps,'product_page_url'),key=lambda kv:(-len(kv[1]),kv[0])):
-              print('URL',k)
-              for x in v: print(' ',x['product_id'],x['resource_id'],x['product_name'],'| kind=',x['product_kind'],'| version=',x['version_or_collection'])
-          print('=== DUPLICATE PRODUCT NAMES ===')
-          for k,v in sorted(groups(ps,'product_name'),key=lambda kv:(-len(kv[1]),kv[0])):
-              print('NAME',k)
-              for x in v: print(' ',x['product_id'],x['resource_id'],x['product_page_url'],'| version=',x['version_or_collection'])
-          print('=== DUPLICATE DISTRIBUTION ACCESS URLS ===')
-          for k,v in sorted(groups(ds,'access_url'),key=lambda kv:(-len(kv[1]),kv[0])):
-              if len(v)>=2:
-                  print('ACCESS',k)
-                  for x in v: print(' ',x['distribution_id'],x['product_id'],x['distribution_name'])
-          raise SystemExit('diagnostic complete')
+          import csv
+          from pathlib import Path
+          pp=Path('data/data_products.csv'); dp=Path('data/product_distributions.csv')
+          with pp.open(encoding='utf-8',newline='') as f: ps=list(csv.DictReader(f)); pf=list(ps[0])
+          with dp.open(encoding='utf-8',newline='') as f: ds=list(csv.DictReader(f)); df=list(ds[0])
+          assert (len(ps),len(ds))==(795,826), (len(ps),len(ds))
+          # (stable old product, later duplicate, stable old distribution, later duplicate distribution, target source)
+          pairs=[
+            ('DP000017','DP000075','DD000025','DD000091','DR0052'),
+            ('DP000036','DP000079','DD000044','DD000095','DR0056'),
+            ('DP000038','DP000111','DD000046','DD000127','DR0057'),
+            ('DP000016','DP000081','DD000024','DD000097','DR0062'),
+            ('DP000030','DP000329','DD000038','DD000350','DR0012'),
+            ('DP000031','DP000330','DD000039','DD000351','DR0012'),
+            ('DP000032','DP000331','DD000040','DD000352','DR0012'),
+            ('DP000033','DP000332','DD000041','DD000353','DR0012'),
+            ('DP000637','DP000665','DD000662','DD000695','DR0123'),
+            ('DP000638','DP000670','DD000663','DD000700','DR0123'),
+          ]
+          byp={p['product_id']:p for p in ps}; byd={d['distribution_id']:d for d in ds}
+          # Guards from the diagnostic: each pair is the same scientific object, not merely a shared catalog URL.
+          assert byp['DP000017']['product_name']==byp['DP000075']['product_name']
+          assert byp['DP000017']['product_page_url']==byp['DP000075']['product_page_url']
+          assert byp['DP000036']['product_page_url']==byp['DP000079']['product_page_url']
+          assert byp['DP000038']['product_page_url']==byp['DP000111']['product_page_url']
+          assert byp['DP000016']['product_page_url']==byp['DP000081']['product_page_url']
+          assert byp['DP000030']['product_page_url'].rstrip('/')==byp['DP000329']['product_page_url'].rstrip('/index.html')
+          assert byp['DP000031']['product_name']==byp['DP000330']['product_name']
+          assert byp['DP000032']['product_name'].startswith('Área Queimada AQ1km') and byp['DP000331']['product_name'].startswith('Área Queimada AQ1km')
+          assert 'Risco de Fogo' in byp['DP000033']['product_name'] and 'Risco de Fogo' in byp['DP000332']['product_name']
+          assert byp['DP000637']['product_page_url']==byp['DP000665']['product_page_url']
+          assert byp['DP000638']['product_page_url']==byp['DP000670']['product_page_url']
+          delete_p=set(); delete_d=set(); replacements_p={}; replacements_d={}
+          for oldp,newp,oldd,newd,target_source in pairs:
+              assert oldp in byp and newp in byp and oldd in byd and newd in byd
+              assert byd[oldd]['product_id']==oldp and byd[newd]['product_id']==newp
+              q=dict(byp[newp]); q['product_id']=oldp; q['resource_id']=target_source
+              replacements_p[oldp]=q; delete_p.add(newp)
+              z=dict(byd[newd]); z['distribution_id']=oldd; z['product_id']=oldp
+              replacements_d[oldd]=z; delete_d.add(newd)
+          ps=[replacements_p.get(p['product_id'],p) for p in ps if p['product_id'] not in delete_p]
+          ds=[replacements_d.get(d['distribution_id'],d) for d in ds if d['distribution_id'] not in delete_d]
+          with pp.open('w',encoding='utf-8',newline='') as f: w=csv.DictWriter(f,fieldnames=pf,lineterminator='\n'); w.writeheader(); w.writerows(ps)
+          with dp.open('w',encoding='utf-8',newline='') as f: w=csv.DictWriter(f,fieldnames=df,lineterminator='\n'); w.writeheader(); w.writerows(ds)
+          print('CONSOLIDATED',len(pairs),'PAIRS ->',len(ps),len(ds))
           PY
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+          python3 - <<'PY'
+          import csv,json
+          r=list(csv.DictReader(open('data/data_resources.csv',encoding='utf-8'))); p=list(csv.DictReader(open('data/data_products.csv',encoding='utf-8'))); d=list(csv.DictReader(open('data/product_distributions.csv',encoding='utf-8')))
+          a=json.load(open('data/link_role_audit.json',encoding='utf-8'))
+          assert (len(r),len(p),len(d))==(126,785,816), (len(r),len(p),len(d))
+          assert a['records']==126
+          removed_p={'DP000075','DP000079','DP000081','DP000111','DP000329','DP000330','DP000331','DP000332','DP000665','DP000670'}
+          removed_d={'DD000091','DD000095','DD000097','DD000127','DD000350','DD000351','DD000352','DD000353','DD000695','DD000700'}
+          assert not any(x['product_id'] in removed_p for x in p)
+          assert not any(x['distribution_id'] in removed_d for x in d)
+          checks={'DP000017':'DR0052','DP000036':'DR0056','DP000038':'DR0057','DP000016':'DR0062','DP000030':'DR0012','DP000031':'DR0012','DP000032':'DR0012','DP000033':'DR0012','DP000637':'DR0123','DP000638':'DR0123'}
+          for pid,rid in checks.items():
+              q=[x for x in p if x['product_id']==pid]; assert len(q)==1 and q[0]['resource_id']==rid
+          print('READBACK',len(r),len(p),len(d),a['counts'])
+          PY
+      - name: Commit candidate and remove one-shot workflow
+        shell: bash
+        run: |
+          rm -f .github/workflows/pr-exact-duplicate-diagnostic.yml
+          git config user.name "Ian-loc"
+          git config user.email "lara.clemente@ufla.br"
+          git add data .github/workflows
+          git diff --cached --check
+          git commit -m "Deduplicate verified catalog product overlaps"
+          git push origin HEAD:${{ github.head_ref }}
