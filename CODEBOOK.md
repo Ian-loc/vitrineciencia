@@ -8,7 +8,7 @@ A Vitrine usa três tabelas CSV canônicas na `main`:
 - `data/data_products.csv` — produtos;
 - `data/product_distributions.csv` — distribuições.
 
-Snapshot de 18/08/2026: **125 fontes, 752 produtos e 783 distribuições**. Os JSONs e o site são derivados. O Drive é espelho/histórico derivado.
+Snapshot de 19/08/2026: **133 fontes, 823 produtos e 856 distribuições**. Os JSONs e o site são derivados. O Drive é espelho/histórico derivado.
 
 ## 2. Fontes — 34 campos
 
@@ -164,3 +164,29 @@ Regras operacionais prioritárias:
 - revisar `geographic_coverage` para distinguir tipo de abrangência, local e observações;
 - auditar primeiro os produtos que aparecem em comparações públicas e, depois, propagar a normalização ao restante do catálogo;
 - manter campos narrativos (`description`, `academic_uses`, `limitations`) curtos, factuais e com papéis não sobrepostos.
+
+## 11. Camada pública de descoberta e comparação
+
+A interface pública usa uma camada derivada definida em `schema/public-discovery-v0.1.json`. Ela **não substitui nem apaga** os valores detalhados dos CSVs canônicos.
+
+### Áreas de pesquisa públicas
+
+As classificações detalhadas são agrupadas em seis áreas amplas:
+
+1. **Ecologia, Biodiversidade e Meio Ambiente**;
+2. **Clima, Água e Atmosfera**;
+3. **Geociências e Solos**;
+4. **Agricultura, Florestas e Uso da Terra**;
+5. **Território, Sociedade e Políticas Públicas**;
+6. **Geoinformação, Sensoriamento e Ciência de Dados**.
+
+Nos JSONs públicos, `research_areas` recebe essas categorias amplas e `research_areas_detail` preserva a classificação detalhada anterior. Assim, filtros, cartões e gráficos usam uma taxonomia simples, enquanto a informação temática fina continua disponível para rastreabilidade e evolução futura.
+
+### Suporte espacial e frequência de atualização
+
+A camada pública também separa o valor comparável da descrição histórica:
+
+- `spatial_support` passa a expor uma ou mais **classes controladas de suporte**; `spatial_support_detail` preserva o texto original;
+- `update_frequency` passa a expor uma **classe controlada de frequência**; `update_frequency_detail` preserva o texto original.
+
+A normalização é determinística e conservadora: termos de apresentação como “mapa”, “gráfico” ou “análise” não são tratados como suporte espacial; quando não há evidência suficiente, a classe permanece `desconhecido`/`desconhecida` em vez de ser inferida.
