@@ -1,0 +1,60 @@
+name: Automation PR runner Siconfi batch
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths: [".siconfi-pr-trigger"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Run reviewed materializer embedded in canonical workflow
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          text=Path('.github/workflows/automation-siconfi-batch.yml').read_text()
+          start=text.index("python3 - <<'PY'\n")+len("python3 - <<'PY'\n")
+          end=text.index("\n          PY\n", start)
+          lines=[]
+          for line in text[start:end].splitlines():
+              lines.append(line[10:] if line.startswith('          ') else line)
+          Path('/tmp/materialize_siconfi.py').write_text('\n'.join(lines)+'\n')
+          PY
+          python3 /tmp/materialize_siconfi.py
+      - name: Validate and rebuild
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+      - name: Read back and commit
+        run: |
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+          def rr(p):
+              with Path(p).open(encoding='utf-8-sig',newline='') as f:return list(csv.DictReader(f))
+          s=rr('data/data_resources.csv'); p=rr('data/data_products.csv'); d=rr('data/product_distributions.csv')
+          assert len(s)==130, len(s); assert len(p)==810, len(p); assert len(d)==843, len(d)
+          rid=s[-1]['resource_id']; assert 'Siconfi' in s[-1]['resource_name']
+          pp=[x for x in p if x['resource_id']==rid]; assert len(pp)==10
+          pids={x['product_id'] for x in pp}; assert len([x for x in d if x['product_id'] in pids])==10
+          print('READBACK',len(s),len(p),len(d),rid)
+          PY
+          git config user.name "vitrine-automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json data/data_resources.json data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          git commit -m "Expand verified Siconfi public-finance catalog"
+          git push origin HEAD:main
