@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Encontre e compare fontes e produtos de dados científicos sobre o Brasil para pesquisa, ensino e extensão.">
 <meta name="theme-color" content="#173f32"><meta name="color-scheme" content="light">
-<title>Vitrine Ciência · Dados científicos sobre o Brasil</title><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/accessibility.css"><link rel="stylesheet" href="assets/brazil-scope.css"><link rel="stylesheet" href="assets/visual-refinement.css">
+<title>Vitrine Ciência · Dados científicos sobre o Brasil</title><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/accessibility.css"><link rel="stylesheet" href="assets/brazil-scope.css"><link rel="stylesheet" href="assets/visual-refinement.css"><link rel="stylesheet" href="assets/export-selective.css">
 </head>
 <body>
 <a class="skip" href="#conteudo">Ir ao conteúdo</a>
@@ -26,7 +26,7 @@
 </form>
 <div class="quick-search scope-shortcuts" aria-label="Atalhos de cobertura"><span>Explorar:</span><button type="button" data-scope="fonte_brasileira">fontes brasileiras</button><button type="button" data-scope="cobertura_brasil_sistematica">fontes com dados do Brasil</button></div>
 <div class="quick-search" aria-label="Buscas sugeridas"><span>Exemplos:</span><button type="button" data-query="biodiversidade">biodiversidade</button><button type="button" data-query="carbono">carbono</button><button type="button" data-query="Amazônia">Amazônia</button><button type="button" data-query="API">API</button><button type="button" data-query="GeoTIFF">GeoTIFF</button></div>
-<div class="hero-links"><a href="#areas">Explorar por área</a><a href="products.html">Ver produtos</a><a href="analytics.html">Visão do catálogo</a><a href="data/data_resources.csv" download>Baixar catálogo (CSV)</a></div>
+<div class="hero-links"><a href="#areas">Explorar por área</a><a href="products.html">Ver produtos</a><a href="analytics.html">Visão do catálogo</a></div>
 </div>
 </div></header>
 <section class="stats" aria-label="Resumo do catálogo"><div class="wrap stats-grid">
@@ -61,17 +61,18 @@
 <label><span>Tipo de documentação</span><select id="evidence"><option value="">Todos os tipos</option></select></label>
 </fieldset>
 </details>
-<div class="filter-footer"><p id="filter-note">A ordem padrão destaca fontes brasileiras e fontes com dados sobre o Brasil.</p><button type="button" id="clear">Limpar busca e filtros</button></div>
+<div class="filter-footer"><p id="filter-note">A ordem padrão destaca fontes brasileiras e fontes com dados sobre o Brasil. Para exportar, baixe um registro individual ou selecione somente as fontes de interesse.</p><button type="button" id="clear">Limpar busca e filtros</button></div>
 </form>
 <div class="active-filters" id="active-filters" role="region" aria-label="Filtros ativos" aria-live="polite" hidden></div>
 <div id="list" class="cards" role="list" aria-busy="true" aria-describedby="count"></div>
 <div class="results-more" id="results-more" hidden><button type="button" id="show-more" aria-controls="list">Mostrar mais fontes</button><span id="shown-count" role="status" aria-live="polite"></span></div>
 <div id="empty" class="empty" role="status" hidden><h3>Nenhuma fonte corresponde à busca</h3><p>Remova um filtro ou tente um termo mais amplo.</p></div>
-<noscript><div class="noscript"><h3>O catálogo interativo requer JavaScript</h3><p>Você ainda pode <a href="data/data_resources.csv" download>baixar o CSV completo</a>, consultar a <a href="about.html">metodologia e citação</a> ou acessar o <a href="https://github.com/Ian-loc/vitrineciencia">repositório no GitHub</a>.</p></div></noscript>
+<noscript><div class="noscript"><h3>O catálogo interativo requer JavaScript</h3><p>Ative JavaScript para pesquisar, selecionar e exportar registros de fontes. Você também pode consultar a <a href="about.html">metodologia e citação</a> ou acessar o <a href="https://github.com/Ian-loc/vitrineciencia">repositório no GitHub</a>.</p></div></noscript>
 </section>
 <section class="wrap about"><div><p class="eyebrow">Antes de usar os dados</p><h2>Confirme o produto na fonte original</h2></div><p>Verifique versão, licença, metodologia, resolução, cobertura e limitações antes da análise. A Vitrine ajuda a descobrir e comparar opções; a documentação original continua sendo a referência para o uso dos dados.</p></section>
 </main>
 <footer class="wrap"><p><strong>Vitrine Ciência</strong> · Ian Clemente · <a href="products.html">Produtos</a> · <a href="about.html">Método e citação</a> · <a href="analytics.html">Visão do catálogo</a></p><p>Brasil · Dados: CC BY 4.0 · Código: MIT · Registros revisados até <span id="updated">—</span></p></footer>
-<script src="assets/ptbr.js" defer></script>
+<script src="assets/ptbr.js?v=20260819-3" defer></script>
 <script src="assets/app.js" defer></script>
+<script src="assets/export-selective.js?v=20260819-1" defer></script>
 </body></html>
