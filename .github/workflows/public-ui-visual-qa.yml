@@ -115,6 +115,7 @@ jobs:
                       areaDisplay: areaGrid ? getComputedStyle(areaGrid).display : null,
                       areaClientWidth: areaGrid?.clientWidth || 0,
                       areaScrollWidth: areaGrid?.scrollWidth || 0,
+                      fullCatalogCsvLinks: document.querySelectorAll('a[href*="data_resources.csv"],a[href*="data_products.csv"],a[href*="product_distributions.csv"]').length,
                     };
                   });
                   Object.assign(metrics, {target, mode, page: name, url});
@@ -130,6 +131,11 @@ jobs:
                     failed = true;
                   }
 
+                  if (target === 'candidate' && metrics.fullCatalogCsvLinks !== 0) {
+                    console.error(`Link de CSV integral exposto em ${mode}/${name}: ${metrics.fullCatalogCsvLinks}`);
+                    failed = true;
+                  }
+
                   if (target === 'candidate' && name === 'home') {
                     if (metrics.sourceCards !== 12 || !metrics.sourceShowMoreVisible) {
                       console.error(`Divulgação progressiva de fontes inválida: ${mode}: cards=${metrics.sourceCards}, showMore=${metrics.sourceShowMoreVisible}`);
@@ -139,6 +145,21 @@ jobs:
                       console.error(`Faixa temática mobile inválida: display=${metrics.areaDisplay}, ${metrics.areaScrollWidth} <= ${metrics.areaClientWidth}`);
                       failed = true;
                     }
+
+                    const sourceDownloads = page.locator('[data-download-source]');
+                    const sourceSelectors = page.locator('[data-select-source]');
+                    if (await sourceDownloads.count() !== metrics.sourceCards || await sourceSelectors.count() !== metrics.sourceCards) {
+                      console.error(`Controles de exportação de fontes incompletos em ${mode}.`);
+                      failed = true;
+                    } else {
+                      await sourceSelectors.first().check();
+                      if (!await page.locator('#source-export-bar').isVisible()) {
+                        console.error(`Barra de exportação seletiva não apareceu em ${mode}.`);
+                        failed = true;
+                      }
+                      await page.locator('#source-export-clear').click();
+                    }
+
                     await page.locator('#show-more').click();
                     const expanded = await page.locator('#list .card').count();
                     if (expanded !== 24) {
@@ -152,6 +173,28 @@ jobs:
                       console.error(`Divulgação progressiva de produtos inválida: ${mode}: cards=${metrics.productCards}, showMore=${metrics.productShowMoreVisible}`);
                       failed = true;
                     }
+
+                    const compareInputs = page.locator('[data-compare]');
+                    if (await compareInputs.count() >= 2) {
+                      await compareInputs.nth(0).check();
+                      await compareInputs.nth(1).check();
+                      await page.locator('#compare-open').click();
+                      await page.locator('#compare-dialog[open]').waitFor({state: 'visible'});
+                      const labels = await page.locator('#compare-content th[scope="row"]').allTextContents();
+                      if (!labels.includes('Suporte espacial') || !labels.includes('Resolução espacial') || !labels.includes('Cobertura temporal') || !labels.includes('Resolução temporal')) {
+                        console.error(`Dimensões da comparação não estão separadas em ${mode}: ${labels.join(' | ')}`);
+                        failed = true;
+                      }
+                      if (!await page.locator('#compare-download-csv').isVisible()) {
+                        console.error(`Download da comparação não está disponível em ${mode}.`);
+                        failed = true;
+                      }
+                      await page.locator('#compare-close').click();
+                    } else {
+                      console.error(`Produtos insuficientes para testar comparação em ${mode}.`);
+                      failed = true;
+                    }
+
                     await page.locator('#product-show-more').click();
                     const expanded = await page.locator('#product-list .card').count();
                     if (expanded <= metrics.productCards) {

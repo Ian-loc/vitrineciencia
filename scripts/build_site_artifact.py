@@ -2,8 +2,10 @@
 """Build the isolated static artifact published as the Vitrine Ciência.
 
 Only files required by the public discovery interface are copied. Development,
-QA, build metadata, database material and operational documentation remain in
-the repository and are not shipped in the GitHub Pages artifact.
+QA, build metadata, canonical CSV tables, database material and operational
+documentation remain in the repository and are not shipped in the GitHub Pages
+artifact. The public interface uses JSON for interactive discovery and creates
+CSV exports only from user-selected records in the browser.
 """
 from __future__ import annotations
 
@@ -25,15 +27,14 @@ REQUIRED_FILES = (
     "assets/brazil-scope.css",
     "assets/products.css",
     "assets/visual-refinement.css",
+    "assets/export-selective.css",
     "assets/app.js",
     "assets/ptbr.js",
     "assets/products.js",
     "assets/analytics.js",
-    "data/data_resources.csv",
+    "assets/export-selective.js",
     "data/data_resources.json",
-    "data/data_products.csv",
     "data/data_products.json",
-    "data/product_distributions.csv",
     "data/brazil_scope_priorities.json",
 )
 
@@ -44,12 +45,15 @@ OPTIONAL_FILES = (
     "favicon.svg",
     "robots.txt",
     "sitemap.xml",
-    "data/product_distributions.json",
 )
 
 FORBIDDEN_PUBLIC_PATHS = (
     "explorer.html",
     "abordagens.html",
+    "data/data_resources.csv",
+    "data/data_products.csv",
+    "data/product_distributions.csv",
+    "data/product_distributions.json",
     "data/federated_layers.json",
     "data/build-meta.json",
     "assets/explorer.js",
