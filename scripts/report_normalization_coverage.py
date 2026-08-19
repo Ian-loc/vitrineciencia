@@ -35,6 +35,11 @@ def contains_any(value: str, patterns: tuple[str, ...]) -> bool:
     return any(pattern in text for pattern in patterns)
 
 
+def contains_word(value: str, words: tuple[str, ...]) -> bool:
+    text = norm(value)
+    return any(re.search(rf"(?<!\w){re.escape(word)}(?!\w)", text) for word in words)
+
+
 def support_warning(row: dict[str, str]) -> bool:
     value = row.get("spatial_support", "")
     items = split_pipe(value)
@@ -47,9 +52,9 @@ def update_warning(row: dict[str, str]) -> bool:
 
 
 def spatial_resolution_warning(row: dict[str, str]) -> bool:
-    return contains_any(
+    return contains_word(
         row.get("spatial_resolution", ""),
-        ("diária", "diaria", "mensal", "anual", "semanal", "trimestral", "por edição", "por edicao"),
+        ("diária", "diaria", "mensal", "anual", "semanal", "trimestral"),
     )
 
 
@@ -74,12 +79,13 @@ def version_warning(row: dict[str, str]) -> bool:
     )
 
 
-def print_group(title: str, rows: list[dict[str, str]], field: str) -> None:
+def print_group(title: str, rows: list[dict[str, str]], field: str, context_field: str | None = None) -> None:
     if not rows:
         return
     print(f"RESÍDUOS {title}: {len(rows)}")
     for row in rows:
-        print(f"- {row.get('product_id','?')} | {row.get('product_name','')} | {row.get(field,'')}")
+        context = f" | {context_field}={row.get(context_field,'')}" if context_field else ""
+        print(f"- {row.get('product_id','?')} | {row.get('product_name','')} | {row.get(field,'')}{context}")
 
 
 def main() -> None:
@@ -122,6 +128,7 @@ def main() -> None:
         "spatial_resolution",
         [row for row in raw if spatial_resolution_warning(row)],
         "spatial_resolution",
+        "spatial_support",
     )
     print_group(
         "temporal_coverage",
