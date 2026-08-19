@@ -29,6 +29,7 @@ jobs:
           python3 scripts/audit_descriptive_fields.py
           python3 scripts/build_catalog.py
           python3 scripts/build_public_discovery.py
+          python3 scripts/report_normalization_coverage.py
           python3 scripts/audit_link_roles.py
 
       - name: Validar interface e fronteira da Vitrine
@@ -101,6 +102,7 @@ jobs:
           python3 scripts/audit_descriptive_fields.py
           python3 scripts/build_catalog.py
           python3 scripts/build_public_discovery.py
+          python3 scripts/report_normalization_coverage.py
           python3 scripts/audit_link_roles.py
           python3 scripts/validate_vitrine.py
           node --check assets/ptbr.js
