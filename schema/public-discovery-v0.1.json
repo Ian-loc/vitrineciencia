@@ -1,0 +1,76 @@
+{
+  "schema_version": "public-discovery-v0.1",
+  "status": "stable",
+  "purpose": "Definir a camada pública e comparável da Vitrine sem apagar a descrição detalhada dos registros canônicos.",
+  "public_research_areas": [
+    "Ecologia, Biodiversidade e Meio Ambiente",
+    "Clima, Água e Atmosfera",
+    "Geociências e Solos",
+    "Agricultura, Florestas e Uso da Terra",
+    "Território, Sociedade e Políticas Públicas",
+    "Geoinformação, Sensoriamento e Ciência de Dados"
+  ],
+  "source_area_groups": {
+    "Ciências Ambientais e Ecologia": "Ecologia, Biodiversidade e Meio Ambiente",
+    "Biodiversidade e Conservação": "Ecologia, Biodiversidade e Meio Ambiente",
+    "Clima e Ciências Atmosféricas": "Clima, Água e Atmosfera",
+    "Recursos Hídricos e Oceanografia": "Clima, Água e Atmosfera",
+    "Geociências, Solos e Geografia Física": "Geociências e Solos",
+    "Agricultura, Florestas e Uso da Terra": "Agricultura, Florestas e Uso da Terra",
+    "Planejamento Territorial e Políticas Públicas": "Território, Sociedade e Políticas Públicas",
+    "Sensoriamento Remoto e Geoinformação": "Geoinformação, Sensoriamento e Ciência de Dados",
+    "Infraestruturas e Ciência de Dados": "Geoinformação, Sensoriamento e Ciência de Dados"
+  },
+  "product_area_terms": {
+    "Ecologia, Biodiversidade e Meio Ambiente": ["ecology", "ecologia", "biodiversity", "biodiversidade", "conservation", "conservação", "vegetation", "vegetação", "restoration", "restauração", "environmental science", "ciências ambientais", "wetland", "savanna", "marine ecology", "ecosystem"],
+    "Clima, Água e Atmosfera": ["climate", "clima", "atmospher", "meteorolog", "hydrolog", "hidrolog", "water", "água", "ocean", "oceanograf", "precipitation", "precipitação", "rainfall", "drought", "seca", "flood", "inundação"],
+    "Geociências e Solos": ["geoscien", "geociên", "geology", "geologia", "geomorph", "geomorf", "soil", "solo", "pedolog", "topograph", "topograf", "terrain", "geografia física", "physical geography"],
+    "Agricultura, Florestas e Uso da Terra": ["agric", "agro", "forest", "florest", "forestry", "land use", "uso da terra", "land cover", "cobertura da terra", "crop", "pasture", "pastagem", "livestock", "pecu", "rural geography"],
+    "Território, Sociedade e Políticas Públicas": ["territor", "planning", "planejamento", "public policy", "políticas públicas", "socio", "population", "população", "urban", "regional science", "economic geography", "human geography", "public health", "saúde pública", "sanitation", "saneamento", "education", "educação", "demography", "demografia", "governance", "governança", "accessibility", "acessibilidade"],
+    "Geoinformação, Sensoriamento e Ciência de Dados": ["remote sensing", "sensoriamento remoto", "geospatial", "geoespacial", "gis", "sig", "data science", "ciência de dados", "comput", "machine learning", "aprendizado de máquina", "data publishing", "publicação de dados", "spatial analysis", "análise espacial", "infrastructure", "infraestrutura", "statistics", "estatística"]
+  },
+  "spatial_support_classes": [
+    "ponto",
+    "estação ou local",
+    "unidade amostral",
+    "célula raster",
+    "grade",
+    "linha ou transecto",
+    "polígono ou feição",
+    "unidade administrativa",
+    "região ou zona",
+    "bacia ou corpo d'água",
+    "registro tabular sem geometria",
+    "variável por produto",
+    "não se aplica",
+    "desconhecido"
+  ],
+  "update_frequency_classes": [
+    "tempo real",
+    "quase em tempo real",
+    "contínua",
+    "diária",
+    "semanal",
+    "mensal",
+    "trimestral",
+    "semestral",
+    "anual",
+    "plurianual",
+    "por edição ou evento",
+    "sob demanda",
+    "irregular",
+    "periódica não especificada",
+    "sem atualização prevista",
+    "múltipla",
+    "não se aplica",
+    "desconhecida"
+  ],
+  "rules": [
+    "public_research_area_is_broad_and_controlled",
+    "detailed_research_terms_are_preserved_separately",
+    "spatial_support_class_contains_only_support_not_presentation",
+    "update_frequency_class_contains_only_frequency_not_explanatory_note",
+    "raw_descriptive_text_is_preserved_for_provenance",
+    "unknown_is_never_converted_to_negative"
+  ]
+}

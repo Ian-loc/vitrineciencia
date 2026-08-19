@@ -11,7 +11,9 @@ on:
       - "about.html"
       - "assets/**"
       - "data/**"
+      - "schema/public-discovery-v0.1.json"
       - "scripts/build_catalog.py"
+      - "scripts/build_public_discovery.py"
       - "scripts/validate_vitrine.py"
   workflow_dispatch:
 
@@ -32,6 +34,7 @@ jobs:
       - name: Preparar versão candidata
         run: |
           python3 scripts/build_catalog.py
+          python3 scripts/build_public_discovery.py
           python3 scripts/validate_vitrine.py
           python3 -m http.server 8000 > /tmp/vitrine-http.log 2>&1 &
           echo $! > /tmp/vitrine-http.pid
@@ -100,6 +103,7 @@ jobs:
                     const areaGrid = document.querySelector('#area-links');
                     const sourceShowMore = document.querySelector('#show-more');
                     const productShowMore = document.querySelector('#product-show-more');
+                    const productArea = document.querySelector('#product-area');
                     return {
                       title: document.title,
                       viewportWidth: window.innerWidth,
@@ -115,6 +119,8 @@ jobs:
                       areaDisplay: areaGrid ? getComputedStyle(areaGrid).display : null,
                       areaClientWidth: areaGrid?.clientWidth || 0,
                       areaScrollWidth: areaGrid?.scrollWidth || 0,
+                      areaCards: document.querySelectorAll('#area-links .area-card').length,
+                      productAreaOptions: productArea ? Math.max(0, productArea.options.length - 1) : 0,
                       fullCatalogCsvLinks: document.querySelectorAll('a[href*="data_resources.csv"],a[href*="data_products.csv"],a[href*="product_distributions.csv"]').length,
                     };
                   });
@@ -137,6 +143,10 @@ jobs:
                   }
 
                   if (target === 'candidate' && name === 'home') {
+                    if (metrics.areaCards !== 6) {
+                      console.error(`Taxonomia pública deve ter 6 áreas; encontradas ${metrics.areaCards} em ${mode}.`);
+                      failed = true;
+                    }
                     if (metrics.sourceCards !== 12 || !metrics.sourceShowMoreVisible) {
                       console.error(`Divulgação progressiva de fontes inválida: ${mode}: cards=${metrics.sourceCards}, showMore=${metrics.sourceShowMoreVisible}`);
                       failed = true;
@@ -169,6 +179,10 @@ jobs:
                   }
 
                   if (target === 'candidate' && name === 'products') {
+                    if (metrics.productAreaOptions !== 6) {
+                      console.error(`Filtro de produtos deve ter 6 áreas amplas; encontradas ${metrics.productAreaOptions} em ${mode}.`);
+                      failed = true;
+                    }
                     if (metrics.productCards !== 6 || !metrics.productShowMoreVisible) {
                       console.error(`Divulgação progressiva de produtos inválida: ${mode}: cards=${metrics.productCards}, showMore=${metrics.productShowMoreVisible}`);
                       failed = true;
