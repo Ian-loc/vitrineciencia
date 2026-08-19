@@ -4,7 +4,11 @@ O projeto segue versionamento semântico. A `main` pode avançar entre releases;
 
 ## Não lançado
 
-- Nenhuma alteração registrada após a preparação da `v1.0.0`.
+- fase ativa alterada para **QA/QC e manutenção**, com expansão de novas fontes/produtos/distribuições pausada até nova decisão humana explícita;
+- smoke-test público alinhado à fronteira real do GitHub Pages: CSVs canônicos internos deixaram de ser tratados como endpoints públicos esperados e passaram a ser verificados como não publicados;
+- smoke-test pós-deploy passou a validar o `head_sha` exato do workflow publicado, evitando falso negativo quando a `main` avança antes do teste externo;
+- workflow legado `validate-source-corrections.yml`, incompatível com a fronteira pública atual e preso ao antigo baseline de 51 fontes, removido;
+- validador legado `scripts/validate_frontend.py`, ainda preso à identidade `Science Data Sources Catalog` e ao gate fixo de 51 fontes, removido; checklist de PR alinhado aos validadores atuais da Vitrine.
 
 ## 1.0.0 — 19 de agosto de 2026
 
