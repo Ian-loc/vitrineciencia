@@ -141,3 +141,26 @@ URLs podem coincidir quando uma página realmente cumpre mais de um papel, mas a
 PostgreSQL/PostGIS, releases relacionais, variáveis normalizadas e entidades adicionais descritas em documentos antigos pertencem ao histórico do Simbiotrama. Não fazem parte do codebook ativo da Vitrine.
 
 O contrato executável vigente é `schema/product-catalog-v0.1.json` e a especificação normativa é `docs/VITRINE_CANONICAL_DATA_CONTRACT.md`.
+
+## 10. Contrato dos campos descritivos e comparabilidade
+
+A Vitrine passa a distinguir cinco classes de campo: **identificador**, **valor controlado**, **lista delimitada**, **texto estruturado** e **texto narrativo**. O objetivo é impedir que um único campo misture conceitos diferentes e tornar comparações lado a lado semanticamente válidas.
+
+O contrato inicial está em `schema/descriptive-field-contract-v0.1.json`. Enquanto ele estiver em estado `experimental`, funciona como regra de curadoria e migração, sem invalidar automaticamente registros históricos ainda não normalizados.
+
+Regras operacionais prioritárias:
+
+1. **um campo = um conceito**: suporte espacial, resolução espacial, cobertura temporal, resolução temporal, frequência de atualização e versão não devem ser fundidos;
+2. **valores controlados antes de prosa**: `sim`, `não`, `parcial`, `desconhecido`, classes de produto, origem e estado devem permanecer canônicos;
+3. **listas usam ` | `**: áreas, palavras-chave, formatos e conjuntos equivalentes devem ser tratados como conjuntos de valores, não como parágrafos;
+4. **descrição não substitui limitação**: descrições informam o que a fonte/produto é; limitações registram cautelas de interpretação;
+5. **fonte resume, produto especifica**: quando resolução, período, versão ou licença variam entre produtos, o nível fonte deve declarar a variabilidade e o detalhe deve ficar no produto/distribuição;
+6. **não inventar precisão**: quando a evidência não sustenta um valor comparável, usar `desconhecido`, `não se aplica` ou uma declaração explícita de variabilidade.
+
+### Prioridades de migração
+
+- separar `access_conditions` em classe + nota quando o schema de fontes for revisado;
+- separar `update_frequency` em classe controlada + nota específica;
+- revisar `geographic_coverage` para distinguir tipo de abrangência, local e observações;
+- auditar primeiro os produtos que aparecem em comparações públicas e, depois, propagar a normalização ao restante do catálogo;
+- manter campos narrativos (`description`, `academic_uses`, `limitations`) curtos, factuais e com papéis não sobrepostos.
