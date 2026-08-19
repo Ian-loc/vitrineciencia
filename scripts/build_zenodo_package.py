@@ -8,7 +8,6 @@ import json
 import re
 import shutil
 import subprocess
-import sys
 import zipfile
 from pathlib import Path
 
@@ -31,7 +30,7 @@ CANONICAL = {
     "data/data_products.csv": {
         "dest": "data/products.csv",
         "blob": "a77dac3e9025cf81299ce244183ea38ee1fe6c65",
-        "rows": 833,
+        "rows": 843,
         "id": "product_id",
         "pattern": r"^DP\d{6}$",
         "entity": "product",
@@ -39,7 +38,7 @@ CANONICAL = {
     "data/product_distributions.csv": {
         "dest": "data/distributions.csv",
         "blob": "c626ac4697aeb2bd009a54e8f05b135375242dcb",
-        "rows": 866,
+        "rows": 876,
         "id": "distribution_id",
         "pattern": r"^DD\d{6}$",
         "entity": "distribution",
@@ -173,13 +172,12 @@ def write_data_dictionary(headers_by_entity: dict[str, list[str]]) -> None:
         for entity in ("source", "product", "distribution"):
             for field in headers_by_entity[entity]:
                 key_role = "none"
-                if field in {"resource_id", "product_id", "distribution_id"}:
-                    if (entity, field) in {
-                        ("source", "resource_id"),
-                        ("product", "product_id"),
-                        ("distribution", "distribution_id"),
-                    }:
-                        key_role = "primary_key"
+                if (entity, field) in {
+                    ("source", "resource_id"),
+                    ("product", "product_id"),
+                    ("distribution", "distribution_id"),
+                }:
+                    key_role = "primary_key"
                 if entity == "product" and field == "resource_id":
                     key_role = "foreign_key:source.resource_id"
                 if entity == "distribution" and field == "product_id":
@@ -200,8 +198,8 @@ def write_schema() -> None:
             ["S004", "product", "foreign_key", "resource_id", "source", "resource_id", "must_exist"],
             ["S005", "distribution", "foreign_key", "product_id", "product", "product_id", "must_exist"],
             ["S006", "source", "snapshot_count", "", "", "", "135"],
-            ["S007", "product", "snapshot_count", "", "", "", "833"],
-            ["S008", "distribution", "snapshot_count", "", "", "", "866"],
+            ["S007", "product", "snapshot_count", "", "", "", "843"],
+            ["S008", "distribution", "snapshot_count", "", "", "", "876"],
             ["S009", "product", "cardinality", "product_id", "distribution", "product_id", ">=1 distribution per product"],
         ])
 
