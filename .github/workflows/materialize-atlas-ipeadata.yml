@@ -1,0 +1,136 @@
+name: Materialize verified Atlas and IpeaData batch
+
+on:
+  push:
+    paths:
+      - '.github/workflows/materialize-atlas-ipeadata.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Append verified sources products distributions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+
+          RES=Path('data/data_resources.csv')
+          PROD=Path('data/data_products.csv')
+          DIST=Path('data/product_distributions.csv')
+          PRI=Path('data/brazil_scope_priorities.json')
+          TODAY='2026-08-19'
+
+          def read_ids(path, key):
+              with path.open(encoding='utf-8', newline='') as f:
+                  return {r[key] for r in csv.DictReader(f)}
+
+          def append_dicts(path, rows):
+              with path.open(encoding='utf-8', newline='') as f:
+                  reader=csv.DictReader(f)
+                  fields=reader.fieldnames
+              for r in rows:
+                  miss=[k for k in fields if k not in r]
+                  extra=[k for k in r if k not in fields]
+                  if miss or extra:
+                      raise SystemExit(f'{path}: missing={miss} extra={extra}')
+              with path.open('a', encoding='utf-8', newline='') as f:
+                  w=csv.DictWriter(f, fieldnames=fields, lineterminator='\n')
+                  for r in rows: w.writerow(r)
+
+          existing_resources=read_ids(RES,'resource_id')
+          existing_products=read_ids(PROD,'product_id')
+          existing_distributions=read_ids(DIST,'distribution_id')
+          if any(x in existing_resources for x in ['DR0132','DR0133']):
+              raise SystemExit('target resource id already exists')
+          if any(x in existing_products for x in ['DP000838','DP000839','DP000840','DP000841']):
+              raise SystemExit('target product id already exists')
+          if any(x in existing_distributions for x in ['DD000871','DD000872','DD000873','DD000874']):
+              raise SystemExit('target distribution id already exists')
+
+          source_rows=[
+          {
+          'resource_id':'DR0132','resource_name':'Atlas do Desenvolvimento Humano no Brasil — PNUD/Ipea/FJP','acronym':'Atlas Brasil / IDHM','official_identity':'Programa das Nações Unidas para o Desenvolvimento — PNUD Brasil / Ipea / Fundação João Pinheiro — Atlas do Desenvolvimento Humano no Brasil','description':'Plataforma brasileira de indicadores de desenvolvimento humano e sustentável, incluindo IDHM e indicadores socioeconômicos para municípios, UFs, regiões metropolitanas e recortes intramunicipais, com séries censitárias e atualizações derivadas da PNAD Contínua.','homepage_url':'https://www.undp.org/pt/brazil/desenvolvimento-humano','data_access_url':'https://www.undp.org/pt/brazil/desenvolvimento-humano/dados-brasil','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'desenvolvimento humano | IDHM | desigualdade | municípios | regiões metropolitanas | UDH | PNAD Contínua | PNUD | Ipea | FJP','data_product_types':'indicadores | séries temporais | mapas | tabelas | painéis','data_formats':'CSV | tabelas web | PDF | formatos variáveis conforme produto','visualization_types':'mapas | rankings | gráficos | painéis','geographic_coverage':'Brasil; municípios, UFs, regiões metropolitanas, RIDEs e UDHs conforme produto','covers_brazil':'sim','spatial_resolution':'município | UF | região metropolitana | UDH | agregado nacional conforme produto','temporal_coverage':'Censos 1991, 2000 e 2010 em produtos municipais; 2000–2010 em produtos metropolitanos/UDH; 2012–2024 no Radar IDHM auditado','temporal_resolution':'censitária | anual conforme produto','data_sources':'Censos Demográficos do IBGE | PNAD Contínua | registros e indicadores derivados documentados pelo PNUD/Ipea/FJP','free_download':'parcial','access_conditions':'acesso público aos painéis, tabelas, publicações e base CSV onde disponibilizada; preservar edição, fonte primária e metodologia','programmatic_access':'desconhecido','access_protocols':'HTTPS | download CSV | visualização web','authentication_required':'não','access_documentation_url':'https://www.undp.org/pt/brazil/desenvolvimento-humano','license':'verificar termos do produto e arquivo específico; publicações e dados exigem atribuição às instituições produtoras','institutional_status':'público','owner_or_manager':'PNUD Brasil / Instituto de Pesquisa Econômica Aplicada — Ipea / Fundação João Pinheiro — FJP','academic_uses':'Desenvolvimento humano, desigualdade socioespacial, políticas públicas, demografia, educação, renda, saúde, estudos urbanos e regionais.','limitations':'IDHM e indicadores associados são medidas derivadas. Séries censitárias e séries anuais baseadas na PNAD Contínua possuem universos, escalas e metodologias diferentes e não devem ser concatenadas automaticamente. UDH é recorte analítico, não divisão administrativa.','academic_evidence_type':'documentação técnica oficial','academic_evidence_url':'https://www.undp.org/pt/brazil/o-que-e-o-idhm','academic_evidence_note':'O PNUD documenta a parceria PNUD/Ipea/FJP, a metodologia do IDHM e a disponibilidade de indicadores municipais, metropolitanos e atualizações anuais.','verification_url':'https://www.undp.org/pt/brazil/desenvolvimento-humano/painel-idhm','last_verified':TODAY
+          },
+          {
+          'resource_id':'DR0133','resource_name':'IpeaData — séries econômicas e indicadores sociais','acronym':'IpeaData','official_identity':'Instituto de Pesquisa Econômica Aplicada — Ipea / IpeaData','description':'Plataforma pública do Ipea para descoberta, consulta e download de séries econômicas, financeiras, demográficas, geográficas e sociais, com metadados de fonte, unidade, frequência, cobertura e notas metodológicas por série.','homepage_url':'http://www.ipeadata.gov.br/Default.aspx','data_access_url':'http://www.ipeadata.gov.br/Default.aspx','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'IpeaData | séries temporais | economia | indicadores sociais | dados regionais | municípios | UFs | renda | trabalho','data_product_types':'catálogo de séries | indicadores | tabelas | downloads','data_formats':'tabelas web | downloads em formatos disponíveis por série','visualization_types':'tabelas | gráficos | mapas conforme série','geographic_coverage':'Brasil; regiões, UFs, municípios e agregados nacionais conforme série; algumas séries internacionais','covers_brazil':'sim','spatial_resolution':'varia por série: Brasil | região | UF | município | outros recortes','temporal_coverage':'histórica e corrente; início e término variam por série','temporal_resolution':'diária | mensal | trimestral | anual | decenal conforme série','data_sources':'IBGE | Banco Central | ministérios e outras fontes oficiais, além de séries elaboradas/compatibilizadas pelo Ipea','free_download':'sim','access_conditions':'uso público; preservar fonte original, unidade, frequência, comentário metodológico e data de atualização de cada série','programmatic_access':'desconhecido','access_protocols':'HTTP/HTTPS | consulta web | downloads conforme série','authentication_required':'não','access_documentation_url':'http://www.ipeadata.gov.br/Default.aspx','license':'uso público com citação do IpeaData; verificar termos e fonte original no nível da série','institutional_status':'público','owner_or_manager':'Instituto de Pesquisa Econômica Aplicada — Ipea','academic_uses':'Macroeconomia, desenvolvimento regional, mercado de trabalho, renda, demografia, políticas sociais, desigualdade e construção de séries históricas.','limitations':'É um agregador de séries heterogêneas. Fonte primária, conceito, unidade, frequência, cobertura, deflator e metodologia variam por série; séries antigas podem refletir metodologias históricas e revisões das fontes originais.','academic_evidence_type':'documentação oficial','academic_evidence_url':'http://www.ipeadata.gov.br/Default.aspx','academic_evidence_note':'As páginas do IpeaData documentam fonte, frequência, unidade, comentários metodológicos e atualização de cada série; a plataforma é mantida pelo Ipea.','verification_url':'http://www.ipeadata.gov.br/Default.aspx','last_verified':TODAY
+          }]
+          append_dicts(RES, source_rows)
+
+          product_rows=[
+          {'product_id':'DP000838','resource_id':'DR0132','product_name':'Atlas dos Municípios — IDHM e indicadores dos Censos 1991, 2000 e 2010','product_acronym':'Atlas Municípios','product_family':'Atlas do Desenvolvimento Humano — municípios','product_kind':'indicator_family','product_description':'Conjunto de IDHM e mais de 200 indicadores de desenvolvimento humano para municípios e estados brasileiros, com dados dos Censos Demográficos de 1991, 2000 e 2010.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'IDHM | municípios | Censo 1991 | Censo 2000 | Censo 2010 | desenvolvimento humano','geographic_coverage':'Brasil — municípios e Unidades da Federação','covers_brazil':'sim','spatial_support':'município | UF','spatial_resolution':'município e UF','temporal_coverage':'1991 | 2000 | 2010','temporal_resolution':'censitária','update_frequency':'por edição censitária','product_status':'ativo','version_or_collection':'Atlas dos Municípios — Censos 1991, 2000 e 2010','enumeration_scope':'complete','product_page_url':'https://www.undp.org/pt/brazil/atlas-dos-municipios','methodology_url':'https://www.undp.org/pt/brazil/o-que-e-o-idhm','primary_or_derived':'derivado','limitations':'IDHM é índice composto de longevidade, educação e renda; os indicadores refletem os anos censitários e não descrevem automaticamente condições atuais. Limites territoriais e conceitos censitários devem ser preservados por edição.','last_verified':TODAY},
+          {'product_id':'DP000839','resource_id':'DR0132','product_name':'Atlas das Regiões Metropolitanas — IDHM e indicadores por UDH','product_acronym':'Atlas RMs / UDH','product_family':'Atlas do Desenvolvimento Humano — regiões metropolitanas','product_kind':'indicator_family','product_description':'IDHM e aproximadamente 200 indicadores socioeconômicos para 20 regiões metropolitanas/RIDE e seus recortes intramunicipais de Unidades de Desenvolvimento Humano, com comparação 2000–2010.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'IDHM | regiões metropolitanas | UDH | desigualdade intraurbana | 2000 | 2010','geographic_coverage':'20 regiões metropolitanas brasileiras e RIDE/recortes documentados pelo Atlas','covers_brazil':'parcial','spatial_support':'região metropolitana | UDH','spatial_resolution':'UDH e agregados metropolitanos','temporal_coverage':'2000 | 2010','temporal_resolution':'censitária','update_frequency':'por edição','product_status':'ativo','version_or_collection':'Atlas das Regiões Metropolitanas — base censitária 2000–2010','enumeration_scope':'complete','product_page_url':'https://www.undp.org/pt/brazil/atlas-das-regioes-metropolitanas','methodology_url':'https://www.undp.org/pt/brazil/o-que-e-o-idhm','primary_or_derived':'derivado','limitations':'UDHs são recortes analíticos construídos para representar áreas relativamente homogêneas e não equivalem automaticamente a bairros ou divisões administrativas. Comparações dependem da compatibilização territorial e censitária.','last_verified':TODAY},
+          {'product_id':'DP000840','resource_id':'DR0132','product_name':'Radar IDHM — evolução do IDHM e componentes 2012–2024','product_acronym':'Radar IDHM 2012–2024','product_family':'Radar IDHM','product_kind':'indicator_family','product_description':'Atualização anual do IDHM, IDHM ajustado à desigualdade e componentes com base na PNAD Contínua, apresentando resultados para Brasil, macrorregiões, UFs e regiões metropolitanas, com desagregações selecionadas por sexo e raça/cor.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'IDHM | IDHMAD | PNAD Contínua | desigualdade | sexo | raça/cor | 2024','geographic_coverage':'Brasil, macrorregiões, UFs e regiões metropolitanas cobertas','covers_brazil':'sim','spatial_support':'Brasil | macrorregião | UF | região metropolitana','spatial_resolution':'agregados compatíveis com a PNAD Contínua','temporal_coverage':'2012–2024','temporal_resolution':'anual','update_frequency':'conforme atualização do Radar','product_status':'ativo','version_or_collection':'Radar IDHM 2012–2024 — publicado em 2026','enumeration_scope':'complete','product_page_url':'https://www.undp.org/pt/brazil/publications/radar-idhm-evolucao-do-idhm-e-de-seus-componentes-periodo-de-2012-2024','methodology_url':'https://www.undp.org/pt/brazil/desenvolvimento-humano/painel-idhm','primary_or_derived':'derivado','limitations':'Indicadores são estimativas derivadas da PNAD Contínua e não devem ser confundidos com o IDHM censitário municipal de 1991/2000/2010. Desagregações dependem do desenho amostral e da metodologia documentada.','last_verified':TODAY},
+          {'product_id':'DP000841','resource_id':'DR0133','product_name':'IpeaData — catálogo de séries econômicas, regionais e sociais','product_acronym':'IpeaData Séries','product_family':'IpeaData','product_kind':'federated_catalog','product_description':'Catálogo de séries temporais e indicadores com metadados de fonte, unidade, frequência, cobertura, comentários metodológicos e data de atualização, reunindo dados econômicos, regionais e sociais de múltiplas instituições.','research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados','keywords':'IpeaData | séries temporais | indicadores | economia | desenvolvimento regional | indicadores sociais','geographic_coverage':'Brasil; recortes territoriais variáveis por série e algumas séries internacionais','covers_brazil':'sim','spatial_support':'varia por série','spatial_resolution':'Brasil | região | UF | município | outros recortes conforme série','temporal_coverage':'varia por série; inclui séries históricas extensas e séries correntes','temporal_resolution':'varia por série','update_frequency':'varia por série','product_status':'ativo','version_or_collection':'catálogo corrente auditado em 2026-08-19','enumeration_scope':'external_index','product_page_url':'http://www.ipeadata.gov.br/Default.aspx','methodology_url':'','primary_or_derived':'agregador','limitations':'Não tratar o IpeaData como uma série homogênea. Cada série possui fonte primária, unidade, frequência, cobertura temporal, eventuais deflatores e notas metodológicas próprias; comparabilidade deve ser avaliada por série.','last_verified':TODAY}
+          ]
+          append_dicts(PROD, product_rows)
+
+          dist_rows=[
+          {'distribution_id':'DD000871','product_id':'DP000838','distribution_name':'Atlas dos Municípios — consulta e dados','access_url':'https://www.undp.org/pt/brazil/atlas-dos-municipios','format':'consulta web | dados/tabelas conforme plataforma','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'parcial','authentication_required':'não','access_conditions':'acesso público; preservar ano censitário, indicador, recorte e metodologia','license':'verificar termos do recurso e atribuir PNUD/Ipea/FJP e fontes originais','provider_attribution_required':'sim','subset_support':'por município, UF, indicador e ano conforme plataforma','notes':'O Atlas municipal reúne IDHM e mais de 200 indicadores derivados dos Censos 1991, 2000 e 2010.','last_verified':TODAY},
+          {'distribution_id':'DD000872','product_id':'DP000839','distribution_name':'Atlas das Regiões Metropolitanas — consulta por RM e UDH','access_url':'https://www.undp.org/pt/brazil/atlas-das-regioes-metropolitanas','format':'consulta web | mapas | tabelas','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'parcial','authentication_required':'não','access_conditions':'acesso público; preservar definição de UDH, região metropolitana e ano censitário','license':'verificar termos do recurso e atribuir PNUD/Ipea/FJP e fontes originais','provider_attribution_required':'sim','subset_support':'por RM, UDH, indicador e ano conforme plataforma','notes':'Os recortes UDH são analíticos e não devem ser tratados como bairros ou limites administrativos.','last_verified':TODAY},
+          {'distribution_id':'DD000873','product_id':'DP000840','distribution_name':'Painel IDHM — base CSV e visualização 2012–2024','access_url':'https://www.undp.org/pt/brazil/desenvolvimento-humano/painel-idhm','format':'CSV | painel web | publicação PDF','access_protocol':'HTTPS','access_tool':'navegador web | download','free_download':'sim','authentication_required':'não','access_conditions':'acesso público; usar a metodologia e a versão correspondente ao período 2012–2024','license':'verificar termos do arquivo/publicação e atribuir PNUD e parceiros/fontes','provider_attribution_required':'sim','subset_support':'por indicador e recortes territoriais/sociodemográficos disponibilizados','notes':'A página oficial oferece download da base CSV e apresenta IDHM, IDHMAD e desagregações; os valores são derivados da PNAD Contínua.','last_verified':TODAY},
+          {'distribution_id':'DD000874','product_id':'DP000841','distribution_name':'IpeaData — consulta e download de séries','access_url':'http://www.ipeadata.gov.br/Default.aspx','format':'tabela web | download conforme série','access_protocol':'HTTP/HTTPS','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'uso público; citar IpeaData e preservar a fonte original e metadados da série','license':'verificar os termos da série e da fonte primária; uso público com atribuição ao IpeaData','provider_attribution_required':'sim','subset_support':'por série, período e recorte territorial quando disponível','notes':'Cada série exibe fonte, frequência, unidade, comentários metodológicos e data de atualização; formatos de exportação variam conforme a interface/série.','last_verified':TODAY}
+          ]
+          append_dicts(DIST, dist_rows)
+
+          reg=json.loads(PRI.read_text(encoding='utf-8'))
+          for tier in reg['tiers']:
+              if tier['priority_tier']=='P0' and 'DR0133' not in tier['resource_ids']:
+                  tier['resource_ids'].append('DR0133')
+              if tier['priority_tier']=='P1' and 'DR0132' not in tier['resource_ids']:
+                  tier['resource_ids'].append('DR0132')
+          reg['reviewed_at']=TODAY
+          PRI.write_text(json.dumps(reg,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          print('appended', len(source_rows), len(product_rows), len(dist_rows))
+          PY
+      - name: Validate and rebuild
+        shell: bash
+        run: |
+          python scripts/validate_brazil_scope.py
+          python scripts/validate_product_catalog.py
+          python scripts/build_catalog.py
+          python scripts/audit_link_roles.py --write
+          python scripts/validate_vitrine.py
+          python scripts/build_site_artifact.py
+          git diff --check
+      - name: Read back integrity
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+          def rows(p):
+              with Path(p).open(encoding='utf-8',newline='') as f: return list(csv.DictReader(f))
+          r=rows('data/data_resources.csv'); p=rows('data/data_products.csv'); d=rows('data/product_distributions.csv')
+          rids={x['resource_id'] for x in r}; pids={x['product_id'] for x in p}; dids={x['distribution_id'] for x in d}
+          assert {'DR0132','DR0133'} <= rids
+          assert {'DP000838','DP000839','DP000840','DP000841'} <= pids
+          assert {'DD000871','DD000872','DD000873','DD000874'} <= dids
+          assert all(x['resource_id'] in rids for x in p)
+          assert all(x['product_id'] in pids for x in d)
+          assert len(rids)==len(r) and len(pids)==len(p) and len(dids)==len(d)
+          print('COUNTS',len(r),len(p),len(d))
+          PY
+      - name: Commit materialized batch
+        shell: bash
+        run: |
+          git config user.name 'Ian-loc'
+          git config user.email 'lara.clemente@ufla.br'
+          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json
+          git add data/data_products.json 2>/dev/null || true
+          git add audit/link_role_audit.json 2>/dev/null || true
+          git add data/data_quality_report.json 2>/dev/null || true
+          git diff --cached --check
+          git commit -m 'Expand verified Atlas Brasil and IpeaData catalog'
+          git push origin HEAD:main
