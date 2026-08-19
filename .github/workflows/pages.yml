@@ -32,6 +32,14 @@ jobs:
           python3 scripts/report_normalization_coverage.py
           python3 scripts/audit_link_roles.py
 
+      - name: Confirmar derivados versionados sincronizados
+        run: |
+          git diff --check
+          git diff --exit-code -- \
+            data/data_resources.json \
+            data/data_products.json \
+            data/data_quality_report.json
+
       - name: Validar interface e fronteira da Vitrine
         run: |
           python3 scripts/validate_vitrine.py
@@ -108,6 +116,11 @@ jobs:
           python3 scripts/build_public_discovery.py
           python3 scripts/report_normalization_coverage.py
           python3 scripts/audit_link_roles.py
+          git diff --check
+          git diff --exit-code -- \
+            data/data_resources.json \
+            data/data_products.json \
+            data/data_quality_report.json
           python3 scripts/validate_vitrine.py
           node --check assets/ptbr.js
           node --check assets/export-selective.js
