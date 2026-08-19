@@ -1,0 +1,58 @@
+{
+  "reviewed_same_destination": [
+    {
+      "resource_id": "DR0014",
+      "rationale": "O SiBBr funciona como portal integrado de descoberta e acesso; a mesma página institucional é a interface pública de consulta do catálogo. Manter a mesma URL é deliberado, não uma ausência de revisão.",
+      "evidence_url": "https://www.sibbr.gov.br/",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0020",
+      "rationale": "O AppEEARS é uma aplicação web: sua landing page autenticada é simultaneamente a identidade do serviço e o ponto operacional de extração. A API é documentada separadamente em access_documentation_url.",
+      "evidence_url": "https://appeears.earthdatacloud.nasa.gov/",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0031",
+      "rationale": "O KNB é um repositório/catálogo cuja homepage é também a interface pública de busca e acesso aos datasets. Não há segundo destino necessário para representar o papel de acesso.",
+      "evidence_url": "https://knb.ecoinformatics.org/",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0032",
+      "rationale": "PANGAEA é simultaneamente data publisher, catálogo e interface de pesquisa/download; a homepage é o ponto público de descoberta e acesso aos registros publicados.",
+      "evidence_url": "https://www.pangaea.de/",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0035",
+      "rationale": "O Climate Data Guide é um guia/catálogo de descoberta, não um arquivo de dados próprio. A mesma página desempenha legitimamente os papéis de apresentação e acesso às fichas curatoriais que constituem o produto.",
+      "evidence_url": "https://climatedataguide.ucar.edu/",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0038",
+      "rationale": "WoSIS é apresentado pelo ISRIC em uma página de serviço que concentra descrição e caminhos de acesso aos dados; a igualdade de URL é deliberada no nível da fonte.",
+      "evidence_url": "https://www.isric.org/explore/wosis",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0045",
+      "rationale": "Global Carbon Atlas é uma aplicação interativa; a homepage é também a interface de exploração dos dados e visualizações. Um segundo link de acesso não acrescentaria distinção real no nível da fonte.",
+      "evidence_url": "https://globalcarbonatlas.org/",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0051",
+      "rationale": "Project COSMOS é uma aplicação interativa autocontida; o endereço institucional é simultaneamente o ponto de acesso ao produto publicado.",
+      "evidence_url": "https://interactive.carbonbrief.org/cosmos/index.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0054",
+      "rationale": "O GeoNetwork do IBGE é um catálogo web: a página catalog.search é ao mesmo tempo a interface do catálogo e o ponto de descoberta/acesso aos registros de metadados. A igualdade é estrutural ao serviço.",
+      "evidence_url": "https://metadadosgeo.ibge.gov.br/geonetwork_ibge/srv/por/catalog.search#/home",
+      "reviewed_at": "2026-08-19"
+    }
+  ]
+}
