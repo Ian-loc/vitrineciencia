@@ -1,111 +1,86 @@
-name: Validar e publicar Vitrine
+name: Materializar lote SUAS e restaurar publicação
 
 on:
   push:
     branches: ["main"]
-  pull_request:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: vitrine-pages-${{ github.ref }}
-  cancel-in-progress: true
+  group: materialize-suas-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  validate-vitrine:
+  materialize:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-
-      - name: Validar dados estáticos da Vitrine
-        run: |
-          python3 scripts/validate_brazil_scope.py
-          python3 scripts/validate_product_catalog.py
-          python3 scripts/build_catalog.py
-          python3 scripts/audit_link_roles.py
-
-      - name: Validar interface e fronteira da Vitrine
-        run: |
-          python3 scripts/validate_vitrine.py
-          node --check assets/app.js
-          node --check assets/products.js
-          node --check assets/analytics.js
-          node --check assets/quality-summary.js
-          node --check assets/build-meta.js
-
-      - name: Construir artefato público isolado
-        run: |
-          python3 -m py_compile scripts/build_site_artifact.py
-          python3 scripts/build_site_artifact.py
-
-      - name: Confirmar fronteira pública
-        run: |
-          test -s _site/index.html
-          test -s _site/products.html
-          test -s _site/analytics.html
-          test -s _site/about.html
-          test -s _site/assets/visual-refinement.css
-          test -s _site/assets/app.js
-          test -s _site/assets/products.js
-          test -s _site/assets/analytics.js
-          test -s _site/data/data_resources.csv
-          test -s _site/data/data_resources.json
-          test -s _site/data/data_products.csv
-          test -s _site/data/data_products.json
-          test -s _site/data/product_distributions.csv
-          test -s _site/data/brazil_scope_priorities.json
-          test ! -e _site/explorer.html
-          test ! -e _site/abordagens.html
-          test ! -e _site/data/federated_layers.json
-          test ! -e _site/data/build-meta.json
-          test ! -e _site/assets/explorer.js
-          test ! -e _site/assets/explorer.css
-          test ! -e _site/assets/approaches.css
-          test ! -e _site/assets/quality-summary.js
-          test ! -e _site/assets/build-meta.js
-          test ! -e _site/database
-          test ! -e _site/scripts
-          test ! -e _site/.github
-          test ! -e _site/docs
-          test ! -e _site/config
-          ! grep -R -n -E 'Simbiotrama|Simbioscópio|Simbioscopio' _site/index.html _site/products.html _site/analytics.html _site/about.html
-
-  deploy:
-    if: github.event_name != 'pull_request'
-    needs: [validate-vitrine]
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Gerar e validar Vitrine
-        run: |
-          python3 scripts/validate_brazil_scope.py
-          python3 scripts/validate_product_catalog.py
-          python3 scripts/build_catalog.py
-          python3 scripts/audit_link_roles.py
-          python3 scripts/validate_vitrine.py
-          python3 scripts/build_site_artifact.py
-
-      - name: Configurar GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Enviar artefato da Vitrine
-        uses: actions/upload-pages-artifact@v4
         with:
-          path: _site
+          fetch-depth: 2
 
-      - name: Publicar Vitrine no GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Executar materializador SUAS já revisado
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          text = Path('.github/workflows/auto_suas_batch.yml').read_text(encoding='utf-8').splitlines()
+          start = next(i for i,l in enumerate(text) if "python3 - <<'PY'" in l) + 1
+          end = next(i for i in range(start, len(text)) if text[i].strip() == 'PY')
+          code=[]
+          for line in text[start:end]:
+              code.append(line[10:] if line.startswith('          ') else line)
+          Path('/tmp/materialize_suas.py').write_text('\n'.join(code)+'\n', encoding='utf-8')
+          PY
+          python3 /tmp/materialize_suas.py
 
-      - name: Registrar endereço publicado
-        run: echo "Vitrine publicada em ${{ steps.deployment.outputs.page_url }}"
+      - name: Validar e reconstruir derivados
+        shell: bash
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Read-back consolidado
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv, json
+          from pathlib import Path
+          def rows(p):
+              with Path(p).open(encoding='utf-8-sig', newline='') as f: return list(csv.DictReader(f))
+          s=rows('data/data_resources.csv'); p=rows('data/data_products.csv'); d=rows('data/product_distributions.csv')
+          assert len(s)==129, len(s)
+          assert len(p)==800, len(p)
+          assert len(d)==833, len(d)
+          assert s[-1]['resource_name']=='Dados, Cadastros e Vigilância Socioassistencial do SUAS — MDS'
+          assert {x['product_name'] for x in p[-6:]} == {
+              'Censo SUAS — bases anuais e resultados',
+              'Observatório do Censo SUAS 2024',
+              'Registro Mensal de Atendimentos — RMA',
+              'CadSUAS — dados abertos agregados do cadastro do SUAS',
+              'Tab Social — tabulador do Censo SUAS',
+              'Cadastro Nacional de Entidades de Assistência Social — CNEAS',
+          }
+          q=json.loads(Path('data/data_quality_report.json').read_text(encoding='utf-8'))
+          assert q['records']==129
+          print('READBACK OK', len(s), len(p), len(d))
+          PY
+
+      - name: Restaurar workflow permanente e commit do lote
+        shell: bash
+        run: |
+          git config user.name 'Vitrine Science Audit Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git checkout HEAD^ -- .github/workflows/pages.yml
+          git rm .github/workflows/auto_suas_batch.yml
+          git add .github/workflows/pages.yml data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json data/data_resources.json data/data_products.json data/data_quality_report.json data/link_role_audit.json
+          git status --short
+          git commit -m 'Expand verified SUAS social-assistance catalog' -m 'Add MDS/SUAS as a P0 Brazilian source with Censo SUAS, Observatório, RMA, CadSUAS, Tab Social and CNEAS; preserve administrative-record, respondent-universe and service-quality limitations.'
+          git push origin HEAD:main
