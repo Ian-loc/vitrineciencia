@@ -45178,5 +45178,359 @@
     "available_protocols": [
       "HTTPS / SIDRA"
     ]
+  },
+  {
+    "product_id": "DP000761",
+    "resource_id": "DR0126",
+    "product_name": "Sistema Gerenciador de Séries Temporais — SGS",
+    "product_acronym": "SGS",
+    "product_family": "Séries temporais do Banco Central",
+    "product_kind": "data_service",
+    "product_description": "Sistema público do Banco Central para pesquisa, visualização e recuperação de séries temporais econômicas e financeiras, com metadados, unidade e periodicidade próprios por série.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "SGS | séries temporais | economia | finanças | API | Banco Central",
+    "geographic_coverage": "Brasil e agregações econômicas; cobertura varia por série",
+    "covers_brazil": "sim",
+    "spatial_support": "série temporal identificada por código SGS",
+    "spatial_resolution": "não espacial; dimensão territorial depende da série",
+    "temporal_coverage": "séries históricas com inícios distintos; algumas remontam a décadas anteriores ao Real",
+    "temporal_resolution": "diária | mensal | trimestral | anual; varia por série",
+    "update_frequency": "conforme série",
+    "product_status": "ativo",
+    "version_or_collection": "serviço público corrente; metadados e séries individualizadas por código SGS",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://www3.bcb.gov.br/sgspub/",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/?q=SGS",
+    "primary_or_derived": "serviço",
+    "limitations": "O SGS reúne séries heterogêneas. Unidade, fonte, sazonalidade, frequência, início, revisão e metodologia devem ser conferidos por código; não concatenar séries diferentes apenas por semelhança nominal.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000792",
+        "product_id": "DP000761",
+        "distribution_name": "BCB — SGS — consulta e interfaces de séries",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/?q=SGS",
+        "format": "HTML | JSON | CSV | WSDL conforme série",
+        "access_protocol": "HTTPS | JSON | CSV | SOAP",
+        "access_tool": "Portal BCB / SGS / BCData",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar documentação, filtros, versão e limites do serviço/recurso",
+        "license": "varia conforme série; conferir registro do conjunto no Portal de Dados Abertos do BCB",
+        "provider_attribution_required": "sim",
+        "subset_support": "por código de série e intervalo temporal",
+        "notes": "O Portal de Dados Abertos expõe recursos SGS individualizados com metadados, visualização e interfaces JSON, CSV e SOAP. A licença deve ser conferida no registro da série específica.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "HTML | JSON | CSV | WSDL conforme série"
+    ],
+    "available_protocols": [
+      "HTTPS | JSON | CSV | SOAP"
+    ]
+  },
+  {
+    "product_id": "DP000762",
+    "resource_id": "DR0126",
+    "product_name": "Taxas de Câmbio — todos os boletins diários",
+    "product_acronym": "PTAX / Câmbio",
+    "product_family": "Câmbio e capitais internacionais",
+    "product_kind": "dataset_series",
+    "product_description": "Séries dos boletins diários de taxas de câmbio do Banco Central para moedas estrangeiras, incluindo paridades e cotações de compra e venda e a metodologia PTAX aplicável ao dólar.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "câmbio | PTAX | moedas | boletins diários | OData | Banco Central",
+    "geographic_coverage": "Brasil; taxas de moedas estrangeiras em relação à unidade monetária corrente",
+    "covers_brazil": "sim",
+    "spatial_support": "boletim/cotação por moeda e data",
+    "spatial_resolution": "não espacial",
+    "temporal_coverage": "euro desde 02/01/2002; demais moedas desde 28/11/1984 conforme documentação oficial",
+    "temporal_resolution": "intradiária por boletim e diária por fechamento",
+    "update_frequency": "diária",
+    "product_status": "ativo",
+    "version_or_collection": "série oficial corrente; metodologia do dólar mudou historicamente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/taxas-de-cambio-todos-os-boletins-diarios",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/taxas-de-cambio-todos-os-boletins-diarios",
+    "primary_or_derived": "derivado",
+    "limitations": "As moedas não compartilham necessariamente o mesmo início histórico. Para o dólar, a metodologia mudou ao longo do tempo e a PTAX desde 2011 deriva de consultas diárias; cotações de outras moedas usam paridades de provedores externos e não equivalem a preços de cada transação cambial.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000793",
+        "product_id": "DP000762",
+        "distribution_name": "BCB — Taxas de Câmbio — API e boletins",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/taxas-de-cambio-todos-os-boletins-diarios",
+        "format": "API | OData | JSON | HTML",
+        "access_protocol": "HTTPS | API | OData",
+        "access_tool": "Olinda / Portal de Dados Abertos BCB",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar documentação, filtros, versão e limites do serviço/recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por moeda, data/período e tipo de boletim",
+        "notes": "Inclui documentação, navegador de dados, endpoint OData e recursos JSON para paridade e cotação por data ou período.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "API | OData | JSON | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS | API | OData"
+    ]
+  },
+  {
+    "product_id": "DP000763",
+    "resource_id": "DR0126",
+    "product_name": "Estatísticas do Pix",
+    "product_acronym": "Pix",
+    "product_family": "Sistema de Pagamentos Instantâneos — estatísticas",
+    "product_kind": "dataset_series",
+    "product_description": "Estatísticas mensais sobre chaves Pix, transações liquidadas no SPI e informações reportadas por participantes sobre transações fora do SPI, incluindo recursos por participante e município.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "Pix | pagamentos instantâneos | DICT | SPI | transações | município",
+    "geographic_coverage": "Brasil; participante e município em recursos específicos",
+    "covers_brazil": "sim",
+    "spatial_support": "agregação mensal por indicador, participante ou município conforme recurso",
+    "spatial_resolution": "município nos recursos territoriais; demais recursos institucionais/nacionais",
+    "temporal_coverage": "30/11/2020–presente conforme conjunto",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados atualizados em 16/06/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/pix",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/pix",
+    "primary_or_derived": "derivado",
+    "limitations": "Os dados são agregados e combinam DICT, SPI e informações dos participantes; não constituem microdados de pagamentos individuais nem representam automaticamente consumo total ou população bancarizada. Denominadores, natureza PF/PJ e cobertura do recurso devem ser preservados.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000794",
+        "product_id": "DP000763",
+        "distribution_name": "BCB — Estatísticas do Pix — API/OData",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/pix",
+        "format": "API | OData | JSON | HTML",
+        "access_protocol": "HTTPS | API | OData",
+        "access_tool": "Olinda / Portal de Dados Abertos BCB",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar documentação, filtros, versão e limites do serviço/recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por recurso, período, participante e município conforme endpoint",
+        "notes": "Recursos incluem chaves, usuários, participantes, transações por município e estatísticas mensais; manter a definição de cada endpoint.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "API | OData | JSON | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS | API | OData"
+    ]
+  },
+  {
+    "product_id": "DP000764",
+    "resource_id": "DR0126",
+    "product_name": "Estatísticas de Meios de Pagamentos",
+    "product_acronym": "Meios de Pagamentos",
+    "product_family": "Meios de pagamentos — estatísticas",
+    "product_kind": "dataset_series",
+    "product_description": "Conjunto de estatísticas sobre Pix, TED, boletos, cheque, cartões e outros instrumentos de pagamento, combinando recursos com periodicidades e fontes operacionais distintas.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "meios de pagamentos | Pix | TED | boletos | cartões | cheque | transações",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "agregações por instrumento, período e atributos divulgados",
+    "spatial_resolution": "não espacial ou agregações nacionais; detalhamento varia por recurso",
+    "temporal_coverage": "desde 2005 em componentes do conjunto; início varia por instrumento",
+    "temporal_resolution": "mensal e trimestral conforme instrumento",
+    "update_frequency": "mensal ou trimestral conforme instrumento",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/estatisticas-meios-pagamentos",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/estatisticas-meios-pagamentos",
+    "primary_or_derived": "derivado",
+    "limitations": "Instrumentos mensais e trimestrais têm fontes e defasagens de atualização diferentes; não combinar períodos como se fossem sincrônicos. Volumes e quantidades de transações não equivalem a número de usuários ou valor de consumo final.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000795",
+        "product_id": "DP000764",
+        "distribution_name": "BCB — Estatísticas de Meios de Pagamentos",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/estatisticas-meios-pagamentos",
+        "format": "API | OData | JSON | HTML",
+        "access_protocol": "HTTPS | API | OData",
+        "access_tool": "Olinda / Portal de Dados Abertos BCB",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar documentação, filtros, versão e limites do serviço/recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por instrumento, período e recurso",
+        "notes": "A periodicidade é mensal para alguns instrumentos e trimestral para outros; preservar a fonte operacional e a defasagem de atualização de cada recurso.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "API | OData | JSON | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS | API | OData"
+    ]
+  },
+  {
+    "product_id": "DP000765",
+    "resource_id": "DR0126",
+    "product_name": "IFData — Dados selecionados de instituições financeiras",
+    "product_acronym": "IFData",
+    "product_family": "Instituições financeiras — dados selecionados",
+    "product_kind": "dataset_series",
+    "product_description": "Dados trimestrais selecionados de instituições financeiras e conglomerados em operação normal, derivados dos relatórios IFData e de bases como SCR e Cosif.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "IFData | instituições financeiras | conglomerados | Cosif | SCR | balanços | crédito",
+    "geographic_coverage": "Brasil; instituições financeiras e conglomerados",
+    "covers_brazil": "sim",
+    "spatial_support": "instituição ou conglomerado por data-base e relatório",
+    "spatial_resolution": "institucional; não espacial",
+    "temporal_coverage": "março de 2000–presente conforme relatório",
+    "temporal_resolution": "trimestral",
+    "update_frequency": "trimestral",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto corrente; metadados do portal atualizados em 01/08/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/ifdata---dados-selecionados-de-instituies-financeiras",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/ifdata---dados-selecionados-de-instituies-financeiras",
+    "primary_or_derived": "derivado",
+    "limitations": "Cobre instituições autorizadas a funcionar e em operação normal segundo o escopo IFData. Estrutura contábil, consolidação de conglomerados, relatórios e datas-base devem ser preservados; valores não constituem preços de mercado nem, isoladamente, julgamento de solvência.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000796",
+        "product_id": "DP000765",
+        "distribution_name": "BCB — IFData — API/OData e relatórios",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/ifdata---dados-selecionados-de-instituies-financeiras",
+        "format": "API | OData | JSON | PDF | HTML",
+        "access_protocol": "HTTPS | API | OData",
+        "access_tool": "Olinda / IFData / Portal de Dados Abertos BCB",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar documentação, filtros, versão e limites do serviço/recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por instituição/conglomerado, data-base e relatório",
+        "notes": "Inclui API, OData, JSON, relatórios e documentação metodológica; resultados trimestrais têm defasagem oficial de publicação.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "API | OData | JSON | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS | API | OData"
+    ]
+  },
+  {
+    "product_id": "DP000766",
+    "resource_id": "DR0126",
+    "product_name": "SCR.data — operações de crédito agregadas",
+    "product_acronym": "SCR.data",
+    "product_family": "Sistema de Informações de Créditos — dados agregados",
+    "product_kind": "dataset_series",
+    "product_description": "Informações mensais agregadas de operações de crédito recebidas pelo SCR, incluindo carteira ativa, inadimplência e ativo problemático com detalhamentos por instituição/segmento, cliente, modalidade, UF e outros atributos.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "SCR | crédito | inadimplência | carteira ativa | ativo problemático | UF | CNAE",
+    "geographic_coverage": "Brasil; Unidade da Federação e demais dimensões cadastrais conforme arquivo",
+    "covers_brazil": "sim",
+    "spatial_support": "agregações de operações de crédito por período e dimensões selecionadas",
+    "spatial_resolution": "UF para dimensão geográfica; demais dimensões não espaciais",
+    "temporal_coverage": "junho de 2012–presente",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal; disponibilização após cerca de 30 dias do fechamento",
+    "product_status": "ativo",
+    "version_or_collection": "Versão 2 corrente; Versão 1 histórica preservada no portal",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/scr_data",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/scr_data",
+    "primary_or_derived": "derivado",
+    "limitations": "São agregados derivados de registros detalhados do SCR, não microdados de tomadores. O Banco Central alerta que valores podem divergir de outras publicações baseadas em documentos agregados; preservar versão, metodologia, data-base e dimensões de agrupamento.",
+    "last_verified": "2026-08-18",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000797",
+        "product_id": "DP000766",
+        "distribution_name": "BCB — SCR.data — arquivos mensais",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/scr_data",
+        "format": "ZIP | CSV.ZIP | PDF | HTML",
+        "access_protocol": "HTTPS download",
+        "access_tool": "Portal de Dados Abertos BCB",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar documentação, filtros, versão e limites do serviço/recurso",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por mês, versão e dimensões disponíveis no arquivo",
+        "notes": "Versão 2 é a distribuição corrente; a Versão 1 permanece histórica. Os arquivos agregam operações e não expõem microdados individuais.",
+        "last_verified": "2026-08-18"
+      }
+    ],
+    "available_formats": [
+      "ZIP | CSV.ZIP | PDF | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS download"
+    ]
   }
 ]
