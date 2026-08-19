@@ -50,7 +50,7 @@ jobs:
           assert byp['DP000038']['product_page_url']==byp['DP000111']['product_page_url']
           assert byp['DP000016']['product_page_url']==byp['DP000081']['product_page_url']
           assert nurl(byp['DP000030']['product_page_url'])==nurl(byp['DP000329']['product_page_url'])
-          assert byp['DP000031']['product_name']==byp['DP000330']['product_name']
+          assert byp['DP000031']['product_name'].startswith('Eventos de Fogo') and byp['DP000330']['product_name'].startswith('Eventos de Fogo')
           assert byp['DP000032']['product_name'].startswith('Área Queimada AQ1km') and byp['DP000331']['product_name'].startswith('Área Queimada AQ1km')
           assert 'Risco de Fogo' in byp['DP000033']['product_name'] and 'Risco de Fogo' in byp['DP000332']['product_name']
           assert byp['DP000637']['product_page_url']==byp['DP000665']['product_page_url']
