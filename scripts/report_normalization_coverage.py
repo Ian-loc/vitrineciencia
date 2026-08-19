@@ -2,8 +2,8 @@
 """Mede cobertura da normalização pública e expõe resíduos para curadoria.
 
 Não altera os dados. O relatório distingue problemas históricos do CSV de casos
-que já possuem representação pública comparável e lista os resíduos restantes
-com o valor canônico que precisa ser avaliado.
+que já possuem representação pública comparável e lista apenas o que permanece
+semanticamente problemático na camada pública.
 """
 from __future__ import annotations
 
@@ -79,13 +79,28 @@ def version_warning(row: dict[str, str]) -> bool:
     )
 
 
-def print_group(title: str, rows: list[dict[str, str]], field: str, context_field: str | None = None) -> None:
-    if not rows:
+def pct(done: int, total: int) -> float:
+    return round((100 * done / total), 1) if total else 100.0
+
+
+def field_coverage(
+    raw_rows: list[dict[str, str]],
+    public_by_id: dict[str, dict[str, str]],
+    warning_fn,
+) -> tuple[list[str], list[str]]:
+    ids = [row["product_id"] for row in raw_rows if warning_fn(row)]
+    resolved = [pid for pid in ids if not warning_fn(public_by_id.get(pid, {}))]
+    pending = [pid for pid in ids if pid not in resolved]
+    return resolved, pending
+
+
+def print_pending(title: str, pending: list[str], raw_by_id: dict[str, dict[str, str]], field: str) -> None:
+    if not pending:
         return
-    print(f"RESÍDUOS {title}: {len(rows)}")
-    for row in rows:
-        context = f" | {context_field}={row.get(context_field,'')}" if context_field else ""
-        print(f"- {row.get('product_id','?')} | {row.get('product_name','')} | {row.get(field,'')}{context}")
+    print(f"PENDÊNCIAS {title}: {len(pending)}")
+    for pid in pending:
+        row = raw_by_id[pid]
+        print(f"- {pid} | {row.get('product_name','')} | {row.get(field,'')}")
 
 
 def main() -> None:
@@ -96,20 +111,29 @@ def main() -> None:
 
     support_ids = [row["product_id"] for row in raw if support_warning(row)]
     update_ids = [row["product_id"] for row in raw if update_warning(row)]
-
     support_resolved = [pid for pid in support_ids if by_id.get(pid, {}).get("spatial_support") not in {"", "desconhecido"}]
     update_resolved = [pid for pid in update_ids if by_id.get(pid, {}).get("update_frequency") not in {"", "desconhecida"}]
-
     support_pending = [pid for pid in support_ids if pid not in support_resolved]
     update_pending = [pid for pid in update_ids if pid not in update_resolved]
 
-    def pct(done: int, total: int) -> float:
-        return round((100 * done / total), 1) if total else 100.0
+    spatial_resolved, spatial_pending = field_coverage(raw, by_id, spatial_resolution_warning)
+    coverage_resolved, coverage_pending = field_coverage(raw, by_id, temporal_coverage_warning)
+    temporal_resolved, temporal_pending = field_coverage(raw, by_id, temporal_resolution_warning)
+    version_resolved, version_pending = field_coverage(raw, by_id, version_warning)
+
+    spatial_total = len(spatial_resolved) + len(spatial_pending)
+    coverage_total = len(coverage_resolved) + len(coverage_pending)
+    temporal_total = len(temporal_resolved) + len(temporal_pending)
+    version_total = len(version_resolved) + len(version_pending)
 
     print(
         "COBERTURA DA NORMALIZAÇÃO PÚBLICA: "
         f"spatial_support {len(support_resolved)}/{len(support_ids)} ({pct(len(support_resolved), len(support_ids))}%); "
-        f"update_frequency {len(update_resolved)}/{len(update_ids)} ({pct(len(update_resolved), len(update_ids))}%)."
+        f"update_frequency {len(update_resolved)}/{len(update_ids)} ({pct(len(update_resolved), len(update_ids))}%); "
+        f"spatial_resolution {len(spatial_resolved)}/{spatial_total} ({pct(len(spatial_resolved), spatial_total)}%); "
+        f"temporal_coverage {len(coverage_resolved)}/{coverage_total} ({pct(len(coverage_resolved), coverage_total)}%); "
+        f"temporal_resolution {len(temporal_resolved)}/{temporal_total} ({pct(len(temporal_resolved), temporal_total)}%); "
+        f"version_or_collection {len(version_resolved)}/{version_total} ({pct(len(version_resolved), version_total)}%)."
     )
 
     if support_pending:
@@ -117,34 +141,16 @@ def main() -> None:
         for pid in support_pending:
             row = raw_by_id[pid]
             print(f"- {pid} | {row.get('product_name','')} | {row.get('spatial_support','')}")
-
     if update_pending:
         print("PENDÊNCIAS update_frequency:")
         for pid in update_pending:
             row = raw_by_id[pid]
             print(f"- {pid} | {row.get('product_name','')} | {row.get('update_frequency','')}")
 
-    print_group(
-        "spatial_resolution",
-        [row for row in raw if spatial_resolution_warning(row)],
-        "spatial_resolution",
-        "spatial_support",
-    )
-    print_group(
-        "temporal_coverage",
-        [row for row in raw if temporal_coverage_warning(row)],
-        "temporal_coverage",
-    )
-    print_group(
-        "temporal_resolution",
-        [row for row in raw if temporal_resolution_warning(row)],
-        "temporal_resolution",
-    )
-    print_group(
-        "version_or_collection",
-        [row for row in raw if version_warning(row)],
-        "version_or_collection",
-    )
+    print_pending("spatial_resolution", spatial_pending, raw_by_id, "spatial_resolution")
+    print_pending("temporal_coverage", coverage_pending, raw_by_id, "temporal_coverage")
+    print_pending("temporal_resolution", temporal_pending, raw_by_id, "temporal_resolution")
+    print_pending("version_or_collection", version_pending, raw_by_id, "version_or_collection")
 
 
 if __name__ == "__main__":
