@@ -36,8 +36,8 @@ JSONs e o site são derivados deterministicamente.
 Snapshot candidato congelado em **19 de agosto de 2026**:
 
 - **135 fontes**;
-- **833 produtos**;
-- **866 distribuições**;
+- **843 produtos**;
+- **876 distribuições**;
 - IDs correntes chegam a `DR0135`, `DP000861` e `DD000894`, com lacunas preservadas;
 - verificações de fonte registradas até **2026-08-19**;
 - schema vigente: 34/24/15 campos em fonte/produto/distribuição.
