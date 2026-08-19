@@ -46948,5 +46948,595 @@
     "available_protocols": [
       "HTTPS | BCData/SGS REST | SOAP"
     ]
+  },
+  {
+    "product_id": "DP000791",
+    "resource_id": "DR0126",
+    "product_name": "Saldo da carteira de crédito com recursos livres — Pessoas físicas — Total",
+    "product_acronym": "Crédito livre PF — saldo",
+    "product_family": "Crédito com recursos livres",
+    "product_kind": "dataset_series",
+    "product_description": "Saldo mensal em final de período das operações de crédito com recursos livres contratadas por pessoas físicas no Sistema Financeiro Nacional.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "crédito livre | pessoas físicas | saldo | carteira de crédito | SGS",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "série temporal nacional de crédito",
+    "spatial_resolution": "não espacial",
+    "temporal_coverage": "março de 2007–presente",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "SGS código 20570 — série corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/20570-saldo-da-carteira-de-credito-com-recursos-livres---pessoas-fisicas---total",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/20570-saldo-da-carteira-de-credito-com-recursos-livres---pessoas-fisicas---total",
+    "primary_or_derived": "derivado",
+    "limitations": "Saldo de carteira mede estoque em final de período, não novas concessões. Recursos livres excluem operações com taxas regulamentadas, BNDES e outras fontes compulsórias ou governamentais.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000822",
+        "product_id": "DP000791",
+        "distribution_name": "Saldo da carteira de crédito com recursos livres — Pessoas físicas — Total — dados e API SGS",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/20570-saldo-da-carteira-de-credito-com-recursos-livres---pessoas-fisicas---total",
+        "format": "JSON | CSV | HTML | WSDL",
+        "access_protocol": "HTTPS | BCData/SGS REST | SOAP",
+        "access_tool": "navegador web | script | cliente HTTP",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; consultas programáticas sujeitas aos parâmetros e limites documentados pelo BCB",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por código da série e intervalo temporal conforme serviço",
+        "notes": "O portal fornece metadados e recursos JSON/CSV/HTML e WSDL/SGS. Preservar código da série, unidade, periodicidade, universo e definição conceitual.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "JSON | CSV | HTML | WSDL"
+    ],
+    "available_protocols": [
+      "HTTPS | BCData/SGS REST | SOAP"
+    ]
+  },
+  {
+    "product_id": "DP000792",
+    "resource_id": "DR0126",
+    "product_name": "Saldo da carteira de crédito com recursos livres — Pessoas jurídicas — Total",
+    "product_acronym": "Crédito livre PJ — saldo",
+    "product_family": "Crédito com recursos livres",
+    "product_kind": "dataset_series",
+    "product_description": "Saldo mensal em final de período das operações de crédito com recursos livres contratadas por pessoas jurídicas no Sistema Financeiro Nacional.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "crédito livre | pessoas jurídicas | saldo | carteira de crédito | SGS",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "série temporal nacional de crédito",
+    "spatial_resolution": "não espacial",
+    "temporal_coverage": "março de 2007–presente",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "SGS código 20543 — série corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/20543-saldo-da-carteira-de-credito-com-recursos-livres---pessoas-juridicas---total",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/20543-saldo-da-carteira-de-credito-com-recursos-livres---pessoas-juridicas---total",
+    "primary_or_derived": "derivado",
+    "limitations": "Saldo de carteira mede estoque em final de período, não novas concessões. Recursos livres excluem operações com taxas regulamentadas, BNDES e outras fontes compulsórias ou governamentais.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000823",
+        "product_id": "DP000792",
+        "distribution_name": "Saldo da carteira de crédito com recursos livres — Pessoas jurídicas — Total — dados e API SGS",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/20543-saldo-da-carteira-de-credito-com-recursos-livres---pessoas-juridicas---total",
+        "format": "JSON | CSV | HTML | WSDL",
+        "access_protocol": "HTTPS | BCData/SGS REST | SOAP",
+        "access_tool": "navegador web | script | cliente HTTP",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; consultas programáticas sujeitas aos parâmetros e limites documentados pelo BCB",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por código da série e intervalo temporal conforme serviço",
+        "notes": "O portal fornece metadados e recursos JSON/CSV/HTML e WSDL/SGS. Preservar código da série, unidade, periodicidade, universo e definição conceitual.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "JSON | CSV | HTML | WSDL"
+    ],
+    "available_protocols": [
+      "HTTPS | BCData/SGS REST | SOAP"
+    ]
+  },
+  {
+    "product_id": "DP000793",
+    "resource_id": "DR0126",
+    "product_name": "Concessões de crédito com recursos livres — Pessoas físicas — Total",
+    "product_acronym": "Crédito livre PF — concessões",
+    "product_family": "Crédito com recursos livres",
+    "product_kind": "dataset_series",
+    "product_description": "Valor mensal das novas operações de crédito com recursos livres contratadas por pessoas físicas no período de referência.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "crédito livre | pessoas físicas | concessões | novas operações | SGS",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "série temporal nacional de crédito",
+    "spatial_resolution": "não espacial",
+    "temporal_coverage": "março de 2011–presente",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "SGS código 20662 — série corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/20662-concessoes-de-credito-com-recursos-livres---pessoas-fisicas---total",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/20662-concessoes-de-credito-com-recursos-livres---pessoas-fisicas---total",
+    "primary_or_derived": "derivado",
+    "limitations": "Concessões são fluxo de novas operações no período e não equivalem ao saldo da carteira. Recursos livres excluem crédito direcionado e outras operações lastreadas em recursos regulamentados.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000824",
+        "product_id": "DP000793",
+        "distribution_name": "Concessões de crédito com recursos livres — Pessoas físicas — Total — dados e API SGS",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/20662-concessoes-de-credito-com-recursos-livres---pessoas-fisicas---total",
+        "format": "JSON | CSV | HTML | WSDL",
+        "access_protocol": "HTTPS | BCData/SGS REST | SOAP",
+        "access_tool": "navegador web | script | cliente HTTP",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; consultas programáticas sujeitas aos parâmetros e limites documentados pelo BCB",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por código da série e intervalo temporal conforme serviço",
+        "notes": "O portal fornece metadados e recursos JSON/CSV/HTML e WSDL/SGS. Preservar código da série, unidade, periodicidade, universo e definição conceitual.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "JSON | CSV | HTML | WSDL"
+    ],
+    "available_protocols": [
+      "HTTPS | BCData/SGS REST | SOAP"
+    ]
+  },
+  {
+    "product_id": "DP000794",
+    "resource_id": "DR0126",
+    "product_name": "Concessões de crédito com recursos livres — Pessoas jurídicas — Total",
+    "product_acronym": "Crédito livre PJ — concessões",
+    "product_family": "Crédito com recursos livres",
+    "product_kind": "dataset_series",
+    "product_description": "Valor mensal das novas operações de crédito com recursos livres contratadas por pessoas jurídicas no período de referência.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "crédito livre | pessoas jurídicas | concessões | novas operações | SGS",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "série temporal nacional de crédito",
+    "spatial_resolution": "não espacial",
+    "temporal_coverage": "março de 2011–presente",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "SGS código 20635 — série corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/20635-concessoes-de-credito-com-recursos-livres---pessoas-juridicas---total",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/20635-concessoes-de-credito-com-recursos-livres---pessoas-juridicas---total",
+    "primary_or_derived": "derivado",
+    "limitations": "Concessões são fluxo de novas operações no período e não equivalem ao saldo da carteira. Recursos livres excluem crédito direcionado e outras operações lastreadas em recursos regulamentados.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000825",
+        "product_id": "DP000794",
+        "distribution_name": "Concessões de crédito com recursos livres — Pessoas jurídicas — Total — dados e API SGS",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/20635-concessoes-de-credito-com-recursos-livres---pessoas-juridicas---total",
+        "format": "JSON | CSV | HTML | WSDL",
+        "access_protocol": "HTTPS | BCData/SGS REST | SOAP",
+        "access_tool": "navegador web | script | cliente HTTP",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; consultas programáticas sujeitas aos parâmetros e limites documentados pelo BCB",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por código da série e intervalo temporal conforme serviço",
+        "notes": "O portal fornece metadados e recursos JSON/CSV/HTML e WSDL/SGS. Preservar código da série, unidade, periodicidade, universo e definição conceitual.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "JSON | CSV | HTML | WSDL"
+    ],
+    "available_protocols": [
+      "HTTPS | BCData/SGS REST | SOAP"
+    ]
+  },
+  {
+    "product_id": "DP000795",
+    "resource_id": "DR0126",
+    "product_name": "Inadimplência da carteira de crédito com recursos livres — Pessoas físicas — Total",
+    "product_acronym": "Inadimplência crédito livre PF",
+    "product_family": "Crédito com recursos livres",
+    "product_kind": "dataset_series",
+    "product_description": "Percentual mensal da carteira de crédito livre de pessoas físicas com pelo menos uma parcela em atraso superior a 90 dias.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "inadimplência | pessoas físicas | atraso acima de 90 dias | crédito livre | SGS",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "série temporal nacional de crédito",
+    "spatial_resolution": "não espacial",
+    "temporal_coverage": "março de 2011–presente",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "SGS código 21112 — série corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/21112-inadimplencia-da-carteira-de-credito-com-recursos-livres---pessoas-fisicas---total",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/21112-inadimplencia-da-carteira-de-credito-com-recursos-livres---pessoas-fisicas---total",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicador é percentual da carteira com atraso superior a 90 dias; não mede número de pessoas inadimplentes nem qualquer atraso. O denominador e o universo restringem-se ao crédito com recursos livres.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000826",
+        "product_id": "DP000795",
+        "distribution_name": "Inadimplência da carteira de crédito com recursos livres — Pessoas físicas — Total — dados e API SGS",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/21112-inadimplencia-da-carteira-de-credito-com-recursos-livres---pessoas-fisicas---total",
+        "format": "JSON | CSV | HTML | WSDL",
+        "access_protocol": "HTTPS | BCData/SGS REST | SOAP",
+        "access_tool": "navegador web | script | cliente HTTP",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; consultas programáticas sujeitas aos parâmetros e limites documentados pelo BCB",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por código da série e intervalo temporal conforme serviço",
+        "notes": "O portal fornece metadados e recursos JSON/CSV/HTML e WSDL/SGS. Preservar código da série, unidade, periodicidade, universo e definição conceitual.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "JSON | CSV | HTML | WSDL"
+    ],
+    "available_protocols": [
+      "HTTPS | BCData/SGS REST | SOAP"
+    ]
+  },
+  {
+    "product_id": "DP000796",
+    "resource_id": "DR0126",
+    "product_name": "Inadimplência da carteira de crédito com recursos livres — Pessoas jurídicas — Total",
+    "product_acronym": "Inadimplência crédito livre PJ",
+    "product_family": "Crédito com recursos livres",
+    "product_kind": "dataset_series",
+    "product_description": "Percentual mensal da carteira de crédito livre de pessoas jurídicas com pelo menos uma parcela em atraso superior a 90 dias.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "inadimplência | pessoas jurídicas | atraso acima de 90 dias | crédito livre | SGS",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "série temporal nacional de crédito",
+    "spatial_resolution": "não espacial",
+    "temporal_coverage": "março de 2011–presente",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "SGS código 21086 — série corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/21086-inadimplencia-da-carteira-de-credito-com-recursos-livres---pessoas-juridicas---total",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/21086-inadimplencia-da-carteira-de-credito-com-recursos-livres---pessoas-juridicas---total",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicador é percentual da carteira com atraso superior a 90 dias; não mede número de empresas inadimplentes nem qualquer atraso. O denominador e o universo restringem-se ao crédito com recursos livres.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000827",
+        "product_id": "DP000796",
+        "distribution_name": "Inadimplência da carteira de crédito com recursos livres — Pessoas jurídicas — Total — dados e API SGS",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/21086-inadimplencia-da-carteira-de-credito-com-recursos-livres---pessoas-juridicas---total",
+        "format": "JSON | CSV | HTML | WSDL",
+        "access_protocol": "HTTPS | BCData/SGS REST | SOAP",
+        "access_tool": "navegador web | script | cliente HTTP",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; consultas programáticas sujeitas aos parâmetros e limites documentados pelo BCB",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por código da série e intervalo temporal conforme serviço",
+        "notes": "O portal fornece metadados e recursos JSON/CSV/HTML e WSDL/SGS. Preservar código da série, unidade, periodicidade, universo e definição conceitual.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "JSON | CSV | HTML | WSDL"
+    ],
+    "available_protocols": [
+      "HTTPS | BCData/SGS REST | SOAP"
+    ]
+  },
+  {
+    "product_id": "DP000797",
+    "resource_id": "DR0126",
+    "product_name": "Prazo médio das concessões de crédito com recursos livres — Pessoas físicas — Total",
+    "product_acronym": "Prazo médio crédito livre PF",
+    "product_family": "Condições do crédito",
+    "product_kind": "dataset_series",
+    "product_description": "Prazo a decorrer médio, em meses, das novas operações de crédito livre contratadas por pessoas físicas no período de referência.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "prazo médio | pessoas físicas | concessões | crédito livre | meses | SGS",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "série temporal nacional de crédito",
+    "spatial_resolution": "não espacial",
+    "temporal_coverage": "março de 2011–presente",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "SGS código 20878 — série corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/20878-prazo-medio-das-concessoes-de-credito-com-recursos-livres---pessoas-fisicas---total",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/20878-prazo-medio-das-concessoes-de-credito-com-recursos-livres---pessoas-fisicas---total",
+    "primary_or_derived": "derivado",
+    "limitations": "Prazo médio é calculado sobre novas concessões e não representa maturidade do estoque da carteira nem prazo contratual de qualquer operação individual.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000828",
+        "product_id": "DP000797",
+        "distribution_name": "Prazo médio das concessões de crédito com recursos livres — Pessoas físicas — Total — dados e API SGS",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/20878-prazo-medio-das-concessoes-de-credito-com-recursos-livres---pessoas-fisicas---total",
+        "format": "JSON | CSV | HTML | WSDL",
+        "access_protocol": "HTTPS | BCData/SGS REST | SOAP",
+        "access_tool": "navegador web | script | cliente HTTP",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; consultas programáticas sujeitas aos parâmetros e limites documentados pelo BCB",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por código da série e intervalo temporal conforme serviço",
+        "notes": "O portal fornece metadados e recursos JSON/CSV/HTML e WSDL/SGS. Preservar código da série, unidade, periodicidade, universo e definição conceitual.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "JSON | CSV | HTML | WSDL"
+    ],
+    "available_protocols": [
+      "HTTPS | BCData/SGS REST | SOAP"
+    ]
+  },
+  {
+    "product_id": "DP000798",
+    "resource_id": "DR0126",
+    "product_name": "Prazo médio das concessões de crédito com recursos livres — Pessoas jurídicas — Total",
+    "product_acronym": "Prazo médio crédito livre PJ",
+    "product_family": "Condições do crédito",
+    "product_kind": "dataset_series",
+    "product_description": "Prazo a decorrer médio, em meses, das novas operações de crédito livre contratadas por pessoas jurídicas no período de referência.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "prazo médio | pessoas jurídicas | concessões | crédito livre | meses | SGS",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "série temporal nacional de crédito",
+    "spatial_resolution": "não espacial",
+    "temporal_coverage": "março de 2011–presente",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "SGS código 20856 — série corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/20856-prazo-medio-das-concessoes-de-credito-com-recursos-livres---pessoas-juridicas---total",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/20856-prazo-medio-das-concessoes-de-credito-com-recursos-livres---pessoas-juridicas---total",
+    "primary_or_derived": "derivado",
+    "limitations": "Prazo médio é calculado sobre novas concessões e não representa maturidade do estoque da carteira nem prazo contratual de qualquer operação individual.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000829",
+        "product_id": "DP000798",
+        "distribution_name": "Prazo médio das concessões de crédito com recursos livres — Pessoas jurídicas — Total — dados e API SGS",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/20856-prazo-medio-das-concessoes-de-credito-com-recursos-livres---pessoas-juridicas---total",
+        "format": "JSON | CSV | HTML | WSDL",
+        "access_protocol": "HTTPS | BCData/SGS REST | SOAP",
+        "access_tool": "navegador web | script | cliente HTTP",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; consultas programáticas sujeitas aos parâmetros e limites documentados pelo BCB",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por código da série e intervalo temporal conforme serviço",
+        "notes": "O portal fornece metadados e recursos JSON/CSV/HTML e WSDL/SGS. Preservar código da série, unidade, periodicidade, universo e definição conceitual.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "JSON | CSV | HTML | WSDL"
+    ],
+    "available_protocols": [
+      "HTTPS | BCData/SGS REST | SOAP"
+    ]
+  },
+  {
+    "product_id": "DP000799",
+    "resource_id": "DR0126",
+    "product_name": "Spread médio das operações de crédito com recursos livres — Pessoas físicas — Total",
+    "product_acronym": "Spread crédito livre PF",
+    "product_family": "Condições do crédito",
+    "product_kind": "dataset_series",
+    "product_description": "Diferença mensal, em pontos percentuais, entre a taxa média de juros das novas operações de crédito livre para pessoas físicas e o custo de captação referencial médio.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "spread | pessoas físicas | juros | custo de captação | crédito livre | SGS",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "série temporal nacional de crédito",
+    "spatial_resolution": "não espacial",
+    "temporal_coverage": "março de 2011–presente",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "SGS código 20809 — série corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/20809-spread-medio-das-operacoes-de-credito-com-recursos-livres---pessoas-fisicas---total",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/20809-spread-medio-das-operacoes-de-credito-com-recursos-livres---pessoas-fisicas---total",
+    "primary_or_derived": "derivado",
+    "limitations": "Spread é diferença entre taxa de concessão e custo referencial de captação; não equivale à margem líquida ou lucro das instituições e não descreve o custo de qualquer contrato individual.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000830",
+        "product_id": "DP000799",
+        "distribution_name": "Spread médio das operações de crédito com recursos livres — Pessoas físicas — Total — dados e API SGS",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/20809-spread-medio-das-operacoes-de-credito-com-recursos-livres---pessoas-fisicas---total",
+        "format": "JSON | CSV | HTML | WSDL",
+        "access_protocol": "HTTPS | BCData/SGS REST | SOAP",
+        "access_tool": "navegador web | script | cliente HTTP",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; consultas programáticas sujeitas aos parâmetros e limites documentados pelo BCB",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por código da série e intervalo temporal conforme serviço",
+        "notes": "O portal fornece metadados e recursos JSON/CSV/HTML e WSDL/SGS. Preservar código da série, unidade, periodicidade, universo e definição conceitual.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "JSON | CSV | HTML | WSDL"
+    ],
+    "available_protocols": [
+      "HTTPS | BCData/SGS REST | SOAP"
+    ]
+  },
+  {
+    "product_id": "DP000800",
+    "resource_id": "DR0126",
+    "product_name": "Spread médio das operações de crédito com recursos livres — Pessoas jurídicas — Total",
+    "product_acronym": "Spread crédito livre PJ",
+    "product_family": "Condições do crédito",
+    "product_kind": "dataset_series",
+    "product_description": "Diferença mensal, em pontos percentuais, entre a taxa média de juros das novas operações de crédito livre para pessoas jurídicas e o custo de captação referencial médio.",
+    "research_areas": "Economics | Finance | Public policy | Data infrastructure",
+    "keywords": "spread | pessoas jurídicas | juros | custo de captação | crédito livre | SGS",
+    "geographic_coverage": "Brasil",
+    "covers_brazil": "sim",
+    "spatial_support": "série temporal nacional de crédito",
+    "spatial_resolution": "não espacial",
+    "temporal_coverage": "março de 2011–presente",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "SGS código 20787 — série corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://dadosabertos.bcb.gov.br/dataset/20787-spread-medio-das-operacoes-de-credito-com-recursos-livres---pessoas-juridicas---total",
+    "methodology_url": "https://dadosabertos.bcb.gov.br/dataset/20787-spread-medio-das-operacoes-de-credito-com-recursos-livres---pessoas-juridicas---total",
+    "primary_or_derived": "derivado",
+    "limitations": "Spread é diferença entre taxa de concessão e custo referencial de captação; não equivale à margem líquida ou lucro das instituições e não descreve o custo de qualquer contrato individual.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0126",
+      "resource_name": "Portal de Dados Abertos e Séries Estatísticas — Banco Central do Brasil",
+      "acronym": "BCB Dados Abertos",
+      "official_identity": "Banco Central do Brasil — Portal de Dados Abertos e sistemas estatísticos",
+      "homepage_url": "https://www.bcb.gov.br/",
+      "data_access_url": "https://dadosabertos.bcb.gov.br/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000831",
+        "product_id": "DP000800",
+        "distribution_name": "Spread médio das operações de crédito com recursos livres — Pessoas jurídicas — Total — dados e API SGS",
+        "access_url": "https://dadosabertos.bcb.gov.br/dataset/20787-spread-medio-das-operacoes-de-credito-com-recursos-livres---pessoas-juridicas---total",
+        "format": "JSON | CSV | HTML | WSDL",
+        "access_protocol": "HTTPS | BCData/SGS REST | SOAP",
+        "access_tool": "navegador web | script | cliente HTTP",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; consultas programáticas sujeitas aos parâmetros e limites documentados pelo BCB",
+        "license": "Open Data Commons Open Database License (ODbL)",
+        "provider_attribution_required": "sim",
+        "subset_support": "por código da série e intervalo temporal conforme serviço",
+        "notes": "O portal fornece metadados e recursos JSON/CSV/HTML e WSDL/SGS. Preservar código da série, unidade, periodicidade, universo e definição conceitual.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "JSON | CSV | HTML | WSDL"
+    ],
+    "available_protocols": [
+      "HTTPS | BCData/SGS REST | SOAP"
+    ]
   }
 ]
