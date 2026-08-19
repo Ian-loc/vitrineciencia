@@ -46,7 +46,6 @@ jobs:
           fetch "$SITE/assets/analytics.js" "$tmp/analytics.js"
           fetch "$SITE/data/data_resources.json" "$tmp/resources.json"
           fetch "$SITE/data/data_products.json" "$tmp/products.json"
-          fetch "$SITE/data/product_distributions.csv" "$tmp/distributions.csv"
 
           grep -q 'Vitrine Ciência' "$tmp/index.html"
           grep -q 'id="filters"' "$tmp/index.html"
@@ -63,20 +62,16 @@ jobs:
           grep -q 'data/data_products.json' "$tmp/products.js"
           grep -q 'data/data_resources.json' "$tmp/analytics.js"
 
-          python3 - "$tmp/resources.json" "$tmp/products.json" "$tmp/distributions.csv" <<'PY'
+          python3 - "$tmp/resources.json" "$tmp/products.json" <<'PY'
           import csv, json, sys
 
           public_resources = json.load(open(sys.argv[1], encoding='utf-8'))
           public_products = json.load(open(sys.argv[2], encoding='utf-8'))
-          with open(sys.argv[3], encoding='utf-8', newline='') as f:
-              public_distributions = list(csv.DictReader(f))
 
           with open('data/data_resources.csv', encoding='utf-8', newline='') as f:
               expected_resources = list(csv.DictReader(f))
           with open('data/data_products.csv', encoding='utf-8', newline='') as f:
               expected_products = list(csv.DictReader(f))
-          with open('data/product_distributions.csv', encoding='utf-8', newline='') as f:
-              expected_distributions = list(csv.DictReader(f))
 
           def ids(rows, field):
               values = [item[field] for item in rows]
@@ -87,12 +82,10 @@ jobs:
           assert isinstance(public_products, list)
           assert ids(public_resources, 'resource_id') == ids(expected_resources, 'resource_id')
           assert ids(public_products, 'product_id') == ids(expected_products, 'product_id')
-          assert ids(public_distributions, 'distribution_id') == ids(expected_distributions, 'distribution_id')
 
           print(
-              'OK: Vitrine publicada corresponde ao catálogo canônico — '
-              f'{len(public_resources)} fontes, {len(public_products)} produtos, '
-              f'{len(public_distributions)} distribuições'
+              'OK: Vitrine publicada corresponde ao catálogo público canônico — '
+              f'{len(public_resources)} fontes, {len(public_products)} produtos'
           )
           PY
 
@@ -101,7 +94,13 @@ jobs:
           SITE: https://ian-loc.github.io/vitrineciencia
         run: |
           set -euo pipefail
-          for path in explorer.html abordagens.html data/federated_layers.json; do
+          for path in \
+            explorer.html \
+            abordagens.html \
+            data/federated_layers.json \
+            data/data_resources.csv \
+            data/data_products.csv \
+            data/product_distributions.csv; do
             code="$(curl --silent --location --output /dev/null --write-out '%{http_code}' "$SITE/$path")"
             test "$code" = "404"
           done
