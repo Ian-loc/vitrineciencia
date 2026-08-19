@@ -8,7 +8,9 @@ O projeto segue versionamento semântico. A `main` pode avançar entre releases;
 - smoke-test público alinhado à fronteira real do GitHub Pages: CSVs canônicos internos deixaram de ser tratados como endpoints públicos esperados e passaram a ser verificados como não publicados;
 - smoke-test pós-deploy passou a validar o `head_sha` exato do workflow publicado, evitando falso negativo quando a `main` avança antes do teste externo;
 - workflow legado `validate-source-corrections.yml`, incompatível com a fronteira pública atual e preso ao antigo baseline de 51 fontes, removido;
-- validador legado `scripts/validate_frontend.py`, ainda preso à identidade `Science Data Sources Catalog` e ao gate fixo de 51 fontes, removido; checklist de PR alinhado aos validadores atuais da Vitrine.
+- validador legado `scripts/validate_frontend.py`, ainda preso à identidade `Science Data Sources Catalog` e ao gate fixo de 51 fontes, removido; checklist de PR alinhado aos validadores atuais da Vitrine;
+- workflow de Pages passou a usar **privilégio mínimo por job**: PRs/validação mantêm apenas `contents: read`, enquanto `pages: write` e `id-token: write` ficam restritos ao job de deploy;
+- empacotamento do candidato Zenodo v1.0.0 deixou de rodar automaticamente em PRs durante a fase de QA/QC e passou a ser **somente manual (`workflow_dispatch`)**, evitando artefatos de release desnecessários após a v1.0.0.
 
 ## 1.0.0 — 19 de agosto de 2026
 
@@ -58,6 +60,3 @@ Antes de 09/08/2026, este repositório também abrigou desenvolvimento do Simbio
 - definida a autoridade inicial do CSV no GitHub;
 - ampliado o esquema de fontes de 22 para 26 campos;
 - revisadas identidade, utilidade, limitações, links e acesso;
-- adicionadas validação automática e geração do JSON público.
-
-> Nota: versões 0.6/0.7 e o baseline de 51 fontes são marcos históricos anteriores à primeira release científica estável `v1.0.0`.
