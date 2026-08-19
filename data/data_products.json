@@ -47812,5 +47812,595 @@
     "available_protocols": [
       "HTTPS"
     ]
+  },
+  {
+    "product_id": "DP000819",
+    "resource_id": "DR0130",
+    "product_name": "Siconfi — API de Dados Abertos",
+    "product_acronym": "Siconfi API",
+    "product_family": "API e disseminação programática",
+    "product_kind": "data_service",
+    "product_description": "Serviço REST de dados abertos do Siconfi para obtenção automatizada, em JSON, de informações contábeis e fiscais submetidas pelos entes, incluindo consultas de grande volume e MSC.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "finanças públicas | contabilidade pública | Siconfi | federalismo fiscal | orçamento | estados | municípios",
+    "geographic_coverage": "Brasil — União, estados, DF e municípios",
+    "covers_brazil": "sim",
+    "spatial_support": "ente federativo | declaração | conta/anexo conforme endpoint",
+    "spatial_resolution": "não se aplica; serviço tabular/programático",
+    "temporal_coverage": "dados disponíveis conforme endpoint e série",
+    "temporal_resolution": "conforme endpoint; MSC tipicamente mensal",
+    "update_frequency": "contínua conforme ingestão/homologação no Siconfi",
+    "product_status": "ativo",
+    "version_or_collection": "API corrente; documentação consultada em 2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi/siconfi-api-de-dados-abertos",
+    "methodology_url": "https://apidatalake.tesouro.gov.br/docs/siconfi/",
+    "primary_or_derived": "serviço",
+    "limitations": "A API expõe informações declaradas e homologadas/retificadas no Siconfi; cobertura e atualização dependem do endpoint, ente e período. Paginação padrão e orientações de uso devem ser respeitadas.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0130",
+      "resource_name": "Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro — Siconfi / Tesouro Nacional",
+      "acronym": "Siconfi",
+      "official_identity": "Secretaria do Tesouro Nacional — Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro",
+      "homepage_url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+      "data_access_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000852",
+        "product_id": "DP000819",
+        "distribution_name": "Siconfi — API de Dados Abertos — acesso oficial",
+        "access_url": "https://apidatalake.tesouro.gov.br/docs/siconfi/",
+        "format": "JSON | REST API",
+        "access_protocol": "HTTPS | REST API quando aplicável",
+        "access_tool": "cliente HTTP | navegador | software estatístico",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; API sujeita às orientações de uso e paginação quando aplicável",
+        "license": "Open Data Commons Open Database License (ODbL) nos conjuntos CKAN auditados; verificar termos do recurso/consulta específica",
+        "provider_attribution_required": "sim",
+        "subset_support": "por endpoint, ente, período, anexo/conta e parâmetros suportados",
+        "notes": "Dados administrativos do Siconfi; preservar ente, período, versão metodológica e estado de homologação/retificação. Não interpretar ausência de declaração como valor zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "JSON | REST API"
+    ],
+    "available_protocols": [
+      "HTTPS | REST API quando aplicável"
+    ]
+  },
+  {
+    "product_id": "DP000820",
+    "resource_id": "DR0130",
+    "product_name": "MSC — Informações Patrimoniais dos Entes da Federação",
+    "product_acronym": "MSC Patrimonial",
+    "product_family": "Matriz de Saldos Contábeis",
+    "product_kind": "dataset_series",
+    "product_description": "Balancetes mensais das contas patrimoniais das classes 1, 2, 3 e 4 do PCASP, detalhados por informações complementares como poder/órgão, atributo financeiro/permanente, fonte/destinação de recursos e dívida consolidada.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "finanças públicas | contabilidade pública | Siconfi | federalismo fiscal | orçamento | estados | municípios",
+    "geographic_coverage": "Brasil — União, estados, DF e municípios declarantes",
+    "covers_brazil": "sim",
+    "spatial_support": "ente federativo × período × conta contábil × informação complementar",
+    "spatial_resolution": "contábil; não espacial",
+    "temporal_coverage": "série mensal conforme entregas da MSC",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "estrutura vigente com documentação por exercício; consulta 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.tesourotransparente.gov.br/ckan/dataset/api-msc-patrimonial-entes",
+    "methodology_url": "https://siconfi.tesouro.gov.br/siconfi/pages/public/conteudo/conteudo.jsf?id=12503",
+    "primary_or_derived": "primário",
+    "limitations": "Os valores dependem da entrega e consistência contábil dos entes e do PCASP/taxonomia do exercício. Não interpretar ausência de registro como ausência de ativo, passivo, variação patrimonial ou fato contábil.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0130",
+      "resource_name": "Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro — Siconfi / Tesouro Nacional",
+      "acronym": "Siconfi",
+      "official_identity": "Secretaria do Tesouro Nacional — Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro",
+      "homepage_url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+      "data_access_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000853",
+        "product_id": "DP000820",
+        "distribution_name": "MSC — Informações Patrimoniais dos Entes da Federação — acesso oficial",
+        "access_url": "https://www.tesourotransparente.gov.br/ckan/dataset/api-msc-patrimonial-entes",
+        "format": "API | JSON | PDF de metadados",
+        "access_protocol": "HTTPS | REST API quando aplicável",
+        "access_tool": "API Siconfi | navegador",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; API sujeita às orientações de uso e paginação quando aplicável",
+        "license": "Open Data Commons Open Database License (ODbL) nos conjuntos CKAN auditados; verificar termos do recurso/consulta específica",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ente, período, conta e informações complementares conforme API",
+        "notes": "Dados administrativos do Siconfi; preservar ente, período, versão metodológica e estado de homologação/retificação. Não interpretar ausência de declaração como valor zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "API | JSON | PDF de metadados"
+    ],
+    "available_protocols": [
+      "HTTPS | REST API quando aplicável"
+    ]
+  },
+  {
+    "product_id": "DP000821",
+    "resource_id": "DR0130",
+    "product_name": "MSC — Informações Orçamentárias dos Entes da Federação",
+    "product_acronym": "MSC Orçamentária",
+    "product_family": "Matriz de Saldos Contábeis",
+    "product_kind": "dataset_series",
+    "product_description": "Balancetes mensais das contas orçamentárias das classes 5 e 6 do PCASP, com informações complementares de poder/órgão, fonte de recursos, função, subfunção, natureza da despesa/receita e outros atributos.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "finanças públicas | contabilidade pública | Siconfi | federalismo fiscal | orçamento | estados | municípios",
+    "geographic_coverage": "Brasil — União, estados, DF e municípios declarantes",
+    "covers_brazil": "sim",
+    "spatial_support": "ente federativo × período × conta contábil × informação complementar",
+    "spatial_resolution": "contábil; não espacial",
+    "temporal_coverage": "série mensal conforme entregas da MSC",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "estrutura vigente com documentação por exercício; consulta 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.tesourotransparente.gov.br/ckan/dataset/api-msc-orcamentaria-entes",
+    "methodology_url": "https://siconfi.tesouro.gov.br/siconfi/pages/public/conteudo/conteudo.jsf?id=12503",
+    "primary_or_derived": "primário",
+    "limitations": "A classificação orçamentária e os atributos seguem o PCASP e regras do exercício. Comparações temporais exigem verificar mudanças de taxonomia, mapeamento, retificações e cobertura dos entes.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0130",
+      "resource_name": "Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro — Siconfi / Tesouro Nacional",
+      "acronym": "Siconfi",
+      "official_identity": "Secretaria do Tesouro Nacional — Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro",
+      "homepage_url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+      "data_access_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000854",
+        "product_id": "DP000821",
+        "distribution_name": "MSC — Informações Orçamentárias dos Entes da Federação — acesso oficial",
+        "access_url": "https://www.tesourotransparente.gov.br/ckan/dataset/api-msc-orcamentaria-entes",
+        "format": "API | JSON | PDF de metadados",
+        "access_protocol": "HTTPS | REST API quando aplicável",
+        "access_tool": "API Siconfi | navegador",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; API sujeita às orientações de uso e paginação quando aplicável",
+        "license": "Open Data Commons Open Database License (ODbL) nos conjuntos CKAN auditados; verificar termos do recurso/consulta específica",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ente, período, conta e informações complementares conforme API",
+        "notes": "Dados administrativos do Siconfi; preservar ente, período, versão metodológica e estado de homologação/retificação. Não interpretar ausência de declaração como valor zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "API | JSON | PDF de metadados"
+    ],
+    "available_protocols": [
+      "HTTPS | REST API quando aplicável"
+    ]
+  },
+  {
+    "product_id": "DP000822",
+    "resource_id": "DR0130",
+    "product_name": "MSC — Informações de Controle dos Entes da Federação",
+    "product_acronym": "MSC Controle",
+    "product_family": "Matriz de Saldos Contábeis",
+    "product_kind": "dataset_series",
+    "product_description": "Balancetes mensais das contas de controle das classes 7 e 8 do PCASP, detalhados por atributos como poder/órgão, fonte de recursos, função, subfunção, natureza da despesa e ano de inscrição de restos a pagar.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "finanças públicas | contabilidade pública | Siconfi | federalismo fiscal | orçamento | estados | municípios",
+    "geographic_coverage": "Brasil — União, estados, DF e municípios declarantes",
+    "covers_brazil": "sim",
+    "spatial_support": "ente federativo × período × conta contábil × informação complementar",
+    "spatial_resolution": "contábil; não espacial",
+    "temporal_coverage": "série mensal conforme entregas da MSC",
+    "temporal_resolution": "mensal",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "estrutura vigente com documentação por exercício; consulta 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.tesourotransparente.gov.br/ckan/dataset/api-msc-controle-entes",
+    "methodology_url": "https://siconfi.tesouro.gov.br/siconfi/pages/public/conteudo/conteudo.jsf?id=12503",
+    "primary_or_derived": "primário",
+    "limitations": "Contas de controle não devem ser tratadas como caixa, despesa paga ou estoque patrimonial sem considerar sua natureza contábil. Cobertura, validação e taxonomia dependem do exercício e da entrega do ente.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0130",
+      "resource_name": "Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro — Siconfi / Tesouro Nacional",
+      "acronym": "Siconfi",
+      "official_identity": "Secretaria do Tesouro Nacional — Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro",
+      "homepage_url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+      "data_access_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000855",
+        "product_id": "DP000822",
+        "distribution_name": "MSC — Informações de Controle dos Entes da Federação — acesso oficial",
+        "access_url": "https://www.tesourotransparente.gov.br/ckan/dataset/api-msc-controle-entes",
+        "format": "API | JSON | PDF de metadados",
+        "access_protocol": "HTTPS | REST API quando aplicável",
+        "access_tool": "API Siconfi | navegador",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; API sujeita às orientações de uso e paginação quando aplicável",
+        "license": "Open Data Commons Open Database License (ODbL) nos conjuntos CKAN auditados; verificar termos do recurso/consulta específica",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ente, período, conta e informações complementares conforme API",
+        "notes": "Dados administrativos do Siconfi; preservar ente, período, versão metodológica e estado de homologação/retificação. Não interpretar ausência de declaração como valor zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "API | JSON | PDF de metadados"
+    ],
+    "available_protocols": [
+      "HTTPS | REST API quando aplicável"
+    ]
+  },
+  {
+    "product_id": "DP000823",
+    "resource_id": "DR0130",
+    "product_name": "FINBRA / DCA — Demonstrativos de Contas Anuais",
+    "product_acronym": "DCA / FINBRA",
+    "product_family": "contas anuais dos entes",
+    "product_kind": "dataset_series",
+    "product_description": "Dados das Declarações de Contas Anuais enviadas ao Siconfi pelos entes da Federação, permitindo consulta das contas anuais por período e ente.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "finanças públicas | contabilidade pública | Siconfi | federalismo fiscal | orçamento | estados | municípios",
+    "geographic_coverage": "Brasil — estados, DF e municípios e demais entes abrangidos conforme exercício",
+    "covers_brazil": "sim",
+    "spatial_support": "ente federativo × exercício × demonstrativo/conta",
+    "spatial_resolution": "administrativo; não espacial",
+    "temporal_coverage": "contas anuais; exercícios conforme disponibilidade do Siconfi",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "exercício 2026 documenta DCA referente às contas anuais de 2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi/siconfi-finbra-demonstrativos-de-contas-anuais",
+    "methodology_url": "https://siconfi.tesouro.gov.br/siconfi/pages/public/conteudo/conteudo.jsf?id=42",
+    "primary_or_derived": "primário",
+    "limitations": "Inclui somente informações efetivamente enviadas e aceitas no Siconfi. Retificações podem alterar valores. Comparações exigem preservar exercício, ente, demonstrativo, regras de validação e mudanças de classificação.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0130",
+      "resource_name": "Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro — Siconfi / Tesouro Nacional",
+      "acronym": "Siconfi",
+      "official_identity": "Secretaria do Tesouro Nacional — Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro",
+      "homepage_url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+      "data_access_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000856",
+        "product_id": "DP000823",
+        "distribution_name": "FINBRA / DCA — Demonstrativos de Contas Anuais — acesso oficial",
+        "access_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi/siconfi-finbra-demonstrativos-de-contas-anuais",
+        "format": "consulta web | API/JSON quando disponibilizado pelo Siconfi",
+        "access_protocol": "HTTPS | REST API quando aplicável",
+        "access_tool": "navegador | API Siconfi",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; API sujeita às orientações de uso e paginação quando aplicável",
+        "license": "Open Data Commons Open Database License (ODbL) nos conjuntos CKAN auditados; verificar termos do recurso/consulta específica",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ente, período e demonstrativo/indicador conforme produto",
+        "notes": "Dados administrativos do Siconfi; preservar ente, período, versão metodológica e estado de homologação/retificação. Não interpretar ausência de declaração como valor zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "consulta web | API/JSON quando disponibilizado pelo Siconfi"
+    ],
+    "available_protocols": [
+      "HTTPS | REST API quando aplicável"
+    ]
+  },
+  {
+    "product_id": "DP000824",
+    "resource_id": "DR0130",
+    "product_name": "FINBRA / RGF — Relatório de Gestão Fiscal",
+    "product_acronym": "RGF / FINBRA",
+    "product_family": "Lei de Responsabilidade Fiscal",
+    "product_kind": "dataset_series",
+    "product_description": "Dados dos Relatórios de Gestão Fiscal enviados ao Siconfi, incluindo demonstrativos de limites fiscais relacionados a despesa com pessoal, dívida, garantias e operações de crédito conforme a LRF e o ente/poder.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "finanças públicas | contabilidade pública | Siconfi | federalismo fiscal | orçamento | estados | municípios",
+    "geographic_coverage": "Brasil — União, estados, DF e municípios/órgãos conforme obrigação de reporte",
+    "covers_brazil": "sim",
+    "spatial_support": "ente federativo ou órgão/poder × período × anexo do RGF",
+    "spatial_resolution": "administrativo; não espacial",
+    "temporal_coverage": "série de relatórios por exercício e período",
+    "temporal_resolution": "quadrimestral ou semestral conforme ente/regime e exercício",
+    "update_frequency": "periódica conforme LRF",
+    "product_status": "ativo",
+    "version_or_collection": "instruções RGF exercício 2026 publicadas em 03/03/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi/siconfi-finbra-rgf",
+    "methodology_url": "https://siconfi.tesouro.gov.br/siconfi/pages/public/conteudo/conteudo.jsf?id=42",
+    "primary_or_derived": "primário",
+    "limitations": "Os demonstrativos dependem das regras da LRF/MDF, do poder/órgão e do regime de periodicidade. Valor publicado não deve ser interpretado sem o denominador, limite legal, período e eventual retificação correspondentes.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0130",
+      "resource_name": "Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro — Siconfi / Tesouro Nacional",
+      "acronym": "Siconfi",
+      "official_identity": "Secretaria do Tesouro Nacional — Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro",
+      "homepage_url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+      "data_access_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000857",
+        "product_id": "DP000824",
+        "distribution_name": "FINBRA / RGF — Relatório de Gestão Fiscal — acesso oficial",
+        "access_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi/siconfi-finbra-rgf",
+        "format": "consulta web | API/JSON quando disponibilizado pelo Siconfi",
+        "access_protocol": "HTTPS | REST API quando aplicável",
+        "access_tool": "navegador | API Siconfi",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; API sujeita às orientações de uso e paginação quando aplicável",
+        "license": "Open Data Commons Open Database License (ODbL) nos conjuntos CKAN auditados; verificar termos do recurso/consulta específica",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ente, período e demonstrativo/indicador conforme produto",
+        "notes": "Dados administrativos do Siconfi; preservar ente, período, versão metodológica e estado de homologação/retificação. Não interpretar ausência de declaração como valor zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "consulta web | API/JSON quando disponibilizado pelo Siconfi"
+    ],
+    "available_protocols": [
+      "HTTPS | REST API quando aplicável"
+    ]
+  },
+  {
+    "product_id": "DP000825",
+    "resource_id": "DR0130",
+    "product_name": "FINBRA / RREO — Relatório Resumido da Execução Orçamentária",
+    "product_acronym": "RREO / FINBRA",
+    "product_family": "Lei de Responsabilidade Fiscal",
+    "product_kind": "dataset_series",
+    "product_description": "Dados dos Relatórios Resumidos da Execução Orçamentária enviados ao Siconfi, com execução orçamentária, receita corrente líquida, resultados fiscal/previdenciário, restos a pagar e outros anexos definidos pela LRF/MDF.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "finanças públicas | contabilidade pública | Siconfi | federalismo fiscal | orçamento | estados | municípios",
+    "geographic_coverage": "Brasil — União, estados, DF e municípios conforme obrigação de reporte",
+    "covers_brazil": "sim",
+    "spatial_support": "ente federativo × bimestre × anexo do RREO",
+    "spatial_resolution": "administrativo; não espacial",
+    "temporal_coverage": "série de relatórios por exercício e bimestre",
+    "temporal_resolution": "bimestral",
+    "update_frequency": "bimestral",
+    "product_status": "ativo",
+    "version_or_collection": "instruções RREO exercício 2026 publicadas em 03/03/2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi/siconfi-finbra-rreo",
+    "methodology_url": "https://siconfi.tesouro.gov.br/siconfi/pages/public/conteudo/conteudo.jsf?id=42",
+    "primary_or_derived": "primário",
+    "limitations": "Os anexos possuem conceitos e bases próprias. Não somar ou comparar indicadores entre anexos sem verificar definição, período, ente e versão do MDF. Declarações podem ser retificadas.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0130",
+      "resource_name": "Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro — Siconfi / Tesouro Nacional",
+      "acronym": "Siconfi",
+      "official_identity": "Secretaria do Tesouro Nacional — Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro",
+      "homepage_url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+      "data_access_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000858",
+        "product_id": "DP000825",
+        "distribution_name": "FINBRA / RREO — Relatório Resumido da Execução Orçamentária — acesso oficial",
+        "access_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi/siconfi-finbra-rreo",
+        "format": "consulta web | API/JSON quando disponibilizado pelo Siconfi",
+        "access_protocol": "HTTPS | REST API quando aplicável",
+        "access_tool": "navegador | API Siconfi",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; API sujeita às orientações de uso e paginação quando aplicável",
+        "license": "Open Data Commons Open Database License (ODbL) nos conjuntos CKAN auditados; verificar termos do recurso/consulta específica",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ente, período e demonstrativo/indicador conforme produto",
+        "notes": "Dados administrativos do Siconfi; preservar ente, período, versão metodológica e estado de homologação/retificação. Não interpretar ausência de declaração como valor zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "consulta web | API/JSON quando disponibilizado pelo Siconfi"
+    ],
+    "available_protocols": [
+      "HTTPS | REST API quando aplicável"
+    ]
+  },
+  {
+    "product_id": "DP000826",
+    "resource_id": "DR0130",
+    "product_name": "Siconfi.IA e Painel Contas Públicas do Brasil",
+    "product_acronym": "Siconfi.IA",
+    "product_family": "acesso analítico às contas públicas",
+    "product_kind": "data_service",
+    "product_description": "Serviço lançado pelo Tesouro Nacional em 22/06/2026 para facilitar consulta e interpretação de informações fiscais e contábeis do Siconfi, acompanhado do painel Contas Públicas do Brasil com indicadores, comparações, mapas e visualizações.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "finanças públicas | contabilidade pública | Siconfi | federalismo fiscal | orçamento | estados | municípios",
+    "geographic_coverage": "Brasil — estados, DF e municípios; recortes por ente e indicador",
+    "covers_brazil": "sim",
+    "spatial_support": "ente federativo × indicador/demonstrativo",
+    "spatial_resolution": "agregado por ente; mapas temáticos conforme indicador",
+    "temporal_coverage": "dados do Siconfi e indicadores correntes/históricos conforme painel",
+    "temporal_resolution": "varia conforme indicador e demonstrativo",
+    "update_frequency": "conforme atualização das bases subjacentes",
+    "product_status": "ativo",
+    "version_or_collection": "primeira versão lançada em 22/06/2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://www.gov.br/tesouronacional/pt-br/noticias/tesouro-lanca-siconfi-ia-para-facilitar-acesso-aos-dados-contabeis-e-fiscais-da-federacao",
+    "methodology_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi",
+    "primary_or_derived": "derivado",
+    "limitations": "É camada de acesso e análise derivada de RGF, RREO, DCA e outras fontes, incluindo dados do IBGE e indicadores como CAPAG/ranking. Visualizações e respostas não substituem os demonstrativos, metadados e dados brutos de origem.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0130",
+      "resource_name": "Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro — Siconfi / Tesouro Nacional",
+      "acronym": "Siconfi",
+      "official_identity": "Secretaria do Tesouro Nacional — Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro",
+      "homepage_url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+      "data_access_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000859",
+        "product_id": "DP000826",
+        "distribution_name": "Siconfi.IA e Painel Contas Públicas do Brasil — acesso oficial",
+        "access_url": "https://www.gov.br/tesouronacional/pt-br/noticias/tesouro-lanca-siconfi-ia-para-facilitar-acesso-aos-dados-contabeis-e-fiscais-da-federacao",
+        "format": "consulta web | API/JSON quando disponibilizado pelo Siconfi",
+        "access_protocol": "HTTPS | REST API quando aplicável",
+        "access_tool": "navegador | API Siconfi",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; API sujeita às orientações de uso e paginação quando aplicável",
+        "license": "Open Data Commons Open Database License (ODbL) nos conjuntos CKAN auditados; verificar termos do recurso/consulta específica",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ente, período e demonstrativo/indicador conforme produto",
+        "notes": "Dados administrativos do Siconfi; preservar ente, período, versão metodológica e estado de homologação/retificação. Não interpretar ausência de declaração como valor zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "consulta web | API/JSON quando disponibilizado pelo Siconfi"
+    ],
+    "available_protocols": [
+      "HTTPS | REST API quando aplicável"
+    ]
+  },
+  {
+    "product_id": "DP000827",
+    "resource_id": "DR0130",
+    "product_name": "Siconfi — Tabela dos Entes da Federação",
+    "product_acronym": "Tabela dos Entes",
+    "product_family": "referência de entes do Siconfi",
+    "product_kind": "dataset",
+    "product_description": "Tabela de referência com informações dos entes da Federação contidas no Siconfi, utilizada para identificar e relacionar unidades governamentais nas consultas e na API.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "finanças públicas | contabilidade pública | Siconfi | federalismo fiscal | orçamento | estados | municípios",
+    "geographic_coverage": "Brasil — União, estados, DF e municípios",
+    "covers_brazil": "sim",
+    "spatial_support": "ente federativo",
+    "spatial_resolution": "administrativo; não espacial",
+    "temporal_coverage": "cadastro corrente; histórico depende do campo/serviço",
+    "temporal_resolution": "cadastral",
+    "update_frequency": "conforme manutenção do Siconfi",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto CKAN/API corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.tesourotransparente.gov.br/ckan/dataset?tags=Matriz+de+Saldos+Cont%C3%A1beis",
+    "methodology_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi/siconfi-api-de-dados-abertos",
+    "primary_or_derived": "primário",
+    "limitations": "É tabela de referência administrativa do Siconfi, não uma divisão territorial geoespacial nem fonte independente de população, área ou indicadores socioeconômicos.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0130",
+      "resource_name": "Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro — Siconfi / Tesouro Nacional",
+      "acronym": "Siconfi",
+      "official_identity": "Secretaria do Tesouro Nacional — Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro",
+      "homepage_url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+      "data_access_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000860",
+        "product_id": "DP000827",
+        "distribution_name": "Siconfi — Tabela dos Entes da Federação — acesso oficial",
+        "access_url": "https://www.tesourotransparente.gov.br/ckan/dataset?tags=Matriz+de+Saldos+Cont%C3%A1beis",
+        "format": "consulta web | API/JSON quando disponibilizado pelo Siconfi",
+        "access_protocol": "HTTPS | REST API quando aplicável",
+        "access_tool": "navegador | API Siconfi",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; API sujeita às orientações de uso e paginação quando aplicável",
+        "license": "Open Data Commons Open Database License (ODbL) nos conjuntos CKAN auditados; verificar termos do recurso/consulta específica",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ente, período e demonstrativo/indicador conforme produto",
+        "notes": "Dados administrativos do Siconfi; preservar ente, período, versão metodológica e estado de homologação/retificação. Não interpretar ausência de declaração como valor zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "consulta web | API/JSON quando disponibilizado pelo Siconfi"
+    ],
+    "available_protocols": [
+      "HTTPS | REST API quando aplicável"
+    ]
+  },
+  {
+    "product_id": "DP000828",
+    "resource_id": "DR0130",
+    "product_name": "Siconfi — Extrato de Entregas dos Entes da Federação",
+    "product_acronym": "Extrato de Entregas",
+    "product_family": "cobertura e submissões do Siconfi",
+    "product_kind": "dataset_series",
+    "product_description": "Extrato de relatórios homologados e retificados e de matrizes entregues ao Siconfi, útil para avaliar cobertura de submissões por ente, período e tipo de declaração.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "finanças públicas | contabilidade pública | Siconfi | federalismo fiscal | orçamento | estados | municípios",
+    "geographic_coverage": "Brasil — entes da Federação abrangidos pelo Siconfi",
+    "covers_brazil": "sim",
+    "spatial_support": "ente federativo × período × tipo de entrega",
+    "spatial_resolution": "administrativo; não espacial",
+    "temporal_coverage": "histórico de entregas e retificações conforme Siconfi",
+    "temporal_resolution": "evento administrativo",
+    "update_frequency": "conforme entregas",
+    "product_status": "ativo",
+    "version_or_collection": "conjunto CKAN/API corrente",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.tesourotransparente.gov.br/ckan/dataset?license_id=odc-odbl&tags=Estados+e+Munic%C3%ADpios&tags=RGF&tags=Siconfi&tags=Uni%C3%A3o",
+    "methodology_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi/siconfi-api-de-dados-abertos",
+    "primary_or_derived": "primário",
+    "limitations": "Registra entrega/homologação/retificação, não qualidade substantiva dos valores nem cumprimento fiscal. Ausência de entrega deve ser tratada como falta de informação, não como valor fiscal zero.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0130",
+      "resource_name": "Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro — Siconfi / Tesouro Nacional",
+      "acronym": "Siconfi",
+      "official_identity": "Secretaria do Tesouro Nacional — Sistema de Informações Contábeis e Fiscais do Setor Público Brasileiro",
+      "homepage_url": "https://siconfi.tesouro.gov.br/siconfi/index.jsf",
+      "data_access_url": "https://www.tesourotransparente.gov.br/consultas/consultas-siconfi"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000861",
+        "product_id": "DP000828",
+        "distribution_name": "Siconfi — Extrato de Entregas dos Entes da Federação — acesso oficial",
+        "access_url": "https://www.tesourotransparente.gov.br/ckan/dataset?license_id=odc-odbl&tags=Estados+e+Munic%C3%ADpios&tags=RGF&tags=Siconfi&tags=Uni%C3%A3o",
+        "format": "consulta web | API/JSON quando disponibilizado pelo Siconfi",
+        "access_protocol": "HTTPS | REST API quando aplicável",
+        "access_tool": "navegador | API Siconfi",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; API sujeita às orientações de uso e paginação quando aplicável",
+        "license": "Open Data Commons Open Database License (ODbL) nos conjuntos CKAN auditados; verificar termos do recurso/consulta específica",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ente, período e demonstrativo/indicador conforme produto",
+        "notes": "Dados administrativos do Siconfi; preservar ente, período, versão metodológica e estado de homologação/retificação. Não interpretar ausência de declaração como valor zero.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "consulta web | API/JSON quando disponibilizado pelo Siconfi"
+    ],
+    "available_protocols": [
+      "HTTPS | REST API quando aplicável"
+    ]
   }
 ]
