@@ -46,6 +46,7 @@ jobs:
 
       - name: Build deterministic Zenodo package
         run: |
+          mkdir -p dist
           python3 -m py_compile scripts/build_zenodo_package.py
           python3 scripts/build_zenodo_package.py | tee dist/v1.0.0-package-build.json
           test -s dist/vitrine-ciencia-v1.0.0.zip
