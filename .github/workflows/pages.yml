@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -18,22 +18,16 @@ concurrency:
 jobs:
   validate-vitrine:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Materializar lote PDET verificado
-        if: github.event_name == 'push'
-        run: python3 scripts/one_shot_pdet.py
 
       - name: Validar dados estáticos da Vitrine
         run: |
           python3 scripts/validate_brazil_scope.py
           python3 scripts/validate_product_catalog.py
           python3 scripts/build_catalog.py
-          python3 scripts/audit_link_roles.py --write
+          python3 scripts/audit_link_roles.py
 
       - name: Validar interface e fronteira da Vitrine
         run: |
@@ -81,40 +75,6 @@ jobs:
           test ! -e _site/config
           ! grep -R -n -E 'Simbiotrama|Simbioscópio|Simbioscopio' _site/index.html _site/products.html _site/analytics.html _site/about.html
 
-      - name: Read-back consolidado PDET
-        if: github.event_name == 'push'
-        run: |
-          python3 - <<'PY'
-          import csv
-          from pathlib import Path
-          def read(p):
-              with Path(p).open(encoding='utf-8-sig', newline='') as f:
-                  return list(csv.DictReader(f))
-          s=read('data/data_resources.csv'); p=read('data/data_products.csv'); d=read('data/product_distributions.csv')
-          assert len(s)==127, len(s)
-          assert len(p)==790, len(p)
-          assert len(d)==823, len(d)
-          assert any(x['resource_id']=='DR0127' for x in s)
-          assert all(any(x['product_id']==f'DP{i:06d}' for x in p) for i in range(801,809))
-          assert all(any(x['distribution_id']==f'DD{i:06d}' for x in d) for i in range(832,842))
-          assert len({x['resource_id'] for x in s})==len(s)
-          assert len({x['product_id'] for x in p})==len(p)
-          assert len({x['distribution_id'] for x in d})==len(d)
-          print('READBACK_OK', len(s), len(p), len(d))
-          PY
-          git diff --check
-
-      - name: Persistir lote e restaurar pipeline permanente
-        if: github.event_name == 'push'
-        run: |
-          git config user.name "Vitrine Science Bot"
-          git config user.email "actions@users.noreply.github.com"
-          git show HEAD^:.github/workflows/pages.yml > .github/workflows/pages.yml
-          git rm -f scripts/one_shot_pdet.py .github/workflows/automation-pdet-batch-v2.yml
-          git add .github/workflows/pages.yml data/data_resources.csv data/data_resources.json data/data_products.csv data/data_products.json data/product_distributions.csv data/brazil_scope_priorities.json data/data_quality_report.json data/link_role_audit.json
-          git commit -m "Expand verified MTE labor-statistics catalog"
-          git push origin HEAD:main
-
   deploy:
     if: github.event_name != 'pull_request'
     needs: [validate-vitrine]
@@ -125,8 +85,6 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
 
       - name: Gerar e validar Vitrine
         run: |
