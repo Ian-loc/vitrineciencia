@@ -8,7 +8,7 @@ A Vitrine usa três tabelas CSV canônicas na `main`:
 - `data/data_products.csv` — produtos;
 - `data/product_distributions.csv` — distribuições.
 
-Snapshot candidato `v1.0.0` de 19/08/2026: **135 fontes, 833 produtos e 866 distribuições**. Os identificadores correntes chegam a `DR0135`, `DP000861` e `DD000894`. Os JSONs e o site são derivados. O Drive é espelho/histórico derivado.
+Snapshot candidato `v1.0.0` de 19/08/2026: **135 fontes, 843 produtos e 876 distribuições**. Os identificadores correntes chegam a `DR0135`, `DP000861` e `DD000894`. Os JSONs e o site são derivados. O Drive é espelho/histórico derivado.
 
 ## 2. Fontes — 34 campos
 
