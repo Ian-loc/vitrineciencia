@@ -251,7 +251,7 @@
       const label = labelArea(option.value);
       const nextText = withCount(option.textContent, () => label);
       if (option.textContent !== nextText) option.textContent = nextText;
-      option.dataset.label = label;
+      if (option.dataset.label !== label) option.dataset.label = label;
     });
   }
 
@@ -263,7 +263,7 @@
       const label = labelKind(option.dataset.label || option.textContent.replace(/\s+\(\d+\)$/, ""));
       const nextText = withCount(option.textContent, () => label);
       if (option.textContent !== nextText) option.textContent = nextText;
-      option.dataset.label = label;
+      if (option.dataset.label !== label) option.dataset.label = label;
     });
   }
 
@@ -277,11 +277,12 @@
   function localizeKinds(root = document) {
     root.querySelectorAll(".product-card .identity").forEach(element => {
       const text = element.textContent || "";
-      Object.entries(KIND_LABELS).forEach(([source, target]) => {
+      Object.entries(KIND_LABELS).some(([source, target]) => {
         const suffix = ` · ${source}`;
-        if (text.endsWith(suffix) && !element.textContent.endsWith(` · ${target}`)) {
-          element.textContent = `${text.slice(0, -suffix.length)} · ${target}`;
-        }
+        if (!text.endsWith(suffix)) return false;
+        const translated = `${text.slice(0, -suffix.length)} · ${target}`;
+        if (element.textContent !== translated) element.textContent = translated;
+        return true;
       });
     });
   }
@@ -298,32 +299,28 @@
     });
   }
 
+  function replaceButtonText(button, text) {
+    const textNode = [...button.childNodes].find(node => node.nodeType === Node.TEXT_NODE);
+    if (textNode && textNode.textContent !== `${text} `) textNode.textContent = `${text} `;
+    const marker = button.querySelector("b");
+    if (marker && marker.textContent !== "×") marker.textContent = "×";
+    const aria = `Remover ${text}`;
+    if (button.getAttribute("aria-label") !== aria) button.setAttribute("aria-label", aria);
+  }
+
   function localizeActiveFilters() {
     const region = document.querySelector("#product-active-filters");
     if (!region) return;
     region.querySelectorAll("[data-remove]").forEach(button => {
       const key = button.dataset.remove;
+      const current = button.textContent.replace(/\s*×\s*$/, "").trim();
       if (key === "area") {
-        const current = button.textContent.replace(/\s*×\s*$/, "").trim();
         const raw = current.replace(/^Área:\s*/, "");
-        const translated = `Área: ${labelArea(raw)}`;
-        const b = button.querySelector("b");
-        button.childNodes.forEach(node => {
-          if (node.nodeType === Node.TEXT_NODE) node.textContent = `${translated} `;
-        });
-        if (b) b.textContent = "×";
-        button.setAttribute("aria-label", `Remover ${translated}`);
+        replaceButtonText(button, `Área: ${labelArea(raw)}`);
       }
       if (key === "kind") {
-        const current = button.textContent.replace(/\s*×\s*$/, "").trim();
         const raw = current.replace(/^Tipo:\s*/, "");
-        const translated = `Tipo: ${labelKind(raw)}`;
-        const b = button.querySelector("b");
-        button.childNodes.forEach(node => {
-          if (node.nodeType === Node.TEXT_NODE) node.textContent = `${translated} `;
-        });
-        if (b) b.textContent = "×";
-        button.setAttribute("aria-label", `Remover ${translated}`);
+        replaceButtonText(button, `Tipo: ${labelKind(raw)}`);
       }
     });
   }
@@ -341,8 +338,7 @@
     if (!document.querySelector("#product-catalog")) return;
     localizeProductInterface();
     const observer = new MutationObserver(mutations => {
-      const changed = mutations.some(mutation => mutation.addedNodes.length || mutation.type === "characterData");
-      if (changed) localizeProductInterface();
+      if (mutations.some(mutation => mutation.addedNodes.length)) localizeProductInterface();
     });
     observer.observe(document.body, {childList: true, subtree: true});
   }
