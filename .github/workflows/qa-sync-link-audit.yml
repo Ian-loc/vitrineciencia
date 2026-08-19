@@ -1,0 +1,46 @@
+name: Sync link-role QA artifact
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/qa-sync-link-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Regenerate and validate link-role audit
+        run: |
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/audit_descriptive_fields.py
+          python3 scripts/build_catalog.py
+          python3 scripts/build_public_discovery.py
+          python3 scripts/report_normalization_coverage.py
+          python3 scripts/audit_link_roles.py
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Commit synchronized derived artifact
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/link_role_audit.json
+          if git diff --cached --quiet; then
+            echo "No synchronization needed."
+            exit 0
+          fi
+          git commit -m "Sync link-role QA artifact"
+          git push origin HEAD:main
