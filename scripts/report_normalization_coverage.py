@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Mede quanto da fila de advertências já possui classe pública comparável.
+"""Mede cobertura da normalização pública e expõe resíduos para curadoria.
 
-Não altera os dados e não considera o texto canônico 'corrigido'. O objetivo é
-separar duas perguntas: (1) o registro histórico ainda mistura conceitos? e
-(2) a interface já dispõe de uma classe comparável sem apagar o texto original?
+Não altera os dados. O relatório distingue problemas históricos do CSV de casos
+que já possuem representação pública comparável e lista os resíduos restantes
+com o valor canônico que precisa ser avaliado.
 """
 from __future__ import annotations
 
@@ -30,16 +30,56 @@ def norm(value: str) -> str:
     return re.sub(r"\s+", " ", (value or "").strip().lower())
 
 
+def contains_any(value: str, patterns: tuple[str, ...]) -> bool:
+    text = norm(value)
+    return any(pattern in text for pattern in patterns)
+
+
 def support_warning(row: dict[str, str]) -> bool:
     value = row.get("spatial_support", "")
     items = split_pipe(value)
-    text = norm(value)
-    return len(items) >= 3 and any(token in text for token in ("mapa", "tabela", "gráfico", "grafico", "análise", "analise"))
+    return len(items) >= 3 and contains_any(value, ("mapa", "tabela", "gráfico", "grafico", "análise", "analise"))
 
 
 def update_warning(row: dict[str, str]) -> bool:
     value = row.get("update_frequency", "")
     return ";" in value or len(value) > 90
+
+
+def spatial_resolution_warning(row: dict[str, str]) -> bool:
+    return contains_any(
+        row.get("spatial_resolution", ""),
+        ("diária", "diaria", "mensal", "anual", "semanal", "trimestral", "por edição", "por edicao"),
+    )
+
+
+def temporal_coverage_warning(row: dict[str, str]) -> bool:
+    return contains_any(
+        row.get("temporal_coverage", ""),
+        ("atualização diária", "atualizacao diaria", "atualizado diariamente", "frequência de atualização", "frequencia de atualizacao"),
+    )
+
+
+def temporal_resolution_warning(row: dict[str, str]) -> bool:
+    return contains_any(
+        row.get("temporal_resolution", ""),
+        ("atualizado", "publicado", "edição corrente", "edicao corrente"),
+    )
+
+
+def version_warning(row: dict[str, str]) -> bool:
+    return contains_any(
+        row.get("version_or_collection", ""),
+        ("auditado em", "acesso auditado", "atualização diária", "atualizacao diaria"),
+    )
+
+
+def print_group(title: str, rows: list[dict[str, str]], field: str) -> None:
+    if not rows:
+        return
+    print(f"RESÍDUOS {title}: {len(rows)}")
+    for row in rows:
+        print(f"- {row.get('product_id','?')} | {row.get('product_name','')} | {row.get(field,'')}")
 
 
 def main() -> None:
@@ -77,6 +117,27 @@ def main() -> None:
         for pid in update_pending:
             row = raw_by_id[pid]
             print(f"- {pid} | {row.get('product_name','')} | {row.get('update_frequency','')}")
+
+    print_group(
+        "spatial_resolution",
+        [row for row in raw if spatial_resolution_warning(row)],
+        "spatial_resolution",
+    )
+    print_group(
+        "temporal_coverage",
+        [row for row in raw if temporal_coverage_warning(row)],
+        "temporal_coverage",
+    )
+    print_group(
+        "temporal_resolution",
+        [row for row in raw if temporal_resolution_warning(row)],
+        "temporal_resolution",
+    )
+    print_group(
+        "version_or_collection",
+        [row for row in raw if version_warning(row)],
+        "version_or_collection",
+    )
 
 
 if __name__ == "__main__":
