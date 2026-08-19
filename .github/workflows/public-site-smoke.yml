@@ -18,7 +18,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          # Em workflow_run, valide exatamente o commit que acabou de ser publicado.
+          # Isso evita falso negativo quando a main avança antes do smoke iniciar.
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || 'main' }}
 
       - name: Verificar endpoints públicos após deploy
         env:
@@ -84,7 +86,7 @@ jobs:
           assert ids(public_products, 'product_id') == ids(expected_products, 'product_id')
 
           print(
-              'OK: Vitrine publicada corresponde ao catálogo público canônico — '
+              'OK: Vitrine publicada corresponde ao commit canônico publicado — '
               f'{len(public_resources)} fontes, {len(public_products)} produtos'
           )
           PY
