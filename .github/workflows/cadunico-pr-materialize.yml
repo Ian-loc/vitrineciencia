@@ -1,0 +1,55 @@
+name: Materializar lote CadUnico em PR
+
+on:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - name: Aplicar lote CadUnico
+        run: python3 scripts/one_shot_cadunico.py
+      - name: Validar e reconstruir
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+          def read(p):
+              with Path(p).open(encoding='utf-8-sig', newline='') as f: return list(csv.DictReader(f))
+          s=read('data/data_resources.csv'); p=read('data/data_products.csv'); d=read('data/product_distributions.csv')
+          assert len(s)==128, len(s)
+          assert len(p)==794, len(p)
+          assert len(d)==827, len(d)
+          assert any(x['resource_id']=='DR0128' for x in s)
+          assert all(any(x['product_id']==f'DP{i:06d}' for x in p) for i in range(809,813))
+          assert all(any(x['distribution_id']==f'DD{i:06d}' for x in d) for i in range(842,846))
+          assert len({x['resource_id'] for x in s})==len(s)
+          assert len({x['product_id'] for x in p})==len(p)
+          assert len({x['distribution_id'] for x in d})==len(d)
+          print('READBACK_OK',len(s),len(p),len(d))
+          PY
+      - name: Persistir lote e remover one-shot
+        run: |
+          git config user.name "Vitrine Science Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git rm scripts/one_shot_cadunico.py .github/workflows/cadunico-pr-materialize.yml
+          git add -u
+          git commit -m "Expand verified Cadastro Unico catalog"
+          git push origin HEAD:${{ github.head_ref }}
