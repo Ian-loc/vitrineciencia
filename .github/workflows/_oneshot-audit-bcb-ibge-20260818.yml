@@ -1,0 +1,71 @@
+name: One-shot audit BCB IBGE 2026-08-18
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/_oneshot-audit-bcb-ibge-20260818.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Materialize audited updates
+        run: python3 scripts/_oneshot_audit_bcb_ibge_20260818.py
+      - name: Validate Brazil scope and catalog
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+      - name: Rebuild derived catalog and audit link roles
+        run: |
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/audit_link_roles.py
+      - name: Validate Vitrine and public artifact
+        run: |
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+      - name: Read-back integrity
+        run: |
+          python3 - <<'PY'
+          import csv
+          def rows(p):
+              with open(p, encoding='utf-8', newline='') as f: return list(csv.DictReader(f))
+          rs=rows('data/data_resources.csv'); ps=rows('data/data_products.csv'); ds=rows('data/product_distributions.csv')
+          rids={r['resource_id'] for r in rs}; pids={p['product_id'] for p in ps}
+          assert len(rids)==len(rs)
+          assert len(pids)==len(ps)
+          assert len({d['distribution_id'] for d in ds})==len(ds)
+          assert all(p['resource_id'] in rids for p in ps)
+          assert all(d['product_id'] in pids for d in ds)
+          pac=next(p for p in ps if p['product_id']=='DP000308')
+          assert '2024' in pac['product_name'] and pac['last_verified']=='2026-08-18'
+          names={
+              'Expectativas de Mercado — Sistema Expectativas / Focus',
+              'Taxa de juros — Selic — série diária',
+              'Reservas internacionais — conceito caixa — total — diária',
+              'Reservas internacionais — conceito liquidez — total — diária',
+              'Índice de Atividade Econômica do Banco Central — IBC-Br'}
+          new=[p for p in ps if p['resource_id']=='DR0126' and p['product_name'] in names]
+          assert len(new)==5, len(new)
+          print('READBACK', len(rs), len(ps), len(ds), [p['product_id'] for p in new])
+          PY
+      - name: Remove one-shot artifacts and commit materialized state
+        run: |
+          git rm scripts/_oneshot_audit_bcb_ibge_20260818.py .github/workflows/_oneshot-audit-bcb-ibge-20260818.yml
+          git config user.name "Vitrine Ciência audit bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/data_products.csv data/data_products.json data/product_distributions.csv data/link_role_audit.json
+          git diff --cached --check
+          git commit -m "Expand verified BCB macroeconomic catalog and refresh PAC 2024"
+          git push origin HEAD:main
+
+# retrigger 2026-08-18T22:58-03:00
