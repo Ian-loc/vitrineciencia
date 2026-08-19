@@ -1,0 +1,62 @@
+name: Automation materialize PNAD current
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "scripts/automation_materialize_pnad_current.py"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Materialize verified IBGE batch
+        run: python3 scripts/automation_materialize_pnad_current.py
+      - name: Validate Brazil scope
+        run: python3 scripts/validate_brazil_scope.py
+      - name: Validate product catalog
+        run: python3 scripts/validate_product_catalog.py
+      - name: Rebuild catalog
+        run: python3 scripts/build_catalog.py
+      - name: Regenerate link-role audit
+        run: python3 scripts/audit_link_roles.py --write
+      - name: Validate Vitrine
+        run: python3 scripts/validate_vitrine.py
+      - name: Build public artifact
+        run: python3 scripts/build_site_artifact.py
+      - name: Diff check
+        run: git diff --check
+      - name: Read-back integrity
+        run: |
+          python3 - <<'PY'
+          import csv
+          def rows(path):
+              with open(path, encoding='utf-8', newline='') as f:
+                  return list(csv.DictReader(f))
+          p=rows('data/data_products.csv'); d=rows('data/product_distributions.csv'); r=rows('data/data_resources.csv')
+          assert len(r)==125, len(r)
+          assert len(p)==756, len(p)
+          assert len(d)==787, len(d)
+          pids={x['product_id'] for x in p}; rids={x['resource_id'] for x in r}
+          assert {'DP000759','DP000760'} <= pids
+          assert all(x['resource_id'] in rids for x in p)
+          assert all(x['product_id'] in pids for x in d)
+          pmc=next(x for x in p if x['product_id']=='DP000310')
+          assert 'junho de 2026' in pmc['version_or_collection']
+          print('READBACK',len(r),len(p),len(d),pmc['version_or_collection'])
+          PY
+      - name: Commit canonical changes
+        run: |
+          git config user.name "vitrine-audit-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/data_products.csv data/data_products.json data/product_distributions.csv
+          git diff --cached --quiet && exit 0
+          git commit -m "Expand and refresh verified PNAD conjunctural catalog"
+          git push origin HEAD:main
