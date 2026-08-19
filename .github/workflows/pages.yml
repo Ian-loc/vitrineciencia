@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -16,69 +16,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  materialize-atlas-ipeadata:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.ref }}
-      - name: Executar lote Atlas Brasil e IpeaData
-        run: |
-          if grep -q '^DR0132,' data/data_resources.csv; then
-            echo 'Atlas/IpeaData batch already materialized; skipping append.'
-            exit 0
-          fi
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('.github/workflows/materialize-atlas-ipeadata.yml')
-          lines=p.read_text(encoding='utf-8').splitlines()
-          start=next(i for i,l in enumerate(lines) if "python - <<'PY'" in l)+1
-          end=next(i for i in range(start,len(lines)) if lines[i].strip()=='PY')
-          code='\n'.join((l[10:] if l.startswith('          ') else l) for l in lines[start:end])
-          code=code.replace('http://www.ipeadata.gov.br/Default.aspx','https://www.ipeadata.gov.br/Default.aspx')
-          exec(compile(code, str(p), 'exec'))
-          PY
-          python3 scripts/validate_brazil_scope.py
-          python3 scripts/validate_product_catalog.py
-          python3 scripts/build_catalog.py
-          python3 scripts/audit_link_roles.py --write
-          python3 scripts/validate_vitrine.py
-          python3 scripts/build_site_artifact.py
-          git diff --check
-      - name: Read-back e commit
-        run: |
-          if grep -q '^DR0132,' data/data_resources.csv && git diff --quiet; then
-            echo 'No materialization diff to commit.'
-            exit 0
-          fi
-          python3 - <<'PY'
-          import csv
-          from pathlib import Path
-          def rows(p):
-              with Path(p).open(encoding='utf-8',newline='') as f: return list(csv.DictReader(f))
-          r=rows('data/data_resources.csv'); p=rows('data/data_products.csv'); d=rows('data/product_distributions.csv')
-          rids={x['resource_id'] for x in r}; pids={x['product_id'] for x in p}; dids={x['distribution_id'] for x in d}
-          assert {'DR0132','DR0133'} <= rids
-          assert {'DP000838','DP000839','DP000840','DP000841'} <= pids
-          assert {'DD000871','DD000872','DD000873','DD000874'} <= dids
-          assert all(x['resource_id'] in rids for x in p)
-          assert all(x['product_id'] in pids for x in d)
-          assert len(rids)==len(r) and len(pids)==len(p) and len(dids)==len(d)
-          print('COUNTS',len(r),len(p),len(d))
-          PY
-          git config user.name 'Ian-loc'
-          git config user.email 'lara.clemente@ufla.br'
-          git add data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json
-          git add data/data_products.json 2>/dev/null || true
-          git add audit/link_role_audit.json 2>/dev/null || true
-          git add data/data_quality_report.json 2>/dev/null || true
-          git diff --cached --check
-          git commit -m 'Expand verified Atlas Brasil and IpeaData catalog'
-          git push origin HEAD:${{ github.event.pull_request.head.ref }}
-
   validate-vitrine:
     runs-on: ubuntu-latest
     timeout-minutes: 10
