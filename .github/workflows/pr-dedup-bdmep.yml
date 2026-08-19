@@ -1,4 +1,4 @@
-name: PR materialize verified BDMEP dedup
+name: PR materialize verified BDMEP product dedup
 
 on:
   pull_request:
@@ -17,19 +17,16 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
-      - name: Consolidate legacy BDMEP into INMET source family
+      - name: Consolidate duplicate BDMEP product while preserving stable source IDs
         shell: bash
         run: |
           python3 - <<'PY'
-          import csv,json
+          import csv
           from pathlib import Path
-          rp=Path('data/data_resources.csv'); pp=Path('data/data_products.csv'); dp=Path('data/product_distributions.csv'); bp=Path('data/brazil_scope_priorities.json')
-          with rp.open(encoding='utf-8',newline='') as f: rs=list(csv.DictReader(f)); rf=list(rs[0])
+          pp=Path('data/data_products.csv'); dp=Path('data/product_distributions.csv')
           with pp.open(encoding='utf-8',newline='') as f: ps=list(csv.DictReader(f)); pf=list(ps[0])
           with dp.open(encoding='utf-8',newline='') as f: ds=list(csv.DictReader(f)); df=list(ds[0])
-          assert (len(rs),len(ps),len(ds))==(126,796,827), (len(rs),len(ps),len(ds))
-          assert sum(r['resource_id']=='DR0018' for r in rs)==1
-          assert sum(r['resource_id']=='DR0118' for r in rs)==1
+          assert (len(ps),len(ds))==(796,827), (len(ps),len(ds))
           old=[p for p in ps if p['product_id']=='DP000059']; new=[p for p in ps if p['product_id']=='DP000529']
           assert len(old)==len(new)==1
           assert old[0]['resource_id']=='DR0018' and new[0]['resource_id']=='DR0118'
@@ -37,22 +34,16 @@ jobs:
           assert new[0]['methodology_url']=='https://bdmep.inmet.gov.br/'
           od=[d for d in ds if d['distribution_id']=='DD000072']; nd=[d for d in ds if d['distribution_id']=='DD000554']
           assert len(od)==len(nd)==1 and od[0]['product_id']=='DP000059' and nd[0]['product_id']=='DP000529'
-          # Preserve the older stable IDs, but retain the richer/current metadata from the later duplicate.
-          canon=dict(new[0]); canon['product_id']='DP000059'
+          # Preserve the older canonical product/distribution IDs. Source DR0018 remains because
+          # source IDs are an explicit stable, sequential contract; deleting it would require
+          # renumbering every subsequent source and FK. Retain the richer/current BDMEP metadata.
+          canon=dict(new[0]); canon['product_id']='DP000059'; canon['resource_id']='DR0018'
           ps=[canon if p['product_id']=='DP000059' else p for p in ps if p['product_id']!='DP000529']
           cdist=dict(nd[0]); cdist['distribution_id']='DD000072'; cdist['product_id']='DP000059'
           ds=[cdist if d['distribution_id']=='DD000072' else d for d in ds if d['distribution_id']!='DD000554']
-          rs=[r for r in rs if r['resource_id']!='DR0018']
-          reg=json.loads(bp.read_text(encoding='utf-8')); hits=0
-          for t in reg['tiers']:
-              if 'DR0018' in t['resource_ids']:
-                  t['resource_ids'].remove('DR0018'); hits+=1
-          assert hits==1; reg['reviewed_at']='2026-08-19'
-          with rp.open('w',encoding='utf-8',newline='') as f: w=csv.DictWriter(f,fieldnames=rf,lineterminator='\n'); w.writeheader(); w.writerows(rs)
           with pp.open('w',encoding='utf-8',newline='') as f: w=csv.DictWriter(f,fieldnames=pf,lineterminator='\n'); w.writeheader(); w.writerows(ps)
           with dp.open('w',encoding='utf-8',newline='') as f: w=csv.DictWriter(f,fieldnames=df,lineterminator='\n'); w.writeheader(); w.writerows(ds)
-          bp.write_text(json.dumps(reg,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-          print('CONSOLIDATED',len(rs),len(ps),len(ds))
+          print('CONSOLIDATED',len(ps),len(ds))
           PY
           python3 scripts/validate_brazil_scope.py
           python3 scripts/validate_product_catalog.py
@@ -65,12 +56,11 @@ jobs:
           import csv,json
           r=list(csv.DictReader(open('data/data_resources.csv',encoding='utf-8'))); p=list(csv.DictReader(open('data/data_products.csv',encoding='utf-8'))); d=list(csv.DictReader(open('data/product_distributions.csv',encoding='utf-8')))
           a=json.load(open('data/link_role_audit.json',encoding='utf-8'))
-          assert (len(r),len(p),len(d))==(125,795,826), (len(r),len(p),len(d))
-          assert a['records']==125
-          assert not any(x['resource_id']=='DR0018' for x in r)
+          assert (len(r),len(p),len(d))==(126,795,826), (len(r),len(p),len(d))
+          assert a['records']==126
           assert not any(x['product_id']=='DP000529' for x in p)
           assert not any(x['distribution_id']=='DD000554' for x in d)
-          q=[x for x in p if x['product_id']=='DP000059']; assert len(q)==1 and q[0]['resource_id']=='DR0118' and 'BDMEP' in q[0]['product_name']
+          q=[x for x in p if x['product_id']=='DP000059']; assert len(q)==1 and q[0]['resource_id']=='DR0018' and 'BDMEP' in q[0]['product_name'] and q[0]['last_verified']=='2026-08-18'
           z=[x for x in d if x['distribution_id']=='DD000072']; assert len(z)==1 and z[0]['product_id']=='DP000059' and z[0]['access_url']=='https://bdmep.inmet.gov.br/'
           print('READBACK',len(r),len(p),len(d),a['counts'])
           PY
@@ -82,5 +72,5 @@ jobs:
           git config user.email "lara.clemente@ufla.br"
           git add data .github/workflows
           git diff --cached --check
-          git commit -m "Deduplicate legacy BDMEP source representation"
+          git commit -m "Deduplicate legacy BDMEP product representation"
           git push origin HEAD:${{ github.head_ref }}
