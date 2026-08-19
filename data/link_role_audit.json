@@ -8,8 +8,8 @@
   },
   "counts": {
     "separate_destinations": 93,
-    "same_destination_reviewed_exception": 9,
-    "same_destination_pending_review": 32,
+    "same_destination_reviewed_exception": 17,
+    "same_destination_pending_review": 24,
     "data_access_not_applicable": 1
   },
   "records_requiring_review": [
@@ -21,32 +21,11 @@
       "data_access_url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene"
     },
     {
-      "resource_id": "DR0056",
-      "resource_name": "Cobertura e Uso da Terra — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/cobertura-e-uso-da-terra.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/cobertura-e-uso-da-terra.html"
-    },
-    {
-      "resource_id": "DR0058",
-      "resource_name": "Território e Meio Ambiente — Estatísticas por Macrorregiões Hidrográficas",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/45353-territorio-e-meio-ambiente-estatisticas-por-macrorregioes-hidrograficas.html",
-      "data_access_url": "https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/45353-territorio-e-meio-ambiente-estatisticas-por-macrorregioes-hidrograficas.html"
-    },
-    {
       "resource_id": "DR0063",
       "resource_name": "Informações Geocientíficas Experimentais — IBGE",
       "status": "same_destination_pending_review",
       "homepage_url": "https://www.ibge.gov.br/geociencias/investigacoes-experimentais-geo/informacoes-geocientificas-experimentais.html",
       "data_access_url": "https://www.ibge.gov.br/geociencias/investigacoes-experimentais-geo/informacoes-geocientificas-experimentais.html"
-    },
-    {
-      "resource_id": "DR0064",
-      "resource_name": "Contas de Ecossistemas — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/28920-contas-de-ecossistemas.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/28920-contas-de-ecossistemas.html"
     },
     {
       "resource_id": "DR0065",
@@ -56,32 +35,11 @@
       "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/20207-contas-economicas-ambientais-da-agua-brasil.html"
     },
     {
-      "resource_id": "DR0066",
-      "resource_name": "Bases Cartográficas Contínuas — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas.html"
-    },
-    {
-      "resource_id": "DR0067",
-      "resource_name": "Bacias e Divisões Hidrográficas do Brasil — IBGE/ANA",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/31653-bacias-e-divisoes-hidrograficas-do-brasil.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/31653-bacias-e-divisoes-hidrograficas-do-brasil.html"
-    },
-    {
       "resource_id": "DR0068",
       "resource_name": "População em Áreas de Risco no Brasil — IBGE/CEMADEN",
       "status": "same_destination_pending_review",
       "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/21538-populacao-em-areas-de-risco-no-brasil.html",
       "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/21538-populacao-em-areas-de-risco-no-brasil.html"
-    },
-    {
-      "resource_id": "DR0071",
-      "resource_name": "Divisão Regional — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional.html"
     },
     {
       "resource_id": "DR0072",
@@ -103,20 +61,6 @@
       "status": "same_destination_pending_review",
       "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais.html",
       "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais.html"
-    },
-    {
-      "resource_id": "DR0075",
-      "resource_name": "Redes Geodésicas — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html"
-    },
-    {
-      "resource_id": "DR0076",
-      "resource_name": "Serviços para Posicionamento Geodésico — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html"
     },
     {
       "resource_id": "DR0079",
@@ -327,6 +271,86 @@
       "data_access_url": "https://metadadosgeo.ibge.gov.br/geonetwork_ibge/srv/por/catalog.search#/home",
       "exception_rationale": "O GeoNetwork do IBGE é um catálogo web: a página catalog.search é ao mesmo tempo a interface do catálogo e o ponto de descoberta/acesso aos registros de metadados. A igualdade é estrutural ao serviço.",
       "exception_evidence_url": "https://metadadosgeo.ibge.gov.br/geonetwork_ibge/srv/por/catalog.search#/home",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0056",
+      "resource_name": "Cobertura e Uso da Terra — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/cobertura-e-uso-da-terra.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/cobertura-e-uso-da-terra.html",
+      "exception_rationale": "A página temática Cobertura e Uso da Terra funciona como landing page institucional da família e como índice oficial para os produtos que nela disponibilizam Acesso ao produto e Downloads. No nível da fonte-família, manter a mesma URL evita escolher arbitrariamente um único produto como acesso representativo.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/cobertura-e-uso-da-terra.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0058",
+      "resource_name": "Território e Meio Ambiente — Estatísticas por Macrorregiões Hidrográficas",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/45353-territorio-e-meio-ambiente-estatisticas-por-macrorregioes-hidrograficas.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/45353-territorio-e-meio-ambiente-estatisticas-por-macrorregioes-hidrograficas.html",
+      "exception_rationale": "A própria página oficial do produto Território e Meio Ambiente contém a seção Acesso ao produto com base de dados, tabelas e índice, além de Downloads. Portanto, a mesma URL desempenha legitimamente apresentação e acesso.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/45353-territorio-e-meio-ambiente-estatisticas-por-macrorregioes-hidrograficas.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0064",
+      "resource_name": "Contas de Ecossistemas — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/28920-contas-de-ecossistemas.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/28920-contas-de-ecossistemas.html",
+      "exception_rationale": "A página Contas de Ecossistemas reúne descrição, edições e seções de Acesso ao produto com SIDRA, vetores, tabelas, mapas e downloads. A igualdade entre homepage e acesso é estrutural ao produto/família no portal IBGE.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/28920-contas-de-ecossistemas.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0066",
+      "resource_name": "Bases Cartográficas Contínuas — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas.html",
+      "exception_rationale": "A página Bases Cartográficas Contínuas é o índice oficial da família e encaminha aos produtos Brasil, Estados e Mapa Índice Digital; os produtos filhos concentram acesso/download. Não existe um único dataset que represente toda a família, por isso a landing page é também o acesso de descoberta no nível da fonte.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0067",
+      "resource_name": "Bacias e Divisões Hidrográficas do Brasil — IBGE/ANA",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/31653-bacias-e-divisoes-hidrograficas-do-brasil.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/31653-bacias-e-divisoes-hidrograficas-do-brasil.html",
+      "exception_rationale": "A página Bacias e Divisões Hidrográficas do Brasil contém diretamente Acesso ao produto para BHB250 e DHN250, incluindo vetores, tabelas e mapas, além de Downloads. A mesma URL cumpre legitimamente apresentação e acesso.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/31653-bacias-e-divisoes-hidrograficas-do-brasil.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0071",
+      "resource_name": "Divisão Regional — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional.html",
+      "exception_rationale": "Divisão Regional é uma página temática que organiza os produtos regionais e seus próprios caminhos de Acesso ao produto/Downloads. Como fonte-família, a landing page é o índice oficial de descoberta e acesso, sem um único arquivo que represente todas as regionalizações.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0075",
+      "resource_name": "Redes Geodésicas — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html",
+      "exception_rationale": "A página Redes Geodésicas funciona como índice oficial para Rede Altimétrica, Gravimétrica, Planialtimétrica, RBMC, RMPG e BDG; cada produto possui acesso próprio. No nível da família, a mesma URL é legitimamente homepage e ponto de acesso/discovery.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0076",
+      "resource_name": "Serviços para Posicionamento Geodésico — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html",
+      "exception_rationale": "A página Serviços para Posicionamento Geodésico é o índice institucional e operacional dos serviços hgeoHNOR, Homologar Marcos, IBGE-PPP, ProGriD, BDG e RBMC-IP. Como a fonte representa a família de serviços, a mesma landing page cumpre os dois papéis legitimamente.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html",
       "exception_reviewed_at": "2026-08-19"
     }
   ],

@@ -53,6 +53,54 @@
       "rationale": "O GeoNetwork do IBGE é um catálogo web: a página catalog.search é ao mesmo tempo a interface do catálogo e o ponto de descoberta/acesso aos registros de metadados. A igualdade é estrutural ao serviço.",
       "evidence_url": "https://metadadosgeo.ibge.gov.br/geonetwork_ibge/srv/por/catalog.search#/home",
       "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0056",
+      "rationale": "A página temática Cobertura e Uso da Terra funciona como landing page institucional da família e como índice oficial para os produtos que nela disponibilizam Acesso ao produto e Downloads. No nível da fonte-família, manter a mesma URL evita escolher arbitrariamente um único produto como acesso representativo.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/cobertura-e-uso-da-terra.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0058",
+      "rationale": "A própria página oficial do produto Território e Meio Ambiente contém a seção Acesso ao produto com base de dados, tabelas e índice, além de Downloads. Portanto, a mesma URL desempenha legitimamente apresentação e acesso.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/45353-territorio-e-meio-ambiente-estatisticas-por-macrorregioes-hidrograficas.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0064",
+      "rationale": "A página Contas de Ecossistemas reúne descrição, edições e seções de Acesso ao produto com SIDRA, vetores, tabelas, mapas e downloads. A igualdade entre homepage e acesso é estrutural ao produto/família no portal IBGE.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/28920-contas-de-ecossistemas.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0066",
+      "rationale": "A página Bases Cartográficas Contínuas é o índice oficial da família e encaminha aos produtos Brasil, Estados e Mapa Índice Digital; os produtos filhos concentram acesso/download. Não existe um único dataset que represente toda a família, por isso a landing page é também o acesso de descoberta no nível da fonte.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0067",
+      "rationale": "A página Bacias e Divisões Hidrográficas do Brasil contém diretamente Acesso ao produto para BHB250 e DHN250, incluindo vetores, tabelas e mapas, além de Downloads. A mesma URL cumpre legitimamente apresentação e acesso.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/31653-bacias-e-divisoes-hidrograficas-do-brasil.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0071",
+      "rationale": "Divisão Regional é uma página temática que organiza os produtos regionais e seus próprios caminhos de Acesso ao produto/Downloads. Como fonte-família, a landing page é o índice oficial de descoberta e acesso, sem um único arquivo que represente todas as regionalizações.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0075",
+      "rationale": "A página Redes Geodésicas funciona como índice oficial para Rede Altimétrica, Gravimétrica, Planialtimétrica, RBMC, RMPG e BDG; cada produto possui acesso próprio. No nível da família, a mesma URL é legitimamente homepage e ponto de acesso/discovery.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0076",
+      "rationale": "A página Serviços para Posicionamento Geodésico é o índice institucional e operacional dos serviços hgeoHNOR, Homologar Marcos, IBGE-PPP, ProGriD, BDG e RBMC-IP. Como a fonte representa a família de serviços, a mesma landing page cumpre os dois papéis legitimamente.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html",
+      "reviewed_at": "2026-08-19"
     }
   ]
 }
