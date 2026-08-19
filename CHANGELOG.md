@@ -60,3 +60,6 @@ Antes de 09/08/2026, este repositório também abrigou desenvolvimento do Simbio
 - definida a autoridade inicial do CSV no GitHub;
 - ampliado o esquema de fontes de 22 para 26 campos;
 - revisadas identidade, utilidade, limitações, links e acesso;
+- adicionadas validação automática e geração do JSON público.
+
+> Nota: versões 0.6/0.7 e o baseline de 51 fontes são marcos históricos anteriores à primeira release científica estável `v1.0.0`.
