@@ -54,3 +54,4 @@ jobs:
           git add data/data_resources.csv data/data_resources.json data/data_products.csv data/data_products.json data/product_distributions.csv data/brazil_scope_priorities.json data/data_quality_report.json data/link_role_audit.json
           git commit -m "Expand verified MTE labor-statistics catalog"
           git push origin HEAD:main
+# retriggered after staging script
