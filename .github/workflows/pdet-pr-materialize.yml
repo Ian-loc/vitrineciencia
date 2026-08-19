@@ -51,6 +51,6 @@ jobs:
           git config user.name "Vitrine Science Bot"
           git config user.email "actions@users.noreply.github.com"
           git rm scripts/one_shot_pdet.py .github/workflows/pdet-pr-materialize.yml
-          git add data/data_resources.csv data/data_resources.json data/data_products.csv data/data_products.json data/product_distributions.csv data/brazil_scope_priorities.json data/data_quality_report.json data/link_role_audit.json
+          git add -u
           git commit -m "Expand verified MTE labor-statistics catalog"
           git push origin HEAD:${{ github.head_ref }}
