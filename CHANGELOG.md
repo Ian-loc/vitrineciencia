@@ -11,7 +11,7 @@ O projeto segue versionamento semântico. A `main` pode avançar entre releases;
 Primeira release científica estável e candidata a preservação com DOI.
 
 - contrato público estabilizado em três tabelas: fonte → produto → distribuição;
-- snapshot congelado com **135 fontes, 833 produtos e 866 distribuições**;
+- snapshot congelado com **135 fontes, 843 produtos e 876 distribuições**;
 - identificadores correntes até `DR0135`, `DP000861` e `DD000894`, com lacunas históricas preservadas e IDs não reciclados;
 - schema estável de **34 campos para fontes, 24 para produtos e 15 para distribuições**;
 - expansão Brasil-primeiro com fontes institucionais e produtos de ambiente, biodiversidade, clima, água, geociências, agricultura, florestas, sensoriamento remoto, saúde, educação, território e políticas públicas;
