@@ -1,0 +1,149 @@
+{
+  "schema_version": "descriptive-field-contract-v0.1",
+  "status": "experimental",
+  "purpose": "Reduzir ambiguidade, mistura de conceitos e variabilidade textual nos campos descritivos da Vitrine sem apagar informação factual já auditada.",
+  "principles": [
+    "one_field_one_concept",
+    "controlled_values_before_free_text",
+    "short_structured_text_before_narrative_text",
+    "product_level_facts_override_source_summaries",
+    "unknown_is_not_negative",
+    "do_not_infer_resolution_scale_or_update_frequency",
+    "narrative_fields_are_not_used_as_substitutes_for_structured_fields"
+  ],
+  "field_classes": {
+    "identifier": {"comparison": "exact"},
+    "controlled": {"comparison": "exact", "allow_free_text": false},
+    "pipe_list": {"comparison": "set", "separator": " | "},
+    "structured_text": {"comparison": "qualified", "allow_multiple_concepts": false},
+    "narrative": {"comparison": "contextual", "allow_multiple_concepts": true}
+  },
+  "source": {
+    "official_identity": {
+      "class": "structured_text",
+      "target": "frase nominal curta que declare a natureza ou função oficial da fonte",
+      "max_chars_recommended": 160,
+      "must_not_contain": ["limitações de uso", "condições de acesso", "avaliação de qualidade"]
+    },
+    "description": {
+      "class": "narrative",
+      "target": "uma síntese factual do propósito e do conteúdo da fonte",
+      "sentences_recommended": "1-2",
+      "max_chars_recommended": 280,
+      "must_not_replace": ["limitations", "access_conditions", "license"]
+    },
+    "research_areas": {
+      "class": "pipe_list",
+      "vocabulary": "taxonomia editorial da Vitrine em português (Brasil)",
+      "duplicates_allowed": false
+    },
+    "keywords": {
+      "class": "pipe_list",
+      "target": "termos de descoberta, preferencialmente substantivos ou expressões nominais",
+      "duplicates_allowed": false
+    },
+    "geographic_coverage": {
+      "class": "structured_text",
+      "target": "extensão geográfica geral, sem misturar resolução espacial",
+      "recommended_patterns": ["Brasil", "global", "regional — <região>", "estadual — <UF>", "municipal — <município>", "varia por produto"],
+      "must_not_contain": ["resolução", "escala cartográfica", "frequência temporal"]
+    },
+    "spatial_resolution": {
+      "class": "structured_text",
+      "target": "resumo no nível da fonte; valores específicos devem ser registrados no produto",
+      "recommended_patterns": ["varia por produto", "varia por camada", "não se aplica", "desconhecido", "<valor> <unidade>", "escala cartográfica <razão>"],
+      "must_not_contain": ["cobertura temporal", "frequência de atualização"]
+    },
+    "temporal_coverage": {
+      "class": "structured_text",
+      "target": "período geral coberto, sem misturar frequência de atualização",
+      "recommended_patterns": ["<ano>–<ano>", "<data>–presente", "varia por produto", "não se aplica", "desconhecido"]
+    },
+    "temporal_resolution": {
+      "class": "structured_text",
+      "target": "granularidade temporal do dado, não periodicidade de publicação",
+      "recommended_patterns": ["horária", "diária", "mensal", "anual", "por evento", "varia por produto", "não se aplica", "desconhecido"]
+    },
+    "access_conditions": {
+      "class": "structured_text",
+      "target": "condição geral de acesso; detalhes extensos devem ficar em distribuição ou nota específica",
+      "migration_target": ["access_condition_class", "access_condition_note"]
+    },
+    "academic_uses": {
+      "class": "narrative",
+      "target": "1-2 frases sobre usos plausíveis, sem transformar plausibilidade em validação científica",
+      "max_chars_recommended": 320
+    },
+    "limitations": {
+      "class": "narrative",
+      "target": "cautelas técnicas, epistemológicas ou de interpretação no nível da fonte",
+      "sentences_recommended": "1-3",
+      "must_not_replace": ["access_conditions", "license"]
+    }
+  },
+  "product": {
+    "product_description": {
+      "class": "narrative",
+      "target": "1-2 frases que descrevam o conteúdo científico do produto",
+      "max_chars_recommended": 360,
+      "must_not_replace": ["limitations", "update_frequency", "version_or_collection"]
+    },
+    "spatial_support": {
+      "class": "structured_text",
+      "target": "unidade ou suporte espacial da informação",
+      "examples": ["célula raster", "polígono", "município", "estação", "parcela", "ponto de amostragem", "serviço geoespacial"]
+    },
+    "spatial_resolution": {
+      "class": "structured_text",
+      "target": "resolução espacial ou escala cartográfica, sem repetir o suporte espacial",
+      "examples": ["10 m", "30 m", "1 km", "escala cartográfica 1:250.000", "varia por camada", "não se aplica", "desconhecido"]
+    },
+    "temporal_coverage": {
+      "class": "structured_text",
+      "target": "intervalo temporal ou edição de referência",
+      "examples": ["2000–2025", "2015-06-27–presente", "ano-base 2024", "não se aplica"]
+    },
+    "temporal_resolution": {
+      "class": "structured_text",
+      "target": "granularidade temporal da observação ou produto",
+      "examples": ["diária", "mensal", "anual", "por evento", "por aquisição", "não se aplica", "desconhecido"]
+    },
+    "update_frequency": {
+      "class": "structured_text",
+      "target": "periodicidade ou política de atualização, separada da resolução temporal",
+      "recommended_classes": ["contínua", "diária", "semanal", "mensal", "trimestral", "anual", "por edição", "irregular", "sob demanda", "desconhecido"],
+      "migration_target": ["update_frequency_class", "update_frequency_note"]
+    },
+    "version_or_collection": {
+      "class": "structured_text",
+      "target": "identificador de versão, edição, coleção ou ano-base; não incluir política de atualização"
+    },
+    "limitations": {
+      "class": "narrative",
+      "target": "cautelas específicas do produto; não repetir descrição geral da fonte"
+    }
+  },
+  "distribution": {
+    "format": {"class": "pipe_list", "target": "formatos concretos disponibilizados"},
+    "access_protocol": {"class": "structured_text", "target": "protocolo ou mecanismo de acesso"},
+    "access_conditions": {"class": "structured_text", "target": "restrições ou condições específicas desta forma de acesso"},
+    "notes": {"class": "narrative", "target": "notas operacionais que não pertencem ao conteúdo científico do produto"}
+  },
+  "migration_priorities": [
+    {
+      "priority": 1,
+      "problem": "campos espaciais e temporais misturam suporte, resolução, cobertura, atualização e versão",
+      "action": "normalizar primeiro produtos exibidos em comparações e depois propagar a auditoria ao restante do catálogo"
+    },
+    {
+      "priority": 2,
+      "problem": "access_conditions e update_frequency combinam classe e nota em um único texto",
+      "action": "criar classe controlada + nota textual em futura revisão de schema"
+    },
+    {
+      "priority": 3,
+      "problem": "descrições e limitações variam em extensão e conteúdo",
+      "action": "aplicar contrato narrativo e lint antes de novas inclusões ou revisões"
+    }
+  ]
+}
