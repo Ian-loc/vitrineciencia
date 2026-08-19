@@ -27,7 +27,6 @@ jobs:
           with pp.open(encoding='utf-8',newline='') as f: ps=list(csv.DictReader(f)); pf=list(ps[0])
           with dp.open(encoding='utf-8',newline='') as f: ds=list(csv.DictReader(f)); df=list(ds[0])
           assert (len(ps),len(ds))==(795,826), (len(ps),len(ds))
-          # (stable old product, later duplicate, stable old distribution, later duplicate distribution, target source)
           pairs=[
             ('DP000017','DP000075','DD000025','DD000091','DR0052'),
             ('DP000036','DP000079','DD000044','DD000095','DR0056'),
@@ -41,13 +40,16 @@ jobs:
             ('DP000638','DP000670','DD000663','DD000700','DR0123'),
           ]
           byp={p['product_id']:p for p in ps}; byd={d['distribution_id']:d for d in ds}
-          # Guards from the diagnostic: each pair is the same scientific object, not merely a shared catalog URL.
+          def nurl(s):
+              s=(s or '').rstrip('/')
+              if s.endswith('/index.html'): s=s[:-11]
+              return s.rstrip('/')
           assert byp['DP000017']['product_name']==byp['DP000075']['product_name']
           assert byp['DP000017']['product_page_url']==byp['DP000075']['product_page_url']
           assert byp['DP000036']['product_page_url']==byp['DP000079']['product_page_url']
           assert byp['DP000038']['product_page_url']==byp['DP000111']['product_page_url']
           assert byp['DP000016']['product_page_url']==byp['DP000081']['product_page_url']
-          assert byp['DP000030']['product_page_url'].rstrip('/')==byp['DP000329']['product_page_url'].rstrip('/index.html')
+          assert nurl(byp['DP000030']['product_page_url'])==nurl(byp['DP000329']['product_page_url'])
           assert byp['DP000031']['product_name']==byp['DP000330']['product_name']
           assert byp['DP000032']['product_name'].startswith('Área Queimada AQ1km') and byp['DP000331']['product_name'].startswith('Área Queimada AQ1km')
           assert 'Risco de Fogo' in byp['DP000033']['product_name'] and 'Risco de Fogo' in byp['DP000332']['product_name']
