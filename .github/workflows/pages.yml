@@ -3,6 +3,7 @@ name: Materializar lote SUAS e restaurar publicação
 on:
   push:
     branches: ["main"]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -19,7 +20,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          ref: main
+          fetch-depth: 0
 
       - name: Executar materializador SUAS já revisado
         shell: bash
@@ -73,13 +75,13 @@ jobs:
           print('READBACK OK', len(s), len(p), len(d))
           PY
 
-      - name: Restaurar workflow permanente e commit do lote
+      - name: Restaurar workflow permanente, limpar gatilhos e commit do lote
         shell: bash
         run: |
           git config user.name 'Vitrine Science Audit Bot'
           git config user.email 'actions@users.noreply.github.com'
-          git checkout HEAD^ -- .github/workflows/pages.yml
-          git rm .github/workflows/auto_suas_batch.yml
+          git checkout 6ce9e4dabdbce812e05ea8aa3c7945a89e359d1f -- .github/workflows/pages.yml
+          git rm -f .github/workflows/auto_suas_batch.yml .suas-materialize-trigger .suas-materialize-trigger-2 .suas-materialize-trigger-3 .suas-materialize-trigger-final .trigger-ready 2>/dev/null || true
           git add .github/workflows/pages.yml data/data_resources.csv data/data_products.csv data/product_distributions.csv data/brazil_scope_priorities.json data/data_resources.json data/data_products.json data/data_quality_report.json data/link_role_audit.json
           git status --short
           git commit -m 'Expand verified SUAS social-assistance catalog' -m 'Add MDS/SUAS as a P0 Brazilian source with Censo SUAS, Observatório, RMA, CadSUAS, Tab Social and CNEAS; preserve administrative-record, respondent-universe and service-quality limitations.'
