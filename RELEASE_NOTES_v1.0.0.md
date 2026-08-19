@@ -7,8 +7,8 @@
 ## Snapshot
 
 - 135 sources (`DR####`)
-- 833 products (`DP######`)
-- 866 distributions (`DD######`)
+- 843 products (`DP######`)
+- 876 distributions (`DD######`)
 - highest current identifiers: `DR0135`, `DP000861`, `DD000894`
 - source verification dates through 2026-08-19
 - canonical model: source → product → distribution
