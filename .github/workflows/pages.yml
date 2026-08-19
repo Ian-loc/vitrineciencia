@@ -17,15 +17,20 @@ concurrency:
 
 jobs:
   materialize-atlas-ipeadata:
-    if: github.event_name == 'push' && github.event.head_commit.message == 'Run Atlas IpeaData materializer via pages workflow'
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
       - name: Executar lote Atlas Brasil e IpeaData
         run: |
+          if grep -q '^DR0132,' data/data_resources.csv; then
+            echo 'Atlas/IpeaData batch already materialized; skipping append.'
+            exit 0
+          fi
           python3 - <<'PY'
           from pathlib import Path
           p=Path('.github/workflows/materialize-atlas-ipeadata.yml')
@@ -44,6 +49,10 @@ jobs:
           git diff --check
       - name: Read-back e commit
         run: |
+          if grep -q '^DR0132,' data/data_resources.csv && git diff --quiet; then
+            echo 'No materialization diff to commit.'
+            exit 0
+          fi
           python3 - <<'PY'
           import csv
           from pathlib import Path
@@ -67,7 +76,7 @@ jobs:
           git add data/data_quality_report.json 2>/dev/null || true
           git diff --cached --check
           git commit -m 'Expand verified Atlas Brasil and IpeaData catalog'
-          git push origin HEAD:main
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
 
   validate-vitrine:
     runs-on: ubuntu-latest
