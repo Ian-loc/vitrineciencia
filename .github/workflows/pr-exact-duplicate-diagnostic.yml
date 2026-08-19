@@ -1,0 +1,48 @@
+name: PR diagnose exact catalog duplicates
+
+on:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Report exact duplicate URLs and names
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv,collections
+          ps=list(csv.DictReader(open('data/data_products.csv',encoding='utf-8')))
+          ds=list(csv.DictReader(open('data/product_distributions.csv',encoding='utf-8')))
+          rs=list(csv.DictReader(open('data/data_resources.csv',encoding='utf-8')))
+          def norm(s): return (s or '').strip().rstrip('/').lower()
+          def groups(rows,key):
+              g=collections.defaultdict(list)
+              for r in rows:
+                  v=norm(r.get(key,''))
+                  if v: g[v].append(r)
+              return [(k,v) for k,v in g.items() if len(v)>1]
+          print('COUNTS',len(rs),len(ps),len(ds))
+          print('=== DUPLICATE PRODUCT PAGE URLS ===')
+          for k,v in sorted(groups(ps,'product_page_url'),key=lambda kv:(-len(kv[1]),kv[0])):
+              print('URL',k)
+              for x in v: print(' ',x['product_id'],x['resource_id'],x['product_name'],'| kind=',x['product_kind'],'| version=',x['version_or_collection'])
+          print('=== DUPLICATE PRODUCT NAMES ===')
+          for k,v in sorted(groups(ps,'product_name'),key=lambda kv:(-len(kv[1]),kv[0])):
+              print('NAME',k)
+              for x in v: print(' ',x['product_id'],x['resource_id'],x['product_page_url'],'| version=',x['version_or_collection'])
+          print('=== DUPLICATE DISTRIBUTION ACCESS URLS ===')
+          for k,v in sorted(groups(ds,'access_url'),key=lambda kv:(-len(kv[1]),kv[0])):
+              if len(v)>=2:
+                  print('ACCESS',k)
+                  for x in v: print(' ',x['distribution_id'],x['product_id'],x['distribution_name'])
+          raise SystemExit('diagnostic complete')
+          PY
