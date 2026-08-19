@@ -1,0 +1,183 @@
+name: Materializar lote PDET verificado
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/automation-pdet-batch.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Materializar fonte, produtos e distribuições PDET
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv, json
+          from pathlib import Path
+
+          ROOT = Path('.')
+          source_path = ROOT/'data/data_resources.csv'
+          product_path = ROOT/'data/data_products.csv'
+          dist_path = ROOT/'data/product_distributions.csv'
+          priority_path = ROOT/'data/brazil_scope_priorities.json'
+
+          def append_dicts(path, rows):
+              with path.open(encoding='utf-8-sig', newline='') as f:
+                  reader = csv.DictReader(f)
+                  fieldnames = reader.fieldnames
+                  existing = list(reader)
+              with path.open('a', encoding='utf-8', newline='') as f:
+                  writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator='\n')
+                  for row in rows:
+                      missing = [k for k in fieldnames if k not in row]
+                      extra = [k for k in row if k not in fieldnames]
+                      if missing or extra:
+                          raise SystemExit(f'{path}: schema mismatch missing={missing} extra={extra}')
+                      writer.writerow(row)
+
+          with source_path.open(encoding='utf-8-sig', newline='') as f:
+              sources = list(csv.DictReader(f))
+          with product_path.open(encoding='utf-8-sig', newline='') as f:
+              products = list(csv.DictReader(f))
+          with dist_path.open(encoding='utf-8-sig', newline='') as f:
+              dists = list(csv.DictReader(f))
+
+          if any(r['resource_id']=='DR0127' for r in sources):
+              raise SystemExit('DR0127 already exists')
+          if any('Programa de Disseminação das Estatísticas do Trabalho' in r['resource_name'] for r in sources):
+              raise SystemExit('PDET source already exists under another ID')
+          expected_product_ids = [f'DP{i:06d}' for i in range(801,809)]
+          expected_dist_ids = [f'DD{i:06d}' for i in range(832,842)]
+          if any(r['product_id'] in expected_product_ids for r in products):
+              raise SystemExit('one proposed product ID already exists')
+          if any(r['distribution_id'] in expected_dist_ids for r in dists):
+              raise SystemExit('one proposed distribution ID already exists')
+
+          new_source = [{
+              'resource_id':'DR0127',
+              'resource_name':'Programa de Disseminação das Estatísticas do Trabalho — PDET / MTE',
+              'acronym':'PDET',
+              'official_identity':'Programa de Disseminação das Estatísticas do Trabalho — Ministério do Trabalho e Emprego',
+              'description':'Fonte institucional brasileira para estatísticas administrativas do mercado de trabalho, com RAIS, Novo CAGED, RAIS Mensal, Seguro-Desemprego e painéis temáticos derivados de registros do Ministério do Trabalho e Emprego e de bases parceiras.',
+              'homepage_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho',
+              'data_access_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/microdados-rais-e-caged',
+              'research_areas':'Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados',
+              'keywords':'trabalho | emprego formal | RAIS | Novo CAGED | mercado de trabalho | remuneração | ocupações | seguro-desemprego',
+              'data_product_types':'registros administrativos | microdados | séries | indicadores | painéis | tabelas',
+              'data_formats':'TXT | XLSX | CSV | PDF | visualização web; varia conforme produto',
+              'visualization_types':'painéis | tabelas | mapas | gráficos',
+              'geographic_coverage':'Brasil; recortes nacional, regional, UF, município, setor, ocupação e estabelecimento conforme produto',
+              'covers_brazil':'sim',
+              'spatial_resolution':'nacional a municipal e estabelecimento conforme produto e regras de divulgação',
+              'temporal_coverage':'séries históricas extensas; RAIS anual, CAGED/Novo CAGED mensal e produtos correntes em 2026',
+              'temporal_resolution':'mensal | anual | quinzenal | semestral conforme produto',
+              'data_sources':'RAIS | CAGED | Novo CAGED | eSocial | Seguro-Desemprego | PNAD Contínua em produtos derivados',
+              'free_download':'sim',
+              'access_conditions':'microdados não identificados e materiais agregados são públicos; bases identificadas exigem solicitação e instrumentos de cooperação sujeitos à LAI/LGPD',
+              'programmatic_access':'não',
+              'access_protocols':'HTTPS | FTP para microdados legados',
+              'authentication_required':'parcial',
+              'access_documentation_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/microdados-rais-e-caged',
+              'license':'conteúdo do portal gov.br publicado sob Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada; verificar a licença e as condições do arquivo/base específica',
+              'institutional_status':'público',
+              'owner_or_manager':'Ministério do Trabalho e Emprego — Governo Federal do Brasil',
+              'academic_uses':'Mercado de trabalho formal, emprego e desemprego, mobilidade ocupacional, salários, desigualdades, políticas de emprego, juventude, gênero, raça/cor e análises territoriais.',
+              'limitations':'RAIS, CAGED, Novo CAGED, eSocial e demais registros possuem universos, conceitos, períodos e revisões próprios. Registro administrativo não equivale a pesquisa probabilística da população total; informalidade e vínculos fora do universo de cada sistema exigem fontes complementares. Microdados identificados têm acesso restrito.',
+              'academic_evidence_type':'documentação técnica oficial',
+              'academic_evidence_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/o-pdet',
+              'academic_evidence_note':'O MTE documenta o PDET como programa de disseminação das estatísticas oriundas da RAIS e do CAGED/Novo CAGED e mantém páginas correntes de resultados, microdados e painéis temáticos.',
+              'verification_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho',
+              'last_verified':'2026-08-19'
+          }]
+
+          new_products = [
+            {'product_id':'DP000801','resource_id':'DR0127','product_name':'RAIS 2025 — Relação Anual de Informações Sociais','product_acronym':'RAIS 2025','product_family':'Relação Anual de Informações Sociais','product_kind':'dataset','product_description':'Edição anual 2025 da RAIS com informações administrativas sobre estabelecimentos, vínculos formais e remunerações, acompanhada de tabelas, sumário, nota técnica, painel e microdados não identificados.','research_areas':'Economics | Labor | Public policy | Data infrastructure','keywords':'RAIS | emprego formal | vínculos | estabelecimentos | remuneração | 2025','geographic_coverage':'Brasil; recortes territoriais e setoriais conforme tabelas e microdados','covers_brazil':'sim','spatial_support':'estabelecimento e vínculo; agregações nacional, regional, UF e município conforme divulgação','spatial_resolution':'registro administrativo e agregações territoriais; preservar regras de sigilo/divulgação','temporal_coverage':'ano-base 2025','temporal_resolution':'anual','update_frequency':'anual','product_status':'ativo','version_or_collection':'RAIS 2025 — materiais atualizados em 17/06/2026','enumeration_scope':'complete','product_page_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2025','methodology_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2025','primary_or_derived':'primário','limitations':'Registro administrativo do mercado de trabalho formal. Cobertura e conceitos dependem das obrigações declaratórias e regras da RAIS/eSocial; não representa trabalhadores informais nem deve ser tratado como pesquisa amostral da população.','last_verified':'2026-08-19'},
+            {'product_id':'DP000802','resource_id':'DR0127','product_name':'Novo CAGED — competência junho de 2026','product_acronym':'Novo CAGED','product_family':'Novo CAGED','product_kind':'dataset_series','product_description':'Estatísticas mensais de admissões, desligamentos, saldo e estoque de vínculos formais produzidas pelo Novo CAGED; a última competência materialmente verificada nesta rodada é junho de 2026.','research_areas':'Economics | Labor | Public policy | Data infrastructure','keywords':'Novo CAGED | admissões | desligamentos | saldo de emprego | emprego formal | junho 2026','geographic_coverage':'Brasil; recortes territorial, setorial, ocupacional e sociodemográfico conforme divulgação','covers_brazil':'sim','spatial_support':'movimentação de vínculo e agregações territoriais/setoriais','spatial_resolution':'registro administrativo; agregações até município conforme produto e regra de divulgação','temporal_coverage':'série mensal corrente; competência verificada junho de 2026','temporal_resolution':'mensal','update_frequency':'mensal','product_status':'ativo','version_or_collection':'competência junho de 2026 — divulgação prevista/realizada em 29/07/2026','enumeration_scope':'complete','product_page_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/novo-caged/2026/junho/pagina-inicial','methodology_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/o-pdet/calendario-de-divulgacao-do-novo-caged','primary_or_derived':'primário','limitations':'Registro administrativo mensal de movimentações do emprego formal. Admissões/desligamentos não equivalem a criação/destruição líquida de postos sem considerar o saldo e revisões; mudanças metodológicas em relação ao CAGED anterior devem ser preservadas.','last_verified':'2026-08-19'},
+            {'product_id':'DP000803','resource_id':'DR0127','product_name':'RAIS Mensalizada — 2026','product_acronym':'RAIS Mensal','product_family':'RAIS Mensal','product_kind':'dataset_series','product_description':'Produto mensalizado da RAIS com tabelas e painel para acompanhamento mais frequente de estabelecimentos, vínculos, remuneração e massa salarial; a página oficial foi atualizada em 24/06/2026.','research_areas':'Economics | Labor | Public policy | Data infrastructure','keywords':'RAIS Mensal | vínculos | estabelecimentos | remuneração | massa salarial','geographic_coverage':'Brasil; desagregações conforme tabelas e painel','covers_brazil':'sim','spatial_support':'estabelecimento/vínculo agregados segundo a metodologia do produto','spatial_resolution':'varia conforme tabela e painel; não inferir microdado individual a partir de agregados','temporal_coverage':'produto corrente em 2026; página documenta materiais de fevereiro de 2026','temporal_resolution':'mensal','update_frequency':'mensal conforme produto','product_status':'ativo','version_or_collection':'RAIS Mensalizada — página atualizada em 24/06/2026','enumeration_scope':'complete','product_page_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais-mensal','methodology_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais-mensal/2026/fevereiro/nota-tecnica-rais-mensalizada.pdf/view','primary_or_derived':'derivado','limitations':'A RAIS Mensalizada é produto de acompanhamento e não substitui automaticamente a edição anual consolidada da RAIS. Preservar nota técnica, mês de referência e revisões da edição utilizada.','last_verified':'2026-08-19'},
+            {'product_id':'DP000804','resource_id':'DR0127','product_name':'Seguro-Desemprego — painel e séries históricas','product_acronym':'Seguro-Desemprego','product_family':'Estatísticas do Seguro-Desemprego','product_kind':'indicator_family','product_description':'Painel de indicadores físicos e financeiros do Seguro-Desemprego na modalidade trabalhador formal, atualizado quinzenalmente, acompanhado de séries históricas mensais.','research_areas':'Economics | Labor | Social policy | Public policy','keywords':'seguro-desemprego | requerentes | segurados | parcelas | valores pagos','geographic_coverage':'Brasil; recortes disponíveis no painel','covers_brazil':'sim','spatial_support':'agregações administrativas do benefício','spatial_resolution':'varia conforme painel e planilha','temporal_coverage':'séries históricas mensais desde 2000 em planilhas publicadas; painel corrente','temporal_resolution':'quinzenal | mensal','update_frequency':'quinzenal no painel','product_status':'ativo','version_or_collection':'painel corrente; página oficial atualizada em 17/06/2026','enumeration_scope':'complete','product_page_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/seguro-desemprego','methodology_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/seguro-desemprego','primary_or_derived':'derivado','limitations':'Os dados descritos na página referem-se à modalidade trabalhador formal e aos registros administrativos do benefício; não equivalem ao total de desempregados nem à taxa de desemprego da população.','last_verified':'2026-08-19'},
+            {'product_id':'DP000805','resource_id':'DR0127','product_name':'5º Relatório Nacional de Igualdade Salarial — 1º semestre de 2026','product_acronym':'Relatório de Igualdade Salarial','product_family':'Transparência e igualdade salarial','product_kind':'indicator_family','product_description':'Painel e relatório do 1º semestre de 2026 sobre igualdade salarial entre mulheres e homens, combinando dados agregados do eSocial até dezembro de 2025 e respostas empresariais enviadas em fevereiro de 2026.','research_areas':'Economics | Labor | Gender | Public policy','keywords':'igualdade salarial | gênero | remuneração | eSocial | empresas | 2026','geographic_coverage':'Brasil; nacional e UF, com recortes por atividade econômica e porte de estabelecimento','covers_brazil':'sim','spatial_support':'estabelecimentos privados com 100 ou mais vínculos ativos no universo especificado','spatial_resolution':'agregado nacional/UF e recortes econômicos conforme painel','temporal_coverage':'1º semestre de 2026; dados de vínculos até dezembro de 2025 e respostas de fevereiro de 2026','temporal_resolution':'semestral','update_frequency':'semestral conforme política','product_status':'ativo','version_or_collection':'5º relatório nacional — 1º semestre de 2026','enumeration_scope':'complete','product_page_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/relatorio-igualdade','methodology_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/relatorio-igualdade','primary_or_derived':'derivado','limitations':'O universo é restrito aos estabelecimentos abrangidos pela política e às informações administrativas/declaradas usadas no painel. Diferenças agregadas não identificam causalidade ou discriminação individual e dependem de ocupação, jornada, composição e demais fatores.','last_verified':'2026-08-19'},
+            {'product_id':'DP000806','resource_id':'DR0127','product_name':'Guia Brasileiro de Ocupações','product_acronym':'GBO','product_family':'Informações sobre ocupações','product_kind':'indicator_family','product_description':'Dois painéis que integram conteúdo das ocupações e indicadores do mercado de trabalho assalariado formal, utilizando CBO, Quadro Brasileiro de Qualificações, RAIS, Novo CAGED e informações do sistema público de emprego.','research_areas':'Economics | Labor | Education | Public policy','keywords':'ocupações | CBO | qualificações | salários | mercado de trabalho | RAIS | Novo CAGED','geographic_coverage':'Brasil; distribuição geográfica conforme indicador e ocupação','covers_brazil':'sim','spatial_support':'ocupação e agregações territoriais/setoriais','spatial_resolution':'varia conforme indicador e painel','temporal_coverage':'corrente; séries e referências variam conforme indicador de origem','temporal_resolution':'varia conforme indicador','update_frequency':'não documentada de forma única para o conjunto','product_status':'ativo','version_or_collection':'painéis correntes — página oficial atualizada em 17/06/2026','enumeration_scope':'external_index','product_page_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/guia-brasileiro-de-ocupacoes','methodology_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/guia-brasileiro-de-ocupacoes','primary_or_derived':'agregador','limitations':'Os painéis combinam fontes com conceitos e calendários distintos. Indicadores do mercado formal não representam todas as formas de trabalho; conteúdo ocupacional e estatísticas de vínculos devem conservar a fonte e a referência temporal de origem.','last_verified':'2026-08-19'},
+            {'product_id':'DP000807','resource_id':'DR0127','product_name':'Painel de Indicadores da Rede de Observatórios do Trabalho','product_acronym':'Painel Observatórios do Trabalho','product_family':'Indicadores integrados do mercado de trabalho','product_kind':'indicator_family','product_description':'Painel do MTE/BID que integra indicadores atualizados de mercado de trabalho formal e informal a partir de PNAD Contínua, RAIS e CAGED, com filtros territoriais e sociodemográficos.','research_areas':'Economics | Labor | Public policy | Data infrastructure','keywords':'mercado de trabalho | informalidade | ocupação | RAIS | CAGED | PNAD Contínua | desigualdades','geographic_coverage':'Brasil; recortes territoriais, setoriais e sociodemográficos disponíveis no painel','covers_brazil':'sim','spatial_support':'indicadores agregados derivados de múltiplas bases','spatial_resolution':'varia por indicador e fonte de origem','temporal_coverage':'séries atualizadas periodicamente; varia por indicador','temporal_resolution':'varia por indicador','update_frequency':'periódica; automatizada conforme painel','product_status':'ativo','version_or_collection':'painel corrente','enumeration_scope':'external_index','product_page_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/painel-de-indicadores-da-rede-de-observatorios-do-trabalho','methodology_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/painel-de-indicadores-da-rede-de-observatorios-do-trabalho','primary_or_derived':'agregador','limitations':'Integra PNAD Contínua, RAIS e CAGED, que possuem universos, desenhos e periodicidades diferentes. Comparações devem preservar definição, denominador, fonte e período de cada indicador; painel integrado não torna as bases metodologicamente equivalentes.','last_verified':'2026-08-19'},
+            {'product_id':'DP000808','resource_id':'DR0127','product_name':'Painel de Informações da Aprendizagem Profissional','product_acronym':'Aprendizagem Profissional','product_family':'Aprendizagem profissional','product_kind':'indicator_family','product_description':'Painel interativo do MTE sobre aprendizes, com recortes por território, setor, ocupação, idade, gênero, raça/cor e deficiência, baseado principalmente em RAIS e Novo CAGED.','research_areas':'Economics | Labor | Youth | Public policy','keywords':'aprendizagem profissional | jovens | aprendizes | RAIS | Novo CAGED | inclusão produtiva','geographic_coverage':'Brasil; região, UF e outros recortes disponíveis','covers_brazil':'sim','spatial_support':'vínculos de aprendizagem e agregações territoriais/setoriais','spatial_resolution':'varia conforme painel e regra de divulgação','temporal_coverage':'séries correntes e boletins históricos; página atualizada em 06/07/2026','temporal_resolution':'mensal | anual conforme indicador','update_frequency':'painel e listas atualizados periodicamente','product_status':'ativo','version_or_collection':'painel corrente — página oficial atualizada em 06/07/2026','enumeration_scope':'complete','product_page_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/aprendizagem-profissional','methodology_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/aprendizagem-profissional','primary_or_derived':'derivado','limitations':'Indicadores derivam de registros administrativos e não equivalem ao universo de todos os jovens ou à qualidade da formação. Elegibilidade, cota legal, cursos autorizados e vínculos observados são objetos distintos.','last_verified':'2026-08-19'}
+          ]
+
+          proposed_urls = {r['product_page_url'] for r in new_products}
+          existing_urls = {r['product_page_url'] for r in products}
+          overlap = sorted(proposed_urls & existing_urls)
+          if overlap:
+              raise SystemExit(f'proposed product_page_url already cataloged: {overlap}')
+
+          new_dists = [
+            {'distribution_id':'DD000832','product_id':'DP000801','distribution_name':'RAIS 2025 — tabelas, painel, notas e publicação','access_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais/rais-2025','format':'XLSX | PDF | painel web','access_protocol':'HTTPS','access_tool':'navegador web | planilha','free_download':'sim','authentication_required':'não','access_conditions':'acesso público aos materiais agregados e documentação da edição','license':'conteúdo do portal sob CC BY-ND 3.0; verificar termos do arquivo específico','provider_attribution_required':'sim','subset_support':'por tabela, painel e recortes disponibilizados','notes':'A página reúne apresentação, sumário executivo, tabelas, painel, nota técnica e acesso aos microdados.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000833','product_id':'DP000801','distribution_name':'RAIS — microdados não identificados','access_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/microdados-rais-e-caged','format':'TXT delimitado','access_protocol':'HTTPS + FTP legado','access_tool':'navegador compatível | cliente FTP | script','free_download':'sim','authentication_required':'não','access_conditions':'microdados não identificados; dados identificados possuem regime de acesso separado sob LAI/LGPD','license':'licença específica dos microdados não demonstrada inequivocamente na página; preservar atribuição MTE e termos de uso','provider_attribution_required':'sim','subset_support':'por ano/base e tipo de arquivo conforme diretório','notes':'A página oficial informa microdados RAIS de estabelecimento e trabalhador em TXT e distingue o acesso restrito a bases identificadas.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000834','product_id':'DP000802','distribution_name':'Novo CAGED junho/2026 — tabelas, sumário e painel','access_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/novo-caged/2026/junho/pagina-inicial','format':'XLSX | PDF | painel web','access_protocol':'HTTPS','access_tool':'navegador web | planilha','free_download':'sim','authentication_required':'não','access_conditions':'acesso público aos materiais da competência','license':'conteúdo do portal sob CC BY-ND 3.0; verificar termos do arquivo específico','provider_attribution_required':'sim','subset_support':'por tabela e filtros do painel','notes':'A página de junho de 2026 reúne sumário, apresentação, tabelas, painel e nota técnica.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000835','product_id':'DP000802','distribution_name':'Novo CAGED — microdados não identificados','access_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/microdados-rais-e-caged','format':'TXT UTF-8 delimitado por ponto e vírgula','access_protocol':'HTTPS + FTP legado','access_tool':'cliente FTP | navegador compatível | script','free_download':'sim','authentication_required':'não','access_conditions':'microdados não identificados; preservar competência, layout e notas técnicas','license':'licença específica dos microdados não demonstrada inequivocamente na página; preservar atribuição MTE e termos de uso','provider_attribution_required':'sim','subset_support':'por competência/arquivo conforme diretório','notes':'O MTE informa que os microdados do Novo CAGED são TXT codificado em UTF-8 e delimitado por ponto e vírgula.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000836','product_id':'DP000803','distribution_name':'RAIS Mensalizada — painel, tabela e nota técnica','access_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/rais-mensal','format':'XLSX | PDF | painel web','access_protocol':'HTTPS','access_tool':'navegador web | planilha','free_download':'sim','authentication_required':'não','access_conditions':'acesso público','license':'conteúdo do portal sob CC BY-ND 3.0; verificar arquivo específico','provider_attribution_required':'sim','subset_support':'conforme tabela/painel','notes':'A página oficial disponibiliza RAIS Mensalizada e documentação técnica; preservar mês e versão efetivamente utilizados.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000837','product_id':'DP000804','distribution_name':'Seguro-Desemprego — painel e séries históricas','access_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/seguro-desemprego','format':'painel web | XLSX | notas conceituais','access_protocol':'HTTPS','access_tool':'navegador web | planilha','free_download':'sim','authentication_required':'não','access_conditions':'acesso público aos indicadores agregados','license':'conteúdo do portal sob CC BY-ND 3.0; verificar arquivos específicos','provider_attribution_required':'sim','subset_support':'filtros multidimensionais no painel e séries históricas em planilha','notes':'O painel é atualizado quinzenalmente e a página também disponibiliza séries mensais históricas do benefício formal.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000838','product_id':'DP000805','distribution_name':'Relatório Nacional de Igualdade Salarial — painel 1º semestre/2026','access_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/relatorio-igualdade','format':'painel web | publicação','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'acesso público aos resultados agregados','license':'conteúdo do portal sob CC BY-ND 3.0; verificar termos do painel/publicação','provider_attribution_required':'sim','subset_support':'nacional, UF, atividade econômica, CNAE e porte conforme painel','notes':'Resultados combinam eSocial e respostas do Relatório de Transparência Salarial; preservar universo de estabelecimentos e período de referência.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000839','product_id':'DP000806','distribution_name':'Guia Brasileiro de Ocupações — painéis','access_url':'https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/estatisticas-trabalho/guia-brasileiro-de-ocupacoes','format':'painéis web | dicionário conceitual','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'acesso público','license':'conteúdo do portal sob CC BY-ND 3.0; verificar dados/fontes subjacentes','provider_attribution_required':'sim','subset_support':'por ocupação e filtros dos painéis','notes':'Dois painéis separam características/conteúdo das ocupações de indicadores do mercado de trabalho assalariado formal.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000840','product_id':'DP000807','distribution_name':'Rede de Observatórios do Trabalho — painel de indicadores','access_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/painel-de-indicadores-da-rede-de-observatorios-do-trabalho','format':'painel web | glossário | tutoriais','access_protocol':'HTTPS','access_tool':'navegador web','free_download':'sim','authentication_required':'não','access_conditions':'acesso público','license':'conteúdo do portal sob CC BY-ND 3.0; dados subjacentes mantêm suas condições próprias','provider_attribution_required':'sim','subset_support':'por território, setor, gênero, raça/cor, idade e outros filtros','notes':'Painel integra PNAD Contínua, RAIS e CAGED; preservar metadados e fonte de cada indicador.','last_verified':'2026-08-19'},
+            {'distribution_id':'DD000841','product_id':'DP000808','distribution_name':'Aprendizagem Profissional — painel e arquivos','access_url':'https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/aprendizagem-profissional','format':'painel web | CSV | XLSX | PDF','access_protocol':'HTTPS','access_tool':'navegador web | planilha','free_download':'sim','authentication_required':'não','access_conditions':'acesso público aos painéis, boletins e listas publicadas','license':'conteúdo do portal sob CC BY-ND 3.0; verificar termos dos arquivos específicos','provider_attribution_required':'sim','subset_support':'por região, UF, setor, ocupação, idade, gênero, raça/cor e deficiência no painel','notes':'O painel usa RAIS e Novo CAGED; a página também disponibiliza lista de cursos autorizados e boletins históricos, que são objetos administrativos distintos.','last_verified':'2026-08-19'}
+          ]
+
+          append_dicts(source_path, new_source)
+          append_dicts(product_path, new_products)
+          append_dicts(dist_path, new_dists)
+
+          priorities = json.loads(priority_path.read_text(encoding='utf-8'))
+          p0 = next(t for t in priorities['tiers'] if t['priority_tier']=='P0')
+          if 'DR0127' not in p0['resource_ids']:
+              p0['resource_ids'].append('DR0127')
+          priorities['reviewed_at'] = '2026-08-19'
+          priority_path.write_text(json.dumps(priorities, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+
+          print('APPEND_OK', len(new_source), len(new_products), len(new_dists))
+          PY
+
+      - name: Validar catálogo e artefato público
+        shell: bash
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+          def rows(p):
+              with Path(p).open(encoding='utf-8-sig', newline='') as f: return list(csv.DictReader(f))
+          s=rows('data/data_resources.csv'); p=rows('data/data_products.csv'); d=rows('data/product_distributions.csv')
+          assert any(x['resource_id']=='DR0127' for x in s)
+          assert all(any(x['product_id']==f'DP{i:06d}' for x in p) for i in range(801,809))
+          assert all(any(x['distribution_id']==f'DD{i:06d}' for x in d) for i in range(832,842))
+          assert len(s)==127, len(s)
+          assert len(p)==790, len(p)
+          assert len(d)==823, len(d)
+          assert len({x['resource_id'] for x in s})==len(s)
+          assert len({x['product_id'] for x in p})==len(p)
+          assert len({x['distribution_id'] for x in d})==len(d)
+          print('READBACK_OK', len(s), len(p), len(d))
+          PY
+
+      - name: Commitar lote e remover workflow one-shot
+        shell: bash
+        run: |
+          git config user.name "Vitrine Science Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git rm .github/workflows/automation-pdet-batch.yml
+          git add data/data_resources.csv data/data_resources.json data/data_products.csv data/data_products.json data/product_distributions.csv data/brazil_scope_priorities.json data/data_quality_report.json data/link_role_audit.json
+          git commit -m "Expand verified MTE labor-statistics catalog"
+          git push origin HEAD:main
