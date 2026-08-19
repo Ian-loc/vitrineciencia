@@ -1,0 +1,72 @@
+name: PR deduplicate legacy BDMEP
+
+on:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - name: Deduplicate source and validate
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import csv,json
+          from pathlib import Path
+          rp=Path('data/data_resources.csv'); pp=Path('data/data_products.csv'); dp=Path('data/product_distributions.csv'); bp=Path('data/brazil_scope_priorities.json')
+          with rp.open(encoding='utf-8',newline='') as f: rs=list(csv.DictReader(f)); fields=list(rs[0])
+          with pp.open(encoding='utf-8',newline='') as f: ps=list(csv.DictReader(f))
+          with dp.open(encoding='utf-8',newline='') as f: ds=list(csv.DictReader(f))
+          assert (len(rs),len(ps),len(ds))==(126,796,827), (len(rs),len(ps),len(ds))
+          assert sum(r['resource_id']=='DR0018' for r in rs)==1
+          assert sum(r['resource_id']=='DR0118' for r in rs)==1
+          assert not any(p['resource_id']=='DR0018' for p in ps)
+          assert any(p['product_id']=='DP000529' and p['resource_id']=='DR0118' and 'BDMEP' in p['product_name'] and p['methodology_url']=='https://bdmep.inmet.gov.br/' for p in ps)
+          rs=[r for r in rs if r['resource_id']!='DR0018']
+          with rp.open('w',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=fields,lineterminator='\n'); w.writeheader(); w.writerows(rs)
+          reg=json.loads(bp.read_text(encoding='utf-8')); hits=0
+          for t in reg['tiers']:
+              if 'DR0018' in t['resource_ids']:
+                  t['resource_ids'].remove('DR0018'); hits+=1
+          assert hits==1
+          reg['reviewed_at']='2026-08-19'
+          bp.write_text(json.dumps(reg,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+          python3 - <<'PY'
+          import csv,json
+          r=list(csv.DictReader(open('data/data_resources.csv',encoding='utf-8'))); p=list(csv.DictReader(open('data/data_products.csv',encoding='utf-8'))); d=list(csv.DictReader(open('data/product_distributions.csv',encoding='utf-8')))
+          a=json.load(open('data/link_role_audit.json',encoding='utf-8'))
+          assert (len(r),len(p),len(d))==(125,796,827)
+          assert a['records']==125
+          assert not any(x['resource_id']=='DR0018' for x in r)
+          assert any(x['product_id']=='DP000529' and x['resource_id']=='DR0118' for x in p)
+          print('READBACK',len(r),len(p),len(d),a['counts'])
+          PY
+      - name: Commit candidate and remove one-shot workflows
+        shell: bash
+        run: |
+          rm -f .github/workflows/deduplicate-legacy-bdmep.yml .github/workflows/deduplicate-legacy-bdmep-run.yml .github/workflows/pr-dedup-bdmep.yml
+          git config user.name "Ian-loc"
+          git config user.email "lara.clemente@ufla.br"
+          git add data .github/workflows
+          git diff --cached --check
+          git commit -m "Deduplicate legacy BDMEP source representation"
+          git push origin HEAD:${{ github.head_ref }}
