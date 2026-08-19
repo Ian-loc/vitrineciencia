@@ -6,7 +6,7 @@ Releases transformam o catálogo vivo em snapshots identificáveis, citáveis e 
 
 ## Estado atual
 
-Em 19/08/2026, a primeira release científica estável está sendo preparada como `v1.0.0`. O snapshot candidato contém **135 fontes, 833 produtos e 866 distribuições**. IDs correntes chegam a `DR0135`, `DP000861` e `DD000894`; lacunas são preservadas. Essa contagem não é requisito de versão.
+Em 19/08/2026, a primeira release científica estável está sendo preparada como `v1.0.0`. O snapshot candidato contém **135 fontes, 843 produtos e 876 distribuições**. IDs correntes chegam a `DR0135`, `DP000861` e `DD000894`; lacunas são preservadas. Essa contagem não é requisito de versão.
 
 ## Versionamento
 
