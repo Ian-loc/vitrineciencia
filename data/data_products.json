@@ -47458,5 +47458,359 @@
     "available_protocols": [
       "HTTPS"
     ]
+  },
+  {
+    "product_id": "DP000813",
+    "resource_id": "DR0129",
+    "product_name": "Censo SUAS — bases anuais e resultados",
+    "product_acronym": "Censo SUAS",
+    "product_family": "Censo SUAS — monitoramento anual da estrutura e oferta do SUAS",
+    "product_kind": "dataset_series",
+    "product_description": "Bases anuais do Censo SUAS sobre gestão, fundos, conselhos e unidades/serviços socioassistenciais; a edição mais recente materialmente disponível é 2024, com módulos como CRAS, CREAS, Centro POP, Centro Dia, acolhimento, gestão e controle social.",
+    "research_areas": "Social policy | Public policy | Territorial analysis | Data infrastructure",
+    "keywords": "Censo SUAS | CRAS | CREAS | Centro POP | assistência social | serviços socioassistenciais | gestão | controle social",
+    "geographic_coverage": "Brasil; unidades socioassistenciais, municípios, estados e Distrito Federal conforme módulo",
+    "covers_brazil": "sim",
+    "spatial_support": "unidade socioassistencial, órgão gestor, conselho, fundo ou município/UF conforme questionário",
+    "spatial_resolution": "registro por unidade/estrutura respondente; agregável por município, UF e Brasil",
+    "temporal_coverage": "edições anuais desde 2007; bases disponíveis até Censo SUAS 2024",
+    "temporal_resolution": "anual",
+    "update_frequency": "anual",
+    "product_status": "ativo",
+    "version_or_collection": "Censo SUAS 2024; módulos 2024 com correções documentadas em 20/01/2026 e 29/04/2026",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://www.gov.br/mds/pt-br/orgaos/SAGICAD/estudos-e-pesquisas/censo-suas",
+    "methodology_url": "https://aplicacoes.mds.gov.br/snas/vigilancia/censo-suas",
+    "primary_or_derived": "primário",
+    "limitations": "Questionários são preenchidos por órgãos gestores, unidades, conselhos e fundos. Completude, interpretação das perguntas, mudanças de questionário e correções por módulo afetam comparabilidade. Quantidade/estrutura declarada não mede diretamente qualidade ou efetividade do serviço.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0129",
+      "resource_name": "Dados, Cadastros e Vigilância Socioassistencial do SUAS — MDS",
+      "acronym": "SUAS Dados",
+      "official_identity": "Sistema Único de Assistência Social — Vigilância Socioassistencial / SNAS e SAGICAD — MDS",
+      "homepage_url": "https://www.gov.br/mds/pt-br/acoes-e-programas/suas/gestao-do-suas/vigilancia-socioassistencial-1/vigilancia-socioassistencial",
+      "data_access_url": "https://aplicacoes.mds.gov.br/snas/vigilancia/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000846",
+        "product_id": "DP000813",
+        "distribution_name": "Censo SUAS — Bases e Resultados por edição e módulo",
+        "access_url": "https://aplicacoes.mds.gov.br/sagi/snas/vigilancia/index2.php",
+        "format": "planilhas e arquivos por módulo; formato varia conforme edição",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web | planilha",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público às bases e resultados publicados por edição/módulo",
+        "license": "conteúdo MDS/gov.br sob CC BY-ND 3.0; verificar licença indicada no arquivo/recurso específico",
+        "provider_attribution_required": "sim",
+        "subset_support": "por ano do Censo SUAS e módulo/unidade",
+        "notes": "A página lista bases de 2007–2024 e registra correções específicas de módulos; usar sempre o arquivo mais recente da edição selecionada.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "planilhas e arquivos por módulo; formato varia conforme edição"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000814",
+    "resource_id": "DR0129",
+    "product_name": "Observatório do Censo SUAS 2024",
+    "product_acronym": "Observatório Censo SUAS",
+    "product_family": "Censo SUAS — visualização e exploração de resultados",
+    "product_kind": "data_service",
+    "product_description": "Painel público e interativo que apresenta resultados do Censo SUAS 2024 em diferentes níveis federativos e módulos, com filtros, tabelas e visualizações para gestão, monitoramento e pesquisa.",
+    "research_areas": "Social policy | Public policy | Territorial analysis | Data infrastructure",
+    "keywords": "Censo SUAS 2024 | observatório | painel | CRAS | CREAS | gestão | território",
+    "geographic_coverage": "Brasil; filtros federativos e por município/unidade conforme módulo",
+    "covers_brazil": "sim",
+    "spatial_support": "indicadores e registros agregados derivados dos módulos do Censo SUAS 2024",
+    "spatial_resolution": "município, UF, Brasil e unidade conforme variável/painel",
+    "temporal_coverage": "referência Censo SUAS 2024",
+    "temporal_resolution": "anual",
+    "update_frequency": "por edição do Censo SUAS",
+    "product_status": "ativo",
+    "version_or_collection": "referência Censo SUAS 2024; painel versão 2026.05",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/mds/pt-br/orgaos/SAGICAD/dados-e-ferramentas-informacionais/observatorio-censo-suas/observatorio-censo-suas",
+    "methodology_url": "https://www.gov.br/mds/pt-br/orgaos/SAGICAD/estudos-e-pesquisas/censo-suas",
+    "primary_or_derived": "agregador",
+    "limitations": "O painel reorganiza dados do Censo SUAS e não cria observações independentes. Filtros, percentuais e agregações devem preservar denominador, módulo, pergunta e universo respondente da edição 2024.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0129",
+      "resource_name": "Dados, Cadastros e Vigilância Socioassistencial do SUAS — MDS",
+      "acronym": "SUAS Dados",
+      "official_identity": "Sistema Único de Assistência Social — Vigilância Socioassistencial / SNAS e SAGICAD — MDS",
+      "homepage_url": "https://www.gov.br/mds/pt-br/acoes-e-programas/suas/gestao-do-suas/vigilancia-socioassistencial-1/vigilancia-socioassistencial",
+      "data_access_url": "https://aplicacoes.mds.gov.br/snas/vigilancia/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000847",
+        "product_id": "DP000814",
+        "distribution_name": "Observatório do Censo SUAS — painel referência 2024",
+        "access_url": "https://paineis.mds.gov.br/public/extensions/observatorio-do-censo-suas/index.html",
+        "format": "painel web | tabelas | gráficos",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública; exportação depende das funcionalidades do painel",
+        "license": "Creative Commons Atribuição-SemDerivações 3.0 indicada no painel",
+        "provider_attribution_required": "sim",
+        "subset_support": "filtros por módulo, unidade territorial, município e variáveis disponíveis",
+        "notes": "Painel auditado mostra referência Censo SUAS 2024 e versão 2026.05; resultados derivam das bases do Censo.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "painel web | tabelas | gráficos"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000815",
+    "resource_id": "DR0129",
+    "product_name": "Registro Mensal de Atendimentos — RMA",
+    "product_acronym": "RMA",
+    "product_family": "Vigilância Socioassistencial — atendimentos mensais",
+    "product_kind": "dataset_series",
+    "product_description": "Série administrativa mensal sobre serviços ofertados e volume de atendimentos registrados em CRAS, CREAS e Centros POP, padronizada para apoiar vigilância, planejamento e gestão do SUAS.",
+    "research_areas": "Social policy | Public policy | Territorial analysis | Data infrastructure",
+    "keywords": "RMA | CRAS | CREAS | Centro POP | atendimentos | serviços socioassistenciais | vigilância",
+    "geographic_coverage": "Brasil; registros por unidades e agregações territoriais conforme base publicada",
+    "covers_brazil": "sim",
+    "spatial_support": "CRAS, CREAS e Centro POP; agregável por município/UF conforme recurso",
+    "spatial_resolution": "unidade socioassistencial e território administrativo conforme base",
+    "temporal_coverage": "série mensal desde 2012; arquivos públicos por anos/edições conforme disponibilização",
+    "temporal_resolution": "mensal",
+    "update_frequency": "registro mensal; publicação pública consolidada conforme recurso",
+    "product_status": "ativo",
+    "version_or_collection": "versão 1.0 no Portal Brasileiro de Dados Abertos; catálogo alterado em 25/07/2025",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/mds/pt-br/acoes-e-programas/suas/gestao-do-suas/vigilancia-socioassistencial-1/registro-mensal-de-atendimentos-2013-rma",
+    "methodology_url": "https://www.gov.br/mds/pt-br/acoes-e-programas/suas/gestao-do-suas/vigilancia-socioassistencial-1/registro-mensal-de-atendimentos-2013-rma",
+    "primary_or_derived": "primário",
+    "limitations": "Registros são administrativos e dependem do preenchimento pelas unidades; volume registrado não representa automaticamente demanda total, população atendida única ou qualidade do serviço. Mudanças de cobertura e completude devem ser avaliadas no tempo.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0129",
+      "resource_name": "Dados, Cadastros e Vigilância Socioassistencial do SUAS — MDS",
+      "acronym": "SUAS Dados",
+      "official_identity": "Sistema Único de Assistência Social — Vigilância Socioassistencial / SNAS e SAGICAD — MDS",
+      "homepage_url": "https://www.gov.br/mds/pt-br/acoes-e-programas/suas/gestao-do-suas/vigilancia-socioassistencial-1/vigilancia-socioassistencial",
+      "data_access_url": "https://aplicacoes.mds.gov.br/snas/vigilancia/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000848",
+        "product_id": "DP000815",
+        "distribution_name": "RMA — Portal Brasileiro de Dados Abertos",
+        "access_url": "https://dados.gov.br/dados/conjuntos-dados/registro-mensal-de-atendimentos---rma",
+        "format": "CSV | XLSX | ZIP | HTML",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web | planilha | script",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público aos recursos publicados",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "por arquivo/ano e tabulação posterior",
+        "notes": "Metadados do catálogo informam atualização anual da publicação; o registro operacional é mensal e cobre CRAS, CREAS e Centros POP.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "CSV | XLSX | ZIP | HTML"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000816",
+    "resource_id": "DR0129",
+    "product_name": "CadSUAS — dados abertos agregados do cadastro do SUAS",
+    "product_acronym": "CadSUAS",
+    "product_family": "Cadastro do SUAS — unidades e profissionais",
+    "product_kind": "dataset_series",
+    "product_description": "Conjunto público de dados agregados derivados do CadSUAS sobre quantidades de unidades, estruturas e profissionais do Sistema Único de Assistência Social, com recursos separados por tipo de unidade/estrutura.",
+    "research_areas": "Social policy | Public policy | Territorial analysis | Data infrastructure",
+    "keywords": "CadSUAS | unidades socioassistenciais | profissionais | CRAS | CREAS | Centro POP | cadastro",
+    "geographic_coverage": "Brasil; recortes por território conforme recurso",
+    "covers_brazil": "sim",
+    "spatial_support": "unidades e estruturas do SUAS; contagens agregadas conforme recurso",
+    "spatial_resolution": "agregada por tipo de unidade/estrutura e território conforme arquivo",
+    "temporal_coverage": "estado cadastral e séries conforme recursos publicados",
+    "temporal_resolution": "mensal conforme metadados do conjunto",
+    "update_frequency": "mensal",
+    "product_status": "ativo",
+    "version_or_collection": "metadados do Portal Brasileiro de Dados Abertos atualizados em 19/03/2025",
+    "enumeration_scope": "family_level",
+    "product_page_url": "https://dados.gov.br/dados/conjuntos-dados/cadsuas---sistema-de-cadastro-do-sistema-unico-de-assistencia-social-suas",
+    "methodology_url": "https://aplicacoes.mds.gov.br/sagi/snas/sistemas.html",
+    "primary_or_derived": "derivado",
+    "limitations": "É cadastro administrativo: presença e quantitativos dependem da atualização pelos gestores e não equivalem automaticamente à capacidade operacional, disponibilidade real, qualidade ou cobertura de serviços. Recursos representam recortes específicos do cadastro.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0129",
+      "resource_name": "Dados, Cadastros e Vigilância Socioassistencial do SUAS — MDS",
+      "acronym": "SUAS Dados",
+      "official_identity": "Sistema Único de Assistência Social — Vigilância Socioassistencial / SNAS e SAGICAD — MDS",
+      "homepage_url": "https://www.gov.br/mds/pt-br/acoes-e-programas/suas/gestao-do-suas/vigilancia-socioassistencial-1/vigilancia-socioassistencial",
+      "data_access_url": "https://aplicacoes.mds.gov.br/snas/vigilancia/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000849",
+        "product_id": "DP000816",
+        "distribution_name": "CadSUAS — dados abertos agregados em CSV",
+        "access_url": "https://dados.gov.br/dados/conjuntos-dados/cadsuas---sistema-de-cadastro-do-sistema-unico-de-assistencia-social-suas",
+        "format": "CSV",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web | planilha | script",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público aos recursos agregados publicados",
+        "license": "Creative Commons Attribution",
+        "provider_attribution_required": "sim",
+        "subset_support": "recursos separados por tipo de unidade/estrutura/profissional; filtragem após download",
+        "notes": "O conjunto contém múltiplos recursos agregados do CadSUAS; não confundir esses arquivos públicos com o sistema operacional autenticado.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "CSV"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000817",
+    "resource_id": "DR0129",
+    "product_name": "Tab Social — tabulador do Censo SUAS",
+    "product_acronym": "Tab Social",
+    "product_family": "Ferramentas de tabulação do MDS — TabSUAS",
+    "product_kind": "data_service",
+    "product_description": "Serviço de tabulação simples e cruzada de bases do MDS, incluindo o TabSUAS para explorar dados levantados pelo Censo SUAS e produzir tabelas conforme variáveis e recortes disponíveis.",
+    "research_areas": "Social policy | Public policy | Data infrastructure",
+    "keywords": "Tab Social | TabSUAS | Censo SUAS | tabulação | microdados | assistência social",
+    "geographic_coverage": "Brasil; recortes dependem da base e variáveis selecionadas",
+    "covers_brazil": "sim",
+    "spatial_support": "tabulações agregadas produzidas a partir das bases selecionadas",
+    "spatial_resolution": "varia conforme base, variável e recorte disponíveis",
+    "temporal_coverage": "varia conforme a base/edição selecionada",
+    "temporal_resolution": "varia conforme base",
+    "update_frequency": "conforme atualização das bases subjacentes",
+    "product_status": "ativo",
+    "version_or_collection": "serviço corrente listado nas ferramentas informacionais do MDS em 2026",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://www.gov.br/mds/pt-br/orgaos/SAGICAD/dados-e-ferramentas-informacionais/dados-e-ferramentas-do-cadastro-unico/",
+    "methodology_url": "https://www.gov.br/mds/pt-br/orgaos/SAGICAD/dados-e-ferramentas-informacionais/dados-e-ferramentas-do-cadastro-unico/",
+    "primary_or_derived": "serviço",
+    "limitations": "O Tab Social é ferramenta de consulta, não dataset independente. Resultados herdam universos, pesos, variáveis, períodos e limitações da base subjacente; tabulações de diferentes fontes não são automaticamente comparáveis.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0129",
+      "resource_name": "Dados, Cadastros e Vigilância Socioassistencial do SUAS — MDS",
+      "acronym": "SUAS Dados",
+      "official_identity": "Sistema Único de Assistência Social — Vigilância Socioassistencial / SNAS e SAGICAD — MDS",
+      "homepage_url": "https://www.gov.br/mds/pt-br/acoes-e-programas/suas/gestao-do-suas/vigilancia-socioassistencial-1/vigilancia-socioassistencial",
+      "data_access_url": "https://aplicacoes.mds.gov.br/snas/vigilancia/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000850",
+        "product_id": "DP000817",
+        "distribution_name": "Tab Social / TabSUAS — acesso via ferramentas informacionais MDS",
+        "access_url": "https://www.gov.br/mds/pt-br/orgaos/SAGICAD/dados-e-ferramentas-informacionais/dados-e-ferramentas-do-cadastro-unico/",
+        "format": "aplicação web de tabulação",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "ferramenta pública; resultados/exportações dependem do tabulador e da base selecionada",
+        "license": "conteúdo da página gov.br sob CC BY-ND 3.0; dados subjacentes preservam licenças próprias",
+        "provider_attribution_required": "sim",
+        "subset_support": "seleção de base, variáveis e cruzamentos conforme TabSUAS/Tab Social",
+        "notes": "Ferramenta produz tabulações simples e cruzadas; não deve ser citada como se fosse a fonte primária dos dados.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "aplicação web de tabulação"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000818",
+    "resource_id": "DR0129",
+    "product_name": "Cadastro Nacional de Entidades de Assistência Social — CNEAS",
+    "product_acronym": "CNEAS",
+    "product_family": "Cadastro de entidades e ofertas socioassistenciais",
+    "product_kind": "dataset_series",
+    "product_description": "Cadastro administrativo de organizações e ofertas socioassistenciais inscritas no SUAS, com consulta pública por UF, município, nome e CNPJ e informações sobre entidade, endereço, tipo de unidade, serviços ofertados e situação cadastral.",
+    "research_areas": "Social policy | Public policy | Territorial analysis | Data infrastructure",
+    "keywords": "CNEAS | entidades de assistência social | organizações da sociedade civil | serviços socioassistenciais | cadastro",
+    "geographic_coverage": "Brasil; entidades e ofertas registradas nos municípios e Distrito Federal",
+    "covers_brazil": "sim",
+    "spatial_support": "entidade/organização e oferta socioassistencial cadastrada",
+    "spatial_resolution": "registro cadastral com endereço e município; precisão depende do cadastro",
+    "temporal_coverage": "cadastro alimentado desde 2014; estado corrente conforme atualização pelos gestores",
+    "temporal_resolution": "corrente; histórico não garantido na consulta pública",
+    "update_frequency": "conforme atualização cadastral dos gestores",
+    "product_status": "ativo",
+    "version_or_collection": "Consulta Pública CNEAS; serviço gov.br modificado em 23/12/2025 e documentação oficial vigente em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.gov.br/mds/pt-br/acoes-e-programas/suas/entidades-de-assistencia-social/cadastro-nacional-de-entidades-de-assistencia-social-2013-cneas",
+    "methodology_url": "https://www.gov.br/mds/pt-br/acoes-e-programas/suas/entidades-de-assistencia-social/cadastro-nacional-de-entidades-de-assistencia-social-2013-cneas",
+    "primary_or_derived": "primário",
+    "limitations": "Cadastro depende de inscrição e atualização pelas gestões municipais/DF e não constitui censo independente de todas as organizações existentes. Situação cadastral, oferta informada e existência de registro não equivalem automaticamente a qualidade, capacidade ou atendimento efetivamente prestado.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0129",
+      "resource_name": "Dados, Cadastros e Vigilância Socioassistencial do SUAS — MDS",
+      "acronym": "SUAS Dados",
+      "official_identity": "Sistema Único de Assistência Social — Vigilância Socioassistencial / SNAS e SAGICAD — MDS",
+      "homepage_url": "https://www.gov.br/mds/pt-br/acoes-e-programas/suas/gestao-do-suas/vigilancia-socioassistencial-1/vigilancia-socioassistencial",
+      "data_access_url": "https://aplicacoes.mds.gov.br/snas/vigilancia/"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000851",
+        "product_id": "DP000818",
+        "distribution_name": "Consulta Pública CNEAS",
+        "access_url": "https://aplicacoes.mds.gov.br/cneas/publico/xhtml/consultapublica/pesquisar.jsf",
+        "format": "consulta web | registros cadastrais",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "consulta pública gratuita sem login; download em massa não demonstrado nesta auditoria",
+        "license": "conteúdo institucional MDS/gov.br sob CC BY-ND 3.0; licença específica do conteúdo exportado não determinada",
+        "provider_attribution_required": "sim",
+        "subset_support": "filtros por UF, município, CNPJ, nome da entidade e outros campos disponíveis",
+        "notes": "Serviço gov.br informa acesso público imediato a nome, endereço, tipo de unidade, serviços ofertados e situação cadastral.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "consulta web | registros cadastrais"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
   }
 ]
