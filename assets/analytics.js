@@ -7,11 +7,19 @@ const countValues = values => values.filter(Boolean).reduce((counts, value) => {
 }, {});
 const sorted = counts => Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"));
 const chartTargets = ["#chart-areas", "#chart-download", "#chart-programmatic", "#chart-brazil", "#chart-evidence", "#chart-formats", "#chart-visualizations"];
+const pt = window.VitrinePTBR || {};
+const identity = value => value;
+const labelArea = pt.labelArea || identity;
+const labelStatus = pt.labelStatus || identity;
+const labelTerm = pt.labelTerm || identity;
 
-function bars(target, entries) {
+function bars(target, entries, labeler = identity) {
   const element = $(target);
   const max = Math.max(1, ...entries.map(([, count]) => count));
-  element.innerHTML = `<div class="bars" role="list">${entries.map(([label, count]) => `<div class="bar-row" role="listitem"><div class="bar-label"><span>${esc(label)}</span><strong>${count}</strong></div><div class="bar-track" role="img" aria-label="${esc(label)}: ${count} fontes"><span aria-hidden="true" style="width:${(count / max) * 100}%"></span></div></div>`).join("")}</div>`;
+  element.innerHTML = `<div class="bars" role="list">${entries.map(([rawLabel, count]) => {
+    const label = labeler(rawLabel);
+    return `<div class="bar-row" role="listitem"><div class="bar-label"><span>${esc(label)}</span><strong>${count}</strong></div><div class="bar-track" role="img" aria-label="${esc(label)}: ${count} fontes"><span aria-hidden="true" style="width:${(count / max) * 100}%"></span></div></div>`;
+  }).join("")}</div>`;
   element.setAttribute("aria-busy", "false");
 }
 
@@ -33,16 +41,16 @@ async function init() {
     ].map(([label, value]) => `<div><strong>${value}</strong><span>${esc(label)}</span></div>`).join("");
     summary.setAttribute("aria-busy", "false");
 
-    bars("#chart-areas", sorted(countValues(all.flatMap(resource => split(resource.research_areas)))));
-    bars("#chart-download", sorted(countValues(all.map(resource => resource.free_download))));
-    bars("#chart-programmatic", sorted(countValues(all.map(resource => resource.programmatic_access))));
-    bars("#chart-brazil", sorted(countValues(all.map(resource => resource.covers_brazil))));
+    bars("#chart-areas", sorted(countValues(all.flatMap(resource => split(resource.research_areas)))), labelArea);
+    bars("#chart-download", sorted(countValues(all.map(resource => resource.free_download))), labelStatus);
+    bars("#chart-programmatic", sorted(countValues(all.map(resource => resource.programmatic_access))), labelStatus);
+    bars("#chart-brazil", sorted(countValues(all.map(resource => resource.covers_brazil))), labelStatus);
     bars("#chart-evidence", sorted(countValues(all.map(resource => resource.academic_evidence_type))));
 
     const ignored = new Set(["formatos variados", "varia", "visualização web"]);
     const formats = all.flatMap(resource => split(resource.data_formats).map(value => value.split(";")[0].trim())).filter(value => value && !ignored.has(value.toLowerCase()));
     bars("#chart-formats", sorted(countValues(formats)).slice(0, 14));
-    bars("#chart-visualizations", sorted(countValues(all.flatMap(resource => split(resource.visualization_types)))));
+    bars("#chart-visualizations", sorted(countValues(all.flatMap(resource => split(resource.visualization_types)))), labelTerm);
   } catch (error) {
     $("#summary").setAttribute("aria-busy", "false");
     chartTargets.forEach(target => $(target).setAttribute("aria-busy", "false"));
