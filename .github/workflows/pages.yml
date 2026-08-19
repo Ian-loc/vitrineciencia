@@ -17,10 +17,34 @@ concurrency:
 
 jobs:
   validate-vitrine:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref }}
+
+      - name: Sincronizar derivados no branch de QA (temporário)
+        if: github.event_name == 'pull_request' && github.head_ref == 'qa/verify-derived-artifacts'
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/build_catalog.py
+          python3 scripts/build_public_discovery.py
+          python3 scripts/report_normalization_coverage.py
+          python3 scripts/audit_link_roles.py
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/data_resources.json data/data_products.json data/data_quality_report.json
+          if git diff --cached --quiet; then
+            echo "Derivados já sincronizados."
+          else
+            git commit -m "Synchronize generated catalog artifacts"
+            git push origin HEAD:${{ github.head_ref }}
+          fi
 
       - name: Validar dados estáticos da Vitrine
         run: |
