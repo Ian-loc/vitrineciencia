@@ -1,0 +1,136 @@
+name: One-shot IBGE link role audit batch
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.event.head_commit.message == 'Trigger IBGE link role audit batch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Registrar exceções IBGE revisadas
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('data/link_role_exceptions.json')
+          payload = json.loads(path.read_text(encoding='utf-8'))
+          entries = payload.setdefault('reviewed_same_destination', [])
+          by_id = {item['resource_id']: item for item in entries}
+
+          reviewed = [
+            {
+              'resource_id': 'DR0056',
+              'rationale': 'A página temática Cobertura e Uso da Terra funciona como landing page institucional da família e como índice oficial para os produtos que nela disponibilizam Acesso ao produto e Downloads. No nível da fonte-família, manter a mesma URL evita escolher arbitrariamente um único produto como acesso representativo.',
+              'evidence_url': 'https://www.ibge.gov.br/geociencias/informacoes-ambientais/cobertura-e-uso-da-terra.html',
+              'reviewed_at': '2026-08-19'
+            },
+            {
+              'resource_id': 'DR0058',
+              'rationale': 'A própria página oficial do produto Território e Meio Ambiente contém a seção Acesso ao produto com base de dados, tabelas e índice, além de Downloads. Portanto, a mesma URL desempenha legitimamente apresentação e acesso.',
+              'evidence_url': 'https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/45353-territorio-e-meio-ambiente-estatisticas-por-macrorregioes-hidrograficas.html',
+              'reviewed_at': '2026-08-19'
+            },
+            {
+              'resource_id': 'DR0064',
+              'rationale': 'A página Contas de Ecossistemas reúne descrição, edições e seções de Acesso ao produto com SIDRA, vetores, tabelas, mapas e downloads. A igualdade entre homepage e acesso é estrutural ao produto/família no portal IBGE.',
+              'evidence_url': 'https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/28920-contas-de-ecossistemas.html',
+              'reviewed_at': '2026-08-19'
+            },
+            {
+              'resource_id': 'DR0066',
+              'rationale': 'A página Bases Cartográficas Contínuas é o índice oficial da família e encaminha aos produtos Brasil, Estados e Mapa Índice Digital; os produtos filhos concentram acesso/download. Não existe um único dataset que represente toda a família, por isso a landing page é também o acesso de descoberta no nível da fonte.',
+              'evidence_url': 'https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas.html',
+              'reviewed_at': '2026-08-19'
+            },
+            {
+              'resource_id': 'DR0067',
+              'rationale': 'A página Bacias e Divisões Hidrográficas do Brasil contém diretamente Acesso ao produto para BHB250 e DHN250, incluindo vetores, tabelas e mapas, além de Downloads. A mesma URL cumpre legitimamente apresentação e acesso.',
+              'evidence_url': 'https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/31653-bacias-e-divisoes-hidrograficas-do-brasil.html',
+              'reviewed_at': '2026-08-19'
+            },
+            {
+              'resource_id': 'DR0071',
+              'rationale': 'Divisão Regional é uma página temática que organiza os produtos regionais e seus próprios caminhos de Acesso ao produto/Downloads. Como fonte-família, a landing page é o índice oficial de descoberta e acesso, sem um único arquivo que represente todas as regionalizações.',
+              'evidence_url': 'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional.html',
+              'reviewed_at': '2026-08-19'
+            },
+            {
+              'resource_id': 'DR0075',
+              'rationale': 'A página Redes Geodésicas funciona como índice oficial para Rede Altimétrica, Gravimétrica, Planialtimétrica, RBMC, RMPG e BDG; cada produto possui acesso próprio. No nível da família, a mesma URL é legitimamente homepage e ponto de acesso/discovery.',
+              'evidence_url': 'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html',
+              'reviewed_at': '2026-08-19'
+            },
+            {
+              'resource_id': 'DR0076',
+              'rationale': 'A página Serviços para Posicionamento Geodésico é o índice institucional e operacional dos serviços hgeoHNOR, Homologar Marcos, IBGE-PPP, ProGriD, BDG e RBMC-IP. Como a fonte representa a família de serviços, a mesma landing page cumpre os dois papéis legitimamente.',
+              'evidence_url': 'https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html',
+              'reviewed_at': '2026-08-19'
+            }
+          ]
+
+          for item in reviewed:
+              if item['resource_id'] in by_id:
+                  by_id[item['resource_id']].update(item)
+              else:
+                  entries.append(item)
+
+          entries.sort(key=lambda x: x['resource_id'])
+          path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print('Exceções revisadas:', ', '.join(item['resource_id'] for item in reviewed))
+          PY
+
+      - name: Regenerar auditoria de links
+        run: python3 scripts/audit_link_roles.py --write
+
+      - name: Validar lote consolidado
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/audit_descriptive_fields.py
+          python3 scripts/build_catalog.py
+          python3 scripts/build_public_discovery.py
+          python3 scripts/report_normalization_coverage.py
+          python3 scripts/audit_link_roles.py
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Read-back
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('data/link_role_audit.json').read_text(encoding='utf-8'))
+          print('counts=', report['counts'])
+          expected = {'DR0056','DR0058','DR0064','DR0066','DR0067','DR0071','DR0075','DR0076'}
+          reviewed = {r['resource_id'] for r in report['reviewed_same_destination_exceptions']}
+          missing = expected - reviewed
+          if missing:
+              raise SystemExit(f'Exceções ausentes no read-back: {sorted(missing)}')
+          if report['counts']['same_destination_pending_review'] != 24:
+              raise SystemExit(f"Contagem pendente inesperada: {report['counts']['same_destination_pending_review']}")
+          PY
+
+      - name: Persistir lote
+        run: |
+          git config user.name 'Vitrine Audit Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/link_role_exceptions.json data/link_role_audit.json
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo 'Nenhuma mudança a persistir.'
+            exit 0
+          fi
+          git commit -m 'Resolve verified IBGE link-role exceptions'
+          git push origin HEAD:main
