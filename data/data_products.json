@@ -3609,28 +3609,28 @@
   {
     "product_id": "DP000059",
     "resource_id": "DR0018",
-    "product_name": "BDMEP — séries históricas meteorológicas do INMET",
-    "product_acronym": "BDMEP Séries",
-    "product_family": "Banco de Dados Meteorológicos do INMET",
+    "product_name": "INMET — BDMEP — Banco de Dados Meteorológicos para Ensino e Pesquisa",
+    "product_acronym": "BDMEP",
+    "product_family": "séries meteorológicas históricas convencionais",
     "product_kind": "dataset_series",
-    "product_description": "Séries meteorológicas históricas de estações automáticas e convencionais do INMET, com seleção de dados horários, diários ou mensais e variáveis por estação.",
-    "research_areas": "Meteorology | Climatology | Environmental monitoring | Agroclimatology",
-    "keywords": "INMET | estação meteorológica | temperatura | precipitação | umidade | vento | séries históricas",
-    "geographic_coverage": "Brasil conforme rede de estações",
+    "product_description": "Banco de dados de séries históricas diárias digitalizadas das estações meteorológicas convencionais da rede do INMET.",
+    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
+    "keywords": "BDMEP | séries históricas | estações convencionais | precipitação | temperatura | meteorologia",
+    "geographic_coverage": "Brasil — estações convencionais do INMET com séries disponíveis",
     "covers_brazil": "sim",
-    "spatial_support": "estação meteorológica",
-    "spatial_resolution": "ponto de estação",
-    "temporal_coverage": "varia por estação e data de início de operação",
-    "temporal_resolution": "horária | diária | mensal",
-    "update_frequency": "contínua conforme rede e processamento",
+    "spatial_support": "ponto de estação meteorológica",
+    "spatial_resolution": "pontual",
+    "temporal_coverage": "histórico variável por estação; milhões de observações digitalizadas",
+    "temporal_resolution": "diária",
+    "update_frequency": "a cada 90 dias segundo a carta de serviços",
     "product_status": "ativo",
-    "version_or_collection": "BDMEP corrente",
-    "enumeration_scope": "family_level",
-    "product_page_url": "https://bdmep.inmet.gov.br/",
+    "version_or_collection": "BDMEP corrente 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://portal.inmet.gov.br/servicos/bdmep-dados-historicos",
     "methodology_url": "https://bdmep.inmet.gov.br/",
     "primary_or_derived": "primário",
-    "limitations": "Cobertura temporal e completude variam por estação; solicitações pelo BDMEP passam por fila e confirmação por e-mail, e o link de dados gerado expira após 48 horas.",
-    "last_verified": "2026-08-14",
+    "limitations": "Cobertura temporal, falhas e disponibilidade variam por estação. Série histórica convencional não é equivalente à série automática e exige associação ao código, metadados, instrumentos e período operacional corretos.",
+    "last_verified": "2026-08-18",
     "source": {
       "resource_id": "DR0018",
       "resource_name": "Banco de Dados Meteorológicos do INMET",
@@ -3643,26 +3643,26 @@
       {
         "distribution_id": "DD000072",
         "product_id": "DP000059",
-        "distribution_name": "INMET BDMEP — solicitação de séries",
+        "distribution_name": "BDMEP — consulta e extração de séries históricas",
         "access_url": "https://bdmep.inmet.gov.br/",
-        "format": "CSV",
-        "access_protocol": "HTTPS web | entrega por link",
-        "access_tool": "navegador web | e-mail",
+        "format": "dados tabulares via sistema de consulta",
+        "access_protocol": "HTTPS",
+        "access_tool": "BDMEP web",
         "free_download": "sim",
         "authentication_required": "parcial",
-        "access_conditions": "solicitação requer e-mail, confirmação e fila de processamento; link expira em 48 h",
-        "license": "dados públicos do INMET; licença específica deve ser confirmada para reutilização",
+        "access_conditions": "seguir fluxo de consulta do BDMEP; metadados e disponibilidade variam por estação",
+        "license": "não localizada de forma inequívoca no nível da distribuição",
         "provider_attribution_required": "sim",
-        "subset_support": "tipo de estação | período | variável | região | estação",
-        "notes": "O sistema oferece seleção de dados horários, diários e mensais, automáticos ou convencionais.",
-        "last_verified": "2026-08-14"
+        "subset_support": "por estação, variável e período conforme sistema",
+        "notes": "Banco oficial de séries históricas diárias de estações convencionais; a carta de serviços informa atualização a cada 90 dias.",
+        "last_verified": "2026-08-18"
       }
     ],
     "available_formats": [
-      "CSV"
+      "dados tabulares via sistema de consulta"
     ],
     "available_protocols": [
-      "HTTPS web | entrega por link"
+      "HTTPS"
     ]
   },
   {
@@ -31382,65 +31382,6 @@
     ],
     "available_formats": [
       "tabela/consulta web"
-    ],
-    "available_protocols": [
-      "HTTPS"
-    ]
-  },
-  {
-    "product_id": "DP000529",
-    "resource_id": "DR0118",
-    "product_name": "INMET — BDMEP — Banco de Dados Meteorológicos para Ensino e Pesquisa",
-    "product_acronym": "BDMEP",
-    "product_family": "séries meteorológicas históricas convencionais",
-    "product_kind": "dataset_series",
-    "product_description": "Banco de dados de séries históricas diárias digitalizadas das estações meteorológicas convencionais da rede do INMET.",
-    "research_areas": "Clima e Ciências Atmosféricas | Ciências Ambientais e Ecologia | Infraestruturas e Ciência de Dados",
-    "keywords": "BDMEP | séries históricas | estações convencionais | precipitação | temperatura | meteorologia",
-    "geographic_coverage": "Brasil — estações convencionais do INMET com séries disponíveis",
-    "covers_brazil": "sim",
-    "spatial_support": "ponto de estação meteorológica",
-    "spatial_resolution": "pontual",
-    "temporal_coverage": "histórico variável por estação; milhões de observações digitalizadas",
-    "temporal_resolution": "diária",
-    "update_frequency": "a cada 90 dias segundo a carta de serviços",
-    "product_status": "ativo",
-    "version_or_collection": "BDMEP corrente 2026",
-    "enumeration_scope": "complete",
-    "product_page_url": "https://portal.inmet.gov.br/servicos/bdmep-dados-historicos",
-    "methodology_url": "https://bdmep.inmet.gov.br/",
-    "primary_or_derived": "primário",
-    "limitations": "Cobertura temporal, falhas e disponibilidade variam por estação. Série histórica convencional não é equivalente à série automática e exige associação ao código, metadados, instrumentos e período operacional corretos.",
-    "last_verified": "2026-08-18",
-    "source": {
-      "resource_id": "DR0118",
-      "resource_name": "Instituto Nacional de Meteorologia — dados, estações e climatologia",
-      "acronym": "INMET",
-      "official_identity": "Instituto Nacional de Meteorologia — INMET / Ministério da Agricultura e Pecuária",
-      "homepage_url": "https://portal.inmet.gov.br/",
-      "data_access_url": "https://portal.inmet.gov.br/dadoshistoricos"
-    },
-    "distributions": [
-      {
-        "distribution_id": "DD000554",
-        "product_id": "DP000529",
-        "distribution_name": "BDMEP — consulta e extração de séries históricas",
-        "access_url": "https://bdmep.inmet.gov.br/",
-        "format": "dados tabulares via sistema de consulta",
-        "access_protocol": "HTTPS",
-        "access_tool": "BDMEP web",
-        "free_download": "sim",
-        "authentication_required": "parcial",
-        "access_conditions": "seguir fluxo de consulta do BDMEP; metadados e disponibilidade variam por estação",
-        "license": "não localizada de forma inequívoca no nível da distribuição",
-        "provider_attribution_required": "sim",
-        "subset_support": "por estação, variável e período conforme sistema",
-        "notes": "Banco oficial de séries históricas diárias de estações convencionais; a carta de serviços informa atualização a cada 90 dias.",
-        "last_verified": "2026-08-18"
-      }
-    ],
-    "available_formats": [
-      "dados tabulares via sistema de consulta"
     ],
     "available_protocols": [
       "HTTPS"
