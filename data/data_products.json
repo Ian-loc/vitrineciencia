@@ -48933,5 +48933,241 @@
     "available_protocols": [
       "HTTPS | consulta web | download conforme recurso"
     ]
+  },
+  {
+    "product_id": "DP000838",
+    "resource_id": "DR0132",
+    "product_name": "Atlas dos Municípios — IDHM e indicadores dos Censos 1991, 2000 e 2010",
+    "product_acronym": "Atlas Municípios",
+    "product_family": "Atlas do Desenvolvimento Humano — municípios",
+    "product_kind": "indicator_family",
+    "product_description": "Conjunto de IDHM e mais de 200 indicadores de desenvolvimento humano para municípios e estados brasileiros, com dados dos Censos Demográficos de 1991, 2000 e 2010.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "IDHM | municípios | Censo 1991 | Censo 2000 | Censo 2010 | desenvolvimento humano",
+    "geographic_coverage": "Brasil — municípios e Unidades da Federação",
+    "covers_brazil": "sim",
+    "spatial_support": "município | UF",
+    "spatial_resolution": "município e UF",
+    "temporal_coverage": "1991 | 2000 | 2010",
+    "temporal_resolution": "censitária",
+    "update_frequency": "por edição censitária",
+    "product_status": "ativo",
+    "version_or_collection": "Atlas dos Municípios — Censos 1991, 2000 e 2010",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.undp.org/pt/brazil/atlas-dos-municipios",
+    "methodology_url": "https://www.undp.org/pt/brazil/o-que-e-o-idhm",
+    "primary_or_derived": "derivado",
+    "limitations": "IDHM é índice composto de longevidade, educação e renda; os indicadores refletem os anos censitários e não descrevem automaticamente condições atuais. Limites territoriais e conceitos censitários devem ser preservados por edição.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0132",
+      "resource_name": "Atlas do Desenvolvimento Humano no Brasil — PNUD/Ipea/FJP",
+      "acronym": "Atlas Brasil / IDHM",
+      "official_identity": "Programa das Nações Unidas para o Desenvolvimento — PNUD Brasil / Ipea / Fundação João Pinheiro — Atlas do Desenvolvimento Humano no Brasil",
+      "homepage_url": "https://www.undp.org/pt/brazil/desenvolvimento-humano",
+      "data_access_url": "https://www.undp.org/pt/brazil/desenvolvimento-humano/dados-brasil"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000871",
+        "product_id": "DP000838",
+        "distribution_name": "Atlas dos Municípios — consulta e dados",
+        "access_url": "https://www.undp.org/pt/brazil/atlas-dos-municipios",
+        "format": "consulta web | dados/tabelas conforme plataforma",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar ano censitário, indicador, recorte e metodologia",
+        "license": "verificar termos do recurso e atribuir PNUD/Ipea/FJP e fontes originais",
+        "provider_attribution_required": "sim",
+        "subset_support": "por município, UF, indicador e ano conforme plataforma",
+        "notes": "O Atlas municipal reúne IDHM e mais de 200 indicadores derivados dos Censos 1991, 2000 e 2010.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "consulta web | dados/tabelas conforme plataforma"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000839",
+    "resource_id": "DR0132",
+    "product_name": "Atlas das Regiões Metropolitanas — IDHM e indicadores por UDH",
+    "product_acronym": "Atlas RMs / UDH",
+    "product_family": "Atlas do Desenvolvimento Humano — regiões metropolitanas",
+    "product_kind": "indicator_family",
+    "product_description": "IDHM e aproximadamente 200 indicadores socioeconômicos para 20 regiões metropolitanas/RIDE e seus recortes intramunicipais de Unidades de Desenvolvimento Humano, com comparação 2000–2010.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "IDHM | regiões metropolitanas | UDH | desigualdade intraurbana | 2000 | 2010",
+    "geographic_coverage": "20 regiões metropolitanas brasileiras e RIDE/recortes documentados pelo Atlas",
+    "covers_brazil": "parcial",
+    "spatial_support": "região metropolitana | UDH",
+    "spatial_resolution": "UDH e agregados metropolitanos",
+    "temporal_coverage": "2000 | 2010",
+    "temporal_resolution": "censitária",
+    "update_frequency": "por edição",
+    "product_status": "ativo",
+    "version_or_collection": "Atlas das Regiões Metropolitanas — base censitária 2000–2010",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.undp.org/pt/brazil/atlas-das-regioes-metropolitanas",
+    "methodology_url": "https://www.undp.org/pt/brazil/o-que-e-o-idhm",
+    "primary_or_derived": "derivado",
+    "limitations": "UDHs são recortes analíticos construídos para representar áreas relativamente homogêneas e não equivalem automaticamente a bairros ou divisões administrativas. Comparações dependem da compatibilização territorial e censitária.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0132",
+      "resource_name": "Atlas do Desenvolvimento Humano no Brasil — PNUD/Ipea/FJP",
+      "acronym": "Atlas Brasil / IDHM",
+      "official_identity": "Programa das Nações Unidas para o Desenvolvimento — PNUD Brasil / Ipea / Fundação João Pinheiro — Atlas do Desenvolvimento Humano no Brasil",
+      "homepage_url": "https://www.undp.org/pt/brazil/desenvolvimento-humano",
+      "data_access_url": "https://www.undp.org/pt/brazil/desenvolvimento-humano/dados-brasil"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000872",
+        "product_id": "DP000839",
+        "distribution_name": "Atlas das Regiões Metropolitanas — consulta por RM e UDH",
+        "access_url": "https://www.undp.org/pt/brazil/atlas-das-regioes-metropolitanas",
+        "format": "consulta web | mapas | tabelas",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "parcial",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; preservar definição de UDH, região metropolitana e ano censitário",
+        "license": "verificar termos do recurso e atribuir PNUD/Ipea/FJP e fontes originais",
+        "provider_attribution_required": "sim",
+        "subset_support": "por RM, UDH, indicador e ano conforme plataforma",
+        "notes": "Os recortes UDH são analíticos e não devem ser tratados como bairros ou limites administrativos.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "consulta web | mapas | tabelas"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000840",
+    "resource_id": "DR0132",
+    "product_name": "Radar IDHM — evolução do IDHM e componentes 2012–2024",
+    "product_acronym": "Radar IDHM 2012–2024",
+    "product_family": "Radar IDHM",
+    "product_kind": "indicator_family",
+    "product_description": "Atualização anual do IDHM, IDHM ajustado à desigualdade e componentes com base na PNAD Contínua, apresentando resultados para Brasil, macrorregiões, UFs e regiões metropolitanas, com desagregações selecionadas por sexo e raça/cor.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "IDHM | IDHMAD | PNAD Contínua | desigualdade | sexo | raça/cor | 2024",
+    "geographic_coverage": "Brasil, macrorregiões, UFs e regiões metropolitanas cobertas",
+    "covers_brazil": "sim",
+    "spatial_support": "Brasil | macrorregião | UF | região metropolitana",
+    "spatial_resolution": "agregados compatíveis com a PNAD Contínua",
+    "temporal_coverage": "2012–2024",
+    "temporal_resolution": "anual",
+    "update_frequency": "conforme atualização do Radar",
+    "product_status": "ativo",
+    "version_or_collection": "Radar IDHM 2012–2024 — publicado em 2026",
+    "enumeration_scope": "complete",
+    "product_page_url": "https://www.undp.org/pt/brazil/publications/radar-idhm-evolucao-do-idhm-e-de-seus-componentes-periodo-de-2012-2024",
+    "methodology_url": "https://www.undp.org/pt/brazil/desenvolvimento-humano/painel-idhm",
+    "primary_or_derived": "derivado",
+    "limitations": "Indicadores são estimativas derivadas da PNAD Contínua e não devem ser confundidos com o IDHM censitário municipal de 1991/2000/2010. Desagregações dependem do desenho amostral e da metodologia documentada.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0132",
+      "resource_name": "Atlas do Desenvolvimento Humano no Brasil — PNUD/Ipea/FJP",
+      "acronym": "Atlas Brasil / IDHM",
+      "official_identity": "Programa das Nações Unidas para o Desenvolvimento — PNUD Brasil / Ipea / Fundação João Pinheiro — Atlas do Desenvolvimento Humano no Brasil",
+      "homepage_url": "https://www.undp.org/pt/brazil/desenvolvimento-humano",
+      "data_access_url": "https://www.undp.org/pt/brazil/desenvolvimento-humano/dados-brasil"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000873",
+        "product_id": "DP000840",
+        "distribution_name": "Painel IDHM — base CSV e visualização 2012–2024",
+        "access_url": "https://www.undp.org/pt/brazil/desenvolvimento-humano/painel-idhm",
+        "format": "CSV | painel web | publicação PDF",
+        "access_protocol": "HTTPS",
+        "access_tool": "navegador web | download",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "acesso público; usar a metodologia e a versão correspondente ao período 2012–2024",
+        "license": "verificar termos do arquivo/publicação e atribuir PNUD e parceiros/fontes",
+        "provider_attribution_required": "sim",
+        "subset_support": "por indicador e recortes territoriais/sociodemográficos disponibilizados",
+        "notes": "A página oficial oferece download da base CSV e apresenta IDHM, IDHMAD e desagregações; os valores são derivados da PNAD Contínua.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "CSV | painel web | publicação PDF"
+    ],
+    "available_protocols": [
+      "HTTPS"
+    ]
+  },
+  {
+    "product_id": "DP000841",
+    "resource_id": "DR0133",
+    "product_name": "IpeaData — catálogo de séries econômicas, regionais e sociais",
+    "product_acronym": "IpeaData Séries",
+    "product_family": "IpeaData",
+    "product_kind": "federated_catalog",
+    "product_description": "Catálogo de séries temporais e indicadores com metadados de fonte, unidade, frequência, cobertura, comentários metodológicos e data de atualização, reunindo dados econômicos, regionais e sociais de múltiplas instituições.",
+    "research_areas": "Planejamento Territorial e Políticas Públicas | Infraestruturas e Ciência de Dados",
+    "keywords": "IpeaData | séries temporais | indicadores | economia | desenvolvimento regional | indicadores sociais",
+    "geographic_coverage": "Brasil; recortes territoriais variáveis por série e algumas séries internacionais",
+    "covers_brazil": "sim",
+    "spatial_support": "varia por série",
+    "spatial_resolution": "Brasil | região | UF | município | outros recortes conforme série",
+    "temporal_coverage": "varia por série; inclui séries históricas extensas e séries correntes",
+    "temporal_resolution": "varia por série",
+    "update_frequency": "varia por série",
+    "product_status": "ativo",
+    "version_or_collection": "catálogo corrente auditado em 2026-08-19",
+    "enumeration_scope": "external_index",
+    "product_page_url": "https://www.ipeadata.gov.br/Default.aspx",
+    "methodology_url": "",
+    "primary_or_derived": "agregador",
+    "limitations": "Não tratar o IpeaData como uma série homogênea. Cada série possui fonte primária, unidade, frequência, cobertura temporal, eventuais deflatores e notas metodológicas próprias; comparabilidade deve ser avaliada por série.",
+    "last_verified": "2026-08-19",
+    "source": {
+      "resource_id": "DR0133",
+      "resource_name": "IpeaData — séries econômicas e indicadores sociais",
+      "acronym": "IpeaData",
+      "official_identity": "Instituto de Pesquisa Econômica Aplicada — Ipea / IpeaData",
+      "homepage_url": "https://www.ipeadata.gov.br/Default.aspx",
+      "data_access_url": "https://www.ipeadata.gov.br/Default.aspx"
+    },
+    "distributions": [
+      {
+        "distribution_id": "DD000874",
+        "product_id": "DP000841",
+        "distribution_name": "IpeaData — consulta e download de séries",
+        "access_url": "https://www.ipeadata.gov.br/Default.aspx",
+        "format": "tabela web | download conforme série",
+        "access_protocol": "HTTP/HTTPS",
+        "access_tool": "navegador web",
+        "free_download": "sim",
+        "authentication_required": "não",
+        "access_conditions": "uso público; citar IpeaData e preservar a fonte original e metadados da série",
+        "license": "verificar os termos da série e da fonte primária; uso público com atribuição ao IpeaData",
+        "provider_attribution_required": "sim",
+        "subset_support": "por série, período e recorte territorial quando disponível",
+        "notes": "Cada série exibe fonte, frequência, unidade, comentários metodológicos e data de atualização; formatos de exportação variam conforme a interface/série.",
+        "last_verified": "2026-08-19"
+      }
+    ],
+    "available_formats": [
+      "tabela web | download conforme série"
+    ],
+    "available_protocols": [
+      "HTTP/HTTPS"
+    ]
   }
 ]
