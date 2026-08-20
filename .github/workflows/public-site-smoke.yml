@@ -10,6 +10,13 @@ on:
 permissions:
   contents: read
 
+# Só a publicação mais recente é relevante. Sem concorrência global, um smoke
+# antigo pode começar depois de um deploy mais novo e comparar o site atual
+# com o SHA anterior, gerando falso negativo. Um novo run cancela o anterior.
+concurrency:
+  group: vitrine-public-site-smoke
+  cancel-in-progress: true
+
 jobs:
   public-site-smoke:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
