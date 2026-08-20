@@ -13,6 +13,12 @@ PUBLIC_PAGES = ("index.html", "products.html", "analytics.html", "about.html")
 INTERACTIVE_PAGES = {"index.html", "products.html", "analytics.html"}
 PUBLIC_RENDER_FILES = (*PUBLIC_PAGES, "assets/app.js", "assets/products.js")
 IDENTITY_FILES = (*PUBLIC_PAGES, "README.md", "CITATION.cff")
+CANONICAL_URLS = {
+    "index.html": SITE_URL,
+    "products.html": SITE_URL + "products.html",
+    "analytics.html": SITE_URL + "analytics.html",
+    "about.html": SITE_URL + "about.html",
+}
 FORBIDDEN_PAGE_TOKENS = (
     "Simbiotrama",
     "Simbioscópio",
@@ -51,6 +57,8 @@ class Parser(HTMLParser):
         self.tags: list[str] = []
         self.local_refs: list[str] = []
         self.external_assets: list[str] = []
+        self.canonical_urls: list[str] = []
+        self.og_urls: list[str] = []
         self.lang = ""
         self.viewport = False
         self.skip = False
@@ -58,10 +66,15 @@ class Parser(HTMLParser):
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = dict(attrs)
         self.tags.append(tag)
+        rel_tokens = (values.get("rel") or "").split()
         if tag == "html":
             self.lang = values.get("lang") or ""
         if tag == "meta" and values.get("name") == "viewport":
             self.viewport = True
+        if tag == "meta" and values.get("property") == "og:url" and values.get("content"):
+            self.og_urls.append(values["content"] or "")
+        if tag == "link" and "canonical" in rel_tokens and values.get("href"):
+            self.canonical_urls.append(values["href"] or "")
         if tag == "a" and "skip" in (values.get("class") or "").split() and (values.get("href") or "").startswith("#"):
             self.skip = True
         if values.get("id"):
@@ -71,7 +84,9 @@ class Parser(HTMLParser):
             return
         parsed = urlparse(ref)
         if parsed.scheme or parsed.netloc:
-            if tag in {"script", "link"}:
+            # Canonical/metadata links may be absolute. Only executable/style
+            # dependencies are forbidden from leaving the repository.
+            if tag == "script" or (tag == "link" and "stylesheet" in rel_tokens):
                 self.external_assets.append(ref)
             return
         if parsed.path and not parsed.path.endswith("/"):
@@ -107,6 +122,18 @@ def validate_page(filename: str) -> None:
         fail(f"{filename}: IDs obrigatórios ausentes: {', '.join(missing)}")
     if "assets/visual-refinement.css" not in content:
         fail(f"{filename}: camada visual refinada ausente")
+    expected_url = CANONICAL_URLS[filename]
+    if parser.canonical_urls != [expected_url]:
+        fail(f"{filename}: canonical deve ser único e igual a {expected_url}")
+    if parser.og_urls != [expected_url]:
+        fail(f"{filename}: og:url deve ser único e igual ao canonical")
+    if '<meta name="twitter:card" content="summary">' not in content:
+        fail(f"{filename}: twitter:card ausente")
+    if filename == "index.html":
+        if '"@type":"DataCatalog"' not in content or '"@context":"https://schema.org"' not in content:
+            fail("index.html: metadados estruturados DataCatalog ausentes")
+        if 'https://orcid.org/0000-0003-1164-9318' not in content:
+            fail("index.html: ORCID do criador ausente dos metadados estruturados")
     for ref in parser.local_refs:
         target = (path.parent / ref).resolve()
         if ROOT not in target.parents and target != ROOT:
