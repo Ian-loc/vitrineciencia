@@ -94,6 +94,14 @@ jobs:
           ! grep -R -n -E 'Simbiotrama|Simbioscópio|Simbioscopio' _site/index.html _site/products.html _site/analytics.html _site/about.html
           ! grep -R -n -E 'data/data_resources\.csv|data/data_products\.csv|data/product_distributions\.csv' _site/index.html _site/products.html _site/analytics.html _site/about.html
 
+      # O mesmo _site que passou por todas as validações acima é o artefato
+      # entregue ao job de deploy. Isso elimina um segundo build independente.
+      - name: Enviar artefato validado da Vitrine
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
   deploy:
     if: github.event_name != 'pull_request'
     needs: validate-vitrine
@@ -107,38 +115,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Gerar e validar Vitrine
-        run: |
-          python3 scripts/validate_brazil_scope.py
-          python3 scripts/validate_product_catalog.py
-          python3 scripts/validate_schema_identity.py
-          python3 scripts/audit_descriptive_fields.py
-          python3 scripts/build_catalog.py
-          python3 scripts/build_public_discovery.py
-          python3 scripts/report_normalization_coverage.py
-          python3 scripts/audit_link_roles.py
-          git diff --check
-          git diff --exit-code -- \
-            data/data_resources.json \
-            data/data_products.json \
-            data/data_quality_report.json \
-            data/link_role_audit.json
-          python3 scripts/validate_vitrine.py
-          node --check assets/ptbr.js
-          node --check assets/export-selective.js
-          python3 scripts/build_site_artifact.py
-
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Enviar artefato da Vitrine
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: _site
-
-      - name: Publicar Vitrine no GitHub Pages
+      - name: Publicar artefato previamente validado
         id: deployment
         uses: actions/deploy-pages@v4
 
