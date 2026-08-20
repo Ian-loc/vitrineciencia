@@ -1,7 +1,7 @@
 # Vitrine Ciência — modelo operacional e pipeline de manutenção
 
 Status: **ACTIVE OPERATING MODEL**  
-Atualização: **2026-08-18**
+Atualização: **2026-08-20**
 
 ## 1. Produto
 
@@ -11,7 +11,7 @@ A Vitrine Ciência é um catálogo delimitado para descoberta de dados científi
 
 A Vitrine ajuda a descobrir, compreender inicialmente, comparar metadados e acessar recursos externos. Não reconstrói integralmente a arquitetura de cada provedor e não hospeda, por padrão, os datasets catalogados.
 
-## 2. Autoridade e snapshot
+## 2. Autoridade e estado
 
 - repositório: `Ian-loc/vitrineciencia`;
 - branch: `main`;
@@ -22,7 +22,7 @@ A Vitrine ajuda a descobrir, compreender inicialmente, comparar metadados e aces
 - código: MIT;
 - curadoria/metadados originais: CC BY 4.0.
 
-Snapshot de 18/08/2026: **125 fontes, 752 produtos e 783 distribuições**. Os maiores IDs chegam a `DR0125`, `DP000756` e `DD000787`; lacunas de IDs são preservadas. As contagens não são requisitos fixos.
+Contagens e maiores IDs são estado operacional e não devem ser duplicados neste documento. O snapshot corrente é mantido em `docs/PROJECT_STATE.md` e `data/data_quality_report.json`. Lacunas de IDs são preservadas e IDs não são reciclados.
 
 ## 3. Fronteira conceitual
 
@@ -47,7 +47,7 @@ Snapshot de 18/08/2026: **125 fontes, 752 produtos e 783 distribuições**. Os m
 
 ## 4. Classes de mudança
 
-- **DATA:** inclusão/correção de fonte, produto, distribuição ou classificação territorial.
+- **DATA:** correção de fonte, produto, distribuição ou classificação territorial. Durante a fase atual, expansão de novas entidades está pausada.
 - **FIX:** defeito de interface, build, acesso, navegação ou regressão.
 - **DOC:** documentação, estado e explicitação de contratos sem mudança conceitual.
 - **RELEASE:** congelamento de snapshot, versão, tag, pacote e depósito.
@@ -55,9 +55,9 @@ Snapshot de 18/08/2026: **125 fontes, 752 produtos e 783 distribuições**. Os m
 
 ## 5. Gates proporcionais
 
-- **AUTO-SAFE:** DOC, QA/CI, correções pequenas inequívocas e pequenos lotes DATA dentro do contrato.
+- **AUTO-SAFE:** DOC, QA/CI, correções pequenas inequívocas e saneamentos reversíveis dentro do contrato.
 - **REVIEW:** lote grande, mudança pública relevante ou ambiguidade factual material.
-- **HUMAN-DECISION:** escopo/schema incompatível, destruição, tracking/privacidade, licença/autoria/citação oficial, `1.0.0` e DOI.
+- **HUMAN-DECISION:** retomada de expansão de escopo, schema incompatível, destruição, tracking/privacidade, licença/autoria/citação oficial, `1.0.0` e DOI.
 
 ## 6. Pipeline obrigatório por pacote
 
@@ -98,13 +98,15 @@ Regras:
 
 ## 8. Entrada e granularidade
 
+A expansão de novas fontes, produtos e distribuições está **pausada** durante a fase atual de QA/QC. As regras de granularidade abaixo continuam válidas para correções do catálogo existente e para eventual retomada mediante instrução humana explícita.
+
 ### Nova fonte
 
-Deve ter identidade institucional rastreável, utilidade científica/operacional relevante ao Brasil, evidência suficiente e não duplicar semanticamente uma fonte existente sem benefício de descoberta.
+Quando a expansão for retomada, deve ter identidade institucional rastreável, utilidade científica/operacional relevante ao Brasil, evidência suficiente e não duplicar semanticamente uma fonte existente sem benefício de descoberta.
 
 ### Novo produto
 
-Recebe linha própria quando há diferença material em finalidade, conteúdo, método, cobertura, suporte/resolução, coleção/versão ou acesso. Arquivo, formato, banda, tile ou endpoint isolado não bastam.
+Quando a expansão for retomada, recebe linha própria somente quando há diferença material em finalidade, conteúdo, método, cobertura, suporte/resolução, coleção/versão ou acesso. Arquivo, formato, banda, tile ou endpoint isolado não bastam.
 
 ### Distribuição
 
@@ -112,7 +114,7 @@ Representa a rota concreta de acesso e pode registrar formato, protocolo, ferram
 
 ## 9. Qualidade
 
-O relatório `data/data_quality_report.json` é diagnóstico de preenchimento, não certificação. Em 18/08/2026 registra, entre outros sinais, 49 fontes com licença desconhecida/variável e 72 com incerteza de acesso. A prioridade é reduzir lacunas com maior impacto científico ou operacional, não perseguir completude artificial.
+O relatório `data/data_quality_report.json` é diagnóstico de preenchimento, não certificação. Seus valores são voláteis e devem ser lidos diretamente do artefato regenerado, não replicados manualmente aqui. A prioridade atual é corrigir defeitos e riscos com maior impacto científico, operacional ou de publicação, sem perseguir completude artificial.
 
 ## 10. Drive
 
@@ -128,8 +130,8 @@ Materiais de Instância 1, PostgreSQL/PostGIS e roadmaps Simbiotrama presentes n
 
 ## 13. Critério de sucesso
 
-O fluxo normal deve convergir para:
+Na fase atual, o fluxo normal deve convergir para:
 
-**discover → verify → curate → validate → publish → monitor → periodically release**.
+**inspect → verify → fix → validate → publish → monitor**.
 
-Qualidade, governança e auditoria são meios para um catálogo útil; não devem impedir crescimento e entrega quando o estado corrente é tecnicamente defensável e suas limitações estão explícitas.
+Quando a expansão for explicitamente retomada, a descoberta/curadoria de novas entidades volta a integrar esse ciclo. Qualidade, governança e auditoria são meios para um catálogo útil e não justificam alterações cosméticas ou escopo novo durante a fase de QA/QC.
