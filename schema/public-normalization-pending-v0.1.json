@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "purpose": "Fila explícita de resíduos conhecidos da normalização pública. O CI exige correspondência exata para impedir regressões silenciosas ou substituição de uma pendência por outra.",
+  "spatial_support": [
+    "DP000196",
+    "DP000197",
+    "DP000236",
+    "DP000238",
+    "DP000350",
+    "DP000365"
+  ],
+  "update_frequency": [
+    "DP000103",
+    "DP000104",
+    "DP000339",
+    "DP000455",
+    "DP000459",
+    "DP000461",
+    "DP000545",
+    "DP000647",
+    "DP000724"
+  ],
+  "spatial_resolution": [],
+  "temporal_coverage": [],
+  "temporal_resolution": [],
+  "version_or_collection": []
+}
