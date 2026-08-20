@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: "20"
 
@@ -194,6 +194,15 @@ jobs:
                       await compareInputs.nth(1).check();
                       await page.locator('#compare-open').click();
                       await page.locator('#compare-dialog[open]').waitFor({state: 'visible'});
+                      // products.js opens the dialog synchronously and export-selective.js
+                      // enriches the table on the next task. Wait for the intended normalized
+                      // comparison rows instead of racing the two handlers on fast runners.
+                      await page.waitForFunction(() => {
+                        const labels = [...document.querySelectorAll('#compare-content th[scope="row"]')]
+                          .map((el) => (el.textContent || '').trim());
+                        return ['Suporte espacial', 'Resolução espacial', 'Cobertura temporal', 'Resolução temporal']
+                          .every((label) => labels.includes(label));
+                      }, {timeout: 5000});
                       const labels = await page.locator('#compare-content th[scope="row"]').allTextContents();
                       if (!labels.includes('Suporte espacial') || !labels.includes('Resolução espacial') || !labels.includes('Cobertura temporal') || !labels.includes('Resolução temporal')) {
                         console.error(`Dimensões da comparação não estão separadas em ${mode}: ${labels.join(' | ')}`);
@@ -232,7 +241,7 @@ jobs:
 
       - name: Publicar evidência visual
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: vitrine-public-ui-visual-qa
           path: visual-qa/
