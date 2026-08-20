@@ -31,6 +31,7 @@ jobs:
           python3 scripts/build_catalog.py
           python3 scripts/build_public_discovery.py
           python3 scripts/report_normalization_coverage.py
+          python3 scripts/validate_normalization_residues.py
           python3 scripts/audit_link_roles.py
 
       - name: Confirmar derivados versionados sincronizados
