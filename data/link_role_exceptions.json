@@ -1,0 +1,250 @@
+{
+  "reviewed_same_destination": [
+    {
+      "resource_id": "DR0014",
+      "rationale": "O SiBBr funciona como portal integrado de descoberta e acesso; a mesma página institucional é a interface pública de consulta do catálogo. Manter a mesma URL é deliberado, não uma ausência de revisão.",
+      "evidence_url": "https://www.sibbr.gov.br/",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0020",
+      "rationale": "O AppEEARS é uma aplicação web: sua landing page autenticada é simultaneamente a identidade do serviço e o ponto operacional de extração. A API é documentada separadamente em access_documentation_url.",
+      "evidence_url": "https://appeears.earthdatacloud.nasa.gov/",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0031",
+      "rationale": "O KNB é um repositório/catálogo cuja homepage é também a interface pública de busca e acesso aos datasets. Não há segundo destino necessário para representar o papel de acesso.",
+      "evidence_url": "https://knb.ecoinformatics.org/",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0032",
+      "rationale": "PANGAEA é simultaneamente data publisher, catálogo e interface de pesquisa/download; a homepage é o ponto público de descoberta e acesso aos registros publicados.",
+      "evidence_url": "https://www.pangaea.de/",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0035",
+      "rationale": "O Climate Data Guide é um guia/catálogo de descoberta, não um arquivo de dados próprio. A mesma página desempenha legitimamente os papéis de apresentação e acesso às fichas curatoriais que constituem o produto.",
+      "evidence_url": "https://climatedataguide.ucar.edu/",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0038",
+      "rationale": "WoSIS é apresentado pelo ISRIC em uma página de serviço que concentra descrição e caminhos de acesso aos dados; a igualdade de URL é deliberada no nível da fonte.",
+      "evidence_url": "https://www.isric.org/explore/wosis",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0045",
+      "rationale": "Global Carbon Atlas é uma aplicação interativa; a homepage é também a interface de exploração dos dados e visualizações. Um segundo link de acesso não acrescentaria distinção real no nível da fonte.",
+      "evidence_url": "https://globalcarbonatlas.org/",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0051",
+      "rationale": "Project COSMOS é uma aplicação interativa autocontida; o endereço institucional é simultaneamente o ponto de acesso ao produto publicado.",
+      "evidence_url": "https://interactive.carbonbrief.org/cosmos/index.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0054",
+      "rationale": "O GeoNetwork do IBGE é um catálogo web: a página catalog.search é ao mesmo tempo a interface do catálogo e o ponto de descoberta/acesso aos registros de metadados. A igualdade é estrutural ao serviço.",
+      "evidence_url": "https://metadadosgeo.ibge.gov.br/geonetwork_ibge/srv/por/catalog.search#/home",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0056",
+      "rationale": "A página temática Cobertura e Uso da Terra funciona como landing page institucional da família e como índice oficial para os produtos que nela disponibilizam Acesso ao produto e Downloads. No nível da fonte-família, manter a mesma URL evita escolher arbitrariamente um único produto como acesso representativo.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/cobertura-e-uso-da-terra.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0058",
+      "rationale": "A própria página oficial do produto Território e Meio Ambiente contém a seção Acesso ao produto com base de dados, tabelas e índice, além de Downloads. Portanto, a mesma URL desempenha legitimamente apresentação e acesso.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/45353-territorio-e-meio-ambiente-estatisticas-por-macrorregioes-hidrograficas.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0063",
+      "rationale": "Informações Geocientíficas Experimentais é uma família temática do portal IBGE. A landing page organiza os estudos experimentais e os próprios produtos filhos exibem Acesso ao produto/Downloads; no nível da fonte-família, a mesma URL é legitimamente apresentação e ponto de descoberta dos acessos, sem um único arquivo representativo.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/investigacoes-experimentais-geo/informacoes-geocientificas-experimentais.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0064",
+      "rationale": "A página Contas de Ecossistemas reúne descrição, edições e seções de Acesso ao produto com SIDRA, vetores, tabelas, mapas e downloads. A igualdade entre homepage e acesso é estrutural ao produto/família no portal IBGE.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais/28920-contas-de-ecossistemas.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0065",
+      "rationale": "A página Contas Econômicas Ambientais do IBGE reúne a apresentação da família e, na própria estrutura por edição/produto, seções Acesso ao produto com SIDRA, publicações, mapas, vetores e Downloads. No nível da fonte-família, manter a mesma landing page evita escolher arbitrariamente uma conta específica como acesso representativo.",
+      "evidence_url": "https://www.ibge.gov.br/estatisticas/multidominio/meio-ambiente/28920-contas-de-ecossistemas.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0066",
+      "rationale": "A página Bases Cartográficas Contínuas é o índice oficial da família e encaminha aos produtos Brasil, Estados e Mapa Índice Digital; os produtos filhos concentram acesso/download. Não existe um único dataset que represente toda a família, por isso a landing page é também o acesso de descoberta no nível da fonte.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/bases-cartograficas-continuas.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0067",
+      "rationale": "A página Bacias e Divisões Hidrográficas do Brasil contém diretamente Acesso ao produto para BHB250 e DHN250, incluindo vetores, tabelas e mapas, além de Downloads. A mesma URL cumpre legitimamente apresentação e acesso.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/31653-bacias-e-divisoes-hidrograficas-do-brasil.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0068",
+      "rationale": "A própria página oficial População em áreas de risco no Brasil contém descrição, publicação e uma seção Acesso ao produto com Plataforma Geográfica Interativa, bases/tabelas e mapas SHP, além de Downloads. Assim, a mesma URL desempenha de forma comprovada os papéis de apresentação e acesso.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais/21538-populacao-em-areas-de-risco-no-brasil.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0071",
+      "rationale": "Divisão Regional é uma página temática que organiza os produtos regionais e seus próprios caminhos de Acesso ao produto/Downloads. Como fonte-família, a landing page é o índice oficial de descoberta e acesso, sem um único arquivo que represente todas as regionalizações.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0075",
+      "rationale": "A página Redes Geodésicas funciona como índice oficial para Rede Altimétrica, Gravimétrica, Planialtimétrica, RBMC, RMPG e BDG; cada produto possui acesso próprio. No nível da família, a mesma URL é legitimamente homepage e ponto de acesso/discovery.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/rede-geodesica.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0076",
+      "rationale": "A página Serviços para Posicionamento Geodésico é o índice institucional e operacional dos serviços hgeoHNOR, Homologar Marcos, IBGE-PPP, ProGriD, BDG e RBMC-IP. Como a fonte representa a família de serviços, a mesma landing page cumpre os dois papéis legitimamente.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-sobre-posicionamento-geodesico/servicos-para-posicionamento-geodesico.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0079",
+      "rationale": "A página oficial do BNGB apresenta o banco e contém diretamente Acesso ao produto para o aplicativo web e para a API BNGB. A mesma página é, portanto, simultaneamente a ficha institucional e o ponto documentado de acesso operacional.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/folhas-topograficas/42080-banco-de-nomes-geograficos-do-brasil.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0080",
+      "rationale": "Mapas Municipais é uma família do portal IBGE que reúne coleções e atualizações; as páginas dos produtos filhos contêm diretamente Acesso ao produto por UF e Downloads. No nível da fonte-família, a landing page funciona legitimamente como apresentação e índice de acesso, sem um único arquivo que represente todas as coleções.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-municipais/31452-colecao-de-mapas-municipais.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0096",
+      "rationale": "A página oficial do Sistema de Estatísticas Vitais/Registro Civil reúne descrição metodológica, tabelas, séries históricas e Downloads do produto. O próprio IBGE documenta nela os resultados administrativos e caminhos de acesso; manter a mesma URL para apresentação e acesso é deliberado.",
+      "evidence_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/9110-estatisticas-do-registro-civil.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0097",
+      "rationale": "A página Estatísticas do Cadastro Central de Empresas - CEMPRE reúne a descrição do produto, edições, séries históricas, tabelas e Downloads. Como a própria ficha oficial é também a interface de obtenção dos resultados, a igualdade entre homepage e acesso é legítima.",
+      "evidence_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0004",
+      "rationale": "A página oficial do SIRENE é simultaneamente a apresentação institucional do sistema e o ponto de acesso aos resultados, publicações, dados e ferramentas de emissões. O MCTI documenta o SIRENE como plataforma oficial de disponibilização e transparência dos dados nacionais de GEE; manter a mesma URL é deliberado no nível da fonte.",
+      "evidence_url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0133",
+      "rationale": "O IpeaData é um catálogo/serviço de séries em que a página principal funciona como a própria interface pública de navegação, seleção e acesso às séries. Como a fonte representa o serviço federado, não existe um único dataset alternativo que deva substituir a landing page como data_access_url.",
+      "evidence_url": "https://www.ipeadata.gov.br/Default.aspx",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0072",
+      "rationale": "A página temática Estatísticas e Indicadores Ambientais é o índice oficial da família no portal IBGE: nela o Instituto lista os principais produtos do tema, cujas fichas individuais concentram tabelas, Acesso ao produto e Downloads. Como a fonte representa a família temática e não um único dataset, a mesma landing page cumpre legitimamente apresentação e descoberta/acesso.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0073",
+      "rationale": "Estudos Ambientais é uma família temática do portal IBGE. A própria landing page lista PEERS, Grade Estatística de Dados Ambientais, Biomas, Contas Econômicas Ambientais, Bacias e Divisões Hidrográficas, População em Áreas de Risco, ZEE e outros produtos; cada ficha filha concentra seus acessos. No nível da fonte-família, manter a mesma URL para apresentação e acesso de descoberta é deliberado.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0074",
+      "rationale": "Informações Ambientais — Mapas e Produtos Cartográficos é uma página temática que reúne e encaminha aos produtos cartográficos ambientais do IBGE, incluindo Biomas, Bacias e Divisões Hidrográficas, Monitoramento da Cobertura e Uso da Terra, Fauna Ameaçada, Relevo, Vegetação, Clima e Solos. A landing page é simultaneamente apresentação institucional e índice oficial de acesso aos produtos.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0081",
+      "rationale": "Redes e Fluxos Geográficos é uma família de estudos do IBGE. A própria página temática lista os produtos do tema, como Logística dos Transportes, Gestão do Território, Quadro Geográfico de Referência, Ligações Aéreas e REGIC; as fichas de produto oferecem Acesso ao produto/Downloads. Não existe um único arquivo representativo da família, por isso a mesma landing page é o ponto institucional e de descoberta/acesso.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0082",
+      "rationale": "Tipologias do Território é uma página temática de família no portal IBGE. Ela organiza tipologias e estudos territoriais distintos, cujos acessos ficam nas fichas individuais; no nível da fonte-família, usar a mesma landing page para homepage e acesso de descoberta evita escolher arbitrariamente um único produto como representante.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0083",
+      "rationale": "Sociedade e Economia é uma família cartográfica do IBGE. A página temática lista explicitamente produtos como Mapa Índice Digital, Indicações Geográficas, Densidade Demográfica e mapas derivados de censos e estatísticas econômicas. Como índice oficial da família, a mesma URL funciona legitimamente como apresentação e descoberta/acesso aos produtos.",
+      "evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0087",
+      "rationale": "Estatísticas Agropecuárias representa uma família de operações do IBGE, não um dataset único. A estrutura temática encaminha a produtos como LSPA, PAM, PPM e demais pesquisas agropecuárias, cujas fichas fornecem tabelas, séries e Downloads. Manter a landing page temática como homepage e acesso de descoberta é consistente com a granularidade da fonte.",
+      "evidence_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0091",
+      "rationale": "A página temática População do IBGE funciona como portal de descoberta das operações demográficas, exibindo indicadores, calendário e produtos como Estimativas e Projeções da População, cujas fichas disponibilizam tabelas e Downloads. Como a fonte representa a família demográfica, a mesma landing page cumpre legitimamente apresentação e acesso de descoberta.",
+      "evidence_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0092",
+      "rationale": "Saúde é uma página temática de família do IBGE que lista explicitamente PeNSE, POF, PNS e outras operações relacionadas. Os dados e Downloads permanecem nas fichas individuais; no nível da fonte-família, a mesma URL é simultaneamente apresentação institucional e índice oficial para os acessos.",
+      "evidence_url": "https://www.ibge.gov.br/estatisticas/sociais/saude.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0095",
+      "rationale": "Sínteses e Indicadores Sociais é uma família de sínteses do eixo População. A própria ficha da Síntese de Indicadores Sociais reúne tabelas, publicações e Downloads; a landing page temática População organiza esse conjunto e outros indicadores sociais. No nível da fonte-família, manter a mesma URL para homepage e acesso de descoberta é deliberado.",
+      "evidence_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0098",
+      "rationale": "Pesquisas Estruturais por Empresas é uma família de operações econômicas anuais, incluindo PIA-Empresa, PIA-Produto, PAIC, PAC e PAS. O portal econômico e as páginas setoriais encaminham às fichas individuais com séries, tabelas, SIDRA e documentação. Não há um único dataset que represente toda a família, por isso a landing page econômica também funciona como acesso de descoberta.",
+      "evidence_url": "https://www.ibge.gov.br/estatisticas/economicas.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0099",
+      "rationale": "Indicadores Conjunturais de Atividade Econômica reúne operações mensais distintas, como PIM-PF, PMC e PMS. A página econômica do IBGE organiza essas operações e suas fichas individuais oferecem resultados, séries, SIDRA e Downloads. Como fonte-família, a mesma landing page é legitimamente homepage e ponto de descoberta/acesso.",
+      "evidence_url": "https://www.ibge.gov.br/estatisticas/economicas.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0100",
+      "rationale": "Preços e Custos é uma página temática que lista IPCA, INPC, SINAPI, IPP, IPCA-15, IPCA-E e outros produtos. As fichas individuais concentram resultados e Downloads; no nível da família, a mesma página temática é simultaneamente apresentação e índice oficial de acesso.",
+      "evidence_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0101",
+      "rationale": "Contas Nacionais é uma família temática do IBGE que reúne SCN, SCNT, Contas Regionais, PIB dos Municípios, Matriz de Insumo-Produto e contas satélite. O portal lista esses produtos e encaminha às respectivas fichas e Downloads; portanto, a mesma landing page cumpre legitimamente os papéis de apresentação e acesso de descoberta.",
+      "evidence_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html",
+      "reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0102",
+      "rationale": "Finanças Públicas é uma página temática do IBGE que apresenta o tema e lista como principal produto Estatísticas de Finanças Públicas e Conta Intermediária de Governo, cuja ficha contém tabelas e Downloads. No nível da fonte temática, a mesma landing page é legitimamente homepage e acesso de descoberta.",
+      "evidence_url": "https://www.ibge.gov.br/estatisticas/economicas/financas-publicas.html",
+      "reviewed_at": "2026-08-19"
+    }
+  ]
+}

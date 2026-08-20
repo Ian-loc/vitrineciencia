@@ -3808,7 +3808,7 @@
       "resource_name": "Banco de Dados Meteorológicos do INMET",
       "acronym": "BDMEP",
       "official_identity": "Banco de Dados Meteorológicos do INMET",
-      "homepage_url": "https://bdmep.inmet.gov.br/",
+      "homepage_url": "https://portal.inmet.gov.br/servicos/bdmep-dados-historicos",
       "data_access_url": "https://bdmep.inmet.gov.br/"
     },
     "distributions": [
