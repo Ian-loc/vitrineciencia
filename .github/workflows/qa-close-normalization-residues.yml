@@ -1,0 +1,95 @@
+name: QA close normalization residues
+
+on:
+  push:
+    branches: ["qa/close-normalization-residues-20260820"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: ${{ !contains(github.event.head_commit.message, 'QA/QC: materialize normalization residues') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: qa/close-normalization-residues-20260820
+
+      - name: Confirmar fila esperada antes da correção
+        run: |
+          python3 scripts/build_catalog.py
+          python3 scripts/build_public_discovery.py
+          python3 scripts/report_normalization_coverage.py | tee /tmp/norm-before.txt
+          grep -q 'spatial_support 50/56' /tmp/norm-before.txt
+          grep -q 'update_frequency 84/93' /tmp/norm-before.txt
+
+      - name: Registrar overrides sustentados pelo texto canônico
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('schema/public-normalization-overrides-v0.1.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+
+          spatial = {
+              'DP000196': {'class': 'variável por produto', 'evidence_contains': 'mapas físicos, político-administrativos e temáticos', 'note': 'O atlas combina mapas de naturezas e recortes distintos; o suporte espacial varia conforme o mapa/tema, enquanto gráficos e textos são formas de apresentação.'},
+              'DP000197': {'class': 'variável por produto', 'evidence_contains': 'mapas temáticos', 'note': 'A síntese combina mapas, indicadores e análises com recortes distintos; não há um único suporte espacial homogêneo para todo o atlas.'},
+              'DP000236': {'class': 'variável por produto', 'evidence_contains': 'pessoas agregadas por condição funcional, diagnóstico e recortes sociodemográficos', 'note': 'O suporte público depende do recorte territorial disponibilizado nas tabulações; tabelas e visualizações são formas de apresentação, não unidades espaciais.'},
+              'DP000238': {'class': 'variável por produto', 'evidence_contains': 'pessoas e famílias agregadas por características conjugais, familiares e territoriais', 'note': 'O suporte público depende do recorte territorial das tabulações; tabelas e visualizações não constituem suporte espacial.'},
+              'DP000350': {'class': 'região ou zona', 'evidence_contains': 'folhas cartográficas', 'note': 'A unidade espacial substantiva é a folha cartográfica/recorte mapeado; vetores SIG e mapas PDF são formatos de representação.'},
+              'DP000365': {'class': 'variável por produto', 'evidence_contains': 'resultados analíticos conforme edição', 'note': 'A série reúne atlas/edições com desenhos e recortes próprios; mapas e tabelas são formas de apresentação e o suporte deve ser interpretado por edição.'},
+          }
+          update = {
+              'DP000103': {'class': 'desconhecida', 'evidence_contains': 'sem frequência estável declarada', 'note': 'A fonte não declara frequência estável; não se infere periodicidade a partir do caráter experimental.'},
+              'DP000104': {'class': 'desconhecida', 'evidence_contains': 'continuidade posterior não inferida', 'note': 'O registro é histórico e a continuidade posterior não está demonstrada; não se presume encerramento nem periodicidade.'},
+              'DP000339': {'class': 'desconhecida', 'evidence_contains': 'atualização do portal observada em julho de 2026', 'note': 'Uma data observada de atualização não demonstra a frequência operacional do conjunto.'},
+              'DP000455': {'class': 'desconhecida', 'evidence_contains': 'consultar documentação/plano para frequência de atualização dos dados', 'note': 'A frequência depende da documentação/plano e não está explicitada no valor canônico.'},
+              'DP000459': {'class': 'desconhecida', 'evidence_contains': 'conforme variante/plano', 'note': 'O valor canônico indica dependência da variante/plano sem declarar frequências específicas; não se infere uma classe mais precisa.'},
+              'DP000461': {'class': 'desconhecida', 'evidence_contains': 'acesso mediante contratação/cotação', 'note': 'A condição comercial de acesso não informa frequência de atualização.'},
+              'DP000545': {'class': 'múltipla', 'evidence_contains': 'conforme ciclo de cada modelo', 'note': 'A atualização varia entre ciclos/modelos operacionais; não existe uma única frequência global para a família.'},
+              'DP000647': {'class': 'desconhecida', 'evidence_contains': 'operacional para GOES-19; histórico para GOES-13/16', 'note': 'O valor distingue coleção operacional e acervos históricos, mas não declara a frequência de atualização da coleção operacional.'},
+              'DP000724': {'class': 'desconhecida', 'evidence_contains': 'projetos e amostras atualizados pelos usuários', 'note': 'A atualização é acionada por atores distintos e não possui periodicidade explícita no valor canônico.'},
+          }
+
+          for pid, entry in spatial.items():
+              if pid in data['spatial_support'] and data['spatial_support'][pid] != entry:
+                  raise SystemExit(f'override espacial conflitante já existe: {pid}')
+              data['spatial_support'][pid] = entry
+          for pid, entry in update.items():
+              if pid in data['update_frequency'] and data['update_frequency'][pid] != entry:
+                  raise SystemExit(f'override de frequência conflitante já existe: {pid}')
+              data['update_frequency'][pid] = entry
+
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+
+      - name: Reconstruir e validar lote
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/validate_schema_identity.py
+          python3 scripts/audit_descriptive_fields.py
+          python3 scripts/build_catalog.py
+          python3 scripts/build_public_discovery.py
+          python3 scripts/report_normalization_coverage.py | tee /tmp/norm-after.txt
+          grep -q 'spatial_support 56/56 (100.0%)' /tmp/norm-after.txt
+          grep -q 'update_frequency 93/93 (100.0%)' /tmp/norm-after.txt
+          ! grep -q '^PENDÊNCIAS spatial_support:' /tmp/norm-after.txt
+          ! grep -q '^PENDÊNCIAS update_frequency:' /tmp/norm-after.txt
+          python3 scripts/audit_link_roles.py
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Persistir somente overrides e derivado sincronizado
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add schema/public-normalization-overrides-v0.1.json data/data_products.json
+          test -n "$(git diff --cached --name-only)"
+          test "$(git diff --cached --name-only | wc -l)" -eq 2
+          git commit -m 'QA/QC: materialize normalization residues'
+          git push origin HEAD:qa/close-normalization-residues-20260820
