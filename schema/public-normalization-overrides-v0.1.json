@@ -5,20 +5,31 @@
   "spatial_support": {
     "DP000119": {"class": "região ou zona", "evidence_contains": "mapas regionais", "note": "O próprio suporte canônico declara mapas regionais; elementos de apresentação permanecem apenas no detalhe bruto."},
     "DP000191": {"class": "variável por produto", "evidence_contains": "unidades variam por tema", "note": "O atlas declara explicitamente variação das unidades conforme o tema."},
-    "DP000198": {"class": "região ou zona", "evidence_contains": "recortes regionais", "note": "O suporte espacial explicitamente inclui recortes regionais."}
+    "DP000196": {"class": "variável por produto", "evidence_contains": "mapas físicos", "note": "O Atlas combina mapas físicos, político-administrativos e temáticos, gráficos e textos; o suporte espacial depende do componente consultado."},
+    "DP000197": {"class": "variável por produto", "evidence_contains": "mapas temáticos", "note": "O Atlas reúne mapas e indicadores com suportes distintos; a resolução já é explicitamente heterogênea conforme indicador, mapa e fonte."},
+    "DP000198": {"class": "região ou zona", "evidence_contains": "recortes regionais", "note": "O suporte espacial explicitamente inclui recortes regionais."},
+    "DP000236": {"class": "unidade administrativa", "evidence_contains": "recortes sociodemográficos", "context_field": "spatial_resolution", "context_contains": "Município", "note": "A divulgação territorial inclui Município e outros domínios; a natureza amostral por pessoa permanece preservada no detalhe bruto."},
+    "DP000238": {"class": "unidade administrativa", "evidence_contains": "familiares e territoriais", "context_field": "spatial_resolution", "context_contains": "Município", "note": "A divulgação territorial inclui Município e outros domínios; pessoas e famílias continuam preservadas como unidade estatística no detalhe bruto."},
+    "DP000350": {"class": "variável por produto", "evidence_contains": "vetores SIG", "note": "A coleção por folhas contém mapas e vetores SIG com diferentes tipos de feição; não há um único suporte geométrico válido para toda a coleção."},
+    "DP000365": {"class": "variável por produto", "evidence_contains": "conforme edição", "note": "Cada atlas da série possui matriz, levantamento, escala e objetos cartográficos próprios; o suporte varia por edição."}
   },
   "update_frequency": {
+    "DP000103": {"class": "irregular", "evidence_contains": "sem frequência estável declarada", "note": "O produto é experimental e o próprio registro declara ausência de frequência estável."},
     "DP000107": {"class": "por edição ou evento", "evidence_contains": "por projeto", "note": "A coleção é atualizada no contexto de projetos específicos."},
     "DP000109": {"class": "por edição ou evento", "evidence_contains": "por revisão", "note": "A atualização ocorre por revisão cartográfica."},
     "DP000163": {"class": "por edição ou evento", "evidence_contains": "conforme alteração normativa", "note": "A atualização depende de evento normativo."},
     "DP000169": {"class": "por edição ou evento", "evidence_contains": "quando houver alteração legal", "note": "A atualização depende de alteração legal."},
     "DP000348": {"class": "horária", "evidence_contains": "horária/operacional", "note": "A própria descrição da frequência declara atualização horária para monitoramento."},
     "DP000456": {"class": "sob demanda", "evidence_contains": "por solicitação", "note": "A obtenção é explicitamente acionada por solicitação."},
+    "DP000459": {"class": "múltipla", "evidence_contains": "conforme variante/plano", "context_field": "temporal_resolution", "context_contains": "3 horas", "note": "A cadência depende da variante/plano; a documentação canônica preserva variantes de 3 horas e 1 hora."},
     "DP000474": {"class": "anual", "evidence_contains": "arquivos anuais", "note": "A periodicidade de publicação disponível é anual; a rotina de vigilância permanece preservada no detalhe bruto."},
+    "DP000545": {"class": "múltipla", "evidence_contains": "conforme ciclo de cada modelo", "note": "O serviço agrega múltiplos modelos com ciclos operacionais próprios, portanto não existe uma frequência global única."},
     "DP000635": {"class": "irregular", "evidence_contains": "não regular", "note": "O valor canônico declara atualização não regular."},
     "DP000639": {"class": "irregular", "evidence_contains": "não regular", "note": "O valor canônico declara atualização não regular."},
     "DP000643": {"class": "sem atualização prevista", "evidence_contains": "sem novas aquisições", "note": "O acervo é histórico e não recebe novas aquisições."},
     "DP000644": {"class": "sem atualização prevista", "evidence_contains": "sem novas aquisições", "note": "O acervo é histórico e não recebe novas aquisições."},
+    "DP000647": {"class": "múltipla", "evidence_contains": "operacional para GOES-19", "context_field": "temporal_resolution", "context_contains": "10 min", "note": "A família integra GOES-13/16 históricos e GOES-19 operacional, com cadências distintas entre gerações/sensores."},
+    "DP000724": {"class": "múltipla", "evidence_contains": "Software/serviço atualizado", "note": "Software/serviço e projetos/amostras seguem ciclos de atualização distintos; não há uma periodicidade global única."},
     "DP000852": {"class": "múltipla", "evidence_contains": "varia por conjunto", "note": "A PCDaS agrega conjuntos com calendários próprios; não há uma única frequência global."}
   },
   "spatial_resolution": {
