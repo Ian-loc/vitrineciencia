@@ -1,0 +1,76 @@
+name: QA/QC materialize verified link roles on PR
+
+on:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.head_ref == 'qa/resolve-remaining-link-roles-20260819'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Aplicar lote verificado descrito no materializador
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path('.github/workflows/qa-resolve-link-roles-once.yml').read_text(encoding='utf-8')
+          marker = "python3 - <<'PY'\n"
+          block = source.split(marker, 1)[1].split("\n          PY", 1)[0]
+          code = '\n'.join(line[10:] if line.startswith('          ') else line for line in block.splitlines())
+          exec(compile(code, '<embedded-link-role-batch>', 'exec'), {})
+          PY
+
+      - name: Regenerar auditoria e executar gates canônicos
+        run: |
+          python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/validate_schema_identity.py
+          python3 scripts/audit_descriptive_fields.py
+          python3 scripts/build_catalog.py
+          python3 scripts/build_public_discovery.py
+          python3 scripts/report_normalization_coverage.py
+          python3 scripts/audit_link_roles.py
+          python3 scripts/validate_vitrine.py
+          node --check assets/app.js
+          node --check assets/ptbr.js
+          node --check assets/products.js
+          node --check assets/analytics.js
+          node --check assets/export-selective.js
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Confirmar zero expansão e fechamento da fila
+        run: |
+          git diff --exit-code 72de30e3e8277dfe45993b3e5fcb04891b6fa131 -- data/data_resources.csv data/data_products.csv data/product_distributions.csv
+          python3 - <<'PY'
+          import json
+          a=json.load(open('data/link_role_audit.json', encoding='utf-8'))
+          c=a['counts']
+          assert c == {
+            'separate_destinations': 93,
+            'same_destination_reviewed_exception': 41,
+            'same_destination_pending_review': 0,
+            'data_access_not_applicable': 1,
+          }, c
+          assert not a['records_requiring_review']
+          print('OK:', c)
+          PY
+
+      - name: Persistir somente QA e remover materializadores temporários
+        run: |
+          rm .github/workflows/qa-resolve-link-roles-once.yml .github/workflows/qa-link-role-pr-materialize.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/link_role_exceptions.json data/link_role_audit.json .github/workflows/qa-resolve-link-roles-once.yml .github/workflows/qa-link-role-pr-materialize.yml
+          git commit -m "Resolve remaining verified IBGE link-role exceptions"
+          git push origin HEAD:${{ github.head_ref }}
