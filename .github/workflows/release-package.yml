@@ -37,7 +37,36 @@ jobs:
           set -euo pipefail
           python3 scripts/validate_brazil_scope.py
           python3 scripts/validate_product_catalog.py
-          python3 scripts/validate_schema_identity.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          schema_dir = Path('schema')
+          canonical_base = 'https://ian-loc.github.io/vitrineciencia/schema/'
+          legacy_tokens = ('ScienceDataSourcesCatalog', 'EcologyDataCatalog')
+          checked = 0
+
+          for path in sorted(schema_dir.glob('*.json')):
+              payload = json.loads(path.read_text(encoding='utf-8'))
+              schema_id = payload.get('$id')
+              if schema_id is None:
+                  continue
+              if not isinstance(schema_id, str) or not schema_id.strip():
+                  raise SystemExit(f'ERRO: {path}: $id vazio ou não textual')
+              if any(token in schema_id for token in legacy_tokens):
+                  raise SystemExit(f'ERRO: {path}: $id ainda usa identidade legada: {schema_id}')
+              expected = canonical_base + path.name
+              if schema_id != expected:
+                  raise SystemExit(
+                      f'ERRO: {path}: $id não corresponde à URL canônica; '
+                      f'esperado {expected}, obtido {schema_id}'
+                  )
+              checked += 1
+
+          if checked == 0:
+              raise SystemExit('ERRO: nenhum JSON Schema com $id encontrado em schema/')
+          print(f'OK: {checked} JSON Schemas usam IDs canônicos da Vitrine Ciência')
+          PY
           python3 scripts/audit_descriptive_fields.py
           python3 scripts/build_catalog.py
           python3 scripts/build_public_discovery.py
