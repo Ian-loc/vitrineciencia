@@ -47,3 +47,5 @@ jobs:
           fi
           git commit -m "QA/QC: materialize normalization fixes [normalization-derived]"
           git push origin HEAD:qa/normalization-residues-20260820
+
+# Temporary QA-only materializer; remove before merge.
