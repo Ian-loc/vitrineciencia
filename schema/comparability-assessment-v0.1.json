@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ian-loc.github.io/ScienceDataSourcesCatalog/schema/comparability-assessment-v0.1.json",
+  "$id": "https://ian-loc.github.io/vitrineciencia/schema/comparability-assessment-v0.1.json",
   "title": "Comparability Assessment v0.1",
   "description": "Contrato inicial para avaliar a comparabilidade de produtos e variáveis em relação a uma operação específica.",
   "type": "object",
