@@ -1,0 +1,133 @@
+name: QA one-shot — spatial normalization
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/qa-normalization-spatial-one-shot.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - name: Aplicar overrides auditáveis e atualizar baseline
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          overrides_path = Path('schema/public-normalization-overrides-v0.1.json')
+          baseline_path = Path('schema/public-normalization-pending-v0.1.json')
+
+          overrides = json.loads(overrides_path.read_text(encoding='utf-8'))
+          spatial = overrides.setdefault('spatial_support', {})
+          spatial.update({
+            'DP000196': {
+              'class': 'variável por produto',
+              'evidence_contains': 'mapas físicos, político-administrativos e temáticos',
+              'context_field': 'spatial_resolution',
+              'context_contains': 'heterogênea conforme mapa, tema e fonte',
+              'note': 'O atlas reúne componentes cartográficos tematicamente distintos; o suporte público deve permanecer variável por componente, preservando o texto bruto.'
+            },
+            'DP000197': {
+              'class': 'variável por produto',
+              'evidence_contains': 'mapas temáticos | textos analíticos | indicadores econômicos e territoriais',
+              'context_field': 'spatial_resolution',
+              'context_contains': 'heterogênea conforme indicador, mapa e fonte',
+              'note': 'O atlas agrega mapas e indicadores com suportes distintos; não há uma única unidade espacial homogênea.'
+            },
+            'DP000236': {
+              'class': 'unidade administrativa',
+              'evidence_contains': 'recortes sociodemográficos',
+              'context_field': 'spatial_resolution',
+              'context_contains': 'Município e demais domínios de divulgação publicados',
+              'note': 'A divulgação espacial ocorre por municípios e demais domínios territoriais administrativos/estatísticos; categorias funcionais permanecem dimensões analíticas, não suporte espacial.'
+            },
+            'DP000238': {
+              'class': 'unidade administrativa',
+              'evidence_contains': 'familiares e territoriais',
+              'context_field': 'spatial_resolution',
+              'context_contains': 'Município e demais domínios de divulgação publicados',
+              'note': 'O suporte territorial publicado é municipal e por outros domínios de divulgação; características familiares não são confundidas com suporte espacial.'
+            },
+            'DP000350': {
+              'class': 'região ou zona',
+              'evidence_contains': 'folhas cartográficas',
+              'context_field': 'spatial_resolution',
+              'context_contains': 'escala 1:1.000.000',
+              'note': 'Cada folha da Carta Internacional ao Milionésimo representa um recorte cartográfico espacial; a classe ampla região/zona evita tratá-la como ponto ou unidade administrativa.'
+            },
+            'DP000365': {
+              'class': 'variável por produto',
+              'evidence_contains': 'conforme edição',
+              'context_field': 'spatial_resolution',
+              'context_contains': 'varia por atlas, levantamento e matriz',
+              'note': 'Os atlas são edições independentes com suportes, matrizes e desenhos próprios; a classe pública deve refletir essa heterogeneidade.'
+            }
+          })
+          overrides_path.write_text(json.dumps(overrides, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          baseline = json.loads(baseline_path.read_text(encoding='utf-8'))
+          resolved = {'DP000196','DP000197','DP000236','DP000238','DP000350','DP000365'}
+          current = baseline.get('spatial_support', [])
+          missing = sorted(resolved - set(current))
+          if missing:
+              raise SystemExit(f'ERRO: IDs esperados não estão na baseline: {missing}')
+          baseline['spatial_support'] = [pid for pid in current if pid not in resolved]
+          baseline_path.write_text(json.dumps(baseline, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+
+      - name: Reconstruir e validar derivados
+        run: |
+          python3 scripts/validate_brazil_scope.py
+          python3 scripts/validate_product_catalog.py
+          python3 scripts/validate_schema_identity.py
+          python3 scripts/audit_descriptive_fields.py
+          python3 scripts/build_catalog.py
+          python3 scripts/build_public_discovery.py
+          python3 scripts/report_normalization_coverage.py
+          python3 scripts/validate_normalization_residues.py
+          python3 scripts/audit_link_roles.py
+          python3 scripts/validate_vitrine.py
+          python3 scripts/build_site_artifact.py
+          git diff --check
+
+      - name: Confirmar escopo estrito da mudança
+        run: |
+          git diff --exit-code -- data/data_resources.csv data/data_products.csv data/product_distributions.csv
+          python3 - <<'PY'
+          import json
+          pending=json.load(open('schema/public-normalization-pending-v0.1.json', encoding='utf-8'))
+          assert pending['spatial_support'] == [], pending['spatial_support']
+          assert len(pending['update_frequency']) == 9, pending['update_frequency']
+          public={p['product_id']:p for p in json.load(open('data/data_products.json', encoding='utf-8'))}
+          expected={
+            'DP000196':'variável por produto',
+            'DP000197':'variável por produto',
+            'DP000236':'unidade administrativa',
+            'DP000238':'unidade administrativa',
+            'DP000350':'região ou zona',
+            'DP000365':'variável por produto',
+          }
+          for pid,value in expected.items():
+              assert public[pid]['spatial_support'] == value, (pid, public[pid]['spatial_support'])
+              assert public[pid].get('spatial_support_detail'), pid
+          print('OK read-back spatial overrides:', expected)
+          PY
+
+      - name: Persistir lote validado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add schema/public-normalization-overrides-v0.1.json schema/public-normalization-pending-v0.1.json data/data_products.json
+          git diff --cached --check
+          git commit -m "qa: resolve spatial normalization residues"
+          git push origin HEAD:main
