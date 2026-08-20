@@ -69,6 +69,8 @@ jobs:
 
           public_resources = json.load(open(sys.argv[1], encoding='utf-8'))
           public_products = json.load(open(sys.argv[2], encoding='utf-8'))
+          expected_resources_json = json.load(open('data/data_resources.json', encoding='utf-8'))
+          expected_products_json = json.load(open('data/data_products.json', encoding='utf-8'))
 
           with open('data/data_resources.csv', encoding='utf-8', newline='') as f:
               expected_resources = list(csv.DictReader(f))
@@ -86,6 +88,15 @@ jobs:
           assert isinstance(public_products, list)
           assert ids(public_resources, 'resource_id') == ids(expected_resources, 'resource_id')
           assert ids(public_products, 'product_id') == ids(expected_products, 'product_id')
+
+          # IDs corretos não bastam: o site também precisa servir exatamente os
+          # metadados e distribuições derivados do commit que acabou de ser publicado.
+          assert public_resources == expected_resources_json, (
+              'data_resources.json público diverge integralmente do derivado versionado do commit publicado'
+          )
+          assert public_products == expected_products_json, (
+              'data_products.json público diverge integralmente do derivado versionado do commit publicado'
+          )
 
           expected_by_product = {}
           for row in expected_distributions:
@@ -115,7 +126,7 @@ jobs:
           )
 
           print(
-              'OK: Vitrine publicada corresponde ao commit canônico publicado — '
+              'OK: Vitrine publicada corresponde integralmente ao commit canônico publicado — '
               f'{len(public_resources)} fontes, {len(public_products)} produtos, '
               f'{len(published_distributions)} distribuições'
           )
