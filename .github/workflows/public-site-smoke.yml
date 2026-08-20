@@ -74,6 +74,8 @@ jobs:
               expected_resources = list(csv.DictReader(f))
           with open('data/data_products.csv', encoding='utf-8', newline='') as f:
               expected_products = list(csv.DictReader(f))
+          with open('data/product_distributions.csv', encoding='utf-8', newline='') as f:
+              expected_distributions = list(csv.DictReader(f))
 
           def ids(rows, field):
               values = [item[field] for item in rows]
@@ -85,9 +87,37 @@ jobs:
           assert ids(public_resources, 'resource_id') == ids(expected_resources, 'resource_id')
           assert ids(public_products, 'product_id') == ids(expected_products, 'product_id')
 
+          expected_by_product = {}
+          for row in expected_distributions:
+              expected_by_product.setdefault(row['product_id'], set()).add(row['distribution_id'])
+
+          published_distributions = []
+          published_by_product = {}
+          for product in public_products:
+              distributions = product.get('distributions')
+              assert isinstance(distributions, list) and distributions, (
+                  f"{product['product_id']}: distributions ausentes/vazias no JSON público"
+              )
+              for distribution in distributions:
+                  assert distribution.get('product_id') == product['product_id'], (
+                      f"{distribution.get('distribution_id')}: product_id divergente no JSON público"
+                  )
+                  published_distributions.append(distribution)
+                  published_by_product.setdefault(product['product_id'], set()).add(
+                      distribution['distribution_id']
+                  )
+
+          assert ids(published_distributions, 'distribution_id') == ids(
+              expected_distributions, 'distribution_id'
+          )
+          assert published_by_product == expected_by_product, (
+              'mapeamento produto→distribuição publicado diverge do CSV canônico'
+          )
+
           print(
               'OK: Vitrine publicada corresponde ao commit canônico publicado — '
-              f'{len(public_resources)} fontes, {len(public_products)} produtos'
+              f'{len(public_resources)} fontes, {len(public_products)} produtos, '
+              f'{len(published_distributions)} distribuições'
           )
           PY
 
