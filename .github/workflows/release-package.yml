@@ -4,6 +4,12 @@ name: Build v1.0.0 Zenodo candidate
 # Não gerar candidatos Zenodo automaticamente a cada PR de dados/documentação.
 on:
   workflow_dispatch:
+    inputs:
+      candidate_ref:
+        description: "Ref imutável/candidato a empacotar (v1.0.0 usa release/v1.0.0)"
+        required: true
+        default: "release/v1.0.0"
+        type: string
 
 permissions:
   contents: read
@@ -13,24 +19,41 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - name: Restringir ao candidato v1.0.0 aprovado para empacotamento
+        env:
+          CANDIDATE_REF: ${{ inputs.candidate_ref }}
+        run: |
+          set -euo pipefail
+          test "$CANDIDATE_REF" = "release/v1.0.0"
+
       - name: Checkout exact candidate
         uses: actions/checkout@v4
         with:
+          ref: ${{ inputs.candidate_ref }}
           fetch-depth: 0
 
       - name: Validate canonical Vitrine
         run: |
+          set -euo pipefail
           python3 scripts/validate_brazil_scope.py
           python3 scripts/validate_product_catalog.py
+          python3 scripts/validate_schema_identity.py
           python3 scripts/audit_descriptive_fields.py
           python3 scripts/build_catalog.py
           python3 scripts/build_public_discovery.py
           python3 scripts/report_normalization_coverage.py
           python3 scripts/audit_link_roles.py
+          git diff --check
+          git diff --exit-code -- \
+            data/data_resources.json \
+            data/data_products.json \
+            data/data_quality_report.json \
+            data/link_role_audit.json
           python3 scripts/validate_vitrine.py
 
       - name: Build deterministic Zenodo package
         run: |
+          set -euo pipefail
           mkdir -p dist
           python3 -m py_compile scripts/build_zenodo_package.py
           python3 scripts/build_zenodo_package.py | tee dist/v1.0.0-package-build.json
