@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ian-loc.github.io/ScienceDataSourcesCatalog/schema/scientific-variable-passport-v0.1.json",
+  "$id": "https://ian-loc.github.io/vitrineciencia/schema/scientific-variable-passport-v0.1.json",
   "title": "Scientific Variable Passport v0.1",
   "description": "Contrato inicial para descrever o significado científico e operacional de uma variável antes de qualquer combinação analítica.",
   "type": "object",
