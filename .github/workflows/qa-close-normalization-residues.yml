@@ -3,13 +3,15 @@ name: QA close normalization residues
 on:
   push:
     branches: ["qa/close-normalization-residues-20260820"]
+  pull_request:
+    branches: ["main"]
 
 permissions:
   contents: write
 
 jobs:
   materialize:
-    if: ${{ !contains(github.event.head_commit.message, 'QA/QC: materialize normalization residues') }}
+    if: ${{ github.event_name == 'pull_request' || !contains(github.event.head_commit.message, 'QA/QC: materialize normalization residues') }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
