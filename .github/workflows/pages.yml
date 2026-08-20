@@ -37,8 +37,10 @@ jobs:
         run: |
           git diff --check
           git diff --exit-code -- \
+            data/data_resources.json \
             data/data_products.json \
-            data/data_quality_report.json
+            data/data_quality_report.json \
+            data/link_role_audit.json
 
       - name: Validar interface e fronteira da Vitrine
         run: |
@@ -119,8 +121,10 @@ jobs:
           python3 scripts/audit_link_roles.py
           git diff --check
           git diff --exit-code -- \
+            data/data_resources.json \
             data/data_products.json \
-            data/data_quality_report.json
+            data/data_quality_report.json \
+            data/link_role_audit.json
           python3 scripts/validate_vitrine.py
           node --check assets/ptbr.js
           node --check assets/export-selective.js
