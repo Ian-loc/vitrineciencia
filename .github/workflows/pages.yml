@@ -99,7 +99,7 @@ jobs:
       # entregue ao job de deploy. Isso elimina um segundo build independente.
       - name: Enviar artefato validado da Vitrine
         if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
