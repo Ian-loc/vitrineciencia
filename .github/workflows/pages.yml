@@ -123,7 +123,7 @@ jobs:
 
       - name: Publicar artefato previamente validado
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
       - name: Registrar endereço publicado
         run: echo "Vitrine publicada em ${{ steps.deployment.outputs.page_url }}"
