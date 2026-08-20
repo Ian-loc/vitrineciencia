@@ -8,18 +8,11 @@
   },
   "counts": {
     "separate_destinations": 93,
-    "same_destination_reviewed_exception": 24,
-    "same_destination_pending_review": 17,
+    "same_destination_reviewed_exception": 26,
+    "same_destination_pending_review": 15,
     "data_access_not_applicable": 1
   },
   "records_requiring_review": [
-    {
-      "resource_id": "DR0004",
-      "resource_name": "Sistema de Registro Nacional de Emissões",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene",
-      "data_access_url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene"
-    },
     {
       "resource_id": "DR0072",
       "resource_name": "Estatísticas e Indicadores Ambientais — IBGE",
@@ -124,16 +117,19 @@
       "status": "same_destination_pending_review",
       "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/financas-publicas.html",
       "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/financas-publicas.html"
-    },
-    {
-      "resource_id": "DR0133",
-      "resource_name": "IpeaData — séries econômicas e indicadores sociais",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ipeadata.gov.br/Default.aspx",
-      "data_access_url": "https://www.ipeadata.gov.br/Default.aspx"
     }
   ],
   "reviewed_same_destination_exceptions": [
+    {
+      "resource_id": "DR0004",
+      "resource_name": "Sistema de Registro Nacional de Emissões",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene",
+      "data_access_url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene",
+      "exception_rationale": "A página oficial do SIRENE é simultaneamente a apresentação institucional do sistema e o ponto de acesso aos resultados, publicações, dados e ferramentas de emissões. O MCTI documenta o SIRENE como plataforma oficial de disponibilização e transparência dos dados nacionais de GEE; manter a mesma URL é deliberado no nível da fonte.",
+      "exception_evidence_url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/sirene",
+      "exception_reviewed_at": "2026-08-19"
+    },
     {
       "resource_id": "DR0014",
       "resource_name": "Sistema de Informação sobre a Biodiversidade Brasileira",
@@ -372,6 +368,16 @@
       "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
       "exception_rationale": "A página Estatísticas do Cadastro Central de Empresas - CEMPRE reúne a descrição do produto, edições, séries históricas, tabelas e Downloads. Como a própria ficha oficial é também a interface de obtenção dos resultados, a igualdade entre homepage e acesso é legítima.",
       "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0133",
+      "resource_name": "IpeaData — séries econômicas e indicadores sociais",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ipeadata.gov.br/Default.aspx",
+      "data_access_url": "https://www.ipeadata.gov.br/Default.aspx",
+      "exception_rationale": "O IpeaData é um catálogo/serviço de séries em que a página principal funciona como a própria interface pública de navegação, seleção e acesso às séries. Como a fonte representa o serviço federado, não existe um único dataset alternativo que deva substituir a landing page como data_access_url.",
+      "exception_evidence_url": "https://www.ipeadata.gov.br/Default.aspx",
       "exception_reviewed_at": "2026-08-19"
     }
   ],
