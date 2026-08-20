@@ -27,7 +27,7 @@ jobs:
           test "$CANDIDATE_REF" = "release/v1.0.0"
 
       - name: Checkout exact candidate
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ inputs.candidate_ref }}
           fetch-depth: 0
