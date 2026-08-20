@@ -1,7 +1,7 @@
 # Vitrine Ciência — fronteira operacional
 
 Decisão de separação: **2026-08-09**  
-Revisão da fronteira: **2026-08-18**
+Revisão da fronteira: **2026-08-20**
 
 ## Status
 
@@ -49,7 +49,7 @@ PostgreSQL/PostGIS e jobs do Simbiotrama são dependências proibidas do grafo d
 
 ## Autoridade de dados
 
-No snapshot de 18/08/2026 a Vitrine contém **125 fontes, 752 produtos e 783 distribuições**. IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`; lacunas históricas não são recicladas. As contagens podem crescer; o contrato público é a coerência das três tabelas, não uma contagem fixa.
+As contagens e identificadores correntes são **estado**, não contrato da fronteira. O estado quantitativo autoritativo deve ser lido em `docs/PROJECT_STATE.md` e `data/data_quality_report.json`, que são confrontados com as três tabelas canônicas. Lacunas históricas de IDs não são recicladas.
 
 ## Material histórico
 

@@ -30,7 +30,7 @@ A classificação é curatorial e auditável; não deve ser inferida apenas por 
 
 ## 4. Critérios de inclusão de fonte
 
-Uma fonte deve:
+Quando a expansão estiver ativa, uma fonte deve:
 
 - oferecer dados, metadados ou infraestrutura útil de descoberta/acesso;
 - possuir identidade e governança rastreáveis;
@@ -53,7 +53,7 @@ Não criar fonte para:
 
 ## 6. Entrada de produto
 
-Produto recebe ID próprio quando sua distinção melhora materialmente a descoberta por finalidade, conteúdo, método, cobertura, suporte/resolução, coleção/versão ou acesso. Arquivos, bandas, tiles, formatos e endpoints não criam produtos automaticamente.
+Quando a expansão estiver ativa, produto recebe ID próprio somente quando sua distinção melhora materialmente a descoberta por finalidade, conteúdo, método, cobertura, suporte/resolução, coleção/versão ou acesso. Arquivos, bandas, tiles, formatos e endpoints não criam produtos automaticamente.
 
 O campo `enumeration_scope` evita falsa completude: `complete`, `family_level`, `external_index` ou `representative_sample`.
 
@@ -77,11 +77,13 @@ Preferir o sucessor ativo quando o anterior apenas redireciona; preservar histó
 
 ## 8. Candidatos e inclusão
 
-Novas fontes podem ser triadas em `candidates/source_candidates.csv`, mas a inclusão no CSV canônico é permitida após evidência suficiente, verificação de duplicidade/escopo, validação estrutural e revisão proporcional ao risco. Não existe mais bloqueio geral que impeça expansão até “finalizar 51 fontes”.
+A expansão de novas fontes, produtos e distribuições está **pausada durante a fase atual de QA/QC** e só pode ser retomada mediante instrução humana explícita. Enquanto a pausa vigorar, `candidates/source_candidates.csv` e filas equivalentes não devem alimentar o catálogo canônico.
+
+Quando a expansão for retomada, uma inclusão no CSV canônico exige evidência suficiente, verificação de duplicidade/escopo, validação estrutural e revisão proporcional ao risco.
 
 ## 9. Fila de expansão
 
-Priorizar:
+A fila de expansão está **inativa** nesta fase. Quando houver decisão humana explícita de retomada, a ordem de prioridade permanece:
 
 1. fontes brasileiras que reduzam lacunas relevantes;
 2. fontes internacionais com cobertura sistemática do Brasil;
@@ -105,16 +107,19 @@ A avaliação de lacunas pode considerar:
 - presença e profundidade de dados brasileiros;
 - representação de produtos e distribuições.
 
-A matriz orienta busca; não cria cotas.
+Durante a pausa de expansão, essa avaliação serve apenas para compreender o catálogo existente; não cria fila de ingestão automática.
 
 ## 11. Revisão
 
-- antes de cada lote: checar duplicidades e cobertura Brasil;
-- a cada inclusão de fonte: atualizar P0–P3;
-- periodicamente: revisar recursos descontinuados, renomeados ou incorporados;
-- imediatamente: tratar mudanças relevantes de governança/licença/acesso;
-- antes de uma release estável: resolver duplicidades materiais conhecidas ou documentar seu tratamento.
+Na fase atual de QA/QC:
+
+- revisar duplicidades já existentes e cobertura Brasil quando houver indício material de erro;
+- tratar imediatamente mudanças relevantes de governança/licença/acesso;
+- corrigir metadados factualmente sustentados e defeitos de publicação/UX;
+- antes de uma release estável, resolver duplicidades materiais conhecidas ou documentar seu tratamento.
+
+Quando a expansão for retomada, voltarão a valer também os gates de entrada para novas fontes, produtos e distribuições.
 
 ## 12. Estado atual
 
-Em 18/08/2026 a Vitrine possui **125 fontes, 752 produtos e 783 distribuições** dentro do contrato de 34/24/15 campos. IDs chegam a `DR0125`, `DP000756` e `DD000787` porque lacunas históricas são preservadas. O catálogo está em expansão contínua e auditada. Não há requisito de migração para 38 campos ou de retornar ao baseline histórico de 51 fontes.
+A fase ativa é **QA/QC e manutenção, sem expansão de escopo**. Este documento não replica contagens voláteis do catálogo; o estado quantitativo corrente deve ser consultado em `docs/PROJECT_STATE.md` e `data/data_quality_report.json`. Não há requisito de migração para 38 campos nem de retorno ao baseline histórico de 51 fontes.

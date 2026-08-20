@@ -1,7 +1,7 @@
 # Vitrine Ciência — contrato canônico de dados
 
 Status: **ACTIVE / STABLE**  
-Atualização: **2026-08-18**
+Atualização: **2026-08-20**
 
 ## 1. Objetivo
 
@@ -13,7 +13,7 @@ As três tabelas canônicas são:
 2. `data/data_products.csv` — produtos;
 3. `data/product_distributions.csv` — distribuições/acessos.
 
-Snapshot de 18/08/2026: **125 fontes, 752 produtos e 783 distribuições**. Os identificadores correntes chegam a `DR0125`, `DP000756` e `DD000787`, porque lacunas históricas não são recicladas. As contagens são estado, não contrato.
+As contagens e maiores IDs são estado operacional, não contrato. O snapshot corrente deve ser lido em `docs/PROJECT_STATE.md` e `data/data_quality_report.json`, ambos confrontados com as tabelas canônicas. Lacunas históricas de IDs não são recicladas.
 
 ## 2. Unidades semânticas
 
@@ -118,6 +118,8 @@ O schema `product-catalog-v0.1` registra `variable` como **deferred**. A Vitrine
 
 ## 10. Gate de entrada
 
+Durante a fase atual de QA/QC, a expansão de novas fontes, produtos e distribuições está pausada. As regras abaixo permanecem como contrato para quando a expansão for retomada por instrução humana explícita.
+
 ### Nova fonte
 
 Deve ser útil à descoberta científica relacionada ao Brasil, ter identidade rastreável, não duplicar uma fonte existente sem diferença útil e possuir evidência suficiente para os campos essenciais.
@@ -138,4 +140,4 @@ CI comprova conformidade estrutural, não verdade factual externa.
 
 ## 12. Estabilidade
 
-O contrato é estável e permite crescimento de linhas. Nenhuma contagem histórica — 51/11/19, 125/752/783 ou outra — é requisito para manutenção ou release. Mudança incompatível do schema exige decisão separada e documentação coordenada.
+O contrato é estável e permite crescimento de linhas quando a expansão estiver ativa. Nenhuma contagem histórica é requisito para manutenção ou release. Mudança incompatível do schema exige decisão separada e documentação coordenada.

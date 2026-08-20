@@ -107,6 +107,6 @@ Variáveis normalizadas permanecem **deferred** no contrato `product-catalog-v0.
 
 Documentos antigos deste repositório descrevem organização → fonte → família → produto → release → distribuição → ativo e banco PostgreSQL/PostGIS. Essa arquitetura pertence à fase pré-separação/Simbiotrama e é preservada por proveniência. Não é modelo ativo da Vitrine.
 
-## 12. Snapshot
+## 12. Estado corrente
 
-Em 18/08/2026 o modelo contém **125 fontes, 752 produtos e 783 distribuições**. Os maiores IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`, pois lacunas são preservadas. O crescimento de linhas é permitido sem alterar o schema.
+Este documento define o **modelo**, não replica contagens voláteis do catálogo. O estado quantitativo corrente deve ser lido em `docs/PROJECT_STATE.md` e `data/data_quality_report.json`, ambos validados contra as tabelas canônicas. Lacunas históricas de IDs são preservadas e IDs não são reciclados.
