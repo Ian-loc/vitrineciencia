@@ -2,7 +2,7 @@ name: Validar e publicar Vitrine
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "release/v1.0.0"]
   pull_request:
   workflow_dispatch:
 
@@ -97,15 +97,16 @@ jobs:
           ! grep -R -n -E 'data/data_resources\.csv|data/data_products\.csv|data/product_distributions\.csv' _site/index.html _site/products.html _site/analytics.html _site/about.html
 
       # O mesmo _site que passou por todas as validações acima é o artefato
-      # entregue ao job de deploy. Isso elimina um segundo build independente.
+      # entregue ao job de deploy. Somente a main pode publicar; pushes ou
+      # dispatches na candidata v1.0.0 executam validação completa sem deploy.
       - name: Enviar artefato validado da Vitrine
-        if: github.event_name != 'pull_request'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
   deploy:
-    if: github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: validate-vitrine
     permissions:
       contents: read
