@@ -3,60 +3,314 @@
   "status": "stable",
   "purpose": "Registrar classificações e limpezas públicas explícitas para resíduos cuja correção é sustentada pelo próprio texto canônico, sem reescrever o valor original.",
   "spatial_support": {
-    "DP000119": {"class": "região ou zona", "evidence_contains": "mapas regionais", "note": "O próprio suporte canônico declara mapas regionais; elementos de apresentação permanecem apenas no detalhe bruto."},
-    "DP000191": {"class": "variável por produto", "evidence_contains": "unidades variam por tema", "note": "O atlas declara explicitamente variação das unidades conforme o tema."},
-    "DP000198": {"class": "região ou zona", "evidence_contains": "recortes regionais", "note": "O suporte espacial explicitamente inclui recortes regionais."}
+    "DP000119": {
+      "class": "região ou zona",
+      "evidence_contains": "mapas regionais",
+      "note": "O próprio suporte canônico declara mapas regionais; elementos de apresentação permanecem apenas no detalhe bruto."
+    },
+    "DP000191": {
+      "class": "variável por produto",
+      "evidence_contains": "unidades variam por tema",
+      "note": "O atlas declara explicitamente variação das unidades conforme o tema."
+    },
+    "DP000198": {
+      "class": "região ou zona",
+      "evidence_contains": "recortes regionais",
+      "note": "O suporte espacial explicitamente inclui recortes regionais."
+    },
+    "DP000196": {
+      "class": "variável por produto",
+      "evidence_contains": "mapas físicos, político-administrativos e temáticos",
+      "context_field": "spatial_resolution",
+      "context_contains": "heterogênea conforme mapa, tema e fonte",
+      "note": "O atlas reúne componentes cartográficos tematicamente distintos; o suporte público deve permanecer variável por componente, preservando o texto bruto."
+    },
+    "DP000197": {
+      "class": "variável por produto",
+      "evidence_contains": "mapas temáticos | textos analíticos | indicadores econômicos e territoriais",
+      "context_field": "spatial_resolution",
+      "context_contains": "heterogênea conforme indicador, mapa e fonte",
+      "note": "O atlas agrega mapas e indicadores com suportes distintos; não há uma única unidade espacial homogênea."
+    },
+    "DP000236": {
+      "class": "unidade administrativa",
+      "evidence_contains": "recortes sociodemográficos",
+      "context_field": "spatial_resolution",
+      "context_contains": "Município e demais domínios de divulgação publicados",
+      "note": "A divulgação espacial ocorre por municípios e demais domínios territoriais administrativos/estatísticos; categorias funcionais permanecem dimensões analíticas, não suporte espacial."
+    },
+    "DP000238": {
+      "class": "unidade administrativa",
+      "evidence_contains": "familiares e territoriais",
+      "context_field": "spatial_resolution",
+      "context_contains": "Município e demais domínios de divulgação publicados",
+      "note": "O suporte territorial publicado é municipal e por outros domínios de divulgação; características familiares não são confundidas com suporte espacial."
+    },
+    "DP000350": {
+      "class": "região ou zona",
+      "evidence_contains": "folhas cartográficas",
+      "context_field": "spatial_resolution",
+      "context_contains": "escala 1:1.000.000",
+      "note": "Cada folha da Carta Internacional ao Milionésimo representa um recorte cartográfico espacial; a classe ampla região/zona evita tratá-la como ponto ou unidade administrativa."
+    },
+    "DP000365": {
+      "class": "variável por produto",
+      "evidence_contains": "conforme edição",
+      "context_field": "spatial_resolution",
+      "context_contains": "varia por atlas, levantamento e matriz",
+      "note": "Os atlas são edições independentes com suportes, matrizes e desenhos próprios; a classe pública deve refletir essa heterogeneidade."
+    }
   },
   "update_frequency": {
-    "DP000107": {"class": "por edição ou evento", "evidence_contains": "por projeto", "note": "A coleção é atualizada no contexto de projetos específicos."},
-    "DP000109": {"class": "por edição ou evento", "evidence_contains": "por revisão", "note": "A atualização ocorre por revisão cartográfica."},
-    "DP000163": {"class": "por edição ou evento", "evidence_contains": "conforme alteração normativa", "note": "A atualização depende de evento normativo."},
-    "DP000169": {"class": "por edição ou evento", "evidence_contains": "quando houver alteração legal", "note": "A atualização depende de alteração legal."},
-    "DP000348": {"class": "horária", "evidence_contains": "horária/operacional", "note": "A própria descrição da frequência declara atualização horária para monitoramento."},
-    "DP000456": {"class": "sob demanda", "evidence_contains": "por solicitação", "note": "A obtenção é explicitamente acionada por solicitação."},
-    "DP000474": {"class": "anual", "evidence_contains": "arquivos anuais", "note": "A periodicidade de publicação disponível é anual; a rotina de vigilância permanece preservada no detalhe bruto."},
-    "DP000635": {"class": "irregular", "evidence_contains": "não regular", "note": "O valor canônico declara atualização não regular."},
-    "DP000639": {"class": "irregular", "evidence_contains": "não regular", "note": "O valor canônico declara atualização não regular."},
-    "DP000643": {"class": "sem atualização prevista", "evidence_contains": "sem novas aquisições", "note": "O acervo é histórico e não recebe novas aquisições."},
-    "DP000644": {"class": "sem atualização prevista", "evidence_contains": "sem novas aquisições", "note": "O acervo é histórico e não recebe novas aquisições."},
-    "DP000852": {"class": "múltipla", "evidence_contains": "varia por conjunto", "note": "A PCDaS agrega conjuntos com calendários próprios; não há uma única frequência global."}
+    "DP000107": {
+      "class": "por edição ou evento",
+      "evidence_contains": "por projeto",
+      "note": "A coleção é atualizada no contexto de projetos específicos."
+    },
+    "DP000109": {
+      "class": "por edição ou evento",
+      "evidence_contains": "por revisão",
+      "note": "A atualização ocorre por revisão cartográfica."
+    },
+    "DP000163": {
+      "class": "por edição ou evento",
+      "evidence_contains": "conforme alteração normativa",
+      "note": "A atualização depende de evento normativo."
+    },
+    "DP000169": {
+      "class": "por edição ou evento",
+      "evidence_contains": "quando houver alteração legal",
+      "note": "A atualização depende de alteração legal."
+    },
+    "DP000348": {
+      "class": "horária",
+      "evidence_contains": "horária/operacional",
+      "note": "A própria descrição da frequência declara atualização horária para monitoramento."
+    },
+    "DP000456": {
+      "class": "sob demanda",
+      "evidence_contains": "por solicitação",
+      "note": "A obtenção é explicitamente acionada por solicitação."
+    },
+    "DP000474": {
+      "class": "anual",
+      "evidence_contains": "arquivos anuais",
+      "note": "A periodicidade de publicação disponível é anual; a rotina de vigilância permanece preservada no detalhe bruto."
+    },
+    "DP000635": {
+      "class": "irregular",
+      "evidence_contains": "não regular",
+      "note": "O valor canônico declara atualização não regular."
+    },
+    "DP000639": {
+      "class": "irregular",
+      "evidence_contains": "não regular",
+      "note": "O valor canônico declara atualização não regular."
+    },
+    "DP000643": {
+      "class": "sem atualização prevista",
+      "evidence_contains": "sem novas aquisições",
+      "note": "O acervo é histórico e não recebe novas aquisições."
+    },
+    "DP000644": {
+      "class": "sem atualização prevista",
+      "evidence_contains": "sem novas aquisições",
+      "note": "O acervo é histórico e não recebe novas aquisições."
+    },
+    "DP000852": {
+      "class": "múltipla",
+      "evidence_contains": "varia por conjunto",
+      "note": "A PCDaS agrega conjuntos com calendários próprios; não há uma única frequência global."
+    }
   },
   "spatial_resolution": {
-    "DP000588": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "subsistema", "note": "Diária é granularidade temporal; o suporte espacial é subsistema."},
-    "DP000590": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "reservatório", "note": "Diária é granularidade temporal; o suporte espacial é reservatório."},
-    "DP000592": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "bacia hidroenergética", "note": "Diária é granularidade temporal; o suporte espacial é bacia hidroenergética."},
-    "DP000593": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "subsistema", "note": "Diária é granularidade temporal; o suporte espacial é subsistema."},
-    "DP000595": {"value": "não se aplica", "evidence_contains": "mensal", "context_field": "spatial_support_detail", "context_contains": "usina/modalidade operativa", "note": "Mensal é granularidade temporal; o suporte espacial é a unidade operacional."},
-    "DP000596": {"value": "não se aplica", "evidence_contains": "mensal", "context_field": "spatial_support_detail", "context_contains": "usina/modalidade operativa", "note": "Mensal é granularidade temporal; o suporte espacial é a unidade operacional."},
-    "DP000599": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "reservatório", "note": "Diária é granularidade temporal; o suporte espacial é reservatório."},
-    "DP000600": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "reservatório equivalente de energia", "note": "Diária é granularidade temporal; o suporte espacial é REE."},
-    "DP000601": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "subsistema", "note": "Diária é granularidade temporal; o suporte espacial é subsistema."},
-    "DP000602": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "reservatório", "note": "Diária é granularidade temporal; o suporte espacial é reservatório."},
-    "DP000603": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "bacia hidroenergética", "note": "Diária é granularidade temporal; o suporte espacial é bacia hidroenergética."},
-    "DP000604": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "reservatório equivalente de energia", "note": "Diária é granularidade temporal; o suporte espacial é REE."},
-    "DP000620": {"value": "não se aplica", "evidence_contains": "agregação mensal", "context_field": "spatial_support_detail", "context_contains": "função transmissão", "note": "Mensal é granularidade temporal; o suporte espacial é função de transmissão."},
-    "DP000621": {"value": "não se aplica", "evidence_contains": "agregação mensal", "context_field": "spatial_support_detail", "context_contains": "função transmissão", "note": "Mensal é granularidade temporal; o suporte espacial é função de transmissão."},
-    "DP000622": {"value": "não se aplica", "evidence_contains": "agregação mensal", "context_field": "spatial_support_detail", "context_contains": "função conversora", "note": "Mensal é granularidade temporal; o suporte espacial é função conversora."},
-    "DP000623": {"value": "não se aplica", "evidence_contains": "agregação mensal", "context_field": "spatial_support_detail", "context_contains": "SIN agregado", "note": "Mensal é granularidade temporal; o suporte espacial é o SIN agregado."}
+    "DP000588": {
+      "value": "não se aplica",
+      "evidence_contains": "diária",
+      "context_field": "spatial_support_detail",
+      "context_contains": "subsistema",
+      "note": "Diária é granularidade temporal; o suporte espacial é subsistema."
+    },
+    "DP000590": {
+      "value": "não se aplica",
+      "evidence_contains": "diária",
+      "context_field": "spatial_support_detail",
+      "context_contains": "reservatório",
+      "note": "Diária é granularidade temporal; o suporte espacial é reservatório."
+    },
+    "DP000592": {
+      "value": "não se aplica",
+      "evidence_contains": "diária",
+      "context_field": "spatial_support_detail",
+      "context_contains": "bacia hidroenergética",
+      "note": "Diária é granularidade temporal; o suporte espacial é bacia hidroenergética."
+    },
+    "DP000593": {
+      "value": "não se aplica",
+      "evidence_contains": "diária",
+      "context_field": "spatial_support_detail",
+      "context_contains": "subsistema",
+      "note": "Diária é granularidade temporal; o suporte espacial é subsistema."
+    },
+    "DP000595": {
+      "value": "não se aplica",
+      "evidence_contains": "mensal",
+      "context_field": "spatial_support_detail",
+      "context_contains": "usina/modalidade operativa",
+      "note": "Mensal é granularidade temporal; o suporte espacial é a unidade operacional."
+    },
+    "DP000596": {
+      "value": "não se aplica",
+      "evidence_contains": "mensal",
+      "context_field": "spatial_support_detail",
+      "context_contains": "usina/modalidade operativa",
+      "note": "Mensal é granularidade temporal; o suporte espacial é a unidade operacional."
+    },
+    "DP000599": {
+      "value": "não se aplica",
+      "evidence_contains": "diária",
+      "context_field": "spatial_support_detail",
+      "context_contains": "reservatório",
+      "note": "Diária é granularidade temporal; o suporte espacial é reservatório."
+    },
+    "DP000600": {
+      "value": "não se aplica",
+      "evidence_contains": "diária",
+      "context_field": "spatial_support_detail",
+      "context_contains": "reservatório equivalente de energia",
+      "note": "Diária é granularidade temporal; o suporte espacial é REE."
+    },
+    "DP000601": {
+      "value": "não se aplica",
+      "evidence_contains": "diária",
+      "context_field": "spatial_support_detail",
+      "context_contains": "subsistema",
+      "note": "Diária é granularidade temporal; o suporte espacial é subsistema."
+    },
+    "DP000602": {
+      "value": "não se aplica",
+      "evidence_contains": "diária",
+      "context_field": "spatial_support_detail",
+      "context_contains": "reservatório",
+      "note": "Diária é granularidade temporal; o suporte espacial é reservatório."
+    },
+    "DP000603": {
+      "value": "não se aplica",
+      "evidence_contains": "diária",
+      "context_field": "spatial_support_detail",
+      "context_contains": "bacia hidroenergética",
+      "note": "Diária é granularidade temporal; o suporte espacial é bacia hidroenergética."
+    },
+    "DP000604": {
+      "value": "não se aplica",
+      "evidence_contains": "diária",
+      "context_field": "spatial_support_detail",
+      "context_contains": "reservatório equivalente de energia",
+      "note": "Diária é granularidade temporal; o suporte espacial é REE."
+    },
+    "DP000620": {
+      "value": "não se aplica",
+      "evidence_contains": "agregação mensal",
+      "context_field": "spatial_support_detail",
+      "context_contains": "função transmissão",
+      "note": "Mensal é granularidade temporal; o suporte espacial é função de transmissão."
+    },
+    "DP000621": {
+      "value": "não se aplica",
+      "evidence_contains": "agregação mensal",
+      "context_field": "spatial_support_detail",
+      "context_contains": "função transmissão",
+      "note": "Mensal é granularidade temporal; o suporte espacial é função de transmissão."
+    },
+    "DP000622": {
+      "value": "não se aplica",
+      "evidence_contains": "agregação mensal",
+      "context_field": "spatial_support_detail",
+      "context_contains": "função conversora",
+      "note": "Mensal é granularidade temporal; o suporte espacial é função conversora."
+    },
+    "DP000623": {
+      "value": "não se aplica",
+      "evidence_contains": "agregação mensal",
+      "context_field": "spatial_support_detail",
+      "context_contains": "SIN agregado",
+      "note": "Mensal é granularidade temporal; o suporte espacial é o SIN agregado."
+    }
   },
   "temporal_coverage": {
-    "DP000510": {"value": "cadastro dinâmico", "evidence_contains": "cadastro dinâmico; atualização diária", "note": "A atualização diária pertence a update_frequency, não à cobertura temporal."}
+    "DP000510": {
+      "value": "cadastro dinâmico",
+      "evidence_contains": "cadastro dinâmico; atualização diária",
+      "note": "A atualização diária pertence a update_frequency, não à cobertura temporal."
+    }
   },
   "temporal_resolution": {
-    "DP000031": {"value": "evento", "evidence_contains": "evento; estados ativo/em observação atualizados operacionalmente", "note": "A resolução é por evento; estado operacional é nota de atualização."},
-    "DP000470": {"value": "não se aplica", "evidence_contains": "conforme atualização cadastral", "note": "O campo descrevia atualização cadastral e frequência do portal, não uma resolução temporal intrínseca."},
-    "DP000471": {"value": "anual por registro", "evidence_contains": "anual por registro; portal atualizado mensalmente", "note": "A resolução do registro é anual; mensal é frequência de atualização do portal."},
-    "DP000853": {"value": "anual", "evidence_contains": "anual na maioria dos indicadores publicados", "note": "A granularidade pública é anual; a ressalva sobre maioria dos indicadores permanece no detalhe bruto."}
+    "DP000031": {
+      "value": "evento",
+      "evidence_contains": "evento; estados ativo/em observação atualizados operacionalmente",
+      "note": "A resolução é por evento; estado operacional é nota de atualização."
+    },
+    "DP000470": {
+      "value": "não se aplica",
+      "evidence_contains": "conforme atualização cadastral",
+      "note": "O campo descrevia atualização cadastral e frequência do portal, não uma resolução temporal intrínseca."
+    },
+    "DP000471": {
+      "value": "anual por registro",
+      "evidence_contains": "anual por registro; portal atualizado mensalmente",
+      "note": "A resolução do registro é anual; mensal é frequência de atualização do portal."
+    },
+    "DP000853": {
+      "value": "anual",
+      "evidence_contains": "anual na maioria dos indicadores publicados",
+      "note": "A granularidade pública é anual; a ressalva sobre maioria dos indicadores permanece no detalhe bruto."
+    }
   },
   "version_or_collection": {
-    "DP000612": {"value": "conjunto corrente", "evidence_contains": "conjunto corrente; atualização diária", "note": "Atualização diária pertence a update_frequency."},
-    "DP000613": {"value": "versão 1.1", "evidence_contains": "versão 1.1; atualização diária", "note": "Atualização diária pertence a update_frequency."},
-    "DP000614": {"value": "conjunto corrente", "evidence_contains": "conjunto corrente; atualização diária", "note": "Atualização diária pertence a update_frequency."},
-    "DP000615": {"value": "conjunto corrente", "evidence_contains": "conjunto corrente; atualização diária", "note": "Atualização diária pertence a update_frequency."},
-    "DP000728": {"value": "Acervo Fundiário corrente", "evidence_contains": "acesso auditado em 2026-08-18", "note": "Data de auditoria não é versão ou coleção."},
-    "DP000841": {"value": "catálogo corrente", "evidence_contains": "auditado em 2026-08-19", "note": "Data de auditoria não é versão ou coleção."},
-    "DP000843": {"value": "catálogo corrente", "evidence_contains": "catálogo corrente auditado em 2026-08-19", "note": "A data de auditoria pertence à proveniência de QA, não ao identificador de versão."},
-    "DP000855": {"value": "painel corrente", "evidence_contains": "painel corrente auditado em 2026-08-19", "note": "A data de auditoria pertence à proveniência de QA, não ao identificador de versão."},
-    "DP000856": {"value": "sistema corrente", "evidence_contains": "sistema corrente auditado em 2026-08-19", "note": "A data de auditoria pertence à proveniência de QA, não ao identificador de versão."}
+    "DP000612": {
+      "value": "conjunto corrente",
+      "evidence_contains": "conjunto corrente; atualização diária",
+      "note": "Atualização diária pertence a update_frequency."
+    },
+    "DP000613": {
+      "value": "versão 1.1",
+      "evidence_contains": "versão 1.1; atualização diária",
+      "note": "Atualização diária pertence a update_frequency."
+    },
+    "DP000614": {
+      "value": "conjunto corrente",
+      "evidence_contains": "conjunto corrente; atualização diária",
+      "note": "Atualização diária pertence a update_frequency."
+    },
+    "DP000615": {
+      "value": "conjunto corrente",
+      "evidence_contains": "conjunto corrente; atualização diária",
+      "note": "Atualização diária pertence a update_frequency."
+    },
+    "DP000728": {
+      "value": "Acervo Fundiário corrente",
+      "evidence_contains": "acesso auditado em 2026-08-18",
+      "note": "Data de auditoria não é versão ou coleção."
+    },
+    "DP000841": {
+      "value": "catálogo corrente",
+      "evidence_contains": "auditado em 2026-08-19",
+      "note": "Data de auditoria não é versão ou coleção."
+    },
+    "DP000843": {
+      "value": "catálogo corrente",
+      "evidence_contains": "catálogo corrente auditado em 2026-08-19",
+      "note": "A data de auditoria pertence à proveniência de QA, não ao identificador de versão."
+    },
+    "DP000855": {
+      "value": "painel corrente",
+      "evidence_contains": "painel corrente auditado em 2026-08-19",
+      "note": "A data de auditoria pertence à proveniência de QA, não ao identificador de versão."
+    },
+    "DP000856": {
+      "value": "sistema corrente",
+      "evidence_contains": "sistema corrente auditado em 2026-08-19",
+      "note": "A data de auditoria pertence à proveniência de QA, não ao identificador de versão."
+    }
   }
 }
