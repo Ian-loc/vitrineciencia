@@ -32,6 +32,18 @@ jobs:
           ref: ${{ inputs.candidate_ref }}
           fetch-depth: 0
 
+      # A release não pode ser empacotada com um estado de QA anterior ao da
+      # main. Se o candidato ainda não recebeu os gates de normalização atuais,
+      # o empacotamento deve bloquear em vez de produzir um ZIP aparentemente
+      # válido com resíduos/revisões que o CI corrente já sabe detectar.
+      - name: Require current normalization QA gate
+        run: |
+          set -euo pipefail
+          test -s scripts/validate_normalization_residues.py
+          test -s schema/public-normalization-pending-v0.1.json
+          test -s schema/public-normalization-reviewed-unknowns-v0.1.json
+          python3 scripts/validate_normalization_residues.py
+
       - name: Validate canonical Vitrine
         run: |
           set -euo pipefail
