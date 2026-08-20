@@ -3,6 +3,7 @@
   "status": "stable",
   "purpose": "Registrar classificações e limpezas públicas explícitas para resíduos cuja correção é sustentada pelo próprio texto canônico, sem reescrever o valor original.",
   "spatial_support": {
+    "DP000119": {"class": "região ou zona", "evidence_contains": "mapas regionais", "note": "O próprio suporte canônico declara mapas regionais; elementos de apresentação permanecem apenas no detalhe bruto."},
     "DP000191": {"class": "variável por produto", "evidence_contains": "unidades variam por tema", "note": "O atlas declara explicitamente variação das unidades conforme o tema."},
     "DP000198": {"class": "região ou zona", "evidence_contains": "recortes regionais", "note": "O suporte espacial explicitamente inclui recortes regionais."}
   },
@@ -13,10 +14,12 @@
     "DP000169": {"class": "por edição ou evento", "evidence_contains": "quando houver alteração legal", "note": "A atualização depende de alteração legal."},
     "DP000348": {"class": "horária", "evidence_contains": "horária/operacional", "note": "A própria descrição da frequência declara atualização horária para monitoramento."},
     "DP000456": {"class": "sob demanda", "evidence_contains": "por solicitação", "note": "A obtenção é explicitamente acionada por solicitação."},
+    "DP000474": {"class": "anual", "evidence_contains": "arquivos anuais", "note": "A periodicidade de publicação disponível é anual; a rotina de vigilância permanece preservada no detalhe bruto."},
     "DP000635": {"class": "irregular", "evidence_contains": "não regular", "note": "O valor canônico declara atualização não regular."},
     "DP000639": {"class": "irregular", "evidence_contains": "não regular", "note": "O valor canônico declara atualização não regular."},
     "DP000643": {"class": "sem atualização prevista", "evidence_contains": "sem novas aquisições", "note": "O acervo é histórico e não recebe novas aquisições."},
-    "DP000644": {"class": "sem atualização prevista", "evidence_contains": "sem novas aquisições", "note": "O acervo é histórico e não recebe novas aquisições."}
+    "DP000644": {"class": "sem atualização prevista", "evidence_contains": "sem novas aquisições", "note": "O acervo é histórico e não recebe novas aquisições."},
+    "DP000852": {"class": "múltipla", "evidence_contains": "varia por conjunto", "note": "A PCDaS agrega conjuntos com calendários próprios; não há uma única frequência global."}
   },
   "spatial_resolution": {
     "DP000588": {"value": "não se aplica", "evidence_contains": "diária", "context_field": "spatial_support_detail", "context_contains": "subsistema", "note": "Diária é granularidade temporal; o suporte espacial é subsistema."},
@@ -42,7 +45,8 @@
   "temporal_resolution": {
     "DP000031": {"value": "evento", "evidence_contains": "evento; estados ativo/em observação atualizados operacionalmente", "note": "A resolução é por evento; estado operacional é nota de atualização."},
     "DP000470": {"value": "não se aplica", "evidence_contains": "conforme atualização cadastral", "note": "O campo descrevia atualização cadastral e frequência do portal, não uma resolução temporal intrínseca."},
-    "DP000471": {"value": "anual por registro", "evidence_contains": "anual por registro; portal atualizado mensalmente", "note": "A resolução do registro é anual; mensal é frequência de atualização do portal."}
+    "DP000471": {"value": "anual por registro", "evidence_contains": "anual por registro; portal atualizado mensalmente", "note": "A resolução do registro é anual; mensal é frequência de atualização do portal."},
+    "DP000853": {"value": "anual", "evidence_contains": "anual na maioria dos indicadores publicados", "note": "A granularidade pública é anual; a ressalva sobre maioria dos indicadores permanece no detalhe bruto."}
   },
   "version_or_collection": {
     "DP000612": {"value": "conjunto corrente", "evidence_contains": "conjunto corrente; atualização diária", "note": "Atualização diária pertence a update_frequency."},
@@ -50,6 +54,9 @@
     "DP000614": {"value": "conjunto corrente", "evidence_contains": "conjunto corrente; atualização diária", "note": "Atualização diária pertence a update_frequency."},
     "DP000615": {"value": "conjunto corrente", "evidence_contains": "conjunto corrente; atualização diária", "note": "Atualização diária pertence a update_frequency."},
     "DP000728": {"value": "Acervo Fundiário corrente", "evidence_contains": "acesso auditado em 2026-08-18", "note": "Data de auditoria não é versão ou coleção."},
-    "DP000841": {"value": "catálogo corrente", "evidence_contains": "auditado em 2026-08-19", "note": "Data de auditoria não é versão ou coleção."}
+    "DP000841": {"value": "catálogo corrente", "evidence_contains": "auditado em 2026-08-19", "note": "Data de auditoria não é versão ou coleção."},
+    "DP000843": {"value": "catálogo corrente", "evidence_contains": "catálogo corrente auditado em 2026-08-19", "note": "A data de auditoria pertence à proveniência de QA, não ao identificador de versão."},
+    "DP000855": {"value": "painel corrente", "evidence_contains": "painel corrente auditado em 2026-08-19", "note": "A data de auditoria pertence à proveniência de QA, não ao identificador de versão."},
+    "DP000856": {"value": "sistema corrente", "evidence_contains": "sistema corrente auditado em 2026-08-19", "note": "A data de auditoria pertence à proveniência de QA, não ao identificador de versão."}
   }
 }
