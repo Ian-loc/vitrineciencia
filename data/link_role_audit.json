@@ -8,117 +8,11 @@
   },
   "counts": {
     "separate_destinations": 93,
-    "same_destination_reviewed_exception": 26,
-    "same_destination_pending_review": 15,
+    "same_destination_reviewed_exception": 41,
+    "same_destination_pending_review": 0,
     "data_access_not_applicable": 1
   },
-  "records_requiring_review": [
-    {
-      "resource_id": "DR0072",
-      "resource_name": "Estatísticas e Indicadores Ambientais — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais.html"
-    },
-    {
-      "resource_id": "DR0073",
-      "resource_name": "Estudos Ambientais — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais.html"
-    },
-    {
-      "resource_id": "DR0074",
-      "resource_name": "Informações Ambientais — Mapas e Produtos Cartográficos — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais.html"
-    },
-    {
-      "resource_id": "DR0081",
-      "resource_name": "Redes e Fluxos Geográficos — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html"
-    },
-    {
-      "resource_id": "DR0082",
-      "resource_name": "Tipologias do Território — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html"
-    },
-    {
-      "resource_id": "DR0083",
-      "resource_name": "Mapas de Sociedade e Economia — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia.html",
-      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia.html"
-    },
-    {
-      "resource_id": "DR0087",
-      "resource_name": "Estatísticas Agropecuárias — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html",
-      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html"
-    },
-    {
-      "resource_id": "DR0091",
-      "resource_name": "Estatísticas de População e Demografia — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
-      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html"
-    },
-    {
-      "resource_id": "DR0092",
-      "resource_name": "Pesquisas Nacionais de Saúde — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/saude.html",
-      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/saude.html"
-    },
-    {
-      "resource_id": "DR0095",
-      "resource_name": "Sínteses e Indicadores Sociais — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
-      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html"
-    },
-    {
-      "resource_id": "DR0098",
-      "resource_name": "Pesquisas Estruturais por Empresas — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas.html",
-      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas.html"
-    },
-    {
-      "resource_id": "DR0099",
-      "resource_name": "Indicadores Conjunturais de Atividade Econômica — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas.html",
-      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas.html"
-    },
-    {
-      "resource_id": "DR0100",
-      "resource_name": "Preços e Custos — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html",
-      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html"
-    },
-    {
-      "resource_id": "DR0101",
-      "resource_name": "Contas Nacionais — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html",
-      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html"
-    },
-    {
-      "resource_id": "DR0102",
-      "resource_name": "Finanças Públicas — IBGE",
-      "status": "same_destination_pending_review",
-      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/financas-publicas.html",
-      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/financas-publicas.html"
-    }
-  ],
+  "records_requiring_review": [],
   "reviewed_same_destination_exceptions": [
     {
       "resource_id": "DR0004",
@@ -311,6 +205,36 @@
       "exception_reviewed_at": "2026-08-19"
     },
     {
+      "resource_id": "DR0072",
+      "resource_name": "Estatísticas e Indicadores Ambientais — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais.html",
+      "exception_rationale": "A página temática Estatísticas e Indicadores Ambientais é o índice oficial da família no portal IBGE: nela o Instituto lista os principais produtos do tema, cujas fichas individuais concentram tabelas, Acesso ao produto e Downloads. Como a fonte representa a família temática e não um único dataset, a mesma landing page cumpre legitimamente apresentação e descoberta/acesso.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estatisticas-e-indicadores-ambientais.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0073",
+      "resource_name": "Estudos Ambientais — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais.html",
+      "exception_rationale": "Estudos Ambientais é uma família temática do portal IBGE. A própria landing page lista PEERS, Grade Estatística de Dados Ambientais, Biomas, Contas Econômicas Ambientais, Bacias e Divisões Hidrográficas, População em Áreas de Risco, ZEE e outros produtos; cada ficha filha concentra seus acessos. No nível da fonte-família, manter a mesma URL para apresentação e acesso de descoberta é deliberado.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/informacoes-ambientais/estudos-ambientais.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0074",
+      "resource_name": "Informações Ambientais — Mapas e Produtos Cartográficos — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais.html",
+      "exception_rationale": "Informações Ambientais — Mapas e Produtos Cartográficos é uma página temática que reúne e encaminha aos produtos cartográficos ambientais do IBGE, incluindo Biomas, Bacias e Divisões Hidrográficas, Monitoramento da Cobertura e Uso da Terra, Fauna Ameaçada, Relevo, Vegetação, Clima e Solos. A landing page é simultaneamente apresentação institucional e índice oficial de acesso aos produtos.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
       "resource_id": "DR0075",
       "resource_name": "Redes Geodésicas — IBGE",
       "status": "same_destination_reviewed_exception",
@@ -351,6 +275,76 @@
       "exception_reviewed_at": "2026-08-19"
     },
     {
+      "resource_id": "DR0081",
+      "resource_name": "Redes e Fluxos Geográficos — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html",
+      "exception_rationale": "Redes e Fluxos Geográficos é uma família de estudos do IBGE. A própria página temática lista os produtos do tema, como Logística dos Transportes, Gestão do Território, Quadro Geográfico de Referência, Ligações Aéreas e REGIC; as fichas de produto oferecem Acesso ao produto/Downloads. Não existe um único arquivo representativo da família, por isso a mesma landing page é o ponto institucional e de descoberta/acesso.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/2282-np-regioes-de-influencia-das-cidades.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0082",
+      "resource_name": "Tipologias do Território — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html",
+      "exception_rationale": "Tipologias do Território é uma página temática de família no portal IBGE. Ela organiza tipologias e estudos territoriais distintos, cujos acessos ficam nas fichas individuais; no nível da fonte-família, usar a mesma landing page para homepage e acesso de descoberta evita escolher arbitrariamente um único produto como representante.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/organizacao-do-territorio/tipologias-do-territorio.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0083",
+      "resource_name": "Mapas de Sociedade e Economia — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia.html",
+      "data_access_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia.html",
+      "exception_rationale": "Sociedade e Economia é uma família cartográfica do IBGE. A página temática lista explicitamente produtos como Mapa Índice Digital, Indicações Geográficas, Densidade Demográfica e mapas derivados de censos e estatísticas econômicas. Como índice oficial da família, a mesma URL funciona legitimamente como apresentação e descoberta/acesso aos produtos.",
+      "exception_evidence_url": "https://www.ibge.gov.br/geociencias/cartas-e-mapas/sociedade-e-economia.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0087",
+      "resource_name": "Estatísticas Agropecuárias — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html",
+      "exception_rationale": "Estatísticas Agropecuárias representa uma família de operações do IBGE, não um dataset único. A estrutura temática encaminha a produtos como LSPA, PAM, PPM e demais pesquisas agropecuárias, cujas fichas fornecem tabelas, séries e Downloads. Manter a landing page temática como homepage e acesso de descoberta é consistente com a granularidade da fonte.",
+      "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/2071-np-estatistica-da-producao-agricola.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0091",
+      "resource_name": "Estatísticas de População e Demografia — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
+      "exception_rationale": "A página temática População do IBGE funciona como portal de descoberta das operações demográficas, exibindo indicadores, calendário e produtos como Estimativas e Projeções da População, cujas fichas disponibilizam tabelas e Downloads. Como a fonte representa a família demográfica, a mesma landing page cumpre legitimamente apresentação e acesso de descoberta.",
+      "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0092",
+      "resource_name": "Pesquisas Nacionais de Saúde — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/saude.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/saude.html",
+      "exception_rationale": "Saúde é uma página temática de família do IBGE que lista explicitamente PeNSE, POF, PNS e outras operações relacionadas. Os dados e Downloads permanecem nas fichas individuais; no nível da fonte-família, a mesma URL é simultaneamente apresentação institucional e índice oficial para os acessos.",
+      "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/sociais/saude.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0095",
+      "resource_name": "Sínteses e Indicadores Sociais — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
+      "exception_rationale": "Sínteses e Indicadores Sociais é uma família de sínteses do eixo População. A própria ficha da Síntese de Indicadores Sociais reúne tabelas, publicações e Downloads; a landing page temática População organiza esse conjunto e outros indicadores sociais. No nível da fonte-família, manter a mesma URL para homepage e acesso de descoberta é deliberado.",
+      "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/sociais/populacao.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
       "resource_id": "DR0096",
       "resource_name": "Estatísticas do Registro Civil — IBGE",
       "status": "same_destination_reviewed_exception",
@@ -368,6 +362,56 @@
       "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
       "exception_rationale": "A página Estatísticas do Cadastro Central de Empresas - CEMPRE reúne a descrição do produto, edições, séries históricas, tabelas e Downloads. Como a própria ficha oficial é também a interface de obtenção dos resultados, a igualdade entre homepage e acesso é legítima.",
       "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/economicas/comercio/9016-estatisticas-do-cadastro-central-de-empresas.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0098",
+      "resource_name": "Pesquisas Estruturais por Empresas — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas.html",
+      "exception_rationale": "Pesquisas Estruturais por Empresas é uma família de operações econômicas anuais, incluindo PIA-Empresa, PIA-Produto, PAIC, PAC e PAS. O portal econômico e as páginas setoriais encaminham às fichas individuais com séries, tabelas, SIDRA e documentação. Não há um único dataset que represente toda a família, por isso a landing page econômica também funciona como acesso de descoberta.",
+      "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/economicas.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0099",
+      "resource_name": "Indicadores Conjunturais de Atividade Econômica — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas.html",
+      "exception_rationale": "Indicadores Conjunturais de Atividade Econômica reúne operações mensais distintas, como PIM-PF, PMC e PMS. A página econômica do IBGE organiza essas operações e suas fichas individuais oferecem resultados, séries, SIDRA e Downloads. Como fonte-família, a mesma landing page é legitimamente homepage e ponto de descoberta/acesso.",
+      "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/economicas.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0100",
+      "resource_name": "Preços e Custos — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html",
+      "exception_rationale": "Preços e Custos é uma página temática que lista IPCA, INPC, SINAPI, IPP, IPCA-15, IPCA-E e outros produtos. As fichas individuais concentram resultados e Downloads; no nível da família, a mesma página temática é simultaneamente apresentação e índice oficial de acesso.",
+      "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0101",
+      "resource_name": "Contas Nacionais — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html",
+      "exception_rationale": "Contas Nacionais é uma família temática do IBGE que reúne SCN, SCNT, Contas Regionais, PIB dos Municípios, Matriz de Insumo-Produto e contas satélite. O portal lista esses produtos e encaminha às respectivas fichas e Downloads; portanto, a mesma landing page cumpre legitimamente os papéis de apresentação e acesso de descoberta.",
+      "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais.html",
+      "exception_reviewed_at": "2026-08-19"
+    },
+    {
+      "resource_id": "DR0102",
+      "resource_name": "Finanças Públicas — IBGE",
+      "status": "same_destination_reviewed_exception",
+      "homepage_url": "https://www.ibge.gov.br/estatisticas/economicas/financas-publicas.html",
+      "data_access_url": "https://www.ibge.gov.br/estatisticas/economicas/financas-publicas.html",
+      "exception_rationale": "Finanças Públicas é uma página temática do IBGE que apresenta o tema e lista como principal produto Estatísticas de Finanças Públicas e Conta Intermediária de Governo, cuja ficha contém tabelas e Downloads. No nível da fonte temática, a mesma landing page é legitimamente homepage e acesso de descoberta.",
+      "exception_evidence_url": "https://www.ibge.gov.br/estatisticas/economicas/financas-publicas.html",
       "exception_reviewed_at": "2026-08-19"
     },
     {
