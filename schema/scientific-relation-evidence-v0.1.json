@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ian-loc.github.io/ScienceDataSourcesCatalog/schema/scientific-relation-evidence-v0.1.json",
+  "$id": "https://ian-loc.github.io/vitrineciencia/schema/scientific-relation-evidence-v0.1.json",
   "title": "Scientific Relation and Evidence v0.1",
   "description": "Contrato inicial para representar relações propostas entre variáveis, mecanismos, evidências favoráveis e contraditórias e limites de inferência.",
   "type": "object",
