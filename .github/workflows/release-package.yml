@@ -44,6 +44,16 @@ jobs:
           test -s schema/public-normalization-reviewed-unknowns-v0.1.json
           python3 scripts/validate_normalization_residues.py
 
+      # O pacote científico também não pode carregar documentação operacional
+      # anterior à fase QA/QC vigente. Este gate impede que uma candidata
+      # preservada antes da pausa de expansão seja empacotada como se novas
+      # fontes/produtos ainda estivessem no caminho ativo.
+      - name: Require current active-documentation QA gate
+        run: |
+          set -euo pipefail
+          test -s scripts/validate_active_documentation.py
+          python3 scripts/validate_active_documentation.py
+
       - name: Validate canonical Vitrine
         run: |
           set -euo pipefail
