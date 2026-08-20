@@ -33,6 +33,7 @@ jobs:
           python3 scripts/report_normalization_coverage.py
           python3 scripts/validate_normalization_residues.py
           python3 scripts/audit_link_roles.py
+          python3 scripts/validate_active_documentation.py
 
       - name: Confirmar derivados versionados sincronizados
         run: |
