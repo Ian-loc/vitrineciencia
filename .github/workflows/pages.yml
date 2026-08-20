@@ -2,14 +2,14 @@ name: Validar e publicar Vitrine
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "release/v1.0.0"]
   pull_request:
   workflow_dispatch:
 
+# Privilégio mínimo por padrão. O job de deploy eleva apenas as permissões
+# necessárias para publicar no GitHub Pages.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: vitrine-pages-${{ github.ref }}
@@ -20,17 +20,29 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Validar dados estáticos da Vitrine
         run: |
           python3 scripts/validate_brazil_scope.py
           python3 scripts/validate_product_catalog.py
+          python3 scripts/validate_schema_identity.py
           python3 scripts/audit_descriptive_fields.py
           python3 scripts/build_catalog.py
           python3 scripts/build_public_discovery.py
           python3 scripts/report_normalization_coverage.py
+          python3 scripts/validate_normalization_residues.py
           python3 scripts/audit_link_roles.py
+          python3 scripts/validate_active_documentation.py
+
+      - name: Confirmar derivados versionados sincronizados
+        run: |
+          git diff --check
+          git diff --exit-code -- \
+            data/data_resources.json \
+            data/data_products.json \
+            data/data_quality_report.json \
+            data/link_role_audit.json
 
       - name: Validar interface e fronteira da Vitrine
         run: |
@@ -84,40 +96,32 @@ jobs:
           ! grep -R -n -E 'Simbiotrama|Simbioscópio|Simbioscopio' _site/index.html _site/products.html _site/analytics.html _site/about.html
           ! grep -R -n -E 'data/data_resources\.csv|data/data_products\.csv|data/product_distributions\.csv' _site/index.html _site/products.html _site/analytics.html _site/about.html
 
+      # O mesmo _site que passou por todas as validações acima é o artefato
+      # entregue ao job de deploy. Somente a main pode publicar; pushes ou
+      # dispatches na candidata v1.0.0 executam validação completa sem deploy.
+      - name: Enviar artefato validado da Vitrine
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
   deploy:
-    if: github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: validate-vitrine
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Gerar e validar Vitrine
-        run: |
-          python3 scripts/validate_brazil_scope.py
-          python3 scripts/validate_product_catalog.py
-          python3 scripts/audit_descriptive_fields.py
-          python3 scripts/build_catalog.py
-          python3 scripts/build_public_discovery.py
-          python3 scripts/report_normalization_coverage.py
-          python3 scripts/audit_link_roles.py
-          python3 scripts/validate_vitrine.py
-          node --check assets/ptbr.js
-          node --check assets/export-selective.js
-          python3 scripts/build_site_artifact.py
-
       - name: Configurar GitHub Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
-      - name: Enviar artefato da Vitrine
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: _site
-
-      - name: Publicar Vitrine no GitHub Pages
+      - name: Publicar artefato previamente validado
         id: deployment
         uses: actions/deploy-pages@v4
 
