@@ -1,13 +1,13 @@
 # Estado canônico e disposição dos artefatos — Vitrine Ciência
 
-**Data de referência:** 19 de agosto de 2026  
+**Data de referência:** 20 de agosto de 2026  
 **Fuso:** `America/Sao_Paulo`  
-**Estado global:** catálogo público operacional; contrato fonte → produto → distribuição estável; primeira release científica `v1.0.0` em preparação formal.
+**Estado global:** catálogo público operacional; contrato fonte → produto → distribuição estável; fase ativa de QA/QC e manutenção; candidata `v1.0.0` preparada, ainda sem tag Git imutável, GitHub Release ou DOI.
 
 ## 1. Autoridade
 
 1. `main` de `Ian-loc/vitrineciencia` para desenvolvimento corrente;
-2. tags/releases imutáveis para snapshots científicos publicados;
+2. tags/releases imutáveis para snapshots científicos quando formalmente publicados;
 3. três tabelas canônicas: `data_resources.csv`, `data_products.csv`, `product_distributions.csv`;
 4. contratos e validadores executáveis da Vitrine;
 5. documentação ativa listada abaixo;
@@ -18,7 +18,7 @@ JSONs, páginas públicas e relatórios de qualidade são artefatos derivados. O
 
 ## 2. Estado do catálogo
 
-Snapshot candidato a `v1.0.0`, observado em 19/08/2026:
+Snapshot candidato a `v1.0.0`, preparado em 19/08/2026:
 
 - **135 fontes**;
 - **843 produtos**;
@@ -27,7 +27,7 @@ Snapshot candidato a `v1.0.0`, observado em 19/08/2026:
 - fontes verificadas até 19/08/2026;
 - schema vigente: 34 campos de fonte, 24 de produto e 15 de distribuição.
 
-As contagens podem crescer na `main` após a release sem mudar o significado do snapshot `v1.0.0`.
+Essas contagens caracterizam a candidata `v1.0.0`; não são gate, teto ou requisito arquitetural. A expansão de novas fontes, produtos e distribuições está pausada durante a fase atual de QA/QC e só deve ser retomada mediante instrução humana explícita.
 
 ## 3. Ciclo de vida dos artefatos
 
@@ -37,8 +37,16 @@ As contagens podem crescer na `main` após a release sem mudar o significado do 
 - três CSVs canônicos e classificação Brasil P0–P3;
 - scripts de build e validação da Vitrine;
 - GitHub Pages e smoke pós-deploy;
-- documentação pública/metodológica, citação, licenças e release;
-- curadoria e expansão de fontes/produtos dentro do contrato vigente.
+- documentação pública/metodológica, citação, licenças e preparação de release;
+- QA/QC, correções factuais/semânticas, robustez de CI/publicação e bugs reais de UX.
+
+### `PAUSED`
+
+- inclusão de novas fontes;
+- inclusão de novos produtos;
+- inclusão de novas distribuições.
+
+A expansão permanece pausada até nova instrução humana explícita.
 
 ### `DERIVED`
 
@@ -79,16 +87,21 @@ A separação estrutural ocorreu em 09/08/2026. O Simbiotrama é um projeto inde
 - `SELECTION_AND_COVERAGE_POLICY.md` — seleção e prioridade Brasil;
 - `WORKFLOW_STATUS.md` — estado corrente;
 - `FINAL_OBJECTIVES_AND_DOI_GATES.md` e `docs/RELEASE_POLICY.md` — release/DOI;
-- `RELEASE_NOTES_v1.0.0.md` — escopo, citação e gates da primeira release estável.
+- `RELEASE_NOTES_v1.0.0.md` — notas da candidata à primeira release estável.
 
 ## 6. Estado operacional
 
-- site público: operacional e publicado por GitHub Pages;
-- CI: valida dados, frontend e artefato público;
-- smoke externo: executado após deploy;
-- release científica: `v1.0.0` preparada na branch `release/v1.0.0`, pendente de validação final, merge e tag imutável;
-- DOI: ainda não emitido;
+- site público: GitHub Pages configurado e validado pelo pipeline; confirmação externa deve ser feita quando o ambiente permitir;
+- CI: valida dados, frontend, derivados versionados e artefato público;
+- smoke externo: configurado para executar após deploy bem-sucedido;
+- fase ativa: QA/QC e manutenção; expansão de conteúdo pausada;
+- candidata científica: `v1.0.0` preparada na branch `release/v1.0.0`;
+- tag imutável `v1.0.0`: **ainda não criada**;
+- GitHub Release `v1.0.0`: **ainda não publicada**;
+- DOI: **ainda não emitido**;
 - Drive: contém documentação/histórico e um workbook legado; o workbook não está sincronizado com o catálogo corrente e não é gate da release.
+
+Nenhuma nova tag/release ou depósito DOI deve ser criado sem instrução humana explícita.
 
 ## 7. Critério de sanidade contínua
 

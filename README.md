@@ -9,7 +9,7 @@ A Vitrine Ciência organiza fontes, produtos e formas de acesso com busca, filtr
 - site: https://ian-loc.github.io/vitrineciencia/
 - repositório canônico: https://github.com/Ian-loc/vitrineciencia
 - branch canônica de desenvolvimento: `main`
-- primeira release científica estável: `v1.0.0`
+- candidata à primeira release científica estável: `v1.0.0` (`release/v1.0.0`)
 - fontes: `data/data_resources.csv`
 - produtos: `data/data_products.csv`
 - distribuições/acessos: `data/product_distributions.csv`
@@ -17,7 +17,7 @@ A Vitrine Ciência organiza fontes, produtos e formas de acesso com busca, filtr
 - código: MIT
 - metadados e curadoria original: CC BY 4.0
 
-### Snapshot v1.0.0 — 19 de agosto de 2026
+### Snapshot candidato v1.0.0 — 19 de agosto de 2026
 
 - **135 fontes**;
 - **843 produtos**;
@@ -25,7 +25,7 @@ A Vitrine Ciência organiza fontes, produtos e formas de acesso com busca, filtr
 - os identificadores correntes chegam a `DR0135`, `DP000861` e `DD000894`, pois IDs removidos/consolidados não são reciclados;
 - verificações de fontes registradas até **2026-08-19**.
 
-Essas contagens descrevem o snapshot da release e não são limites arquiteturais. O desenvolvimento pode continuar na `main`; análises reproduzíveis devem registrar a release/tag ou o commit efetivamente utilizado.
+Essas contagens descrevem o snapshot candidato e não são limites arquiteturais. A `main` está em fase de QA/QC e manutenção; a expansão de novas fontes, produtos ou distribuições está pausada até nova instrução humana explícita.
 
 ## Modelo vigente
 
@@ -35,7 +35,7 @@ Fonte (DR####)
         └── Distribuição (DD######)
 ```
 
-A tabela de fontes possui 34 campos; a de produtos, 24; e a de distribuições, 15. O contrato é deliberadamente simples e estável. Novas entidades só devem ser introduzidas se uma diferença cientificamente material não puder ser representada no modelo atual.
+A tabela de fontes possui 34 campos; a de produtos, 24; e a de distribuições, 15. O contrato é deliberadamente simples e estável. Novas entidades só devem ser introduzidas se uma diferença cientificamente material não puder ser representada no modelo atual e se a expansão de escopo tiver sido explicitamente retomada.
 
 ## Fronteira com o Simbiotrama
 
@@ -57,9 +57,9 @@ A presença na Vitrine não certifica qualidade universal, comparabilidade ou ad
 
 ## Manutenção
 
-O fluxo normal é:
+O fluxo corrente é:
 
-**discover → verify → curate → validate → publish → monitor → periodically release**.
+**estado vivo → defeito/risco material → evidência → correção mínima → validação → read-back → publicação quando aplicável**.
 
 Mudanças em `main` devem preservar integridade dos IDs e relações, geração determinística dos artefatos públicos, isolamento de `_site`, funcionamento da interface e independência do Simbiotrama. O Drive é espelho/histórico derivado e não autoridade concorrente.
 
@@ -71,14 +71,14 @@ Documentação ativa:
 - `docs/VITRINE_OPERATING_MODEL.md` — operação e gates;
 - `WORKFLOW_STATUS.md` — estado corrente e prioridades;
 - `FINAL_OBJECTIVES_AND_DOI_GATES.md` — release citável e DOI;
-- `RELEASE_NOTES_v1.0.0.md` — notas da primeira release científica estável.
+- `RELEASE_NOTES_v1.0.0.md` — notas da candidata à primeira release científica estável.
 
 ## Release e citação
 
-A `v1.0.0` é o primeiro snapshot científico estável deliberadamente congelado da Vitrine Ciência. Para análises reproduzíveis, cite a release/tag ou commit efetivamente utilizado e também a fonte/dataset original.
+O snapshot `v1.0.0` está preparado como candidato à primeira release científica estável, mas **ainda não possui tag Git imutável nem DOI**. Até a publicação formal da release, análises reproduzíveis devem registrar o commit efetivamente utilizado e também citar a fonte/dataset original.
 
-> CLEMENTE, Ian. *Vitrine Ciência: catálogo de fontes de dados científicos sobre o Brasil para pesquisa, ensino e extensão*. Version 1.0.0. 2026.
+> CLEMENTE, Ian. *Vitrine Ciência: catálogo de fontes de dados científicos sobre o Brasil para pesquisa, ensino e extensão*. GitHub, 2026.
 
 ORCID: https://orcid.org/0000-0003-1164-9318
 
-Após a emissão do DOI, o identificador persistente deve ser incorporado ao README, `CITATION.cff`, release do GitHub e perfis acadêmicos sem alterar retroativamente o conteúdo científico do snapshot.
+Quando uma release/tag imutável for explicitamente publicada, a versão correspondente deve substituir a referência genérica acima. Após eventual emissão de DOI, o identificador persistente deve ser incorporado ao README, `CITATION.cff`, GitHub Release e perfis acadêmicos sem alterar retroativamente o conteúdo científico do snapshot.
