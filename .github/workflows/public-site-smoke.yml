@@ -64,6 +64,17 @@ jobs:
           grep -q 'data/data_products.json' "$tmp/products.js"
           grep -q 'data/data_resources.json' "$tmp/analytics.js"
 
+          # A identidade pública precisa apontar para a URL canônica atual em
+          # todas as páginas, inclusive após o deploy no Pages.
+          grep -Fq '<link rel="canonical" href="https://ian-loc.github.io/vitrineciencia/">' "$tmp/index.html"
+          grep -Fq '<meta property="og:url" content="https://ian-loc.github.io/vitrineciencia/">' "$tmp/index.html"
+          for page in products analytics about; do
+            grep -Fq "<link rel=\"canonical\" href=\"$SITE/$page.html\">" "$tmp/$page.html"
+            grep -Fq "<meta property=\"og:url\" content=\"$SITE/$page.html\">" "$tmp/$page.html"
+          done
+          grep -Fq '"@type":"DataCatalog"' "$tmp/index.html"
+          grep -Fq 'https://orcid.org/0000-0003-1164-9318' "$tmp/index.html"
+
           python3 - "$tmp/resources.json" "$tmp/products.json" <<'PY'
           import csv, json, sys
 
