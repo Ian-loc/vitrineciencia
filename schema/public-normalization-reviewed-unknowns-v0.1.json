@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1",
+  "status": "stable",
+  "purpose": "Registra campos que permanecem publicamente desconhecidos após revisão explícita da evidência canônica. Distingue desconhecimento legítimo de resíduos ainda não curados e falha se a evidência ou o estado normalizado mudar.",
+  "entries": [
+    {
+      "field": "update_frequency",
+      "product_id": "DP000103",
+      "evidence_contains": "sem frequência estável declarada",
+      "reason": "Produto experimental sem cadência estável declarada; inferir periodicidade ou irregularidade seria mais forte que a evidência disponível.",
+      "reviewed_at": "2026-08-20"
+    },
+    {
+      "field": "update_frequency",
+      "product_id": "DP000104",
+      "evidence_contains": "continuidade posterior não inferida nesta auditoria",
+      "reason": "A edição é histórica e a continuidade posterior não foi estabelecida; manter frequência desconhecida evita fabricar uma periodicidade corrente.",
+      "reviewed_at": "2026-08-20"
+    },
+    {
+      "field": "update_frequency",
+      "product_id": "DP000339",
+      "evidence_contains": "atualização do portal observada em julho de 2026",
+      "reason": "Há evidência de atualização operacional do portal, mas não de uma cadência estável para dados e séries por poço; não inferir frequência uniforme.",
+      "reviewed_at": "2026-08-20"
+    },
+    {
+      "field": "update_frequency",
+      "product_id": "DP000455",
+      "evidence_contains": "consultar documentação/plano para frequência de atualização dos dados",
+      "reason": "A frequência efetiva depende da documentação e do plano do serviço; não há uma cadência única sustentada no registro canônico.",
+      "reviewed_at": "2026-08-20"
+    },
+    {
+      "field": "update_frequency",
+      "product_id": "DP000459",
+      "evidence_contains": "conforme variante/plano",
+      "reason": "A cadência varia entre variantes e planos do serviço; uma única classe de frequência seria enganosa.",
+      "reviewed_at": "2026-08-20"
+    },
+    {
+      "field": "update_frequency",
+      "product_id": "DP000461",
+      "evidence_contains": "acesso mediante contratação/cotação",
+      "reason": "O produto é operacional, mas a evidência canônica não declara a cadência de atualização do serviço contratado; manter desconhecida é o estado conservador.",
+      "reviewed_at": "2026-08-20"
+    },
+    {
+      "field": "update_frequency",
+      "product_id": "DP000545",
+      "evidence_contains": "conforme ciclo de cada modelo",
+      "reason": "O serviço agrega múltiplos modelos com ciclos próprios; não existe uma frequência única que represente corretamente toda a família.",
+      "reviewed_at": "2026-08-20"
+    },
+    {
+      "field": "update_frequency",
+      "product_id": "DP000647",
+      "evidence_contains": "operacional para GOES-19; histórico para GOES-13/16",
+      "reason": "A família combina uma coleção operacional e duas históricas encerradas; uma única frequência de atualização não é semanticamente válida.",
+      "reviewed_at": "2026-08-20"
+    },
+    {
+      "field": "update_frequency",
+      "product_id": "DP000724",
+      "evidence_contains": "Software/serviço atualizado pela equipe BDC; projetos e amostras atualizados pelos usuários",
+      "reason": "Software, projetos e amostras têm mecanismos de atualização diferentes e sem cadência única declarada; manter desconhecida preserva essa heterogeneidade.",
+      "reviewed_at": "2026-08-20"
+    }
+  ]
+}
