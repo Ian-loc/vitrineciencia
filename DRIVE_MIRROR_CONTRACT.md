@@ -11,11 +11,11 @@ Autoridade ativa:
 - `data/data_products.csv`;
 - `data/product_distributions.csv`.
 
-## Estado corrente — 18/08/2026
+## Estado vivo
 
-O catálogo canônico possui **125 fontes, 752 produtos e 783 distribuições**. Os maiores IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`; lacunas de identificadores são preservadas.
+As contagens e o estado operacional corrente não são replicados neste contrato. Para o estado vivo, consultar `docs/PROJECT_STATE.md`, `WORKFLOW_STATUS.md` e as três tabelas canônicas em `data/`.
 
-O workbook legado existente no Drive foi criado em fase anterior e **não está sincronizado com esse snapshot**. Ele não deve ser apresentado como cópia corrente da base. A divergência é conhecida e não invalida os dados canônicos do GitHub.
+O workbook legado existente no Drive foi criado em fase anterior e **não deve ser apresentado como cópia corrente da base sem comparação contra um commit explícito da `main`**. Uma divergência do espelho é um problema de sincronização do derivado e não altera a autoridade dos dados canônicos do GitHub.
 
 ## Finalidade dos espelhos
 

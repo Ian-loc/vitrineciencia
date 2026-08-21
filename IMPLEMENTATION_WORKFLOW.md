@@ -1,5 +1,7 @@
 # Workflow de implementação — Vitrine Ciência
 
+**Estado operacional:** QA/QC e manutenção. A expansão de novas fontes, produtos e distribuições está **pausada** e só pode ser retomada por instrução humana explícita.
+
 ## Objetivo
 
 Executar mudanças de dados, interface, documentação e release em pacotes pequenos, verificáveis e encerráveis, preservando o contrato fonte → produto → distribuição e a publicação estática.
@@ -20,7 +22,7 @@ Executar mudanças de dados, interface, documentação e release em pacotes pequ
 ## Classes de pacote
 
 ### DATA
-Nova fonte/produto/distribuição ou correção factual.
+Correção factual ou semântica de registros existentes. Criação de nova fonte/produto/distribuição somente após retomada explícita da expansão por decisão humana.
 
 ### FIX
 Correção de interface, build, navegação, acessibilidade ou publicação.
@@ -50,21 +52,15 @@ Mudança estrutural de schema/runtime; excepcional e HUMAN-DECISION.
 
 ## DATA
 
-Para nova fonte:
+Enquanto a expansão estiver pausada:
 
-- checar duplicidade;
-- verificar identidade, cobertura Brasil, acesso, responsável e evidência;
-- atribuir próximo `DR####`;
-- atualizar P0–P3;
-- adicionar produtos materialmente úteis;
-- adicionar ao menos uma distribuição por produto;
-- preservar licenças e limitações no nível adequado.
+- corrigir somente defeitos factuais, semânticos ou relacionais sustentados;
+- preservar IDs canônicos e não reutilizar IDs removidos;
+- remover duplicatas apenas quando a equivalência estiver comprovada, preservando o ID canônico mais antigo;
+- não criar nova fonte, produto ou distribuição para preencher lacunas de QA;
+- manter desconhecido/variável quando a evidência não justificar maior precisão.
 
-Para novos produtos:
-
-- não enumerar arquivos/bandas/tiles sem ganho material;
-- usar `external_index` para megacatálogos;
-- registrar suporte/resolução/temporalidade somente quando sustentados.
+Se a expansão for retomada por instrução humana explícita, voltam a valer os critérios de seleção, deduplicação, evidência, cobertura Brasil, licenças e granularidade material definidos nas políticas vigentes.
 
 ## FIX/frontend
 
@@ -86,10 +82,11 @@ Documentação ativa deve refletir:
 
 - identidade Vitrine Ciência;
 - autoridade da `main` e dos três CSVs;
-- snapshot atual quando números forem necessários;
+- estado vivo apenas nos documentos designados para isso;
 - estado `unreleased` até release explícita;
 - Drive como derivado;
-- Simbiotrama como projeto separado.
+- Simbiotrama como projeto separado;
+- fase corrente de QA/QC e pausa de expansão.
 
 Documentos históricos não devem ser reescritos como se fossem fatos atuais; devem ser classificados como histórico/proveniência.
 
@@ -110,6 +107,8 @@ Antes de release estável:
 ```bash
 python3 scripts/validate_brazil_scope.py
 python3 scripts/validate_product_catalog.py
+python3 scripts/validate_schema_identity.py
+python3 scripts/validate_active_documentation.py
 python3 scripts/build_catalog.py
 python3 scripts/audit_link_roles.py --write
 python3 scripts/validate_vitrine.py
@@ -123,4 +122,6 @@ Outros testes são adicionados conforme o delta.
 
 ## Estado corrente
 
-Em 18/08/2026: **125 fontes, 752 produtos e 783 distribuições**; IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`. A prioridade operacional é continuar expansão/qualidade, manter documentação e publicação coerentes e preparar uma primeira release científica quando o snapshot escolhido estiver tecnicamente defensável.
+A autoridade do estado vivo é `docs/PROJECT_STATE.md`, `WORKFLOW_STATUS.md` e as três tabelas CSV canônicas. Este documento não replica contagens voláteis.
+
+A fase operacional corrente é **QA/QC e manutenção**, com expansão de novas fontes, produtos e distribuições **pausada até nova instrução humana explícita**. As prioridades são disponibilidade/publicação, integridade canônica, QA semântico, documentação/release, robustez do CI e correções funcionais de UX.
