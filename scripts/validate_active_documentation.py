@@ -23,6 +23,7 @@ NO_VOLATILE_SNAPSHOT_DOCS = [
     ROOT / "AUDIT_REPORT.md",
     ROOT / "IMPLEMENTATION_WORKFLOW.md",
     ROOT / "PRODUCT_CATALOG_MODEL.md",
+    ROOT / "QUALITY_CORRECTION_WORKFLOW.md",
     ROOT / "SELECTION_AND_COVERAGE_POLICY.md",
     ROOT / "docs" / "UX6_PRODUCT_DISCOVERY_IMPLEMENTATION.md",
     ROOT / "docs" / "VITRINE_BOUNDARY.md",
@@ -93,23 +94,13 @@ def validate_historical_snapshots() -> None:
         text = read(path)
         normalized = text.lower()
         if "historical_evidence" not in normalized:
-            fail(
-                f"{path.relative_to(ROOT)} contém snapshot histórico sem marcador "
-                "HISTORICAL_EVIDENCE"
-            )
+            fail(f"{path.relative_to(ROOT)} contém snapshot histórico sem marcador HISTORICAL_EVIDENCE")
         if "não representa o estado corrente" not in normalized:
-            fail(
-                f"{path.relative_to(ROOT)} não declara explicitamente que o snapshot "
-                "não representa o estado corrente"
-            )
+            fail(f"{path.relative_to(ROOT)} não declara explicitamente que o snapshot não representa o estado corrente")
         if "docs/project_state.md" not in normalized or "workflow_status.md" not in normalized:
-            fail(
-                f"{path.relative_to(ROOT)} não aponta para as fontes do estado vivo"
-            )
+            fail(f"{path.relative_to(ROOT)} não aponta para as fontes do estado vivo")
         if re.search(r"^##\s+revisão corrente\b", text, flags=re.IGNORECASE | re.MULTILINE):
-            fail(
-                f"{path.relative_to(ROOT)} volta a apresentar snapshot histórico como revisão corrente"
-            )
+            fail(f"{path.relative_to(ROOT)} volta a apresentar snapshot histórico como revisão corrente")
 
 
 def main() -> None:
@@ -124,26 +115,19 @@ def main() -> None:
         text = read(path)
         missing = [fragment for fragment in expected_fragment if fragment not in text]
         if missing:
-            fail(
-                f"{path.relative_to(ROOT)} não reflete as contagens canônicas; "
-                f"faltam: {', '.join(missing)}"
-            )
+            fail(f"{path.relative_to(ROOT)} não reflete as contagens canônicas; faltam: {', '.join(missing)}")
         normalized = text.lower()
         if "qa/qc" not in normalized:
             fail(f"{path.relative_to(ROOT)} não declara a fase ativa de QA/QC")
         if "expans" not in normalized or "paus" not in normalized:
-            fail(
-                f"{path.relative_to(ROOT)} não declara explicitamente a pausa de expansão"
-            )
+            fail(f"{path.relative_to(ROOT)} não declara explicitamente a pausa de expansão")
 
     for path in NO_VOLATILE_SNAPSHOT_DOCS:
         text = read(path)
         match = COUNT_PATTERN.search(text)
         if match:
             snippet = " ".join(match.group(0).split())
-            fail(
-                f"{path.relative_to(ROOT)} replica snapshot quantitativo volátil: {snippet}"
-            )
+            fail(f"{path.relative_to(ROOT)} replica snapshot quantitativo volátil: {snippet}")
 
     validate_historical_snapshots()
 
@@ -162,6 +146,16 @@ def main() -> None:
         fail("IMPLEMENTATION_WORKFLOW.md não preserva a pausa de expansão")
     if "instrução humana explícita" not in implementation:
         fail("IMPLEMENTATION_WORKFLOW.md não exige decisão humana para retomar expansão")
+
+    quality = read(ROOT / "QUALITY_CORRECTION_WORKFLOW.md").lower()
+    if "qa/qc" not in quality:
+        fail("QUALITY_CORRECTION_WORKFLOW.md não declara a fase corrente de QA/QC")
+    if "expansão de novas fontes, produtos e distribuições" not in quality or "pausada" not in quality:
+        fail("QUALITY_CORRECTION_WORKFLOW.md não preserva a pausa de expansão")
+    if "instrução humana explícita" not in quality:
+        fail("QUALITY_CORRECTION_WORKFLOW.md não exige decisão humana para retomar expansão")
+    if "docs/project_state.md" not in quality or "workflow_status.md" not in quality:
+        fail("QUALITY_CORRECTION_WORKFLOW.md não aponta para as fontes do estado vivo")
 
     ux6 = read(ROOT / "docs" / "UX6_PRODUCT_DISCOVERY_IMPLEMENTATION.md").lower()
     if "qa/qc" not in ux6:
