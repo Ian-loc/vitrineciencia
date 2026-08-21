@@ -22,6 +22,8 @@ REQUIRED_FILES = (
     "about.html",
     "LICENSE",
     "LICENSE-DATA.md",
+    "robots.txt",
+    "sitemap.xml",
     "assets/style.css",
     "assets/accessibility.css",
     "assets/brazil-scope.css",
@@ -43,8 +45,6 @@ OPTIONAL_FILES = (
     "CNAME",
     "favicon.ico",
     "favicon.svg",
-    "robots.txt",
-    "sitemap.xml",
 )
 
 FORBIDDEN_PUBLIC_PATHS = (
