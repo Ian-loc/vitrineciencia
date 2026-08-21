@@ -126,7 +126,9 @@
 
     function syncLabels() {
       document.querySelectorAll("[data-source-export-controls] span").forEach(label => {
-        label.textContent = "Selecionar para comparar ou exportar";
+        if (label.textContent !== "Selecionar para comparar ou exportar") {
+          label.textContent = "Selecionar para comparar ou exportar";
+        }
       });
     }
 
