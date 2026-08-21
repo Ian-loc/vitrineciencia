@@ -159,13 +159,40 @@ jobs:
                     const sourceDownloads = page.locator('[data-download-source]');
                     const sourceSelectors = page.locator('[data-select-source]');
                     if (await sourceDownloads.count() !== metrics.sourceCards || await sourceSelectors.count() !== metrics.sourceCards) {
-                      console.error(`Controles de exportação de fontes incompletos em ${mode}.`);
+                      console.error(`Controles de seleção/exportação de fontes incompletos em ${mode}.`);
                       failed = true;
                     } else {
-                      await sourceSelectors.first().check();
+                      await sourceSelectors.nth(0).check();
                       if (!await page.locator('#source-export-bar').isVisible()) {
-                        console.error(`Barra de exportação seletiva não apareceu em ${mode}.`);
+                        console.error(`Barra de seleção de fontes não apareceu em ${mode}.`);
                         failed = true;
+                      }
+
+                      const sourceCompare = page.locator('#source-compare-open');
+                      await sourceCompare.waitFor({state: 'attached', timeout: 5000});
+                      if (!await sourceCompare.isDisabled()) {
+                        console.error(`Comparação de fontes deve exigir pelo menos duas seleções em ${mode}.`);
+                        failed = true;
+                      }
+
+                      await sourceSelectors.nth(1).check();
+                      if (!await sourceCompare.isEnabled()) {
+                        console.error(`Comparação de fontes não foi habilitada com duas seleções em ${mode}.`);
+                        failed = true;
+                      } else {
+                        await sourceCompare.click();
+                        await page.locator('#source-compare-dialog[open]').waitFor({state: 'visible'});
+                        const sourceLabels = await page.locator('#source-compare-content th[scope="row"]').allTextContents();
+                        const requiredSourceLabels = ['Cobertura geográfica', 'Resolução espacial', 'Cobertura temporal', 'Resolução temporal', 'Limitações'];
+                        if (!requiredSourceLabels.every((label) => sourceLabels.includes(label))) {
+                          console.error(`Dimensões da comparação de fontes incompletas em ${mode}: ${sourceLabels.join(' | ')}`);
+                          failed = true;
+                        }
+                        if (!await page.locator('#source-compare-download').isVisible()) {
+                          console.error(`Download da comparação de fontes não está disponível em ${mode}.`);
+                          failed = true;
+                        }
+                        await page.locator('#source-compare-close').click();
                       }
                       await page.locator('#source-export-clear').click();
                     }
