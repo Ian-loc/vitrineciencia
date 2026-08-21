@@ -28,6 +28,10 @@ NO_VOLATILE_SNAPSHOT_DOCS = [
     ROOT / "docs" / "VITRINE_OPERATING_MODEL.md",
 ]
 
+HISTORICAL_SNAPSHOT_DOCS = [
+    ROOT / "DOCUMENTATION_CONSISTENCY_AUDIT.md",
+]
+
 COUNT_PATTERN = re.compile(
     r"\b\d+\s+fontes\b.{0,160}\b\d+\s+produtos\b.{0,160}"
     r"\b\d+\s+distribui(?:ções|coes)\b",
@@ -81,6 +85,31 @@ def validate_release_state() -> None:
         )
 
 
+def validate_historical_snapshots() -> None:
+    """Keep dated audits clearly historical so stale counts cannot masquerade as live state."""
+    for path in HISTORICAL_SNAPSHOT_DOCS:
+        text = read(path)
+        normalized = text.lower()
+        if "historical_evidence" not in normalized:
+            fail(
+                f"{path.relative_to(ROOT)} contém snapshot histórico sem marcador "
+                "HISTORICAL_EVIDENCE"
+            )
+        if "não representa o estado corrente" not in normalized:
+            fail(
+                f"{path.relative_to(ROOT)} não declara explicitamente que o snapshot "
+                "não representa o estado corrente"
+            )
+        if "docs/project_state.md" not in normalized or "workflow_status.md" not in normalized:
+            fail(
+                f"{path.relative_to(ROOT)} não aponta para as fontes do estado vivo"
+            )
+        if re.search(r"^##\s+revisão corrente\b", text, flags=re.IGNORECASE | re.MULTILINE):
+            fail(
+                f"{path.relative_to(ROOT)} volta a apresentar snapshot histórico como revisão corrente"
+            )
+
+
 def main() -> None:
     counts = {name: count_csv(path) for name, path in CANONICAL.items()}
     expected_fragment = (
@@ -113,6 +142,8 @@ def main() -> None:
             fail(
                 f"{path.relative_to(ROOT)} replica snapshot quantitativo volátil: {snippet}"
             )
+
+    validate_historical_snapshots()
 
     selection = read(ROOT / "SELECTION_AND_COVERAGE_POLICY.md").lower()
     if "pausada" not in selection or "instrução humana explícita" not in selection:
