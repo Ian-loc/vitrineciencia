@@ -4,6 +4,8 @@
 
 Corrigir erros e incertezas que afetam descoberta, acesso ou interpretação sem transformar controle de qualidade em redesenho permanente do projeto.
 
+A fase corrente é de **QA/QC e manutenção**. A expansão de novas fontes, produtos e distribuições está **pausada** até nova instrução humana explícita. As contagens do catálogo não são replicadas neste documento; para o estado vivo, consultar `docs/PROJECT_STATE.md`, `WORKFLOW_STATUS.md` e as três tabelas canônicas em `data/`.
+
 ## Regra central
 
 **Qualidade é proporcional ao risco.** O objetivo é um catálogo tecnicamente defensável e útil, não eliminar toda lacuna documental existente nos provedores externos.
@@ -17,15 +19,11 @@ Corrigir erros e incertezas que afetam descoberta, acesso ou interpretação sem
 - auditorias específicas em `audit/` e `docs/audits/`;
 - falhas reais observadas na interface ou no acesso externo.
 
-## Snapshot de qualidade — 18/08/2026
+## Estado de qualidade
 
-O catálogo possui 125 fontes; `data/data_quality_report.json` registra, entre os sinais explicitamente consolidados:
+As métricas de qualidade devem ser lidas diretamente dos artefatos derivados vigentes, em especial `data/data_quality_report.json` e `data/link_role_audit.json`. Números históricos podem orientar investigação quando claramente datados, mas não devem ser reproduzidos aqui como estado corrente.
 
-- 49 fontes com licença desconhecida/variável;
-- 72 com alguma incerteza de acesso;
-- data máxima de verificação `2026-08-18`.
-
-Esses números orientam prioridade, mas não significam que os datasets externos sejam deficientes. Outros campos podem ser avaliados diretamente no catálogo quando necessário, sem transformar estimativas ad hoc em métricas oficiais.
+Esses sinais orientam prioridade, mas não significam que os datasets externos sejam deficientes. Outros campos podem ser avaliados diretamente no catálogo quando necessário, sem transformar estimativas ad hoc em métricas oficiais.
 
 ## Priorização
 
@@ -77,22 +75,3 @@ P2 não deve bloquear publicação de um snapshot defensável.
 - ausência de documentação não implica ausência do atributo;
 - licença do portal não deve ser transferida automaticamente às distribuições;
 - produto derivado não deve ser apresentado como observação primária.
-
-## Duplicidades
-
-Duplicidades de nome ou identidade devem ser revisadas semanticamente. IDs estáveis não são apagados ou reciclados silenciosamente. Quando necessário, uma consolidação deve preservar rastreabilidade e definir alias/tombstone ou outra estratégia explícita.
-
-## Drive
-
-O workbook do Drive não deve receber uma “correção” isolada. Primeiro corrige-se `main`; depois o espelho pode ser regenerado integralmente. Divergência do espelho é problema de sincronização, não evidência contra os CSVs canônicos.
-
-## Critério de suficiência
-
-Uma rodada de QA termina quando:
-
-- não há erro material conhecido no escopo revisado;
-- os validadores aplicáveis passam;
-- limitações remanescentes estão explícitas;
-- o retorno marginal de nova revisão é baixo em relação a outras prioridades do catálogo.
-
-Novos achados futuros reabrem o registro específico; não tornam todo o catálogo perpetuamente provisório.
