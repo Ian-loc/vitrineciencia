@@ -6,9 +6,13 @@ on:
   workflow_dispatch:
     inputs:
       candidate_ref:
-        description: "Ref imutável/candidato a empacotar (v1.0.0 usa release/v1.0.0)"
+        description: "Ref candidato a empacotar (v1.0.0 usa release/v1.0.0)"
         required: true
         default: "release/v1.0.0"
+        type: string
+      candidate_sha:
+        description: "SHA Git completo (40 caracteres) aprovado para o candidato"
+        required: true
         type: string
 
 permissions:
@@ -22,15 +26,29 @@ jobs:
       - name: Restringir ao candidato v1.0.0 aprovado para empacotamento
         env:
           CANDIDATE_REF: ${{ inputs.candidate_ref }}
+          CANDIDATE_SHA: ${{ inputs.candidate_sha }}
         run: |
           set -euo pipefail
           test "$CANDIDATE_REF" = "release/v1.0.0"
+          [[ "$CANDIDATE_SHA" =~ ^[0-9a-f]{40}$ ]]
 
       - name: Checkout exact candidate
         uses: actions/checkout@v7
         with:
           ref: ${{ inputs.candidate_ref }}
           fetch-depth: 0
+
+      # A branch de candidata é mutável durante QA/QC. O pacote só pode ser
+      # produzido para o SHA completo explicitamente aprovado; isso impede que
+      # um novo commit na branch seja empacotado por engano entre revisão e run.
+      - name: Confirmar SHA exato aprovado
+        env:
+          CANDIDATE_SHA: ${{ inputs.candidate_sha }}
+        run: |
+          set -euo pipefail
+          ACTUAL_SHA="$(git rev-parse HEAD)"
+          test "$ACTUAL_SHA" = "$CANDIDATE_SHA"
+          echo "Candidato fixado em $ACTUAL_SHA"
 
       # A release não pode ser empacotada com um estado de QA anterior ao da
       # main. Se o candidato ainda não recebeu os gates de normalização atuais,
