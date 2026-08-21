@@ -35,6 +35,7 @@ REQUIRED_FILES = (
     "assets/products.js",
     "assets/analytics.js",
     "assets/export-selective.js",
+    "assets/source-comparison.js",
     "data/data_resources.json",
     "data/data_products.json",
     "data/brazil_scope_priorities.json",
