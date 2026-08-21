@@ -62,9 +62,12 @@ jobs:
           const { chromium } = require('playwright');
           const fs = require('fs');
 
+          // A candidata é o objeto sob teste e deve bloquear o PR quando falhar.
+          // A versão publicada é apenas evidência comparativa best-effort: indisponibilidade
+          // externa do GitHub Pages não deve tornar um PR localmente correto impossível de validar.
           const targets = [
-            ['live', process.env.LIVE_URL],
-            ['candidate', process.env.CANDIDATE_URL],
+            ['live', process.env.LIVE_URL, false],
+            ['candidate', process.env.CANDIDATE_URL, true],
           ];
           const pages = [
             ['home', ''],
@@ -82,16 +85,26 @@ jobs:
             const report = [];
             let failed = false;
 
-            for (const [target, base] of targets) {
+            for (const [target, base, strict] of targets) {
               for (const [mode, viewport] of viewports) {
                 const context = await browser.newContext({ viewport });
                 for (const [name, path] of pages) {
                   const page = await context.newPage();
                   const url = base + path;
-                  const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
+                  let response;
+                  try {
+                    response = await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
+                  } catch (error) {
+                    console.error(`Falha de navegação: ${url}: ${error.message}`);
+                    if (strict) failed = true;
+                    report.push({target, mode, page: name, url, unavailable: true, error: error.message});
+                    await page.close();
+                    continue;
+                  }
                   if (!response || !response.ok()) {
                     console.error(`HTTP inválido: ${url} -> ${response && response.status()}`);
-                    failed = true;
+                    if (strict) failed = true;
+                    report.push({target, mode, page: name, url, unavailable: true, httpStatus: response && response.status()});
                     await page.close();
                     continue;
                   }
@@ -129,12 +142,12 @@ jobs:
                   Object.assign(metrics, {target, mode, page: name, url});
                   report.push(metrics);
 
-                  if (!metrics.hasMain || !metrics.h1) failed = true;
-                  if (metrics.documentWidth > metrics.viewportWidth + 2) {
+                  if (strict && (!metrics.hasMain || !metrics.h1)) failed = true;
+                  if (strict && metrics.documentWidth > metrics.viewportWidth + 2) {
                     console.error(`Overflow horizontal: ${target}/${mode}/${name}: ${metrics.documentWidth} > ${metrics.viewportWidth}`);
                     failed = true;
                   }
-                  if (mode === 'mobile' && metrics.visibleNav.length < 5) {
+                  if (strict && mode === 'mobile' && metrics.visibleNav.length < 5) {
                     console.error(`Navegação mobile incompleta em ${target}/${name}: ${metrics.visibleNav.join(' | ')}`);
                     failed = true;
                   }
