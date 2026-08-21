@@ -1,24 +1,15 @@
 name: Build v1.0.0 Zenodo candidate
 
+# Empacotamento de release é deliberadamente manual durante a fase de QA/QC.
+# Não gerar candidatos Zenodo automaticamente a cada PR de dados/documentação.
 on:
-  pull_request:
-    branches: ["main"]
-    paths:
-      - "data/**"
-      - "schema/**"
-      - "scripts/build_zenodo_package.py"
-      - "README.md"
-      - "CODEBOOK.md"
-      - "METHODOLOGY.md"
-      - "CITATION.cff"
-      - "CHANGELOG.md"
-      - "DATA_LICENSE.md"
-      - "LICENSE"
-      - "RELEASE_NOTES_v1.0.0.md"
-      - "FINAL_OBJECTIVES_AND_DOI_GATES.md"
-      - "docs/RELEASE_POLICY.md"
-      - ".github/workflows/release-package.yml"
   workflow_dispatch:
+    inputs:
+      candidate_ref:
+        description: "Ref imutável/candidato a empacotar (v1.0.0 usa release/v1.0.0)"
+        required: true
+        default: "release/v1.0.0"
+        type: string
 
 permissions:
   contents: read
@@ -28,24 +19,103 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - name: Restringir ao candidato v1.0.0 aprovado para empacotamento
+        env:
+          CANDIDATE_REF: ${{ inputs.candidate_ref }}
+        run: |
+          set -euo pipefail
+          test "$CANDIDATE_REF" = "release/v1.0.0"
+
       - name: Checkout exact candidate
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
+          ref: ${{ inputs.candidate_ref }}
           fetch-depth: 0
+
+      # A release não pode ser empacotada com um estado de QA anterior ao da
+      # main. Se o candidato ainda não recebeu os gates de normalização atuais,
+      # o empacotamento deve bloquear em vez de produzir um ZIP aparentemente
+      # válido com resíduos/revisões que o CI corrente já sabe detectar.
+      - name: Require current normalization QA gate
+        run: |
+          set -euo pipefail
+          test -s scripts/validate_normalization_residues.py
+          test -s schema/public-normalization-pending-v0.1.json
+          test -s schema/public-normalization-reviewed-unknowns-v0.1.json
+          python3 scripts/validate_normalization_residues.py
+
+      # O pacote científico também não pode carregar documentação operacional
+      # anterior à fase QA/QC vigente. Este gate impede que uma candidata
+      # preservada antes da pausa de expansão seja empacotada como se novas
+      # fontes/produtos ainda estivessem no caminho ativo.
+      - name: Require current active-documentation QA gate
+        run: |
+          set -euo pipefail
+          test -s scripts/validate_active_documentation.py
+          python3 scripts/validate_active_documentation.py
+
+      # O registro de prontidão DOI é parte do pacote de governança da release.
+      # Ele precisa refletir o modelo G1–G9 vigente, as contagens físicas do
+      # snapshot e o bloqueio explícito de publicação enquanto tag/depósito/DOI
+      # ainda não existirem.
+      - name: Require current DOI-readiness QA gate
+        run: |
+          set -euo pipefail
+          test -s release/doi_readiness.json
+          test -s scripts/validate_doi_readiness.py
+          python3 scripts/validate_doi_readiness.py
 
       - name: Validate canonical Vitrine
         run: |
+          set -euo pipefail
           python3 scripts/validate_brazil_scope.py
           python3 scripts/validate_product_catalog.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          schema_dir = Path('schema')
+          canonical_base = 'https://ian-loc.github.io/vitrineciencia/schema/'
+          legacy_tokens = ('ScienceDataSourcesCatalog', 'EcologyDataCatalog')
+          checked = 0
+
+          for path in sorted(schema_dir.glob('*.json')):
+              payload = json.loads(path.read_text(encoding='utf-8'))
+              schema_id = payload.get('$id')
+              if schema_id is None:
+                  continue
+              if not isinstance(schema_id, str) or not schema_id.strip():
+                  raise SystemExit(f'ERRO: {path}: $id vazio ou não textual')
+              if any(token in schema_id for token in legacy_tokens):
+                  raise SystemExit(f'ERRO: {path}: $id ainda usa identidade legada: {schema_id}')
+              expected = canonical_base + path.name
+              if schema_id != expected:
+                  raise SystemExit(
+                      f'ERRO: {path}: $id não corresponde à URL canônica; '
+                      f'esperado {expected}, obtido {schema_id}'
+                  )
+              checked += 1
+
+          if checked == 0:
+              raise SystemExit('ERRO: nenhum JSON Schema com $id encontrado em schema/')
+          print(f'OK: {checked} JSON Schemas usam IDs canônicos da Vitrine Ciência')
+          PY
           python3 scripts/audit_descriptive_fields.py
           python3 scripts/build_catalog.py
           python3 scripts/build_public_discovery.py
           python3 scripts/report_normalization_coverage.py
           python3 scripts/audit_link_roles.py
+          git diff --check
+          git diff --exit-code -- \
+            data/data_resources.json \
+            data/data_products.json \
+            data/data_quality_report.json \
+            data/link_role_audit.json
           python3 scripts/validate_vitrine.py
 
       - name: Build deterministic Zenodo package
         run: |
+          set -euo pipefail
           mkdir -p dist
           python3 -m py_compile scripts/build_zenodo_package.py
           python3 scripts/build_zenodo_package.py | tee dist/v1.0.0-package-build.json
@@ -55,7 +125,7 @@ jobs:
           test -s dist/vitrine-ciencia-v1.0.0/metadata/provenance.csv
 
       - name: Upload Zenodo candidate
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: vitrine-ciencia-v1.0.0-zenodo-candidate
           path: |
