@@ -21,6 +21,7 @@ STATE_DOCS = [
 
 NO_VOLATILE_SNAPSHOT_DOCS = [
     ROOT / "AUDIT_REPORT.md",
+    ROOT / "IMPLEMENTATION_WORKFLOW.md",
     ROOT / "PRODUCT_CATALOG_MODEL.md",
     ROOT / "SELECTION_AND_COVERAGE_POLICY.md",
     ROOT / "docs" / "VITRINE_BOUNDARY.md",
@@ -152,6 +153,14 @@ def main() -> None:
     operating = read(ROOT / "docs" / "VITRINE_OPERATING_MODEL.md").lower()
     if "expansão de novas fontes, produtos e distribuições está **pausada**" not in operating:
         fail("VITRINE_OPERATING_MODEL.md não preserva a pausa de expansão")
+
+    implementation = read(ROOT / "IMPLEMENTATION_WORKFLOW.md").lower()
+    if "qa/qc" not in implementation:
+        fail("IMPLEMENTATION_WORKFLOW.md não declara a fase corrente de QA/QC")
+    if "expansão de novas fontes, produtos e distribuições" not in implementation or "pausada" not in implementation:
+        fail("IMPLEMENTATION_WORKFLOW.md não preserva a pausa de expansão")
+    if "instrução humana explícita" not in implementation:
+        fail("IMPLEMENTATION_WORKFLOW.md não exige decisão humana para retomar expansão")
 
     validate_release_state()
 
