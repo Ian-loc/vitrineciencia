@@ -26,6 +26,7 @@ NO_VOLATILE_SNAPSHOT_DOCS = [
     ROOT / "PRODUCT_CATALOG_MODEL.md",
     ROOT / "QUALITY_CORRECTION_WORKFLOW.md",
     ROOT / "SELECTION_AND_COVERAGE_POLICY.md",
+    ROOT / "docs" / "PROJECT_SCIENTIFIC_DIRECTION.md",
     ROOT / "docs" / "UX6_PRODUCT_DISCOVERY_IMPLEMENTATION.md",
     ROOT / "docs" / "VITRINE_BOUNDARY.md",
     ROOT / "docs" / "VITRINE_CANONICAL_DATA_CONTRACT.md",
@@ -139,6 +140,16 @@ def main() -> None:
     operating = read(ROOT / "docs" / "VITRINE_OPERATING_MODEL.md").lower()
     if "expansão de novas fontes, produtos e distribuições está **pausada**" not in operating:
         fail("VITRINE_OPERATING_MODEL.md não preserva a pausa de expansão")
+
+    scientific_direction = read(ROOT / "docs" / "PROJECT_SCIENTIFIC_DIRECTION.md").lower()
+    if "qa/qc" not in scientific_direction:
+        fail("PROJECT_SCIENTIFIC_DIRECTION.md não declara a fase corrente de QA/QC")
+    if "expansão de novas fontes, produtos e distribuições está **pausada**" not in scientific_direction:
+        fail("PROJECT_SCIENTIFIC_DIRECTION.md não preserva a pausa de expansão")
+    if "instrução humana explícita" not in scientific_direction:
+        fail("PROJECT_SCIENTIFIC_DIRECTION.md não exige decisão humana para retomar expansão")
+    if "docs/project_state.md" not in scientific_direction or "workflow_status.md" not in scientific_direction:
+        fail("PROJECT_SCIENTIFIC_DIRECTION.md não aponta para as fontes do estado vivo")
 
     drive_mirror = read(ROOT / "DRIVE_MIRROR_CONTRACT.md").lower()
     if "docs/project_state.md" not in drive_mirror or "workflow_status.md" not in drive_mirror:
