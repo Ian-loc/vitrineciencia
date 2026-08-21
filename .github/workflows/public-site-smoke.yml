@@ -49,9 +49,16 @@ jobs:
           fetch "$SITE/products.html" "$tmp/products.html"
           fetch "$SITE/analytics.html" "$tmp/analytics.html"
           fetch "$SITE/about.html" "$tmp/about.html"
+          fetch "$SITE/LICENSE" "$tmp/LICENSE"
+          fetch "$SITE/LICENSE-DATA.md" "$tmp/LICENSE-DATA.md"
           fetch "$SITE/robots.txt" "$tmp/robots.txt"
           fetch "$SITE/sitemap.xml" "$tmp/sitemap.xml"
+          fetch "$SITE/assets/style.css" "$tmp/style.css"
+          fetch "$SITE/assets/accessibility.css" "$tmp/accessibility.css"
+          fetch "$SITE/assets/brazil-scope.css" "$tmp/brazil-scope.css"
+          fetch "$SITE/assets/products.css" "$tmp/products.css"
           fetch "$SITE/assets/visual-refinement.css" "$tmp/visual-refinement.css"
+          fetch "$SITE/assets/export-selective.css" "$tmp/export-selective.css"
           fetch "$SITE/assets/app.js" "$tmp/app.js"
           fetch "$SITE/assets/ptbr.js" "$tmp/ptbr.js"
           fetch "$SITE/assets/products.js" "$tmp/products.js"
@@ -60,6 +67,7 @@ jobs:
           fetch "$SITE/assets/source-comparison.js" "$tmp/source-comparison.js"
           fetch "$SITE/data/data_resources.json" "$tmp/resources.json"
           fetch "$SITE/data/data_products.json" "$tmp/products.json"
+          fetch "$SITE/data/brazil_scope_priorities.json" "$tmp/brazil-scope-priorities.json"
 
           grep -q 'Vitrine Ciência' "$tmp/index.html"
           grep -q 'id="filters"' "$tmp/index.html"
@@ -77,15 +85,31 @@ jobs:
           grep -q 'data/data_resources.json' "$tmp/analytics.js"
           grep -q 'assets/source-comparison.js' "$tmp/index.html"
 
-          # Os assets interativos críticos servidos devem corresponder byte a byte
-          # ao commit que acabou de ser publicado. Isso detecta deploy parcial ou
-          # asset stale mesmo quando o HTML e os dados principais estão corretos.
+          # build_site_artifact.py copia esses arquivos byte a byte. O smoke deve
+          # portanto comparar todo o núcleo público estático com o SHA publicado,
+          # não apenas JS/dados. Isso detecta deploy parcial ou HTML/CSS/licenças
+          # stale mesmo quando IDs e elementos sentinela continuam presentes.
+          cmp index.html "$tmp/index.html"
+          cmp products.html "$tmp/products.html"
+          cmp analytics.html "$tmp/analytics.html"
+          cmp about.html "$tmp/about.html"
+          cmp LICENSE "$tmp/LICENSE"
+          cmp LICENSE-DATA.md "$tmp/LICENSE-DATA.md"
+          cmp robots.txt "$tmp/robots.txt"
+          cmp sitemap.xml "$tmp/sitemap.xml"
+          cmp assets/style.css "$tmp/style.css"
+          cmp assets/accessibility.css "$tmp/accessibility.css"
+          cmp assets/brazil-scope.css "$tmp/brazil-scope.css"
+          cmp assets/products.css "$tmp/products.css"
+          cmp assets/visual-refinement.css "$tmp/visual-refinement.css"
+          cmp assets/export-selective.css "$tmp/export-selective.css"
           cmp assets/app.js "$tmp/app.js"
           cmp assets/ptbr.js "$tmp/ptbr.js"
           cmp assets/products.js "$tmp/products.js"
           cmp assets/analytics.js "$tmp/analytics.js"
           cmp assets/export-selective.js "$tmp/export-selective.js"
           cmp assets/source-comparison.js "$tmp/source-comparison.js"
+          cmp data/brazil_scope_priorities.json "$tmp/brazil-scope-priorities.json"
 
           # Metadados de descoberta precisam existir também no artefato servido.
           grep -Fq 'Sitemap: https://ian-loc.github.io/vitrineciencia/sitemap.xml' "$tmp/robots.txt"
