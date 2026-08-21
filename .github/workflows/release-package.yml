@@ -54,6 +54,17 @@ jobs:
           test -s scripts/validate_active_documentation.py
           python3 scripts/validate_active_documentation.py
 
+      # O registro de prontidão DOI é parte do pacote de governança da release.
+      # Ele precisa refletir o modelo G1–G9 vigente, as contagens físicas do
+      # snapshot e o bloqueio explícito de publicação enquanto tag/depósito/DOI
+      # ainda não existirem.
+      - name: Require current DOI-readiness QA gate
+        run: |
+          set -euo pipefail
+          test -s release/doi_readiness.json
+          test -s scripts/validate_doi_readiness.py
+          python3 scripts/validate_doi_readiness.py
+
       - name: Validate canonical Vitrine
         run: |
           set -euo pipefail
