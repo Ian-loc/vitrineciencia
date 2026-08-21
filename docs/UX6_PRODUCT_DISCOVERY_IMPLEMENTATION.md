@@ -2,7 +2,9 @@
 
 ## Status
 
-**Implementado e ampliado.** Este documento descreve a camada pública de produtos da Vitrine após a fase piloto. Em 18/08/2026, a interface opera sobre **125 fontes, 752 produtos e 783 distribuições**; os maiores IDs correntes chegam a `DR0125`, `DP000756` e `DD000787`. A camada não está mais restrita a TerraBrasilis/Google Earth Engine nem ao antigo baseline de 51 fontes.
+**Implementado e em manutenção.** Este documento descreve a camada pública de produtos da Vitrine após a fase piloto. As contagens do catálogo não são replicadas aqui porque mudam com o estado canônico; para o estado vivo, consultar `docs/PROJECT_STATE.md`, `WORKFLOW_STATUS.md` e as três tabelas canônicas em `data/`.
+
+A fase corrente é de **QA/QC e manutenção**. A expansão de novas fontes, produtos e distribuições está **pausada** até nova instrução humana explícita.
 
 ## Objetivo
 
@@ -47,7 +49,7 @@ O pipeline deve exigir, conforme o delta:
 
 ## Evolução
 
-A expansão ocorre fonte por fonte e produto por produto dentro do contrato 34/24/15. Melhorias futuras devem priorizar usabilidade, busca, filtros e clareza de metadados; mudança de schema só deve ocorrer se houver necessidade material recorrente.
+Na fase atual, melhorias devem priorizar **QA/QC, robustez, usabilidade, busca, filtros, acessibilidade e clareza de metadados**. A expansão de novas fontes, produtos e distribuições permanece pausada até instrução humana explícita. Mudança de schema só deve ocorrer se houver necessidade material recorrente e demonstrada.
 
 ## GitHub Pages
 
