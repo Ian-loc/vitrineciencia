@@ -21,7 +21,7 @@ Snapshot candidato à primeira release científica estável e à preservação c
 - contrato público estabilizado em três tabelas: fonte → produto → distribuição;
 - snapshot candidato congelado com **135 fontes, 843 produtos e 876 distribuições**;
 - identificadores correntes até `DR0135`, `DP000861` e `DD000894`, com lacunas históricas preservadas e IDs não reciclados;
-- schema estável de **34 campos para fontes, 24 produtos e 15 distribuições**;
+- schema estável de **34 campos para fontes, 24 campos para produtos e 15 campos para distribuições**;
 - expansão Brasil-primeiro com fontes institucionais e produtos de ambiente, biodiversidade, clima, água, geociências, agricultura, florestas, sensoriamento remoto, saúde, educação, território e políticas públicas;
 - classificação territorial P0–P3 mantida como camada curatorial vinculada às fontes;
 - camada pública derivada com seis áreas amplas e normalização conservadora de suporte espacial e frequência de atualização, preservando o texto detalhado original;
