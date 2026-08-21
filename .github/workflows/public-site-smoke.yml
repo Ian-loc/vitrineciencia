@@ -49,6 +49,8 @@ jobs:
           fetch "$SITE/products.html" "$tmp/products.html"
           fetch "$SITE/analytics.html" "$tmp/analytics.html"
           fetch "$SITE/about.html" "$tmp/about.html"
+          fetch "$SITE/robots.txt" "$tmp/robots.txt"
+          fetch "$SITE/sitemap.xml" "$tmp/sitemap.xml"
           fetch "$SITE/assets/visual-refinement.css" "$tmp/visual-refinement.css"
           fetch "$SITE/assets/app.js" "$tmp/app.js"
           fetch "$SITE/assets/products.js" "$tmp/products.js"
@@ -70,6 +72,16 @@ jobs:
           grep -q 'data/data_resources.json' "$tmp/app.js"
           grep -q 'data/data_products.json' "$tmp/products.js"
           grep -q 'data/data_resources.json' "$tmp/analytics.js"
+
+          # Metadados de descoberta precisam existir também no artefato servido.
+          grep -Fq 'Sitemap: https://ian-loc.github.io/vitrineciencia/sitemap.xml' "$tmp/robots.txt"
+          for url in \
+            "$SITE/" \
+            "$SITE/products.html" \
+            "$SITE/analytics.html" \
+            "$SITE/about.html"; do
+            grep -Fq "<loc>$url</loc>" "$tmp/sitemap.xml"
+          done
 
           # A identidade pública precisa apontar para a URL canônica atual em
           # todas as páginas, inclusive após o deploy no Pages.

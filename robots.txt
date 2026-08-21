@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ian-loc.github.io/vitrineciencia/sitemap.xml
