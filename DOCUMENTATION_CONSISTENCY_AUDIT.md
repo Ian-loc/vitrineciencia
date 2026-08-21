@@ -1,6 +1,9 @@
 # Auditoria de consistência documental
 
-## Revisão corrente — 18 de agosto de 2026
+> **HISTORICAL_EVIDENCE — não representa o estado corrente da Vitrine Ciência.**
+> Este documento registra a auditoria executada em 18 de agosto de 2026. Contagens, IDs, prioridades e diagnósticos abaixo são um snapshot histórico e não devem ser usados como fonte do estado atual. Para o estado vivo, consulte `docs/PROJECT_STATE.md`, `WORKFLOW_STATUS.md` e as três tabelas canônicas em `data/`.
+
+## Revisão histórica — 18 de agosto de 2026
 
 ### Escopo
 
@@ -13,7 +16,7 @@ Foram confrontados os documentos operacionais e normativos da Vitrine com:
 - build público e fronteira do GitHub Pages;
 - documentação do Drive do projeto.
 
-### Estado factual usado como referência
+### Estado factual usado como referência naquela revisão
 
 Em 18/08/2026:
 
@@ -27,19 +30,19 @@ Em 18/08/2026:
 - site público: GitHub Pages independente;
 - Drive: derivado/histórico; workbook legado não sincronizado com o snapshot corrente.
 
-## Problemas encontrados nesta revisão
+## Problemas encontrados naquela revisão
 
 1. `WORKFLOW_STATUS.md`, `IMPLEMENTATION_WORKFLOW.md` e `QUALITY_CORRECTION_WORKFLOW.md` ainda descreviam o baseline de 51 fontes e ciclos DATA1/38 campos já superados.
 2. `METHODOLOGY.md`, `CODEBOOK.md`, `PRODUCT_CATALOG_MODEL.md`, `docs/PROJECT_STATE.md`, `docs/PROJECT_SCIENTIFIC_DIRECTION.md` e `docs/GOVERNANCE.md` ainda apresentavam Instância 1/PostgreSQL/PostGIS como destino ativo da Vitrine.
 3. `docs/VITRINE_OPERATING_MODEL.md` e `docs/VITRINE_CANONICAL_DATA_CONTRACT.md` ainda congelavam metas de 51 fontes/11 produtos/19 distribuições.
 4. `SELECTION_AND_COVERAGE_POLICY.md` ainda bloqueava expansão até conclusão do antigo baseline, embora a `main` já possuísse 125 fontes.
-5. documentos de release/DOI e alguns status confundiam maiores IDs (`DP000756`, `DD000787`) com contagens efetivas; os validadores canônicos confirmam 752 produtos e 783 distribuições.
+5. documentos de release/DOI e alguns status confundiam maiores IDs (`DP000756`, `DD000787`) com contagens efetivas; os validadores canônicos confirmavam 752 produtos e 783 distribuições naquele snapshot.
 6. documentos do Drive ainda descreviam a recuperação do site em 9–10 de agosto, PR #72 e erro 404 como estado corrente.
 7. o workbook do Drive permanecia legado e não deveria ser confundido com a base atual.
 
-## Decisão documental
+## Decisão documental daquela revisão
 
-A documentação passa a seguir esta hierarquia:
+A documentação passou a seguir esta hierarquia:
 
 1. `docs/PROJECT_STATE.md` — estado canônico e ciclo de vida dos artefatos;
 2. `docs/PROJECT_SCIENTIFIC_DIRECTION.md` — missão e princípios;
@@ -50,18 +53,18 @@ A documentação passa a seguir esta hierarquia:
 7. release/DOI e changelog — preservação/citação;
 8. documentos datados, roadmaps relacionais antigos e materiais Simbiotrama — `HISTORICAL_EVIDENCE`.
 
-## Ajustes materializados neste pacote
+## Ajustes materializados naquele pacote
 
 - identidade Vitrine Ciência restabelecida em toda documentação ativa;
-- snapshot atualizado para 125/752/783 onde contagens atuais são úteis;
+- snapshot atualizado para 125/752/783 onde contagens atuais eram úteis naquele momento;
 - distinção explícita entre contagem de registros e maior ID corrente;
 - remoção de metas operacionais obsoletas 51/11/19 e 38 campos;
 - PostgreSQL/PostGIS e Instâncias 1–3 retirados do caminho ativo da Vitrine;
-- expansão contínua por lotes auditados reconhecida como estado real;
+- expansão contínua por lotes auditados reconhecida como estado real naquele estágio;
 - QA reescrito com critério de suficiência e prioridade por risco;
 - papéis `Site oficial`/`homepage_url` e `Acessar dados`/`data_access_url` preservados no contrato documental requerido pela CI;
-- Drive explicitamente classificado como derivado e atualmente não sincronizado;
-- release mantida como `unreleased`; DOI continua dependente de snapshot/tag/depósito e decisão humana;
+- Drive explicitamente classificado como derivado e então não sincronizado;
+- release mantida como `unreleased`; DOI dependente de snapshot/tag/depósito e decisão humana;
 - histórico pré-separação preservado sem autoridade normativa.
 
 ## Regra de manutenção documental
