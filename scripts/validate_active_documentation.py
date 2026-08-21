@@ -21,6 +21,7 @@ STATE_DOCS = [
 
 NO_VOLATILE_SNAPSHOT_DOCS = [
     ROOT / "AUDIT_REPORT.md",
+    ROOT / "DRIVE_MIRROR_CONTRACT.md",
     ROOT / "IMPLEMENTATION_WORKFLOW.md",
     ROOT / "PRODUCT_CATALOG_MODEL.md",
     ROOT / "QUALITY_CORRECTION_WORKFLOW.md",
@@ -138,6 +139,14 @@ def main() -> None:
     operating = read(ROOT / "docs" / "VITRINE_OPERATING_MODEL.md").lower()
     if "expansão de novas fontes, produtos e distribuições está **pausada**" not in operating:
         fail("VITRINE_OPERATING_MODEL.md não preserva a pausa de expansão")
+
+    drive_mirror = read(ROOT / "DRIVE_MIRROR_CONTRACT.md").lower()
+    if "docs/project_state.md" not in drive_mirror or "workflow_status.md" not in drive_mirror:
+        fail("DRIVE_MIRROR_CONTRACT.md não aponta para as fontes do estado vivo")
+    if re.search(r"^##\s+estado corrente\s+[—-]\s+\d{2}/\d{2}/\d{4}\b", drive_mirror, flags=re.MULTILINE):
+        fail("DRIVE_MIRROR_CONTRACT.md volta a apresentar snapshot datado como estado corrente")
+    if "não deve ser apresentado como cópia corrente" not in drive_mirror:
+        fail("DRIVE_MIRROR_CONTRACT.md não explicita o caráter derivado do workbook legado")
 
     implementation = read(ROOT / "IMPLEMENTATION_WORKFLOW.md").lower()
     if "qa/qc" not in implementation:
