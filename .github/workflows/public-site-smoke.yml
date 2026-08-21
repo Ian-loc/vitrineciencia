@@ -53,8 +53,11 @@ jobs:
           fetch "$SITE/sitemap.xml" "$tmp/sitemap.xml"
           fetch "$SITE/assets/visual-refinement.css" "$tmp/visual-refinement.css"
           fetch "$SITE/assets/app.js" "$tmp/app.js"
+          fetch "$SITE/assets/ptbr.js" "$tmp/ptbr.js"
           fetch "$SITE/assets/products.js" "$tmp/products.js"
           fetch "$SITE/assets/analytics.js" "$tmp/analytics.js"
+          fetch "$SITE/assets/export-selective.js" "$tmp/export-selective.js"
+          fetch "$SITE/assets/source-comparison.js" "$tmp/source-comparison.js"
           fetch "$SITE/data/data_resources.json" "$tmp/resources.json"
           fetch "$SITE/data/data_products.json" "$tmp/products.json"
 
@@ -72,6 +75,17 @@ jobs:
           grep -q 'data/data_resources.json' "$tmp/app.js"
           grep -q 'data/data_products.json' "$tmp/products.js"
           grep -q 'data/data_resources.json' "$tmp/analytics.js"
+          grep -q 'assets/source-comparison.js' "$tmp/index.html"
+
+          # Os assets interativos críticos servidos devem corresponder byte a byte
+          # ao commit que acabou de ser publicado. Isso detecta deploy parcial ou
+          # asset stale mesmo quando o HTML e os dados principais estão corretos.
+          cmp assets/app.js "$tmp/app.js"
+          cmp assets/ptbr.js "$tmp/ptbr.js"
+          cmp assets/products.js "$tmp/products.js"
+          cmp assets/analytics.js "$tmp/analytics.js"
+          cmp assets/export-selective.js "$tmp/export-selective.js"
+          cmp assets/source-comparison.js "$tmp/source-comparison.js"
 
           # Metadados de descoberta precisam existir também no artefato servido.
           grep -Fq 'Sitemap: https://ian-loc.github.io/vitrineciencia/sitemap.xml' "$tmp/robots.txt"
