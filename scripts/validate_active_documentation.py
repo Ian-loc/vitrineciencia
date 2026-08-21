@@ -24,6 +24,7 @@ NO_VOLATILE_SNAPSHOT_DOCS = [
     ROOT / "IMPLEMENTATION_WORKFLOW.md",
     ROOT / "PRODUCT_CATALOG_MODEL.md",
     ROOT / "SELECTION_AND_COVERAGE_POLICY.md",
+    ROOT / "docs" / "UX6_PRODUCT_DISCOVERY_IMPLEMENTATION.md",
     ROOT / "docs" / "VITRINE_BOUNDARY.md",
     ROOT / "docs" / "VITRINE_CANONICAL_DATA_CONTRACT.md",
     ROOT / "docs" / "VITRINE_OPERATING_MODEL.md",
@@ -161,6 +162,16 @@ def main() -> None:
         fail("IMPLEMENTATION_WORKFLOW.md não preserva a pausa de expansão")
     if "instrução humana explícita" not in implementation:
         fail("IMPLEMENTATION_WORKFLOW.md não exige decisão humana para retomar expansão")
+
+    ux6 = read(ROOT / "docs" / "UX6_PRODUCT_DISCOVERY_IMPLEMENTATION.md").lower()
+    if "qa/qc" not in ux6:
+        fail("UX6_PRODUCT_DISCOVERY_IMPLEMENTATION.md não declara a fase corrente de QA/QC")
+    if "expansão de novas fontes, produtos e distribuições" not in ux6 or "pausada" not in ux6:
+        fail("UX6_PRODUCT_DISCOVERY_IMPLEMENTATION.md não preserva a pausa de expansão")
+    if "instrução humana explícita" not in ux6:
+        fail("UX6_PRODUCT_DISCOVERY_IMPLEMENTATION.md não exige decisão humana para retomar expansão")
+    if "docs/project_state.md" not in ux6 or "workflow_status.md" not in ux6:
+        fail("UX6_PRODUCT_DISCOVERY_IMPLEMENTATION.md não aponta para as fontes do estado vivo")
 
     validate_release_state()
 
