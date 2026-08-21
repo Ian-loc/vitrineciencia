@@ -26,7 +26,6 @@ LEGACY_TOKENS = (
     "38 campos",
     "BR1",
     "BR5",
-    "35 fontes",
     "16 registros",
     "Lara, Ian",
 )
