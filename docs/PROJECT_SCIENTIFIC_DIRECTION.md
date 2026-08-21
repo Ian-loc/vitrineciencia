@@ -1,7 +1,8 @@
 # Direção científica — Vitrine Ciência
 
 **Status:** vigente  
-**Data:** 18 de agosto de 2026
+**Atualização:** 21 de agosto de 2026  
+**Fase operacional atual:** QA/QC e manutenção. A expansão de novas fontes, produtos e distribuições está **pausada** e só pode ser retomada mediante instrução humana explícita. O estado vivo deve ser consultado em `docs/PROJECT_STATE.md` e `WORKFLOW_STATUS.md`.
 
 ## 1. Missão
 
@@ -72,4 +73,4 @@ A Vitrine é bem-sucedida quando permite responder, com baixo risco de interpret
 - quais evidências e datas sustentam o registro;
 - qual versão ou coleção deve ser conferida no provedor original.
 
-O crescimento do catálogo deve aumentar cobertura e utilidade sem sacrificar clareza semântica, rastreabilidade ou simplicidade operacional.
+Na fase atual, o critério operacional é reduzir defeitos e riscos mensuráveis no catálogo e na publicação sem aumentar o escopo de conteúdo. Quando a expansão for explicitamente retomada, o crescimento do catálogo deve aumentar cobertura e utilidade sem sacrificar clareza semântica, rastreabilidade ou simplicidade operacional.
