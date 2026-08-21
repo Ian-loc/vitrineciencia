@@ -50,10 +50,41 @@ def read(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
+def citation_version() -> str:
+    text = read(ROOT / "CITATION.cff")
+    match = re.search(r'^version:\s*["\']?([^"\'\s]+)["\']?\s*$', text, flags=re.MULTILINE)
+    if not match:
+        fail("CITATION.cff não declara version de forma reconhecível")
+    return match.group(1)
+
+
+def validate_release_state() -> None:
+    """Prevent the live branch from presenting an unpublished candidate as released."""
+    version = citation_version()
+    changelog = read(ROOT / "CHANGELOG.md")
+
+    if version == "unreleased":
+        if re.search(r"^##\s+1\.0\.0\b", changelog, flags=re.MULTILINE):
+            fail(
+                "CHANGELOG.md apresenta 1.0.0 como release formal enquanto "
+                "CITATION.cff permanece unreleased"
+            )
+        if "## Candidata v1.0.0" not in changelog:
+            fail("CHANGELOG.md não identifica explicitamente v1.0.0 como candidata")
+
+    license_public = read(ROOT / "LICENSE-DATA.md")
+    license_package_source = read(ROOT / "DATA_LICENSE.md")
+    if license_public != license_package_source:
+        fail(
+            "LICENSE-DATA.md e DATA_LICENSE.md divergem; a licença pública e a "
+            "licença usada no pacote de release devem ser semanticamente idênticas"
+        )
+
+
 def main() -> None:
     counts = {name: count_csv(path) for name, path in CANONICAL.items()}
     expected_fragment = (
-        f"{counts['fontes']} fontes" ,
+        f"{counts['fontes']} fontes",
         f"{counts['produtos']} produtos",
         f"{counts['distribuições']} distribuições",
     )
@@ -91,10 +122,13 @@ def main() -> None:
     if "expansão de novas fontes, produtos e distribuições está **pausada**" not in operating:
         fail("VITRINE_OPERATING_MODEL.md não preserva a pausa de expansão")
 
+    validate_release_state()
+
     print(
         "OK active documentation state: "
         f"{counts['fontes']} fontes, {counts['produtos']} produtos, "
-        f"{counts['distribuições']} distribuições; snapshots voláteis centralizados"
+        f"{counts['distribuições']} distribuições; snapshots voláteis centralizados; "
+        f"release={citation_version()}"
     )
 
 
