@@ -50,6 +50,50 @@ jobs:
           test "$ACTUAL_SHA" = "$CANDIDATE_SHA"
           echo "Candidato fixado em $ACTUAL_SHA"
 
+      # Existência local de um validator não prova que a candidata recebeu o
+      # QA corrente: uma cópia antiga do script pode continuar passando. Antes
+      # de empacotar, exija igualdade byte a byte com a main para o contrato de
+      # QA e para os três CSVs científicos. Arquivos deliberadamente específicos
+      # da release (CITATION.cff, doi_readiness e notas) ficam fora deste gate.
+      - name: Confirmar sincronização do contrato QA com main
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          qa_files=(
+            data/data_resources.csv
+            data/data_products.csv
+            data/product_distributions.csv
+            data/link_role_exceptions.json
+            schema/public-normalization-overrides-v0.1.json
+            schema/public-normalization-pending-v0.1.json
+            schema/public-normalization-reviewed-unknowns-v0.1.json
+            scripts/audit_descriptive_fields.py
+            scripts/audit_link_roles.py
+            scripts/build_catalog.py
+            scripts/build_public_discovery.py
+            scripts/build_zenodo_package.py
+            scripts/report_normalization_coverage.py
+            scripts/validate_active_documentation.py
+            scripts/validate_brazil_scope.py
+            scripts/validate_doi_readiness.py
+            scripts/validate_normalization_residues.py
+            scripts/validate_product_catalog.py
+            scripts/validate_schema_identity.py
+            scripts/validate_vitrine.py
+          )
+          for path in "${qa_files[@]}"; do
+            test -e "$path"
+            candidate_blob="$(git rev-parse "HEAD:$path")"
+            main_blob="$(git rev-parse "origin/main:$path")"
+            if [ "$candidate_blob" != "$main_blob" ]; then
+              echo "ERRO: candidata desatualizada em $path" >&2
+              echo "  candidate=$candidate_blob" >&2
+              echo "  main=$main_blob" >&2
+              exit 1
+            fi
+          done
+          echo "OK: candidata sincronizada com o contrato QA e os CSVs científicos da main"
+
       # A release não pode ser empacotada com um estado de QA anterior ao da
       # main. Se o candidato ainda não recebeu os gates de normalização atuais,
       # o empacotamento deve bloquear em vez de produzir um ZIP aparentemente
