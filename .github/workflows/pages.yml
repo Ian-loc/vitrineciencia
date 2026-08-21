@@ -67,6 +67,16 @@ jobs:
           test -s _site/products.html
           test -s _site/analytics.html
           test -s _site/about.html
+          test -s _site/robots.txt
+          test -s _site/sitemap.xml
+          grep -Fq 'Sitemap: https://ian-loc.github.io/vitrineciencia/sitemap.xml' _site/robots.txt
+          for url in \
+            'https://ian-loc.github.io/vitrineciencia/' \
+            'https://ian-loc.github.io/vitrineciencia/products.html' \
+            'https://ian-loc.github.io/vitrineciencia/analytics.html' \
+            'https://ian-loc.github.io/vitrineciencia/about.html'; do
+            grep -Fq "<loc>$url</loc>" _site/sitemap.xml
+          done
           test -s _site/assets/visual-refinement.css
           test -s _site/assets/export-selective.css
           test -s _site/assets/app.js
