@@ -8,43 +8,53 @@
 <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Vitrine Ciência"><meta name="twitter:description" content="Encontre e compare dados científicos sobre o Brasil.">
 <meta name="theme-color" content="#173f32"><meta name="color-scheme" content="light">
 <title>Vitrine Ciência · Encontre e compare dados científicos sobre o Brasil</title>
-<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/accessibility.css"><link rel="stylesheet" href="assets/visual-refinement.css"><link rel="stylesheet" href="assets/ux-v2.css?v=20260827-1">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/accessibility.css"><link rel="stylesheet" href="assets/visual-refinement.css"><link rel="stylesheet" href="assets/ux-v2.css?v=20260827-2">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"DataCatalog","name":"Vitrine Ciência","url":"https://ian-loc.github.io/vitrineciencia/","description":"Catálogo curado de produtos, fontes e formas de acesso a dados científicos relevantes ao Brasil.","inLanguage":"pt-BR","isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by/4.0/","creator":{"@type":"Person","name":"Ian Clemente","sameAs":"https://orcid.org/0000-0003-1164-9318"}}</script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Ir ao conteúdo</a>
 <nav class="site-nav" aria-label="Navegação principal"><div class="wrap nav-inner">
 <a class="brand" href="index.html" aria-label="Vitrine Ciência — página inicial"><span>Vitrine Ciência</span><small>dados científicos sobre o Brasil</small></a>
-<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav-links">Menu</button>
-<div class="nav-links" id="site-nav-links"><a href="products.html">Buscar dados</a><a href="sources.html">Fontes</a><a href="about.html">Sobre</a><a class="nav-subtle" href="analytics.html">Sobre o acervo</a></div>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav-links"><span aria-hidden="true">☰</span><span>Menu</span></button>
+<div class="nav-links" id="site-nav-links"><a href="products.html">Buscar dados</a><a href="sources.html">Fontes</a><span class="nav-about"><a href="about.html">Sobre</a><a class="nav-sub" href="analytics.html">Sobre o acervo</a></span></div>
 </div></nav>
-<header class="hero home-hero"><div class="wrap hero-grid"><div class="hero-copy">
+<header class="hero home-hero"><div class="wrap home-hero-grid"><div class="hero-copy">
 <p class="eyebrow">Catálogo científico para pesquisa, ensino e extensão</p>
 <h1>Encontre e compare dados científicos sobre o Brasil</h1>
 <p class="lead">Compare cobertura, período, escala, formato, acesso e limitações de fontes e produtos científicos relevantes para sua pesquisa.</p>
-<form class="home-search" action="products.html" method="get" role="search" aria-label="Buscar produtos e datasets">
+</div>
+<form class="home-search main-search-instrument" action="products.html" method="get" role="search" aria-label="Buscar produtos e datasets">
 <label for="home-q">O que você precisa investigar?</label>
-<div class="search-row"><input id="home-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Ex.: carbono do solo no Cerrado; uso da terra; precipitação mensal…"><button type="submit">Buscar dados</button></div>
-<p class="search-help">Comece por uma variável, tema, lugar, período ou característica do dado. Depois refine a seleção por critérios científicos.</p>
+<div class="search-row"><input id="home-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Ex.: carbono no solo do Cerrado, Brasil, 2000, 30 m"><button type="submit">Buscar dados</button></div>
+<p class="search-help">Digite uma variável, tema, bioma, lugar, período ou resolução. A busca abre diretamente os produtos compatíveis.</p>
+<div class="quick-search" aria-label="Exemplos de busca"><span>Exemplos:</span><a href="products.html?q=carbono+solo+Cerrado">carbono no solo</a><a href="products.html?q=precipitação+mensal+Brasil">precipitação mensal</a><a href="products.html?q=uso+da+terra+30+m">uso da terra 30 m</a></div>
 </form>
-<div class="home-actions"><a class="primary" href="products.html">Explorar todos os produtos</a><a href="sources.html">Ver fontes e provedores</a><a href="about.html#como-organizamos">Entender como a Vitrine organiza os dados</a></div>
-</div></div></header>
+</div></header>
 <section class="stats" aria-label="Resumo do catálogo"><div class="wrap stats-grid">
 <div><strong id="home-products">843</strong><span>produtos catalogados</span></div>
 <div><strong id="home-sources">135</strong><span>fontes representadas</span></div>
 <div><strong id="home-access">876</strong><span>formas de acesso</span></div>
-<div><strong id="home-free">—</strong><span>produtos com acesso gratuito</span></div>
+<div><strong id="home-free">—</strong><span>produtos com download gratuito</span></div>
 </div></section>
 <main id="conteudo" class="wrap home-main">
+<section class="home-section thematic-products" aria-labelledby="topics-heading"><div class="section-heading"><div><p class="eyebrow">Exploração temática</p><h2 id="topics-heading">Explore produtos por área de pesquisa</h2></div><p>As contagens representam <strong>produtos</strong>, não fontes. Um mesmo produto pode contribuir para mais de uma área.</p></div>
+<div class="product-area-grid" id="home-product-areas">
+<a class="product-area-card" data-area="Agricultura, Florestas e Uso da Terra" href="products.html?area=Agricultura%2C+Florestas+e+Uso+da+Terra"><strong>Agricultura, Florestas e Uso da Terra</strong><span class="area-examples">agricultura · florestas · uso e cobertura</span><b data-area-count>— produtos</b></a>
+<a class="product-area-card" data-area="Clima, Água e Atmosfera" href="products.html?area=Clima%2C+%C3%81gua+e+Atmosfera"><strong>Clima, Água e Atmosfera</strong><span class="area-examples">clima · precipitação · hidrologia</span><b data-area-count>— produtos</b></a>
+<a class="product-area-card" data-area="Ecologia, Biodiversidade e Meio Ambiente" href="products.html?area=Ecologia%2C+Biodiversidade+e+Meio+Ambiente"><strong>Ecologia, Biodiversidade e Meio Ambiente</strong><span class="area-examples">espécies · conservação · ecossistemas</span><b data-area-count>— produtos</b></a>
+<a class="product-area-card" data-area="Geociências e Solos" href="products.html?area=Geoci%C3%AAncias+e+Solos"><strong>Geociências e Solos</strong><span class="area-examples">solos · geologia · relevo</span><b data-area-count>— produtos</b></a>
+<a class="product-area-card" data-area="Geoinformação, Sensoriamento e Ciência de Dados" href="products.html?area=Geoinforma%C3%A7%C3%A3o%2C+Sensoriamento+e+Ci%C3%AAncia+de+Dados"><strong>Geoinformação, Sensoriamento e Ciência de Dados</strong><span class="area-examples">satélites · geoprocessamento · serviços</span><b data-area-count>— produtos</b></a>
+<a class="product-area-card" data-area="Território, Sociedade e Políticas Públicas" href="products.html?area=Territ%C3%B3rio%2C+Sociedade+e+Pol%C3%ADticas+P%C3%BAblicas"><strong>Território, Sociedade e Políticas Públicas</strong><span class="area-examples">população · território · indicadores</span><b data-area-count>— produtos</b></a>
+</div>
+<div class="topic-shortcuts"><span>Atalhos por variável/tema:</span><a href="products.html?theme=carbono">Carbono</a><a href="products.html?theme=biomassa">Biomassa</a><a href="products.html?theme=solo">Solos</a><a href="products.html?theme=uso_terra">Uso da terra</a><a href="products.html?theme=fogo">Fogo</a><a href="products.html?theme=biodiversidade">Biodiversidade</a><a href="products.html?theme=agua">Água</a><a href="products.html?theme=clima">Clima</a></div>
+<a class="all-products-link" href="products.html">Ver todos os <span id="home-all-products">843</span> produtos →</a>
+</section>
 <section class="home-section" aria-labelledby="workflow-heading"><div class="section-heading"><div><p class="eyebrow">Caminho de descoberta</p><h2 id="workflow-heading">Da pergunta ao dado utilizável</h2></div><p>A Vitrine prioriza o produto ou dataset que pode responder à pergunta; a fonte permanece registrada como contexto de proveniência.</p></div>
-<div class="home-flow"><article><strong>1</strong><h2>Defina a necessidade</h2><p>Busque por tema ou variável e informe, quando necessário, lugar, período e escala.</p></article><article><strong>2</strong><h2>Compare produtos</h2><p>Examine cobertura, resolução, formato, acesso, metodologia e limitações entre opções.</p></article><article><strong>3</strong><h2>Confirme na origem</h2><p>Acesse o provedor original e confirme versão, licença, método e condições antes da análise.</p></article></div>
+<div class="home-flow"><article><strong>1</strong><h3>Defina a necessidade</h3><p>Busque por tema ou variável e informe, quando necessário, lugar, período e escala.</p></article><article><strong>2</strong><h3>Compare produtos</h3><p>Examine cobertura, resolução, formato, acesso, metodologia e limitações entre opções.</p></article><article><strong>3</strong><h3>Confirme na origem</h3><p>Acesse o provedor original e confirme versão, licença, método e condições antes da análise.</p></article></div>
 </section>
-<section class="home-section" aria-labelledby="topics-heading"><div class="section-heading"><div><p class="eyebrow">Exploração rápida</p><h2 id="topics-heading">Comece por um tema</h2></div><p>Os atalhos abrem a busca de produtos; você pode combinar depois geografia, período, resolução e acesso.</p></div>
-<div class="topic-links"><a href="products.html?q=biodiversidade">Biodiversidade</a><a href="products.html?q=carbono">Carbono e biomassa</a><a href="products.html?q=clima">Clima</a><a href="products.html?q=uso+da+terra">Uso e cobertura da terra</a><a href="products.html?q=água">Água e hidrologia</a><a href="products.html?q=solo">Solos</a><a href="products.html?q=fogo">Fogo e queimadas</a><a href="products.html?q=território">Território e sociedade</a></div>
-</section>
-<section class="home-section provenance-callout" aria-labelledby="sources-heading"><div><p class="eyebrow">Proveniência e contexto institucional</p><h2 id="sources-heading">Precisa escrutinar a fonte?</h2><p>Consulte provedores, instituições, documentação, condições gerais de acesso e cobertura. A distinção interna entre <strong>Fonte → Produto → Distribuição</strong> permanece explícita e preservada.</p></div><a href="sources.html">Explorar fontes</a></section>
+<section class="home-section provenance-callout" aria-labelledby="sources-heading"><div><p class="eyebrow">Proveniência e contexto institucional</p><h2 id="sources-heading">Precisa escrutinar a fonte?</h2><p>Consulte provedores, instituições, documentação e condições gerais de acesso. A arquitetura científica interna <strong>Fonte → Produto → Distribuição</strong> permanece explícita e preservada.</p></div><a href="sources.html">Explorar fontes e provedores</a></section>
 <section class="about"><div><p class="eyebrow">Uso científico responsável</p><h2>A Vitrine apoia descoberta e triagem</h2></div><p>Ela não substitui datasets, documentação ou citação originais. Antes de utilizar um produto, confirme versão, variável, suporte e resolução espacial e temporal, método, incerteza, licença, limitações e atualizações posteriores.</p></section>
 </main>
-<footer class="wrap"><p><strong>Vitrine Ciência</strong> · Ian Clemente · <a href="products.html">Buscar dados</a> · <a href="sources.html">Fontes</a> · <a href="about.html">Sobre</a></p><p>Brasil · Dados: CC BY 4.0 · Código: MIT</p></footer>
-<script src="assets/home.js?v=20260827-1" defer></script><script src="assets/navigation.js?v=20260827-1" defer></script>
+<footer class="wrap"><p><strong>Vitrine Ciência</strong> · <a href="products.html">Buscar dados</a> · <a href="sources.html">Fontes</a> · <a href="about.html">Sobre</a> · <a href="analytics.html">Sobre o acervo</a></p><p>Brasil · Dados: CC BY 4.0 · Código: MIT</p></footer>
+<script src="assets/home.js?v=20260827-2" defer></script><script src="assets/navigation.js?v=20260827-1" defer></script>
 </body></html>
