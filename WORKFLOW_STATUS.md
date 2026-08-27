@@ -10,17 +10,22 @@ A fase corrente é de **QA/QC, manutenção e refinamento da experiência de des
 
 ## Autoridade e snapshot
 
-Estado corrente: **135 fontes, 843 produtos e 876 distribuições**.
+Estado corrente do snapshot científico `v1.0.0`: **135 fontes, 843 produtos e 876 distribuições**.
 
 - repositório: `Ian-loc/vitrineciencia`;
 - branch canônica: `main`;
 - site: `https://ian-loc.github.io/vitrineciencia/`;
-- fontes: `data/data_resources.csv` — **135** registros;
-- produtos: `data/data_products.csv` — **843** registros;
-- distribuições: `data/product_distributions.csv` — **876** registros;
+- release científica estável: `v1.0.0`;
+- commit congelado: `27c545554f406b940662777e3f053e939ef3588c`;
+- GitHub Release: `https://github.com/Ian-loc/vitrineciencia/releases/tag/v1.0.0`;
+- Zenodo: `https://zenodo.org/records/22130831`;
+- DOI: `10.5281/zenodo.22130831`;
+- fontes do snapshot: `data/data_resources.csv` — **135** registros;
+- produtos do snapshot: `data/data_products.csv` — **843** registros;
+- distribuições do snapshot: `data/product_distributions.csv` — **876** registros;
 - Drive: espelho/histórico derivado, não canônico.
 
-A contagem de 135 corresponde a fontes, não a produtos.
+A contagem de 135 corresponde a fontes, não a produtos. A `main` e a interface pública podem avançar após a release; análises reproduzíveis de `v1.0.0` devem usar a tag/commit e o depósito Zenodo.
 
 ## Estado consolidado
 
@@ -58,7 +63,7 @@ Pipeline:
 
 Critérios obrigatórios para o pacote product-first:
 
-1. 135 fontes / 843 produtos / 876 distribuições preservados;
+1. 135 fontes / 843 produtos / 876 distribuições preservados no snapshot `v1.0.0`;
 2. busca inicial direcionada a produtos;
 3. seis áreas temáticas mostrando contagens de produtos;
 4. 18 cards no lote inicial com divulgação progressiva;
@@ -70,9 +75,18 @@ Critérios obrigatórios para o pacote product-first:
 10. mobile/tablet sem overflow horizontal;
 11. smoke pós-deploy verde.
 
+## Estado de release e preservação
+
+- `v1.0.0`: **PUBLICADA**;
+- Git tag/GitHub Release: **CONCLUÍDOS**;
+- depósito Zenodo Dataset: **CONCLUÍDO**;
+- DOI `10.5281/zenodo.22130831`: **EMITIDO E PROPAGADO NO REPOSITÓRIO**;
+- ORCID/Lattes e outros perfis externos: **AÇÃO ADMINISTRATIVA PENDENTE**, sem impacto sobre a imutabilidade do snapshot.
+
 ## Fora do caminho ativo
 
 - adicionar produtos não auditados apenas para elevar contagem;
 - colapsar Fonte, Produto e Distribuição;
 - inferir licença, resolução ou cobertura ausentes;
-- criar release/tag/DOI automaticamente.
+- modificar retroativamente a release `v1.0.0`;
+- criar nova release/tag/DOI sem instrução humana explícita.
