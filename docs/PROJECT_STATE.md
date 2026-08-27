@@ -2,7 +2,9 @@
 
 **Data de referência:** 27 de agosto de 2026  
 **Fuso:** `America/Sao_Paulo`  
-**Estado global:** catálogo público operacional; contrato **Fonte → Produto → Distribuição** estável; descoberta pública **product-first**; QA/QC e manutenção ativos; candidata `v1.0.0` ainda sem tag Git imutável, GitHub Release ou DOI.
+**Estado global:** catálogo público operacional; contrato **Fonte → Produto → Distribuição** estável; descoberta pública **product-first**; candidata `v1.0.0` ainda sem tag Git imutável, GitHub Release ou DOI.
+
+A **fase ativa de QA/QC e manutenção** inclui refinamento da descoberta pública, correções factuais e semânticas, validação de interface e saneamento de regressões. A expansão do corpus permanece separada desse trabalho.
 
 ## 1. Autoridade
 
@@ -72,7 +74,7 @@ Navegação responsiva com botão de menu é obrigatória para smartphones e tab
 
 ### `PAUSED`
 
-- inclusão de novas fontes, produtos ou distribuições sem nova curadoria factual explícita.
+- expansão de novas fontes, produtos ou distribuições sem nova curadoria factual explícita.
 
 ### `DERIVED`
 
