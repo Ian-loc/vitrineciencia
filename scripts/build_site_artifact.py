@@ -36,6 +36,7 @@ REQUIRED_FILES = (
     "assets/ptbr.js",
     "assets/products.js",
     "assets/product-ux-v2.js",
+    "assets/product-ux-compat.js",
     "assets/home.js",
     "assets/navigation.js",
     "assets/analytics.js",
