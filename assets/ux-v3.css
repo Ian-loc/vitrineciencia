@@ -2,7 +2,7 @@
 
 /* Product discovery is a scanning surface: show more options before requiring scrolling. */
 @media(min-width:1180px){
-  .compact-product-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem}
+  .catalog .compact-product-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem}
   .compact-product-cards .product-card{padding:.86rem}
   .product-card-head h3{font-size:.96rem}
   .product-description{min-height:2.9em;margin:.52rem 0 .45rem;font-size:.77rem;line-height:1.38;-webkit-line-clamp:2}
@@ -34,7 +34,7 @@
 
 /* Tablets: two-column results and touch-sized controls. */
 @media(min-width:721px) and (max-width:1179px){
-  .compact-product-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .catalog .compact-product-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
   .product-primary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .nav-toggle{min-height:46px}
   .site-nav .nav-links a{min-height:44px}
