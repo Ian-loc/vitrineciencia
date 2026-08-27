@@ -9,13 +9,21 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 SITE_URL = "https://ian-loc.github.io/vitrineciencia/"
 REPO_URL = "https://github.com/Ian-loc/vitrineciencia"
-PUBLIC_PAGES = ("index.html", "products.html", "analytics.html", "about.html")
-INTERACTIVE_PAGES = {"index.html", "products.html", "analytics.html"}
-PUBLIC_RENDER_FILES = (*PUBLIC_PAGES, "assets/app.js", "assets/products.js")
+PUBLIC_PAGES = ("index.html", "products.html", "sources.html", "analytics.html", "about.html")
+INTERACTIVE_PAGES = {"products.html", "sources.html", "analytics.html"}
+PUBLIC_RENDER_FILES = (
+    *PUBLIC_PAGES,
+    "assets/app.js",
+    "assets/products.js",
+    "assets/product-ux-v2.js",
+    "assets/home.js",
+    "assets/navigation.js",
+)
 IDENTITY_FILES = (*PUBLIC_PAGES, "README.md", "CITATION.cff")
 CANONICAL_URLS = {
     "index.html": SITE_URL,
     "products.html": SITE_URL + "products.html",
+    "sources.html": SITE_URL + "sources.html",
     "analytics.html": SITE_URL + "analytics.html",
     "about.html": SITE_URL + "about.html",
 }
@@ -43,10 +51,23 @@ FORBIDDEN_PUBLIC_COPY = (
     "P3 —",
 )
 REQUIRED_IDS = {
-    "index.html": {"conteudo", "catalogo", "hero-search", "q", "filters", "scope", "area", "brazil", "download", "programmatic", "coverage", "format", "evidence", "sort", "clear", "list", "count", "results-more", "show-more", "shown-count"},
-    "products.html": {"produtos", "product-search", "product-q", "product-filters", "product-source", "product-area", "product-brazil", "product-kind", "product-format", "product-protocol", "product-auth", "product-status", "product-origin", "product-sort", "product-clear", "product-list", "product-count", "product-results-more", "product-show-more", "product-shown-count", "compare-bar", "compare-dialog"},
+    "index.html": {"conteudo", "home-q", "home-products", "home-sources", "home-access"},
+    "products.html": {
+        "produtos", "product-search", "product-q", "product-filters", "product-area",
+        "product-coverage", "product-year-start", "product-year-end", "product-temporal",
+        "product-spatial-support", "product-spatial-resolution", "product-access", "product-format",
+        "product-free", "product-source", "product-brazil", "product-kind", "product-license",
+        "product-protocol", "product-auth", "product-status", "product-origin", "product-sort",
+        "product-clear", "product-list", "product-count", "product-results-more", "product-show-more",
+        "product-shown-count", "compare-bar", "compare-dialog", "query-interpretation"
+    },
+    "sources.html": {
+        "conteudo", "catalogo", "hero-search", "q", "filters", "scope", "area", "brazil",
+        "download", "programmatic", "coverage", "format", "evidence", "sort", "clear", "list",
+        "count", "results-more", "show-more", "shown-count"
+    },
     "analytics.html": {"analise", "summary", "chart-areas", "chart-download", "chart-programmatic", "chart-brazil", "chart-evidence", "chart-formats", "chart-visualizations"},
-    "about.html": {"sobre"},
+    "about.html": {"sobre", "o-que-e", "como-organizamos", "verificacao", "antes-de-usar", "citacao"},
 }
 
 
@@ -84,8 +105,6 @@ class Parser(HTMLParser):
             return
         parsed = urlparse(ref)
         if parsed.scheme or parsed.netloc:
-            # Canonical/metadata links may be absolute. Only executable/style
-            # dependencies are forbidden from leaving the repository.
             if tag == "script" or (tag == "link" and "stylesheet" in rel_tokens):
                 self.external_assets.append(ref)
             return
@@ -120,8 +139,8 @@ def validate_page(filename: str) -> None:
     missing = sorted(REQUIRED_IDS[filename].difference(parser.ids))
     if missing:
         fail(f"{filename}: IDs obrigatórios ausentes: {', '.join(missing)}")
-    if "assets/visual-refinement.css" not in content:
-        fail(f"{filename}: camada visual refinada ausente")
+    if "assets/visual-refinement.css" not in content or "assets/ux-v2.css" not in content:
+        fail(f"{filename}: camadas visuais públicas obrigatórias ausentes")
     expected_url = CANONICAL_URLS[filename]
     if parser.canonical_urls != [expected_url]:
         fail(f"{filename}: canonical deve ser único e igual a {expected_url}")
@@ -134,6 +153,8 @@ def validate_page(filename: str) -> None:
             fail("index.html: metadados estruturados DataCatalog ausentes")
         if 'https://orcid.org/0000-0003-1164-9318' not in content:
             fail("index.html: ORCID do criador ausente dos metadados estruturados")
+        if 'action="products.html"' not in content:
+            fail("index.html: busca principal deve encaminhar à descoberta de produtos")
     for ref in parser.local_refs:
         target = (path.parent / ref).resolve()
         if ROOT not in target.parents and target != ROOT:
@@ -177,11 +198,9 @@ def validate_public_copy() -> None:
     if "distribution.notes" in products_js:
         fail("assets/products.js não deve renderizar nem indexar distribution.notes")
 
-    index = (ROOT / "index.html").read_text(encoding="utf-8")
-    products = (ROOT / "products.html").read_text(encoding="utf-8")
-    about = (ROOT / "about.html").read_text(encoding="utf-8")
     forbidden_assets = ("assets/quality-summary.js", "assets/build-meta.js")
-    for filename, content in (("index.html", index), ("products.html", products), ("about.html", about)):
+    for filename in PUBLIC_PAGES:
+        content = (ROOT / filename).read_text(encoding="utf-8")
         found = [asset for asset in forbidden_assets if asset in content]
         if found:
             fail(f"{filename}: asset interno não deve ser carregado publicamente: {', '.join(found)}")
@@ -189,30 +208,28 @@ def validate_public_copy() -> None:
 
 def validate_visual_contract() -> None:
     visual = (ROOT / "assets" / "visual-refinement.css").read_text(encoding="utf-8")
-    required_rules = (
-        ".site-nav .nav-links a{\n    display:inline-flex;\n    flex:0 0 auto;",
-        ".stats-grid div:nth-child(even){border-left:1px solid var(--vr-line)}",
-        ".stats-grid div:nth-last-child(-n+2){border-bottom:0}",
-        "scroll-snap-type:x proximity",
+    ux = (ROOT / "assets" / "ux-v2.css").read_text(encoding="utf-8")
+    required_visual = (
         ".results-more[hidden]{display:none}",
+        "scroll-snap-type:x proximity",
     )
-    missing = [rule for rule in required_rules if rule not in visual]
+    missing = [rule for rule in required_visual if rule not in visual]
     if missing:
-        fail("contrato visual incompleto: navegação, áreas, estatísticas ou expansão de resultados pode regredir")
+        fail("contrato visual base incompleto")
+    required_ux = (
+        ".nav-toggle",
+        ".scientific-filter-grid",
+        ".product-triage",
+        ".compare-remove",
+        "@media(max-width:820px)",
+    )
+    missing_ux = [rule for rule in required_ux if rule not in ux]
+    if missing_ux:
+        fail("contrato UX product-first incompleto: " + ", ".join(missing_ux))
 
     progressive_contracts = {
-        "assets/app.js": (
-            "const PAGE_SIZE = 12;",
-            "filtered.slice(0, visibleCount)",
-            "visibleCount = PAGE_SIZE;",
-            "visibleCount + PAGE_SIZE",
-        ),
-        "assets/products.js": (
-            "const PAGE_SIZE = 6;",
-            "filtered.slice(0, visibleCount)",
-            "visibleCount = PAGE_SIZE;",
-            "visibleCount + PAGE_SIZE",
-        ),
+        "assets/app.js": ("const PAGE_SIZE = 12;", "filtered.slice(0, visibleCount)", "visibleCount + PAGE_SIZE"),
+        "assets/products.js": ("const PAGE_SIZE = 6;", "filtered.slice(0, visibleCount)", "visibleCount + PAGE_SIZE"),
     }
     for filename, rules in progressive_contracts.items():
         content = (ROOT / filename).read_text(encoding="utf-8")
@@ -220,11 +237,27 @@ def validate_visual_contract() -> None:
         if missing_progressive:
             fail(f"divulgação progressiva incompleta em {filename}")
 
+    product_ux = (ROOT / "assets" / "product-ux-v2.js").read_text(encoding="utf-8")
+    required_product_ux = (
+        "uxRelevanceScore(b,query) - uxRelevanceScore(a,query)",
+        "uxBrazilScore(b) - uxBrazilScore(a)",
+        "uxCompletenessScore(b) - uxCompletenessScore(a)",
+        "uxSourceOriginScore(b) - uxSourceOriginScore(a)",
+        "data-remove-compare",
+        'els.compareDialog.addEventListener("close", uxResetSelection);',
+        "uxCoverageContainsPeriod",
+        "uxProductMatchesQuery",
+    )
+    missing_product_ux = [rule for rule in required_product_ux if rule not in product_ux]
+    if missing_product_ux:
+        fail("contrato funcional product-first incompleto: " + ", ".join(missing_product_ux))
+
 
 def validate_required_assets() -> None:
     required = (
         "assets/style.css", "assets/accessibility.css", "assets/brazil-scope.css", "assets/products.css",
-        "assets/visual-refinement.css", "assets/app.js", "assets/products.js", "assets/analytics.js",
+        "assets/visual-refinement.css", "assets/ux-v2.css", "assets/app.js", "assets/products.js",
+        "assets/product-ux-v2.js", "assets/home.js", "assets/navigation.js", "assets/analytics.js",
         "assets/quality-summary.js", "assets/build-meta.js",
         "data/data_resources.csv", "data/data_resources.json", "data/data_products.csv", "data/data_products.json",
         "data/product_distributions.csv", "data/brazil_scope_priorities.json", "data/build-meta.json",
@@ -240,4 +273,4 @@ validate_identity()
 validate_public_copy()
 validate_visual_contract()
 validate_required_assets()
-print("OK: Vitrine independente, navegável e com superfície pública limpa")
+print("OK: Vitrine product-first, navegável e com superfície pública limpa")
