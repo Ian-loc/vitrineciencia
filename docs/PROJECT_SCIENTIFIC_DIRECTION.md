@@ -59,7 +59,7 @@ Metodologia, limitações, licença, versão, proveniência e formas detalhadas 
 
 O Brasil é o escopo territorial prioritário. A Vitrine inclui produtos de fontes brasileiras e fontes internacionais que oferecem informação útil sobre o país. A prioridade territorial não é nota de qualidade.
 
-A expansão de novas fontes, produtos e distribuições está **pausada** durante a fase corrente de QA/QC e refinamento. Sua retomada exige **instrução humana explícita** e curadoria factual compatível com os mesmos gates científicos aplicados ao catálogo canônico. Melhorias de busca, filtros, cards, ranking ou navegação não autorizam criação automática de registros.
+A regra operacional vigente é explícita: expansão de novas fontes, produtos e distribuições está **pausada** durante a fase corrente de QA/QC e refinamento. Sua retomada exige **instrução humana explícita** e curadoria factual compatível com os mesmos gates científicos aplicados ao catálogo canônico. Melhorias de busca, filtros, cards, ranking ou navegação não autorizam criação automática de registros.
 
 ## 6. Princípios científicos permanentes
 
