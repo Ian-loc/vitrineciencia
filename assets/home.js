@@ -4,18 +4,22 @@
   const split = value => String(value || "").split("|").map(item => item.trim()).filter(Boolean);
   const set = (id, value) => { const element = document.getElementById(id); if (element) element.textContent = value; };
 
-  fetch("data/data_products.json")
-    .then(response => {
+  Promise.all([
+    fetch("data/data_products.json").then(response => {
       if (!response.ok) throw new Error("Falha ao carregar produtos");
       return response.json();
+    }),
+    fetch("data/data_resources.json").then(response => {
+      if (!response.ok) throw new Error("Falha ao carregar fontes");
+      return response.json();
     })
-    .then(products => {
-      const sourceCount = new Set(products.map(product => product.resource_id)).size;
+  ])
+    .then(([products, resources]) => {
       const accessCount = products.reduce((total, product) => total + (product.distributions?.length || 0), 0);
       const freeCount = products.filter(product => product.distributions?.some(distribution => distribution.free_download === "sim")).length;
       set("home-products", products.length);
       set("home-all-products", products.length);
-      set("home-sources", sourceCount);
+      set("home-sources", resources.length);
       set("home-access", accessCount);
       set("home-free", freeCount);
 
