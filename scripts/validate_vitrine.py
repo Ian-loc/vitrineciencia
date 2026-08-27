@@ -9,15 +9,20 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 SITE_URL = "https://ian-loc.github.io/vitrineciencia/"
 REPO_URL = "https://github.com/Ian-loc/vitrineciencia"
-PUBLIC_PAGES = ("index.html", "products.html", "sources.html", "analytics.html", "about.html")
-INTERACTIVE_PAGES = {"products.html", "sources.html", "analytics.html"}
-PUBLIC_RENDER_FILES = (*PUBLIC_PAGES, "assets/app.js", "assets/products.js", "assets/home.js", "assets/navigation.js")
+PUBLIC_PAGES = ("index.html", "products.html", "sources.html", "analytics.html", "analytics-products.html", "about.html")
+INTERACTIVE_PAGES = {"products.html", "sources.html", "analytics.html", "analytics-products.html"}
+PUBLIC_RENDER_FILES = (
+    *PUBLIC_PAGES,
+    "assets/app.js", "assets/products.js", "assets/home.js", "assets/navigation.js",
+    "assets/analytics.js", "assets/analytics-products.js", "assets/product-label-fix.js",
+)
 IDENTITY_FILES = (*PUBLIC_PAGES, "README.md", "CITATION.cff")
 CANONICAL_URLS = {
     "index.html": SITE_URL,
     "products.html": SITE_URL + "products.html",
     "sources.html": SITE_URL + "sources.html",
     "analytics.html": SITE_URL + "analytics.html",
+    "analytics-products.html": SITE_URL + "analytics-products.html",
     "about.html": SITE_URL + "about.html",
 }
 FORBIDDEN_PAGE_TOKENS = (
@@ -28,6 +33,9 @@ FORBIDDEN_PUBLIC_COPY = (
     "Transparência de qualidade", "Cobertura e estado dos metadados", "no piloto",
     "Escopo de enumeração", "Identificador interno", "Avaliação e governança", "data-build-meta",
     "Build:", "P0 —", "P1 —", "P2 —", "P3 —",
+    "A arquitetura científica interna", "arquitetura científica interna", "arquitetura interna",
+    "Decisão arquitetural", "Direção experimental", "snapshot candidato", "Snapshot candidato",
+    "Fonte → Produto → Distribuição", "produto principal preservado", "MVP", "teto de inferência",
 )
 REQUIRED_IDS = {
     "index.html": {"conteudo", "home-q", "home-products", "home-sources", "home-access", "home-product-areas", "home-all-products"},
@@ -45,7 +53,8 @@ REQUIRED_IDS = {
         "count", "results-more", "show-more", "shown-count"
     },
     "analytics.html": {"analise", "summary", "chart-areas", "chart-download", "chart-programmatic", "chart-brazil", "chart-evidence", "chart-formats", "chart-visualizations"},
-    "about.html": {"sobre", "o-que-e", "como-organizamos", "verificacao", "antes-de-usar", "citacao"},
+    "analytics-products.html": {"analise-produtos", "product-summary", "product-chart-areas", "product-chart-kinds", "product-chart-brazil", "product-chart-temporal", "product-chart-support", "product-chart-formats", "product-chart-access"},
+    "about.html": {"sobre", "o-que-e", "como-usar", "verificacao", "limites", "citacao"},
 }
 
 
@@ -99,7 +108,8 @@ def validate_page(filename: str) -> None:
     if duplicates: fail(f"{filename}: IDs duplicados: {', '.join(duplicates)}")
     missing = sorted(REQUIRED_IDS[filename].difference(parser.ids))
     if missing: fail(f"{filename}: IDs obrigatórios ausentes: {', '.join(missing)}")
-    if "assets/visual-refinement.css" not in content or "assets/ux-v2.css" not in content: fail(f"{filename}: camadas visuais públicas obrigatórias ausentes")
+    if "assets/visual-refinement.css" not in content or "assets/ux-v2.css" not in content or "assets/ux-simple.css" not in content:
+        fail(f"{filename}: camadas visuais públicas obrigatórias ausentes")
     expected_url = CANONICAL_URLS[filename]
     if parser.canonical_urls != [expected_url]: fail(f"{filename}: canonical deve ser único e igual a {expected_url}")
     if parser.og_urls != [expected_url]: fail(f"{filename}: og:url deve ser único e igual ao canonical")
@@ -112,6 +122,8 @@ def validate_page(filename: str) -> None:
     if filename == "products.html":
         if "assets/product-ux-v2.js" in content or "assets/product-ux-compat.js" in content: fail("products.html: overlays legados de UX não podem ser carregados")
         if "assets/products.js" not in content: fail("products.html: controlador canônico de produtos ausente")
+    if filename in {"analytics.html", "analytics-products.html"}:
+        if "collection-tabs" not in content: fail(f"{filename}: navegação Fontes/Produtos do acervo ausente")
     for ref in parser.local_refs:
         target = (path.parent / ref).resolve()
         if ROOT not in target.parents and target != ROOT: fail(f"{filename}: referência fora do repositório: {ref}")
@@ -155,6 +167,7 @@ def validate_public_copy() -> None:
 def validate_visual_contract() -> None:
     visual = (ROOT / "assets/visual-refinement.css").read_text(encoding="utf-8")
     ux = (ROOT / "assets/ux-v2.css").read_text(encoding="utf-8")
+    simple = (ROOT / "assets/ux-simple.css").read_text(encoding="utf-8")
     if ".results-more[hidden]{display:none}" not in visual: fail("contrato de divulgação progressiva base ausente")
     required_ux = (
         ".nav-toggle", ".product-area-grid", ".product-primary-grid", ".compact-product-cards",
@@ -162,6 +175,9 @@ def validate_visual_contract() -> None:
     )
     missing = [rule for rule in required_ux if rule not in ux]
     if missing: fail("contrato UX product-first incompleto: " + ", ".join(missing))
+    required_simple = (".layered-filters", ".product-refine-grid", ".catalog .cards", ".collection-tabs", ".use-steps")
+    missing_simple = [rule for rule in required_simple if rule not in simple]
+    if missing_simple: fail("contrato de simplificação pública incompleto: " + ", ".join(missing_simple))
     contracts = {
         "assets/app.js": ("const PAGE_SIZE = 12;", "filtered.slice(0, visibleCount)", "visibleCount + PAGE_SIZE"),
         "assets/products.js": (
@@ -181,10 +197,10 @@ def validate_visual_contract() -> None:
 def validate_required_assets() -> None:
     required = (
         "assets/style.css", "assets/accessibility.css", "assets/brazil-scope.css", "assets/products.css",
-        "assets/visual-refinement.css", "assets/ux-v2.css", "assets/app.js", "assets/products.js",
-        "assets/home.js", "assets/navigation.js", "assets/analytics.js", "assets/export-selective.js",
-        "assets/quality-summary.js", "assets/build-meta.js", "data/data_resources.csv", "data/data_resources.json",
-        "data/data_products.csv", "data/data_products.json", "data/product_distributions.csv",
+        "assets/visual-refinement.css", "assets/ux-v2.css", "assets/ux-simple.css", "assets/app.js", "assets/products.js",
+        "assets/product-label-fix.js", "assets/home.js", "assets/navigation.js", "assets/analytics.js", "assets/analytics-products.js",
+        "assets/export-selective.js", "assets/quality-summary.js", "assets/build-meta.js", "data/data_resources.csv",
+        "data/data_resources.json", "data/data_products.csv", "data/data_products.json", "data/product_distributions.csv",
         "data/brazil_scope_priorities.json", "data/build-meta.json",
     )
     missing = [name for name in required if not (ROOT / name).exists() or (ROOT / name).stat().st_size == 0]
@@ -198,4 +214,4 @@ validate_identity()
 validate_public_copy()
 validate_visual_contract()
 validate_required_assets()
-print("OK: Vitrine product-first consolidada, navegável e com superfície pública limpa")
+print("OK: Vitrine simplificada, navegável e com fronteira pública validada")
