@@ -7,6 +7,7 @@ on:
       - ".github/workflows/public-ui-visual-qa.yml"
       - "index.html"
       - "products.html"
+      - "products-list.html"
       - "sources.html"
       - "analytics.html"
       - "about.html"
@@ -63,8 +64,8 @@ jobs:
 
           const base = process.env.CANDIDATE_URL;
           const pages = [
-            ['home', ''], ['products', 'products.html'], ['sources', 'sources.html'],
-            ['about', 'about.html'], ['catalog-overview', 'analytics.html'],
+            ['home', ''], ['products', 'products.html'], ['product-index', 'products-list.html'],
+            ['sources', 'sources.html'], ['about', 'about.html'], ['catalog-overview', 'analytics.html'],
           ];
           const viewports = [
             ['desktop', { width: 1440, height: 1100 }],
@@ -85,6 +86,7 @@ jobs:
                 const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
                 if (!response || !response.ok()) { console.error(`HTTP inválido: ${url}`); failed = true; await page.close(); continue; }
                 if (name === 'products') await page.waitForSelector('#product-list .product-card');
+                if (name === 'product-index') await page.waitForSelector('#product-index-list .product-index-row');
                 if (name === 'sources') await page.waitForSelector('#list .card');
                 await page.screenshot({ path: `visual-qa/${mode}-${name}.png`, fullPage: true });
 
@@ -129,6 +131,20 @@ jobs:
                   if (await cards.count() !== 18) { console.error(`Lote inicial deve exibir 18 produtos em ${mode}: ${await cards.count()}`); failed = true; }
                   const triage = page.locator('#product-list .triage-strip > div');
                   if (await triage.count() !== 72) { console.error(`Onde/Quando/Escala/Acesso incompleto em ${mode}: ${await triage.count()}`); failed = true; }
+                  const fullListLink = page.locator('a.full-product-list-link');
+                  if (!await fullListLink.isVisible() || await fullListLink.getAttribute('href') !== 'products-list.html') { console.error(`Acesso à lista completa ausente em ${mode}`); failed = true; }
+
+                  const boxes = await Promise.all([0,1,2].map(index => cards.nth(index).boundingBox()));
+                  if (boxes.every(Boolean)) {
+                    const sameRow = Math.abs(boxes[0].y - boxes[1].y) < 4;
+                    const nextRow = boxes[2].y > boxes[0].y + 40;
+                    if (mode === 'mobile') {
+                      if (sameRow || boxes[1].y <= boxes[0].y + 40) { console.error(`Mobile deve exibir um card por linha`); failed = true; }
+                    } else if (!sameRow || !nextRow) {
+                      console.error(`${mode} deve exibir exatamente dois cards por linha`); failed = true;
+                    }
+                  }
+
                   const requiredFilters = ['#product-theme','#product-coverage','#product-year-start','#product-year-end','#product-temporal','#product-support','#product-spatial','#product-access','#product-format','#product-free','#product-license'];
                   for (const selector of requiredFilters) if (!await page.locator(selector).count()) { console.error(`Filtro científico ausente: ${selector}`); failed = true; }
 
@@ -168,6 +184,16 @@ jobs:
 
                   await page.locator('#product-show-more').click();
                   if (await page.locator('#product-list .product-card').count() !== 36) { console.error(`Segundo lote deve chegar a 36 produtos em ${mode}`); failed = true; }
+                }
+
+                if (name === 'product-index') {
+                  const rows = page.locator('#product-index-list .product-index-row');
+                  if (await rows.count() !== 843) { console.error(`Lista completa deve exibir 843 produtos em ${mode}: ${await rows.count()}`); failed = true; }
+                  if ((await page.locator('#product-index-count').textContent()).trim() !== '843 produtos catalogados') { console.error(`Contagem da lista completa incoerente em ${mode}`); failed = true; }
+                  await page.locator('#product-index-q').fill('Cana-de-Açúcar');
+                  await page.waitForTimeout(80);
+                  const filteredRows = await rows.count();
+                  if (!(filteredRows > 0 && filteredRows < 843)) { console.error(`Busca da lista completa não filtrou em ${mode}: ${filteredRows}`); failed = true; }
                 }
 
                 if (name === 'sources') {

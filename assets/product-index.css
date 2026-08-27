@@ -1,0 +1,24 @@
+/* Vitrine Ciência — complete product index */
+.product-index{padding-top:2.3rem;padding-bottom:2rem}
+.product-index-tools{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.55fr);gap:1.5rem;align-items:end;margin-bottom:1rem}
+.product-index-tools h2{margin:.15rem 0 .35rem}
+.product-index-tools p{margin:0;color:var(--muted)}
+.product-index-tools label{display:flex;flex-direction:column;gap:.35rem;color:var(--muted);font-size:.76rem;font-weight:780}
+.product-index-tools input{min-height:44px;padding:.62rem .72rem;border:1px solid #c8d6cf;border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:.88rem}
+.hero.compact .actions a{display:inline-flex;min-height:42px;align-items:center;justify-content:center;padding:.58rem .82rem;border:1px solid rgba(255,255,255,.62);border-radius:9px;background:#fff;color:var(--dark);font-size:.78rem;font-weight:820;text-decoration:none}
+.hero.compact .actions a:hover{background:#eef4f0}
+.product-index-list{border-top:1px solid var(--line)}
+.product-index-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(180px,.72fr) minmax(130px,.42fr);gap:1rem;align-items:center;padding:.78rem .2rem;border-bottom:1px solid var(--line)}
+.product-index-row h3{margin:0;font-size:.9rem;line-height:1.32;overflow-wrap:anywhere}
+.product-index-row .index-source{margin:.18rem 0 0;color:var(--muted);font-size:.72rem}
+.product-index-row .index-kind{color:#526c63;font-size:.72rem}
+.product-index-row .index-actions{text-align:right}
+.product-index-row .index-actions a{font-size:.75rem;font-weight:800;text-underline-offset:.2rem}
+.product-index-row:hover{background:#f8faf8}
+@media(min-width:821px){.site-nav .nav-about{gap:.7rem}}
+@media(max-width:720px){
+  .product-index-tools{grid-template-columns:1fr}
+  .product-index-row{grid-template-columns:1fr;gap:.3rem;padding:.85rem .15rem}
+  .product-index-row .index-actions{text-align:left;margin-top:.2rem}
+  .hero.compact .actions a{width:100%}
+}
