@@ -1,0 +1,76 @@
+/* Vitrine Ciência — density and student-device refinement, 2026-08-27 */
+
+/* Product discovery is a scanning surface: show more options before requiring scrolling. */
+@media(min-width:1180px){
+  .compact-product-cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:.72rem}
+  .compact-product-cards .product-card{padding:.86rem}
+  .product-card-head h3{font-size:.96rem}
+  .product-description{min-height:2.9em;margin:.52rem 0 .45rem;font-size:.77rem;line-height:1.38;-webkit-line-clamp:2}
+  .product-area-chips{margin-bottom:.5rem}
+  .product-area-chips .chip{font-size:.61rem;padding:.18rem .38rem}
+  .triage-strip{gap:.34rem;margin-bottom:.48rem}
+  .triage-strip div{padding:.45rem .48rem}
+  .triage-strip dt{font-size:.55rem}
+  .triage-strip dd{font-size:.67rem;-webkit-line-clamp:2}
+  .product-card-bottom{margin-bottom:.42rem;font-size:.59rem}
+  .compact-actions .action-primary,.compact-actions .compare-toggle{min-height:35px;font-size:.69rem}
+  .product-card .card-details{margin-top:.5rem;padding-top:.45rem}
+}
+
+/* Make the filter block feel like a research query builder rather than a metadata form. */
+.scientific-filters{position:relative}
+.product-primary-grid{align-items:end}
+.product-primary-grid>legend{padding-bottom:.2rem}
+.filter-footer{border-top:1px solid var(--line);padding-top:.72rem}
+.result-insights{padding:.15rem 0 .2rem}
+
+/* Comparison: prevent stale-looking oversized columns and keep product removal visible. */
+.compare-table thead th{vertical-align:top}
+.compare-product-head{min-width:0}
+.compare-product-head span{display:block;overflow-wrap:anywhere;line-height:1.3}
+.compare-product-head button{position:sticky;top:.25rem}
+.compare-dialog-actions{margin-left:auto;align-items:center}
+.download-comparison:disabled{opacity:.45;cursor:not-allowed}
+
+/* Tablets: two-column results and touch-sized controls. */
+@media(min-width:721px) and (max-width:1179px){
+  .compact-product-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .product-primary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav-toggle{min-height:46px}
+  .site-nav .nav-links a{min-height:44px}
+}
+
+/* Phones: menu becomes explicit, search/filter controls fill the viewport, no horizontal page overflow. */
+@media(max-width:720px){
+  body{overflow-x:hidden}
+  .site-nav{position:sticky;top:0}
+  .site-nav .nav-inner{padding:.5rem 0}
+  .nav-toggle{min-width:92px;justify-content:center}
+  .site-nav .nav-links.is-open{max-height:calc(100vh - 72px);overflow-y:auto;overscroll-behavior:contain}
+  .home-main{padding-top:3rem}
+  .home-section{margin-bottom:3rem}
+  .product-area-grid{display:grid;grid-template-columns:1fr;overflow:visible;margin:0;padding:0}
+  .product-area-card{min-height:104px}
+  .scientific-filters{padding:.8rem}
+  .product-primary-grid,.product-secondary-grid{gap:.62rem}
+  .product-primary-grid input,.product-primary-grid select,.product-secondary-grid input,.product-secondary-grid select{min-height:48px;font-size:.92rem}
+  .filter-pair{grid-template-columns:1fr 1fr}
+  .compact-product-cards .product-card{padding:.9rem}
+  .triage-strip{grid-template-columns:1fr 1fr}
+  .triage-strip div{min-height:62px}
+  .compact-actions .action-primary,.compact-actions .compare-toggle{min-height:44px;font-size:.8rem}
+  .compare-bar{padding:.72rem .78rem}
+  .compare-actions button{min-height:44px}
+  dialog{max-height:94dvh}
+  .compare-dialog-header{position:sticky;top:0}
+  .compare-dialog-actions{width:100%;margin-left:0}
+  .compare-dialog-actions button{flex:1;min-height:44px}
+  #compare-content{padding:.75rem}
+  .compare-table-wrap{max-width:100%;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+}
+
+@media(max-width:430px){
+  .triage-strip{grid-template-columns:1fr}
+  .filter-pair{grid-template-columns:1fr}
+  .compact-actions{grid-template-columns:1fr 1fr}
+}

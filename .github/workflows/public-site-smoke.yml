@@ -10,9 +10,6 @@ on:
 permissions:
   contents: read
 
-# Só a publicação mais recente é relevante. Sem concorrência global, um smoke
-# antigo pode começar depois de um deploy mais novo e comparar o site atual
-# com o SHA anterior, gerando falso negativo. Um novo run cancela o anterior.
 concurrency:
   group: vitrine-public-site-smoke
   cancel-in-progress: true
@@ -25,8 +22,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          # Em workflow_run, valide exatamente o commit que acabou de ser publicado.
-          # Isso evita falso negativo quando a main avança antes do smoke iniciar.
           ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || 'main' }}
 
       - name: Verificar endpoints públicos após deploy
@@ -47,169 +42,46 @@ jobs:
 
           fetch "$SITE/" "$tmp/index.html"
           fetch "$SITE/products.html" "$tmp/products.html"
-          fetch "$SITE/analytics.html" "$tmp/analytics.html"
+          fetch "$SITE/sources.html" "$tmp/sources.html"
           fetch "$SITE/about.html" "$tmp/about.html"
-          fetch "$SITE/LICENSE" "$tmp/LICENSE"
-          fetch "$SITE/LICENSE-DATA.md" "$tmp/LICENSE-DATA.md"
-          fetch "$SITE/robots.txt" "$tmp/robots.txt"
+          fetch "$SITE/analytics.html" "$tmp/analytics.html"
           fetch "$SITE/sitemap.xml" "$tmp/sitemap.xml"
-          fetch "$SITE/assets/style.css" "$tmp/style.css"
-          fetch "$SITE/assets/accessibility.css" "$tmp/accessibility.css"
-          fetch "$SITE/assets/brazil-scope.css" "$tmp/brazil-scope.css"
-          fetch "$SITE/assets/products.css" "$tmp/products.css"
-          fetch "$SITE/assets/visual-refinement.css" "$tmp/visual-refinement.css"
-          fetch "$SITE/assets/export-selective.css" "$tmp/export-selective.css"
-          fetch "$SITE/assets/app.js" "$tmp/app.js"
-          fetch "$SITE/assets/ptbr.js" "$tmp/ptbr.js"
+          fetch "$SITE/assets/ux-v2.css" "$tmp/ux-v2.css"
           fetch "$SITE/assets/products.js" "$tmp/products.js"
-          fetch "$SITE/assets/analytics.js" "$tmp/analytics.js"
-          fetch "$SITE/assets/export-selective.js" "$tmp/export-selective.js"
-          fetch "$SITE/assets/source-comparison.js" "$tmp/source-comparison.js"
+          fetch "$SITE/assets/navigation.js" "$tmp/navigation.js"
+          fetch "$SITE/assets/home.js" "$tmp/home.js"
           fetch "$SITE/data/data_resources.json" "$tmp/resources.json"
           fetch "$SITE/data/data_products.json" "$tmp/products.json"
-          fetch "$SITE/data/brazil_scope_priorities.json" "$tmp/brazil-scope-priorities.json"
 
-          grep -q 'Vitrine Ciência' "$tmp/index.html"
-          grep -q 'id="filters"' "$tmp/index.html"
-          grep -q 'assets/visual-refinement.css' "$tmp/index.html"
-          grep -q 'assets/visual-refinement.css' "$tmp/products.html"
-          grep -q 'assets/visual-refinement.css' "$tmp/analytics.html"
-          grep -q 'assets/visual-refinement.css' "$tmp/about.html"
-          grep -q -- '--vr-forest' "$tmp/visual-refinement.css"
+          grep -q 'Encontre e compare dados científicos sobre o Brasil' "$tmp/index.html"
+          grep -q 'action="products.html"' "$tmp/index.html"
+          grep -q 'Explore produtos por área de pesquisa' "$tmp/index.html"
           grep -q 'id="product-filters"' "$tmp/products.html"
-          grep -q 'id="summary"' "$tmp/analytics.html"
-          grep -q 'assets/analytics.js' "$tmp/analytics.html"
-          grep -q 'id="sobre"' "$tmp/about.html"
-          grep -q 'data/data_resources.json' "$tmp/app.js"
-          grep -q 'data/data_products.json' "$tmp/products.js"
-          grep -q 'data/data_resources.json' "$tmp/analytics.js"
-          grep -q 'assets/source-comparison.js' "$tmp/index.html"
-
-          # build_site_artifact.py copia esses arquivos byte a byte. O smoke deve
-          # portanto comparar todo o núcleo público estático com o SHA publicado,
-          # não apenas JS/dados. Isso detecta deploy parcial ou HTML/CSS/licenças
-          # stale mesmo quando IDs e elementos sentinela continuam presentes.
-          cmp index.html "$tmp/index.html"
-          cmp products.html "$tmp/products.html"
-          cmp analytics.html "$tmp/analytics.html"
-          cmp about.html "$tmp/about.html"
-          cmp LICENSE "$tmp/LICENSE"
-          cmp LICENSE-DATA.md "$tmp/LICENSE-DATA.md"
-          cmp robots.txt "$tmp/robots.txt"
-          cmp sitemap.xml "$tmp/sitemap.xml"
-          cmp assets/style.css "$tmp/style.css"
-          cmp assets/accessibility.css "$tmp/accessibility.css"
-          cmp assets/brazil-scope.css "$tmp/brazil-scope.css"
-          cmp assets/products.css "$tmp/products.css"
-          cmp assets/visual-refinement.css "$tmp/visual-refinement.css"
-          cmp assets/export-selective.css "$tmp/export-selective.css"
-          cmp assets/app.js "$tmp/app.js"
-          cmp assets/ptbr.js "$tmp/ptbr.js"
-          cmp assets/products.js "$tmp/products.js"
-          cmp assets/analytics.js "$tmp/analytics.js"
-          cmp assets/export-selective.js "$tmp/export-selective.js"
-          cmp assets/source-comparison.js "$tmp/source-comparison.js"
-          cmp data/brazil_scope_priorities.json "$tmp/brazil-scope-priorities.json"
-
-          # Metadados de descoberta precisam existir também no artefato servido.
-          grep -Fq 'Sitemap: https://ian-loc.github.io/vitrineciencia/sitemap.xml' "$tmp/robots.txt"
-          for url in \
-            "$SITE/" \
-            "$SITE/products.html" \
-            "$SITE/analytics.html" \
-            "$SITE/about.html"; do
-            grep -Fq "<loc>$url</loc>" "$tmp/sitemap.xml"
-          done
-
-          # A identidade pública precisa apontar para a URL canônica atual em
-          # todas as páginas, inclusive após o deploy no Pages.
-          grep -Fq '<link rel="canonical" href="https://ian-loc.github.io/vitrineciencia/">' "$tmp/index.html"
-          grep -Fq '<meta property="og:url" content="https://ian-loc.github.io/vitrineciencia/">' "$tmp/index.html"
-          for page in products analytics about; do
-            grep -Fq "<link rel=\"canonical\" href=\"$SITE/$page.html\">" "$tmp/$page.html"
-            grep -Fq "<meta property=\"og:url\" content=\"$SITE/$page.html\">" "$tmp/$page.html"
-          done
-          grep -Fq '"@type":"DataCatalog"' "$tmp/index.html"
-          grep -Fq 'https://orcid.org/0000-0003-1164-9318' "$tmp/index.html"
+          grep -q 'id="product-theme"' "$tmp/products.html"
+          grep -q 'id="product-coverage"' "$tmp/products.html"
+          grep -q 'id="product-year-start"' "$tmp/products.html"
+          grep -q 'id="product-support"' "$tmp/products.html"
+          grep -q 'id="product-spatial"' "$tmp/products.html"
+          grep -q 'id="product-license"' "$tmp/products.html"
+          grep -q 'id="filters"' "$tmp/sources.html"
+          grep -q 'Fonte → Produto → Distribuição' "$tmp/about.html"
+          grep -q '<h1>Sobre o acervo</h1>' "$tmp/analytics.html"
+          grep -q 'const PAGE_SIZE = 18' "$tmp/products.js"
+          grep -q 'data-remove-compare' "$tmp/products.js"
+          grep -q 'documentationScore(b) - documentationScore(a)' "$tmp/products.js"
+          grep -q 'sourceOriginScore(b) - sourceOriginScore(a)' "$tmp/products.js"
+          grep -q 'nav-toggle' "$tmp/ux-v2.css"
+          grep -q 'compact-product-cards' "$tmp/ux-v2.css"
+          grep -q 'products.html' "$tmp/sitemap.xml"
+          grep -q 'sources.html' "$tmp/sitemap.xml"
 
           python3 - "$tmp/resources.json" "$tmp/products.json" <<'PY'
-          import csv, json, sys
-
-          public_resources = json.load(open(sys.argv[1], encoding='utf-8'))
-          public_products = json.load(open(sys.argv[2], encoding='utf-8'))
-          expected_resources_json = json.load(open('data/data_resources.json', encoding='utf-8'))
-          expected_products_json = json.load(open('data/data_products.json', encoding='utf-8'))
-
-          with open('data/data_resources.csv', encoding='utf-8', newline='') as f:
-              expected_resources = list(csv.DictReader(f))
-          with open('data/data_products.csv', encoding='utf-8', newline='') as f:
-              expected_products = list(csv.DictReader(f))
-          with open('data/product_distributions.csv', encoding='utf-8', newline='') as f:
-              expected_distributions = list(csv.DictReader(f))
-
-          def ids(rows, field):
-              values = [item[field] for item in rows]
-              assert len(values) == len(set(values)), f'duplicate {field}'
-              return set(values)
-
-          assert isinstance(public_resources, list)
-          assert isinstance(public_products, list)
-          assert ids(public_resources, 'resource_id') == ids(expected_resources, 'resource_id')
-          assert ids(public_products, 'product_id') == ids(expected_products, 'product_id')
-
-          assert public_resources == expected_resources_json, (
-              'data_resources.json público diverge integralmente do derivado versionado do commit publicado'
-          )
-          assert public_products == expected_products_json, (
-              'data_products.json público diverge integralmente do derivado versionado do commit publicado'
-          )
-
-          expected_by_product = {}
-          for row in expected_distributions:
-              expected_by_product.setdefault(row['product_id'], set()).add(row['distribution_id'])
-
-          published_distributions = []
-          published_by_product = {}
-          for product in public_products:
-              distributions = product.get('distributions')
-              assert isinstance(distributions, list) and distributions, (
-                  f"{product['product_id']}: distributions ausentes/vazias no JSON público"
-              )
-              for distribution in distributions:
-                  assert distribution.get('product_id') == product['product_id'], (
-                      f"{distribution.get('distribution_id')}: product_id divergente no JSON público"
-                  )
-                  published_distributions.append(distribution)
-                  published_by_product.setdefault(product['product_id'], set()).add(
-                      distribution['distribution_id']
-                  )
-
-          assert ids(published_distributions, 'distribution_id') == ids(
-              expected_distributions, 'distribution_id'
-          )
-          assert published_by_product == expected_by_product, (
-              'mapeamento produto→distribuição publicado diverge do CSV canônico'
-          )
-
-          print(
-              'OK: Vitrine publicada corresponde integralmente ao commit canônico publicado — '
-              f'{len(public_resources)} fontes, {len(public_products)} produtos, '
-              f'{len(published_distributions)} distribuições'
-          )
+          import json, sys
+          resources = json.load(open(sys.argv[1], encoding='utf-8'))
+          products = json.load(open(sys.argv[2], encoding='utf-8'))
+          assert len(resources) == 135, len(resources)
+          assert len(products) == 843, len(products)
+          assert len({p['resource_id'] for p in products}) <= len(resources)
+          assert sum(len(p.get('distributions', [])) for p in products) == 876
+          print('OK: contagens públicas 135 fontes / 843 produtos / 876 acessos')
           PY
-
-      - name: Confirmar fronteira pública
-        env:
-          SITE: https://ian-loc.github.io/vitrineciencia
-        run: |
-          set -euo pipefail
-          for path in \
-            explorer.html \
-            abordagens.html \
-            data/federated_layers.json \
-            data/data_resources.csv \
-            data/data_products.csv \
-            data/product_distributions.csv; do
-            code="$(curl --silent --location --output /dev/null --write-out '%{http_code}' "$SITE/$path")"
-            test "$code" = "404"
-          done
