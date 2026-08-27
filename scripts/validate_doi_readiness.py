@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Valida a prontidão factual da candidata DOI contra o modelo atual da Vitrine."""
+"""Valida o estado factual de release/DOI da Vitrine Ciência após a publicação v1.0.0."""
 from __future__ import annotations
 
 import csv
@@ -20,6 +20,11 @@ EXPECTED_SNAPSHOT_KEYS = {
     "products": ROOT / "data" / "data_products.csv",
     "distributions": ROOT / "data" / "product_distributions.csv",
 }
+EXPECTED_DOI = "10.5281/zenodo.22130831"
+EXPECTED_ZENODO_RECORD = "https://zenodo.org/records/22130831"
+EXPECTED_RELEASE = "https://github.com/Ian-loc/vitrineciencia/releases/tag/v1.0.0"
+EXPECTED_SOURCE_COMMIT = "27c545554f406b940662777e3f053e939ef3588c"
+EXPECTED_ARCHIVE_SHA256 = "b2e7a996b075d45ef4caca853bf57618b54998724fc9b4bdea3afe3b6159d6f0"
 LEGACY_TOKENS = (
     "catalog_current_version",
     '"0.7.0"',
@@ -58,18 +63,30 @@ for token in LEGACY_TOKENS:
     if token in readiness_text:
         fail(f"release/doi_readiness.json ainda contém contrato legado: {token}")
 
-if readiness.get("contract_version") != "2.0":
-    fail("contract_version de prontidão DOI deve ser 2.0")
-if readiness.get("catalog_state") != "unreleased":
-    fail("catalog_state deve permanecer unreleased antes da tag/release formal")
+if readiness.get("contract_version") != "2.1":
+    fail("contract_version de prontidão DOI pós-release deve ser 2.1")
+if readiness.get("catalog_state") != "released":
+    fail("catalog_state deve ser released após publicação formal")
 if readiness.get("target_stable_release") != "1.0.0":
     fail("target_stable_release deve ser 1.0.0")
 if readiness.get("candidate_ref") != "release/v1.0.0":
-    fail("candidate_ref deve ser release/v1.0.0")
+    fail("candidate_ref deve permanecer release/v1.0.0 por proveniência")
+if readiness.get("release_tag") != "v1.0.0":
+    fail("release_tag deve ser v1.0.0")
+if readiness.get("source_commit") != EXPECTED_SOURCE_COMMIT:
+    fail("source_commit não corresponde ao snapshot científico congelado")
 if readiness.get("archive_type") != "Dataset":
-    fail("depósito planejado deve ser classificado como Dataset")
-if readiness.get("doi_allowed") is not False:
-    fail("DOI deve permanecer bloqueado até decisão humana explícita e gates finais")
+    fail("depósito deve ser classificado como Dataset")
+if readiness.get("doi_allowed") is not True:
+    fail("doi_allowed deve ser true após emissão do DOI")
+if readiness.get("doi") != EXPECTED_DOI:
+    fail(f"DOI esperado: {EXPECTED_DOI}")
+if readiness.get("zenodo_record") != EXPECTED_ZENODO_RECORD:
+    fail("registro Zenodo não corresponde ao depósito v1.0.0")
+if readiness.get("github_release") != EXPECTED_RELEASE:
+    fail("GitHub Release não corresponde à v1.0.0")
+if readiness.get("archive_sha256") != EXPECTED_ARCHIVE_SHA256:
+    fail("SHA-256 do arquivo científico não corresponde ao artefato validado")
 
 reviewed = readiness.get("last_reviewed")
 try:
@@ -85,21 +102,22 @@ for key, path in EXPECTED_SNAPSHOT_KEYS.items():
     if snapshot.get(key) != actual:
         fail(f"snapshot.{key}={snapshot.get(key)!r}, mas tabela canônica contém {actual}")
 
-if 'version: "unreleased"' not in citation:
-    fail("CITATION.cff deve permanecer unreleased antes da publicação formal")
 for required in (
+    'version: "1.0.0"',
+    f'doi: "{EXPECTED_DOI}"',
     "Vitrine Ciência",
     "https://ian-loc.github.io/vitrineciencia/",
     "https://github.com/Ian-loc/vitrineciencia",
     "https://orcid.org/0000-0003-1164-9318",
 ):
     if required not in citation:
-        fail(f"CITATION.cff sem identidade obrigatória: {required}")
+        fail(f"CITATION.cff sem metadado obrigatório pós-release: {required}")
 
 if "fase ativa de QA/QC e manutenção" not in project_state:
     fail("PROJECT_STATE.md não preserva a fase corrente de QA/QC")
-if "ainda sem tag Git imutável, GitHub Release ou DOI" not in project_state:
-    fail("PROJECT_STATE.md não preserva o estado unreleased da candidata")
+for required in ("release científica `v1.0.0` publicada", EXPECTED_DOI):
+    if required not in project_state:
+        fail(f"PROJECT_STATE.md sem estado pós-release obrigatório: {required}")
 
 for gate_id in EXPECTED_GATES:
     if f"{gate_id} —" not in objectives:
@@ -108,8 +126,8 @@ for retired in ("G10 —", "G11 —", "G12 —"):
     if retired in objectives:
         fail(f"FINAL_OBJECTIVES_AND_DOI_GATES.md ainda expõe gate legado {retired.split()[0]}")
 
-if "instrução humana explícita" not in readiness.get("decision_rule", ""):
-    fail("regra de decisão DOI deve exigir instrução humana explícita")
+if "DOI da v1.0.0 foi emitido" not in readiness.get("decision_rule", ""):
+    fail("regra de decisão DOI deve registrar explicitamente a emissão da v1.0.0")
 
 gates = readiness.get("gates")
 if not isinstance(gates, list) or [gate.get("id") for gate in gates] != EXPECTED_GATES:
@@ -121,12 +139,14 @@ for gate in gates:
         fail(f"{gate.get('id')}: evidência vazia")
 
 by_id = {gate["id"]: gate for gate in gates}
-for blocked_id in ("G7", "G8", "G9"):
-    if by_id[blocked_id]["status"] == "concluído":
-        fail(f"{blocked_id} não pode estar concluído antes de tag/depósito/DOI")
+for completed_id in ("G2", "G3", "G4", "G5", "G7", "G8"):
+    if by_id[completed_id]["status"] != "concluído":
+        fail(f"{completed_id} deve estar concluído no estado pós-release")
+if by_id["G9"]["status"] not in {"parcial", "concluído"}:
+    fail("G9 deve estar parcial ou concluído após propagação do DOI no repositório")
 
 print(
-    "OK: prontidão DOI alinhada ao modelo atual — "
+    "OK: estado DOI pós-release validado — "
     f"{snapshot['resources']} fontes, {snapshot['products']} produtos, "
-    f"{snapshot['distributions']} distribuições; G1–G9 coerentes; DOI bloqueado"
+    f"{snapshot['distributions']} distribuições; DOI={EXPECTED_DOI}; G1–G9 coerentes"
 )
