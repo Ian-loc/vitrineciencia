@@ -2,82 +2,49 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Encontre e compare fontes e produtos de dados científicos sobre o Brasil para pesquisa, ensino e extensão.">
+<meta name="description" content="Encontre e compare dados científicos sobre o Brasil para pesquisa, ensino e extensão.">
 <link rel="canonical" href="https://ian-loc.github.io/vitrineciencia/">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Vitrine Ciência"><meta property="og:title" content="Vitrine Ciência · Dados científicos sobre o Brasil"><meta property="og:description" content="Encontre e compare fontes e produtos de dados científicos sobre o Brasil para pesquisa, ensino e extensão."><meta property="og:url" content="https://ian-loc.github.io/vitrineciencia/">
-<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Vitrine Ciência · Dados científicos sobre o Brasil"><meta name="twitter:description" content="Encontre e compare fontes e produtos de dados científicos sobre o Brasil para pesquisa, ensino e extensão.">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Vitrine Ciência"><meta property="og:title" content="Vitrine Ciência · Encontre e compare dados científicos sobre o Brasil"><meta property="og:description" content="Descubra produtos e datasets por tema, cobertura, período, escala, formato, acesso e limitações."><meta property="og:url" content="https://ian-loc.github.io/vitrineciencia/">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Vitrine Ciência"><meta name="twitter:description" content="Encontre e compare dados científicos sobre o Brasil.">
 <meta name="theme-color" content="#173f32"><meta name="color-scheme" content="light">
-<title>Vitrine Ciência · Dados científicos sobre o Brasil</title><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/accessibility.css"><link rel="stylesheet" href="assets/brazil-scope.css"><link rel="stylesheet" href="assets/visual-refinement.css"><link rel="stylesheet" href="assets/export-selective.css?v=20260821-2">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"DataCatalog","name":"Vitrine Ciência","url":"https://ian-loc.github.io/vitrineciencia/","description":"Catálogo curado de fontes e produtos de dados científicos sobre o Brasil para pesquisa, ensino e extensão.","inLanguage":"pt-BR","isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by/4.0/","creator":{"@type":"Person","name":"Ian Clemente","sameAs":"https://orcid.org/0000-0003-1164-9318"}}</script>
+<title>Vitrine Ciência · Encontre e compare dados científicos sobre o Brasil</title>
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/accessibility.css"><link rel="stylesheet" href="assets/visual-refinement.css"><link rel="stylesheet" href="assets/ux-v2.css?v=20260827-1">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"DataCatalog","name":"Vitrine Ciência","url":"https://ian-loc.github.io/vitrineciencia/","description":"Catálogo curado de produtos, fontes e formas de acesso a dados científicos relevantes ao Brasil.","inLanguage":"pt-BR","isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by/4.0/","creator":{"@type":"Person","name":"Ian Clemente","sameAs":"https://orcid.org/0000-0003-1164-9318"}}</script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Ir ao conteúdo</a>
 <nav class="site-nav" aria-label="Navegação principal"><div class="wrap nav-inner">
 <a class="brand" href="index.html" aria-label="Vitrine Ciência — página inicial"><span>Vitrine Ciência</span><small>dados científicos sobre o Brasil</small></a>
-<div class="nav-links"><a href="#areas">Áreas</a><a href="#catalogo" aria-current="page">Fontes</a><a href="products.html">Produtos</a><a href="analytics.html">Visão do catálogo</a><a href="about.html">Método e citação</a></div>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav-links">Menu</button>
+<div class="nav-links" id="site-nav-links"><a href="products.html">Buscar dados</a><a href="sources.html">Fontes</a><a href="about.html">Sobre</a><a class="nav-subtle" href="analytics.html">Sobre o acervo</a></div>
 </div></nav>
-<header class="hero"><div class="wrap hero-grid">
-<div class="hero-copy">
-<p class="eyebrow">Catálogo para pesquisa, ensino e extensão</p>
-<h1>Encontre dados científicos sobre o Brasil</h1>
-<p class="lead">A Vitrine reúne fontes brasileiras e internacionais com dados úteis para estudar território, biodiversidade, clima, ecossistemas e sociedade.</p>
-</div>
-<div class="hero-tool">
-<form class="hero-search" id="hero-search" role="search" aria-label="Busca principal do catálogo">
-<label for="q">Buscar no catálogo</label>
-<div class="search-row"><input id="q" type="search" autocomplete="off" enterkeyhint="search" aria-describedby="search-help" placeholder="Tema, instituição, produto, formato ou finalidade…"><button type="submit">Buscar fontes</button></div>
-<p class="search-help" id="search-help">Pesquise por nome, tema, instituição, produto, formato, uso ou limitação.</p>
+<header class="hero home-hero"><div class="wrap hero-grid"><div class="hero-copy">
+<p class="eyebrow">Catálogo científico para pesquisa, ensino e extensão</p>
+<h1>Encontre e compare dados científicos sobre o Brasil</h1>
+<p class="lead">Compare cobertura, período, escala, formato, acesso e limitações de fontes e produtos científicos relevantes para sua pesquisa.</p>
+<form class="home-search" action="products.html" method="get" role="search" aria-label="Buscar produtos e datasets">
+<label for="home-q">O que você precisa investigar?</label>
+<div class="search-row"><input id="home-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Ex.: carbono do solo no Cerrado; uso da terra; precipitação mensal…"><button type="submit">Buscar dados</button></div>
+<p class="search-help">Comece por uma variável, tema, lugar, período ou característica do dado. Depois refine a seleção por critérios científicos.</p>
 </form>
-<div class="quick-search scope-shortcuts" aria-label="Atalhos de cobertura"><span>Explorar:</span><button type="button" data-scope="fonte_brasileira">fontes brasileiras</button><button type="button" data-scope="cobertura_brasil_sistematica">fontes com dados do Brasil</button></div>
-<div class="quick-search" aria-label="Buscas sugeridas"><span>Exemplos:</span><button type="button" data-query="biodiversidade">biodiversidade</button><button type="button" data-query="carbono">carbono</button><button type="button" data-query="Amazônia">Amazônia</button><button type="button" data-query="API">API</button><button type="button" data-query="GeoTIFF">GeoTIFF</button></div>
-<div class="hero-links"><a href="#areas">Explorar por área</a><a href="products.html">Ver produtos</a><a href="analytics.html">Visão do catálogo</a></div>
-</div>
-</div></header>
+<div class="home-actions"><a class="primary" href="products.html">Explorar todos os produtos</a><a href="sources.html">Ver fontes e provedores</a><a href="about.html#como-organizamos">Entender como a Vitrine organiza os dados</a></div>
+</div></div></header>
 <section class="stats" aria-label="Resumo do catálogo"><div class="wrap stats-grid">
-<div><strong id="n-total">—</strong><span>fontes catalogadas</span></div>
-<div><strong id="n-brazilian">—</strong><span>fontes brasileiras</span></div>
-<div><strong id="n-intl-br">—</strong><span>fontes internacionais com dados do Brasil</span></div>
-<div><strong id="n-secondary">—</strong><span>fontes complementares</span></div>
+<div><strong id="home-products">843</strong><span>produtos catalogados</span></div>
+<div><strong id="home-sources">135</strong><span>fontes representadas</span></div>
+<div><strong id="home-access">876</strong><span>formas de acesso</span></div>
+<div><strong id="home-free">—</strong><span>produtos com acesso gratuito</span></div>
 </div></section>
-<main id="conteudo">
-<section class="wrap areas-section" id="areas" aria-labelledby="areas-heading">
-<div class="section-heading"><div><p class="eyebrow">Exploração temática</p><h2 id="areas-heading">Comece por uma área de pesquisa</h2></div><p>Uma fonte pode contribuir para mais de uma área.</p></div>
-<div class="area-grid" id="area-links" aria-live="polite" aria-busy="true"></div>
+<main id="conteudo" class="wrap home-main">
+<section class="home-section" aria-labelledby="workflow-heading"><div class="section-heading"><div><p class="eyebrow">Caminho de descoberta</p><h2 id="workflow-heading">Da pergunta ao dado utilizável</h2></div><p>A Vitrine prioriza o produto ou dataset que pode responder à pergunta; a fonte permanece registrada como contexto de proveniência.</p></div>
+<div class="home-flow"><article><strong>1</strong><h2>Defina a necessidade</h2><p>Busque por tema ou variável e informe, quando necessário, lugar, período e escala.</p></article><article><strong>2</strong><h2>Compare produtos</h2><p>Examine cobertura, resolução, formato, acesso, metodologia e limitações entre opções.</p></article><article><strong>3</strong><h2>Confirme na origem</h2><p>Acesse o provedor original e confirme versão, licença, método e condições antes da análise.</p></article></div>
 </section>
-<section class="wrap catalog" id="catalogo" aria-labelledby="catalog-heading">
-<div class="catalog-toolbar">
-<div class="heading"><div><p class="eyebrow">Fontes de dados</p><h2 id="catalog-heading" tabindex="-1">Encontre a fonte certa para sua pesquisa</h2></div><p id="count" role="status" aria-live="polite" aria-atomic="true">Carregando fontes…</p></div>
-<label class="sort-control" for="sort"><span>Ordenar resultados</span><select id="sort"><option value="brazil">Fontes brasileiras primeiro</option><option value="relevance">Relevância da busca</option><option value="name">Nome de A a Z</option><option value="verified">Revisão mais recente</option></select></label>
-</div>
-<form class="filters" id="filters" role="search" aria-label="Filtros do catálogo" aria-describedby="filter-note">
-<fieldset class="essential-grid brazil-scope-grid"><legend class="sr-only">Filtros principais</legend>
-<label><span>Tipo de cobertura</span><select id="scope"><option value="">Todos os tipos</option></select></label>
-<label><span>Área de pesquisa</span><select id="area"><option value="">Todas as áreas</option></select></label>
-<label><span>Dados para o Brasil</span><select id="brazil"><option value="">Qualquer situação</option></select></label>
-<label><span>Download gratuito</span><select id="download"><option value="">Qualquer situação</option></select></label>
-<label><span>API e acesso automatizado</span><select id="programmatic"><option value="">Qualquer situação</option></select></label>
-</fieldset>
-<details class="advanced-filters" id="advanced-filters">
-<summary>Mais filtros <span id="advanced-count" aria-live="polite"></span></summary>
-<fieldset class="advanced-grid"><legend class="sr-only">Filtros avançados</legend>
-<label><span>Cobertura geográfica</span><select id="coverage"><option value="">Todas as coberturas</option></select></label>
-<label><span>Formato de dados</span><select id="format"><option value="">Todos os formatos</option></select></label>
-<label><span>Tipo de documentação</span><select id="evidence"><option value="">Todos os tipos</option></select></label>
-</fieldset>
-</details>
-<div class="filter-footer"><p id="filter-note">A ordem padrão destaca fontes brasileiras e fontes com dados sobre o Brasil. Para comparar, selecione duas ou três fontes; a mesma seleção também pode ser exportada em CSV.</p><button type="button" id="clear">Limpar busca e filtros</button></div>
-</form>
-<div class="active-filters" id="active-filters" role="region" aria-label="Filtros ativos" aria-live="polite" hidden></div>
-<div id="list" class="cards" role="list" aria-busy="true" aria-describedby="count"></div>
-<div class="results-more" id="results-more" hidden><button type="button" id="show-more" aria-controls="list">Mostrar mais fontes</button><span id="shown-count" role="status" aria-live="polite"></span></div>
-<div id="empty" class="empty" role="status" hidden><h3>Nenhuma fonte corresponde à busca</h3><p>Remova um filtro ou tente um termo mais amplo.</p></div>
-<noscript><div class="noscript"><h3>O catálogo interativo requer JavaScript</h3><p>Ative JavaScript para pesquisar, selecionar, comparar e exportar registros de fontes. Você também pode consultar a <a href="about.html">metodologia e citação</a> ou acessar o <a href="https://github.com/Ian-loc/vitrineciencia">repositório no GitHub</a>.</p></div></noscript>
+<section class="home-section" aria-labelledby="topics-heading"><div class="section-heading"><div><p class="eyebrow">Exploração rápida</p><h2 id="topics-heading">Comece por um tema</h2></div><p>Os atalhos abrem a busca de produtos; você pode combinar depois geografia, período, resolução e acesso.</p></div>
+<div class="topic-links"><a href="products.html?q=biodiversidade">Biodiversidade</a><a href="products.html?q=carbono">Carbono e biomassa</a><a href="products.html?q=clima">Clima</a><a href="products.html?q=uso+da+terra">Uso e cobertura da terra</a><a href="products.html?q=água">Água e hidrologia</a><a href="products.html?q=solo">Solos</a><a href="products.html?q=fogo">Fogo e queimadas</a><a href="products.html?q=território">Território e sociedade</a></div>
 </section>
-<section class="wrap about"><div><p class="eyebrow">Antes de usar os dados</p><h2>Confirme o produto na fonte original</h2></div><p>Verifique versão, licença, metodologia, resolução, cobertura e limitações antes da análise. A Vitrine ajuda a descobrir e comparar opções; a documentação original continua sendo a referência para o uso dos dados.</p></section>
+<section class="home-section provenance-callout" aria-labelledby="sources-heading"><div><p class="eyebrow">Proveniência e contexto institucional</p><h2 id="sources-heading">Precisa escrutinar a fonte?</h2><p>Consulte provedores, instituições, documentação, condições gerais de acesso e cobertura. A distinção interna entre <strong>Fonte → Produto → Distribuição</strong> permanece explícita e preservada.</p></div><a href="sources.html">Explorar fontes</a></section>
+<section class="about"><div><p class="eyebrow">Uso científico responsável</p><h2>A Vitrine apoia descoberta e triagem</h2></div><p>Ela não substitui datasets, documentação ou citação originais. Antes de utilizar um produto, confirme versão, variável, suporte e resolução espacial e temporal, método, incerteza, licença, limitações e atualizações posteriores.</p></section>
 </main>
-<footer class="wrap"><p><strong>Vitrine Ciência</strong> · Ian Clemente · <a href="products.html">Produtos</a> · <a href="about.html">Método e citação</a> · <a href="analytics.html">Visão do catálogo</a></p><p>Brasil · Dados: CC BY 4.0 · Código: MIT · Registros revisados até <span id="updated">—</span></p></footer>
-<script src="assets/ptbr.js?v=20260819-3" defer></script>
-<script src="assets/app.js" defer></script>
-<script src="assets/export-selective.js?v=20260819-1" defer></script>
-<script src="assets/source-comparison.js?v=20260821-1" defer></script>
+<footer class="wrap"><p><strong>Vitrine Ciência</strong> · Ian Clemente · <a href="products.html">Buscar dados</a> · <a href="sources.html">Fontes</a> · <a href="about.html">Sobre</a></p><p>Brasil · Dados: CC BY 4.0 · Código: MIT</p></footer>
+<script src="assets/home.js?v=20260827-1" defer></script><script src="assets/navigation.js?v=20260827-1" defer></script>
 </body></html>
