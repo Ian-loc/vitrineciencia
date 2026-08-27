@@ -53,11 +53,13 @@ O card canônico é o **card de produto**. Ele deve permitir que o usuário resp
 - **Escala?** — suporte/resolução espacial e resolução temporal;
 - **Acesso?** — formato, protocolo/ferramenta e gratuidade quando conhecida.
 
-Metodologia, limitações, licença, versão, proveniência e formas detalhadas de acesso permanecem disponíveis para escrutínio no detalhe expandido. A comparação lado a lado deve refletir exatamente a seleção ativa e zerar seu estado ao ser fechada.
+Metodologia, limitações, licença, versão, proveniência e formas detalhadas de acesso permanecem disponíveis para escrutínio no detalhe expandido. A comparação lado a lado deve refletir exatamente a seleção ativa, permitir remoção durante a comparação e zerar seu estado ao ser fechada.
 
 ## 5. Escopo territorial e temático
 
 O Brasil é o escopo territorial prioritário. A Vitrine inclui produtos de fontes brasileiras e fontes internacionais que oferecem informação útil sobre o país. A prioridade territorial não é nota de qualidade.
+
+A **expansão de novas fontes, produtos e distribuições está pausada** durante a fase corrente de QA/QC e refinamento. Sua retomada exige **instrução humana explícita** e curadoria factual compatível com os mesmos gates científicos aplicados ao catálogo canônico. Melhorias de busca, filtros, cards, ranking ou navegação não autorizam criação automática de registros.
 
 ## 6. Princípios científicos permanentes
 
@@ -85,4 +87,4 @@ A Vitrine é bem-sucedida quando um estudante, pesquisador, docente ou profissio
 - acessar o produto pela distribuição adequada;
 - registrar a versão/coleção efetivamente utilizada.
 
-No snapshot corrente há **135 fontes, 843 produtos e 876 distribuições**. A contagem de 135 corresponde a fontes, não a produtos. Refinamentos de interface não devem criar registros não auditados nem alterar essas contagens sem curadoria factual explícita.
+Contagens correntes e estado operacional não são replicados aqui; permanecem centralizados em `docs/PROJECT_STATE.md` e `WORKFLOW_STATUS.md` para evitar drift documental.
