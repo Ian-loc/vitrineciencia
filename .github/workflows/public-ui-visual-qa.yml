@@ -52,7 +52,7 @@ jobs:
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
 
-      - name: Validar navegação, busca, comparação e responsividade
+      - name: Validar navegação, descoberta, comparação e responsividade
         env:
           CANDIDATE_URL: http://127.0.0.1:8000/
         run: |
@@ -63,11 +63,8 @@ jobs:
 
           const base = process.env.CANDIDATE_URL;
           const pages = [
-            ['home', ''],
-            ['products', 'products.html'],
-            ['sources', 'sources.html'],
-            ['about', 'about.html'],
-            ['catalog-overview', 'analytics.html'],
+            ['home', ''], ['products', 'products.html'], ['sources', 'sources.html'],
+            ['about', 'about.html'], ['catalog-overview', 'analytics.html'],
           ];
           const viewports = [
             ['desktop', { width: 1440, height: 1100 }],
@@ -86,20 +83,13 @@ jobs:
                 const page = await context.newPage();
                 const url = base + path;
                 const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
-                if (!response || !response.ok()) {
-                  console.error(`HTTP inválido: ${url}`);
-                  failed = true;
-                  await page.close();
-                  continue;
-                }
-
-                if (name === 'products') await page.waitForSelector('#product-list .card');
+                if (!response || !response.ok()) { console.error(`HTTP inválido: ${url}`); failed = true; await page.close(); continue; }
+                if (name === 'products') await page.waitForSelector('#product-list .product-card');
                 if (name === 'sources') await page.waitForSelector('#list .card');
                 await page.screenshot({ path: `visual-qa/${mode}-${name}.png`, fullPage: true });
 
                 const metrics = await page.evaluate(() => ({
-                  title: document.title,
-                  viewportWidth: window.innerWidth,
+                  title: document.title, viewportWidth: window.innerWidth,
                   documentWidth: document.documentElement.scrollWidth,
                   h1: (document.querySelector('h1')?.textContent || '').trim(),
                   hasMain: Boolean(document.querySelector('main')),
@@ -107,125 +97,83 @@ jobs:
                   fullCatalogCsvLinks: document.querySelectorAll('a[href*="data_resources.csv"],a[href*="data_products.csv"],a[href*="product_distributions.csv"]').length,
                 }));
                 report.push({mode, page:name, ...metrics});
-
                 if (!metrics.hasMain || !metrics.h1) failed = true;
-                if (metrics.documentWidth > metrics.viewportWidth + 2) {
-                  console.error(`Overflow horizontal: ${mode}/${name}: ${metrics.documentWidth} > ${metrics.viewportWidth}`);
-                  failed = true;
-                }
-                if (metrics.fullCatalogCsvLinks !== 0) {
-                  console.error(`CSV integral exposto em ${mode}/${name}`);
-                  failed = true;
-                }
+                if (metrics.documentWidth > metrics.viewportWidth + 2) { console.error(`Overflow horizontal: ${mode}/${name}`); failed = true; }
+                if (metrics.fullCatalogCsvLinks !== 0) { console.error(`CSV integral exposto em ${mode}/${name}`); failed = true; }
 
                 if (mode !== 'desktop') {
                   const toggle = page.locator('.nav-toggle');
-                  if (!await toggle.isVisible()) {
-                    console.error(`Menu responsivo ausente em ${mode}/${name}`);
-                    failed = true;
-                  } else {
+                  if (!await toggle.isVisible()) { console.error(`Menu responsivo ausente em ${mode}/${name}`); failed = true; }
+                  else {
                     await toggle.click();
                     const visibleLinks = await page.locator('#site-nav-links a:visible').count();
-                    if (visibleLinks < 4) {
-                      console.error(`Navegação responsiva incompleta em ${mode}/${name}: ${visibleLinks} links`);
-                      failed = true;
-                    }
+                    if (visibleLinks < 4) { console.error(`Navegação responsiva incompleta em ${mode}/${name}: ${visibleLinks}`); failed = true; }
                     await toggle.click();
                   }
                 }
 
                 if (name === 'home') {
                   const action = await page.locator('.home-search').getAttribute('action');
-                  if (action !== 'products.html') {
-                    console.error(`Busca inicial não aponta para produtos: ${action}`);
-                    failed = true;
-                  }
+                  if (action !== 'products.html') { console.error(`Busca inicial não aponta para produtos: ${action}`); failed = true; }
                   const products = Number((await page.locator('#home-products').textContent()).trim());
                   const sources = Number((await page.locator('#home-sources').textContent()).trim());
-                  if (!(products > sources && sources > 0)) {
-                    console.error(`Resumo inicial incoerente: produtos=${products}, fontes=${sources}`);
-                    failed = true;
-                  }
+                  if (!(products === 843 && products > sources && sources === 135)) { console.error(`Resumo inicial incoerente: produtos=${products}, fontes=${sources}`); failed = true; }
+                  const areaCards = page.locator('#home-product-areas .product-area-card');
+                  if (await areaCards.count() !== 6) { console.error(`Exploração temática deve ter 6 áreas de produtos`); failed = true; }
+                  const areaTexts = await areaCards.locator('[data-area-count]').allTextContents();
+                  if (areaTexts.some(text => !/\d+ produtos?/.test(text) || /^0\s/.test(text))) { console.error(`Contagens temáticas de produtos inválidas: ${areaTexts.join(' | ')}`); failed = true; }
                 }
 
                 if (name === 'products') {
                   const cards = page.locator('#product-list .product-card');
-                  if (await cards.count() !== 6) {
-                    console.error(`Divulgação inicial de produtos inválida em ${mode}: ${await cards.count()}`);
-                    failed = true;
-                  }
-                  const triage = page.locator('#product-list .product-triage .triage-item');
-                  if (await triage.count() < 24) {
-                    console.error(`Resumo Onde/Quando/Escala/Acesso incompleto em ${mode}`);
-                    failed = true;
-                  }
-                  const requiredFilters = ['#product-area','#product-coverage','#product-year-start','#product-year-end','#product-temporal','#product-spatial-support','#product-spatial-resolution','#product-access','#product-format','#product-free'];
-                  for (const selector of requiredFilters) {
-                    if (!await page.locator(selector).count()) {
-                      console.error(`Filtro científico ausente: ${selector}`);
-                      failed = true;
-                    }
-                  }
+                  if (await cards.count() !== 18) { console.error(`Lote inicial deve exibir 18 produtos em ${mode}: ${await cards.count()}`); failed = true; }
+                  const triage = page.locator('#product-list .triage-strip > div');
+                  if (await triage.count() !== 72) { console.error(`Onde/Quando/Escala/Acesso incompleto em ${mode}: ${await triage.count()}`); failed = true; }
+                  const requiredFilters = ['#product-theme','#product-coverage','#product-year-start','#product-year-end','#product-temporal','#product-support','#product-spatial','#product-access','#product-format','#product-free','#product-license'];
+                  for (const selector of requiredFilters) if (!await page.locator(selector).count()) { console.error(`Filtro científico ausente: ${selector}`); failed = true; }
 
-                  await page.locator('#product-q').fill('carbono');
-                  await page.waitForTimeout(120);
-                  if (!await page.locator('#query-interpretation').isVisible()) {
-                    console.error(`Interpretação leve da consulta não apareceu em ${mode}`);
-                    failed = true;
-                  }
+                  await page.locator('#product-q').fill('carbono solo Cerrado Brasil 2000 30 m');
+                  await page.waitForTimeout(180);
+                  if (!await page.locator('#interpreted-query').isVisible()) { console.error(`Interpretação leve da consulta não apareceu em ${mode}`); failed = true; }
+                  const interpreted = await page.locator('#interpreted-query').textContent();
+                  for (const token of ['Carbono','Solos','Cerrado','Brasil','2000','30 m']) if (!interpreted.includes(token)) { console.error(`Interpretação não reconheceu ${token}: ${interpreted}`); failed = true; }
                   await page.locator('#product-clear').click();
                   await page.waitForSelector('#product-list .product-card');
 
                   const compareInputs = page.locator('[data-compare]');
-                  if (await compareInputs.count() < 2) {
-                    console.error(`Produtos insuficientes para testar comparação em ${mode}`);
-                    failed = true;
-                  } else {
-                    await compareInputs.nth(0).check();
-                    await compareInputs.nth(1).check();
+                  if (await compareInputs.count() < 3) { console.error(`Produtos insuficientes para comparar em ${mode}`); failed = true; }
+                  else {
+                    const selectedNames = [];
+                    for (let i=0;i<3;i++) {
+                      selectedNames.push((await cards.nth(i).locator('h3').textContent()).trim());
+                      await compareInputs.nth(i).check();
+                    }
+                    if ((await page.locator('#compare-count').textContent()).trim() !== '3 produtos selecionados') { console.error(`Barra de comparação não reflete 3 seleções em ${mode}`); failed = true; }
                     await page.locator('#compare-open').click();
                     await page.locator('#compare-dialog[open]').waitFor({state:'visible'});
-                    await page.waitForTimeout(120);
-
-                    if (await page.locator('#compare-content [data-remove-compare]').count() !== 2) {
-                      console.error(`Controles de remoção dentro da comparação ausentes em ${mode}`);
-                      failed = true;
-                    }
-                    if (!await page.locator('#compare-download-csv').isVisible()) {
-                      console.error(`Exportação CSV da comparação ausente em ${mode}`);
-                      failed = true;
-                    }
+                    const headers = (await page.locator('#compare-content thead th').allTextContents()).slice(1).map(x => x.replace(/Remover/g,'').trim());
+                    if (headers.length !== 3 || !selectedNames.every(name => headers.includes(name))) { console.error(`Comparação contém produtos diferentes da seleção em ${mode}: ${headers.join(' | ')}`); failed = true; }
+                    if (await page.locator('#compare-content [data-remove-compare]').count() !== 3) { console.error(`Remoção interna ausente em ${mode}`); failed = true; }
+                    if (!await page.locator('#compare-download-csv').isVisible()) { console.error(`CSV da comparação ausente em ${mode}`); failed = true; }
 
                     await page.locator('#compare-content [data-remove-compare]').first().click();
                     await page.waitForTimeout(80);
-                    if (await page.locator('#compare-content [data-remove-compare]').count() !== 1) {
-                      console.error(`Remoção dentro da comparação não atualizou a vista em ${mode}`);
-                      failed = true;
-                    }
-                    const selectedDuring = await page.locator('[data-compare]:checked').count();
-                    if (selectedDuring !== 1) {
-                      console.error(`Seleção após remoção incoerente em ${mode}: ${selectedDuring}`);
-                      failed = true;
-                    }
+                    if (await page.locator('#compare-content [data-remove-compare]').count() !== 2) { console.error(`Remoção não atualizou comparação em ${mode}`); failed = true; }
+                    if (await page.locator('[data-compare]:checked').count() !== 2) { console.error(`Checkboxes incoerentes após remoção em ${mode}`); failed = true; }
 
                     await page.locator('#compare-close').click();
                     await page.waitForTimeout(80);
-                    const selectedAfter = await page.locator('[data-compare]:checked').count();
-                    if (selectedAfter !== 0 || await page.locator('#compare-bar').isVisible()) {
-                      console.error(`Seleção não foi reiniciada ao fechar comparação em ${mode}`);
-                      failed = true;
-                    }
+                    if (await page.locator('[data-compare]:checked').count() !== 0 || await page.locator('#compare-bar').isVisible()) { console.error(`Seleção não reiniciou ao fechar em ${mode}`); failed = true; }
                   }
+
+                  await page.locator('#product-show-more').click();
+                  if (await page.locator('#product-list .product-card').count() !== 36) { console.error(`Segundo lote deve chegar a 36 produtos em ${mode}`); failed = true; }
                 }
 
                 if (name === 'sources') {
                   const sourceCards = await page.locator('#list .card').count();
-                  if (sourceCards !== 12) {
-                    console.error(`Divulgação inicial de fontes inválida em ${mode}: ${sourceCards}`);
-                    failed = true;
-                  }
+                  if (sourceCards !== 12) { console.error(`Lote inicial de fontes inválido em ${mode}: ${sourceCards}`); failed = true; }
                 }
-
                 await page.close();
               }
               await context.close();
