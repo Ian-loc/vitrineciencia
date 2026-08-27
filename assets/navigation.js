@@ -8,7 +8,7 @@
     link.href = href;
     document.head.appendChild(link);
   };
-  ensureStylesheet("assets/ux-v3.css?v=20260827-1");
+  ensureStylesheet("assets/ux-v3.css?v=20260827-2");
 
   if (document.querySelector("#product-catalog") && !document.querySelector('script[src*="product-ui-fixes.js"]')) {
     const script = document.createElement("script");
