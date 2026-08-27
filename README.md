@@ -9,7 +9,10 @@ A Vitrine Ciência facilita a descoberta e a triagem de dados. A experiência p�
 - site: https://ian-loc.github.io/vitrineciencia/
 - repositório canônico: https://github.com/Ian-loc/vitrineciencia
 - branch canônica de desenvolvimento: `main`
-- candidata à primeira release científica estável: `v1.0.0` (`release/v1.0.0`)
+- primeira release científica estável: `v1.0.0`
+- GitHub Release: https://github.com/Ian-loc/vitrineciencia/releases/tag/v1.0.0
+- Zenodo: https://zenodo.org/records/22130831
+- DOI v1.0.0: https://doi.org/10.5281/zenodo.22130831
 - fontes: `data/data_resources.csv`
 - produtos: `data/data_products.csv`
 - distribuições/acessos: `data/product_distributions.csv`
@@ -17,13 +20,15 @@ A Vitrine Ciência facilita a descoberta e a triagem de dados. A experiência p�
 - código: MIT
 - metadados e curadoria original: CC BY 4.0
 
-### Snapshot candidato v1.0.0
+### Snapshot científico v1.0.0
 
 - **135 fontes**;
 - **843 produtos**;
 - **876 distribuições**;
 - os identificadores correntes chegam a `DR0135`, `DP000861` e `DD000894`, pois IDs removidos/consolidados não são reciclados;
-- verificações de fontes registradas até **2026-08-19**.
+- verificações de fontes registradas até **2026-08-19**;
+- commit científico congelado: `27c545554f406b940662777e3f053e939ef3588c`;
+- DOI: `10.5281/zenodo.22130831`.
 
 **135 é a contagem de fontes, não de produtos.** O catálogo público de produtos contém 843 registros. O pacote de UX product-first não adiciona produtos não auditados nem infla contagens; ele torna os 843 produtos já canônicos diretamente descobríveis.
 
@@ -85,12 +90,12 @@ Documentação ativa:
 - `docs/VITRINE_OPERATING_MODEL.md` — operação e gates;
 - `WORKFLOW_STATUS.md` — estado corrente e prioridades;
 - `FINAL_OBJECTIVES_AND_DOI_GATES.md` — release citável e DOI;
-- `RELEASE_NOTES_v1.0.0.md` — notas da candidata à primeira release científica estável.
+- `RELEASE_NOTES_v1.0.0.md` — notas da primeira release científica estável.
 
 ## Release e citação
 
-O snapshot `v1.0.0` está preparado como candidato à primeira release científica estável, mas ainda não possui tag Git imutável nem DOI. Até a publicação formal da release, análises reproduzíveis devem registrar o commit efetivamente utilizado e também citar a fonte/dataset original.
+O snapshot científico `v1.0.0` foi congelado no commit `27c545554f406b940662777e3f053e939ef3588c`, publicado como tag e GitHub Release e preservado no Zenodo. Para análises reproduzíveis, cite a versão efetivamente utilizada e também cite a fonte/dataset original empregado na análise.
 
-> CLEMENTE, Ian. *Vitrine Ciência: catálogo de fontes de dados científicos sobre o Brasil para pesquisa, ensino e extensão*. GitHub, 2026.
+> CLEMENTE, Ian. *Vitrine Ciência: catálogo de fontes de dados científicos sobre o Brasil para pesquisa, ensino e extensão*. Version 1.0.0. Zenodo, 2026. https://doi.org/10.5281/zenodo.22130831
 
 ORCID: https://orcid.org/0000-0003-1164-9318
