@@ -10,6 +10,8 @@ A fase corrente é de **QA/QC, manutenção e refinamento da experiência de des
 
 ## Autoridade e snapshot
 
+Estado corrente: **135 fontes, 843 produtos e 876 distribuições**.
+
 - repositório: `Ian-loc/vitrineciencia`;
 - branch canônica: `main`;
 - site: `https://ian-loc.github.io/vitrineciencia/`;
