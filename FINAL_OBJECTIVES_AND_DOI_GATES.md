@@ -33,14 +33,20 @@ JSONs e o site são derivados deterministicamente.
 
 ## 5. Snapshot v1.0.0
 
-Snapshot candidato congelado em **19 de agosto de 2026**:
+Snapshot científico congelado em **19 de agosto de 2026** e publicado formalmente em **27 de agosto de 2026**:
 
 - **135 fontes**;
 - **843 produtos**;
 - **876 distribuições**;
 - IDs correntes chegam a `DR0135`, `DP000861` e `DD000894`, com lacunas preservadas;
 - verificações de fonte registradas até **2026-08-19**;
-- schema vigente: 34/24/15 campos em fonte/produto/distribuição.
+- schema vigente: 34/24/15 campos em fonte/produto/distribuição;
+- commit científico congelado: `27c545554f406b940662777e3f053e939ef3588c`;
+- tag: `v1.0.0`;
+- GitHub Release: https://github.com/Ian-loc/vitrineciencia/releases/tag/v1.0.0;
+- Zenodo: https://zenodo.org/records/22130831;
+- DOI: `10.5281/zenodo.22130831`;
+- SHA-256 do arquivo científico: `b2e7a996b075d45ef4caca853bf57618b54998724fc9b4bdea3afe3b6159d6f0`.
 
 Essas contagens caracterizam a release `v1.0.0`; não são gate, teto ou requisito arquitetural para releases futuras.
 
@@ -86,7 +92,7 @@ Novas possibilidades de curadoria ou melhorias não críticas não impedem relea
 - **Zenodo:** preservação e DOI do snapshot científico;
 - **ORCID/Lattes:** exposição profissional/citação após emissão.
 
-O depósito deve ser do tipo **Dataset**, porque o objeto científico principal é o catálogo curado e suas tabelas.
+O depósito é do tipo **Dataset**, porque o objeto científico principal é o catálogo curado e suas tabelas.
 
 ## 9. Conteúdo mínimo do depósito
 
@@ -108,29 +114,29 @@ Não incluir cópias de datasets externos apenas por estarem catalogados.
 - **G3 — semântica:** fonte/produto/distribuição e limitações sem contradições bloqueantes.
 - **G4 — licenças:** curadoria separada das licenças externas.
 - **G5 — documentação:** README, metodologia, codebook, citação e release notes consistentes.
-- **G6 — publicação:** site construído do mesmo snapshot.
+- **G6 — publicação:** site construído e validado para a fronteira pública definida.
 - **G7 — imutabilidade:** tag e commit registrados.
-- **G8 — depósito:** arquivos/metadados do Zenodo conferidos antes de publicar.
-- **G9 — propagação:** DOI inserido no projeto e perfis após emissão.
+- **G8 — depósito:** arquivos/metadados do Zenodo conferidos e publicados.
+- **G9 — propagação:** DOI inserido no projeto e, quando aplicável, nos perfis acadêmicos após emissão.
 
-## 11. Estado dos gates para v1.0.0
+## 11. Estado dos gates para v1.0.0 após publicação
 
-Na preparação da branch `release/v1.0.0` em 19/08/2026:
+Em **27/08/2026**:
 
-- G1: preparado;
-- G2: requer execução final dos validadores no commit candidato;
-- G3: contrato estável e estados desconhecidos/variáveis preservados; revisão final pelo CI;
-- G4: preparado;
-- G5: preparado na branch de release;
-- G6: requer build/deploy correspondente ao commit final;
-- G7: pendente de merge e criação da tag imutável `v1.0.0`;
-- G8: pendente de materialização e inspeção do pacote final;
-- G9: somente após emissão do DOI.
+- G1: **parcial** — identidade científica coerente; resta confirmar/corrigir administrativamente o campo Homepage das configurações do repositório GitHub para a URL canônica atual;
+- G2: **concluído** — snapshot validado com 135 fontes, 843 produtos e 876 distribuições;
+- G3: **concluído** — contrato fonte → produto → distribuição e normalizações sem pendências bloqueantes;
+- G4: **concluído** — código MIT, curadoria/metadados CC BY 4.0 e licenças externas separadas;
+- G5: **concluído** — documentação científica e de release alinhada;
+- G6: **parcial** — a interface pública está operacional como produto vivo, mas pode avançar além do snapshot DOI; a reprodutibilidade de v1.0.0 é ancorada à tag/commit/pacote preservado;
+- G7: **concluído** — tag anotada `v1.0.0` e GitHub Release publicados, apontando para o commit científico congelado;
+- G8: **concluído** — pacote validado publicado no Zenodo, registro `22130831`, DOI `10.5281/zenodo.22130831`;
+- G9: **parcial** — DOI propagado na documentação viva do repositório; ORCID/Lattes e outros perfis externos permanecem ações administrativas separadas.
 
-## 12. Regra de decisão
+## 12. Regra de decisão e estado pós-release
 
-**GO para DOI** quando G1–G8 estiverem concluídos para o snapshot `v1.0.0`, reproduzível e tecnicamente defensável, após a decisão humana explícita já registrada de preparar esta release.
+A regra original de **GO para DOI** exigia um snapshot tecnicamente defensável, tag/release imutável, pacote inspecionado e decisão humana explícita. A release `v1.0.0` foi efetivamente publicada e o DOI foi emitido.
 
-**NO-GO** para falhas materialmente relevantes: integridade quebrada, identidade incoerente, licença do próprio catálogo incorreta, snapshot não reproduzível, tag ausente ou depósito divergente.
+Após a emissão, pendências administrativas ou de propagação não devem alterar retroativamente a tag, o commit ou o pacote científico preservado. Correções de documentação, metadados vivos, interface e governança devem ocorrer em `main` ou em releases futuras.
 
 O Drive não é gate de DOI: um espelho desatualizado deve ser rotulado como tal e pode ser regenerado depois sem invalidar uma release correta no GitHub/Zenodo.
