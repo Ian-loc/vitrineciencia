@@ -1,35 +1,41 @@
 {
-  "contract_version": "2.0",
-  "catalog_state": "unreleased",
+  "contract_version": "2.1",
+  "catalog_state": "released",
   "target_stable_release": "1.0.0",
   "candidate_ref": "release/v1.0.0",
+  "release_tag": "v1.0.0",
+  "source_commit": "27c545554f406b940662777e3f053e939ef3588c",
   "archive_type": "Dataset",
-  "doi_allowed": false,
-  "last_reviewed": "2026-08-21",
+  "doi_allowed": true,
+  "doi": "10.5281/zenodo.22130831",
+  "zenodo_record": "https://zenodo.org/records/22130831",
+  "github_release": "https://github.com/Ian-loc/vitrineciencia/releases/tag/v1.0.0",
+  "archive_sha256": "b2e7a996b075d45ef4caca853bf57618b54998724fc9b4bdea3afe3b6159d6f0",
+  "last_reviewed": "2026-08-27",
   "snapshot": {
     "resources": 135,
     "products": 843,
     "distributions": 876
   },
-  "decision_rule": "DOI permanece bloqueado até G1-G8 estarem concluídos para um snapshot imutável, o pacote ser inspecionado e existir instrução humana explícita para publicar; G9 só pode ser concluído após a emissão do DOI.",
+  "decision_rule": "O DOI da v1.0.0 foi emitido após publicação da tag/release e depósito do pacote validado. Pendências administrativas ou de propagação posteriores não alteram retroativamente o snapshot científico congelado; devem ser registradas e resolvidas na documentação viva em main.",
   "gates": [
     {
       "id": "G1",
       "name": "identidade",
       "status": "parcial",
-      "evidence": "README, CITATION.cff, páginas públicas, autoria, ORCID, repositório e URL canônica usam Vitrine Ciência; o campo Homepage nas configurações do repositório GitHub ainda aponta para o endereço legado e requer correção administrativa."
+      "evidence": "README, CITATION.cff, páginas públicas, autoria, ORCID, repositório, GitHub Release e Zenodo usam a identidade Vitrine Ciência; o campo Homepage nas configurações do repositório GitHub ainda requer confirmação/correção administrativa para a URL canônica atual."
     },
     {
       "id": "G2",
       "name": "integridade",
       "status": "concluído",
-      "evidence": "As três tabelas canônicas preservam o snapshot 135 fontes, 843 produtos e 876 distribuições; os validadores correntes verificam IDs, relações fonte→produto→distribuição e sincronização dos derivados."
+      "evidence": "As três tabelas canônicas preservam o snapshot 135 fontes, 843 produtos e 876 distribuições; os validadores verificaram IDs, relações fonte→produto→distribuição e sincronização dos derivados no commit científico congelado."
     },
     {
       "id": "G3",
       "name": "semantica",
       "status": "concluído",
-      "evidence": "A auditoria corrente de papéis de links não possui pendências; resíduos de normalização pública foram encerrados por classificação sustentada ou desconhecido revisado, sem inferência artificial."
+      "evidence": "A auditoria de papéis de links não possui pendências bloqueantes; resíduos de normalização pública foram encerrados por classificação sustentada ou desconhecido revisado, sem inferência artificial."
     },
     {
       "id": "G4",
@@ -41,31 +47,31 @@
       "id": "G5",
       "name": "documentacao",
       "status": "concluído",
-      "evidence": "README, metodologia, codebook, política de release, CITATION.cff, licenças, notas da candidata e documentação operacional foram alinhados à identidade Vitrine Ciência e à fase corrente de QA/QC."
+      "evidence": "README, metodologia, codebook, política de release, CITATION.cff, licenças e notas da release foram alinhados ao snapshot v1.0.0; a documentação viva em main registra agora o DOI emitido."
     },
     {
       "id": "G6",
       "name": "publicacao",
       "status": "parcial",
-      "evidence": "O pipeline constrói e valida o artefato público e restringe deploy à main; a confirmação externa do site servido pelo commit final ainda deve ser registrada antes da publicação da release."
+      "evidence": "A interface pública permanece operacional como produto vivo. O snapshot DOI v1.0.0 é definido pela tag/commit e pelo pacote Zenodo; main e o site podem avançar posteriormente, portanto equivalência byte a byte com a interface viva não é assumida após a release."
     },
     {
       "id": "G7",
       "name": "imutabilidade",
-      "status": "bloqueado",
-      "evidence": "A tag Git imutável v1.0.0 e a GitHub Release correspondente ainda não foram criadas."
+      "status": "concluído",
+      "evidence": "A tag anotada v1.0.0 resolve para o commit científico 27c545554f406b940662777e3f053e939ef3588c e a GitHub Release correspondente foi publicada em 2026-08-27."
     },
     {
       "id": "G8",
       "name": "deposito",
-      "status": "bloqueado",
-      "evidence": "O pacote Zenodo final ainda não foi materializado e inspecionado como depósito Dataset; nenhuma publicação DOI foi autorizada."
+      "status": "concluído",
+      "evidence": "O pacote científico validado vitrine-ciencia-v1.0.0.zip, SHA-256 b2e7a996b075d45ef4caca853bf57618b54998724fc9b4bdea3afe3b6159d6f0, foi publicado no Zenodo como Dataset no registro 22130831."
     },
     {
       "id": "G9",
       "name": "propagacao",
-      "status": "bloqueado",
-      "evidence": "O DOI ainda não existe; sua propagação para projeto, ORCID e Lattes só pode ocorrer após emissão."
+      "status": "parcial",
+      "evidence": "DOI 10.5281/zenodo.22130831 propagado para CITATION.cff, README e documentação/release state em main. Propagação externa para perfis acadêmicos como ORCID/Lattes permanece uma ação administrativa separada."
     }
   ]
 }
