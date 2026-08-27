@@ -2,14 +2,14 @@
 
 **Data de referência:** 27 de agosto de 2026  
 **Fuso:** `America/Sao_Paulo`  
-**Estado global:** catálogo público operacional; contrato **Fonte → Produto → Distribuição** estável; descoberta pública **product-first**; candidata `v1.0.0` ainda sem tag Git imutável, GitHub Release ou DOI.
+**Estado global:** catálogo público operacional; contrato **Fonte → Produto → Distribuição** estável; descoberta pública **product-first**; release científica `v1.0.0` publicada no GitHub e preservada no Zenodo com DOI `10.5281/zenodo.22130831`.
 
 A **fase ativa de QA/QC e manutenção** inclui refinamento da descoberta pública, correções factuais e semânticas, validação de interface e saneamento de regressões. A expansão do corpus permanece separada desse trabalho.
 
 ## 1. Autoridade
 
 1. `main` de `Ian-loc/vitrineciencia` para desenvolvimento corrente;
-2. tags/releases imutáveis para snapshots científicos quando formalmente publicados;
+2. tag/release `v1.0.0` e depósito Zenodo para o primeiro snapshot científico imutável;
 3. três tabelas canônicas: `data_resources.csv`, `data_products.csv`, `product_distributions.csv`;
 4. contratos e validadores executáveis da Vitrine;
 5. documentação ativa;
@@ -20,16 +20,22 @@ JSONs, páginas públicas e relatórios de qualidade são artefatos derivados. O
 
 ## 2. Estado do catálogo
 
-Snapshot candidato a `v1.0.0`, preparado em 19/08/2026:
+Snapshot científico `v1.0.0`, congelado em 19/08/2026 e publicado formalmente em 27/08/2026:
 
 - **135 fontes**;
 - **843 produtos**;
 - **876 distribuições**;
 - identificadores correntes chegam a `DR0135`, `DP000861` e `DD000894`;
 - fontes verificadas até 19/08/2026;
-- schema vigente: 34 campos de fonte, 24 de produto e 15 de distribuição.
+- schema vigente: 34 campos de fonte, 24 de produto e 15 de distribuição;
+- commit congelado: `27c545554f406b940662777e3f053e939ef3588c`;
+- tag/release: `v1.0.0`;
+- Zenodo: `https://zenodo.org/records/22130831`;
+- DOI: `10.5281/zenodo.22130831`.
 
 **135 é a contagem de fontes.** A superfície pública de descoberta opera sobre os **843 produtos**. O pacote de UX de 27/08/2026 reorganiza descoberta, filtros, ranking, cards e comparação; não cria registros científicos novos.
+
+A `main` e o site são produtos vivos e podem avançar após `v1.0.0`. Reprodutibilidade da release é definida pela tag, commit e depósito Zenodo, não pelo estado posterior de `main`.
 
 ## 3. Estado da experiência pública
 
@@ -71,6 +77,14 @@ Navegação responsiva com botão de menu é obrigatória para smartphones e tab
 - GitHub Pages e smoke pós-deploy;
 - documentação pública/metodológica, citação e licenças;
 - QA/QC, correções factuais/semânticas e bugs reais de UX.
+
+### `RELEASED`
+
+- tag anotada `v1.0.0`;
+- GitHub Release `v1.0.0`;
+- snapshot científico Zenodo `22130831`;
+- DOI `10.5281/zenodo.22130831`;
+- arquivo científico preservado e validado `vitrine-ciencia-v1.0.0.zip`.
 
 ### `PAUSED`
 
@@ -116,4 +130,4 @@ Antes de publicar mudança pública:
 8. publicar somente após CI verde;
 9. verificar o site publicado via smoke pós-deploy.
 
-Nenhuma nova tag/release ou DOI deve ser criado sem instrução humana explícita.
+Nenhuma nova tag/release ou novo DOI deve ser criado sem instrução humana explícita. A release `v1.0.0` já publicada deve permanecer imutável; correções posteriores pertencem à documentação viva, à `main` ou a uma nova versão.
