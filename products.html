@@ -2,95 +2,80 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Encontre e compare produtos e datasets científicos sobre o Brasil por tema, cobertura, período, escala, formato, acesso e limitações.">
+<meta name="description" content="Encontre, filtre e compare produtos de dados científicos relevantes ao Brasil por tema, geografia, período, escala, acesso, formato e licença.">
 <link rel="canonical" href="https://ian-loc.github.io/vitrineciencia/products.html">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Vitrine Ciência"><meta property="og:title" content="Buscar dados · Vitrine Ciência"><meta property="og:description" content="Encontre e compare produtos e datasets científicos sobre o Brasil por tema, cobertura, período, escala, formato, acesso e limitações."><meta property="og:url" content="https://ian-loc.github.io/vitrineciencia/products.html">
-<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Buscar dados · Vitrine Ciência"><meta name="twitter:description" content="Encontre e compare produtos e datasets científicos sobre o Brasil.">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Vitrine Ciência"><meta property="og:title" content="Buscar dados · Vitrine Ciência"><meta property="og:description" content="Encontre e compare produtos de dados científicos relevantes ao Brasil."><meta property="og:url" content="https://ian-loc.github.io/vitrineciencia/products.html">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Buscar dados · Vitrine Ciência"><meta name="twitter:description" content="Encontre e compare produtos de dados científicos relevantes ao Brasil.">
 <meta name="theme-color" content="#173f32"><meta name="color-scheme" content="light">
 <title>Buscar dados · Vitrine Ciência</title>
-<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/products.css"><link rel="stylesheet" href="assets/accessibility.css"><link rel="stylesheet" href="assets/visual-refinement.css"><link rel="stylesheet" href="assets/export-selective.css"><link rel="stylesheet" href="assets/ux-v2.css?v=20260827-1">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/products.css"><link rel="stylesheet" href="assets/accessibility.css"><link rel="stylesheet" href="assets/visual-refinement.css"><link rel="stylesheet" href="assets/export-selective.css"><link rel="stylesheet" href="assets/ux-v2.css?v=20260827-2">
 </head>
 <body>
-<a class="skip" href="#produtos">Ir aos resultados</a>
+<a class="skip" href="#produtos">Ir aos produtos</a>
 <nav class="site-nav" aria-label="Navegação principal"><div class="wrap nav-inner">
 <a class="brand" href="index.html" aria-label="Vitrine Ciência — página inicial"><span>Vitrine Ciência</span><small>dados científicos sobre o Brasil</small></a>
-<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav-links">Menu</button>
-<div class="nav-links" id="site-nav-links"><a href="products.html" aria-current="page">Buscar dados</a><a href="sources.html">Fontes</a><a href="about.html">Sobre</a><a class="nav-subtle" href="analytics.html">Sobre o acervo</a></div>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav-links"><span aria-hidden="true">☰</span><span>Menu</span></button>
+<div class="nav-links" id="site-nav-links"><a href="products.html" aria-current="page">Buscar dados</a><a href="sources.html">Fontes</a><span class="nav-about"><a href="about.html">Sobre</a><a class="nav-sub" href="analytics.html">Sobre o acervo</a></span></div>
 </div></nav>
-<header class="hero product-search-priority"><div class="wrap hero-grid">
-<div class="hero-copy"><p class="eyebrow">Descoberta científica orientada à pesquisa</p><h1>Encontre e compare dados científicos sobre o Brasil</h1><p class="lead">Compare cobertura, período, escala, formato, acesso e limitações de produtos científicos relevantes para sua pesquisa.</p></div>
-<div class="hero-tool">
-<form class="hero-search" id="product-search" role="search" aria-label="Busca de produtos e datasets">
-<label for="product-q">Tema, variável ou pergunta de pesquisa</label>
-<div class="search-row"><input id="product-q" name="q" type="search" autocomplete="off" enterkeyhint="search" aria-describedby="product-search-help" placeholder="Ex.: carbono do solo no Cerrado; precipitação mensal 1980 2025…"><button type="submit">Buscar dados</button></div>
-<p class="search-help" id="product-search-help">A busca reconhece termos relacionados em português e inglês, biomas, Brasil, anos e alguns atributos de escala.</p>
-<div class="query-interpretation" id="query-interpretation" aria-live="polite" aria-label="Critérios reconhecidos na busca" hidden></div>
+<header class="hero discovery-hero"><div class="wrap discovery-hero-inner">
+<div class="hero-copy"><p class="eyebrow">Descoberta científica</p><h1>Encontre e compare dados científicos sobre o Brasil</h1><p class="lead">Compare cobertura, período, escala, formato, acesso e limitações de fontes e produtos científicos relevantes para sua pesquisa.</p></div>
+<form class="hero-search discovery-search" id="product-search" role="search" aria-label="Buscar produtos de dados">
+<label for="product-q">O que você precisa investigar?</label>
+<div class="search-row"><input id="product-q" name="q" type="search" autocomplete="off" enterkeyhint="search" aria-describedby="product-search-help" placeholder="Ex.: carbono no solo do Cerrado, Brasil, 2000, 30 m"><button type="submit">Buscar dados</button></div>
+<p class="search-help" id="product-search-help">A busca reconhece termos científicos, sinônimos, biomas, Brasil, anos e resoluções espaciais. Use os filtros abaixo para tornar os critérios obrigatórios.</p>
 </form>
-<div class="quick-search" aria-label="Buscas sugeridas"><span>Exemplos:</span><button type="button" data-product-query="carbono solo Cerrado">carbono no solo</button><button type="button" data-product-query="uso da terra Brasil">uso da terra</button><button type="button" data-product-query="precipitação mensal">precipitação mensal</button><button type="button" data-product-query="biodiversidade Amazônia">biodiversidade</button></div>
-<div class="hero-links"><a href="#product-catalog">Refinar por critérios científicos</a><a href="sources.html">Explorar fontes e provedores</a><a href="about.html#como-organizamos">Entender fonte × produto × acesso</a></div>
-</div>
 </div></header>
-<section class="stats" aria-label="Resumo dos produtos"><div class="wrap stats-grid">
+<section class="stats compact-stats" aria-label="Resumo dos produtos"><div class="wrap stats-grid">
 <div><strong id="p-total">—</strong><span>produtos catalogados</span></div>
 <div><strong id="p-sources">—</strong><span>fontes representadas</span></div>
-<div><strong id="p-free">—</strong><span>com acesso gratuito</span></div>
+<div><strong id="p-free">—</strong><span>com download gratuito</span></div>
 <div><strong id="p-formats">—</strong><span>formatos registrados</span></div>
 </div></section>
 <main id="produtos">
-<section class="wrap catalog" id="product-catalog" aria-labelledby="product-catalog-heading">
+<section class="wrap catalog product-catalog" id="product-catalog" aria-labelledby="product-catalog-heading">
 <div class="catalog-toolbar">
-<div class="heading"><div><p class="eyebrow">Seleção e escrutínio</p><h2 id="product-catalog-heading" tabindex="-1">Produtos compatíveis com sua pergunta</h2></div><p id="product-count" role="status" aria-live="polite" aria-atomic="true">Carregando produtos…</p></div>
-<label class="sort-control" for="product-sort"><span>Ordenar resultados</span><select id="product-sort"><option value="relevance">Melhor correspondência científica</option><option value="name">Nome de A a Z</option><option value="verified">Revisão mais recente</option><option value="source">Fonte de A a Z</option></select></label>
+<div class="heading"><div><p class="eyebrow">Produtos e datasets</p><h2 id="product-catalog-heading" tabindex="-1">Produtos compatíveis com sua pergunta</h2></div><p id="product-count" role="status" aria-live="polite" aria-atomic="true">Carregando produtos…</p></div>
+<label class="sort-control" for="product-sort"><span>Ordenar</span><select id="product-sort"><option value="relevance">Relevância científica</option><option value="name">Nome de A a Z</option><option value="source">Fonte de A a Z</option><option value="verified">Revisão mais recente</option></select></label>
 </div>
-<form class="filters product-filters" id="product-filters" role="search" aria-label="Filtros científicos dos produtos" aria-describedby="product-filter-note">
-<fieldset class="scientific-filter-grid"><legend class="sr-only">Filtros principais para seleção científica</legend>
-<label><span>Tema / variável</span><select id="product-area"><option value="">Todos os temas e áreas</option></select></label>
-<label><span>Cobertura geográfica</span><input id="product-coverage" type="search" autocomplete="off" placeholder="Brasil, Cerrado, município…"></label>
-<div class="filter-cluster"><span>Período</span><div class="period-pair"><input id="product-year-start" type="number" inputmode="numeric" min="1800" max="2100" placeholder="De" aria-label="Ano inicial"><input id="product-year-end" type="number" inputmode="numeric" min="1800" max="2100" placeholder="Até" aria-label="Ano final"></div></div>
+<div class="interpreted-query" id="interpreted-query" role="status" aria-live="polite" hidden></div>
+<form class="filters product-filters scientific-filters" id="product-filters" role="search" aria-label="Filtros científicos de produtos" aria-describedby="product-filter-note">
+<fieldset class="product-primary-grid"><legend>Critérios científicos principais</legend>
+<label><span>Tema / variável</span><select id="product-theme"><option value="">Todos os temas</option></select></label>
+<label><span>Cobertura geográfica</span><input id="product-coverage" type="search" placeholder="Brasil, Cerrado, município…"></label>
+<div class="filter-pair"><span class="filter-pair-label">Período que precisa ser coberto</span><label><span>De</span><input id="product-year-start" type="number" min="1800" max="2100" inputmode="numeric" placeholder="2000"></label><label><span>Até</span><input id="product-year-end" type="number" min="1800" max="2100" inputmode="numeric" placeholder="2025"></label></div>
 <label><span>Resolução temporal</span><select id="product-temporal"><option value="">Qualquer resolução temporal</option></select></label>
-<label><span>Escala / suporte espacial</span><select id="product-spatial-support"><option value="">Qualquer suporte espacial</option></select></label>
-<label><span>Resolução espacial</span><select id="product-spatial-resolution"><option value="">Qualquer resolução espacial</option></select></label>
+<label><span>Escala / suporte espacial</span><select id="product-support"><option value="">Qualquer suporte espacial</option></select></label>
+<label><span>Resolução espacial</span><select id="product-spatial"><option value="">Qualquer resolução espacial</option></select></label>
 <label><span>Forma de acesso</span><select id="product-access"><option value="">Qualquer forma de acesso</option></select></label>
-<label><span>Formato</span><select id="product-format"><option value="">Todos os formatos</option></select></label>
-<label><span>Licença / acesso gratuito</span><select id="product-free"><option value="">Gratuito ou restrito</option></select></label>
+<label><span>Formato</span><select id="product-format"><option value="">Qualquer formato</option></select></label>
+<div class="filter-pair access-pair"><span class="filter-pair-label">Licença / acesso gratuito</span><label><span>Gratuidade</span><select id="product-free"><option value="">Qualquer condição</option></select></label><label><span>Licença</span><select id="product-license"><option value="">Qualquer licença</option></select></label></div>
 </fieldset>
-<details class="advanced-filters" id="product-advanced-filters">
-<summary>Filtros adicionais <span id="product-advanced-count" aria-live="polite"></span></summary>
-<fieldset class="advanced-grid product-advanced-grid-v2"><legend class="sr-only">Filtros adicionais</legend>
+<details class="advanced-filters" id="product-advanced-filters"><summary>Filtros complementares <span id="product-advanced-count" aria-live="polite"></span></summary>
+<fieldset class="product-secondary-grid"><legend class="sr-only">Filtros complementares</legend>
+<label><span>Área de pesquisa</span><select id="product-area"><option value="">Todas as áreas</option></select></label>
 <label><span>Fonte / provedor</span><select id="product-source"><option value="">Todas as fontes</option></select></label>
-<label><span>Abrangência no Brasil</span><select id="product-brazil"><option value="">Qualquer abrangência</option></select></label>
 <label><span>Tipo de produto</span><select id="product-kind"><option value="">Todos os tipos</option></select></label>
-<label><span>Licença</span><select id="product-license"><option value="">Qualquer licença</option></select></label>
-<label><span>Autenticação</span><select id="product-auth"><option value="">Qualquer situação</option></select></label>
+<label><span>Autenticação</span><select id="product-auth"><option value="">Qualquer autenticação</option></select></label>
 <label><span>Estado do produto</span><select id="product-status"><option value="">Todos os estados</option></select></label>
-<label><span>Origem dos dados</span><select id="product-origin"><option value="">Qualquer origem</option></select></label>
-<select id="product-protocol" hidden aria-hidden="true"><option value="">Todos os protocolos</option></select>
-</fieldset>
-</details>
-<p class="filter-explainer" id="product-filter-note">Os filtros principais refletem decisões científicas de seleção. Fonte, tipo, autenticação e estado ficam em segundo plano. Para um período informado, a Vitrine prioriza produtos cuja cobertura temporal contém o intervalo solicitado.</p>
-<div class="filter-footer"><p>Compare até três produtos e confirme versão, metodologia, licença e condições de uso na fonte original.</p><button type="button" id="product-clear">Limpar busca e filtros</button></div>
+<label><span>Origem do produto</span><select id="product-origin"><option value="">Qualquer origem</option></select></label>
+<label><span>Disponibilidade para o Brasil</span><select id="product-brazil"><option value="">Qualquer situação</option></select></label>
+</fieldset></details>
+<div class="filter-footer"><p id="product-filter-note">Os filtros operam sobre metadados curados do produto. Confirme versão, método, licença e limitações na documentação original antes da análise.</p><button type="button" id="product-clear">Limpar busca e filtros</button></div>
 </form>
-<div class="active-filters" id="product-active-filters" role="region" aria-label="Filtros ativos de produtos" aria-live="polite" hidden></div>
-<div id="product-list" class="cards product-cards" role="list" aria-busy="true" aria-describedby="product-count"></div>
+<div class="active-filters" id="product-active-filters" role="region" aria-label="Filtros ativos" aria-live="polite" hidden></div>
+<div class="result-insights" id="product-result-insights" aria-label="Perfil dos resultados" hidden></div>
+<div id="product-list" class="cards product-cards compact-product-cards" role="list" aria-busy="true" aria-describedby="product-count"></div>
 <div class="results-more" id="product-results-more" hidden><button type="button" id="product-show-more" aria-controls="product-list">Mostrar mais produtos</button><span id="product-shown-count" role="status" aria-live="polite"></span></div>
-<div id="product-empty" class="empty" role="status" hidden><h3>Nenhum produto corresponde à combinação atual</h3><p>Remova uma restrição ou amplie o período, a geografia ou o tema. A busca aceita termos em português e inglês.</p></div>
-<noscript><div class="noscript"><h3>A busca interativa requer JavaScript</h3><p>Ative JavaScript para pesquisar, filtrar, comparar e exportar produtos. Você ainda pode consultar as <a href="sources.html">fontes</a> e a <a href="about.html">metodologia</a>.</p></div></noscript>
+<div id="product-empty" class="empty" role="status" hidden><h3>Nenhum produto atende a todos os critérios</h3><p>Remova um filtro obrigatório, amplie o período ou tente uma busca mais geral. A Vitrine diferencia ausência de correspondência de ausência de informação no catálogo.</p></div>
+<noscript><div class="noscript"><h3>A busca interativa requer JavaScript</h3><p>Ative JavaScript para pesquisar, filtrar e comparar produtos. Você ainda pode consultar as <a href="sources.html">fontes e provedores</a> ou o <a href="about.html">método</a>.</p></div></noscript>
 </section>
-<section class="wrap about"><div><p class="eyebrow">Antes de analisar</p><h2>Confirme o produto na fonte original</h2></div><p>A Vitrine facilita descoberta, triagem e comparação. A documentação original continua sendo a referência para versão, significado das variáveis, resolução, método, incerteza, licença e limitações.</p></section>
+<section class="wrap about"><div><p class="eyebrow">Como usar</p><h2>Triagem primeiro; confirmação na fonte original</h2></div><p>Os cards priorizam quatro perguntas: <strong>onde</strong>, <strong>quando</strong>, <strong>em qual escala</strong> e <strong>como acessar</strong>. Metodologia, limitações, licença, versão e proveniência ficam disponíveis nos detalhes para escrutínio.</p></section>
 </main>
-<div class="compare-bar" id="compare-bar" role="region" aria-label="Produtos selecionados para comparação" aria-live="polite" hidden>
-<div><strong id="compare-count">0 produtos selecionados</strong><span id="compare-status">Selecione de dois a três produtos.</span></div>
-<div class="compare-actions"><button type="button" id="compare-open">Comparar</button><button type="button" id="compare-clear">Limpar</button></div>
-</div>
-<dialog id="compare-dialog" aria-labelledby="compare-title">
-<div class="compare-dialog-header"><div><p class="eyebrow">Comparação lado a lado</p><h2 id="compare-title">Produtos selecionados</h2></div><button type="button" id="compare-close" aria-label="Fechar comparação">Fechar</button></div>
-<div id="compare-content"></div>
-</dialog>
-<footer class="wrap"><p><strong>Vitrine Ciência</strong> · Ian Clemente · <a href="products.html">Buscar dados</a> · <a href="sources.html">Fontes</a> · <a href="about.html">Sobre</a></p><p>Brasil · Dados: CC BY 4.0 · Código: MIT</p></footer>
+<div class="compare-bar" id="compare-bar" role="region" aria-label="Produtos selecionados para comparação" aria-live="polite" hidden><div><strong id="compare-count">0 produtos selecionados</strong><span id="compare-status">Selecione dois ou três produtos.</span></div><div class="compare-actions"><button type="button" id="compare-open" disabled>Comparar</button><button type="button" id="compare-clear">Limpar</button></div></div>
+<dialog id="compare-dialog" aria-labelledby="compare-title"><div class="compare-dialog-header"><div><p class="eyebrow">Comparação lado a lado</p><h2 id="compare-title">Produtos selecionados</h2></div><button type="button" id="compare-close">Fechar</button></div><div id="compare-content"></div></dialog>
+<footer class="wrap"><p><strong>Vitrine Ciência</strong> · <a href="products.html">Buscar dados</a> · <a href="sources.html">Fontes</a> · <a href="about.html">Sobre</a> · <a href="analytics.html">Sobre o acervo</a></p><p>Brasil · Dados: CC BY 4.0 · Código: MIT</p></footer>
 <script src="assets/ptbr.js?v=20260819-3" defer></script>
-<script src="assets/products.js" defer></script>
-<script src="assets/product-ux-v2.js?v=20260827-1" defer></script>
-<script src="assets/export-selective.js?v=20260819-1" defer></script>
-<script src="assets/product-ux-compat.js?v=20260827-1" defer></script>
+<script src="assets/products.js?v=20260827-3" defer></script>
+<script src="assets/export-selective.js?v=20260827-2" defer></script>
 <script src="assets/navigation.js?v=20260827-1" defer></script>
 </body></html>
