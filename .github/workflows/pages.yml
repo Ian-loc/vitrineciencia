@@ -49,8 +49,6 @@ jobs:
           node --check assets/app.js
           node --check assets/ptbr.js
           node --check assets/products.js
-          node --check assets/product-ux-v2.js
-          node --check assets/product-ux-compat.js
           node --check assets/navigation.js
           node --check assets/home.js
           node --check assets/analytics.js
@@ -88,8 +86,6 @@ jobs:
           test -s _site/assets/app.js
           test -s _site/assets/ptbr.js
           test -s _site/assets/products.js
-          test -s _site/assets/product-ux-v2.js
-          test -s _site/assets/product-ux-compat.js
           test -s _site/assets/navigation.js
           test -s _site/assets/home.js
           test -s _site/assets/analytics.js
@@ -98,6 +94,8 @@ jobs:
           test -s _site/data/data_resources.json
           test -s _site/data/data_products.json
           test -s _site/data/brazil_scope_priorities.json
+          test ! -e _site/assets/product-ux-v2.js
+          test ! -e _site/assets/product-ux-compat.js
           test ! -e _site/data/data_resources.csv
           test ! -e _site/data/data_products.csv
           test ! -e _site/data/product_distributions.csv
