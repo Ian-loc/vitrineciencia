@@ -12,7 +12,8 @@
     [...select.options].forEach(option => {
       if (!labels[option.value]) return;
       const count = option.textContent.match(/\s+\(\d+\)$/)?.[0] || "";
-      option.textContent = `${labels[option.value]}${count}`;
+      const nextText = `${labels[option.value]}${count}`;
+      if (option.textContent !== nextText) option.textContent = nextText;
     });
   }
 
