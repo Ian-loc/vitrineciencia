@@ -10,10 +10,11 @@
     const select = document.querySelector("#product-kind");
     if (!select) return;
     [...select.options].forEach(option => {
-      if (!labels[option.value]) return;
+      const baseLabel = labels[option.value];
+      if (!baseLabel) return;
       const count = option.textContent.match(/\s+\(\d+\)$/)?.[0] || "";
-      const nextText = `${labels[option.value]}${count}`;
-      if (option.textContent !== nextText) option.textContent = nextText;
+      const visibleLabel = `${baseLabel}${count}`;
+      if (option.label !== visibleLabel) option.label = visibleLabel;
     });
   }
 
@@ -21,7 +22,7 @@
     const select = document.querySelector("#product-kind");
     if (!select) return;
     apply();
-    new MutationObserver(apply).observe(select, {childList:true, subtree:true});
+    new MutationObserver(apply).observe(select, {childList:true});
     window.setTimeout(apply, 0);
   }
 
