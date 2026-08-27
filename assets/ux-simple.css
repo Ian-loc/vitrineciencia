@@ -40,17 +40,17 @@
 .filter-footer{padding-top:.65rem;border-top:1px solid var(--line)}
 .filter-footer p{max-width:760px}
 
-/* Results are reading surfaces, not a dashboard of tiny tiles. */
+/* Results are compact screening cards: two balanced cards per row on larger screens. */
 .catalog .cards{grid-template-columns:1fr;gap:.85rem}
-.compact-product-cards{grid-template-columns:1fr;gap:.85rem;max-width:none}
-.compact-product-cards .product-card{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(300px,.9fr);grid-template-areas:"head triage" "description triage" "chips triage" "bottom actions" "details details";column-gap:1.35rem;row-gap:.15rem;padding:1.15rem 1.2rem;border-radius:14px}
+.compact-product-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:none;align-items:stretch}
+.compact-product-cards .product-card{display:grid;grid-template-columns:1fr;grid-template-areas:"head" "description" "chips" "triage" "bottom" "actions" "details";grid-template-rows:auto auto auto auto 1fr auto auto;row-gap:.3rem;min-width:0;min-height:430px;aspect-ratio:1.18/1;padding:1.15rem 1.2rem;border-radius:14px}
 .product-card-head{grid-area:head}
-.product-card-head h3{font-size:1.12rem;line-height:1.25}
-.product-description{grid-area:description;min-height:auto;margin:.55rem 0 .45rem;-webkit-line-clamp:2}
-.product-area-chips{grid-area:chips;margin:.05rem 0 .45rem}
-.triage-strip{grid-area:triage;grid-template-columns:1fr 1fr;align-self:start;margin:0}
-.product-card-bottom{grid-area:bottom;margin:.2rem 0 0}
-.compact-actions{grid-area:actions;align-self:end;margin:0}
+.product-card-head h3{font-size:1.08rem;line-height:1.25}
+.product-description{grid-area:description;display:-webkit-box;min-height:auto;margin:.55rem 0 .45rem;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:3}
+.product-area-chips{grid-area:chips;margin:.05rem 0 .5rem}
+.triage-strip{grid-area:triage;grid-template-columns:1fr 1fr;align-self:start;margin:.15rem 0 .45rem}
+.product-card-bottom{grid-area:bottom;align-self:end;margin:.2rem 0 0}
+.compact-actions{grid-area:actions;align-self:end;margin:.35rem 0 0}
 .product-card .card-details{grid-area:details;margin-top:.65rem}
 .compact-actions .action-primary,.compact-actions .compare-toggle{min-height:40px}
 .card{padding:1.15rem 1.2rem}
@@ -78,7 +78,7 @@
   .home-hero-grid,.discovery-hero .discovery-hero-inner,.catalog-hero .hero-grid{grid-template-columns:1fr;gap:1.25rem}
   .product-primary-grid.simple-primary{grid-template-columns:repeat(2,minmax(0,1fr))}
   .product-refine-grid,.source-refine-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .compact-product-cards .product-card{grid-template-columns:1fr;grid-template-areas:"head" "description" "chips" "triage" "bottom" "actions" "details";row-gap:.25rem}
+  .compact-product-cards .product-card{min-height:390px;aspect-ratio:auto;row-gap:.25rem}
   .triage-strip{margin-top:.35rem}
   .compact-actions{margin-top:.2rem}
 }
@@ -89,8 +89,9 @@
   .hero.compact .wrap{padding:1.45rem 0 1.3rem}
   .product-primary-grid.simple-primary,.product-refine-grid,.source-filter-primary,.source-refine-grid,.use-steps{grid-template-columns:1fr}
   .product-primary-grid.simple-primary .filter-pair{grid-template-columns:1fr 1fr}
+  .compact-product-cards{grid-template-columns:1fr}
   .triage-strip{grid-template-columns:1fr 1fr}
-  .compact-product-cards .product-card{padding:1rem}
+  .compact-product-cards .product-card{min-height:0;padding:1rem}
   .analytics{padding-top:2rem}
 }
 
