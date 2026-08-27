@@ -1,8 +1,8 @@
 # Vitrine Ciência
 
-**Catálogo público, estático, versionado e citável de fontes e produtos de dados científicos relevantes ao Brasil para pesquisa, ensino e extensão.**
+**Catálogo público, estático, versionado e citável de produtos e fontes de dados científicos relevantes ao Brasil para pesquisa, ensino e extensão.**
 
-A Vitrine Ciência organiza fontes, produtos e formas de acesso com busca, filtros, cobertura, formatos, temporalidade, limitações, evidências e links para os provedores originais. Ela é uma infraestrutura de **descoberta e triagem**: não substitui os datasets originais, sua documentação ou sua citação.
+A Vitrine Ciência facilita a descoberta e a triagem de dados. A experiência pública é **product-first**: o usuário procura primeiro o produto/dataset capaz de responder à pergunta de pesquisa e, em seguida, consulta a fonte para proveniência, responsabilidade institucional e documentação. O modelo científico interno continua rigorosamente separado em **Fonte → Produto → Distribuição**.
 
 ## Produto público e autoridade
 
@@ -17,7 +17,7 @@ A Vitrine Ciência organiza fontes, produtos e formas de acesso com busca, filtr
 - código: MIT
 - metadados e curadoria original: CC BY 4.0
 
-### Snapshot candidato v1.0.0 — 19 de agosto de 2026
+### Snapshot candidato v1.0.0
 
 - **135 fontes**;
 - **843 produtos**;
@@ -25,9 +25,9 @@ A Vitrine Ciência organiza fontes, produtos e formas de acesso com busca, filtr
 - os identificadores correntes chegam a `DR0135`, `DP000861` e `DD000894`, pois IDs removidos/consolidados não são reciclados;
 - verificações de fontes registradas até **2026-08-19**.
 
-Essas contagens descrevem o snapshot candidato e não são limites arquiteturais. A `main` está em fase de QA/QC e manutenção; a expansão de novas fontes, produtos ou distribuições está pausada até nova instrução humana explícita.
+**135 é a contagem de fontes, não de produtos.** O catálogo público de produtos contém 843 registros. O pacote de UX product-first não adiciona produtos não auditados nem infla contagens; ele torna os 843 produtos já canônicos diretamente descobríveis.
 
-## Modelo vigente
+## Modelo científico vigente
 
 ```text
 Fonte (DR####)
@@ -35,13 +35,31 @@ Fonte (DR####)
         └── Distribuição (DD######)
 ```
 
-A tabela de fontes possui 34 campos; a de produtos, 24; e a de distribuições, 15. O contrato é deliberadamente simples e estável. Novas entidades só devem ser introduzidas se uma diferença cientificamente material não puder ser representada no modelo atual e se a expansão de escopo tiver sido explicitamente retomada.
+- **Fonte:** provedor, plataforma, programa, repositório ou infraestrutura; é contexto de proveniência.
+- **Produto:** dataset, série, coleção, catálogo, serviço ou oferta materialmente distinta; é a unidade principal de descoberta pública.
+- **Distribuição:** rota concreta de acesso ao produto, por exemplo arquivo, API, WMS/WFS, aplicação ou outro serviço.
 
-## Fronteira com o Simbiotrama
+A interface não colapsa esses níveis. A mudança é apenas na ordem de descoberta: **pergunta → produto → comparação → fonte/proveniência → acesso original**.
 
-Desde 9 de agosto de 2026, **Vitrine Ciência** e **Simbiotrama** são projetos independentes. O Simbiotrama possui repositório próprio e pode desenvolver arquitetura relacional, PostgreSQL/PostGIS e outras instâncias sem criar dependência de runtime, publicação ou governança para a Vitrine.
+## Descoberta pública
 
-Documentos relacionais antigos ainda presentes neste histórico pertencem à fase pré-separação ou ao Simbiotrama e são tratados como **evidência histórica**, não como direção ativa da Vitrine.
+A página pública prioriza:
+
+1. tema / variável;
+2. cobertura geográfica;
+3. período;
+4. resolução temporal;
+5. escala / suporte espacial;
+6. resolução espacial;
+7. forma de acesso;
+8. formato;
+9. licença e gratuidade.
+
+Fonte/provedor, tipo de produto, autenticação, estado, origem e disponibilidade específica para o Brasil permanecem como filtros complementares. A busca interpreta de forma determinística termos científicos e sinônimos, biomas, `Brasil`, anos e resoluções espaciais; não depende de LLM nem de servidor.
+
+O ranking padrão segue: **relevância da consulta → disponibilidade de dados para o Brasil → completude/documentação → origem da fonte → nome**.
+
+Cada card de produto mantém visíveis quatro dimensões de triagem: **Onde? · Quando? · Escala? · Acesso?**. Metodologia, limitações, licença, versão, proveniência e formas detalhadas de acesso permanecem disponíveis na expansão do card.
 
 ## Uso científico
 
@@ -55,13 +73,9 @@ Antes de utilizar um produto catalogado, confirme no provedor original:
 
 A presença na Vitrine não certifica qualidade universal, comparabilidade ou adequação a uma análise específica.
 
-## Manutenção
+## Manutenção e QA
 
-O fluxo corrente é:
-
-**estado vivo → defeito/risco material → evidência → correção mínima → validação → read-back → publicação quando aplicável**.
-
-Mudanças em `main` devem preservar integridade dos IDs e relações, geração determinística dos artefatos públicos, isolamento de `_site`, funcionamento da interface e independência do Simbiotrama. O Drive é espelho/histórico derivado e não autoridade concorrente.
+Mudanças em `main` devem preservar integridade dos IDs e relações, geração determinística dos artefatos públicos e isolamento de `_site`. O CI valida dados, HTML/JavaScript, fronteira pública e comportamento em navegador. A QA visual cobre desktop, tablet e smartphone e inclui busca interpretativa, filtros, densidade dos cards, comparação, remoção de produtos e reset da seleção ao fechar.
 
 Documentação ativa:
 
@@ -75,10 +89,8 @@ Documentação ativa:
 
 ## Release e citação
 
-O snapshot `v1.0.0` está preparado como candidato à primeira release científica estável, mas **ainda não possui tag Git imutável nem DOI**. Até a publicação formal da release, análises reproduzíveis devem registrar o commit efetivamente utilizado e também citar a fonte/dataset original.
+O snapshot `v1.0.0` está preparado como candidato à primeira release científica estável, mas ainda não possui tag Git imutável nem DOI. Até a publicação formal da release, análises reproduzíveis devem registrar o commit efetivamente utilizado e também citar a fonte/dataset original.
 
 > CLEMENTE, Ian. *Vitrine Ciência: catálogo de fontes de dados científicos sobre o Brasil para pesquisa, ensino e extensão*. GitHub, 2026.
 
 ORCID: https://orcid.org/0000-0003-1164-9318
-
-Quando uma release/tag imutável for explicitamente publicada, a versão correspondente deve substituir a referência genérica acima. Após eventual emissão de DOI, o identificador persistente deve ser incorporado ao README, `CITATION.cff`, GitHub Release e perfis acadêmicos sem alterar retroativamente o conteúdo científico do snapshot.
