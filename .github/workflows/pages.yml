@@ -50,6 +50,7 @@ jobs:
           node --check assets/quality-summary.js
           node --check assets/build-meta.js
           node --check assets/discovery-guardrails.js
+          node --check assets/static-catalog-51.js
 
       - name: Construir artefato público isolado
         run: |
@@ -66,6 +67,7 @@ jobs:
           test -s _site/about.html
           test -s _site/assets/discovery-guardrails.js
           test -s _site/assets/discovery-guardrails.css
+          test -s _site/assets/static-catalog-51.js
           test -s _site/data/data_resources.json
           test -s _site/data/data_products.json
           test -s _site/data/brazil_scope_priorities.json
