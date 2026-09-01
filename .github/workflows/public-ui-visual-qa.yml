@@ -79,7 +79,7 @@ jobs:
                 if (name === 'sources') await page.waitForSelector('#list .card');
                 await page.screenshot({path:`visual-qa/${mode}-${name}.png`,fullPage:true});
 
-                const metrics = await page.evaluate(() => ({title:document.title,viewportWidth:window.innerWidth,documentWidth:document.documentElement.scrollWidth,h1:(document.querySelector('h1')?.textContent||'').trim(),hasMain:Boolean(document.querySelector('main')),visibleFreeSearch:[...document.querySelectorAll('input[type="search"]')].filter(el=>{const s=getComputedStyle(el); return s.display!=='none'&&s.visibility!=='hidden'&&el.getClientRects().length;}).length}));
+                const metrics = await page.evaluate(() => ({title:document.title,viewportWidth:window.innerWidth,documentWidth:document.documentElement.scrollWidth,h1:(document.querySelector('h1')?.textContent||'').trim(),hasMain:Boolean(document.querySelector('main')),visibleFreeSearch:[...document.querySelectorAll('input[type="search"],input[type="text"]')].filter(el=>{const s=getComputedStyle(el); return s.display!=='none'&&s.visibility!=='hidden'&&el.getClientRects().length;}).length}));
                 report.push({mode,page:name,...metrics});
                 if (!metrics.hasMain || !metrics.h1) failed=true;
                 if (metrics.documentWidth > metrics.viewportWidth + 2) { console.error(`Overflow horizontal: ${mode}/${name}`); failed=true; }
@@ -93,13 +93,18 @@ jobs:
 
                 if (name === 'home') {
                   await page.waitForFunction(() => document.querySelector('#home-products')?.textContent.trim() === '11' && document.querySelector('#home-sources')?.textContent.trim() === '51');
-                  if (await page.locator('select[name="theme"]').count() !== 1) { console.error('Seleção controlada de fenômeno ausente'); failed=true; }
+                  const theme = page.locator('#home-theme[name="q"]');
+                  if (await theme.count() !== 1 || await theme.evaluate(el => el.tagName) !== 'SELECT') { console.error('Seleção controlada de fenômeno ausente'); failed=true; }
                   if (await page.locator('#home-product-areas .process-card').count() < 10) { console.error('Atalhos socioecológicos insuficientes'); failed=true; }
+                  const action = await page.locator('.controlled-search-shell').getAttribute('action');
+                  if (action !== 'sources.html') { console.error(`Home deve abrir núcleo 51, não subconjunto detalhado: ${action}`); failed=true; }
+                  if (await page.locator('#home-product-areas a[href^="sources.html?q="]').count() < 10) { console.error('Atalhos temáticos não apontam ao núcleo 51'); failed=true; }
                 }
 
                 if (name === 'products') {
                   const cards = page.locator('#product-list .product-card');
-                  if (await cards.count() !== 11) { console.error(`Núcleo deve exibir 11 produtos: ${await cards.count()}`); failed=true; }
+                  if (await cards.count() !== 11) { console.error(`Subconjunto detalhado deve exibir 11 itens: ${await cards.count()}`); failed=true; }
+                  if (!(await page.locator('body').textContent()).toLowerCase().includes('subconjunto')) { console.error('Página de 11 itens não declara escopo de subconjunto'); failed=true; }
                   for (const selector of ['#product-theme','#product-coverage','#product-kind','#product-access']) {
                     const control = page.locator(selector); if (!await control.count() || await control.evaluate(el => el.tagName) !== 'SELECT') { console.error(`Filtro controlado ausente: ${selector}`); failed=true; }
                   }
@@ -116,24 +121,33 @@ jobs:
                   }
                   await page.waitForFunction(() => document.querySelectorAll('#product-list .entity-role-badge').length >= 11);
                   if (await page.locator('#product-list .entity-role-badge').filter({hasText:'Serviço/catálogo'}).count() < 3) { console.error('Serviços/catálogos não estão diferenciados'); failed=true; }
+                  if (await page.locator('#product-list .card-actions a').filter({hasText:'Página do provedor'}).count() < 1) { console.error('Papéis de proveniência não aparecem nos itens detalhados'); failed=true; }
                   const compareInputs = page.locator('[data-compare]');
                   for (let i=0;i<3;i++) await compareInputs.nth(i).check();
                   await page.locator('#compare-open').click();
                   await page.locator('#compare-dialog[open]').waitFor({state:'visible'});
-                  if (await page.locator('#compare-content [data-remove-compare]').count() !== 3) { console.error('Comparação não contém 3 produtos'); failed=true; }
+                  if (await page.locator('#compare-content [data-remove-compare]').count() !== 3) { console.error('Comparação não contém 3 itens'); failed=true; }
                   await page.locator('#compare-close').click();
                 }
 
                 if (name === 'product-index') {
                   const rows = page.locator('#product-index-list .product-index-row');
-                  if (await rows.count() !== 11) { console.error(`Índice técnico deve conter 11 produtos: ${await rows.count()}`); failed=true; }
-                  if ((await page.locator('#product-index-count').textContent()).trim() !== '11 produtos no núcleo') { console.error('Contagem do índice técnico incoerente'); failed=true; }
+                  if (await rows.count() !== 11) { console.error(`Índice técnico deve conter 11 itens: ${await rows.count()}`); failed=true; }
                 }
 
                 if (name === 'sources') {
-                  if (await page.locator('#list .card').count() !== 12) { console.error('Lote inicial de fontes deve conter 12 cards'); failed=true; }
+                  if (await page.locator('#list .card').count() !== 12) { console.error('Lote inicial do núcleo deve conter 12 cards'); failed=true; }
+                  const theme = page.locator('#source-theme-shortcut');
+                  if (await theme.count() !== 1 || await theme.evaluate(el => el.tagName) !== 'SELECT') { console.error('Filtro temático do núcleo 51 ausente'); failed=true; }
                   for (const selector of ['#area','#brazil','#scope','#download','#programmatic','#coverage','#format','#evidence']) {
                     if (await page.locator(selector).evaluate(el => el.tagName) !== 'SELECT') { console.error(`Filtro de fonte não controlado: ${selector}`); failed=true; }
+                  }
+                  if (await page.locator('#list .provenance-line').count() < 1) { console.error('Proveniência visível ausente nos cards'); failed=true; }
+                  const options = theme.locator('option');
+                  if (await options.count() > 1) {
+                    await theme.selectOption(await options.nth(1).getAttribute('value'));
+                    await page.waitForLoadState('networkidle');
+                    if (!new URL(page.url()).searchParams.get('q')) { console.error('Tema controlado não persistiu na URL'); failed=true; }
                   }
                 }
                 await page.close();
