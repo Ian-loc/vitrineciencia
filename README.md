@@ -1,38 +1,42 @@
 # Vitrine Ciência
 
-**Catálogo público, estático, versionado e citável de produtos e fontes de dados científicos relevantes ao Brasil para pesquisa, ensino e extensão.**
+**Catálogo público e citável para descobrir dados científicos relevantes ao Brasil.**
 
-A Vitrine Ciência facilita a descoberta e a triagem de dados. A experiência pública é **product-first**: o usuário procura primeiro o produto/dataset capaz de responder à pergunta de pesquisa e, em seguida, consulta a fonte para proveniência, responsabilidade institucional e documentação. O modelo científico interno continua rigorosamente separado em **Fonte → Produto → Distribuição**.
+A Vitrine Ciência está sendo re-curada para responder melhor a perguntas de pesquisa. A navegação prioriza **fenômenos e processos socioecológicos, território, tempo/escala e acesso aos dados**. Instituição provedora, nome técnico do produto, formato e plataforma aparecem como contexto de proveniência e uso.
 
-## Produto público e autoridade
+## Estado vivo
 
-- site: https://ian-loc.github.io/vitrineciencia/
-- repositório canônico: https://github.com/Ian-loc/vitrineciencia
-- branch canônica de desenvolvimento: `main`
-- primeira release científica estável: `v1.0.0`
+A `main` apresenta o núcleo auditado anterior à expansão:
+
+- **51 fontes**;
+- **11 produtos**;
+- **19 distribuições/acessos**.
+
+A expansão de 135 fontes, 843 produtos e 876 distribuições da release `v1.0.0` foi preservada integralmente em `data/quarantine/v1.0.0-expanded/` e está fora da superfície viva enquanto passa por revisão de utilidade, granularidade, classificação e links.
+
+A expansão de novas fontes, produtos e distribuições está pausada até instrução humana explícita.
+
+## Release científica v1.0.0
+
+A release histórica continua imutável e reproduzível:
+
 - GitHub Release: https://github.com/Ian-loc/vitrineciencia/releases/tag/v1.0.0
 - Zenodo: https://zenodo.org/records/22130831
-- DOI v1.0.0: https://doi.org/10.5281/zenodo.22130831
-- fontes: `data/data_resources.csv`
-- produtos: `data/data_products.csv`
-- distribuições/acessos: `data/product_distributions.csv`
-- classificação territorial: `data/brazil_scope_priorities.json`
-- código: MIT
-- metadados e curadoria original: CC BY 4.0
+- DOI: https://doi.org/10.5281/zenodo.22130831
+- commit congelado: `27c545554f406b940662777e3f053e939ef3588c`
+- snapshot: 135 fontes / 843 produtos / 876 distribuições.
 
-### Snapshot científico v1.0.0
+Quarentena na `main` não altera a tag, o DOI ou o arquivo depositado.
 
-- **135 fontes**;
-- **843 produtos**;
-- **876 distribuições**;
-- os identificadores correntes chegam a `DR0135`, `DP000861` e `DD000894`, pois IDs removidos/consolidados não são reciclados;
-- verificações de fontes registradas até **2026-08-19**;
-- commit científico congelado: `27c545554f406b940662777e3f053e939ef3588c`;
-- DOI: `10.5281/zenodo.22130831`.
+## Como a Vitrine deve responder
 
-**135 é a contagem de fontes, não de produtos.** O catálogo público de produtos contém 843 registros. O pacote de UX product-first não adiciona produtos não auditados nem infla contagens; ele torna os 843 produtos já canônicos diretamente descobríveis.
+A experiência pública segue a hierarquia:
 
-## Modelo científico vigente
+**pergunta científica → fenômeno/processo → território → tempo/escala → conjunto de dados → forma de acesso → provedor/proveniência**.
+
+Busca livre não é o mecanismo primário. A interface privilegia termos controlados e filtros determinísticos. Catálogos, APIs, serviços e visualizadores podem ser úteis, mas devem ser identificados como tal e não apresentados como se fossem datasets equivalentes.
+
+## Modelo de dados
 
 ```text
 Fonte (DR####)
@@ -40,61 +44,27 @@ Fonte (DR####)
         └── Distribuição (DD######)
 ```
 
-- **Fonte:** provedor, plataforma, programa, repositório ou infraestrutura; é contexto de proveniência.
-- **Produto:** dataset, série, coleção, catálogo, serviço ou oferta materialmente distinta; é a unidade principal de descoberta pública.
-- **Distribuição:** rota concreta de acesso ao produto, por exemplo arquivo, API, WMS/WFS, aplicação ou outro serviço.
+- **Fonte**: quem mantém/produz ou oferece os dados.
+- **Produto**: dataset, série, catálogo, serviço ou oferta cientificamente distinta.
+- **Distribuição**: rota concreta de acesso, como download, API, WFS/WCS ou portal.
 
-A interface não colapsa esses níveis. A mudança é apenas na ordem de descoberta: **pergunta → produto → comparação → fonte/proveniência → acesso original**.
+O modelo permanece estável; o que muda é a hierarquia de apresentação ao usuário.
 
-## Descoberta pública
+## Qualidade de acesso
 
-A página pública prioriza:
+A curadoria distingue download direto, landing page com download, portal/API de extração, visualização/documentação e acesso incerto/restrito. Casos duvidosos são marcados para revisão em vez de convertidos em disponibilidade confirmada.
 
-1. tema / variável;
-2. cobertura geográfica;
-3. período;
-4. resolução temporal;
-5. escala / suporte espacial;
-6. resolução espacial;
-7. forma de acesso;
-8. formato;
-9. licença e gratuidade.
+Antes de usar um conjunto de dados, confirme no provedor original versão, método, resolução, cobertura, licença e limitações.
 
-Fonte/provedor, tipo de produto, autenticação, estado, origem e disponibilidade específica para o Brasil permanecem como filtros complementares. A busca interpreta de forma determinística termos científicos e sinônimos, biomas, `Brasil`, anos e resoluções espaciais; não depende de LLM nem de servidor.
+## Autoridade
 
-O ranking padrão segue: **relevância da consulta → disponibilidade de dados para o Brasil → completude/documentação → origem da fonte → nome**.
-
-Cada card de produto mantém visíveis quatro dimensões de triagem: **Onde? · Quando? · Escala? · Acesso?**. Metodologia, limitações, licença, versão, proveniência e formas detalhadas de acesso permanecem disponíveis na expansão do card.
-
-## Uso científico
-
-Antes de utilizar um produto catalogado, confirme no provedor original:
-
-- versão/coleção efetivamente usada;
-- método e significado da variável;
-- suporte/resolução espacial e temporal;
-- licença, atribuição e condições de acesso;
-- incertezas, limitações e atualizações posteriores.
-
-A presença na Vitrine não certifica qualidade universal, comparabilidade ou adequação a uma análise específica.
-
-## Manutenção e QA
-
-Mudanças em `main` devem preservar integridade dos IDs e relações, geração determinística dos artefatos públicos e isolamento de `_site`. O CI valida dados, HTML/JavaScript, fronteira pública e comportamento em navegador. A QA visual cobre desktop, tablet e smartphone e inclui busca interpretativa, filtros, densidade dos cards, comparação, remoção de produtos e reset da seleção ao fechar.
-
-Documentação ativa:
-
-- `docs/PROJECT_STATE.md` — estado canônico do projeto;
-- `docs/PROJECT_SCIENTIFIC_DIRECTION.md` — direção científica;
-- `docs/VITRINE_CANONICAL_DATA_CONTRACT.md` — contrato de dados;
-- `docs/VITRINE_OPERATING_MODEL.md` — operação e gates;
-- `WORKFLOW_STATUS.md` — estado corrente e prioridades;
-- `FINAL_OBJECTIVES_AND_DOI_GATES.md` — release citável e DOI;
-- `RELEASE_NOTES_v1.0.0.md` — notas da primeira release científica estável.
-
-## Release e citação
-
-O snapshot científico `v1.0.0` foi congelado no commit `27c545554f406b940662777e3f053e939ef3588c`, publicado como tag e GitHub Release e preservado no Zenodo. Para análises reproduzíveis, cite a versão efetivamente utilizada e também cite a fonte/dataset original empregado na análise.
+- site: https://ian-loc.github.io/vitrineciencia/
+- repositório: https://github.com/Ian-loc/vitrineciencia
+- dados vivos: `data/data_resources.csv`, `data/data_products.csv`, `data/product_distributions.csv`
+- estado canônico: `docs/PROJECT_STATE.md`
+- workflow corrente: `WORKFLOW_STATUS.md`
+- código: MIT
+- metadados e curadoria original: CC BY 4.0
 
 > CLEMENTE, Ian. *Vitrine Ciência: catálogo de fontes de dados científicos sobre o Brasil para pesquisa, ensino e extensão*. Version 1.0.0. Zenodo, 2026. https://doi.org/10.5281/zenodo.22130831
 
