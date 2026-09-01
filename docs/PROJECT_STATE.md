@@ -5,7 +5,7 @@
 
 ## Estado global
 
-A prioridade ativa é o **resgate e a estabilização da Vitrine Ciência estática atual**, antes da mudança conceitual para Data Service/federação.
+A fase ativa de **QA/QC** é o **resgate e a estabilização da Vitrine Ciência estática atual**, antes da mudança conceitual para Data Service/federação.
 
 A aplicação precisa permanecer utilizável enquanto outras pessoas já a usam. Por isso, o trabalho ativo está concentrado em restaurar o núcleo legado de 51 registros, reduzir carga cognitiva, orientar a descoberta por tema científico e corrigir a semântica dos links de acesso.
 
@@ -16,8 +16,9 @@ A expansão de novas fontes, produtos e distribuições continua **pausada**.
 - `main` ainda corresponde ao estado público expandido de 135/843/876 até a incorporação do PR de resgate.
 - A release científica `v1.0.0`, seu snapshot 135/843/876, tag e DOI/Zenodo permanecem imutáveis.
 - O PR `#267` (`curation/core-51-socioecological-discovery-20260901`) é o único PR executor ativo para o resgate estático.
-- O branch candidato contém **51 registros DR legados, 11 itens detalhados e 19 distribuições**, com a expansão histórica preservada em `data/quarantine/v1.0.0-expanded/`.
-- Os 51 DR não devem ser tratados automaticamente como datasets de um único tipo; são registros legados que podem representar instituição, plataforma, programa, catálogo, infraestrutura ou outra forma de origem/acesso.
+- Na terminologia física do schema legado, o branch candidato contém **51 fontes, 11 produtos, 19 distribuições**. Esses rótulos preservam compatibilidade estrutural e não afirmam que todos os 51 registros são datasets ou pertencem à mesma classe ontológica.
+- A expansão histórica permanece preservada em `data/quarantine/v1.0.0-expanded/`.
+- Os 51 DR podem representar instituição, plataforma, programa, catálogo, infraestrutura ou outra forma de origem/acesso; a interface pública deve descrevê-los com linguagem honesta e proporcional à evidência disponível.
 
 ## Objetivo público atual
 
