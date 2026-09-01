@@ -2,48 +2,81 @@
 
 Atualização: **2026-09-01** (`America/Sao_Paulo`)
 
-## Direção ativa
+## Fase ativa
 
-A Vitrine entra em fase de **QA/QC, manutenção e re-curadoria do corpus**. A **expansão de novas fontes, produtos e distribuições está pausada** e só pode ser retomada por instrução humana explícita.
+**Auditoria ontológica dos 51 registros legados DR0001–DR0051.**
 
-A descoberta pública deixa de depender de busca livre e passa a priorizar perguntas socioecológicas e filtros controlados. A ordem de decisão é: **fenômeno/processo → território → tempo/escala → dado → acesso → fonte/proveniência**.
+Não tratar `fonte` como classe final. Não implementar conectores, novo schema definitivo ou expansão antes do fechamento G0–G4.
 
-## Estado corrente
+## Sequência de execução
 
-Corpus vivo restaurado: **51 fontes, 11 produtos e 19 distribuições**.
+1. **G0** — reconciliar inventário e autoridades dos 51 registros.
+2. **G1** — classificar 51/51 com evidência oficial e confiança.
+3. **G2** — resolver duplicatas, misturas e conflitos; marcar ambiguidades reais.
+4. **G3** — produzir crosswalk legado → entidade canônica → relações → migração.
+5. **G4** — validar a ontologia mínima contra todos os 51 casos.
+6. **Fase 2** — Integration Registry 51/51: GraphQL/REST/STAC/CKAN/OGC/download/manual, autenticação e prioridade científica.
+7. **Fase 3** — pipeline federado; primeiro piloto obrigatório: **MapBiomas Alerta**; depois pelo menos três pilotos heterogêneos.
+8. **Consolidação** — catálogo público gerado, QA global, reprodução limpa e smoke test.
 
-- origem do núcleo: auditoria oficial 51/51 consolidada em 10/08/2026;
-- os 11 produtos e 19 acessos detalhados pertencem à camada de produtos existente nesse núcleo;
-- expansão v1.0.0: preservada em `data/quarantine/v1.0.0-expanded/` para revisão;
-- release `v1.0.0`: permanece publicada, imutável e citável;
-- DOI: `10.5281/zenodo.22130831`.
+## Critério de evidência
 
-A release congelada contém 135 fontes, 843 produtos e 876 distribuições. Essas contagens descrevem a release histórica, não a superfície viva que está sendo re-curada.
+Ordem: documentação oficial da entidade/provedor → documentação técnica/API oficial → auditorias verificadas do repositório → literatura/secundárias apenas como apoio.
 
-## Prioridades
+Não inferir tipo, API, disponibilidade ou qualidade.
 
-1. retirar busca livre como mecanismo principal e manter filtros estáveis/controlados;
-2. organizar a entrada por fenômenos e processos socioecológicos;
-3. revisar links para separar dados, landing pages, serviços, visualizações e documentação;
-4. marcar acessos incertos em vez de tratá-los como confirmados;
-5. reavaliar a expansão registro a registro antes de qualquer reentrada;
-6. manter fonte/provedor e nome técnico como contexto subordinado.
+## Estado material do repositório
 
-## Critérios do pacote atual
+- `main`: ainda 135/843/876 no estado público corrente.
+- `v1.0.0`: release histórica imutável.
+- PR draft `#267`: candidato 51 DR / 11 produtos / 19 distribuições + expansão em quarentena.
+- os 51 DR ainda estão **sob classificação ontológica**.
 
-- 51 fontes / 11 produtos / 19 distribuições no corpus vivo;
-- 135/843/876 preservados integralmente na quarentena da release;
-- filtros principais controlados e sem campo de busca livre visível;
-- atalhos de fenômenos/processos na home;
-- catálogos/serviços identificados como contexto, não como dataset;
-- auditoria de links regenerada a partir do corpus vivo;
-- QA em desktop/tablet/mobile;
-- CI verde antes do merge.
+## Artefatos obrigatórios de consolidação
 
-## Fora do caminho ativo
+O produto final deve materializar, em caminhos canônicos ou equivalentes registrados no manifesto:
 
-- reintroduzir em massa produtos técnicos apenas para aumentar contagem;
-- tratar mapa/PDF/documentação como acesso a dados sem deixar isso explícito;
-- inferir qualidade, licença, cobertura ou disponibilidade ausente;
-- modificar retroativamente a release v1.0.0;
-- criar nova release/tag/DOI sem instrução humana explícita.
+1. auditoria ontológica 51/51;
+2. crosswalk legado → entidades canônicas;
+3. schema Vitrine Core v1;
+4. vocabulários controlados;
+5. Integration Registry 51/51;
+6. pipeline e conectores executáveis;
+7. fixtures e testes automatizados;
+8. catálogo público contendo somente `ACCEPTED/PUBLISHED`;
+9. catálogo de quarentena;
+10. QA global machine-readable;
+11. manifesto final;
+12. relatório curto de conclusão;
+13. tag `vitrine-federated-core-v1`;
+14. site publicado com smoke test PASS.
+
+## Definition of Done
+
+A tarefa termina somente quando:
+
+- 51/51 possuem disposition ontológica;
+- o modelo canônico acomoda os 51 casos sem `source/fonte` genérico;
+- Integration Registry cobre 51/51;
+- pipeline executável bloqueia promoção quando QA falha;
+- MapBiomas Alerta passa ponta a ponta com execução real e fixture;
+- pelo menos três outros pilotos distintos passam pelo mesmo pipeline;
+- catálogo público exclui quarentena/não confirmados;
+- QA global não contém falha crítica;
+- uma execução limpa reconstrói os artefatos públicos;
+- site publicado passa smoke test;
+- read-back final confirma manifesto, contagens e estado público.
+
+Somente então declarar:
+
+`VITRINE_FEDERATED_CORE_V1_CONSOLIDATED`
+
+Após esse token, a execução recorrente deve ser desativada. Expansão posterior é novo milestone e exige autorização explícita.
+
+## Fora do escopo atual
+
+- reentrada em massa da expansão;
+- redesign adicional de interface;
+- criação indiscriminada de datasets a partir de recursos de API;
+- alteração retroativa da release `v1.0.0`;
+- nova release/DOI antes do marco final e de decisão humana específica.

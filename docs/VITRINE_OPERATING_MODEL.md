@@ -1,137 +1,60 @@
-# Vitrine Ciência — modelo operacional e pipeline de manutenção
+# Vitrine Ciência — modelo operacional
 
-Status: **ACTIVE OPERATING MODEL**  
-Atualização: **2026-08-20**
+**Status:** TRANSIÇÃO CONTROLADA  
+**Atualização:** 2026-09-01
 
-## 1. Produto
+## Produto
 
-A Vitrine Ciência é um catálogo delimitado para descoberta de dados científicos relevantes ao Brasil. Seu modelo conceitual estável é:
+A Vitrine é um catálogo de descoberta e acesso a dados científicos relevantes ao Brasil. O objetivo corrente é consolidar uma arquitetura simples, verificável e semanticamente correta antes de voltar a expandir o corpus.
 
-`fonte → produto → distribuição`
+## Estado operacional
 
-A Vitrine ajuda a descobrir, compreender inicialmente, comparar metadados e acessar recursos externos. Não reconstrói integralmente a arquitetura de cada provedor e não hospeda, por padrão, os datasets catalogados.
+- `main` continua no catálogo expandido 135/843/876;
+- `v1.0.0` está publicada e permanece imutável;
+- PR draft #267 contém o candidato 51 DR / 11 produtos / 19 distribuições e a quarentena da expansão;
+- os 51 DR estão sob auditoria ontológica;
+- nenhum conector federado faz parte do estado consolidado atual.
 
-## 2. Autoridade e estado
+## Pipeline de trabalho atual
 
-- repositório: `Ian-loc/vitrineciencia`;
-- branch: `main`;
-- site: `https://ian-loc.github.io/vitrineciencia/`;
-- fontes: `data/data_resources.csv`;
-- produtos: `data/data_products.csv`;
-- distribuições: `data/product_distributions.csv`;
-- código: MIT;
-- curadoria/metadados originais: CC BY 4.0.
+`inventário → evidência oficial → classificação ontológica → crosswalk → validação do modelo → registro de integração → pilotos → pipeline federado → publicação controlada → QA/reprodução`
 
-Contagens e maiores IDs são estado operacional e não devem ser duplicados neste documento. O snapshot corrente é mantido em `docs/PROJECT_STATE.md` e `data/data_quality_report.json`. Lacunas de IDs são preservadas e IDs não são reciclados.
+A maior unidade coerente e segura deve ser processada por rodada. Casos bloqueados externamente não impedem avanço de casos independentes.
 
-## 3. Fronteira conceitual
+## Gates
 
-### Inclui
+### Fase 1 — ontologia
 
-- identidade de fontes e produtos;
-- cobertura espacial e temporal quando sustentada;
-- suporte/resolução e atualização quando sustentados;
-- acesso, formatos, autenticação, licença e metodologia quando aplicáveis;
-- limitações e evidências;
-- busca, filtros, comparação, análise descritiva do catálogo e downloads dos próprios metadados;
-- links para os provedores originais.
+G0 inventário reconciliado → G1 51/51 classificados → G2 conflitos resolvidos/explicitados → G3 crosswalk consolidado → G4 modelo mínimo validado.
 
-### Não exige
+### Fase 2 — integração
 
-- PostgreSQL/PostGIS;
-- runtime do Simbiotrama;
-- enumeração de cada arquivo, banda, tile ou endpoint como entidade;
-- cópia de datasets externos;
-- inferência de valores não documentados;
-- comparabilidade científica universal entre produtos.
+Registrar para 51/51: método de acesso, endpoint/documentação quando aplicável, autenticação, status e prioridade. Classificar como automatizável agora/depois, manual-curated ou não prioritário.
 
-## 4. Classes de mudança
+### Fase 3 — federação
 
-- **DATA:** correção de fonte, produto, distribuição ou classificação territorial. Durante a fase atual, expansão de novas entidades está pausada.
-- **FIX:** defeito de interface, build, acesso, navegação ou regressão.
-- **DOC:** documentação, estado e explicitação de contratos sem mudança conceitual.
-- **RELEASE:** congelamento de snapshot, versão, tag, pacote e depósito.
-- **INFRA:** mudança estrutural de schema/runtime/dependência; excepcional.
+Primeiro piloto: MapBiomas Alerta GraphQL V2. Depois pelo menos três casos tecnologicamente distintos. Todo recurso passa por `raw → normalize → validate → deduplicate → classify → verify_access → quarantine/accept → publish`.
 
-## 5. Gates proporcionais
+## Regras de qualidade
 
-- **AUTO-SAFE:** DOC, QA/CI, correções pequenas inequívocas e saneamentos reversíveis dentro do contrato.
-- **REVIEW:** lote grande, mudança pública relevante ou ambiguidade factual material.
-- **HUMAN-DECISION:** retomada de expansão de escopo, schema incompatível, destruição, tracking/privacidade, licença/autoria/citação oficial, `1.0.0` e DOI.
+- evidência oficial antes de inferência;
+- sem publicação direta de raw;
+- falha de gate impede promoção;
+- HTTP 200 não prova acesso a dados;
+- ausência ou ambiguidade gera flag/quarentena, não preenchimento especulativo;
+- read-back após escrita material;
+- release histórica não é reescrita.
 
-## 6. Pipeline obrigatório por pacote
+## Classes de mudança
 
-1. **Scope:** problema e critério de conclusão.
-2. **Evidence:** evidência oficial/primária proporcional às afirmações.
-3. **Implementation:** delta mínimo em branch derivada de `main`.
-4. **Validation:** validadores do contrato e testes pertinentes.
-5. **Diff audit:** ausência de efeitos incidentais.
-6. **Public validation:** quando interface/artefato público puder mudar.
-7. **Integration:** conforme classe de risco.
-8. **Post-merge verification:** `main`, deploy e comportamento observável.
-9. **Consolidation:** registrar somente trabalho materializado e verificado.
+- **DOC/QA:** pode avançar quando corrige estado, precisão ou verificabilidade sem alterar escopo.
+- **CURATION:** exige evidência e validação proporcional.
+- **SCHEMA/ONTOLOGY:** somente após G0–G4.
+- **FEDERATION:** somente após Integration Registry.
+- **RELEASE:** somente após o marco global e decisão humana específica.
 
-Estados: `PLANNED → EXECUTED → VERIFIED → CONSOLIDATED`.
+## Limite da execução
 
-## 7. Curadoria científica
+O trabalho termina apenas no marco `VITRINE_FEDERATED_CORE_V1_CONSOLIDATED`, definido em `WORKFLOW_STATUS.md`, com artefatos materializados, QA global, reprodução limpa e smoke test público PASS.
 
-Prioridade de evidência:
-
-1. página oficial do produtor;
-2. documentação/metadados oficiais;
-3. API/catálogo oficial;
-4. publicação científica primária quando necessária;
-5. documentação técnica institucional;
-6. fontes secundárias apenas como apoio.
-
-Regras:
-
-- não inferir valor ausente;
-- diferenciar fonte, produto e distribuição;
-- preservar a fonte/provedor primário;
-- separar resolução, suporte e escala;
-- separar cobertura temporal, resolução temporal e atualização;
-- registrar natureza observada/modelada/classificada/administrativa quando relevante;
-- tratar licença no nível mais específico sustentado;
-- revalidar atributos temporariamente instáveis;
-- nunca usar CI verde como prova factual externa.
-
-## 8. Entrada e granularidade
-
-A expansão de novas fontes, produtos e distribuições está **pausada** durante a fase atual de QA/QC. As regras de granularidade abaixo continuam válidas para correções do catálogo existente e para eventual retomada mediante instrução humana explícita.
-
-### Nova fonte
-
-Quando a expansão for retomada, deve ter identidade institucional rastreável, utilidade científica/operacional relevante ao Brasil, evidência suficiente e não duplicar semanticamente uma fonte existente sem benefício de descoberta.
-
-### Novo produto
-
-Quando a expansão for retomada, recebe linha própria somente quando há diferença material em finalidade, conteúdo, método, cobertura, suporte/resolução, coleção/versão ou acesso. Arquivo, formato, banda, tile ou endpoint isolado não bastam.
-
-### Distribuição
-
-Representa a rota concreta de acesso e pode registrar formato, protocolo, ferramenta, gratuidade, autenticação, licença e suporte a recorte.
-
-## 9. Qualidade
-
-O relatório `data/data_quality_report.json` é diagnóstico de preenchimento, não certificação. Seus valores são voláteis e devem ser lidos diretamente do artefato regenerado, não replicados manualmente aqui. A prioridade atual é corrigir defeitos e riscos com maior impacto científico, operacional ou de publicação, sem perseguir completude artificial.
-
-## 10. Drive
-
-O Drive é derivado/histórico. Regeneração de espelho é útil, mas não é gate obrigatório para uma release válida. Um espelho deve declarar commit-fonte, data e contagens e passar comparação antes de ser chamado de sincronizado.
-
-## 11. Release
-
-O projeto permanece `unreleased`. Uma release científica deve congelar um snapshot reproduzível, atualizar citação/changelog, criar tag e GitHub Release e, quando decidido, depositar como Dataset no Zenodo. O DOI não depende de atingir uma contagem arbitrária de registros.
-
-## 12. Relação com o Simbiotrama
-
-Materiais de Instância 1, PostgreSQL/PostGIS e roadmaps Simbiotrama presentes no histórico são `HISTORICAL_EVIDENCE`. O Simbiotrama é um projeto independente e não define o pipeline ativo da Vitrine.
-
-## 13. Critério de sucesso
-
-Na fase atual, o fluxo normal deve convergir para:
-
-**inspect → verify → fix → validate → publish → monitor**.
-
-Quando a expansão for explicitamente retomada, a descoberta/curadoria de novas entidades volta a integrar esse ciclo. Qualidade, governança e auditoria são meios para um catálogo útil e não justificam alterações cosméticas ou escopo novo durante a fase de QA/QC.
+Depois desse marco, expansão adicional constitui novo milestone.
