@@ -2,14 +2,14 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Encontre e compare dados científicos sobre o Brasil para pesquisa, ensino e extensão.">
+<meta name="description" content="Encontre dados científicos sobre processos socioecológicos no Brasil por tema, território, escala e acesso.">
 <link rel="canonical" href="https://ian-loc.github.io/vitrineciencia/">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Vitrine Ciência"><meta property="og:title" content="Vitrine Ciência · Encontre dados científicos para sua pesquisa"><meta property="og:description" content="Pesquise produtos de dados relevantes ao Brasil por tema, lugar, período, escala e forma de acesso."><meta property="og:url" content="https://ian-loc.github.io/vitrineciencia/">
-<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Vitrine Ciência"><meta name="twitter:description" content="Encontre e compare dados científicos sobre o Brasil.">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Vitrine Ciência"><meta property="og:title" content="Vitrine Ciência · Dados para perguntas socioecológicas"><meta property="og:description" content="Descubra dados científicos por fenômeno, processo, território, escala e forma de acesso."><meta property="og:url" content="https://ian-loc.github.io/vitrineciencia/">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Vitrine Ciência"><meta name="twitter:description" content="Descubra dados científicos sobre o Brasil por fenômeno e processo socioecológico.">
 <meta name="theme-color" content="#173f32"><meta name="color-scheme" content="light">
-<title>Vitrine Ciência · Encontre dados científicos para sua pesquisa</title>
-<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/accessibility.css"><link rel="stylesheet" href="assets/visual-refinement.css"><link rel="stylesheet" href="assets/ux-v2.css?v=20260827-2"><link rel="stylesheet" href="assets/ux-simple.css?v=20260827-1">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"DataCatalog","name":"Vitrine Ciência","url":"https://ian-loc.github.io/vitrineciencia/","description":"Catálogo curado de produtos, fontes e formas de acesso a dados científicos relevantes ao Brasil.","inLanguage":"pt-BR","isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by/4.0/","creator":{"@type":"Person","name":"Ian Clemente","sameAs":"https://orcid.org/0000-0003-1164-9318"}}</script>
+<title>Vitrine Ciência · Dados para perguntas socioecológicas</title>
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/accessibility.css"><link rel="stylesheet" href="assets/visual-refinement.css"><link rel="stylesheet" href="assets/ux-v2.css?v=20260827-2"><link rel="stylesheet" href="assets/ux-simple.css?v=20260827-1"><link rel="stylesheet" href="assets/discovery-guardrails.css?v=20260901-1">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"DataCatalog","name":"Vitrine Ciência","url":"https://ian-loc.github.io/vitrineciencia/","description":"Catálogo curado para descoberta de dados científicos relevantes ao Brasil por fenômeno, território, tempo, escala e acesso.","inLanguage":"pt-BR","isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by/4.0/","creator":{"@type":"Person","name":"Ian Clemente","sameAs":"https://orcid.org/0000-0003-1164-9318"}}</script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Ir ao conteúdo</a>
@@ -19,42 +19,48 @@
 <div class="nav-links" id="site-nav-links"><a href="products.html">Buscar dados</a><a href="sources.html">Fontes</a><span class="nav-about"><a href="about.html">Sobre</a><a class="nav-sub" href="analytics.html">Sobre o acervo</a></span></div>
 </div></nav>
 <header class="hero home-hero"><div class="wrap home-hero-grid"><div class="hero-copy">
-<p class="eyebrow">Catálogo científico para pesquisa, ensino e extensão</p>
-<h1>Encontre dados científicos para sua pesquisa</h1>
-<p class="lead">Pesquise produtos relevantes ao Brasil e compare cobertura, período, escala, formato e acesso.</p>
+<p class="eyebrow">Descoberta orientada pela pergunta científica</p>
+<h1>Que fenômeno ou processo você quer investigar?</h1>
+<p class="lead">Comece pelo que acontece no socioecossistema. Depois refine território, escala e forma de acesso — sem precisar conhecer o nome técnico da plataforma.</p>
 </div>
-<form class="home-search main-search-instrument" action="products.html" method="get" role="search" aria-label="Buscar produtos e datasets">
-<label for="home-q">O que você precisa investigar?</label>
-<div class="search-row"><input id="home-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Ex.: carbono no solo do Cerrado, Brasil, 2000, 30 m"><button type="submit">Buscar dados</button></div>
-<p class="search-help">Digite uma variável, tema, bioma, lugar, período ou resolução.</p>
-<div class="quick-search" aria-label="Exemplos de busca"><span>Exemplos:</span><a href="products.html?q=carbono+solo+Cerrado">carbono no solo</a><a href="products.html?q=precipitação+mensal+Brasil">precipitação mensal</a><a href="products.html?q=uso+da+terra+30+m">uso da terra 30 m</a></div>
+<form class="home-search main-search-instrument controlled-search-shell" action="products.html" method="get" aria-label="Escolher fenômeno ou processo">
+<input id="home-q" name="q" type="hidden" value="">
+<label for="home-theme">Fenômeno ou processo</label>
+<div class="search-row"><select id="home-theme" name="theme"><option value="">Explorar todos os dados do núcleo</option><option value="clima">Mudanças e variabilidade climática</option><option value="agua">Água, hidrologia e disponibilidade hídrica</option><option value="fogo">Fogo e queimadas</option><option value="uso_terra">Uso e cobertura da terra</option><option value="desmatamento">Desmatamento e degradação</option><option value="vegetacao">Vegetação e florestas</option><option value="restauracao">Restauração e regeneração</option><option value="biodiversidade">Biodiversidade e espécies</option><option value="carbono">Carbono e emissões</option><option value="biomassa">Biomassa</option><option value="solo">Solos</option><option value="agro">Agricultura e pecuária</option><option value="territorio">Território e sociedade</option></select><button type="submit">Ver dados</button></div>
+<p class="search-help">A lista usa termos controlados. Na página seguinte você pode combinar território, tipo de dado e acesso.</p>
 </form>
 </div></header>
-<section class="stats" aria-label="Resumo do catálogo"><div class="wrap stats-grid">
-<div><strong id="home-products">843</strong><span>produtos catalogados</span></div>
-<div><strong id="home-sources">135</strong><span>fontes catalogadas</span></div>
-<div><strong id="home-access">876</strong><span>formas de acesso</span></div>
-<div><strong id="home-free">—</strong><span>produtos com download gratuito</span></div>
+<section class="stats" aria-label="Resumo do núcleo público"><div class="wrap stats-grid">
+<div><strong id="home-products">11</strong><span>produtos no núcleo público</span></div>
+<div><strong id="home-sources">51</strong><span>fontes de proveniência</span></div>
+<div><strong id="home-access">19</strong><span>rotas de acesso catalogadas</span></div>
+<div><strong id="home-free">—</strong><span>produtos com acesso gratuito registrado</span></div>
 </div></section>
 <main id="conteudo" class="wrap home-main">
-<section class="home-section thematic-products" aria-labelledby="topics-heading"><div class="section-heading"><div><p class="eyebrow">Exploração temática</p><h2 id="topics-heading">Explore produtos por área de pesquisa</h2></div><p>Um mesmo produto pode contribuir para mais de uma área.</p></div>
-<div class="product-area-grid" id="home-product-areas">
-<a class="product-area-card" data-area="Agricultura, Florestas e Uso da Terra" href="products.html?area=Agricultura%2C+Florestas+e+Uso+da+Terra"><strong>Agricultura, Florestas e Uso da Terra</strong><span class="area-examples">agricultura · florestas · uso e cobertura</span><b data-area-count>— produtos</b></a>
-<a class="product-area-card" data-area="Clima, Água e Atmosfera" href="products.html?area=Clima%2C+%C3%81gua+e+Atmosfera"><strong>Clima, Água e Atmosfera</strong><span class="area-examples">clima · precipitação · hidrologia</span><b data-area-count>— produtos</b></a>
-<a class="product-area-card" data-area="Ecologia, Biodiversidade e Meio Ambiente" href="products.html?area=Ecologia%2C+Biodiversidade+e+Meio+Ambiente"><strong>Ecologia, Biodiversidade e Meio Ambiente</strong><span class="area-examples">espécies · conservação · ecossistemas</span><b data-area-count>— produtos</b></a>
-<a class="product-area-card" data-area="Geociências e Solos" href="products.html?area=Geoci%C3%AAncias+e+Solos"><strong>Geociências e Solos</strong><span class="area-examples">solos · geologia · relevo</span><b data-area-count>— produtos</b></a>
-<a class="product-area-card" data-area="Geoinformação, Sensoriamento e Ciência de Dados" href="products.html?area=Geoinforma%C3%A7%C3%A3o%2C+Sensoriamento+e+Ci%C3%AAncia+de+Dados"><strong>Geoinformação, Sensoriamento e Ciência de Dados</strong><span class="area-examples">satélites · geoprocessamento · serviços</span><b data-area-count>— produtos</b></a>
-<a class="product-area-card" data-area="Território, Sociedade e Políticas Públicas" href="products.html?area=Territ%C3%B3rio%2C+Sociedade+e+Pol%C3%ADticas+P%C3%BAblicas"><strong>Território, Sociedade e Políticas Públicas</strong><span class="area-examples">população · território · indicadores</span><b data-area-count>— produtos</b></a>
+<section class="home-section thematic-products" aria-labelledby="topics-heading"><div class="section-heading"><div><p class="eyebrow">Fenômenos e processos</p><h2 id="topics-heading">Entre pela pergunta, não pelo nome do produto</h2></div><p>Os atalhos abaixo são vocabulário controlado e podem retornar mais de um tipo de dado.</p></div>
+<div class="product-area-grid process-grid" id="home-product-areas">
+<a class="product-area-card process-card" href="products.html?theme=clima"><strong>Clima</strong><span class="area-examples">mudança climática · precipitação · temperatura</span><b>ver dados</b></a>
+<a class="product-area-card process-card" href="products.html?theme=agua"><strong>Água</strong><span class="area-examples">hidrologia · vazão · disponibilidade hídrica</span><b>ver dados</b></a>
+<a class="product-area-card process-card" href="products.html?theme=fogo"><strong>Fogo</strong><span class="area-examples">queimadas · área queimada · recorrência</span><b>ver dados</b></a>
+<a class="product-area-card process-card" href="products.html?theme=uso_terra"><strong>Uso e cobertura da terra</strong><span class="area-examples">mudança de uso · classes de cobertura · conversão</span><b>ver dados</b></a>
+<a class="product-area-card process-card" href="products.html?theme=desmatamento"><strong>Desmatamento e degradação</strong><span class="area-examples">supressão · alertas · perda de vegetação</span><b>ver dados</b></a>
+<a class="product-area-card process-card" href="products.html?theme=vegetacao"><strong>Vegetação e florestas</strong><span class="area-examples">vegetação nativa · dinâmica florestal</span><b>ver dados</b></a>
+<a class="product-area-card process-card" href="products.html?theme=restauracao"><strong>Restauração e regeneração</strong><span class="area-examples">vegetação secundária · regeneração</span><b>ver dados</b></a>
+<a class="product-area-card process-card" href="products.html?theme=biodiversidade"><strong>Biodiversidade</strong><span class="area-examples">espécies · ocorrência · conservação</span><b>ver dados</b></a>
+<a class="product-area-card process-card" href="products.html?theme=carbono"><strong>Carbono e emissões</strong><span class="area-examples">estoques · ciclo do carbono · emissões</span><b>ver dados</b></a>
+<a class="product-area-card process-card" href="products.html?theme=solo"><strong>Solos</strong><span class="area-examples">propriedades · pedologia · carbono do solo</span><b>ver dados</b></a>
+<a class="product-area-card process-card" href="products.html?theme=agro"><strong>Agricultura e pecuária</strong><span class="area-examples">cultivos · pastagens · uso rural</span><b>ver dados</b></a>
+<a class="product-area-card process-card" href="products.html?theme=territorio"><strong>Território e sociedade</strong><span class="area-examples">população · governança · distribuição territorial</span><b>ver dados</b></a>
 </div>
-<div class="topic-shortcuts"><span>Atalhos:</span><a href="products.html?theme=carbono">Carbono</a><a href="products.html?theme=biomassa">Biomassa</a><a href="products.html?theme=solo">Solos</a><a href="products.html?theme=uso_terra">Uso da terra</a><a href="products.html?theme=fogo">Fogo</a><a href="products.html?theme=biodiversidade">Biodiversidade</a><a href="products.html?theme=agua">Água</a><a href="products.html?theme=clima">Clima</a></div>
-<a class="all-products-link" href="products.html">Ver todos os <span id="home-all-products">843</span> produtos →</a>
+<a class="all-products-link" href="products.html">Ver os <span id="home-all-products">11</span> produtos atualmente no núcleo →</a>
 </section>
-<section class="home-section" aria-labelledby="workflow-heading"><div class="section-heading"><div><p class="eyebrow">Como usar</p><h2 id="workflow-heading">Da pergunta ao dado</h2></div><p>Comece amplo e refine somente quando necessário.</p></div>
-<div class="home-flow"><article><strong>1</strong><h3>Busque</h3><p>Informe tema, variável, lugar, período ou escala.</p></article><article><strong>2</strong><h3>Compare</h3><p>Confira cobertura, resolução, formato, acesso e limitações.</p></article><article><strong>3</strong><h3>Confirme</h3><p>Verifique versão, método, licença e documentação na origem.</p></article></div>
+<section class="home-section core-note" aria-labelledby="core-heading"><div class="section-heading"><div><p class="eyebrow">Núcleo em re-curadoria</p><h2 id="core-heading">Menos registros, mais clareza de uso</h2></div></div><p>A superfície corrente foi reduzida ao núcleo auditado anterior à expansão. Registros posteriores estão preservados para revisão e só retornam quando acesso, significado científico e granularidade estiverem claros.</p></section>
+<section class="home-section" aria-labelledby="workflow-heading"><div class="section-heading"><div><p class="eyebrow">Como usar</p><h2 id="workflow-heading">Da pergunta ao dado</h2></div><p>A fonte aparece depois, como proveniência.</p></div>
+<div class="home-flow"><article><strong>1</strong><h3>Escolha o processo</h3><p>Ex.: uso da terra, fogo, clima, água ou regeneração.</p></article><article><strong>2</strong><h3>Refine o contexto</h3><p>Combine território, escala, tipo de resultado e forma de acesso.</p></article><article><strong>3</strong><h3>Confirme a origem</h3><p>Abra a rota de acesso e confira versão, método, licença e limitações no provedor.</p></article></div>
 </section>
-<section class="home-section provenance-callout" aria-labelledby="sources-heading"><div><p class="eyebrow">Origem e documentação</p><h2 id="sources-heading">Confira quem produz e mantém os dados</h2><p>Consulte instituições, documentação, condições de acesso e atualizações.</p></div><a href="sources.html">Ver fontes e provedores</a></section>
-<section class="about"><div><p class="eyebrow">Uso científico responsável</p><h2>Confirme antes de usar</h2></div><p>A Vitrine facilita descoberta e comparação. O conjunto de dados e sua documentação original continuam sendo a referência para análise e citação.</p></section>
+<section class="home-section provenance-callout" aria-labelledby="sources-heading"><div><p class="eyebrow">Proveniência</p><h2 id="sources-heading">Quem produz ou disponibiliza?</h2><p>Use a página de fontes para verificar instituição responsável, documentação e condições gerais. Ela é contexto de origem, não o ponto inicial da descoberta.</p></div><a href="sources.html">Ver fontes e provedores</a></section>
+<section class="about"><div><p class="eyebrow">Uso científico responsável</p><h2>O link precisa levar ao dado certo</h2></div><p>Rotas de download, API e portal de extração são diferenciadas de mapas, visualizações e documentação. Casos incertos são marcados para revisão em vez de apresentados como acesso confirmado.</p></section>
 </main>
 <footer class="wrap"><p><strong>Vitrine Ciência</strong> · <a href="products.html">Buscar dados</a> · <a href="sources.html">Fontes</a> · <a href="about.html">Sobre</a> · <a href="analytics.html">Sobre o acervo</a></p><p>Brasil · Dados: CC BY 4.0 · Código: MIT</p></footer>
-<script src="assets/home.js?v=20260827-3" defer></script><script src="assets/navigation.js?v=20260827-1" defer></script>
+<script src="assets/home.js?v=20260901-1" defer></script><script src="assets/navigation.js?v=20260827-1" defer></script><script src="assets/discovery-guardrails.js?v=20260901-1" defer></script>
 </body></html>
