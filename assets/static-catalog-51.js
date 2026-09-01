@@ -1,6 +1,7 @@
 (() => {
   "use strict";
 
+  const CATALOG_PAGE = "sources.html";
   const select = document.querySelector("#source-theme-shortcut");
   if (!select) return;
 
@@ -52,7 +53,8 @@
       if (controlledValue) next.set("q", controlledValue);
       else next.delete("q");
       const query = next.toString();
-      history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
+      const fallbackPath = location.pathname.endsWith(`/${CATALOG_PAGE}`) ? location.pathname : CATALOG_PAGE;
+      history.replaceState(null, "", `${fallbackPath}${query ? `?${query}` : ""}${location.hash}`);
     }
 
     if (scroll && catalog) {
