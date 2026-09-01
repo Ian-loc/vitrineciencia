@@ -5,58 +5,80 @@
 
 ## Estado global
 
-A **fase ativa de QA/QC e manutenção** está concentrada em re-curadoria estrutural e auditoria ontológica. A prioridade atual não é ampliar catálogo nem implementar federação: é determinar corretamente o que representam os 51 registros legados `DR0001–DR0051`.
+A prioridade ativa é o **resgate e a estabilização da Vitrine Ciência estática atual**, antes da mudança conceitual para Data Service/federação.
 
-A expansão de novas fontes, produtos e distribuições está **pausada**. Nesta frase, `fontes/produtos/distribuições` são os termos do schema legado; a ontologia está em revisão.
+A aplicação precisa permanecer utilizável enquanto outras pessoas já a usam. Por isso, o trabalho ativo está concentrado em restaurar o núcleo legado de 51 registros, reduzir carga cognitiva, orientar a descoberta por tema científico e corrigir a semântica dos links de acesso.
 
-### Estado material
+A expansão de novas fontes, produtos e distribuições continua **pausada**.
 
-- `main` permanece no commit público corrente `f991c9e506bc5c33220e530f7031179afe8e3cec`, com o catálogo expandido de 135/843/876.
-- A **release científica `v1.0.0` publicada** permanece imutável no commit `27c545554f406b940662777e3f053e939ef3588c`, GitHub Release e Zenodo DOI `10.5281/zenodo.22130831`.
-- O PR draft `#267` (`curation/core-51-socioecological-discovery-20260901`) contém um **candidato** de restauração operacional.
-- No schema físico desse branch candidato existem **51 fontes** (rótulo legado), **11 produtos** e **19 distribuições**.
-- O PR #267 **não está incorporado à `main`** e não deve ser descrito como estado público consolidado.
+## Estado material
 
-## Problema conceitual ativo
+- `main` ainda corresponde ao estado público expandido de 135/843/876 até a incorporação do PR de resgate.
+- A release científica `v1.0.0`, seu snapshot 135/843/876, tag e DOI/Zenodo permanecem imutáveis.
+- O PR `#267` (`curation/core-51-socioecological-discovery-20260901`) é o único PR executor ativo para o resgate estático.
+- O branch candidato contém **51 registros DR legados, 11 itens detalhados e 19 distribuições**, com a expansão histórica preservada em `data/quarantine/v1.0.0-expanded/`.
+- Os 51 DR não devem ser tratados automaticamente como datasets de um único tipo; são registros legados que podem representar instituição, plataforma, programa, catálogo, infraestrutura ou outra forma de origem/acesso.
 
-O termo histórico **fonte** mistura tipos de entidade diferentes. Os 51 registros podem representar, entre outros, instituição/provedor, programa, plataforma, catálogo, infraestrutura, dataset/coleção, serviço ou portal.
+## Objetivo público atual
 
-Portanto:
+A navegação da versão estática deve seguir:
 
-- `DR####` é, nesta fase, um **identificador legado de registro**, não prova de tipo ontológico;
-- `Fonte → Produto → Distribuição` permanece como estrutura histórica/operacional, não como ontologia final congelada;
-- nenhuma entidade deve ser reclassificada por aparência do nome ou conveniência de schema.
+**fenômeno/processo → registros relevantes do núcleo 51 → dado/item detalhado quando existente → rota real de acesso → API/serviço quando existente → proveniência/provedor**.
 
-## Objetivo ativo e gates
+A interface deve distinguir publicamente:
 
-**G0** — inventário DR0001–DR0051 e autoridades reconciliados.  
-**G1** — 51/51 classificados com evidência e confiança.  
-**G2** — conflitos, duplicatas e misturas resolvidos ou explicitamente não resolvidos.  
-**G3** — crosswalk legado → entidades canônicas → relações → ação de migração.  
-**G4** — ontologia mínima validada contra todos os 51 casos.
+- dado/download/portal de dados;
+- página específica do conjunto;
+- API/serviço;
+- visualizador ou documentação;
+- página do provedor/proveniência.
 
-Somente após G0–G4 PASS começa o registro de integração por API/serviço/download. Conectores não pertencem à fase atual.
+Somente destinos cujo papel está suficientemente demonstrado podem ser rotulados como acesso confirmado a dados.
 
-## Direção científica pública
+## Gates ativos
 
-A descoberta deve seguir:
+**S0 — release estática de resgate**
 
-**fenômeno/processo → território → tempo/escala → dado utilizável → acesso → provedor/proveniência**.
+- preservar 51/11/19 e a quarentena histórica;
+- Home e catálogo orientados por tema científico controlado;
+- 51 registros como superfície ampla de descoberta;
+- 11 itens/19 distribuições explicitamente como subconjunto detalhado;
+- semântica conservadora dos botões de acesso;
+- CI + QA visual + smoke test público.
 
-Catálogo, API, serviço, visualizador e documentação são papéis distintos e não devem ser apresentados como datasets equivalentes.
+**S1 — recertificação de acesso 51/51**
 
-## Regras vigentes
+Cada DR deve receber nova verificação factual e classificação de acesso:
 
-- evidência oficial/primária antes de inferência;
-- desconhecido permanece desconhecido;
-- preservar IDs e histórico;
-- não publicar automaticamente recurso descoberto por API;
-- não alterar retroativamente `v1.0.0`;
-- manter expansão em quarentena até revisão explícita;
-- mudanças públicas exigem validação, diff audit, CI e smoke test quando aplicável.
+- `A DIRECT_DATA`;
+- `B DATASET_PAGE`;
+- `C API_SERVICE`;
+- `D VIEWER_DOC`;
+- `E BROKEN_UNCERTAIN`.
 
-## Próxima fase já delimitada
+**S2 — QA final estático**
 
-Após G0–G4: Integration Registry 51/51 → MapBiomas Alerta como primeiro piloto GraphQL → pelo menos três pilotos tecnológicos heterogêneos → pipeline reutilizável → catálogo público gerado e testado.
+Confirmar filtros, responsividade, navegação em 2–3 decisões, ausência de quarentena na superfície e coerência entre rótulo e destino.
 
-O limite global de conclusão está definido em `WORKFLOW_STATUS.md` pelo token `VITRINE_FEDERATED_CORE_V1_CONSOLIDATED`.
+## Fora do marco atual
+
+Até o token `VITRINE_STATIC_51_STABLE`, não iniciar como frente executora:
+
+- ontologia 2.0 exaustiva;
+- Integration Registry federado;
+- conectores STAC/CKAN/OGC/REST/GraphQL;
+- harvesting;
+- PostgreSQL/backend próprio;
+- reentrada da expansão.
+
+Esses elementos permanecem como direção futura, mas não são pré-condição para corrigir a GitHub Page que está em uso hoje.
+
+## Regra de conclusão
+
+O marco estático só é concluído quando o site público estiver funcional, os 51 acessos estiverem recertificados ou explicitamente marcados como incertos, e CI/QA/smoke estiverem verdes.
+
+Somente então declarar:
+
+`VITRINE_STATIC_51_STABLE`
+
+Depois desse token, a automação executora deve ser desativada. A migração para Data Service/federação será um novo milestone, dependente de autorização posterior.
