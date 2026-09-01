@@ -4,81 +4,79 @@ Atualização: **2026-09-01** (`America/Sao_Paulo`)
 
 ## Fase ativa
 
-**QA/QC e auditoria ontológica dos 51 registros legados DR0001–DR0051.**
+**Resgate e estabilização da Vitrine Ciência estática com o núcleo legado de 51 registros DR0001–DR0051.**
 
-A expansão de novas fontes, produtos e distribuições está **pausada**. `Fonte` é um rótulo do schema legado, não uma classe ontológica já confirmada.
+A expansão permanece pausada. A futura arquitetura federada/Data Service também permanece pausada enquanto a versão estática usada hoje não estiver correta, navegável e operacionalmente confiável.
 
-Não implementar conectores, novo schema definitivo ou expansão antes do fechamento G0–G4.
+Há uma única frente executora recorrente para este projeto. Enquanto o PR `#267` estiver aberto, não abrir branch/PR concorrente com o mesmo escopo.
 
 ## Sequência de execução
 
-1. **G0** — reconciliar inventário e autoridades dos 51 registros.
-2. **G1** — classificar 51/51 com evidência oficial e confiança.
-3. **G2** — resolver duplicatas, misturas e conflitos; marcar ambiguidades reais.
-4. **G3** — produzir crosswalk legado → entidade canônica → relações → migração.
-5. **G4** — validar a ontologia mínima contra todos os 51 casos.
-6. **Fase 2** — Integration Registry 51/51: GraphQL/REST/STAC/CKAN/OGC/download/manual, autenticação e prioridade científica.
-7. **Fase 3** — pipeline federado; primeiro piloto obrigatório: **MapBiomas Alerta**; depois pelo menos três pilotos heterogêneos.
-8. **Consolidação** — catálogo público gerado, QA global, reprodução limpa e smoke test.
+1. **S0 — release estática de resgate**
+   - restaurar 51 registros / 11 itens detalhados / 19 distribuições;
+   - preservar 135/843/876 somente em quarentena histórica;
+   - Home orientada por fenômeno/processo;
+   - 51 registros como superfície ampla de descoberta;
+   - 11/19 explicitamente como subconjunto detalhado;
+   - separar dados, API/serviço, página do conjunto, visualizador/documentação e página do provedor;
+   - CI, QA visual e smoke test público.
+2. **S1 — recertificação 51/51 de acessos**
+   - revisar em batches de 8–15;
+   - registrar `last_verified` e função factual do destino;
+   - classificar cada acesso como A/B/C/D/E;
+   - corrigir ou marcar como revisão qualquer PDF, viewer, homepage genérica, login, rota quebrada ou ambígua.
+3. **S2 — QA final estático**
+   - filtros, navegação, mobile/desktop, teclado e parâmetros de URL;
+   - contagens e fronteira pública;
+   - coerência rótulo → destino;
+   - percurso tema → resultado → acesso em no máximo 2–3 decisões.
 
-## Critério de evidência
+## Classificação de acesso
 
-Ordem: documentação oficial da entidade/provedor → documentação técnica/API oficial → auditorias verificadas do repositório → literatura/secundárias apenas como apoio.
+- **A DIRECT_DATA** — download, arquivo ou endpoint que entrega dados.
+- **B DATASET_PAGE** — página específica do conjunto com mecanismo explícito de obtenção.
+- **C API_SERVICE** — API/OGC/STAC/CKAN/GraphQL ou serviço que permite consulta/extração.
+- **D VIEWER_DOC** — visualizador, mapa, dashboard, documentação, artigo ou PDF sem acesso de dados demonstrado.
+- **E BROKEN_UNCERTAIN** — quebrado, restrito ou incerto.
 
-Não inferir tipo, API, disponibilidade ou qualidade.
+Somente A–C podem ser apresentados como acesso confirmado a dados. D deve ser rotulado pelo que é; E permanece “acesso em revisão”.
 
 ## Estado material do repositório
 
-- `main`: ainda 135/843/876 no estado público corrente.
+- `main`: estado público expandido 135/843/876 até a incorporação do resgate.
 - `v1.0.0`: release histórica imutável.
-- PR draft `#267`: branch candidato com **51 fontes** (rótulo legado), **11 produtos** e **19 distribuições**, mais a expansão preservada em quarentena.
-- os 51 DR ainda estão **sob classificação ontológica**.
+- PR `#267`: candidato estático 51/11/19, com expansão preservada em quarentena.
+- PR `#265`: fechado sem merge por estar superseded.
 
-## Artefatos obrigatórios de consolidação
+## Definition of Done — `VITRINE_STATIC_51_STABLE`
 
-O produto final deve materializar, em caminhos canônicos ou equivalentes registrados no manifesto:
+O marco termina somente quando:
 
-1. auditoria ontológica 51/51;
-2. crosswalk legado → entidades canônicas;
-3. schema Vitrine Core v1;
-4. vocabulários controlados;
-5. Integration Registry 51/51;
-6. pipeline e conectores executáveis;
-7. fixtures e testes automatizados;
-8. catálogo público contendo somente `ACCEPTED/PUBLISHED`;
-9. catálogo de quarentena;
-10. QA global machine-readable;
-11. manifesto final;
-12. relatório curto de conclusão;
-13. tag `vitrine-federated-core-v1`;
-14. site publicado com smoke test PASS.
-
-## Definition of Done
-
-A tarefa termina somente quando:
-
-- 51/51 possuem disposition ontológica;
-- o modelo canônico acomoda os 51 casos sem `source/fonte` genérico;
-- Integration Registry cobre 51/51;
-- pipeline executável bloqueia promoção quando QA falha;
-- MapBiomas Alerta passa ponta a ponta com execução real e fixture;
-- pelo menos três outros pilotos distintos passam pelo mesmo pipeline;
-- catálogo público exclui quarentena/não confirmados;
-- QA global não contém falha crítica;
-- uma execução limpa reconstrói os artefatos públicos;
-- site publicado passa smoke test;
-- read-back final confirma manifesto, contagens e estado público.
+- `main` pública usa o núcleo 51 e a quarentena histórica continua preservada;
+- Home e filtros controlados funcionam sem busca textual livre como mecanismo principal;
+- 51/51 têm disposition de acesso A/B/C/D/E e verificação atual registrada, ou E explicitamente justificado;
+- nenhuma ação rotulada como dados/download/API aponta silenciosamente para PDF, viewer, documentação ou homepage genérica;
+- onde dados, API e homepage são distintos, a interface distingue essas funções;
+- 11 itens/19 distribuições são apresentados como subconjunto detalhado;
+- CI, QA visual e smoke test público passam no commit final;
+- não há PR executor concorrente com o mesmo escopo;
+- o estado final e limitações residuais estão documentados;
+- o usuário consegue sair de um tema científico e chegar a uma opção relevante e a uma rota corretamente rotulada em 2–3 decisões.
 
 Somente então declarar:
 
-`VITRINE_FEDERATED_CORE_V1_CONSOLIDATED`
+`VITRINE_STATIC_51_STABLE`
 
-Após esse token, a execução recorrente deve ser desativada. Expansão posterior é novo milestone e exige autorização explícita.
+Após esse token, a execução recorrente deve ser desativada.
 
-## Fora do escopo atual
+## Fora do escopo até esse marco
 
-- reentrada em massa da expansão;
-- redesign adicional de interface;
-- criação indiscriminada de datasets a partir de recursos de API;
-- alteração retroativa da release `v1.0.0`;
-- nova release/DOI antes do marco final e de decisão humana específica.
+- ontologia 2.0 exaustiva como pré-condição de publicação;
+- Integration Registry;
+- conectores federados;
+- MapBiomas Alerta como piloto GraphQL;
+- PostgreSQL/backend próprio;
+- reentrada da expansão;
+- nova release/DOI.
+
+Esses itens pertencem ao próximo milestone conceitual, não ao resgate da página estática atual.
