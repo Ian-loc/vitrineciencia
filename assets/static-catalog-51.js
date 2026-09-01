@@ -26,14 +26,8 @@
 
   const heading = document.querySelector("#catalog-heading");
   const themeStatus = document.querySelector("#source-theme-status");
-
-  function destination(value) {
-    const next = new URLSearchParams(window.location.search);
-    if (value) next.set("q", value);
-    else next.delete("q");
-    const query = next.toString();
-    return `sources.html${query ? `?${query}` : ""}#catalogo`;
-  }
+  const hiddenQuery = document.querySelector("#q");
+  const catalog = document.querySelector("#catalogo");
 
   function renderThemeState(value) {
     const label = THEMES.get(value);
@@ -45,10 +39,28 @@
     }
   }
 
-  select.addEventListener("change", () => {
-    window.location.assign(destination(select.value));
-  });
+  function applyTheme(value, scroll = true) {
+    const controlledValue = THEMES.has(value) ? value : "";
+    select.value = controlledValue;
+    renderThemeState(controlledValue);
 
+    if (hiddenQuery) {
+      hiddenQuery.value = controlledValue;
+      hiddenQuery.dispatchEvent(new Event("input", {bubbles: true}));
+    } else {
+      const next = new URLSearchParams(window.location.search);
+      if (controlledValue) next.set("q", controlledValue);
+      else next.delete("q");
+      const query = next.toString();
+      history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
+    }
+
+    if (scroll && catalog) {
+      catalog.scrollIntoView({block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+    }
+  }
+
+  select.addEventListener("change", () => applyTheme(select.value));
   renderThemeState(current);
 
   const clear = document.querySelector("#clear");
@@ -58,7 +70,7 @@
   });
 
   const activeFilters = document.querySelector("#active-filters");
-  if (activeFilters && THEMES.has(current)) {
+  if (activeFilters) {
     const relabel = () => {
       activeFilters.querySelectorAll("button, span").forEach(element => {
         if (element.childElementCount === 0 && element.textContent.trim().startsWith("Busca:")) {
@@ -69,4 +81,10 @@
     relabel();
     new MutationObserver(relabel).observe(activeFilters, {childList: true, subtree: true});
   }
+
+  window.addEventListener("popstate", () => {
+    const value = (new URLSearchParams(window.location.search).get("q") || "").trim().toLowerCase();
+    select.value = THEMES.has(value) ? value : "";
+    renderThemeState(select.value);
+  });
 })();
