@@ -5,13 +5,16 @@
 
 ## Estado global
 
-A Vitrine está em **re-curadoria estrutural e ontológica**. A prioridade atual não é ampliar catálogo nem implementar federação: é determinar corretamente o que representam os 51 registros legados `DR0001–DR0051`.
+A Vitrine está em **QA/QC, re-curadoria estrutural e auditoria ontológica**. A prioridade atual não é ampliar catálogo nem implementar federação: é determinar corretamente o que representam os 51 registros legados `DR0001–DR0051`.
+
+A expansão de novas fontes, produtos e distribuições está **pausada**. Nesta frase, `fontes/produtos/distribuições` são os termos do schema legado; a ontologia está em revisão.
 
 ### Estado material
 
 - `main` permanece no commit público corrente `f991c9e506bc5c33220e530f7031179afe8e3cec`, com o catálogo expandido de 135/843/876.
 - A release `v1.0.0` permanece imutável no commit `27c545554f406b940662777e3f053e939ef3588c`, GitHub Release e Zenodo DOI `10.5281/zenodo.22130831`.
-- O PR draft `#267` (`curation/core-51-socioecological-discovery-20260901`) contém um **candidato** de restauração operacional para 51 registros DR / 11 produtos / 19 distribuições, com a expansão preservada em quarentena.
+- O PR draft `#267` (`curation/core-51-socioecological-discovery-20260901`) contém um **candidato** de restauração operacional.
+- No schema físico desse branch candidato existem **51 fontes** (rótulo legado), **11 produtos** e **19 distribuições**.
 - O PR #267 **não está incorporado à `main`** e não deve ser descrito como estado público consolidado.
 
 ## Problema conceitual ativo

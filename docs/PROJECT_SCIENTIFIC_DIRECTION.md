@@ -1,7 +1,10 @@
 # Direção científica — Vitrine Ciência
 
 **Status:** vigente  
-**Atualização:** 1º de setembro de 2026
+**Atualização:** 1º de setembro de 2026  
+**Fase operacional:** QA/QC, re-curadoria e auditoria ontológica. Estado factual: `docs/PROJECT_STATE.md`; execução: `WORKFLOW_STATUS.md`.
+
+A expansão de novas fontes, produtos e distribuições está **pausada**. Sua retomada exige **instrução humana explícita**. Os termos `fonte/produto/distribuição` nesta regra referem-se ao schema legado.
 
 ## Missão
 

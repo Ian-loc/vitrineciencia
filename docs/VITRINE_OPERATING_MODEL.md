@@ -7,6 +7,8 @@
 
 A Vitrine é um catálogo de descoberta e acesso a dados científicos relevantes ao Brasil. O objetivo corrente é consolidar uma arquitetura simples, verificável e semanticamente correta antes de voltar a expandir o corpus.
 
+A expansão de novas fontes, produtos e distribuições está **pausada**. Os termos são mantidos aqui apenas para compatibilidade com o schema legado.
+
 ## Estado operacional
 
 - `main` continua no catálogo expandido 135/843/876;

@@ -4,9 +4,11 @@ Atualização: **2026-09-01** (`America/Sao_Paulo`)
 
 ## Fase ativa
 
-**Auditoria ontológica dos 51 registros legados DR0001–DR0051.**
+**QA/QC e auditoria ontológica dos 51 registros legados DR0001–DR0051.**
 
-Não tratar `fonte` como classe final. Não implementar conectores, novo schema definitivo ou expansão antes do fechamento G0–G4.
+A expansão de novas fontes, produtos e distribuições está **pausada**. `Fonte` é um rótulo do schema legado, não uma classe ontológica já confirmada.
+
+Não implementar conectores, novo schema definitivo ou expansão antes do fechamento G0–G4.
 
 ## Sequência de execução
 
@@ -29,7 +31,7 @@ Não inferir tipo, API, disponibilidade ou qualidade.
 
 - `main`: ainda 135/843/876 no estado público corrente.
 - `v1.0.0`: release histórica imutável.
-- PR draft `#267`: candidato 51 DR / 11 produtos / 19 distribuições + expansão em quarentena.
+- PR draft `#267`: branch candidato com **51 fontes** (rótulo legado), **11 produtos** e **19 distribuições**, mais a expansão preservada em quarentena.
 - os 51 DR ainda estão **sob classificação ontológica**.
 
 ## Artefatos obrigatórios de consolidação
