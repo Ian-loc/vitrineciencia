@@ -4,11 +4,13 @@ Atualização: **2026-09-01** (`America/Sao_Paulo`)
 
 ## Fase ativa
 
-**Resgate e estabilização da Vitrine Ciência estática com o núcleo legado de 51 registros DR0001–DR0051.**
+A fase ativa de **QA/QC** é o **resgate e a estabilização da Vitrine Ciência estática com o núcleo legado de 51 registros DR0001–DR0051**.
 
 A expansão permanece pausada. A futura arquitetura federada/Data Service também permanece pausada enquanto a versão estática usada hoje não estiver correta, navegável e operacionalmente confiável.
 
 Há uma única frente executora recorrente para este projeto. Enquanto o PR `#267` estiver aberto, não abrir branch/PR concorrente com o mesmo escopo.
+
+Na terminologia física do schema legado, o candidato contém **51 fontes, 11 produtos, 19 distribuições**. Esses nomes preservam compatibilidade do corpus e não congelam uma ontologia final.
 
 ## Sequência de execução
 
