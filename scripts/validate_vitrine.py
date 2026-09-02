@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import json
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
@@ -12,6 +13,7 @@ SITE_URL = "https://ian-loc.github.io/vitrineciencia/"
 REPO_URL = "https://github.com/Ian-loc/vitrineciencia"
 PUBLIC_PAGES = ("index.html", "products.html", "sources.html", "analytics.html", "analytics-products.html", "about.html")
 INTERACTIVE_PAGES = {"products.html", "sources.html", "analytics.html", "analytics-products.html"}
+ACCESS_ROLES = {"A", "B", "C", "D", "E"}
 CANONICAL_URLS = {
     "index.html": SITE_URL,
     "products.html": SITE_URL + "products.html",
@@ -32,8 +34,9 @@ REQUIRED_IDS = {
     },
     "sources.html": {
         "conteudo", "catalogo", "hero-search", "q", "source-theme-shortcut", "source-theme-status", "filters",
-        "scope", "area", "brazil", "download", "programmatic", "coverage", "format", "evidence", "sort",
-        "clear", "list", "count", "results-more", "show-more", "shown-count"
+        "scope", "area", "brazil", "download", "programmatic", "coverage", "information", "access-role", "format",
+        "evidence", "sort", "clear", "list", "count", "results-more", "show-more", "shown-count",
+        "dados-aplicados", "priority-applied-status", "priority-applied-list"
     },
     "analytics.html": {"analise", "summary", "chart-areas", "chart-download", "chart-programmatic", "chart-brazil", "chart-evidence", "chart-formats", "chart-visualizations"},
     "analytics-products.html": {"analise-produtos", "product-summary", "product-chart-areas", "product-chart-kinds", "product-chart-brazil", "product-chart-temporal", "product-chart-support", "product-chart-formats", "product-chart-access"},
@@ -99,6 +102,15 @@ def csv_rows(relative_path: str) -> int:
         return sum(1 for _ in csv.DictReader(handle))
 
 
+def load_json(relative_path: str):
+    path = ROOT / relative_path
+    if not path.exists(): fail(f"JSON ausente: {relative_path}")
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        fail(f"{relative_path}: JSON inválido: {exc}")
+
+
 def validate_counts() -> None:
     live = {
         "data/data_resources.csv": 51,
@@ -119,6 +131,43 @@ def validate_counts() -> None:
     for filename, expected in frozen.items():
         found = csv_rows(f"data/quarantine/v1.0.0-expanded/{filename}")
         if found != expected: fail(f"quarentena/{filename}: esperado {expected}, encontrado {found}")
+
+
+def validate_core_access_audit() -> None:
+    payload = load_json("data/static_core_51_access_audit.json")
+    records = payload.get("records") or []
+    expected_ids = {f"DR{i:04d}" for i in range(1, 52)}
+    found_ids = {str(item.get("resource_id") or "") for item in records}
+    if len(records) != 51 or found_ids != expected_ids:
+        fail("static_core_51_access_audit.json: deve conter exatamente DR0001–DR0051 uma vez cada")
+    if any(item.get("access_role") not in ACCESS_ROLES for item in records):
+        fail("static_core_51_access_audit.json: papel A–E inválido")
+    if any(not item.get("source_last_verified") or not item.get("reason") for item in records):
+        fail("static_core_51_access_audit.json: last_verified e justificativa são obrigatórios em 51/51")
+    actual = {role: sum(item.get("access_role") == role for item in records) for role in sorted(ACCESS_ROLES)}
+    declared = payload.get("counts") or {}
+    if any(int(declared.get(role, -1)) != actual[role] for role in ACCESS_ROLES):
+        fail("static_core_51_access_audit.json: contagens A–E não conferem")
+
+
+def validate_applied_priority() -> None:
+    payload = load_json("data/applied_priority_gate.json")
+    items = payload.get("items") or []
+    gates = [str(item.get("gate") or "") for item in items]
+    if set(gates) != {"P1", "P2", "P3", "P4", "P5", "P6"} or gates.count("P5") < 2:
+        fail("applied_priority_gate.json: P1–P6 devem estar cobertos e P5 deve separar CAR e SIGEF")
+    required_platform_tokens = ("AdaptaBrasil", "MapBiomas", "IEDE", "BDMG", "SICAR", "SIGEF", "IBGE")
+    joined = " ".join(str(item.get("platform") or "") for item in items)
+    if any(token not in joined for token in required_platform_tokens):
+        fail("applied_priority_gate.json: plataforma obrigatória ausente")
+    for item in items:
+        if item.get("access_role") not in ACCESS_ROLES:
+            fail(f"applied_priority_gate.json: papel de acesso inválido em {item.get('gate')}")
+        for key in ("data_object", "territory", "provenance", "distribution", "verification_note"):
+            if not str(item.get(key) or "").strip(): fail(f"applied_priority_gate.json: {key} ausente em {item.get('gate')}")
+        for key in ("access_url", "documentation_url"):
+            if not str(item.get(key) or "").startswith("https://"):
+                fail(f"applied_priority_gate.json: {key} deve usar HTTPS em {item.get('gate')}")
 
 
 def validate_page(filename: str) -> None:
@@ -158,7 +207,8 @@ def validate_page(filename: str) -> None:
         if any((item.get("type") or "text").lower() in {"text", "search"} for item in parser.inputs): fail("index.html: busca textual livre não pode ser instrumento principal")
         if "51 registros para descoberta" not in content: fail("index.html: relação entre núcleo 51 e subconjunto detalhado não está explícita")
     elif filename == "sources.html":
-        if "assets/static-catalog-51.js" not in content: fail("sources.html: controlador temático do núcleo 51 ausente")
+        for asset in ("assets/static-catalog-51.js", "assets/source-discovery-v2.js", "assets/applied-priority.js"):
+            if asset not in content: fail(f"sources.html: controlador ausente: {asset}")
         if "source-theme-shortcut" not in content: fail("sources.html: filtro temático controlado ausente")
         if any((item.get("type") or "text").lower() in {"text", "search"} and item.get("id") == "q" for item in parser.inputs): fail("sources.html: q deve permanecer oculto, não busca livre")
     elif filename == "products.html":
@@ -181,6 +231,8 @@ def validate_functional_contracts() -> None:
     products = (ROOT / "assets/products.js").read_text(encoding="utf-8")
     guardrails = (ROOT / "assets/discovery-guardrails.js").read_text(encoding="utf-8")
     theme = (ROOT / "assets/static-catalog-51.js").read_text(encoding="utf-8")
+    discovery = (ROOT / "assets/source-discovery-v2.js").read_text(encoding="utf-8")
+    priority = (ROOT / "assets/applied-priority.js").read_text(encoding="utf-8")
     if "const PAGE_SIZE = 12;" not in app or "filtered.slice(0, visibleCount)" not in app: fail("assets/app.js: divulgação progressiva ausente")
     for token in ("const PAGE_SIZE = 18;", "THEME_GROUPS", "productAccessCategories", "parseQuery"):
         if token not in products: fail(f"assets/products.js: contrato ausente: {token}")
@@ -188,6 +240,10 @@ def validate_functional_contracts() -> None:
         if token not in guardrails: fail(f"discovery-guardrails.js: semântica de acesso ausente: {token}")
     for token in ("source-theme-shortcut", "URLSearchParams", "sources.html"):
         if token not in theme: fail(f"static-catalog-51.js: contrato temático ausente: {token}")
+    for token in ("information", "access-role", "discovery-facts", "Distribuição / acesso"):
+        if token not in discovery: fail(f"source-discovery-v2.js: contrato de descoberta ausente: {token}")
+    for token in ("applied_priority_gate.json", "priority-applied-list", "access_role"):
+        if token not in priority: fail(f"applied-priority.js: contrato aplicado ausente: {token}")
 
 
 def validate_required_assets() -> None:
@@ -197,16 +253,20 @@ def validate_required_assets() -> None:
         "assets/discovery-guardrails.css", "assets/app.js", "assets/ptbr.js", "assets/products.js", "assets/home.js",
         "assets/navigation.js", "assets/analytics.js", "assets/analytics-products.js", "assets/export-selective.js",
         "assets/source-comparison.js", "assets/discovery-guardrails.js", "assets/static-catalog-51.js",
+        "assets/source-discovery-v2.js", "assets/applied-priority.js",
         "data/data_resources.csv", "data/data_resources.json", "data/data_products.csv", "data/data_products.json",
-        "data/product_distributions.csv", "data/brazil_scope_priorities.json",
+        "data/product_distributions.csv", "data/brazil_scope_priorities.json", "data/static_core_51_access_audit.json",
+        "data/applied_priority_gate.json",
     )
     missing = [name for name in required if not (ROOT / name).exists() or (ROOT / name).stat().st_size == 0]
     if missing: fail("artefatos obrigatórios ausentes: " + ", ".join(missing))
 
 
 validate_counts()
+validate_core_access_audit()
+validate_applied_priority()
 for page in PUBLIC_PAGES: validate_page(page)
 validate_identity()
 validate_functional_contracts()
 validate_required_assets()
-print("OK: Vitrine estática 51/11/19 validada com descoberta temática e papéis de acesso separados")
+print("OK: Vitrine estática 51/11/19 validada com tema-first, A–E 51/51 e gate aplicado P1–P6")
