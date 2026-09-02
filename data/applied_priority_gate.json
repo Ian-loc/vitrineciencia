@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "scope": "applied_priority_gate",
+  "verified_at": "2026-09-01",
+  "note": "Camada aplicada mínima. Não altera o núcleo histórico DR0001–DR0051 nem as contagens 51/11/19.",
+  "items": [
+    {
+      "gate": "P1",
+      "platform": "AdaptaBrasil MCTI",
+      "core_resource_id": "DR0003",
+      "theme": "clima | água | risco climático",
+      "data_object": "Índice de risco de impacto do estresse hídrico e seus componentes de vulnerabilidade, exposição e ameaça climática",
+      "territory": "Brasil; indicadores territorializados conforme o setor",
+      "provenance": "MCTI / INPE / RNP — AdaptaBrasil MCTI",
+      "distribution": "Sistema de visualização de índices e indicadores",
+      "access_role": "D",
+      "access_url": "https://sistema.adaptabrasil.mcti.gov.br/",
+      "documentation_url": "https://adaptabrasil.mcti.gov.br/sobre/lista-de-indicadores",
+      "verification_note": "A lista oficial de indicadores explicita o índice de risco de impacto do estresse hídrico. A rota principal permanece rotulada como visualização, não download."
+    },
+    {
+      "gate": "P2",
+      "platform": "MapBiomas Municípios",
+      "core_resource_id": "DR0010",
+      "theme": "uso e cobertura da terra",
+      "data_object": "MAPBIOMAS_BRAZIL-COL.11-BIOME_STATE_MUNICIPALITY — estatísticas de área por classe de cobertura e uso da terra",
+      "territory": "Biomas, estados e municípios brasileiros; 1985–2025",
+      "provenance": "Rede MapBiomas — MapBiomas Brasil",
+      "distribution": "Página oficial de estatísticas com ação de download",
+      "access_role": "B",
+      "access_url": "https://brasil.mapbiomas.org/downloads/estatisticas/",
+      "documentation_url": "https://brasil.mapbiomas.org/iniciativas-e-produtos/cobertura-e-uso-da-terra/cobertura-30m/cobertura/",
+      "verification_note": "Coleção 11, v1 publicada em 12 de agosto de 2026; tabela municipal em hectares. Não se atribui fragmentação a este produto."
+    },
+    {
+      "gate": "P3",
+      "platform": "IEDE-MG / Fundação João Pinheiro",
+      "theme": "bases territoriais e geoespaciais",
+      "data_object": "Base da Divisão Territorial Municipal e Distrital de Minas Gerais / MG Limites",
+      "territory": "Minas Gerais",
+      "provenance": "Fundação João Pinheiro / Governo de Minas Gerais — Infraestrutura Estadual de Dados Espaciais (IEDE)",
+      "distribution": "Catálogo geoespacial IEDE historicamente documentado para Shapefile; rota corrente de arquivo geoespacial ainda em recertificação",
+      "access_role": "E",
+      "access_url": "https://fjp.mg.gov.br/servicos-fjp/consultar-pesquisas-e-estudos-de-indices-indicadores-e-estatisticas/estatistica-e-informacoes/informacoes-territoriais/",
+      "documentation_url": "https://fjp.mg.gov.br/wp-content/uploads/2021/03/20.04_Inf_CIT_04_2021.pdf",
+      "verification_note": "A FJP continua listando IEDE como infraestrutura institucional e publica informações territoriais em 2026. O informativo oficial documenta downloads Shapefile no catálogo IEDE; o endpoint geoespacial legado não foi confirmado como funcional nesta rodada, portanto E."
+    },
+    {
+      "gate": "P4",
+      "platform": "BDMG — dados municipais/setor público",
+      "theme": "território | finanças públicas | infraestrutura",
+      "data_object": "Planilha de Financiamentos ao Setor Público",
+      "territory": "Minas Gerais; operações do setor público dos últimos cinco anos",
+      "provenance": "Banco de Desenvolvimento de Minas Gerais (BDMG)",
+      "distribution": "Página oficial de transparência com downloads Excel, CSV e PDF e dicionário de dados",
+      "access_role": "B",
+      "access_url": "https://www.bdmg.mg.gov.br/transparencia-documentos/",
+      "documentation_url": "https://www.bdmg.mg.gov.br/transparencia-documentos/",
+      "verification_note": "Representa dados públicos verificáveis do BDMG. Não é descrita como plataforma de indicadores socioeconômicos municipais."
+    },
+    {
+      "gate": "P5",
+      "platform": "SICAR/CAR — Serviço Florestal Brasileiro",
+      "theme": "regularização ambiental rural | APP | Reserva Legal",
+      "data_object": "Painel da Regularização Ambiental Rural — indicadores consolidados do SICAR, incluindo análise cadastral, PRA e indicadores de passivos/excedentes de APP e Reserva Legal",
+      "territory": "Brasil; granularidade municipal declarada no catálogo",
+      "provenance": "Diretoria de Regularização Ambiental Rural / Serviço Florestal Brasileiro; Coordenação-Geral de Gestão do SICAR",
+      "distribution": "Dataset/painel público; recursos principais são visualização e dicionário PDF",
+      "access_role": "D",
+      "access_url": "https://dados.florestal.gov.br/dataset/painel-da-regularizacao-ambiental-rural",
+      "documentation_url": "https://www.gov.br/florestal/pt-br/assuntos/regularizacao-ambiental/painel-regularizacao",
+      "verification_note": "Catálogo do SFB declara dados abertos, cobertura federal, granularidade municipal e atualização mensal. Não se apresenta o painel como download tabular."
+    },
+    {
+      "gate": "P5",
+      "platform": "SIGEF / Acervo Fundiário INCRA",
+      "theme": "georreferenciamento | governança fundiária",
+      "data_object": "Imóveis rurais certificados no SIGEF/SNCI — geometrias e atributos fundiários",
+      "territory": "Brasil; seleção por camada e estado",
+      "provenance": "Instituto Nacional de Colonização e Reforma Agrária (INCRA)",
+      "distribution": "Download de Shapefiles no Acervo Fundiário; arquivos informados como atualizados quinzenalmente",
+      "access_role": "B",
+      "access_url": "https://acervofundiario.incra.gov.br/geodownload/geodados.php",
+      "documentation_url": "https://www.gov.br/pt-br/servicos/obter-coordenadas-e-baixar-os-arquivos-dos-imoveis-ruras-certificados",
+      "verification_note": "O serviço oficial informa acesso livre e download de shapefiles de imóveis certificados; consultas diretas no SIGEF podem exigir GOV.BR."
+    },
+    {
+      "gate": "P6",
+      "platform": "IBGE Cidades e Estados",
+      "theme": "território | demografia | indicadores municipais",
+      "data_object": "Indicadores municipais de Cidades e Estados — área, população, densidade e demais indicadores exibidos pelo serviço",
+      "territory": "Estados e municípios do Brasil",
+      "provenance": "IBGE; a fonte específica de cada indicador deve ser respeitada quando indicada pelo serviço",
+      "distribution": "Página do serviço com exportação XLSX, XLS, ODS e CSV",
+      "access_role": "B",
+      "access_url": "https://www.ibge.gov.br/cidades-e-estados",
+      "documentation_url": "https://www.ibge.gov.br/cidades-e-estados",
+      "verification_note": "O serviço corrente expõe seleção geográfica e botões de exportação para os indicadores."
+    }
+  ]
+}
