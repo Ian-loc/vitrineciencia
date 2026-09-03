@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
-"""Build the isolated static artifact published as the Vitrine Ciência.
-
-Only files required by the public discovery interface are copied. Development,
-QA, build metadata, canonical CSV tables, database material and operational
-documentation remain in the repository and are not shipped in the GitHub Pages
-artifact. The public interface uses JSON for interactive discovery and creates
-CSV exports only from user-selected records in the browser.
-"""
+"""Build the isolated static artifact published as the Vitrine Ciência."""
 from __future__ import annotations
 
 import shutil
@@ -16,88 +9,31 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "_site"
 
 REQUIRED_FILES = (
-    "index.html",
-    "products.html",
-    "products-list.html",
-    "sources.html",
-    "analytics.html",
-    "analytics-products.html",
-    "about.html",
-    "LICENSE",
-    "LICENSE-DATA.md",
-    "robots.txt",
-    "sitemap.xml",
-    "assets/style.css",
-    "assets/accessibility.css",
-    "assets/brazil-scope.css",
-    "assets/products.css",
-    "assets/visual-refinement.css",
-    "assets/export-selective.css",
-    "assets/ux-v2.css",
-    "assets/ux-v3.css",
-    "assets/ux-simple.css",
-    "assets/product-card-refinement.css",
-    "assets/product-index.css",
-    "assets/app.js",
-    "assets/ptbr.js",
-    "assets/products.js",
-    "assets/product-index.js",
-    "assets/product-ui-fixes.js",
-    "assets/product-label-fix.js",
-    "assets/home.js",
-    "assets/navigation.js",
-    "assets/analytics.js",
-    "assets/analytics-products.js",
-    "assets/export-selective.js",
-    "assets/source-comparison.js",
-    "data/data_resources.json",
-    "data/data_products.json",
-    "data/brazil_scope_priorities.json",
+    "index.html", "products.html", "products-list.html", "sources.html", "analytics.html", "analytics-products.html", "about.html",
+    "LICENSE", "LICENSE-DATA.md", "robots.txt", "sitemap.xml",
+    "assets/style.css", "assets/accessibility.css", "assets/brazil-scope.css", "assets/products.css",
+    "assets/visual-refinement.css", "assets/export-selective.css", "assets/ux-v2.css", "assets/ux-v3.css", "assets/ux-simple.css",
+    "assets/product-card-refinement.css", "assets/product-index.css", "assets/discovery-guardrails.css",
+    "assets/app.js", "assets/ptbr.js", "assets/products.js", "assets/product-index.js", "assets/product-ui-fixes.js",
+    "assets/product-label-fix.js", "assets/home.js", "assets/navigation.js", "assets/analytics.js", "assets/analytics-products.js",
+    "assets/export-selective.js", "assets/source-comparison.js", "assets/discovery-guardrails.js", "assets/static-catalog-51.js",
+    "data/data_resources.json", "data/data_products.json", "data/brazil_scope_priorities.json",
 )
 
-OPTIONAL_FILES = (
-    "404.html",
-    "CNAME",
-    "favicon.ico",
-    "favicon.svg",
-)
-
+OPTIONAL_FILES = ("404.html", "CNAME", "favicon.ico", "favicon.svg")
 FORBIDDEN_PUBLIC_PATHS = (
-    "explorer.html",
-    "abordagens.html",
-    "data/data_resources.csv",
-    "data/data_products.csv",
-    "data/product_distributions.csv",
-    "data/product_distributions.json",
-    "data/federated_layers.json",
-    "data/build-meta.json",
-    "assets/product-ux-v2.js",
-    "assets/product-ux-compat.js",
-    "assets/explorer.js",
-    "assets/explorer.css",
-    "assets/approaches.css",
-    "assets/quality-summary.js",
-    "assets/build-meta.js",
-    "WORKFLOW_STATUS.md",
-    "IMPLEMENTATION_WORKFLOW.md",
-    "DOCUMENTATION_CONSISTENCY_AUDIT.md",
-    "migration",
-    "scripts",
-    ".github",
-    "audit",
-    "schema",
-    "database",
-    "docs",
-    "config",
-    "release",
+    "explorer.html", "abordagens.html", "data/data_resources.csv", "data/data_products.csv", "data/product_distributions.csv",
+    "data/product_distributions.json", "data/federated_layers.json", "data/build-meta.json", "data/quarantine",
+    "assets/product-ux-v2.js", "assets/product-ux-compat.js", "assets/explorer.js", "assets/explorer.css", "assets/approaches.css",
+    "assets/quality-summary.js", "assets/build-meta.js", "WORKFLOW_STATUS.md", "IMPLEMENTATION_WORKFLOW.md", "DOCUMENTATION_CONSISTENCY_AUDIT.md",
+    "migration", "scripts", ".github", "audit", "schema", "database", "docs", "config", "release",
 )
 
 
 def copy_file(relative_path: str, *, required: bool) -> None:
     source = ROOT / relative_path
     if not source.exists():
-        if required:
-            raise SystemExit(f"ERRO: arquivo público obrigatório ausente: {relative_path}")
+        if required: raise SystemExit(f"ERRO: arquivo público obrigatório ausente: {relative_path}")
         return
     destination = OUTPUT / relative_path
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -105,24 +41,15 @@ def copy_file(relative_path: str, *, required: bool) -> None:
 
 
 def main() -> None:
-    if OUTPUT.exists():
-        shutil.rmtree(OUTPUT)
+    if OUTPUT.exists(): shutil.rmtree(OUTPUT)
     OUTPUT.mkdir(parents=True)
-
-    for relative_path in REQUIRED_FILES:
-        copy_file(relative_path, required=True)
-    for relative_path in OPTIONAL_FILES:
-        copy_file(relative_path, required=False)
-
+    for relative_path in REQUIRED_FILES: copy_file(relative_path, required=True)
+    for relative_path in OPTIONAL_FILES: copy_file(relative_path, required=False)
     (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
-
     leaked = [name for name in FORBIDDEN_PUBLIC_PATHS if (OUTPUT / name).exists()]
-    if leaked:
-        raise SystemExit("ERRO: artefato da Vitrine contém material fora da fronteira: " + ", ".join(leaked))
-
+    if leaked: raise SystemExit("ERRO: artefato da Vitrine contém material fora da fronteira: " + ", ".join(leaked))
     files = sum(1 for path in OUTPUT.rglob("*") if path.is_file())
     print(f"OK: artefato público da Vitrine criado em {OUTPUT} com {files} arquivos")
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": main()

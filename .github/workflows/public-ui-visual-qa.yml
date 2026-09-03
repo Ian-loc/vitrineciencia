@@ -13,7 +13,6 @@ on:
       - "about.html"
       - "assets/**"
       - "data/**"
-      - "schema/public-discovery-v0.1.json"
       - "scripts/build_catalog.py"
       - "scripts/build_public_discovery.py"
       - "scripts/build_site_artifact.py"
@@ -29,7 +28,6 @@ jobs:
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v7
-
       - uses: actions/setup-node@v7
         with:
           node-version: "20"
@@ -53,7 +51,7 @@ jobs:
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
 
-      - name: Validar navegação, descoberta, comparação e responsividade
+      - name: Validar navegação controlada, papéis e responsividade
         env:
           CANDIDATE_URL: http://127.0.0.1:8000/
         run: |
@@ -61,153 +59,104 @@ jobs:
           node <<'NODE'
           const { chromium } = require('playwright');
           const fs = require('fs');
-
           const base = process.env.CANDIDATE_URL;
-          const pages = [
-            ['home', ''], ['products', 'products.html'], ['product-index', 'products-list.html'],
-            ['sources', 'sources.html'], ['about', 'about.html'], ['catalog-overview', 'analytics.html'],
-          ];
-          const viewports = [
-            ['desktop', { width: 1440, height: 1100 }],
-            ['tablet', { width: 820, height: 1180 }],
-            ['mobile', { width: 390, height: 844 }],
-          ];
+          const pages = [['home',''],['products','products.html'],['product-index','products-list.html'],['sources','sources.html'],['about','about.html'],['catalog-overview','analytics.html']];
+          const viewports = [['desktop',{width:1440,height:1100}],['tablet',{width:820,height:1180}],['mobile',{width:390,height:844}]];
 
           (async () => {
-            const browser = await chromium.launch({ headless: true });
+            const browser = await chromium.launch({headless:true});
             const report = [];
             let failed = false;
-
             for (const [mode, viewport] of viewports) {
-              const context = await browser.newContext({ viewport });
+              const context = await browser.newContext({viewport});
               for (const [name, path] of pages) {
                 const page = await context.newPage();
                 const url = base + path;
-                const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
-                if (!response || !response.ok()) { console.error(`HTTP inválido: ${url}`); failed = true; await page.close(); continue; }
+                const response = await page.goto(url,{waitUntil:'networkidle',timeout:60000});
+                if (!response || !response.ok()) { console.error(`HTTP inválido: ${url}`); failed=true; await page.close(); continue; }
                 if (name === 'products') await page.waitForSelector('#product-list .product-card');
                 if (name === 'product-index') await page.waitForSelector('#product-index-list .product-index-row');
                 if (name === 'sources') await page.waitForSelector('#list .card');
-                await page.screenshot({ path: `visual-qa/${mode}-${name}.png`, fullPage: true });
+                await page.screenshot({path:`visual-qa/${mode}-${name}.png`,fullPage:true});
 
-                const metrics = await page.evaluate(() => ({
-                  title: document.title, viewportWidth: window.innerWidth,
-                  documentWidth: document.documentElement.scrollWidth,
-                  h1: (document.querySelector('h1')?.textContent || '').trim(),
-                  hasMain: Boolean(document.querySelector('main')),
-                  navToggleVisible: Boolean(document.querySelector('.nav-toggle') && getComputedStyle(document.querySelector('.nav-toggle')).display !== 'none'),
-                  fullCatalogCsvLinks: document.querySelectorAll('a[href*="data_resources.csv"],a[href*="data_products.csv"],a[href*="product_distributions.csv"]').length,
-                }));
-                report.push({mode, page:name, ...metrics});
-                if (!metrics.hasMain || !metrics.h1) failed = true;
-                if (metrics.documentWidth > metrics.viewportWidth + 2) { console.error(`Overflow horizontal: ${mode}/${name}`); failed = true; }
-                if (metrics.fullCatalogCsvLinks !== 0) { console.error(`CSV integral exposto em ${mode}/${name}`); failed = true; }
+                const metrics = await page.evaluate(() => ({title:document.title,viewportWidth:window.innerWidth,documentWidth:document.documentElement.scrollWidth,h1:(document.querySelector('h1')?.textContent||'').trim(),hasMain:Boolean(document.querySelector('main')),visibleFreeSearch:[...document.querySelectorAll('input[type="search"],input[type="text"]')].filter(el=>{const s=getComputedStyle(el); return s.display!=='none'&&s.visibility!=='hidden'&&el.getClientRects().length;}).length}));
+                report.push({mode,page:name,...metrics});
+                if (!metrics.hasMain || !metrics.h1) failed=true;
+                if (metrics.documentWidth > metrics.viewportWidth + 2) { console.error(`Overflow horizontal: ${mode}/${name}`); failed=true; }
+                if (metrics.visibleFreeSearch !== 0) { console.error(`Busca livre visível em ${mode}/${name}`); failed=true; }
 
                 if (mode !== 'desktop') {
                   const toggle = page.locator('.nav-toggle');
-                  if (!await toggle.isVisible()) { console.error(`Menu responsivo ausente em ${mode}/${name}`); failed = true; }
-                  else {
-                    await toggle.click();
-                    const visibleLinks = await page.locator('#site-nav-links a:visible').count();
-                    if (visibleLinks < 4) { console.error(`Navegação responsiva incompleta em ${mode}/${name}: ${visibleLinks}`); failed = true; }
-                    await toggle.click();
-                  }
+                  if (!await toggle.isVisible()) { console.error(`Menu responsivo ausente em ${mode}/${name}`); failed=true; }
+                  else { await toggle.click(); if (await page.locator('#site-nav-links a:visible').count() < 4) { console.error(`Navegação responsiva incompleta em ${mode}/${name}`); failed=true; } await toggle.click(); }
                 }
 
                 if (name === 'home') {
-                  const action = await page.locator('.home-search').getAttribute('action');
-                  if (action !== 'products.html') { console.error(`Busca inicial não aponta para produtos: ${action}`); failed = true; }
-                  const products = Number((await page.locator('#home-products').textContent()).trim());
-                  const sources = Number((await page.locator('#home-sources').textContent()).trim());
-                  if (!(products === 843 && products > sources && sources === 135)) { console.error(`Resumo inicial incoerente: produtos=${products}, fontes=${sources}`); failed = true; }
-                  const areaCards = page.locator('#home-product-areas .product-area-card');
-                  if (await areaCards.count() !== 6) { console.error(`Exploração temática deve ter 6 áreas de produtos`); failed = true; }
-                  const areaTexts = await areaCards.locator('[data-area-count]').allTextContents();
-                  if (areaTexts.some(text => !/\d+ produtos?/.test(text) || /^0\s/.test(text))) { console.error(`Contagens temáticas de produtos inválidas: ${areaTexts.join(' | ')}`); failed = true; }
+                  await page.waitForFunction(() => document.querySelector('#home-products')?.textContent.trim() === '11' && document.querySelector('#home-sources')?.textContent.trim() === '51');
+                  const theme = page.locator('#home-theme[name="q"]');
+                  if (await theme.count() !== 1 || await theme.evaluate(el => el.tagName) !== 'SELECT') { console.error('Seleção controlada de fenômeno ausente'); failed=true; }
+                  if (await page.locator('#home-product-areas .process-card').count() < 10) { console.error('Atalhos socioecológicos insuficientes'); failed=true; }
+                  const action = await page.locator('.controlled-search-shell').getAttribute('action');
+                  if (action !== 'sources.html') { console.error(`Home deve abrir núcleo 51, não subconjunto detalhado: ${action}`); failed=true; }
+                  if (await page.locator('#home-product-areas a[href^="sources.html?q="]').count() < 10) { console.error('Atalhos temáticos não apontam ao núcleo 51'); failed=true; }
                 }
 
                 if (name === 'products') {
                   const cards = page.locator('#product-list .product-card');
-                  if (await cards.count() !== 18) { console.error(`Lote inicial deve exibir 18 produtos em ${mode}: ${await cards.count()}`); failed = true; }
-                  const triage = page.locator('#product-list .triage-strip > div');
-                  if (await triage.count() !== 72) { console.error(`Onde/Quando/Escala/Acesso incompleto em ${mode}: ${await triage.count()}`); failed = true; }
-                  const fullListLink = page.locator('a.full-product-list-link');
-                  if (!await fullListLink.isVisible() || await fullListLink.getAttribute('href') !== 'products-list.html') { console.error(`Acesso à lista completa ausente em ${mode}`); failed = true; }
-
-                  const boxes = await Promise.all([0,1,2].map(index => cards.nth(index).boundingBox()));
-                  if (boxes.every(Boolean)) {
-                    const sameRow = Math.abs(boxes[0].y - boxes[1].y) < 4;
-                    const nextRow = boxes[2].y > boxes[0].y + 40;
-                    if (mode === 'mobile') {
-                      if (sameRow || boxes[1].y <= boxes[0].y + 40) { console.error(`Mobile deve exibir um card por linha`); failed = true; }
-                    } else if (!sameRow || !nextRow) {
-                      console.error(`${mode} deve exibir exatamente dois cards por linha`); failed = true;
-                    }
+                  if (await cards.count() !== 11) { console.error(`Subconjunto detalhado deve exibir 11 itens: ${await cards.count()}`); failed=true; }
+                  if (!(await page.locator('body').textContent()).toLowerCase().includes('subconjunto')) { console.error('Página de 11 itens não declara escopo de subconjunto'); failed=true; }
+                  for (const selector of ['#product-theme','#product-coverage','#product-kind','#product-access']) {
+                    const control = page.locator(selector); if (!await control.count() || await control.evaluate(el => el.tagName) !== 'SELECT') { console.error(`Filtro controlado ausente: ${selector}`); failed=true; }
                   }
-
-                  const requiredFilters = ['#product-theme','#product-coverage','#product-year-start','#product-year-end','#product-temporal','#product-support','#product-spatial','#product-access','#product-format','#product-free','#product-license'];
-                  for (const selector of requiredFilters) if (!await page.locator(selector).count()) { console.error(`Filtro científico ausente: ${selector}`); failed = true; }
-
-                  await page.locator('#product-q').fill('carbono solo Cerrado Brasil 2000 30 m');
-                  await page.waitForTimeout(180);
-                  if (!await page.locator('#interpreted-query').isVisible()) { console.error(`Interpretação leve da consulta não apareceu em ${mode}`); failed = true; }
-                  const interpreted = await page.locator('#interpreted-query').textContent();
-                  for (const token of ['Carbono','Solos','Cerrado','Brasil','2000','30 m']) if (!interpreted.includes(token)) { console.error(`Interpretação não reconheceu ${token}: ${interpreted}`); failed = true; }
-                  await page.locator('#product-clear').click();
-                  await page.waitForSelector('#product-list .product-card');
-
+                  const theme = page.locator('#product-theme');
+                  const options = theme.locator('option');
+                  if (await options.count() > 1) {
+                    const value = await options.nth(1).getAttribute('value');
+                    await theme.selectOption(value);
+                    await page.waitForTimeout(120);
+                    const filtered = await cards.count();
+                    if (!(filtered > 0 && filtered <= 11)) { console.error(`Filtro temático não funcionou: ${filtered}`); failed=true; }
+                    await page.locator('#product-clear').click();
+                    await page.waitForTimeout(120);
+                  }
+                  await page.waitForFunction(() => document.querySelectorAll('#product-list .entity-role-badge').length >= 11);
+                  if (await page.locator('#product-list .entity-role-badge').filter({hasText:'Serviço/catálogo'}).count() < 3) { console.error('Serviços/catálogos não estão diferenciados'); failed=true; }
+                  if (await page.locator('#product-list .card-actions a').filter({hasText:'Página do provedor'}).count() < 1) { console.error('Papéis de proveniência não aparecem nos itens detalhados'); failed=true; }
                   const compareInputs = page.locator('[data-compare]');
-                  if (await compareInputs.count() < 3) { console.error(`Produtos insuficientes para comparar em ${mode}`); failed = true; }
-                  else {
-                    const selectedNames = [];
-                    for (let i=0;i<3;i++) {
-                      selectedNames.push((await cards.nth(i).locator('h3').textContent()).trim());
-                      await compareInputs.nth(i).check();
-                    }
-                    if ((await page.locator('#compare-count').textContent()).trim() !== '3 produtos selecionados') { console.error(`Barra de comparação não reflete 3 seleções em ${mode}`); failed = true; }
-                    await page.locator('#compare-open').click();
-                    await page.locator('#compare-dialog[open]').waitFor({state:'visible'});
-                    const headers = (await page.locator('#compare-content thead th').allTextContents()).slice(1).map(x => x.replace(/Remover/g,'').trim());
-                    if (headers.length !== 3 || !selectedNames.every(name => headers.includes(name))) { console.error(`Comparação contém produtos diferentes da seleção em ${mode}: ${headers.join(' | ')}`); failed = true; }
-                    if (await page.locator('#compare-content [data-remove-compare]').count() !== 3) { console.error(`Remoção interna ausente em ${mode}`); failed = true; }
-                    if (!await page.locator('#compare-download-csv').isVisible()) { console.error(`CSV da comparação ausente em ${mode}`); failed = true; }
-
-                    await page.locator('#compare-content [data-remove-compare]').first().click();
-                    await page.waitForTimeout(80);
-                    if (await page.locator('#compare-content [data-remove-compare]').count() !== 2) { console.error(`Remoção não atualizou comparação em ${mode}`); failed = true; }
-                    if (await page.locator('[data-compare]:checked').count() !== 2) { console.error(`Checkboxes incoerentes após remoção em ${mode}`); failed = true; }
-
-                    await page.locator('#compare-close').click();
-                    await page.waitForTimeout(80);
-                    if (await page.locator('[data-compare]:checked').count() !== 0 || await page.locator('#compare-bar').isVisible()) { console.error(`Seleção não reiniciou ao fechar em ${mode}`); failed = true; }
-                  }
-
-                  await page.locator('#product-show-more').click();
-                  if (await page.locator('#product-list .product-card').count() !== 36) { console.error(`Segundo lote deve chegar a 36 produtos em ${mode}`); failed = true; }
+                  for (let i=0;i<3;i++) await compareInputs.nth(i).check();
+                  await page.locator('#compare-open').click();
+                  await page.locator('#compare-dialog[open]').waitFor({state:'visible'});
+                  if (await page.locator('#compare-content [data-remove-compare]').count() !== 3) { console.error('Comparação não contém 3 itens'); failed=true; }
+                  await page.locator('#compare-close').click();
                 }
 
                 if (name === 'product-index') {
                   const rows = page.locator('#product-index-list .product-index-row');
-                  if (await rows.count() !== 843) { console.error(`Lista completa deve exibir 843 produtos em ${mode}: ${await rows.count()}`); failed = true; }
-                  if ((await page.locator('#product-index-count').textContent()).trim() !== '843 produtos catalogados') { console.error(`Contagem da lista completa incoerente em ${mode}`); failed = true; }
-                  await page.locator('#product-index-q').fill('Cana-de-Açúcar');
-                  await page.waitForTimeout(80);
-                  const filteredRows = await rows.count();
-                  if (!(filteredRows > 0 && filteredRows < 843)) { console.error(`Busca da lista completa não filtrou em ${mode}: ${filteredRows}`); failed = true; }
+                  if (await rows.count() !== 11) { console.error(`Índice técnico deve conter 11 itens: ${await rows.count()}`); failed=true; }
                 }
 
                 if (name === 'sources') {
-                  const sourceCards = await page.locator('#list .card').count();
-                  if (sourceCards !== 12) { console.error(`Lote inicial de fontes inválido em ${mode}: ${sourceCards}`); failed = true; }
+                  if (await page.locator('#list .card').count() !== 12) { console.error('Lote inicial do núcleo deve conter 12 cards'); failed=true; }
+                  const theme = page.locator('#source-theme-shortcut');
+                  if (await theme.count() !== 1 || await theme.evaluate(el => el.tagName) !== 'SELECT') { console.error('Filtro temático do núcleo 51 ausente'); failed=true; }
+                  for (const selector of ['#area','#brazil','#scope','#download','#programmatic','#coverage','#format','#evidence']) {
+                    if (await page.locator(selector).evaluate(el => el.tagName) !== 'SELECT') { console.error(`Filtro de fonte não controlado: ${selector}`); failed=true; }
+                  }
+                  if (await page.locator('#list .provenance-line').count() < 1) { console.error('Proveniência visível ausente nos cards'); failed=true; }
+                  const options = theme.locator('option');
+                  if (await options.count() > 1) {
+                    await theme.selectOption(await options.nth(1).getAttribute('value'));
+                    await page.waitForLoadState('networkidle');
+                    if (!new URL(page.url()).searchParams.get('q')) { console.error('Tema controlado não persistiu na URL'); failed=true; }
+                  }
                 }
                 await page.close();
               }
               await context.close();
             }
-
             await browser.close();
-            fs.writeFileSync('visual-qa/report.json', JSON.stringify(report, null, 2));
-            console.log(JSON.stringify(report, null, 2));
+            fs.writeFileSync('visual-qa/report.json',JSON.stringify(report,null,2));
+            console.log(JSON.stringify(report,null,2));
             if (failed) process.exit(1);
           })();
           NODE

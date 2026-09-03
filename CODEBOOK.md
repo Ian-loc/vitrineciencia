@@ -1,26 +1,28 @@
 # Dicionário de dados — Vitrine Ciência
 
+**Status atual:** schema físico legado/compatibilidade. `DR####`, `DP######` e `DD######` continuam válidos para reprodução e rastreabilidade; `fonte` não é assumida como classe ontológica final. Estado corrente: `docs/PROJECT_STATE.md`; contrato transitório: `docs/VITRINE_CANONICAL_DATA_CONTRACT.md`.
+
 ## 1. Autoridade e snapshot
 
-A Vitrine usa três tabelas CSV canônicas na `main`:
+A Vitrine usa três tabelas CSV canônicas no schema físico vigente:
 
-- `data/data_resources.csv` — fontes;
+- `data/data_resources.csv` — fontes (rótulo legado para registros `DR####`);
 - `data/data_products.csv` — produtos;
 - `data/product_distributions.csv` — distribuições.
 
-Snapshot candidato `v1.0.0` de 19/08/2026: **135 fontes, 843 produtos e 876 distribuições**. Os identificadores correntes chegam a `DR0135`, `DP000861` e `DD000894`. Os JSONs e o site são derivados. O Drive é espelho/histórico derivado.
+O snapshot histórico `v1.0.0` contém **135 fontes, 843 produtos e 876 distribuições**. Os identificadores chegam a `DR0135`, `DP000861` e `DD000894`. No PR draft #267, o branch candidato usa 51 DR / 11 produtos / 19 distribuições e preserva a expansão em quarentena. Os JSONs e o site são derivados. O Drive é espelho/histórico derivado.
 
 ## 2. Fontes — 34 campos
 
 | Campo | Definição |
 |---|---|
-| `resource_id` | Identificador estável `DR####`. |
-| `resource_name` | Nome público/oficial da fonte. |
+| `resource_id` | Identificador estável `DR####`; nesta fase é identificador legado, não prova de tipo ontológico. |
+| `resource_name` | Nome público/oficial registrado. |
 | `acronym` | Sigla ou nome curto, quando aplicável. |
-| `official_identity` | Natureza/função sustentada pela fonte oficial. |
+| `official_identity` | Natureza/função sustentada pela fonte oficial; deve ser confrontada na auditoria ontológica. |
 | `description` | Síntese objetiva do propósito e conteúdo. |
 | `homepage_url` | Página institucional/oficial da fonte. |
-| `data_access_url` | Melhor rota para descobrir, consultar ou baixar dados. |
+| `data_access_url` | Melhor rota cadastrada para descobrir, consultar ou baixar dados. |
 | `research_areas` | Áreas temáticas usadas na descoberta. |
 | `keywords` | Termos pesquisáveis. |
 | `data_product_types` | Resumo dos tipos de conteúdo/produto. |
@@ -52,7 +54,7 @@ Snapshot candidato `v1.0.0` de 19/08/2026: **135 fontes, 843 produtos e 876 dist
 ## 3. Produtos — 24 campos
 
 - `product_id` — ID estável `DP######`;
-- `resource_id` — fonte pai;
+- `resource_id` — referência física legada ao DR pai;
 - `product_name`, `product_acronym`, `product_family`;
 - `product_kind` — classe controlada do produto;
 - `product_description`;
@@ -109,7 +111,9 @@ Distribuição descreve **como acessar**, não o significado científico do prod
 DR#### 1 ─── N DP###### 1 ─── N DD######
 ```
 
-- produto sem fonte é inválido;
+Essa cardinalidade é o contrato físico legado, não uma conclusão ontológica final.
+
+- produto sem fonte é inválido no schema legado;
 - distribuição sem produto é inválida;
 - produto publicado sem distribuição é inválido;
 - IDs não são reciclados;
@@ -128,7 +132,7 @@ Quando a evidência não permite preenchimento específico, preservar estados co
 - `methodology_url` — metodologia específica;
 - `access_url` — distribuição concreta.
 
-URLs podem coincidir quando uma página realmente cumpre mais de um papel, mas a igualdade não deve ser presumida como correta.
+URLs podem coincidir quando uma página realmente cumpre mais de um papel, mas a igualdade não deve ser presumida como correta. HTTP 200 isolado não prova que a rota entrega dados utilizáveis.
 
 ## 8. Espaço e tempo
 
@@ -140,11 +144,11 @@ URLs podem coincidir quando uma página realmente cumpre mais de um papel, mas a
 
 PostgreSQL/PostGIS, releases relacionais, variáveis normalizadas e entidades adicionais descritas em documentos antigos pertencem ao histórico do Simbiotrama. Não fazem parte do codebook ativo da Vitrine.
 
-O contrato executável vigente é `schema/product-catalog-v0.1.json` e a especificação normativa é `docs/VITRINE_CANONICAL_DATA_CONTRACT.md`.
+O contrato executável físico vigente é `schema/product-catalog-v0.1.json`; a especificação transitória é `docs/VITRINE_CANONICAL_DATA_CONTRACT.md`. O novo schema canônico só será congelado após G0–G4 PASS.
 
 ## 10. Contrato dos campos descritivos e comparabilidade
 
-A Vitrine passa a distinguir cinco classes de campo: **identificador**, **valor controlado**, **lista delimitada**, **texto estruturado** e **texto narrativo**. O objetivo é impedir que um único campo misture conceitos diferentes e tornar comparações lado a lado semanticamente válidas.
+A Vitrine distingue cinco classes de campo: **identificador**, **valor controlado**, **lista delimitada**, **texto estruturado** e **texto narrativo**. O objetivo é impedir que um único campo misture conceitos diferentes e tornar comparações lado a lado semanticamente válidas.
 
 O contrato inicial está em `schema/descriptive-field-contract-v0.1.json`. Enquanto ele estiver em estado `experimental`, funciona como regra de curadoria e migração, sem invalidar automaticamente registros históricos ainda não normalizados.
 
@@ -154,39 +158,10 @@ Regras operacionais prioritárias:
 2. **valores controlados antes de prosa**: `sim`, `não`, `parcial`, `desconhecido`, classes de produto, origem e estado devem permanecer canônicos;
 3. **listas usam ` | `**: áreas, palavras-chave, formatos e conjuntos equivalentes devem ser tratados como conjuntos de valores, não como parágrafos;
 4. **descrição não substitui limitação**: descrições informam o que a fonte/produto é; limitações registram cautelas de interpretação;
-5. **fonte resume, produto especifica**: quando resolução, período, versão ou licença variam entre produtos, o nível fonte deve declarar a variabilidade e o detalhe deve ficar no produto/distribuição;
-6. **não inventar precisão**: quando a evidência não sustenta um valor comparável, usar `desconhecido`, `não se aplica` ou uma declaração explícita de variabilidade.
-
-### Prioridades de migração
-
-- separar `access_conditions` em classe + nota quando o schema de fontes for revisado;
-- separar `update_frequency` em classe controlada + nota específica;
-- revisar `geographic_coverage` para distinguir tipo de abrangência, local e observações;
-- auditar primeiro os produtos que aparecem em comparações públicas e, depois, propagar a normalização ao restante do catálogo;
-- manter campos narrativos (`description`, `academic_uses`, `limitations`) curtos, factuais e com papéis não sobrepostos.
+5. **não inventar precisão**: quando a evidência não sustenta um valor comparável, usar `desconhecido`, `não se aplica` ou uma declaração explícita de variabilidade.
 
 ## 11. Camada pública de descoberta e comparação
 
 A interface pública usa uma camada derivada definida em `schema/public-discovery-v0.1.json`. Ela **não substitui nem apaga** os valores detalhados dos CSVs canônicos.
 
-### Áreas de pesquisa públicas
-
-As classificações detalhadas são agrupadas em seis áreas amplas:
-
-1. **Ecologia, Biodiversidade e Meio Ambiente**;
-2. **Clima, Água e Atmosfera**;
-3. **Geociências e Solos**;
-4. **Agricultura, Florestas e Uso da Terra**;
-5. **Território, Sociedade e Políticas Públicas**;
-6. **Geoinformação, Sensoriamento e Ciência de Dados**.
-
-Nos JSONs públicos, `research_areas` recebe essas categorias amplas e `research_areas_detail` preserva a classificação detalhada anterior. Assim, filtros, cartões e gráficos usam uma taxonomia simples, enquanto a informação temática fina continua disponível para rastreabilidade e evolução futura.
-
-### Suporte espacial e frequência de atualização
-
-A camada pública também separa o valor comparável da descrição histórica:
-
-- `spatial_support` passa a expor uma ou mais **classes controladas de suporte**; `spatial_support_detail` preserva o texto original;
-- `update_frequency` passa a expor uma **classe controlada de frequência**; `update_frequency_detail` preserva o texto original.
-
-A normalização é determinística e conservadora: termos de apresentação como “mapa”, “gráfico” ou “análise” não são tratados como suporte espacial; quando não há evidência suficiente, a classe permanece `desconhecido`/`desconhecida` em vez de ser inferida.
+As categorias e normalizações públicas permanecem compatíveis com o frontend corrente enquanto a ontologia é auditada. Nenhuma delas deve ser usada como evidência para reclassificar automaticamente um DR.

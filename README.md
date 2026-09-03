@@ -1,101 +1,61 @@
 # Vitrine Ciência
 
-**Catálogo público, estático, versionado e citável de produtos e fontes de dados científicos relevantes ao Brasil para pesquisa, ensino e extensão.**
+**Catálogo público e citável para descobrir e acessar dados científicos relevantes ao Brasil.**
 
-A Vitrine Ciência facilita a descoberta e a triagem de dados. A experiência pública é **product-first**: o usuário procura primeiro o produto/dataset capaz de responder à pergunta de pesquisa e, em seguida, consulta a fonte para proveniência, responsabilidade institucional e documentação. O modelo científico interno continua rigorosamente separado em **Fonte → Produto → Distribuição**.
+## Estado atual — 1º de setembro de 2026
 
-## Produto público e autoridade
+- `main` continua sendo o estado público corrente do repositório e ainda contém o catálogo expandido derivado da release `v1.0.0` (**135 registros historicamente chamados de fontes, 843 produtos e 876 distribuições**).
+- O PR draft **#267** é um pacote candidato de re-curadoria. Nele, a expansão foi preservada em `data/quarantine/v1.0.0-expanded/` e a superfície candidata foi reduzida para **51 registros legados DR, 11 produtos e 19 distribuições**.
+- Esses 51 registros **não são assumidos como 51 entidades do mesmo tipo**. O rótulo histórico `fonte` está em auditoria ontológica.
+- Nenhum merge, novo schema, conector federado ou nova release está autorizado por este estado.
 
-- site: https://ian-loc.github.io/vitrineciencia/
-- repositório canônico: https://github.com/Ian-loc/vitrineciencia
-- branch canônica de desenvolvimento: `main`
-- primeira release científica estável: `v1.0.0`
+## Objetivo ativo
+
+Antes de consolidar a arquitetura Vitrine 2.0, cada registro `DR0001–DR0051` deve ser classificado pelo que realmente representa: instituição/provedor, programa/iniciativa, plataforma, catálogo/repositório, infraestrutura de dados, dataset/coleção, serviço de dados, portal/visualizador ou combinação explicitamente decomposta.
+
+A direção pública permanece:
+
+**fenômeno/processo → território → tempo/escala → dado utilizável → acesso → provedor/proveniência**.
+
+Busca livre não é o mecanismo principal. A interface deve privilegiar filtros controlados e encaminhar o usuário a dados efetivamente acessíveis.
+
+## Modelo: estado transitório
+
+A estrutura histórica `Fonte (DR) → Produto (DP) → Distribuição (DD)` continua existindo como **estrutura legada de armazenamento e rastreabilidade**. Ela não é mais tratada como ontologia final.
+
+O modelo canônico só será congelado após a auditoria 51/51 e deverá distinguir, no mínimo quando aplicável:
+
+- Provider/Institution;
+- Program/Initiative;
+- Platform/Catalog/Data Infrastructure;
+- Dataset/Collection;
+- Distribution;
+- DataService.
+
+## Federação por APIs
+
+A federação é uma fase posterior. Primeiro: auditoria ontológica 51/51. Depois: registro de integração 51/51. Só então: pipeline e pilotos, com **MapBiomas Alerta como primeiro caso obrigatório**.
+
+Nenhum recurso descoberto por API entra automaticamente na superfície pública.
+
+## Release científica v1.0.0
+
+A release histórica permanece imutável e reproduzível:
+
 - GitHub Release: https://github.com/Ian-loc/vitrineciencia/releases/tag/v1.0.0
 - Zenodo: https://zenodo.org/records/22130831
-- DOI v1.0.0: https://doi.org/10.5281/zenodo.22130831
-- fontes: `data/data_resources.csv`
-- produtos: `data/data_products.csv`
-- distribuições/acessos: `data/product_distributions.csv`
-- classificação territorial: `data/brazil_scope_priorities.json`
-- código: MIT
-- metadados e curadoria original: CC BY 4.0
+- DOI: https://doi.org/10.5281/zenodo.22130831
+- commit congelado: `27c545554f406b940662777e3f053e939ef3588c`
 
-### Snapshot científico v1.0.0
+## Autoridade operacional
 
-- **135 fontes**;
-- **843 produtos**;
-- **876 distribuições**;
-- os identificadores correntes chegam a `DR0135`, `DP000861` e `DD000894`, pois IDs removidos/consolidados não são reciclados;
-- verificações de fontes registradas até **2026-08-19**;
-- commit científico congelado: `27c545554f406b940662777e3f053e939ef3588c`;
-- DOI: `10.5281/zenodo.22130831`.
+- estado corrente: `docs/PROJECT_STATE.md`;
+- execução e gates: `WORKFLOW_STATUS.md`;
+- direção científica: `docs/PROJECT_SCIENTIFIC_DIRECTION.md`;
+- contrato legado/transitório: `docs/VITRINE_CANONICAL_DATA_CONTRACT.md`;
+- repositório: https://github.com/Ian-loc/vitrineciencia;
+- site: https://ian-loc.github.io/vitrineciencia/.
 
-**135 é a contagem de fontes, não de produtos.** O catálogo público de produtos contém 843 registros. O pacote de UX product-first não adiciona produtos não auditados nem infla contagens; ele torna os 843 produtos já canônicos diretamente descobríveis.
-
-## Modelo científico vigente
-
-```text
-Fonte (DR####)
-  └── Produto (DP######)
-        └── Distribuição (DD######)
-```
-
-- **Fonte:** provedor, plataforma, programa, repositório ou infraestrutura; é contexto de proveniência.
-- **Produto:** dataset, série, coleção, catálogo, serviço ou oferta materialmente distinta; é a unidade principal de descoberta pública.
-- **Distribuição:** rota concreta de acesso ao produto, por exemplo arquivo, API, WMS/WFS, aplicação ou outro serviço.
-
-A interface não colapsa esses níveis. A mudança é apenas na ordem de descoberta: **pergunta → produto → comparação → fonte/proveniência → acesso original**.
-
-## Descoberta pública
-
-A página pública prioriza:
-
-1. tema / variável;
-2. cobertura geográfica;
-3. período;
-4. resolução temporal;
-5. escala / suporte espacial;
-6. resolução espacial;
-7. forma de acesso;
-8. formato;
-9. licença e gratuidade.
-
-Fonte/provedor, tipo de produto, autenticação, estado, origem e disponibilidade específica para o Brasil permanecem como filtros complementares. A busca interpreta de forma determinística termos científicos e sinônimos, biomas, `Brasil`, anos e resoluções espaciais; não depende de LLM nem de servidor.
-
-O ranking padrão segue: **relevância da consulta → disponibilidade de dados para o Brasil → completude/documentação → origem da fonte → nome**.
-
-Cada card de produto mantém visíveis quatro dimensões de triagem: **Onde? · Quando? · Escala? · Acesso?**. Metodologia, limitações, licença, versão, proveniência e formas detalhadas de acesso permanecem disponíveis na expansão do card.
-
-## Uso científico
-
-Antes de utilizar um produto catalogado, confirme no provedor original:
-
-- versão/coleção efetivamente usada;
-- método e significado da variável;
-- suporte/resolução espacial e temporal;
-- licença, atribuição e condições de acesso;
-- incertezas, limitações e atualizações posteriores.
-
-A presença na Vitrine não certifica qualidade universal, comparabilidade ou adequação a uma análise específica.
-
-## Manutenção e QA
-
-Mudanças em `main` devem preservar integridade dos IDs e relações, geração determinística dos artefatos públicos e isolamento de `_site`. O CI valida dados, HTML/JavaScript, fronteira pública e comportamento em navegador. A QA visual cobre desktop, tablet e smartphone e inclui busca interpretativa, filtros, densidade dos cards, comparação, remoção de produtos e reset da seleção ao fechar.
-
-Documentação ativa:
-
-- `docs/PROJECT_STATE.md` — estado canônico do projeto;
-- `docs/PROJECT_SCIENTIFIC_DIRECTION.md` — direção científica;
-- `docs/VITRINE_CANONICAL_DATA_CONTRACT.md` — contrato de dados;
-- `docs/VITRINE_OPERATING_MODEL.md` — operação e gates;
-- `WORKFLOW_STATUS.md` — estado corrente e prioridades;
-- `FINAL_OBJECTIVES_AND_DOI_GATES.md` — release citável e DOI;
-- `RELEASE_NOTES_v1.0.0.md` — notas da primeira release científica estável.
-
-## Release e citação
-
-O snapshot científico `v1.0.0` foi congelado no commit `27c545554f406b940662777e3f053e939ef3588c`, publicado como tag e GitHub Release e preservado no Zenodo. Para análises reproduzíveis, cite a versão efetivamente utilizada e também cite a fonte/dataset original empregado na análise.
+Código: MIT. Metadados e curadoria original: CC BY 4.0.
 
 > CLEMENTE, Ian. *Vitrine Ciência: catálogo de fontes de dados científicos sobre o Brasil para pesquisa, ensino e extensão*. Version 1.0.0. Zenodo, 2026. https://doi.org/10.5281/zenodo.22130831
-
-ORCID: https://orcid.org/0000-0003-1164-9318

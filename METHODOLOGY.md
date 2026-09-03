@@ -1,5 +1,7 @@
 # Metodologia de curadoria — Vitrine Ciência
 
+**Status atual:** modelo físico legado preservado para compatibilidade; ontologia em auditoria desde 2026-09-01. As definições `Fonte → Produto → Distribuição` abaixo descrevem o schema histórico e não antecipam a ontologia final. Estado corrente: `docs/PROJECT_STATE.md`; workflow: `WORKFLOW_STATUS.md`.
+
 ## 1. Escopo
 
 A Vitrine Ciência é um catálogo público de descoberta de fontes e produtos de dados relevantes ao Brasil. A curadoria organiza **fonte → produto → distribuição**, registra evidências e limitações e aponta para o provedor original. Não hospeda por padrão cópias integrais dos datasets.
@@ -55,6 +57,8 @@ Antes de registrar:
 6. registrar apenas propriedades sustentadas.
 
 Catálogo ou API podem ser produtos na Vitrine quando constituem uma oferta materialmente distinta de descoberta/acesso e se enquadram em `product_kind`; isso não os transforma em observações científicas.
+
+> **Regra transitória 2026-09-01:** os passos 1–2 acima são regras do schema legado. Para `DR0001–DR0051`, a classificação ontológica atual deve primeiro determinar o tipo real da entidade e registrar crosswalk antes de qualquer migração.
 
 ## 6. Natureza da informação
 
@@ -144,7 +148,7 @@ Para cada alteração factual:
 
 ## 13. Publicação
 
-Os três CSVs são canônicos. JSONs e site são derivados deterministicamente. O build público exclui documentação operacional, scripts internos, auditorias e materiais históricos do Simbiotrama.
+Os três CSVs são canônicos no schema físico vigente. JSONs e site são derivados deterministicamente. O build público exclui documentação operacional, scripts internos, auditorias e materiais históricos do Simbiotrama.
 
 ## 14. Relação com o Simbiotrama
 

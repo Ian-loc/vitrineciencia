@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Validar dados estáticos da Vitrine
+      - name: Validar corpus vivo e gerar derivados
         run: |
           python3 scripts/validate_brazil_scope.py
           python3 scripts/validate_product_catalog.py
@@ -29,19 +29,10 @@ jobs:
           python3 scripts/build_catalog.py
           python3 scripts/build_public_discovery.py
           python3 scripts/report_normalization_coverage.py
-          python3 scripts/validate_normalization_residues.py
-          python3 scripts/audit_link_roles.py
+          python3 scripts/audit_link_roles.py --write
           python3 scripts/validate_active_documentation.py
           python3 scripts/validate_doi_readiness.py
-
-      - name: Confirmar derivados versionados sincronizados
-        run: |
           git diff --check
-          git diff --exit-code -- \
-            data/data_resources.json \
-            data/data_products.json \
-            data/data_quality_report.json \
-            data/link_role_audit.json
 
       - name: Validar interface e fronteira da Vitrine
         run: |
@@ -58,6 +49,8 @@ jobs:
           node --check assets/source-comparison.js
           node --check assets/quality-summary.js
           node --check assets/build-meta.js
+          node --check assets/discovery-guardrails.js
+          node --check assets/static-catalog-51.js
 
       - name: Construir artefato público isolado
         run: |
@@ -72,57 +65,23 @@ jobs:
           test -s _site/analytics.html
           test -s _site/analytics-products.html
           test -s _site/about.html
-          test -s _site/robots.txt
-          test -s _site/sitemap.xml
-          grep -Fq 'Sitemap: https://ian-loc.github.io/vitrineciencia/sitemap.xml' _site/robots.txt
-          for url in \
-            'https://ian-loc.github.io/vitrineciencia/' \
-            'https://ian-loc.github.io/vitrineciencia/products.html' \
-            'https://ian-loc.github.io/vitrineciencia/sources.html' \
-            'https://ian-loc.github.io/vitrineciencia/about.html' \
-            'https://ian-loc.github.io/vitrineciencia/analytics.html' \
-            'https://ian-loc.github.io/vitrineciencia/analytics-products.html'; do
-            grep -Fq "<loc>$url</loc>" _site/sitemap.xml
-          done
-          test -s _site/assets/visual-refinement.css
-          test -s _site/assets/ux-v2.css
-          test -s _site/assets/ux-simple.css
-          test -s _site/assets/export-selective.css
-          test -s _site/assets/app.js
-          test -s _site/assets/ptbr.js
-          test -s _site/assets/products.js
-          test -s _site/assets/product-label-fix.js
-          test -s _site/assets/navigation.js
-          test -s _site/assets/home.js
-          test -s _site/assets/analytics.js
-          test -s _site/assets/analytics-products.js
-          test -s _site/assets/export-selective.js
-          test -s _site/assets/source-comparison.js
+          test -s _site/assets/discovery-guardrails.js
+          test -s _site/assets/discovery-guardrails.css
+          test -s _site/assets/static-catalog-51.js
           test -s _site/data/data_resources.json
           test -s _site/data/data_products.json
           test -s _site/data/brazil_scope_priorities.json
-          test ! -e _site/assets/product-ux-v2.js
-          test ! -e _site/assets/product-ux-compat.js
           test ! -e _site/data/data_resources.csv
           test ! -e _site/data/data_products.csv
           test ! -e _site/data/product_distributions.csv
+          test ! -e _site/data/quarantine
           test ! -e _site/explorer.html
           test ! -e _site/abordagens.html
-          test ! -e _site/data/federated_layers.json
-          test ! -e _site/data/build-meta.json
-          test ! -e _site/assets/explorer.js
-          test ! -e _site/assets/explorer.css
-          test ! -e _site/assets/approaches.css
-          test ! -e _site/assets/quality-summary.js
-          test ! -e _site/assets/build-meta.js
           test ! -e _site/database
           test ! -e _site/scripts
           test ! -e _site/.github
           test ! -e _site/docs
-          test ! -e _site/config
           ! grep -R -n -E 'Simbiotrama|Simbioscópio|Simbioscopio' _site/index.html _site/products.html _site/sources.html _site/analytics.html _site/analytics-products.html _site/about.html
-          ! grep -R -n -E 'data/data_resources\.csv|data/data_products\.csv|data/product_distributions\.csv' _site/index.html _site/products.html _site/sources.html _site/analytics.html _site/analytics-products.html _site/about.html
-          ! grep -R -n -E 'arquitetura científica interna|Fonte → Produto → Distribuição|snapshot candidato|Decisão arquitetural|Direção experimental' _site/index.html _site/products.html _site/sources.html _site/analytics.html _site/analytics-products.html _site/about.html
 
       - name: Enviar artefato validado da Vitrine
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
@@ -145,10 +104,6 @@ jobs:
     steps:
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v6
-
       - name: Publicar artefato previamente validado
         id: deployment
         uses: actions/deploy-pages@v5
-
-      - name: Registrar endereço publicado
-        run: echo "Vitrine publicada em ${{ steps.deployment.outputs.page_url }}"

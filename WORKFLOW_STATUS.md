@@ -1,92 +1,84 @@
 # Estado do workflow — Vitrine Ciência
 
-Atualização: **2026-08-27** (`America/Sao_Paulo`)
+Atualização: **2026-09-01** (`America/Sao_Paulo`)
 
-## Direção ativa
+## Fase ativa
 
-A Vitrine Ciência é um catálogo público para descoberta de dados científicos relevantes ao Brasil. O modelo conceitual permanece **Fonte → Produto → Distribuição**, mas a experiência pública é **product-first**: pergunta de pesquisa → produto/dataset → comparação → fonte/proveniência → acesso original.
+A fase ativa de **QA/QC** é o **resgate e a estabilização da Vitrine Ciência estática com o núcleo legado de 51 registros DR0001–DR0051**.
 
-A fase corrente é de **QA/QC, manutenção e refinamento da experiência de descoberta**. A **expansão de novas fontes, produtos e distribuições está pausada**; sua retomada depende de instrução humana explícita e nova curadoria factual. Não há expansão automática do corpus neste pacote.
+A expansão permanece pausada. A futura arquitetura federada/Data Service também permanece pausada enquanto a versão estática usada hoje não estiver correta, navegável e operacionalmente confiável.
 
-## Autoridade e snapshot
+Há uma única frente executora recorrente para este projeto. Enquanto o PR `#267` estiver aberto, não abrir branch/PR concorrente com o mesmo escopo.
 
-Estado corrente do snapshot científico `v1.0.0`: **135 fontes, 843 produtos e 876 distribuições**.
+Na terminologia física do schema legado, o candidato contém **51 fontes, 11 produtos, 19 distribuições**. Esses nomes preservam compatibilidade do corpus e não congelam uma ontologia final.
 
-- repositório: `Ian-loc/vitrineciencia`;
-- branch canônica: `main`;
-- site: `https://ian-loc.github.io/vitrineciencia/`;
-- release científica estável: `v1.0.0`;
-- commit congelado: `27c545554f406b940662777e3f053e939ef3588c`;
-- GitHub Release: `https://github.com/Ian-loc/vitrineciencia/releases/tag/v1.0.0`;
-- Zenodo: `https://zenodo.org/records/22130831`;
-- DOI: `10.5281/zenodo.22130831`;
-- fontes do snapshot: `data/data_resources.csv` — **135** registros;
-- produtos do snapshot: `data/data_products.csv` — **843** registros;
-- distribuições do snapshot: `data/product_distributions.csv` — **876** registros;
-- Drive: espelho/histórico derivado, não canônico.
+## Sequência de execução
 
-A contagem de 135 corresponde a fontes, não a produtos. A `main` e a interface pública podem avançar após a release; análises reproduzíveis de `v1.0.0` devem usar a tag/commit e o depósito Zenodo.
+1. **S0 — release estática de resgate**
+   - restaurar 51 registros / 11 itens detalhados / 19 distribuições;
+   - preservar 135/843/876 somente em quarentena histórica;
+   - Home orientada por fenômeno/processo;
+   - 51 registros como superfície ampla de descoberta;
+   - 11/19 explicitamente como subconjunto detalhado;
+   - separar dados, API/serviço, página do conjunto, visualizador/documentação e página do provedor;
+   - CI, QA visual e smoke test público.
+2. **S1 — recertificação 51/51 de acessos**
+   - revisar em batches de 8–15;
+   - registrar `last_verified` e função factual do destino;
+   - classificar cada acesso como A/B/C/D/E;
+   - corrigir ou marcar como revisão qualquer PDF, viewer, homepage genérica, login, rota quebrada ou ambígua.
+3. **S2 — QA final estático**
+   - filtros, navegação, mobile/desktop, teclado e parâmetros de URL;
+   - contagens e fronteira pública;
+   - coerência rótulo → destino;
+   - percurso tema → resultado → acesso em no máximo 2–3 decisões.
 
-## Estado consolidado
+## Classificação de acesso
 
-### Modelo científico
+- **A DIRECT_DATA** — download, arquivo ou endpoint que entrega dados.
+- **B DATASET_PAGE** — página específica do conjunto com mecanismo explícito de obtenção.
+- **C API_SERVICE** — API/OGC/STAC/CKAN/GraphQL ou serviço que permite consulta/extração.
+- **D VIEWER_DOC** — visualizador, mapa, dashboard, documentação, artigo ou PDF sem acesso de dados demonstrado.
+- **E BROKEN_UNCERTAIN** — quebrado, restrito ou incerto.
 
-**CONSOLIDADO / ESTÁVEL.** Fonte, Produto e Distribuição continuam entidades distintas; a interface não promove atributos entre níveis.
+Somente A–C podem ser apresentados como acesso confirmado a dados. D deve ser rotulado pelo que é; E permanece “acesso em revisão”.
 
-### Descoberta pública
+## Estado material do repositório
 
-**PRODUCT-FIRST.** A busca principal abre produtos. A exploração temática contabiliza produtos. Fontes permanecem em página própria de proveniência/contexto institucional. `Sobre o acervo` é conteúdo secundário de `Sobre`.
+- `main`: estado público expandido 135/843/876 até a incorporação do resgate.
+- `v1.0.0`: release histórica imutável.
+- PR `#267`: candidato estático 51/11/19, com expansão preservada em quarentena.
+- PR `#265`: fechado sem merge por estar superseded.
 
-Filtros principais: tema/variável, cobertura geográfica, período, resolução temporal, suporte espacial, resolução espacial, acesso, formato, licença e gratuidade. Filtros institucionais/operacionais ficam em seção complementar.
+## Definition of Done — `VITRINE_STATIC_51_STABLE`
 
-Busca interpretativa leve: sinônimos científicos, biomas, Brasil, anos e resolução espacial. Implementação determinística no navegador, sem LLM ou servidor.
+O marco termina somente quando:
 
-Ranking: **relevância → dados para o Brasil → completude/documentação → origem da fonte → nome**.
+- `main` pública usa o núcleo 51 e a quarentena histórica continua preservada;
+- Home e filtros controlados funcionam sem busca textual livre como mecanismo principal;
+- 51/51 têm disposition de acesso A/B/C/D/E e verificação atual registrada, ou E explicitamente justificado;
+- nenhuma ação rotulada como dados/download/API aponta silenciosamente para PDF, viewer, documentação ou homepage genérica;
+- onde dados, API e homepage são distintos, a interface distingue essas funções;
+- 11 itens/19 distribuições são apresentados como subconjunto detalhado;
+- CI, QA visual e smoke test público passam no commit final;
+- não há PR executor concorrente com o mesmo escopo;
+- o estado final e limitações residuais estão documentados;
+- o usuário consegue sair de um tema científico e chegar a uma opção relevante e a uma rota corretamente rotulada em 2–3 decisões.
 
-### Cards e densidade
+Somente então declarar:
 
-**CONSOLIDADO.** Produto é o card canônico. Onde/Quando/Escala/Acesso permanecem visíveis. O lote inicial mostra 18 produtos e a grade usa 3 colunas em desktop, 2 em tablet/desktop estreito e 1 em smartphone; a divulgação progressiva permite ampliar o conjunto sem carregar visualmente os 843 produtos de uma vez.
+`VITRINE_STATIC_51_STABLE`
 
-### Comparação
+Após esse token, a execução recorrente deve ser desativada.
 
-**CONSOLIDADO.** Um único estado de seleção vive em `assets/products.js`. A exportação CSV não mantém cópia da seleção. Produtos podem ser removidos dentro da comparação; fechar a janela limpa integralmente a seleção.
+## Fora do escopo até esse marco
 
-### Responsividade
+- ontologia 2.0 exaustiva como pré-condição de publicação;
+- Integration Registry;
+- conectores federados;
+- MapBiomas Alerta como piloto GraphQL;
+- PostgreSQL/backend próprio;
+- reentrada da expansão;
+- nova release/DOI.
 
-**GATE DE PUBLICAÇÃO.** QA automática cobre 1440×1100, 820×1180 e 390×844, sem overflow horizontal e com menu responsivo funcional.
-
-## Gates
-
-Pipeline:
-
-`estado vivo → correção/ajuste → validadores de dados → validação de interface → build _site → browser QA desktop/tablet/mobile → main → deploy → smoke público`
-
-Critérios obrigatórios para o pacote product-first:
-
-1. 135 fontes / 843 produtos / 876 distribuições preservados no snapshot `v1.0.0`;
-2. busca inicial direcionada a produtos;
-3. seis áreas temáticas mostrando contagens de produtos;
-4. 18 cards no lote inicial com divulgação progressiva;
-5. filtros científicos principais presentes e funcionais;
-6. busca interpretada reconhecendo carbono/solo/Cerrado/Brasil/ano/resolução no caso de teste;
-7. comparação refletindo exatamente os produtos selecionados;
-8. remoção dentro da comparação;
-9. reset completo ao fechar;
-10. mobile/tablet sem overflow horizontal;
-11. smoke pós-deploy verde.
-
-## Estado de release e preservação
-
-- `v1.0.0`: **PUBLICADA**;
-- Git tag/GitHub Release: **CONCLUÍDOS**;
-- depósito Zenodo Dataset: **CONCLUÍDO**;
-- DOI `10.5281/zenodo.22130831`: **EMITIDO E PROPAGADO NO REPOSITÓRIO**;
-- ORCID/Lattes e outros perfis externos: **AÇÃO ADMINISTRATIVA PENDENTE**, sem impacto sobre a imutabilidade do snapshot.
-
-## Fora do caminho ativo
-
-- adicionar produtos não auditados apenas para elevar contagem;
-- colapsar Fonte, Produto e Distribuição;
-- inferir licença, resolução ou cobertura ausentes;
-- modificar retroativamente a release `v1.0.0`;
-- criar nova release/tag/DOI sem instrução humana explícita.
+Esses itens pertencem ao próximo milestone conceitual, não ao resgate da página estática atual.

@@ -1,127 +1,60 @@
 # Workflow de implementação — Vitrine Ciência
 
-**Estado operacional:** QA/QC e manutenção. A expansão de novas fontes, produtos e distribuições está **pausada** e só pode ser retomada por instrução humana explícita.
+**Estado operacional:** QA/QC do resgate e estabilização da GitHub Page estática atual.  
+A expansão de novas fontes, produtos e distribuições permanece **pausada** e só pode ser retomada por **instrução humana explícita**. A arquitetura federada/Data Service também não é frente executora enquanto o marco estático não estiver concluído.
 
-## Objetivo
+## Objetivo atual
 
-Executar mudanças de dados, interface, documentação e release em pacotes pequenos, verificáveis e encerráveis, preservando o contrato fonte → produto → distribuição e a publicação estática.
+Entregar a versão estática baseada nos 51 registros legados como um catálogo científico simples, correto e funcional para usuários atuais, sem depender da futura reestruturação arquitetural.
 
-## Princípios
+## Sequência obrigatória
 
-1. as três tabelas CSV são canônicas;
-2. JSONs e `_site` são derivados;
-3. o Drive é espelho/histórico derivado;
-4. CI verde valida estrutura e regressão, não fatos externos;
-5. valores factuais exigem evidência proporcional;
-6. IDs existentes são estáveis;
-7. crescimento não exige migração de schema;
-8. desconhecido pode permanecer desconhecido;
-9. release/DOI congela um snapshot, não encerra a curadoria;
-10. Simbiotrama e arquitetura relacional são fora do escopo operacional da Vitrine.
+1. **Restaurar núcleo** — preservar o corpus legado estável e a expansão histórica em quarentena.
+2. **Descoberta científica** — Home e catálogo por fenômeno/processo com termos controlados; busca textual livre fora da superfície principal.
+3. **Separar papéis de acesso** — dados/download/portal, página do conjunto, API/serviço, viewer/documentação e página do provedor.
+4. **Reduzir carga cognitiva** — metadados técnicos em refinamentos/detalhes; cards com identidade, descrição curta, cobertura, proveniência e ações úteis.
+5. **Validar release estática** — CI, QA visual, diff e artefato isolado.
+6. **Publicar o resgate** — incorporar o PR canônico e executar smoke test real da GitHub Pages.
+7. **Recertificar o núcleo** — revisar acessos em batches, registrar última verificação e classificar A/B/C/D/E.
+8. **QA final** — confirmar coerência semântica, responsividade, teclado e percurso em 2–3 decisões.
+9. **Concluir** — somente trabalho materializado e verificado conta como concluído.
 
-## Classes de pacote
+## Regras de concorrência
 
-### DATA
-Correção factual ou semântica de registros existentes. Criação de nova fonte/produto/distribuição somente após retomada explícita da expansão por decisão humana.
+- um único PR/branch executor para o mesmo escopo;
+- antes de escrever, ler `main`, PR ativo, head SHA e arquivos modificados;
+- se o head mudar, refazer a leitura antes de escrever;
+- atualizar arquivo somente contra o blob SHA atual;
+- conflito não é resolvido por sobrescrita forçada;
+- PR superseded deve ser fechado ou claramente marcado.
 
-### FIX
-Correção de interface, build, navegação, acessibilidade ou publicação.
+## Regras de evidência e acesso
 
-### DOC
-Alinhamento de documentação/estado sem mudança conceitual.
+- evidência oficial/primária antes de inferência;
+- HTTP 200 não prova que um destino fornece dados;
+- não rotular PDF, viewer ou homepage genérica como download/API;
+- desconhecido permanece desconhecido e recebe estado de revisão;
+- preservar IDs, histórico e release `v1.0.0`;
+- não publicar conteúdo de quarentena.
 
-### RELEASE
-Tag, release notes, snapshot, citação e eventual depósito.
+## Classes de trabalho até o marco estático
 
-### INFRA
-Mudança estrutural de schema/runtime; excepcional e HUMAN-DECISION.
+- **STATIC-UX:** descoberta temática, hierarquia visual e redução de carga cognitiva.
+- **ACCESS-QA:** função do link, última verificação e classificação A/B/C/D/E.
+- **DATA-CORE:** preservação do núcleo legado e da quarentena histórica.
+- **DOC/QA:** documentação de estado, testes, build e smoke test.
 
-## Fluxo padrão
+**Não executar ainda:** ONTOLOGY-2, FEDERATION, CONNECTORS, POSTGRESQL ou EXPANSION.
 
-1. partir do `main` atual;
-2. declarar escopo e critério de conclusão;
-3. reunir evidência necessária;
-4. criar branch dedicada;
-5. alterar somente o delta pertinente;
-6. rodar validadores proporcionais;
-7. revisar o diff;
-8. executar QA renderizado/público quando necessário;
-9. integrar conforme classe de risco;
-10. verificar `main` e deploy;
-11. registrar conclusão/changelog quando material.
+## Autoridade documental
 
-## DATA
+- estado: `docs/PROJECT_STATE.md`;
+- workflow/limite: `WORKFLOW_STATUS.md`;
+- direção científica de longo prazo: `docs/PROJECT_SCIENTIFIC_DIRECTION.md`;
+- contratos históricos/transitórios: demais documentos metodológicos.
 
-Enquanto a expansão estiver pausada:
+Se houver conflito entre a direção futura e o estado de execução, **`docs/PROJECT_STATE.md` + `WORKFLOW_STATUS.md` governam o milestone ativo**.
 
-- corrigir somente defeitos factuais, semânticos ou relacionais sustentados;
-- preservar IDs canônicos e não reutilizar IDs removidos;
-- remover duplicatas apenas quando a equivalência estiver comprovada, preservando o ID canônico mais antigo;
-- não criar nova fonte, produto ou distribuição para preencher lacunas de QA;
-- manter desconhecido/variável quando a evidência não justificar maior precisão.
+## Marco de conclusão
 
-Se a expansão for retomada por instrução humana explícita, voltam a valer os critérios de seleção, deduplicação, evidência, cobertura Brasil, licenças e granularidade material definidos nas políticas vigentes.
-
-## FIX/frontend
-
-Quando o delta afetar a interface, verificar conforme aplicável:
-
-- carregamento;
-- busca e filtros;
-- comparação;
-- análise descritiva;
-- links e downloads;
-- desktop/mobile;
-- teclado/foco/acessibilidade;
-- artefato `_site`;
-- smoke após deploy.
-
-## DOC
-
-Documentação ativa deve refletir:
-
-- identidade Vitrine Ciência;
-- autoridade da `main` e dos três CSVs;
-- estado vivo apenas nos documentos designados para isso;
-- estado `unreleased` até release explícita;
-- Drive como derivado;
-- Simbiotrama como projeto separado;
-- fase corrente de QA/QC e pausa de expansão.
-
-Documentos históricos não devem ser reescritos como se fossem fatos atuais; devem ser classificados como histórico/proveniência.
-
-## RELEASE
-
-Antes de release estável:
-
-- validar dados/relações e interface;
-- alinhar README, metodologia, codebook, changelog e `CITATION.cff`;
-- congelar tag/commit;
-- construir snapshot reproduzível;
-- inspecionar artefato;
-- publicar GitHub Release;
-- depositar no Zenodo somente após decisão humana e conferir metadados/arquivos antes de publicar o DOI.
-
-## Validadores principais
-
-```bash
-python3 scripts/validate_brazil_scope.py
-python3 scripts/validate_product_catalog.py
-python3 scripts/validate_schema_identity.py
-python3 scripts/validate_active_documentation.py
-python3 scripts/build_catalog.py
-python3 scripts/audit_link_roles.py --write
-python3 scripts/validate_vitrine.py
-python3 scripts/build_site_artifact.py
-node --check assets/app.js
-node --check assets/products.js
-node --check assets/analytics.js
-```
-
-Outros testes são adicionados conforme o delta.
-
-## Estado corrente
-
-A autoridade do estado vivo é `docs/PROJECT_STATE.md`, `WORKFLOW_STATUS.md` e as três tabelas CSV canônicas. Este documento não replica contagens voláteis.
-
-A fase operacional corrente é **QA/QC e manutenção**, com expansão de novas fontes, produtos e distribuições **pausada até nova instrução humana explícita**. As prioridades são disponibilidade/publicação, integridade canônica, QA semântico, documentação/release, robustez do CI e correções funcionais de UX.
+Somente declarar `VITRINE_STATIC_51_STABLE` quando os critérios objetivos de `WORKFLOW_STATUS.md` estiverem materialmente satisfeitos. Depois, desabilitar a tarefa recorrente. Federação/Data Service passa a ser um novo milestone, não uma continuação automática.

@@ -1,103 +1,80 @@
 # Governança — Vitrine Ciência
 
-## 1. Finalidade
+**Atualização:** 2026-09-01  
+**Fase:** QA/QC, re-curadoria e auditoria ontológica.
 
-A governança da Vitrine protege um produto simples: catálogo público, estático, reproduzível e cientificamente defensável de fontes, produtos e formas de acesso relevantes ao Brasil.
+## Finalidade
 
-## 2. Autoridade
+A governança protege um produto simples, reproduzível e cientificamente defensável de descoberta e acesso a dados relevantes ao Brasil.
 
-Ordem vigente:
+A expansão de novas fontes, produtos e distribuições está **pausada**. Esses termos pertencem ao schema legado; os 51 registros `DR0001–DR0051` estão sob auditoria ontológica.
 
-1. `main` de `Ian-loc/vitrineciencia`;
-2. três CSVs canônicos;
-3. contratos e validadores executáveis;
-4. documentação ativa indicada em `docs/PROJECT_STATE.md`;
-5. auditorias e evidências;
-6. artefatos derivados e espelhos do Drive.
+## Autoridade
 
-O Simbiotrama é independente e não participa da autoridade, runtime ou publicação da Vitrine.
+1. `main` para o estado público incorporado;
+2. tag/release `v1.0.0` para o snapshot histórico imutável;
+3. branch/PR em revisão para mudanças ainda não incorporadas;
+4. dados, contratos e validadores do respectivo estado Git;
+5. `docs/PROJECT_STATE.md` e `WORKFLOW_STATUS.md` para estado e execução;
+6. evidências/auditorias;
+7. artefatos derivados e espelhos.
 
-## 3. Regime de mudança
+PR draft não é `main`. CI verde não transforma branch candidata em estado público.
 
-Mudanças devem seguir um pacote coerente:
+## Regime de mudança
 
-`scope → evidence → implementation → validation → diff audit → public validation when relevant → integration → post-merge verification → consolidation`
+`scope → evidence → implementation → validation → diff audit → public validation quando aplicável → integration → post-merge verification → consolidation`
 
-Branch nova parte de `main`. Alterações não relacionadas devem permanecer separadas. O critério de conclusão deve ser explícito e proporcional ao risco.
+### DOC/QA
 
-## 4. Classes de risco
+Pode corrigir documentação, testes e estado sem ampliar escopo nem relaxar gates.
 
-### AUTO-SAFE
+### CURATION / REVIEW
 
-Pode avançar quando controles objetivos passam:
-
-- documentação e status;
-- correções de QA/CI que não relaxem gates;
-- pequenas correções factuais inequívocas com evidência oficial;
-- pequenos lotes de fontes/produtos dentro do contrato vigente;
-- saneamento reversível e sem efeito destrutivo.
-
-### REVIEW
-
-Requer revisão humana do pacote:
-
-- lote grande;
-- mudança pública significativa de interface/comportamento;
-- evidência factual conflitante;
-- alteração operacional de impacto difícil de avaliar somente por testes.
+Classificações factuais e semânticas exigem evidência proporcional. Ambiguidade material permanece explícita.
 
 ### HUMAN-DECISION
 
-Requer decisão explícita antes da mudança material:
+Exige decisão humana explícita:
 
-- alteração de escopo ou schema incompatível;
+- retomada de expansão;
+- merge final de pacote estrutural relevante;
+- schema/ontologia incompatível;
 - remoção destrutiva/em massa;
 - nova infraestrutura estrutural;
-- tracking/analytics de usuários ou decisão de privacidade;
-- licença, autoria ou política oficial de citação;
-- release `1.0.0`;
-- publicação de DOI/Zenodo.
+- licença/autoria/citação oficial;
+- release, tag ou DOI.
 
-## 5. Curadoria
+## Curadoria atual
 
-Uma alteração de dados deve:
+Para `DR0001–DR0051`:
 
-- preservar IDs existentes;
-- manter integridade fonte → produto → distribuição;
-- sustentar valores factuais com evidência adequada;
-- registrar desconhecido/variável quando a evidência não permite precisão maior;
-- evitar promoção de propriedades específicas para níveis mais gerais;
-- registrar `last_verified` somente após revisão efetiva;
-- atualizar classificação Brasil e artefatos derivados quando aplicável.
+- preservar IDs legados;
+- não assumir que todos são `fonte` do mesmo tipo;
+- determinar identidade e tipo real com evidência oficial;
+- separar provider, program, platform, catalog, infrastructure, dataset, service e viewer quando aplicável;
+- construir crosswalk antes de congelar o novo schema;
+- não implementar federação antes de G0–G4 PASS.
 
-## 6. Papéis
+A relação física legada `DR → DP → DD` permanece válida para compatibilidade e reprodução; não é ontologia final.
 
-### Responsável científico e mantenedor
+## Automação
 
-Define missão, prioridades, escopo, autoria, licença, releases e decisões HUMAN-DECISION.
+Automação pode coletar evidência, validar, comparar, detectar regressões e materializar artefatos. Não deve:
 
-### Curadoria/contribuição
+- inventar metadados;
+- decidir sozinha ambiguidade científica relevante;
+- publicar automaticamente tudo que uma API encontra;
+- promover branch sem os gates previstos.
 
-Propõe e verifica registros, preserva proveniência, identifica limitações e executa o contrato sem inventar metadados.
+## Publicação
 
-### Automação
+O Pages publica somente a superfície definida em `docs/VITRINE_BOUNDARY.md`. Quarentena, auditorias, segredos e material operacional não podem vazar para `_site`.
 
-Valida estrutura, relações, contratos e regressões; constrói artefatos derivados; não substitui julgamento factual externo nem decide mudanças de escopo.
+Publicação só é consolidada depois de build/CI e verificação pós-deploy aplicáveis.
 
-## 7. Publicação
+## Releases
 
-O workflow de Pages deve construir apenas o artefato público definido em `docs/VITRINE_BOUNDARY.md`. Materiais internos, schemas históricos, auditorias e conteúdo do Simbiotrama não podem vazar para `_site`.
+`v1.0.0` permanece imutável. Novo marco citável exige snapshot reproduzível, QA, tag/commit e decisão humana específica.
 
-Publicação é considerada consolidada somente depois de build/CI e verificação pós-deploy aplicáveis.
-
-## 8. Drive
-
-Arquivos do Drive são documentação, histórico ou espelhos derivados. Não devem receber correções canônicas isoladas. Um espelho só pode ser chamado de sincronizado se declarar commit-fonte e tiver sido comparado contra o snapshot correspondente.
-
-## 9. Releases e DOI
-
-A Vitrine viva pode continuar evoluindo entre releases. Uma release citável exige tag/commit imutável, dados e documentação coerentes, artefato reproduzível e inspeção do pacote. DOI é uma decisão humana e deve representar um snapshot arquivado, não apenas a página dinâmica.
-
-## 10. Evidência histórica
-
-Documentos relacionais/Simbiotrama anteriores a 09/08/2026, auditorias antigas, PRs e decisões superadas devem ser preservados como histórico, mas não podem competir com a documentação ativa. `docs/PROJECT_STATE.md` define essa classificação.
+O limite da consolidação atual é `VITRINE_FEDERATED_CORE_V1_CONSOLIDATED`, definido em `WORKFLOW_STATUS.md`.

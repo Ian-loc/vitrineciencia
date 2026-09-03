@@ -1,133 +1,85 @@
-# Estado canônico e disposição dos artefatos — Vitrine Ciência
+# Estado canônico — Vitrine Ciência
 
-**Data de referência:** 27 de agosto de 2026  
-**Fuso:** `America/Sao_Paulo`  
-**Estado global:** catálogo público operacional; contrato **Fonte → Produto → Distribuição** estável; descoberta pública **product-first**; release científica `v1.0.0` publicada no GitHub e preservada no Zenodo com DOI `10.5281/zenodo.22130831`.
+**Data de referência:** 1º de setembro de 2026  
+**Fuso:** `America/Sao_Paulo`
 
-A **fase ativa de QA/QC e manutenção** inclui refinamento da descoberta pública, correções factuais e semânticas, validação de interface e saneamento de regressões. A expansão do corpus permanece separada desse trabalho.
+## Estado global
 
-## 1. Autoridade
+A **fase ativa de QA/QC e manutenção** é o **resgate e a estabilização da Vitrine Ciência estática atual**, antes da mudança conceitual para Data Service/federação.
 
-1. `main` de `Ian-loc/vitrineciencia` para desenvolvimento corrente;
-2. tag/release `v1.0.0` e depósito Zenodo para o primeiro snapshot científico imutável;
-3. três tabelas canônicas: `data_resources.csv`, `data_products.csv`, `product_distributions.csv`;
-4. contratos e validadores executáveis da Vitrine;
-5. documentação ativa;
-6. auditorias/evidências históricas;
-7. espelhos do Drive e outros snapshots derivados.
+A aplicação precisa permanecer utilizável enquanto outras pessoas já a usam. Por isso, o trabalho ativo está concentrado em restaurar o núcleo legado de 51 registros, reduzir carga cognitiva, orientar a descoberta por tema científico e corrigir a semântica dos links de acesso.
 
-JSONs, páginas públicas e relatórios de qualidade são artefatos derivados. O Google Drive não é autoridade concorrente.
+A expansão de novas fontes, produtos e distribuições continua **pausada**.
 
-## 2. Estado do catálogo
+## Estado material
 
-Snapshot científico `v1.0.0`, congelado em 19/08/2026 e publicado formalmente em 27/08/2026:
+- `main` ainda corresponde ao estado público expandido de 135/843/876 até a incorporação do PR de resgate.
+- A **release científica `v1.0.0` publicada** permanece imutável, incluindo seu snapshot histórico, tag e DOI `10.5281/zenodo.22130831`.
+- O PR `#267` (`curation/core-51-socioecological-discovery-20260901`) é o único PR executor ativo para o resgate estático.
+- Na terminologia física do schema legado, o branch candidato contém **51 fontes, 11 produtos, 19 distribuições**. Esses rótulos preservam compatibilidade estrutural e não afirmam que todos os 51 registros são datasets ou pertencem à mesma classe ontológica.
+- A expansão histórica permanece preservada em `data/quarantine/v1.0.0-expanded/`.
+- Os 51 DR podem representar instituição, plataforma, programa, catálogo, infraestrutura ou outra forma de origem/acesso; a interface pública deve descrevê-los com linguagem honesta e proporcional à evidência disponível.
 
-- **135 fontes**;
-- **843 produtos**;
-- **876 distribuições**;
-- identificadores correntes chegam a `DR0135`, `DP000861` e `DD000894`;
-- fontes verificadas até 19/08/2026;
-- schema vigente: 34 campos de fonte, 24 de produto e 15 de distribuição;
-- commit congelado: `27c545554f406b940662777e3f053e939ef3588c`;
-- tag/release: `v1.0.0`;
-- Zenodo: `https://zenodo.org/records/22130831`;
-- DOI: `10.5281/zenodo.22130831`.
+## Objetivo público atual
 
-**135 é a contagem de fontes.** A superfície pública de descoberta opera sobre os **843 produtos**. O pacote de UX de 27/08/2026 reorganiza descoberta, filtros, ranking, cards e comparação; não cria registros científicos novos.
+A navegação da versão estática deve seguir:
 
-A `main` e o site são produtos vivos e podem avançar após `v1.0.0`. Reprodutibilidade da release é definida pela tag, commit e depósito Zenodo, não pelo estado posterior de `main`.
+**fenômeno/processo → registros relevantes do núcleo 51 → dado/item detalhado quando existente → rota real de acesso → API/serviço quando existente → proveniência/provedor**.
 
-## 3. Estado da experiência pública
+A interface deve distinguir publicamente:
 
-### Unidade primária de descoberta
+- dado/download/portal de dados;
+- página específica do conjunto;
+- API/serviço;
+- visualizador ou documentação;
+- página do provedor/proveniência.
 
-O usuário começa por **produtos/datasets**. Fontes são apresentadas como proveniência, responsabilidade institucional e contexto de documentação. A arquitetura interna continua:
+Somente destinos cujo papel está suficientemente demonstrado podem ser rotulados como acesso confirmado a dados.
 
-```text
-Fonte
-  └── Produto
-        └── Distribuição
-```
+## Gates ativos
 
-### Busca e filtros
+**S0 — release estática de resgate**
 
-A busca reconhece deterministicamente temas/sinônimos científicos, biomas, Brasil, anos e resoluções espaciais. Os filtros principais são tema/variável, geografia, período, resolução temporal, suporte espacial, resolução espacial, forma de acesso, formato, licença e gratuidade. Fonte, tipo, autenticação, estado, origem e disponibilidade Brasil são complementares.
+- preservar 51/11/19 e a quarentena histórica;
+- Home e catálogo orientados por tema científico controlado;
+- 51 registros como superfície ampla de descoberta;
+- 11 itens/19 distribuições explicitamente como subconjunto detalhado;
+- semântica conservadora dos botões de acesso;
+- CI + QA visual + smoke test público.
 
-O ranking padrão é: **relevância → dados para o Brasil → completude/documentação → origem da fonte → nome**.
+**S1 — recertificação de acesso 51/51**
 
-### Resultado canônico
+Cada DR deve receber nova verificação factual e classificação de acesso:
 
-O card canônico é o card de produto, com **Onde? · Quando? · Escala? · Acesso?** sempre visíveis. Metodologia, limitações, licença, versão, proveniência e distribuições ficam no detalhe expandido. A listagem mostra 18 produtos por lote em desktop/tablet responsivo, com 3/2/1 colunas conforme largura.
+- `A DIRECT_DATA`;
+- `B DATASET_PAGE`;
+- `C API_SERVICE`;
+- `D VIEWER_DOC`;
+- `E BROKEN_UNCERTAIN`.
 
-### Comparação
+**S2 — QA final estático**
 
-Um único controlador mantém a seleção de produtos. A exportação CSV lê a tabela efetivamente aberta e não possui estado próprio. Produtos podem ser removidos dentro da comparação; fechar a janela zera a seleção.
+Confirmar filtros, responsividade, navegação em 2–3 decisões, ausência de quarentena na superfície e coerência entre rótulo e destino.
 
-### Mobile e tablet
+## Fora do marco atual
 
-Navegação responsiva com botão de menu é obrigatória para smartphones e tablets. O CI testa desktop (1440 px), tablet (820 px) e smartphone (390 px), incluindo overflow horizontal, filtros, cards, busca interpretada e comparação.
+Até o token `VITRINE_STATIC_51_STABLE`, não iniciar como frente executora:
 
-## 4. Ciclo de vida dos artefatos
+- ontologia 2.0 exaustiva;
+- Integration Registry federado;
+- conectores STAC/CKAN/OGC/REST/GraphQL;
+- harvesting;
+- PostgreSQL/backend próprio;
+- reentrada da expansão.
 
-### `ACTIVE`
+Esses elementos permanecem como direção futura, mas não são pré-condição para corrigir a GitHub Page que está em uso hoje.
 
-- interface pública product-first;
-- três CSVs canônicos e classificação Brasil;
-- scripts de build e validação;
-- GitHub Pages e smoke pós-deploy;
-- documentação pública/metodológica, citação e licenças;
-- QA/QC, correções factuais/semânticas e bugs reais de UX.
+## Regra de conclusão
 
-### `RELEASED`
+O marco estático só é concluído quando o site público estiver funcional, os 51 acessos estiverem recertificados ou explicitamente marcados como incertos, e CI/QA/smoke estiverem verdes.
 
-- tag anotada `v1.0.0`;
-- GitHub Release `v1.0.0`;
-- snapshot científico Zenodo `22130831`;
-- DOI `10.5281/zenodo.22130831`;
-- arquivo científico preservado e validado `vitrine-ciencia-v1.0.0.zip`.
+Somente então declarar:
 
-### `PAUSED`
+`VITRINE_STATIC_51_STABLE`
 
-- expansão de novas fontes, produtos ou distribuições sem nova curadoria factual explícita.
-
-### `DERIVED`
-
-- JSONs construídos a partir dos CSVs;
-- `_site`;
-- relatórios automáticos de qualidade;
-- planilhas/workbooks do Drive quando regenerados.
-
-### `HISTORICAL_EVIDENCE`
-
-Materiais de fases anteriores e arquiteturas de projetos separados permanecem apenas por proveniência e não orientam desenvolvimento novo da Vitrine.
-
-## 5. Documentação ativa
-
-- `README.md` — entrada pública;
-- `docs/PROJECT_STATE.md` — este estado canônico;
-- `docs/PROJECT_SCIENTIFIC_DIRECTION.md` — direção científica;
-- `docs/GOVERNANCE.md` — autoridade e gates;
-- `docs/VITRINE_BOUNDARY.md` — fronteira de publicação;
-- `docs/VITRINE_CANONICAL_DATA_CONTRACT.md` — schema vigente;
-- `docs/VITRINE_OPERATING_MODEL.md` — operação e crescimento;
-- `METHODOLOGY.md` — metodologia de curadoria;
-- `CODEBOOK.md` — dicionário dos campos;
-- `PRODUCT_CATALOG_MODEL.md` — modelo fonte/produto/distribuição;
-- `SELECTION_AND_COVERAGE_POLICY.md` — seleção e prioridade Brasil;
-- `WORKFLOW_STATUS.md` — estado corrente.
-
-## 6. Gates contínuos
-
-Antes de publicar mudança pública:
-
-1. preservar IDs e relações;
-2. não promover propriedades de produto para fonte;
-3. não inferir metadados ausentes;
-4. executar validadores de dados e frontend;
-5. construir `_site` isolado;
-6. testar navegador em desktop, tablet e smartphone;
-7. reproduzir seleção/comparação e confirmar ausência de estado residual;
-8. publicar somente após CI verde;
-9. verificar o site publicado via smoke pós-deploy.
-
-Nenhuma nova tag/release ou novo DOI deve ser criado sem instrução humana explícita. A release `v1.0.0` já publicada deve permanecer imutável; correções posteriores pertencem à documentação viva, à `main` ou a uma nova versão.
+Depois desse token, a automação executora deve ser desativada. A migração para Data Service/federação será um novo milestone, dependente de autorização posterior.

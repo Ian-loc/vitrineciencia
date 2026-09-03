@@ -1,90 +1,62 @@
 # Direção científica — Vitrine Ciência
 
 **Status:** vigente  
-**Atualização:** 27 de agosto de 2026  
-**Fase operacional atual:** QA/QC, manutenção e refinamento da descoberta pública. O estado vivo deve ser consultado em `docs/PROJECT_STATE.md` e `WORKFLOW_STATUS.md`.
+**Atualização:** 1º de setembro de 2026  
+**Fase operacional:** QA/QC, re-curadoria e auditoria ontológica. Estado factual: `docs/PROJECT_STATE.md`; execução: `WORKFLOW_STATUS.md`.
 
-## 1. Missão
+A expansão de novas fontes, produtos e distribuições está **pausada**. Sua retomada exige **instrução humana explícita**. Os termos `fonte/produto/distribuição` nesta regra referem-se ao schema legado.
 
-A **Vitrine Ciência** facilita a identificação, seleção, comparação e acesso a produtos de dados científicos relevantes ao Brasil. Seu valor está na curadoria estruturada: mostrar o que existe, onde e quando se aplica, em qual escala, como pode ser acessado, quem mantém e quais limitações precisam ser conhecidas antes do uso.
+## Missão
 
-A Vitrine é um catálogo de descoberta e triagem, não um repositório integral dos dados externos e não um motor universal de análise ou comparabilidade.
+A Vitrine Ciência deve facilitar a descoberta e o acesso a **dados científicos úteis**, sobretudo ecológicos, ambientais e socioecológicos relevantes ao Brasil, sem reproduzir desnecessariamente a complexidade interna dos provedores.
 
-## 2. Unidade científica e ordem de descoberta
+A Vitrine é uma camada de descoberta, curadoria e encaminhamento. Não é, por padrão, repositório integral dos dados externos nem plataforma destinada a esmiuçar cada recurso técnico disponível.
 
-O modelo ativo permanece:
+## Ordem de descoberta
 
-```text
-Fonte
-  └── Produto
-        └── Distribuição
-```
+A experiência pública deve priorizar:
 
-- **Fonte:** plataforma, portal, programa, catálogo, repositório, rede ou infraestrutura responsável ou intermediária; é contexto de proveniência e responsabilidade institucional.
-- **Produto:** oferta materialmente distinta por conteúdo, finalidade, método, cobertura, suporte, coleção/versão ou condição de acesso; é a **unidade principal de descoberta pública**.
-- **Distribuição:** rota concreta de acesso a um produto, como download, API, serviço geoespacial, catálogo ou aplicação.
+**pergunta científica → fenômeno/processo → território → tempo/escala → dataset/coleção utilizável → forma de acesso → provedor/proveniência**.
 
-A interface pública adota a ordem **pergunta científica → produto → comparação → proveniência/fonte → distribuição/acesso**. Essa decisão não altera nem colapsa o modelo Fonte → Produto → Distribuição.
+Busca livre não é o mecanismo principal. Filtros controlados e termos científicos consistentes têm prioridade.
 
-## 3. Critérios de descoberta científica
+## Modelo conceitual em revisão
 
-Para selecionar produtos, a interface deve priorizar dimensões que afetam diretamente a adequação à pergunta:
+A estrutura histórica `Fonte → Produto → Distribuição` não é assumida como ontologia final.
 
-1. tema / variável;
-2. cobertura geográfica;
-3. período;
-4. resolução temporal;
-5. escala / suporte espacial;
-6. resolução espacial;
-7. forma de acesso;
-8. formato;
-9. licença e gratuidade.
+A auditoria dos 51 registros legados deve separar, quando aplicável:
 
-Fonte/provedor, tipo de produto, autenticação, estado e origem permanecem filtros complementares. A busca pode interpretar deterministicamente termos e sinônimos científicos, biomas, Brasil, anos e resoluções, sem substituir os filtros explícitos nem inferir propriedades ausentes.
+- instituição/provedor;
+- programa/iniciativa;
+- plataforma;
+- catálogo/repositório;
+- infraestrutura de dados;
+- dataset/coleção;
+- distribuição;
+- serviço de dados/API;
+- portal/visualizador.
 
-O ranking padrão deve seguir **relevância da consulta → disponibilidade de dados para o Brasil → completude/documentação → origem da fonte → nome**. Origem brasileira é um sinal secundário; não substitui adequação científica do produto.
+Um mesmo sistema pode desempenhar vários papéis, mas esses papéis devem ser explicitados em relações, não comprimidos sob o rótulo genérico `fonte`.
 
-## 4. Triagem pública
+## Princípios científicos
 
-O card canônico é o **card de produto**. Ele deve permitir que o usuário responda rapidamente:
+1. **Utilidade antes de granularidade.** A Vitrine deve orientar o usuário ao dado útil, não multiplicar microprodutos técnicos sem ganho real de descoberta.
+2. **Dado ≠ serviço ≠ visualização ≠ documentação.** Esses objetos devem permanecer distintos.
+3. **Proveniência explícita.** O provedor e a documentação original permanecem referências primárias.
+4. **Acesso verificável.** Um link só é tratado como acesso a dados quando efetivamente conduz a download, dataset, serviço de extração ou rota equivalente comprovada.
+5. **Sem inferência silenciosa.** Ausência de evidência permanece desconhecida ou em revisão.
+6. **Granularidade mínima suficiente.** Nova entidade científica apenas quando a distinção melhora materialmente descoberta, interpretação ou acesso.
+7. **Escopo Brasil.** Fontes nacionais e internacionais são relevantes quando oferecem dados úteis sobre o Brasil; origem não é nota de qualidade.
+8. **Curadoria antes de automação.** APIs podem acelerar descoberta e atualização, mas não decidem sozinhas o que deve ser publicado.
 
-- **Onde?** — cobertura geográfica;
-- **Quando?** — cobertura temporal;
-- **Escala?** — suporte/resolução espacial e resolução temporal;
-- **Acesso?** — formato, protocolo/ferramenta e gratuidade quando conhecida.
+## Federação: posição atual
 
-Metodologia, limitações, licença, versão, proveniência e formas detalhadas de acesso permanecem disponíveis para escrutínio no detalhe expandido. A comparação lado a lado deve refletir exatamente a seleção ativa, permitir remoção durante a comparação e zerar seu estado ao ser fechada.
+A arquitetura federada é objetivo de consolidação, não estado implementado. A ordem correta é:
 
-## 5. Escopo territorial e temático
+**auditoria ontológica 51/51 → Integration Registry → pipeline comum → MapBiomas Alerta → pilotos heterogêneos → publicação controlada**.
 
-O Brasil é o escopo territorial prioritário. A Vitrine inclui produtos de fontes brasileiras e fontes internacionais que oferecem informação útil sobre o país. A prioridade territorial não é nota de qualidade.
+Dados científicos permanecem, em regra, nos provedores; a Vitrine deve armazenar o necessário para descoberta, proveniência, curadoria e acesso.
 
-A regra operacional vigente é explícita: expansão de novas fontes, produtos e distribuições está **pausada** durante a fase corrente de QA/QC e refinamento. Sua retomada exige **instrução humana explícita** e curadoria factual compatível com os mesmos gates científicos aplicados ao catálogo canônico. Melhorias de busca, filtros, cards, ranking ou navegação não autorizam criação automática de registros.
+## Critério de sucesso
 
-## 6. Princípios científicos permanentes
-
-1. **Não inventar.** Ausência de evidência permanece desconhecida, variável ou não localizada.
-2. **Preservar níveis.** Propriedade de produto não é automaticamente propriedade da fonte; distribuição não define o significado científico do produto.
-3. **Distinguir suporte de visualização.** Zoom, tile ou interface não comprovam resolução científica.
-4. **Distinguir tempo.** Cobertura temporal, resolução temporal e frequência de atualização são propriedades diferentes.
-5. **Distinguir observação e derivação.** Observado, administrativo, modelado, classificado, agregado e previsto não são equivalentes.
-6. **Preservar proveniência.** O provedor e a documentação original permanecem referências primárias.
-7. **Licença conservadora.** Registrar a licença no nível mais específico sustentado; não generalizar termos do portal.
-8. **Granularidade mínima suficiente.** Novo produto somente quando a distinção melhora materialmente descoberta, compreensão ou acesso.
-9. **Rastreabilidade proporcional.** Evidência deve sustentar a afirmação específica; CI verde não é prova factual externa.
-10. **Encerramento.** Curadoria suficiente e tecnicamente defensável pode ser publicada com limitações explícitas.
-
-## 7. Critério de sucesso
-
-A Vitrine é bem-sucedida quando um estudante, pesquisador, docente ou profissional consegue, com baixo risco de interpretação enganosa:
-
-- formular uma busca em termos próximos de sua pergunta;
-- identificar rapidamente produtos candidatos;
-- restringir por geografia, período, escala e acesso;
-- comparar alternativas e seus trade-offs;
-- reconhecer limitações e lacunas de metadados;
-- identificar a fonte/provedor e a documentação original;
-- acessar o produto pela distribuição adequada;
-- registrar a versão/coleção efetivamente utilizada.
-
-Contagens correntes e estado operacional não são replicados aqui; permanecem centralizados em `docs/PROJECT_STATE.md` e `WORKFLOW_STATUS.md` para evitar drift documental.
+A Vitrine é satisfatória quando um usuário consegue partir de um fenômeno/processo, localizar um dataset adequado, entender provedor/cobertura essencial e chegar a uma rota real de acesso aos dados; e quando o mantenedor consegue reconstruir o catálogo e distinguir claramente publicado, quarentena e motivo da decisão.
