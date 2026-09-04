@@ -1,84 +1,102 @@
 # Estado do workflow — Vitrine Ciência
 
-Atualização: **2026-09-01** (`America/Sao_Paulo`)
+Atualização: **2026-09-03** (`America/Sao_Paulo`)
 
 ## Fase ativa
 
-A fase ativa de **QA/QC** é o **resgate e a estabilização da Vitrine Ciência estática com o núcleo legado de 51 registros DR0001–DR0051**.
+A fase ativa é a **consolidação semântica e funcional da Vitrine Ciência estática com o núcleo DR0001–DR0051**.
 
-A expansão permanece pausada. A futura arquitetura federada/Data Service também permanece pausada enquanto a versão estática usada hoje não estiver correta, navegável e operacionalmente confiável.
+O resgate S0 já foi incorporado e publicado. O PR `#267` está encerrado por merge e não deve ser reaberto. Há uma única frente executora recorrente para a Vitrine.
 
-Há uma única frente executora recorrente para este projeto. Enquanto o PR `#267` estiver aberto, não abrir branch/PR concorrente com o mesmo escopo.
+O estado público usa **51 registros DR, 11 itens detalhados e 19 distribuições** na terminologia física legada. Os 11/19 são subconjunto detalhado. A expansão histórica 135/843/876 permanece em quarentena e não integra o catálogo vivo.
 
-Na terminologia física do schema legado, o candidato contém **51 fontes, 11 produtos, 19 distribuições**. Esses nomes preservam compatibilidade do corpus e não congelam uma ontologia final.
+## Contrato operacional
+
+`DR####` é identificador legado de entrada, não classe ontológica. A estrutura `Fonte → Produto → Distribuição` permanece apenas para compatibilidade e rastreabilidade.
+
+A experiência pública deve seguir:
+
+**pergunta científica → fenômeno/processo → território/tempo/escala → dataset/família de dados → produto científico quando necessário → distribuição/rota de acesso ou DataService → provedor/proveniência → documentação**.
+
+Devem permanecer distintos quando aplicável: Provider/Institution, Program/Initiative, Platform/Catalog/Data Infrastructure, Dataset/Collection, Product, Distribution, DataService, Portal/Viewer e Documentation/Publication.
 
 ## Sequência de execução
 
-1. **S0 — release estática de resgate**
-   - restaurar 51 registros / 11 itens detalhados / 19 distribuições;
-   - preservar 135/843/876 somente em quarentena histórica;
-   - Home orientada por fenômeno/processo;
-   - 51 registros como superfície ampla de descoberta;
-   - 11/19 explicitamente como subconjunto detalhado;
-   - separar dados, API/serviço, página do conjunto, visualizador/documentação e página do provedor;
-   - CI, QA visual e smoke test público.
-2. **S1 — recertificação 51/51 de acessos**
-   - revisar em batches de 8–15;
-   - registrar `last_verified` e função factual do destino;
-   - classificar cada acesso como A/B/C/D/E;
-   - corrigir ou marcar como revisão qualquer PDF, viewer, homepage genérica, login, rota quebrada ou ambígua.
-3. **S2 — QA final estático**
-   - filtros, navegação, mobile/desktop, teclado e parâmetros de URL;
-   - contagens e fronteira pública;
-   - coerência rótulo → destino;
-   - percurso tema → resultado → acesso em no máximo 2–3 decisões.
+1. **Fase I — reconciliar e fixar o estado real**
+   - sincronizar documentos de autoridade com `main` publicado;
+   - recertificar 51/51 por `entity_type/role`, fenômeno/processo, território, tipo de informação, proveniência, dataset/família quando sustentado, rota A–E e `last_verified`;
+   - priorizar E, ambiguidades semânticas e depois D;
+   - não forçar Dataset onde não houver evidência.
+2. **Fase II — reorganizar a representação estática**
+   - Home orientada por pergunta/tema;
+   - `sources.html` como descoberta ampla dos 51;
+   - `products.html` como subconjunto detalhado, reclassificado semanticamente quando necessário;
+   - separar Baixar dados / Página do conjunto / API-serviço / Viewer / Documentação / Provedor / Acesso em revisão;
+   - proveniência como relações transversais, não como pai único do dado.
+3. **Fase III — consolidação funcional**
+   - QA estrutural, semântico, científico e de navegação;
+   - filtros, URL params, teclado/acessibilidade básica, desktop/tablet/mobile;
+   - CI principal, QA visual e smoke público no SHA final.
 
 ## Classificação de acesso
 
-- **A DIRECT_DATA** — download, arquivo ou endpoint que entrega dados.
-- **B DATASET_PAGE** — página específica do conjunto com mecanismo explícito de obtenção.
-- **C API_SERVICE** — API/OGC/STAC/CKAN/GraphQL ou serviço que permite consulta/extração.
-- **D VIEWER_DOC** — visualizador, mapa, dashboard, documentação, artigo ou PDF sem acesso de dados demonstrado.
-- **E BROKEN_UNCERTAIN** — quebrado, restrito ou incerto.
+- **A DIRECT_DATA** — arquivo/download/endpoint que entrega dados.
+- **B DATASET_PAGE** — página específica com mecanismo explícito de obtenção.
+- **C API_SERVICE** — API/OGC/STAC/CKAN/GraphQL ou serviço de consulta/extração.
+- **D VIEWER_DOC** — viewer, mapa, dashboard, documentação ou PDF sem acesso de dados demonstrado.
+- **E BROKEN_UNCERTAIN** — rota quebrada, restrita, genérica ou incerta.
 
-Somente A–C podem ser apresentados como acesso confirmado a dados. D deve ser rotulado pelo que é; E permanece “acesso em revisão”.
+Somente A–C podem ser apresentados como acesso confirmado a dados. HTTP 200 isolado não é prova de acesso.
 
-## Estado material do repositório
+## Eficiência de execução
 
-- `main`: estado público expandido 135/843/876 até a incorporação do resgate.
-- `v1.0.0`: release histórica imutável.
-- PR `#267`: candidato estático 51/11/19, com expansão preservada em quarentena.
-- PR `#265`: fechado sem merge por estar superseded.
+- usar `data/static_core_51_access_audit.json` como matriz persistente de recertificação;
+- batch adaptativo: 12–20 simples, 8–12 moderados, 3–7 complexos;
+- não reabrir caso fechado sem nova evidência, conflito ou regressão;
+- bloqueio externo local não interrompe casos independentes;
+- candidate delta → validação → escrita → read-back → QA incremental → avanço do cursor;
+- QA global/visual/smoke somente em gate, regressão, mudança material de interface ou fechamento;
+- uma única branch sequencial se branch for necessária; nenhum PR concorrente.
+
+## Gate P1–P6
+
+P1 AdaptaBrasil MCTI; P2 MapBiomas Municípios; P3 IEDE-MG/FJP; P4 BDMG com dado público verificável; P5 SICAR/CAR e SIGEF/INCRA separados; P6 IBGE Cidades e Estados. Todos devem permanecer sustentados por objeto informacional real, proveniência e acesso corretamente rotulado.
+
+## Estado de acesso antes da recertificação corrente
+
+A matriz estática herdada do resgate registra: **A=1, B=32, C=0, D=10, E=8**. Esses valores são baseline operacional, não resultado final da recertificação atual; mudanças exigem evidência oficial atual e read-back.
 
 ## Definition of Done — `VITRINE_STATIC_51_STABLE`
 
-O marco termina somente quando:
+O marco exige simultaneamente:
 
-- `main` pública usa o núcleo 51 e a quarentena histórica continua preservada;
-- Home e filtros controlados funcionam sem busca textual livre como mecanismo principal;
-- 51/51 têm disposition de acesso A/B/C/D/E e verificação atual registrada, ou E explicitamente justificado;
-- nenhuma ação rotulada como dados/download/API aponta silenciosamente para PDF, viewer, documentação ou homepage genérica;
-- onde dados, API e homepage são distintos, a interface distingue essas funções;
-- 11 itens/19 distribuições são apresentados como subconjunto detalhado;
-- CI, QA visual e smoke test público passam no commit final;
-- não há PR executor concorrente com o mesmo escopo;
-- o estado final e limitações residuais estão documentados;
-- o usuário consegue sair de um tema científico e chegar a uma opção relevante e a uma rota corretamente rotulada em 2–3 decisões.
+- `main` pública no núcleo 51, com expansão histórica fora do catálogo vivo;
+- 51/51 com tipo/papel factual ou unresolved explícito;
+- 51/51 com fenômeno/processo, território, tipo de informação, proveniência e A–E com verificação atual ou E justificado;
+- dataset/família como objeto científico central quando identificável, sem invenção;
+- zero microproduto criado apenas por formato/protocolo/interface;
+- Distribution, DataService, Viewer, Documentation e Provider/Provenance semanticamente distintos;
+- P1–P6 factuais;
+- filtros controlados funcionando e busca livre não principal;
+- 11/19 explicitamente subconjunto;
+- zero botão dados/download/API levando silenciosamente a viewer/PDF/documentação/homepage genérica;
+- percurso tema → entrada/dataset → rota útil em 2–3 decisões nos casos representativos;
+- CI + QA visual + smoke público PASS no SHA final;
+- README/PROJECT_STATE/WORKFLOW_STATUS sincronizados com o estado material;
+- checkpoint final curto no repo com contagens, tipologia, P1–P6 e limitações.
 
 Somente então declarar:
 
 `VITRINE_STATIC_51_STABLE`
 
-Após esse token, a execução recorrente deve ser desativada.
+Depois desse token, a execução recorrente deve ser desativada.
 
 ## Fora do escopo até esse marco
 
-- ontologia 2.0 exaustiva como pré-condição de publicação;
+- ontologia 2.0 exaustiva;
 - Integration Registry;
 - conectores federados;
-- MapBiomas Alerta como piloto GraphQL;
+- harvesting;
 - PostgreSQL/backend próprio;
 - reentrada da expansão;
 - nova release/DOI.
-
-Esses itens pertencem ao próximo milestone conceitual, não ao resgate da página estática atual.
