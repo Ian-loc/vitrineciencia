@@ -22,7 +22,7 @@
     card.querySelectorAll(".status-badge, .detail").forEach(node => {
       if (/\bapi\b|acesso automatizado|protocolos e ferramentas/i.test(node.textContent || "")) node.remove();
     });
-    card.querySelectorAll(".card-details .detail-links a, article.distribution a, .distribution-semantic-role").forEach(node => node.remove());
+    card.querySelectorAll(".card-details .detail-links a, article.distribution a, .distribution-semantic-role, .entity-role-badge, .semantic-role-line, .semantic-scope-note").forEach(node => node.remove());
   }
 
   function removeNonPublicActions(actions) {
