@@ -13,6 +13,8 @@
 
   function apply() {
     if (!roles) return;
+    const distributionCount = document.querySelector("#p-distributions");
+    if (distributionCount) distributionCount.textContent = Object.keys(roles.routes || {}).length;
     document.querySelectorAll("article.distribution").forEach(card => {
       const heading = card.querySelector("h5");
       if (!heading) return;
