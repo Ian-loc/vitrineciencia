@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "scope": "11 detailed items / 19 access routes",
+  "rule": "Distribution, DataService, viewer, metadata/documentation and software are distinct roles. Only A-C represent confirmed data access.",
+  "routes": {
+    "PRODES — arquivos para download": {"role":"DISTRIBUTION","access_class":"A","action":"Baixar dados"},
+    "PRODES — metadados": {"role":"DOCUMENTATION_METADATA","access_class":"D","action":"Ver metadados"},
+    "DETER Amazônia — downloads": {"role":"DISTRIBUTION","access_class":"A","action":"Baixar dados"},
+    "DETER Cerrado — downloads": {"role":"DISTRIBUTION","access_class":"A","action":"Baixar dados"},
+    "DETER Pantanal — download experimental": {"role":"DISTRIBUTION","access_class":"A","action":"Baixar dados"},
+    "TerraClass 2020 — downloads": {"role":"DISTRIBUTION","access_class":"A","action":"Baixar dados"},
+    "Vegetação secundária — downloads por bioma": {"role":"DISTRIBUTION","access_class":"A","action":"Baixar dados"},
+    "TerraBrasilis WMS": {"role":"VIEWER_SERVICE","access_class":"D","action":"Explorar visualização"},
+    "TerraBrasilis WFS": {"role":"DATASERVICE","access_class":"C","action":"Consultar serviço"},
+    "TerraBrasilis WCS": {"role":"DATASERVICE","access_class":"C","action":"Consultar serviço"},
+    "TerraBrasilis CSW": {"role":"METADATA_SERVICE","access_class":"D","action":"Consultar metadados"},
+    "Earth Engine Data Catalog — catálogo web": {"role":"CATALOG","access_class":"B","action":"Ver catálogo"},
+    "Publisher Data Catalogs — índice web": {"role":"CATALOG","access_class":"B","action":"Ver catálogo"},
+    "Earth Engine APIs e bibliotecas cliente": {"role":"DATASERVICE","access_class":"C","action":"Consultar API-serviço"},
+    "Earth Engine — exportações": {"role":"DATASERVICE","access_class":"C","action":"Consultar exportação"},
+    "Dynamic World — ImageCollection no Earth Engine": {"role":"DATASERVICE","access_class":"C","action":"Consultar dataset"},
+    "Dynamic World — registro no WRI Data Explorer": {"role":"DOCUMENTATION_METADATA","access_class":"D","action":"Ver registro"},
+    "Dynamic World — explorador visual": {"role":"VIEWER_PORTAL","access_class":"D","action":"Explorar viewer"},
+    "Dynamic World — modelo e notebook de inferência": {"role":"SOFTWARE_DOCUMENTATION","access_class":"D","action":"Ver código e modelo"}
+  }
+}
