@@ -1,17 +1,6 @@
 (() => {
   "use strict";
-
-  const ACCESS = {
-    A: {label: "Dados / download", tone: "confirmed"},
-    B: {label: "Página para obter dados", tone: "confirmed"},
-    C: {label: "API / serviço de dados", tone: "confirmed"},
-    D: {label: "Visualização / documentação", tone: "review"},
-    E: {label: "Acesso em revisão", tone: "review"}
-  };
-
-  const norm = value => String(value || "")
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase().trim();
+  const norm = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 
   function addText(parent, tag, text, className) {
     const node = document.createElement(tag);
@@ -21,14 +10,21 @@
     return node;
   }
 
+  function publicAccess(item) {
+    if ((item.access_role === "A" || item.access_role === "B") && /^https:\/\//i.test(String(item.access_url || ""))) {
+      return {label:"Acessar dados / download", url:item.access_url, primary:true};
+    }
+    const site = /^https:\/\//i.test(String(item.documentation_url || "")) ? item.documentation_url
+      : /^https:\/\//i.test(String(item.access_url || "")) ? item.access_url : "";
+    return site ? {label:"Acessar site", url:site, primary:false} : null;
+  }
+
   function card(item) {
     const article = document.createElement("article");
     article.className = "priority-data-card";
-    article.dataset.gate = item.gate;
 
     const meta = document.createElement("div");
     meta.className = "priority-card-meta";
-    addText(meta, "span", item.gate, "priority-gate");
     addText(meta, "span", item.theme, "priority-theme");
     article.appendChild(meta);
 
@@ -39,8 +35,7 @@
     facts.className = "priority-facts";
     [
       ["Território", item.territory],
-      ["Proveniência", item.provenance],
-      ["Distribuição", item.distribution]
+      ["Responsável", item.provenance]
     ].forEach(([label, value]) => {
       const row = document.createElement("div");
       addText(row, "dt", label);
@@ -49,35 +44,19 @@
     });
     article.appendChild(facts);
 
-    const access = ACCESS[item.access_role] || ACCESS.E;
-    const note = document.createElement("p");
-    note.className = `priority-access ${access.tone}`;
-    addText(note, "strong", `${item.access_role} · ${access.label}: `);
-    note.appendChild(document.createTextNode(item.verification_note));
-    article.appendChild(note);
-
-    const actions = document.createElement("div");
-    actions.className = "card-actions priority-actions";
-    const accessLink = document.createElement("a");
-    accessLink.href = item.access_url;
-    accessLink.target = "_blank";
-    accessLink.rel = "noopener noreferrer";
-    accessLink.className = item.access_role === "B" || item.access_role === "A" || item.access_role === "C"
-      ? "action-primary"
-      : "action-secondary";
-    accessLink.textContent = item.access_role === "E" ? "Ver referência atual" : access.label;
-    actions.appendChild(accessLink);
-
-    if (item.documentation_url && item.documentation_url !== item.access_url) {
-      const docs = document.createElement("a");
-      docs.href = item.documentation_url;
-      docs.target = "_blank";
-      docs.rel = "noopener noreferrer";
-      docs.className = "action-secondary";
-      docs.textContent = "Documentação / evidência";
-      actions.appendChild(docs);
+    const access = publicAccess(item);
+    if (access) {
+      const actions = document.createElement("div");
+      actions.className = "card-actions priority-actions";
+      const accessLink = document.createElement("a");
+      accessLink.href = access.url;
+      accessLink.target = "_blank";
+      accessLink.rel = "noopener noreferrer";
+      accessLink.className = access.primary ? "action-primary" : "action-secondary";
+      accessLink.textContent = access.label;
+      actions.appendChild(accessLink);
+      article.appendChild(actions);
     }
-    article.appendChild(actions);
     return article;
   }
 
@@ -101,8 +80,8 @@
         list.hidden = visible.length === 0;
         if (status) {
           status.textContent = query
-            ? `${visible.length} dado(s) prioritário(s) relacionado(s) ao tema selecionado.`
-            : `${items.length} objetos aplicados cobrem os gates P1–P6 sem alterar o núcleo histórico de 51 registros.`;
+            ? `${visible.length} exemplo(s) relacionado(s) ao tema selecionado.`
+            : `${items.length} exemplos de acesso rápido disponíveis.`;
         }
       };
 
@@ -110,8 +89,8 @@
       render();
     } catch (error) {
       list.hidden = true;
-      if (status) status.textContent = "Camada aplicada temporariamente indisponível; o núcleo de 51 registros permanece acessível abaixo.";
-      console.error("Falha ao carregar gate aplicado P1–P6", error);
+      if (status) status.textContent = "Os exemplos de acesso rápido estão temporariamente indisponíveis.";
+      console.error("Falha ao carregar exemplos de acesso rápido", error);
     }
   }
 

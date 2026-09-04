@@ -40,9 +40,16 @@ jobs:
           node --check assets/app.js
           node --check assets/ptbr.js
           node --check assets/products.js
+          node --check assets/product-filter-ux.js
+          node --check assets/product-index.js
           node --check assets/product-label-fix.js
+          node --check assets/product-distribution-roles.js
           node --check assets/navigation.js
           node --check assets/home.js
+          node --check assets/source-discovery-v2.js
+          node --check assets/semantic-roles.js
+          node --check assets/applied-priority.js
+          node --check assets/public-interface-guardrails.js
           node --check assets/analytics.js
           node --check assets/analytics-products.js
           node --check assets/export-selective.js
@@ -68,6 +75,7 @@ jobs:
           test -s _site/assets/discovery-guardrails.js
           test -s _site/assets/discovery-guardrails.css
           test -s _site/assets/static-catalog-51.js
+          test -s _site/assets/public-interface-guardrails.js
           test -s _site/data/data_resources.json
           test -s _site/data/data_products.json
           test -s _site/data/brazil_scope_priorities.json
