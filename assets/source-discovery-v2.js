@@ -13,17 +13,17 @@
   const THEMES = [
     {key:"clima", label:"Clima e mudanças climáticas", terms:["clima","climate","mudancas climaticas","mudança climática","temperatura","precipitacao","chuva","atmosfera","risco climatico"]},
     {key:"hidrologia", label:"Água e hidrologia", terms:["agua","hidrologia","hydrology","recursos hidricos","rio","rios","vazao","bacia hidrografica","water"]},
-    {key:"fogo", label:"Fogo e queimadas", terms:["fogo","queimada","queimadas","fire","burned area","area queimada","hotspot"]},
+    {key:"fogo", label:"Fogo e queimadas", terms:["fogo","queimada","queimadas","fire","burned area","area queimada","hotspot","hotspots"]},
     {key:"uso da terra", label:"Uso e cobertura da terra", terms:["uso da terra","cobertura da terra","land use","land cover","lulc"]},
     {key:"desmatamento", label:"Desmatamento e degradação", terms:["desmatamento","deforestation","degradacao","degradation","forest loss"]},
-    {key:"vegetação", label:"Vegetação e florestas", terms:["vegetacao","floresta","florestas","vegetation","forest","cobertura vegetal"]},
+    {key:"vegetação", label:"Vegetação e florestas", terms:["vegetacao","floresta","florestas","vegetation","forest","forests","cobertura vegetal"]},
     {key:"restauração", label:"Restauração e regeneração", terms:["restauracao","regeneracao","restoration","regeneration","regrowth"]},
-    {key:"biodiversidade", label:"Biodiversidade e espécies", terms:["biodiversidade","biodiversity","especie","species","ocorrencia","occurrence","taxonomia"]},
-    {key:"carbono", label:"Carbono e emissões", terms:["carbono","carbon","emissao","emissoes","emission","co2","gases de efeito estufa"]},
-    {key:"solo", label:"Solos", terms:["solo","solos","soil","pedologia","soil profile"]},
-    {key:"agricultura", label:"Agricultura e pecuária", terms:["agricultura","agriculture","pecuaria","livestock","pastagem","pasture","crop"]},
-    {key:"territorial", label:"Território e sociedade", terms:["territorio","territorial","demografia","populacao","socioeconom","governanca","municipio","municipal"]},
-    {key:"geoinformação", label:"Bases territoriais e geoespaciais", terms:["geoinformacao","geoespacial","geospatial","sensoriamento remoto","remote sensing","cartografia","infraestrutura de dados espaciais"]}
+    {key:"biodiversidade", label:"Biodiversidade e espécies", terms:["biodiversidade","biodiversity","especie","especies","species","ocorrencia","ocorrencias","occurrence","occurrences","taxonomia","taxonomy"]},
+    {key:"carbono", label:"Carbono e emissões", terms:["carbono","carbon","emissao","emissoes","emission","emissions","co2","gases de efeito estufa"]},
+    {key:"solo", label:"Solos", terms:["solo","solos","soil","soils","pedologia","soil profile","soil profiles"]},
+    {key:"agricultura", label:"Agricultura e pecuária", terms:["agricultura","agriculture","pecuaria","livestock","pastagem","pastagens","pasture","pastures","crop","crops"]},
+    {key:"territorial", label:"Território e sociedade", terms:["territorio","territorios","territorial","demografia","demographic","demographics","populacao","population","socioeconomico","socioeconomicos","socioeconomica","socioeconomicas","socioeconomic","governanca","governance","municipio","municipios","municipal"]},
+    {key:"geoinformação", label:"Bases territoriais e geoespaciais", terms:["geoinformacao","geoespacial","geoespaciais","geospatial","sensoriamento remoto","remote sensing","cartografia","cartography","infraestrutura de dados espaciais","spatial data infrastructure"]}
   ];
 
   const splitValues = value => String(value || "").split("|").map(item => item.trim()).filter(Boolean);
@@ -37,9 +37,9 @@
   const THEME_BY_NORM = new Map(THEMES.map(theme => [flexNorm(theme.key), theme]));
   const themeForQuery = value => THEME_BY_KEY.get(value) || THEME_BY_NORM.get(flexNorm(value)) || null;
   const flexibleContains = (haystack, needle) => {
-    const text = flexNorm(haystack);
+    const words = new Set(flexNorm(haystack).split(" ").filter(Boolean));
     const tokens = flexNorm(needle).split(" ").filter(Boolean);
-    return !tokens.length || tokens.every(token => text.includes(token));
+    return !tokens.length || tokens.every(token => words.has(token));
   };
   const scientificText = resource => [
     resource.resource_name, resource.acronym, resource.official_identity, resource.description,
