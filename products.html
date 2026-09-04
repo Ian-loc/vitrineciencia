@@ -18,7 +18,7 @@
 <div class="nav-links" id="site-nav-links"><a href="sources.html">Explorar catálogo</a><a href="products.html" aria-current="page">Dados detalhados</a><span class="nav-about"><a href="about.html">Sobre</a><a class="nav-sub" href="analytics.html">Sobre o acervo</a></span></div>
 </div></nav>
 <header class="hero discovery-hero"><div class="wrap discovery-hero-inner">
-<div class="hero-copy"><p class="eyebrow">Subconjunto detalhado</p><h1>Compare dados, séries e serviços já descritos em detalhe</h1><p class="lead">Esta página contém 11 itens com 19 rotas de acesso detalhadas. Ela é um subconjunto do núcleo de 51 registros — não a lista completa de possibilidades científicas da Vitrine.</p><div class="actions"><a class="button primary" href="sources.html">Explorar os 51 registros por tema</a></div></div>
+<div class="hero-copy"><p class="eyebrow">Subconjunto detalhado</p><h1>Compare dados, séries, catálogos e serviços já descritos em detalhe</h1><p class="lead">Esta página contém 11 itens semanticamente distintos: 7 datasets ou séries de datasets, 2 catálogos e 2 serviços de dados, ligados a 19 rotas de acesso. É um subconjunto do núcleo de 51 registros — não a lista completa de possibilidades científicas da Vitrine.</p><div class="actions"><a class="button primary" href="sources.html">Explorar os 51 registros por tema</a></div></div>
 <form id="product-search" hidden><input id="product-q" name="q" type="hidden" value=""></form>
 </div></header>
 <section class="stats compact-stats" aria-label="Resumo do subconjunto detalhado"><div class="wrap stats-grid">
@@ -28,9 +28,9 @@
 <div><strong id="p-formats">—</strong><span>formatos registrados</span></div>
 </div></section>
 <main id="produtos">
-<section class="wrap detailed-subset-note" aria-labelledby="subset-note-heading"><p class="eyebrow">Escopo</p><h2 id="subset-note-heading">Use esta página quando precisar do nível Dataset / serviço / distribuição</h2><p>Os 51 registros da página <a href="sources.html">Explorar catálogo</a> dão a visão ampla por tema. Aqui ficam apenas os itens para os quais já existe modelagem mais granular de produto e rota de acesso; formatos, APIs e serviços não são tratados como novos fenômenos científicos.</p></section>
+<section class="wrap detailed-subset-note" aria-labelledby="subset-note-heading"><p class="eyebrow">Escopo</p><h2 id="subset-note-heading">Use esta página quando precisar do nível dataset / serviço / distribuição</h2><p>Os 51 registros da página <a href="sources.html">Explorar catálogo</a> dão a visão ampla por tema. Aqui ficam apenas os itens com modelagem mais granular. <strong>Dataset ou série</strong> é o objeto científico central quando identificável; <strong>catálogo</strong> organiza ou indexa dados; <strong>serviço</strong> permite consulta, processamento ou entrega; e <strong>distribuição</strong> é a rota concreta de acesso. Formato, API, protocolo e visualizador não criam um novo produto científico por si só.</p></section>
 <section class="wrap catalog product-catalog" id="product-catalog" aria-labelledby="product-catalog-heading">
-<div class="catalog-toolbar"><div class="heading"><div><p class="eyebrow">Resultados detalhados</p><h2 id="product-catalog-heading" tabindex="-1">Dados e serviços encontrados</h2></div><p id="product-count" role="status" aria-live="polite" aria-atomic="true">Carregando itens…</p></div><div class="catalog-tools"><label class="sort-control" for="product-sort"><span>Ordenar</span><select id="product-sort"><option value="relevance">Relevância</option><option value="name">Nome de A a Z</option><option value="source">Origem de A a Z</option><option value="verified">Revisão mais recente</option></select></label></div></div>
+<div class="catalog-toolbar"><div class="heading"><div><p class="eyebrow">Resultados detalhados</p><h2 id="product-catalog-heading" tabindex="-1">Dados, catálogos e serviços encontrados</h2></div><p id="product-count" role="status" aria-live="polite" aria-atomic="true">Carregando itens…</p></div><div class="catalog-tools"><label class="sort-control" for="product-sort"><span>Ordenar</span><select id="product-sort"><option value="relevance">Relevância</option><option value="name">Nome de A a Z</option><option value="source">Origem de A a Z</option><option value="verified">Revisão mais recente</option></select></label></div></div>
 <div class="interpreted-query" id="interpreted-query" role="status" aria-live="polite" hidden></div>
 <form class="filters product-filters scientific-filters controlled-filter-panel" id="product-filters" aria-label="Filtros controlados de dados detalhados" aria-describedby="product-filter-note">
 <fieldset class="product-primary-grid simple-primary"><legend>Comece por quatro escolhas</legend>
@@ -60,7 +60,7 @@
 <label><span>Disponibilidade para o Brasil</span><select id="product-brazil"><option value="">Qualquer situação</option></select></label>
 </fieldset></details>
 </details>
-<div class="filter-footer"><p id="product-filter-note">Conjunto de dados, serviço, catálogo, download e visualizador são funções distintas. Para uso científico, confirme versão, método, licença e limitações no destino original.</p><button type="button" id="product-clear">Limpar filtros</button></div>
+<div class="filter-footer"><p id="product-filter-note">Conjunto de dados, serviço, catálogo, distribuição, download e visualizador são funções distintas. Para uso científico, confirme versão, método, licença e limitações no destino original.</p><button type="button" id="product-clear">Limpar filtros</button></div>
 </form>
 <div class="active-filters" id="product-active-filters" role="region" aria-label="Filtros ativos" aria-live="polite" hidden></div>
 <div class="result-insights" id="product-result-insights" aria-label="Perfil dos resultados" hidden></div>
