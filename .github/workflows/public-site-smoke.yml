@@ -27,6 +27,7 @@ jobs:
       - name: Verificar endpoints públicos após deploy
         env:
           SITE: https://ian-loc.github.io/vitrineciencia
+          TARGET_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
         run: |
           set -euo pipefail
           tmp="$(mktemp -d)"
@@ -40,23 +41,37 @@ jobs:
               "$url" -o "$output"
           }
 
-          fetch "$SITE/" "$tmp/index.html"
-          fetch "$SITE/sources.html" "$tmp/sources.html"
-          fetch "$SITE/products.html" "$tmp/products.html"
-          fetch "$SITE/about.html" "$tmp/about.html"
-          fetch "$SITE/assets/discovery-guardrails.js" "$tmp/discovery-guardrails.js"
-          fetch "$SITE/assets/static-catalog-51.js" "$tmp/static-catalog-51.js"
-          fetch "$SITE/assets/source-discovery-v2.js" "$tmp/source-discovery-v2.js"
-          fetch "$SITE/assets/product-filter-ux.js" "$tmp/product-filter-ux.js"
-          fetch "$SITE/assets/home.js" "$tmp/home.js"
-          fetch "$SITE/data/data_resources.json" "$tmp/resources.json"
-          fetch "$SITE/data/data_products.json" "$tmp/products.json"
-          fetch "$SITE/data/applied_priority_gate.json" "$tmp/applied-priority.json"
+          ready=0
+          for attempt in {1..20}; do
+            if fetch "$SITE/?v=$TARGET_SHA-$attempt" "$tmp/index.html" && grep -q 'Compare cobertura, responsável e acesso' "$tmp/index.html"; then
+              ready=1
+              break
+            fi
+            sleep 3
+          done
+          if [ "$ready" -ne 1 ]; then
+            echo "ERRO: publicação ainda não expõe a versão esperada da interface"
+            exit 1
+          fi
+
+          fetch "$SITE/sources.html?v=$TARGET_SHA" "$tmp/sources.html"
+          fetch "$SITE/products.html?v=$TARGET_SHA" "$tmp/products.html"
+          fetch "$SITE/about.html?v=$TARGET_SHA" "$tmp/about.html"
+          fetch "$SITE/assets/discovery-guardrails.js?v=$TARGET_SHA" "$tmp/discovery-guardrails.js"
+          fetch "$SITE/assets/public-interface-guardrails.js?v=$TARGET_SHA" "$tmp/public-interface-guardrails.js"
+          fetch "$SITE/assets/static-catalog-51.js?v=$TARGET_SHA" "$tmp/static-catalog-51.js"
+          fetch "$SITE/assets/source-discovery-v2.js?v=$TARGET_SHA" "$tmp/source-discovery-v2.js"
+          fetch "$SITE/assets/product-filter-ux.js?v=$TARGET_SHA" "$tmp/product-filter-ux.js"
+          fetch "$SITE/assets/home.js?v=$TARGET_SHA" "$tmp/home.js"
+          fetch "$SITE/data/data_resources.json?v=$TARGET_SHA" "$tmp/resources.json"
+          fetch "$SITE/data/data_products.json?v=$TARGET_SHA" "$tmp/products.json"
+          fetch "$SITE/data/applied_priority_gate.json?v=$TARGET_SHA" "$tmp/applied-priority.json"
 
           grep -q 'Que fenômeno ou processo você quer investigar?' "$tmp/index.html"
           grep -q 'action="sources.html"' "$tmp/index.html"
-          grep -q 'núcleo de 51 registros' "$tmp/index.html"
+          grep -q '51 registros para descoberta' "$tmp/index.html"
           grep -q 'Da pergunta ao dado em três decisões' "$tmp/index.html"
+          grep -q 'fontes com dados/download localizados' "$tmp/index.html"
           grep -q 'applied_priority_gate.json' "$tmp/home.js"
 
           grep -q 'Encontre o dado certo a partir da sua pergunta' "$tmp/sources.html"
@@ -66,7 +81,9 @@ jobs:
           grep -q 'id="access-role"' "$tmp/sources.html"
           grep -q 'Tipo de informação' "$tmp/sources.html"
           grep -q 'Forma de acesso' "$tmp/sources.html"
-          grep -q 'proveniência' "$tmp/sources.html"
+          grep -q 'quando o acesso foi verificado' "$tmp/sources.html"
+          grep -q 'verification-line' "$tmp/public-interface-guardrails.js"
+          grep -q 'PUBLIC_ACTIONS' "$tmp/public-interface-guardrails.js"
           grep -q 'static_core_51_access_audit.json' "$tmp/source-discovery-v2.js"
           grep -q 'normalize("NFD")' "$tmp/source-discovery-v2.js"
 
@@ -79,7 +96,7 @@ jobs:
           grep -q 'disabled = unavailable' "$tmp/product-filter-ux.js"
           grep -q 'hidden = unavailable' "$tmp/product-filter-ux.js"
 
-          ! grep -E -q 'arquitetura científica interna|Fonte → Produto → Distribuição|snapshot candidato|Decisão arquitetural|Direção experimental' \
+          ! grep -E -q 'arquitetura científica interna|Fonte → Produto → Distribuição|snapshot candidato|Decisão arquitetural|Direção experimental|termos controlados|busca textual livre' \
             "$tmp/index.html" "$tmp/products.html" "$tmp/sources.html" "$tmp/about.html"
           ! grep -E -q 'data/quarantine|v1.0.0-expanded' \
             "$tmp/index.html" "$tmp/products.html" "$tmp/sources.html" "$tmp/about.html"
@@ -103,5 +120,5 @@ jobs:
           assert all(item.get('access_role') in {'A', 'B', 'C', 'D', 'E'} for item in items)
           assert all(str(item.get('access_url') or '').startswith('https://') for item in items)
 
-          print('OK: Vitrine pública 51 registros / 11 itens detalhados / 19 rotas; descoberta-first e P1–P6 preservados')
+          print('OK: Vitrine pública 51 registros / 11 itens detalhados / 19 rotas; descoberta orientada à pergunta e curadoria preservadas')
           PY
