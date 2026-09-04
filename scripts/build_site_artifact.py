@@ -16,7 +16,7 @@ REQUIRED_FILES = (
     "assets/style.css", "assets/accessibility.css", "assets/brazil-scope.css", "assets/products.css",
     "assets/visual-refinement.css", "assets/export-selective.css", "assets/ux-v2.css", "assets/ux-v3.css", "assets/ux-simple.css",
     "assets/product-card-refinement.css", "assets/product-index.css", "assets/discovery-guardrails.css",
-    "assets/app.js", "assets/ptbr.js", "assets/products.js", "assets/product-index.js", "assets/product-ui-fixes.js",
+    "assets/app.js", "assets/ptbr.js", "assets/products.js", "assets/product-filter-ux.js", "assets/product-index.js", "assets/product-ui-fixes.js",
     "assets/product-label-fix.js", "assets/product-distribution-roles.js", "assets/home.js", "assets/navigation.js",
     "assets/analytics.js", "assets/analytics-products.js", "assets/export-selective.js", "assets/source-comparison.js",
     "assets/discovery-guardrails.js", "assets/static-catalog-51.js", "assets/source-discovery-v2.js",
