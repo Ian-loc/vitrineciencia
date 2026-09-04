@@ -16,9 +16,17 @@ Dentro do repositório, a hierarquia corrente é:
 
 ## Estado global
 
-A Vitrine está no fechamento da **consolidação semântica e funcional do núcleo estático DR0001–DR0051**, antes de qualquer mudança para Data Service/federação.
+O marco de **consolidação semântica e funcional do núcleo estático DR0001–DR0051 está concluído**.
 
-A expansão geral permanece pausada. A recertificação semântica 51/51 está concluída. A **fase ativa de QA/QC e manutenção** corresponde agora ao fechamento funcional, à publicação e à sincronização documental do marco estático.
+`VITRINE_STATIC_51_STABLE`
+
+O runtime público que satisfez simultaneamente os gates finais é **`495bfe6a968176670461662869d1a3773797baf3`**:
+
+- build/validação/deploy: workflow `33906109623` — PASS;
+- QA visual e responsivo: workflow `33906109551` — PASS;
+- smoke pós-deploy sobre o site publicado: workflow `33906157842` — PASS.
+
+A expansão geral permanece pausada. A recertificação semântica 51/51 está concluída. A **fase ativa de QA/QC e manutenção** passa a significar preservação do marco estável e correção de regressões, não recertificação pendente.
 
 ## Estado material
 
@@ -30,6 +38,8 @@ A expansão geral permanece pausada. A recertificação semântica 51/51 está c
 - `data/static_core_51_access_audit.json` registra **A=1, B=38, C=0, D=10, E=2**.
 - Os dois E são limitações deliberadas e documentadas: `DR0014` (SiBBr, rota canônica genérica) e `DR0039` (GBIF IPT, software de publicação e não rota agregada de obtenção).
 - O gate P1–P6 está materializado em `data/applied_priority_gate.json`.
+- O artefato público fecha as dependências locais necessárias à interface e valida referências HTML e `fetch()` literais durante o build.
+- Tipagem semântica e classificação de acesso são autoridades distintas: `static_core_51_progress.json` não substitui `static_core_51_access_audit.json`.
 - A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130831` e snapshot histórico permanecem imutáveis.
 
 ## Fontes materiais de verdade no marco estático
@@ -39,6 +49,7 @@ A expansão geral permanece pausada. A recertificação semântica 51/51 está c
 - `data/product_distributions.csv`;
 - `data/static_core_51_access_audit.json`;
 - `data/static_core_51_progress.json`;
+- `data/product_distribution_roles.json`;
 - `data/applied_priority_gate.json`.
 
 JSONs públicos, páginas e `_site` são derivados. Mudanças de classificação ou significado devem começar nas fontes canônicas correspondentes e ser propagadas pelo build/validação; não devem ser corrigidas apenas na UI.
@@ -77,13 +88,13 @@ Somente A–C podem ser apresentados como acesso confirmado a dados. HTTP 200 is
 
 ## Estado das fases
 
-**Fase I — reconciliar e fixar o estado real: CONCLUÍDA para o marco estático**
+**Fase I — reconciliar e fixar o estado real: CONCLUÍDA**
 
 - 51/51 semanticamente tipados;
 - 51/51 com classificação A–E e justificativa;
 - dois E preservados explicitamente como limitações verificadas.
 
-**Fase II — reorganizar a representação estática: MATERIALIZADA**
+**Fase II — reorganizar a representação estática: CONCLUÍDA**
 
 - Home orientada por pergunta/tema;
 - `sources.html` como superfície ampla dos 51;
@@ -91,14 +102,14 @@ Somente A–C podem ser apresentados como acesso confirmado a dados. HTTP 200 is
 - rotas de acesso separadas por função;
 - P1–P6 integrado à superfície pública.
 
-**Fase III — consolidação funcional: EM FECHAMENTO**
+**Fase III — consolidação funcional: CONCLUÍDA**
 
 - QA semântico, estrutural, científico e de navegação;
-- filtros, URL params, teclado, desktop/tablet/mobile;
-- zero botão download/dados/API apontando silenciosamente para viewer/PDF/documentação/homepage genérica;
-- CI principal, QA visual e smoke público no SHA final;
-- sincronização de README/PROJECT_STATE/WORKFLOW_STATUS;
-- checkpoint final no repositório.
+- filtros controlados, URL params, teclado, desktop/tablet/mobile;
+- regressões de runtime nos observadores de Produtos e Fontes corrigidas sem relaxar o QA;
+- fechamento das dependências do artefato público validado;
+- CI principal, QA visual e smoke público verdes no runtime `495bfe6a968176670461662869d1a3773797baf3`;
+- documentação e checkpoint sincronizados com o estado material.
 
 ## Gate P1–P6
 
@@ -111,9 +122,19 @@ Devem permanecer representados por objeto informacional real, proveniência expl
 - P5 SICAR/CAR e SIGEF/INCRA separados;
 - P6 IBGE Cidades e Estados com indicador municipal real.
 
-## Fora do marco atual
+## Manutenção após o marco
 
-Até `VITRINE_STATIC_51_STABLE`, não iniciar como frente executora:
+A partir de `VITRINE_STATIC_51_STABLE`:
+
+- o núcleo 51 não deve ser reaberto sem nova evidência, conflito factual ou regressão;
+- mudanças de conteúdo continuam começando na autoridade canônica adequada;
+- regressões devem ser corrigidas e verificadas pelos mesmos gates proporcionais;
+- a expansão histórica não retorna automaticamente ao catálogo vivo;
+- uma nova frente de federação/Data Service deve ser tratada como milestone independente.
+
+## Próximo milestone — não ativado automaticamente
+
+Permanecem fora do marco estático concluído e exigem autorização/escopo próprios:
 
 - ontologia 2.0 exaustiva;
 - Integration Registry federado;
@@ -123,19 +144,6 @@ Até `VITRINE_STATIC_51_STABLE`, não iniciar como frente executora:
 - reentrada da expansão;
 - nova release/DOI.
 
-## Regra de conclusão
+## Checkpoint
 
-O marco estático termina somente quando, no mesmo estado final:
-
-- 51/51 permanecerem semanticamente recertificados;
-- A–E permanecer factualmente sustentado;
-- P1–P6 permanecer factual;
-- a interface refletir as distinções semânticas sem regressão;
-- CI principal, QA visual e smoke público estiverem verdes;
-- README/PROJECT_STATE/WORKFLOW_STATUS e checkpoint estiverem sincronizados com `main`.
-
-Somente então declarar:
-
-`VITRINE_STATIC_51_STABLE`
-
-Depois desse token, a execução recorrente do marco estático deve ser desativada. Federação/Data Service pertence a novo milestone e exige autorização posterior.
+O checkpoint factual do fechamento está em `docs/CHECKPOINT_STATIC_51_2026-09-04.md`.
