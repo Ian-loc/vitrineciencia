@@ -4,11 +4,11 @@ Atualização: **2026-09-03** (`America/Sao_Paulo`)
 
 ## Fase ativa
 
-A fase ativa é a **consolidação semântica e funcional da Vitrine Ciência estática com o núcleo DR0001–DR0051**.
+A fase ativa é a **QA/QC, consolidação semântica e funcional da Vitrine Ciência estática com o núcleo DR0001–DR0051**.
 
 O resgate S0 já foi incorporado e publicado. O PR `#267` está encerrado por merge e não deve ser reaberto. Há uma única frente executora recorrente para a Vitrine.
 
-O estado público usa **51 registros DR, 11 itens detalhados e 19 distribuições** na terminologia física legada. Os 11/19 são subconjunto detalhado. A expansão histórica 135/843/876 permanece em quarentena e não integra o catálogo vivo.
+O estado público usa **51 registros DR, 11 itens detalhados e 19 distribuições**. Na terminologia física exigida pelo schema/validador legado, isso corresponde a **51 fontes, 11 produtos e 19 distribuições**; esses rótulos não definem a ontologia pública. Os 11/19 são subconjunto detalhado. A expansão histórica 135/843/876 permanece em quarentena e a expansão geral está **pausada**.
 
 ## Contrato operacional
 
@@ -64,7 +64,7 @@ P1 AdaptaBrasil MCTI; P2 MapBiomas Municípios; P3 IEDE-MG/FJP; P4 BDMG com dado
 
 ## Estado de acesso antes da recertificação corrente
 
-A matriz estática herdada do resgate registra: **A=1, B=32, C=0, D=10, E=8**. Esses valores são baseline operacional, não resultado final da recertificação atual; mudanças exigem evidência oficial atual e read-back.
+A matriz estática herdada do resgate registrava **A=1, B=32, C=0, D=10, E=8**. Após recertificação oficial do TerraBrasilis em 3 de setembro de 2026, a matriz corrente registra **A=1, B=33, C=0, D=10, E=7**. Mudanças adicionais exigem evidência oficial atual e read-back.
 
 ## Definition of Done — `VITRINE_STATIC_51_STABLE`
 
