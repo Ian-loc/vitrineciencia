@@ -43,7 +43,7 @@
         <span class="area-examples"><b>Fenômeno/processo:</b> ${escapeHtml(item.theme)}</span>
         <span class="area-examples"><b>Dado:</b> ${escapeHtml(item.data_object)}</span>
         <span class="area-examples"><b>Território:</b> ${escapeHtml(item.territory)}</span>
-        <span class="area-examples"><b>Proveniência:</b> ${escapeHtml(item.provenance)}</span>
+        <span class="area-examples"><b>Responsável:</b> ${escapeHtml(item.provenance)}</span>
         ${access ? `<span><a href="${escapeHtml(access.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(access.label)}</a></span>` : ""}`;
       grid.appendChild(card);
     });
@@ -53,15 +53,16 @@
   Promise.all([
     fetch("data/data_products.json").then(response => response.ok ? response.json() : Promise.reject()),
     fetch("data/data_resources.json").then(response => response.ok ? response.json() : Promise.reject()),
-    fetch("data/applied_priority_gate.json", {cache: "no-store"}).then(response => response.ok ? response.json() : Promise.reject())
+    fetch("data/applied_priority_gate.json", {cache: "no-store"}).then(response => response.ok ? response.json() : Promise.reject()),
+    fetch("data/static_core_51_access_audit.json", {cache: "no-store"}).then(response => response.ok ? response.json() : Promise.reject())
   ])
-    .then(([products, resources, priorityGate]) => {
-      const accessCount = products.reduce((total, product) => total + (product.distributions?.length || 0), 0);
+    .then(([products, resources, priorityGate, accessAudit]) => {
+      const confirmedDataAccess = (accessAudit.records || []).filter(item => item.access_role === "A" || item.access_role === "B").length;
       const freeCount = products.filter(product => product.distributions?.some(distribution => distribution.free_download === "sim")).length;
       set("home-products", products.length);
       set("home-all-products", products.length);
       set("home-sources", resources.length);
-      set("home-access", accessCount);
+      set("home-access", confirmedDataAccess);
       set("home-free", freeCount);
       renderPriorityGate(priorityGate);
 
