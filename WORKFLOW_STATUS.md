@@ -31,7 +31,7 @@ Evidência de fechamento no mesmo runtime:
 
 A **fase ativa de QA/QC e manutenção** agora é manutenção do estado estável e detecção de regressões. Não há recertificação 51 pendente.
 
-O estado público usa **51 registros DR, 11 itens detalhados e 19 distribuições**; os 11/19 são subconjunto detalhado. Na terminologia física do schema legado, isso corresponde a **51 fontes, 11 produtos e 19 distribuições**. A expansão histórica 135/843/876 permanece em quarentena.
+A expansão geral permanece **pausada**. O estado público usa **51 registros DR, 11 itens detalhados e 19 distribuições**; os 11/19 são subconjunto detalhado. Na terminologia física do schema legado, isso corresponde a **51 fontes, 11 produtos e 19 distribuições**. A expansão histórica 135/843/876 permanece em quarentena e não retorna ao catálogo vivo sem instrução humana explícita.
 
 A recertificação semântica está concluída em **51/51**. A matriz corrente de acesso é **A=1, B=38, C=0, D=10, E=2**; `DR0014` e `DR0039` permanecem E de forma deliberada e documentada.
 
