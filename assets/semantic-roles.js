@@ -14,11 +14,13 @@
   };
 
   let registry = new Map();
+  let accessRegistry = new Map();
 
   function decorate() {
     document.querySelectorAll("#list .card[data-resource-id]").forEach(card => {
       const item = registry.get(card.dataset.resourceId);
       if (!item) return;
+      const accessRole = accessRegistry.get(card.dataset.resourceId) || "E";
       const description = card.querySelector(".description");
       if (description && !card.querySelector(".semantic-role-line")) {
         const line = document.createElement("p");
@@ -35,8 +37,11 @@
           const dt = row.querySelector("dt");
           const dd = row.querySelector("dd");
           if (dt?.textContent.trim() === "Distribuição / acesso" && dd) {
-            dd.textContent = `${item.access_role} · ${ACCESS[item.access_role] || "Acesso não classificado"}`;
-            dd.dataset.accessAuthority = "static_core_51_progress";
+            const expected = `${accessRole} · ${ACCESS[accessRole] || "Acesso não classificado"}`;
+            if (dd.textContent !== expected) dd.textContent = expected;
+            if (dd.dataset.accessAuthority !== "static_core_51_access_audit") {
+              dd.dataset.accessAuthority = "static_core_51_access_audit";
+            }
           }
         });
       }
@@ -55,16 +60,22 @@
 
   async function init() {
     try {
-      const response = await fetch("data/static_core_51_progress.json", {cache:"no-store"});
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const payload = await response.json();
-      registry = new Map((payload.records || []).map(item => [item.resource_id, item]));
+      const [semanticResponse, accessResponse] = await Promise.all([
+        fetch("data/static_core_51_progress.json", {cache:"no-store"}),
+        fetch("data/static_core_51_access_audit.json", {cache:"no-store"})
+      ]);
+      if (!semanticResponse.ok) throw new Error(`semantic HTTP ${semanticResponse.status}`);
+      if (!accessResponse.ok) throw new Error(`access HTTP ${accessResponse.status}`);
+      const semanticPayload = await semanticResponse.json();
+      const accessPayload = await accessResponse.json();
+      registry = new Map((semanticPayload.records || []).map(item => [item.resource_id, item]));
+      accessRegistry = new Map((accessPayload.records || []).map(item => [item.resource_id, item.access_role]));
       const list = document.querySelector("#list");
       if (!list) return;
       decorate();
-      new MutationObserver(decorate).observe(list, {childList:true, subtree:true});
+      new MutationObserver(decorate).observe(list, {childList:true});
     } catch (error) {
-      console.error("Falha ao carregar a camada semântica verificada", error);
+      console.error("Falha ao carregar as camadas semântica e de acesso verificadas", error);
     }
   }
 
