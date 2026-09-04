@@ -1,85 +1,108 @@
 # Estado canônico — Vitrine Ciência
 
-**Data de referência:** 1º de setembro de 2026  
+**Data de referência:** 3 de setembro de 2026  
 **Fuso:** `America/Sao_Paulo`
 
 ## Estado global
 
-A **fase ativa de QA/QC e manutenção** é o **resgate e a estabilização da Vitrine Ciência estática atual**, antes da mudança conceitual para Data Service/federação.
+A fase ativa é a **consolidação semântica e funcional da Vitrine Ciência estática com o núcleo DR0001–DR0051**, antes de qualquer mudança para Data Service/federação.
 
-A aplicação precisa permanecer utilizável enquanto outras pessoas já a usam. Por isso, o trabalho ativo está concentrado em restaurar o núcleo legado de 51 registros, reduzir carga cognitiva, orientar a descoberta por tema científico e corrigir a semântica dos links de acesso.
-
-A expansão de novas fontes, produtos e distribuições continua **pausada**.
+A expansão geral permanece pausada. O trabalho corrente recertifica os 51 registros, reduz carga cognitiva, orienta a descoberta por tema científico e corrige a semântica de dados, produtos, rotas e proveniência.
 
 ## Estado material
 
-- `main` ainda corresponde ao estado público expandido de 135/843/876 até a incorporação do PR de resgate.
-- A **release científica `v1.0.0` publicada** permanece imutável, incluindo seu snapshot histórico, tag e DOI `10.5281/zenodo.22130831`.
-- O PR `#267` (`curation/core-51-socioecological-discovery-20260901`) é o único PR executor ativo para o resgate estático.
-- Na terminologia física do schema legado, o branch candidato contém **51 fontes, 11 produtos, 19 distribuições**. Esses rótulos preservam compatibilidade estrutural e não afirmam que todos os 51 registros são datasets ou pertencem à mesma classe ontológica.
-- A expansão histórica permanece preservada em `data/quarantine/v1.0.0-expanded/`.
-- Os 51 DR podem representar instituição, plataforma, programa, catálogo, infraestrutura ou outra forma de origem/acesso; a interface pública deve descrevê-los com linguagem honesta e proporcional à evidência disponível.
+- `main` já contém e publica o núcleo estático de **51 registros DR / 11 itens detalhados / 19 distribuições**.
+- O PR `#267` foi incorporado em `main` em 3 de setembro de 2026 e não é mais uma frente ativa.
+- O workflow principal de publicação e o smoke test público pós-deploy passaram para o estado estático 51/11/19.
+- A release científica `v1.0.0`, sua tag, DOI `10.5281/zenodo.22130831` e snapshot histórico permanecem imutáveis.
+- A expansão histórica 135/843/876 permanece preservada em `data/quarantine/v1.0.0-expanded/` e fora do catálogo vivo.
+- Os 51 DR podem representar tipos distintos de entidade. `DR####` é identificador legado e não implica que a entrada seja dataset, provedor ou plataforma.
 
-## Objetivo público atual
+## Modelo público corrente
 
-A navegação da versão estática deve seguir:
+A navegação deve seguir:
 
-**fenômeno/processo → registros relevantes do núcleo 51 → dado/item detalhado quando existente → rota real de acesso → API/serviço quando existente → proveniência/provedor**.
+**pergunta científica → fenômeno/processo → território/tempo/escala → dataset/família de dados → produto científico quando necessário → distribuição/rota de acesso ou DataService → provedor/proveniência → documentação**.
 
-A interface deve distinguir publicamente:
+A estrutura física histórica `DR → DP → DD` permanece apenas para compatibilidade e rastreabilidade.
 
-- dado/download/portal de dados;
-- página específica do conjunto;
-- API/serviço;
-- visualizador ou documentação;
-- página do provedor/proveniência.
+A interface e a recertificação devem distinguir, quando aplicável:
 
-Somente destinos cujo papel está suficientemente demonstrado podem ser rotulados como acesso confirmado a dados.
+- Provider/Institution;
+- Program/Initiative;
+- Platform/Catalog/Data Infrastructure;
+- Dataset/Collection;
+- Product, somente quando materialmente distinto;
+- Distribution;
+- DataService/API;
+- Portal/Viewer;
+- Documentation/Publication.
 
-## Gates ativos
+Proveniência é transversal: produzir, publicar, manter, hospedar/expor e documentar são relações diferentes. Formato, arquivo, API, viewer e documentação não criam produto científico por si sós.
 
-**S0 — release estática de resgate**
+## Classificação de acesso
 
-- preservar 51/11/19 e a quarentena histórica;
-- Home e catálogo orientados por tema científico controlado;
-- 51 registros como superfície ampla de descoberta;
-- 11 itens/19 distribuições explicitamente como subconjunto detalhado;
-- semântica conservadora dos botões de acesso;
-- CI + QA visual + smoke test público.
+Cada DR deve receber verificação factual da rota principal:
 
-**S1 — recertificação de acesso 51/51**
+- `A DIRECT_DATA` — arquivo/download/endpoint que entrega dados;
+- `B DATASET_PAGE` — página específica com mecanismo explícito de obtenção;
+- `C API_SERVICE` — API/OGC/STAC/CKAN/GraphQL ou serviço de consulta/extração;
+- `D VIEWER_DOC` — viewer/dashboard/mapa/documentação/PDF sem acesso de dados demonstrado;
+- `E BROKEN_UNCERTAIN` — rota quebrada, restrita, genérica ou ainda incerta.
 
-Cada DR deve receber nova verificação factual e classificação de acesso:
+Somente A–C podem ser apresentados como acesso confirmado a dados. HTTP 200 isolado não comprova acesso.
 
-- `A DIRECT_DATA`;
-- `B DATASET_PAGE`;
-- `C API_SERVICE`;
-- `D VIEWER_DOC`;
-- `E BROKEN_UNCERTAIN`.
+## Fases ativas
 
-**S2 — QA final estático**
+**Fase I — reconciliar e fixar o estado real**
 
-Confirmar filtros, responsividade, navegação em 2–3 decisões, ausência de quarentena na superfície e coerência entre rótulo e destino.
+- sincronizar documentação com `main` publicado;
+- recertificar os 51 por tipo/papel, fenômeno/processo, território, informação, proveniência, dataset/família quando sustentado, rota A–E e `last_verified`;
+- não forçar Dataset quando a entrada é instituição, plataforma, catálogo ou outro tipo.
+
+**Fase II — reorganizar a representação estática**
+
+- Home orientada por pergunta/tema;
+- `sources.html` como superfície ampla de descoberta dos 51;
+- `products.html` como subconjunto detalhado 11/19, com tipologia honesta;
+- funções de acesso explicitamente separadas: dados, página do conjunto, API/serviço, viewer, documentação e provedor.
+
+**Fase III — consolidação funcional**
+
+- QA semântico, estrutural, científico e de navegação;
+- filtros, URL params, teclado, desktop/tablet/mobile;
+- zero botão download/dados/API apontando silenciosamente para viewer/PDF/documentação/homepage genérica;
+- CI, QA visual e smoke público no SHA final.
+
+## Gate P1–P6
+
+Devem permanecer representados por objeto informacional real, proveniência explícita e acesso corretamente rotulado:
+
+- P1 AdaptaBrasil MCTI;
+- P2 MapBiomas Municípios;
+- P3 IEDE-MG/FJP, distinta de IDE-Sisema;
+- P4 BDMG com dado público verificável;
+- P5 SICAR/CAR e SIGEF/INCRA separados;
+- P6 IBGE Cidades e Estados com indicador municipal real.
 
 ## Fora do marco atual
 
-Até o token `VITRINE_STATIC_51_STABLE`, não iniciar como frente executora:
+Até `VITRINE_STATIC_51_STABLE`, não iniciar como frente executora:
 
 - ontologia 2.0 exaustiva;
 - Integration Registry federado;
 - conectores STAC/CKAN/OGC/REST/GraphQL;
 - harvesting;
 - PostgreSQL/backend próprio;
-- reentrada da expansão.
-
-Esses elementos permanecem como direção futura, mas não são pré-condição para corrigir a GitHub Page que está em uso hoje.
+- reentrada da expansão;
+- nova release/DOI.
 
 ## Regra de conclusão
 
-O marco estático só é concluído quando o site público estiver funcional, os 51 acessos estiverem recertificados ou explicitamente marcados como incertos, e CI/QA/smoke estiverem verdes.
+O marco estático termina somente quando os 51 estiverem semanticamente recertificados ou explicitamente unresolved, os acessos A–E estiverem factualmente sustentados, a interface refletir a distinção dataset/produto/distribuição/serviço/proveniência e CI/QA/smoke estiverem verdes no estado final.
 
 Somente então declarar:
 
 `VITRINE_STATIC_51_STABLE`
 
-Depois desse token, a automação executora deve ser desativada. A migração para Data Service/federação será um novo milestone, dependente de autorização posterior.
+Depois desse token, a execução recorrente deve ser desativada. Federação/Data Service pertence a novo milestone e exige autorização posterior.
