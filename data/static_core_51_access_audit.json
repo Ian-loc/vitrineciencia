@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "scope": "static_core_51",
-  "audit_date": "2026-09-01",
+  "audit_date": "2026-09-03",
   "source_catalog_last_verified": "2026-08-10",
   "freshness_rule": "For the static rescue, records verified within 30 days may retain that factual verification date. Access-role assignment is conservative and does not treat HTTP success as data access.",
   "roles": {
@@ -22,7 +22,7 @@
     {"resource_id":"DR0008","access_role":"B","source_last_verified":"2026-08-10","disposition":"confirmed_from_curated_metadata","reason":"Catálogo governamental específico que encaminha para conjuntos e respectivos mecanismos de obtenção."},
     {"resource_id":"DR0009","access_role":"B","source_last_verified":"2026-08-10","disposition":"confirmed_from_curated_metadata","reason":"Página de busca de ocorrências com downloads processados e API como canais complementares."},
     {"resource_id":"DR0010","access_role":"D","source_last_verified":"2026-08-10","disposition":"confirmed_from_curated_metadata","reason":"Rota principal cadastrada é a plataforma de visualização; downloads oficiais existem em rota separada."},
-    {"resource_id":"DR0011","access_role":"E","source_last_verified":"2026-08-10","disposition":"review_required","reason":"Rota principal coincide com a homepage do portal; dados/API precisam de rota específica."},
+    {"resource_id":"DR0011","access_role":"B","source_last_verified":"2026-09-03","disposition":"recertified_from_current_official_source","reason":"A página oficial Downloads do TerraBrasilis oferece arquivos vetoriais e raster por bioma/projeto, incluindo produtos PRODES, DETER e TerraClass; serviços web são documentados separadamente."},
     {"resource_id":"DR0012","access_role":"B","source_last_verified":"2026-08-10","disposition":"confirmed_from_curated_metadata","reason":"Página oficial de dados abertos/downloads do Programa Queimadas."},
     {"resource_id":"DR0013","access_role":"B","source_last_verified":"2026-08-10","disposition":"confirmed_from_curated_metadata","reason":"Página de busca com exportação e API documentada como canal complementar."},
     {"resource_id":"DR0014","access_role":"E","source_last_verified":"2026-08-10","disposition":"review_required","reason":"Rota principal coincide com a homepage; mecanismo de obtenção não está demonstrado no registro."},
@@ -64,5 +64,5 @@
     {"resource_id":"DR0050","access_role":"B","source_last_verified":"2026-08-10","disposition":"confirmed_from_curated_metadata","reason":"Busca Earthdata filtrada para ORNL DAAC; datasets têm aquisição via Earthdata Login."},
     {"resource_id":"DR0051","access_role":"D","source_last_verified":"2026-08-10","disposition":"confirmed_from_curated_metadata","reason":"Produtos públicos são visualização/metodologia; a base integral não é oferecida para download."}
   ],
-  "counts": {"A":1,"B":32,"C":0,"D":10,"E":8}
+  "counts": {"A":1,"B":33,"C":0,"D":10,"E":7}
 }
