@@ -12,6 +12,7 @@ A expansão geral permanece pausada. O trabalho corrente recertifica os 51 regis
 ## Estado material
 
 - `main` já contém e publica o núcleo estático de **51 registros DR / 11 itens detalhados / 19 distribuições**.
+- Na terminologia física exigida pelo schema/validador legado, isso corresponde a **51 fontes, 11 produtos e 19 distribuições**; esses rótulos não definem a ontologia pública.
 - O PR `#267` foi incorporado em `main` em 3 de setembro de 2026 e não é mais uma frente ativa.
 - O workflow principal de publicação e o smoke test público pós-deploy passaram para o estado estático 51/11/19.
 - A release científica `v1.0.0`, sua tag, DOI `10.5281/zenodo.22130831` e snapshot histórico permanecem imutáveis.
