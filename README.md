@@ -2,41 +2,57 @@
 
 **Catálogo público e citável para descobrir e acessar dados científicos relevantes ao Brasil.**
 
-## Estado atual — 1º de setembro de 2026
+## Estado atual — 3 de setembro de 2026
 
-- `main` continua sendo o estado público corrente do repositório e ainda contém o catálogo expandido derivado da release `v1.0.0` (**135 registros historicamente chamados de fontes, 843 produtos e 876 distribuições**).
-- O PR draft **#267** é um pacote candidato de re-curadoria. Nele, a expansão foi preservada em `data/quarantine/v1.0.0-expanded/` e a superfície candidata foi reduzida para **51 registros legados DR, 11 produtos e 19 distribuições**.
-- Esses 51 registros **não são assumidos como 51 entidades do mesmo tipo**. O rótulo histórico `fonte` está em auditoria ontológica.
-- Nenhum merge, novo schema, conector federado ou nova release está autorizado por este estado.
+- `main` é o estado público corrente e usa o núcleo estático de **51 registros legados DR0001–DR0051**.
+- O PR **#267** foi incorporado em `main` em 3 de setembro de 2026; não é mais uma frente ativa.
+- Na estrutura física legada, o estado público contém **51 registros DR, 11 itens detalhados e 19 distribuições**. Os 11/19 são um subconjunto detalhado, não toda a cobertura científica dos 51.
+- A expansão histórica **135/843/876** permanece preservada em `data/quarantine/v1.0.0-expanded/` e não integra o catálogo vivo.
+- A publicação do núcleo 51 passou pelo workflow principal e pelo smoke test público pós-deploy.
+- Os 51 DR **não são assumidos como entidades do mesmo tipo**. `DR####` é um identificador legado de entrada; a recertificação corrente distingue instituição/provedor, programa/iniciativa, plataforma/catálogo/infraestrutura, dataset/coleção, serviço e portal/viewer quando a evidência permite.
 
 ## Objetivo ativo
 
-Antes de consolidar a arquitetura Vitrine 2.0, cada registro `DR0001–DR0051` deve ser classificado pelo que realmente representa: instituição/provedor, programa/iniciativa, plataforma, catálogo/repositório, infraestrutura de dados, dataset/coleção, serviço de dados, portal/visualizador ou combinação explicitamente decomposta.
+Concluir a recertificação semântica e de acesso dos 51 registros e estabilizar a interface estática antes de qualquer nova arquitetura federada.
 
-A direção pública permanece:
+A direção pública é:
 
-**fenômeno/processo → território → tempo/escala → dado utilizável → acesso → provedor/proveniência**.
+**pergunta científica → fenômeno/processo → território/tempo/escala → dataset/família de dados → produto científico quando necessário → distribuição/rota de acesso ou DataService → provedor/proveniência → documentação**.
 
-Busca livre não é o mecanismo principal. A interface deve privilegiar filtros controlados e encaminhar o usuário a dados efetivamente acessíveis.
+Busca livre não é o mecanismo principal. A interface privilegia filtros controlados e encaminhamento a rotas de dados efetivamente demonstradas.
 
 ## Modelo: estado transitório
 
-A estrutura histórica `Fonte (DR) → Produto (DP) → Distribuição (DD)` continua existindo como **estrutura legada de armazenamento e rastreabilidade**. Ela não é mais tratada como ontologia final.
+A estrutura histórica `Fonte (DR) → Produto (DP) → Distribuição (DD)` continua existindo para **compatibilidade, IDs e rastreabilidade**. Ela não é tratada como ontologia final.
 
-O modelo canônico só será congelado após a auditoria 51/51 e deverá distinguir, no mínimo quando aplicável:
+O modelo em consolidação distingue, quando aplicável:
 
 - Provider/Institution;
 - Program/Initiative;
 - Platform/Catalog/Data Infrastructure;
 - Dataset/Collection;
+- Product, somente quando o objeto informacional é materialmente distinto;
 - Distribution;
-- DataService.
+- DataService;
+- Portal/Viewer;
+- Documentation/Publication.
+
+Formato, arquivo, API, viewer ou documentação não viram produto científico por conveniência. Proveniência é transversal ao objeto de dados.
+
+## Fase operacional
+
+A frente ativa é a consolidação estática 51/51:
+
+1. recertificar tipo/papel, fenômeno/processo, território, informação, proveniência e acesso de cada DR;
+2. classificar a rota principal como `A DIRECT_DATA`, `B DATASET_PAGE`, `C API_SERVICE`, `D VIEWER_DOC` ou `E BROKEN_UNCERTAIN`;
+3. refletir essas relações nos cards e filtros sem aumentar carga cognitiva;
+4. fechar QA estrutural, semântico, visual e smoke público.
+
+Somente A–C são acesso confirmado a dados. Viewer, PDF, documentação e homepage genérica devem ser rotulados pelo papel real.
 
 ## Federação por APIs
 
-A federação é uma fase posterior. Primeiro: auditoria ontológica 51/51. Depois: registro de integração 51/51. Só então: pipeline e pilotos, com **MapBiomas Alerta como primeiro caso obrigatório**.
-
-Nenhum recurso descoberto por API entra automaticamente na superfície pública.
+Federação é fase posterior e não está sendo executada neste marco. Nenhum recurso descoberto por API entra automaticamente na superfície pública.
 
 ## Release científica v1.0.0
 
@@ -53,6 +69,7 @@ A release histórica permanece imutável e reproduzível:
 - execução e gates: `WORKFLOW_STATUS.md`;
 - direção científica: `docs/PROJECT_SCIENTIFIC_DIRECTION.md`;
 - contrato legado/transitório: `docs/VITRINE_CANONICAL_DATA_CONTRACT.md`;
+- matriz de recertificação de acesso: `data/static_core_51_access_audit.json`;
 - repositório: https://github.com/Ian-loc/vitrineciencia;
 - site: https://ian-loc.github.io/vitrineciencia/.
 
