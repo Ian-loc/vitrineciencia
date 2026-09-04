@@ -10,21 +10,11 @@
     E: "Acesso em revisão"
   };
 
-  const normUrl = value => String(value || "").trim().replace(/\/$/, "").toLowerCase();
-  const https = value => /^https:\/\//.test(String(value || ""));
-  const sameUrl = (a, b) => https(a) && https(b) && normUrl(a) === normUrl(b);
   const splitValues = value => String(value || "").split("|").map(item => item.trim()).filter(Boolean);
+  let verifiedAccess = new Map();
 
   function accessRole(resource) {
-    const url = String(resource.data_access_url || "");
-    const text = `${resource.access_protocols || ""} ${resource.data_formats || ""} ${resource.access_conditions || ""} ${resource.visualization_types || ""} ${url}`.toLowerCase();
-    if (!https(url)) return "E";
-    if (/\.pdf(?:$|[?#])/i.test(url)) return "D";
-    if (/swagger|openapi|graphql|\/api(?:\/|$)|\bwfs\b|\bwcs\b|\bwms\b|stac|ckan|opendap|rest api/.test(text)) return "C";
-    if (/download|downloads|baixar|arquivo|csv|geotiff|shapefile|netcdf|parquet/.test(text) || /\.(?:zip|csv|tif|tiff|nc|geojson|gpkg|xlsx?)(?:$|[?#])/i.test(url)) return "A";
-    if (/viewer|visualizador|dashboard|painel|mapa interativo|documenta|manual/.test(text)) return "D";
-    if (!sameUrl(url, resource.homepage_url)) return "B";
-    return "E";
+    return verifiedAccess.get(resource.resource_id) || "E";
   }
 
   function populateDerivedSelect(select, values, emptyLabel, labels = {}) {
@@ -92,13 +82,14 @@
       [
         ["O que oferece", resource.data_product_types || "Não informado"],
         ["Território", resource.geographic_coverage || "Não informado"],
-        ["Distribuição / acesso", ACCESS_LABELS[accessRole(resource)]]
+        ["Distribuição / acesso", `${accessRole(resource)} · ${ACCESS_LABELS[accessRole(resource)]}`]
       ].forEach(([label, value]) => {
         const item = document.createElement("div");
         const dt = document.createElement("dt");
         const dd = document.createElement("dd");
         dt.textContent = label;
         dd.textContent = value;
+        if (label === "Distribuição / acesso") dd.dataset.accessAuthority = "static_core_51_progress";
         item.append(dt, dd);
         facts.appendChild(item);
       });
@@ -148,7 +139,19 @@
     }
   }
 
-  function initialize() {
+  async function loadVerifiedAccess() {
+    try {
+      const response = await fetch("data/static_core_51_progress.json", {cache:"no-store"});
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const payload = await response.json();
+      verifiedAccess = new Map((payload.records || []).map(item => [item.resource_id, item.access_role]));
+    } catch (error) {
+      verifiedAccess = new Map();
+      console.error("Falha ao carregar a matriz auditada de acesso; classificação conservadora E aplicada", error);
+    }
+  }
+
+  async function initialize() {
     informationSelect = document.querySelector("#information");
     accessSelect = document.querySelector("#access-role");
     if (!informationSelect || !accessSelect || !all.length) {
@@ -156,6 +159,7 @@
       return;
     }
 
+    await loadVerifiedAccess();
     populateDerivedSelect(informationSelect, all.flatMap(resource => splitValues(resource.data_product_types)), "Todos os tipos de informação");
     populateDerivedSelect(accessSelect, all.map(accessRole), "Todas as formas de acesso", ACCESS_LABELS);
     const params = new URLSearchParams(location.search);
