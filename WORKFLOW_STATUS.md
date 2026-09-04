@@ -1,14 +1,28 @@
 # Estado do workflow — Vitrine Ciência
 
-Atualização: **2026-09-03** (`America/Sao_Paulo`)
+Atualização: **2026-09-04** (`America/Sao_Paulo`)
+
+## Autoridade operacional
+
+O GitHub é a autoridade canônica. `main` representa o estado público corrente; Drive, worktrees locais, handoffs e chats não substituem o que está materializado e validado no repositório.
+
+Arquivos/matrizes que controlam o marco estático:
+
+- `data/data_resources.csv`, `data/data_products.csv`, `data/product_distributions.csv`;
+- `data/static_core_51_access_audit.json`;
+- `data/static_core_51_progress.json`;
+- `data/applied_priority_gate.json`;
+- scripts de build e validação.
+
+Artefatos públicos são derivados dessas autoridades.
 
 ## Fase ativa
 
-A fase ativa é a **QA/QC, consolidação semântica e funcional da Vitrine Ciência estática com o núcleo DR0001–DR0051**.
+A frente ativa é o **fechamento da Fase III — QA/QC e consolidação funcional da Vitrine estática DR0001–DR0051**.
 
-O resgate S0 já foi incorporado e publicado. O PR `#267` está encerrado por merge e não deve ser reaberto. Há uma única frente executora recorrente para a Vitrine.
+A expansão geral permanece pausada. O estado público usa **51 registros DR, 11 itens detalhados e 19 distribuições**; os 11/19 são subconjunto detalhado. Na terminologia física do schema legado, isso corresponde a **51 fontes, 11 produtos e 19 distribuições**. A expansão histórica 135/843/876 permanece em quarentena.
 
-O estado público usa **51 registros DR, 11 itens detalhados e 19 distribuições**. Na terminologia física exigida pelo schema/validador legado, isso corresponde a **51 fontes, 11 produtos e 19 distribuições**; esses rótulos não definem a ontologia pública. Os 11/19 são subconjunto detalhado. A expansão histórica 135/843/876 permanece em quarentena e a expansão geral está **pausada**.
+A recertificação semântica está concluída em **51/51**. A matriz corrente de acesso é **A=1, B=38, C=0, D=10, E=2**; `DR0014` e `DR0039` permanecem E de forma deliberada e documentada.
 
 ## Contrato operacional
 
@@ -20,59 +34,57 @@ A experiência pública deve seguir:
 
 Devem permanecer distintos quando aplicável: Provider/Institution, Program/Initiative, Platform/Catalog/Data Infrastructure, Dataset/Collection, Product, Distribution, DataService, Portal/Viewer e Documentation/Publication.
 
-## Sequência de execução
+## Estado das fases
 
-1. **Fase I — reconciliar e fixar o estado real**
-   - sincronizar documentos de autoridade com `main` publicado;
-   - recertificar 51/51 por `entity_type/role`, fenômeno/processo, território, tipo de informação, proveniência, dataset/família quando sustentado, rota A–E e `last_verified`;
-   - priorizar E, ambiguidades semânticas e depois D;
-   - não forçar Dataset onde não houver evidência.
-2. **Fase II — reorganizar a representação estática**
+1. **Fase I — reconciliar e fixar o estado real: CONCLUÍDA**
+   - 51/51 com tipagem semântica factual;
+   - 51/51 com rota A–E e justificativa;
+   - dois E preservados como limitações verificadas, não pendências ocultas.
+
+2. **Fase II — reorganizar a representação estática: MATERIALIZADA**
    - Home orientada por pergunta/tema;
    - `sources.html` como descoberta ampla dos 51;
-   - `products.html` como subconjunto detalhado, reclassificado semanticamente quando necessário;
-   - separar Baixar dados / Página do conjunto / API-serviço / Viewer / Documentação / Provedor / Acesso em revisão;
-   - proveniência como relações transversais, não como pai único do dado.
-3. **Fase III — consolidação funcional**
+   - `products.html` como subconjunto detalhado 11/19;
+   - Baixar dados / Página do conjunto / API-serviço / Viewer / Documentação / Provedor separados por função;
+   - P1–P6 materializado na superfície pública.
+
+3. **Fase III — consolidação funcional: EM FECHAMENTO**
    - QA estrutural, semântico, científico e de navegação;
    - filtros, URL params, teclado/acessibilidade básica, desktop/tablet/mobile;
-   - CI principal, QA visual e smoke público no SHA final.
+   - zero CTA de dados/download/API apontando silenciosamente para viewer/PDF/documentação/homepage genérica;
+   - CI principal, QA visual e smoke público no SHA final;
+   - documentação e checkpoint sincronizados com `main`.
 
 ## Classificação de acesso
 
 - **A DIRECT_DATA** — arquivo/download/endpoint que entrega dados.
 - **B DATASET_PAGE** — página específica com mecanismo explícito de obtenção.
-- **C API_SERVICE** — API/OGC/STAC/CKAN/GraphQL ou serviço de consulta/extração.
-- **D VIEWER_DOC** — viewer, mapa, dashboard, documentação ou PDF sem acesso de dados demonstrado.
-- **E BROKEN_UNCERTAIN** — rota quebrada, restrita, genérica ou incerta.
+- **C API_SERVICE** — API/OGC/STAC/CKAN/GraphQL ou serviço de consulta/extração como rota principal.
+- **D VIEWER_DOC** — viewer, mapa, dashboard, documentação ou PDF sem acesso de dados demonstrado na rota principal.
+- **E BROKEN_UNCERTAIN** — rota genérica, inadequada como acesso agregado ou sem obtenção demonstrada.
 
 Somente A–C podem ser apresentados como acesso confirmado a dados. HTTP 200 isolado não é prova de acesso.
 
 ## Eficiência de execução
 
-- usar `data/static_core_51_access_audit.json` como matriz persistente de recertificação;
-- batch adaptativo: 12–20 simples, 8–12 moderados, 3–7 complexos;
 - não reabrir caso fechado sem nova evidência, conflito ou regressão;
+- mudança factual começa na autoridade canônica apropriada e é propagada pelo build;
+- não corrigir classificação apenas no HTML/JavaScript;
 - bloqueio externo local não interrompe casos independentes;
-- candidate delta → validação → escrita → read-back → QA incremental → avanço do cursor;
-- QA global/visual/smoke somente em gate, regressão, mudança material de interface ou fechamento;
-- uma única branch sequencial se branch for necessária; nenhum PR concorrente.
+- candidate delta → validação → escrita → read-back → QA;
+- uma única branch sequencial por fechamento; nenhum PR concorrente para o mesmo marco.
 
 ## Gate P1–P6
 
 P1 AdaptaBrasil MCTI; P2 MapBiomas Municípios; P3 IEDE-MG/FJP; P4 BDMG com dado público verificável; P5 SICAR/CAR e SIGEF/INCRA separados; P6 IBGE Cidades e Estados. Todos devem permanecer sustentados por objeto informacional real, proveniência e acesso corretamente rotulado.
-
-## Estado de acesso antes da recertificação corrente
-
-A matriz estática herdada do resgate registrava **A=1, B=32, C=0, D=10, E=8**. Após recertificação oficial do TerraBrasilis em 3 de setembro de 2026, a matriz corrente registra **A=1, B=33, C=0, D=10, E=7**. Mudanças adicionais exigem evidência oficial atual e read-back.
 
 ## Definition of Done — `VITRINE_STATIC_51_STABLE`
 
 O marco exige simultaneamente:
 
 - `main` pública no núcleo 51, com expansão histórica fora do catálogo vivo;
-- 51/51 com tipo/papel factual ou unresolved explícito;
-- 51/51 com fenômeno/processo, território, tipo de informação, proveniência e A–E com verificação atual ou E justificado;
+- 51/51 com tipo/papel factual;
+- 51/51 com fenômeno/processo, território, tipo de informação, proveniência e A–E sustentados;
 - dataset/família como objeto científico central quando identificável, sem invenção;
 - zero microproduto criado apenas por formato/protocolo/interface;
 - Distribution, DataService, Viewer, Documentation e Provider/Provenance semanticamente distintos;
@@ -81,7 +93,7 @@ O marco exige simultaneamente:
 - 11/19 explicitamente subconjunto;
 - zero botão dados/download/API levando silenciosamente a viewer/PDF/documentação/homepage genérica;
 - percurso tema → entrada/dataset → rota útil em 2–3 decisões nos casos representativos;
-- CI + QA visual + smoke público PASS no SHA final;
+- CI principal + QA visual + smoke público PASS no SHA final;
 - README/PROJECT_STATE/WORKFLOW_STATUS sincronizados com o estado material;
 - checkpoint final curto no repo com contagens, tipologia, P1–P6 e limitações.
 
@@ -89,7 +101,7 @@ Somente então declarar:
 
 `VITRINE_STATIC_51_STABLE`
 
-Depois desse token, a execução recorrente deve ser desativada.
+Depois desse token, a execução recorrente do marco estático deve ser desativada.
 
 ## Fora do escopo até esse marco
 

@@ -1,23 +1,47 @@
 # Estado canônico — Vitrine Ciência
 
-**Data de referência:** 3 de setembro de 2026  
+**Data de referência:** 4 de setembro de 2026  
 **Fuso:** `America/Sao_Paulo`
+
+## Autoridade
+
+O repositório `Ian-loc/vitrineciencia` é a **autoridade canônica do projeto**. `main` representa o estado público corrente. Worktrees locais, Google Drive, handoffs e chats são auxiliares de trabalho ou espelhos documentais; não substituem o estado materializado no GitHub.
+
+Dentro do repositório, a hierarquia corrente é:
+
+1. arquivos de dados e matrizes de auditoria canônicas;
+2. scripts de build e validação;
+3. artefatos públicos derivados (JSON/HTML/`_site`);
+4. documentação de estado, que deve descrever o material e nunca contradizê-lo.
 
 ## Estado global
 
-A **fase ativa de QA/QC e manutenção** é a consolidação semântica e funcional da Vitrine Ciência estática com o núcleo DR0001–DR0051, antes de qualquer mudança para Data Service/federação.
+A Vitrine está no fechamento da **consolidação semântica e funcional do núcleo estático DR0001–DR0051**, antes de qualquer mudança para Data Service/federação.
 
-A expansão geral permanece pausada. O trabalho corrente recertifica os 51 registros, reduz carga cognitiva, orienta a descoberta por tema científico e corrige a semântica de dados, produtos, rotas e proveniência.
+A expansão geral permanece pausada. A recertificação semântica 51/51 está concluída. A **fase ativa de QA/QC e manutenção** corresponde agora ao fechamento funcional, à publicação e à sincronização documental do marco estático.
 
 ## Estado material
 
-- `main` já contém e publica o núcleo estático de **51 registros DR / 11 itens detalhados / 19 distribuições**.
+- `main` publica o núcleo estático de **51 registros DR / 11 itens detalhados / 19 distribuições**.
 - Na terminologia física exigida pelo schema/validador legado, isso corresponde a **51 fontes, 11 produtos e 19 distribuições**; esses rótulos não definem a ontologia pública.
-- O PR `#267` foi incorporado em `main` em 3 de setembro de 2026 e não é mais uma frente ativa.
-- O workflow principal de publicação e o smoke test público pós-deploy passaram para o estado estático 51/11/19.
-- A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130831` e snapshot histórico permanecem imutáveis.
+- Os 11/19 são um subconjunto detalhado, não toda a cobertura científica dos 51.
 - A expansão histórica 135/843/876 permanece preservada em `data/quarantine/v1.0.0-expanded/` e fora do catálogo vivo.
-- Os 51 DR podem representar tipos distintos de entidade. `DR####` é identificador legado e não implica que a entrada seja dataset, provedor ou plataforma.
+- `data/static_core_51_progress.json` registra **51/51 com tipagem semântica concluída**, sem pendências de tipagem.
+- `data/static_core_51_access_audit.json` registra **A=1, B=38, C=0, D=10, E=2**.
+- Os dois E são limitações deliberadas e documentadas: `DR0014` (SiBBr, rota canônica genérica) e `DR0039` (GBIF IPT, software de publicação e não rota agregada de obtenção).
+- O gate P1–P6 está materializado em `data/applied_priority_gate.json`.
+- A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130831` e snapshot histórico permanecem imutáveis.
+
+## Fontes materiais de verdade no marco estático
+
+- `data/data_resources.csv`;
+- `data/data_products.csv`;
+- `data/product_distributions.csv`;
+- `data/static_core_51_access_audit.json`;
+- `data/static_core_51_progress.json`;
+- `data/applied_priority_gate.json`.
+
+JSONs públicos, páginas e `_site` são derivados. Mudanças de classificação ou significado devem começar nas fontes canônicas correspondentes e ser propagadas pelo build/validação; não devem ser corrigidas apenas na UI.
 
 ## Modelo público corrente
 
@@ -27,7 +51,7 @@ A navegação deve seguir:
 
 A estrutura física histórica `DR → DP → DD` permanece apenas para compatibilidade e rastreabilidade.
 
-A interface e a recertificação devem distinguir, quando aplicável:
+A interface e a recertificação distinguem, quando aplicável:
 
 - Provider/Institution;
 - Program/Initiative;
@@ -43,37 +67,38 @@ Proveniência é transversal: produzir, publicar, manter, hospedar/expor e docum
 
 ## Classificação de acesso
 
-Cada DR deve receber verificação factual da rota principal:
-
 - `A DIRECT_DATA` — arquivo/download/endpoint que entrega dados;
 - `B DATASET_PAGE` — página específica com mecanismo explícito de obtenção;
-- `C API_SERVICE` — API/OGC/STAC/CKAN/GraphQL ou serviço de consulta/extração;
-- `D VIEWER_DOC` — viewer/dashboard/mapa/documentação/PDF sem acesso de dados demonstrado;
-- `E BROKEN_UNCERTAIN` — rota quebrada, restrita, genérica ou ainda incerta.
+- `C API_SERVICE` — API/OGC/STAC/CKAN/GraphQL ou serviço de consulta/extração como rota principal;
+- `D VIEWER_DOC` — viewer/dashboard/mapa/documentação/PDF sem acesso de dados demonstrado na rota principal;
+- `E BROKEN_UNCERTAIN` — rota genérica, inadequada como acesso agregado ou sem obtenção demonstrada.
 
 Somente A–C podem ser apresentados como acesso confirmado a dados. HTTP 200 isolado não comprova acesso.
 
-## Fases ativas
+## Estado das fases
 
-**Fase I — reconciliar e fixar o estado real**
+**Fase I — reconciliar e fixar o estado real: CONCLUÍDA para o marco estático**
 
-- sincronizar documentação com `main` publicado;
-- recertificar os 51 por tipo/papel, fenômeno/processo, território, informação, proveniência, dataset/família quando sustentado, rota A–E e `last_verified`;
-- não forçar Dataset quando a entrada é instituição, plataforma, catálogo ou outro tipo.
+- 51/51 semanticamente tipados;
+- 51/51 com classificação A–E e justificativa;
+- dois E preservados explicitamente como limitações verificadas.
 
-**Fase II — reorganizar a representação estática**
+**Fase II — reorganizar a representação estática: MATERIALIZADA**
 
 - Home orientada por pergunta/tema;
-- `sources.html` como superfície ampla de descoberta dos 51;
-- `products.html` como subconjunto detalhado 11/19, com tipologia honesta;
-- funções de acesso explicitamente separadas: dados, página do conjunto, API/serviço, viewer, documentação e provedor.
+- `sources.html` como superfície ampla dos 51;
+- `products.html` como subconjunto detalhado 11/19 com tipologia explícita;
+- rotas de acesso separadas por função;
+- P1–P6 integrado à superfície pública.
 
-**Fase III — consolidação funcional**
+**Fase III — consolidação funcional: EM FECHAMENTO**
 
 - QA semântico, estrutural, científico e de navegação;
 - filtros, URL params, teclado, desktop/tablet/mobile;
 - zero botão download/dados/API apontando silenciosamente para viewer/PDF/documentação/homepage genérica;
-- CI, QA visual e smoke público no SHA final.
+- CI principal, QA visual e smoke público no SHA final;
+- sincronização de README/PROJECT_STATE/WORKFLOW_STATUS;
+- checkpoint final no repositório.
 
 ## Gate P1–P6
 
@@ -100,10 +125,17 @@ Até `VITRINE_STATIC_51_STABLE`, não iniciar como frente executora:
 
 ## Regra de conclusão
 
-O marco estático termina somente quando os 51 estiverem semanticamente recertificados ou explicitamente unresolved, os acessos A–E estiverem factualmente sustentados, a interface refletir a distinção dataset/produto/distribuição/serviço/proveniência e CI/QA/smoke estiverem verdes no estado final.
+O marco estático termina somente quando, no mesmo estado final:
+
+- 51/51 permanecerem semanticamente recertificados;
+- A–E permanecer factualmente sustentado;
+- P1–P6 permanecer factual;
+- a interface refletir as distinções semânticas sem regressão;
+- CI principal, QA visual e smoke público estiverem verdes;
+- README/PROJECT_STATE/WORKFLOW_STATUS e checkpoint estiverem sincronizados com `main`.
 
 Somente então declarar:
 
 `VITRINE_STATIC_51_STABLE`
 
-Depois desse token, a execução recorrente deve ser desativada. Federação/Data Service pertence a novo milestone e exige autorização posterior.
+Depois desse token, a execução recorrente do marco estático deve ser desativada. Federação/Data Service pertence a novo milestone e exige autorização posterior.

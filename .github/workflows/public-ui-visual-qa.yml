@@ -1,6 +1,22 @@
 name: Capturar QA visual da Vitrine publicada
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/public-ui-visual-qa.yml"
+      - "index.html"
+      - "products.html"
+      - "products-list.html"
+      - "sources.html"
+      - "analytics.html"
+      - "about.html"
+      - "assets/**"
+      - "data/**"
+      - "scripts/build_catalog.py"
+      - "scripts/build_public_discovery.py"
+      - "scripts/build_site_artifact.py"
+      - "scripts/validate_vitrine.py"
   pull_request:
     branches: [main]
     paths:
@@ -71,16 +87,25 @@ jobs:
               const context = await browser.newContext({viewport});
               for (const [name, path] of pages) {
                 const page = await context.newPage();
+                const browserErrors = [];
+                page.on('pageerror', error => browserErrors.push(`pageerror: ${error.message}`));
+                page.on('console', message => { if (message.type() === 'error') browserErrors.push(`console: ${message.text()}`); });
                 const url = base + path;
                 const response = await page.goto(url,{waitUntil:'networkidle',timeout:60000});
                 if (!response || !response.ok()) { console.error(`HTTP inválido: ${url}`); failed=true; await page.close(); continue; }
-                if (name === 'products') await page.waitForSelector('#product-list .product-card');
+                if (name === 'products') {
+                  await page.waitForFunction(() => document.querySelector('#product-list .product-card') || /Falha ao carregar os produtos/i.test(document.querySelector('#product-list')?.textContent || ''), null, {timeout:10000});
+                  if (await page.locator('#product-list .product-card').count() === 0) {
+                    const diagnostic = (await page.locator('#product-list').innerText()).trim();
+                    throw new Error(`Produtos não foram materializados. DOM: ${diagnostic || '(vazio)'}; navegador: ${browserErrors.join(' | ') || '(sem erro capturado)'}`);
+                  }
+                }
                 if (name === 'product-index') await page.waitForSelector('#product-index-list .product-index-row');
                 if (name === 'sources') await page.waitForSelector('#list .card');
                 await page.screenshot({path:`visual-qa/${mode}-${name}.png`,fullPage:true});
 
                 const metrics = await page.evaluate(() => ({title:document.title,viewportWidth:window.innerWidth,documentWidth:document.documentElement.scrollWidth,h1:(document.querySelector('h1')?.textContent||'').trim(),hasMain:Boolean(document.querySelector('main')),visibleFreeSearch:[...document.querySelectorAll('input[type="search"],input[type="text"]')].filter(el=>{const s=getComputedStyle(el); return s.display!=='none'&&s.visibility!=='hidden'&&el.getClientRects().length;}).length}));
-                report.push({mode,page:name,...metrics});
+                report.push({mode,page:name,...metrics,browserErrors});
                 if (!metrics.hasMain || !metrics.h1) failed=true;
                 if (metrics.documentWidth > metrics.viewportWidth + 2) { console.error(`Overflow horizontal: ${mode}/${name}`); failed=true; }
                 if (metrics.visibleFreeSearch !== 0) { console.error(`Busca livre visível em ${mode}/${name}`); failed=true; }
