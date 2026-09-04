@@ -25,7 +25,6 @@
     {key:"territorial", label:"Território e sociedade", terms:["territorio","territorial","demografia","populacao","socioeconom","governanca","municipio","municipal"]},
     {key:"geoinformação", label:"Bases territoriais e geoespaciais", terms:["geoinformacao","geoespacial","geospatial","sensoriamento remoto","remote sensing","cartografia","infraestrutura de dados espaciais"]}
   ];
-  const THEME_BY_KEY = new Map(THEMES.map(theme => [theme.key, theme]));
 
   const splitValues = value => String(value || "").split("|").map(item => item.trim()).filter(Boolean);
   const flexNorm = value => String(value || "")
@@ -34,6 +33,9 @@
     .replace(/[^a-z0-9]+/g, " ")
     .trim()
     .replace(/\s+/g, " ");
+  const THEME_BY_KEY = new Map(THEMES.map(theme => [theme.key, theme]));
+  const THEME_BY_NORM = new Map(THEMES.map(theme => [flexNorm(theme.key), theme]));
+  const themeForQuery = value => THEME_BY_KEY.get(value) || THEME_BY_NORM.get(flexNorm(value)) || null;
   const flexibleContains = (haystack, needle) => {
     const text = flexNorm(haystack);
     const tokens = flexNorm(needle).split(" ").filter(Boolean);
@@ -45,7 +47,7 @@
     resource.academic_uses, resource.geographic_coverage, resource.data_sources
   ].join(" ");
   const themeMatches = (resource, key) => {
-    const theme = THEME_BY_KEY.get(key);
+    const theme = themeForQuery(key);
     if (!theme) return flexibleContains(searchText(resource), key);
     const text = scientificText(resource);
     return theme.terms.some(term => flexibleContains(text, term));
@@ -159,8 +161,8 @@
 
   function baseMatches(resource, exclude = "") {
     const rawQuery = els.q.value.trim();
-    const isTheme = THEME_BY_KEY.has(rawQuery);
-    const queryMatch = !rawQuery || (isTheme ? themeMatches(resource, rawQuery) : flexibleContains(searchText(resource), rawQuery));
+    const theme = themeForQuery(rawQuery);
+    const queryMatch = !rawQuery || (theme ? themeMatches(resource, theme.key) : flexibleContains(searchText(resource), rawQuery));
     return queryMatch &&
       (exclude === "coverage" || !els.coverage.value || resource.geographic_coverage === els.coverage.value) &&
       (exclude === "information" || !informationSelect.value || splitValues(resource.data_product_types).includes(informationSelect.value)) &&
@@ -198,17 +200,21 @@
       }).length]);
       themeSelect.innerHTML = '<option value="">Todos os temas</option>';
       themeCounts.filter(([, count]) => count > 0).forEach(([theme, count]) => themeSelect.add(new Option(`${theme.label} (${count})`, theme.key)));
-      if (current && ![...themeSelect.options].some(option => option.value === current)) themeSelect.add(new Option(`${THEME_BY_KEY.get(current)?.label || current} (0)`, current));
-      themeSelect.value = current;
+      if (current && ![...themeSelect.options].some(option => option.value === current)) {
+        const theme = themeForQuery(current);
+        themeSelect.add(new Option(`${theme?.label || current} (0)`, theme?.key || current));
+      }
+      const canonicalCurrent = themeForQuery(current)?.key || current;
+      themeSelect.value = canonicalCurrent;
     }
   }
 
   function apply(syncUrl = true) {
     if (!informationSelect || !accessSelect || !all.length) return;
     const rawQuery = els.q.value.trim();
-    const isTheme = THEME_BY_KEY.has(rawQuery);
+    const theme = themeForQuery(rawQuery);
     filtered = all.filter(resource =>
-      (!rawQuery || (isTheme ? themeMatches(resource, rawQuery) : flexibleContains(searchText(resource), rawQuery))) &&
+      (!rawQuery || (theme ? themeMatches(resource, theme.key) : flexibleContains(searchText(resource), rawQuery))) &&
       (!els.coverage.value || resource.geographic_coverage === els.coverage.value) &&
       (!informationSelect.value || splitValues(resource.data_product_types).includes(informationSelect.value)) &&
       (!accessSelect.value || accessRole(resource) === accessSelect.value)
@@ -248,17 +254,28 @@
     }
 
     await loadVerifiedAccess();
+
+    const informationCounts = new Map();
+    all.flatMap(resource => splitValues(resource.data_product_types)).forEach(value => informationCounts.set(value, (informationCounts.get(value) || 0) + 1));
+    populateDerivedSelect(informationSelect, [...informationCounts.entries()], "Todos os tipos de informação");
+    const accessCounts = new Map();
+    all.forEach(resource => {
+      const value = accessRole(resource);
+      accessCounts.set(value, (accessCounts.get(value) || 0) + 1);
+    });
+    populateDerivedSelect(accessSelect, [...accessCounts.entries()], "Todas as formas de acesso", ACCESS_LABELS);
+
     const params = new URLSearchParams(location.search);
-    if (params.get("information")) informationSelect.value = params.get("information");
-    if (params.get("access")) accessSelect.value = params.get("access");
+    if ([...informationSelect.options].some(option => option.value === params.get("information"))) informationSelect.value = params.get("information") || "";
+    if ([...accessSelect.options].some(option => option.value === params.get("access"))) accessSelect.value = params.get("access") || "";
 
     [informationSelect, accessSelect, els.coverage].forEach(element => element.addEventListener("change", () => window.setTimeout(() => apply(), 0)));
     els.q.addEventListener("input", () => window.setTimeout(() => apply(), 0));
     document.querySelector("#clear")?.addEventListener("click", () => window.setTimeout(() => apply(), 0));
     window.addEventListener("popstate", () => window.setTimeout(() => {
       const current = new URLSearchParams(location.search);
-      informationSelect.value = current.get("information") || "";
-      accessSelect.value = current.get("access") || "";
+      informationSelect.value = [...informationSelect.options].some(option => option.value === current.get("information")) ? (current.get("information") || "") : "";
+      accessSelect.value = [...accessSelect.options].some(option => option.value === current.get("access")) ? (current.get("access") || "") : "";
       apply(false);
     }, 0));
 
