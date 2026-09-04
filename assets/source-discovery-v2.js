@@ -131,14 +131,14 @@
       [
         ["O que oferece", resource.data_product_types || "Não informado"],
         ["Território", resource.geographic_coverage || "Não informado"],
-        ["Acesso", `${accessRole(resource)} · ${ACCESS_LABELS[accessRole(resource)]}`]
+        ["Distribuição / acesso", `${accessRole(resource)} · ${ACCESS_LABELS[accessRole(resource)]}`]
       ].forEach(([label, value]) => {
         const item = document.createElement("div");
         const dt = document.createElement("dt");
         const dd = document.createElement("dd");
         dt.textContent = label;
         dd.textContent = value;
-        if (label === "Acesso") dd.dataset.accessAuthority = "static_core_51_access_audit";
+        if (label === "Distribuição / acesso") dd.dataset.accessAuthority = "static_core_51_access_audit";
         item.append(dt, dd);
         facts.appendChild(item);
       });
