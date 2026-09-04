@@ -83,7 +83,11 @@ jobs:
 
           async function validatePublicActions(page, selector, label) {
             await page.waitForTimeout(150);
-            const actions = await page.locator(selector).evaluateAll(nodes => nodes.map(a => ({text:(a.textContent||'').replace(/↗/g,'').trim(), href:a.href})));
+            const actions = await page.locator(selector).evaluateAll(nodes => nodes.map(a => {
+              const clone = a.cloneNode(true);
+              clone.querySelectorAll('.sr-only').forEach(node => node.remove());
+              return {text:(clone.textContent||'').replace(/↗/g,'').trim(), href:a.href};
+            }));
             for (const action of actions) {
               if (!allowedActions.has(action.text)) { console.error(`${label}: ação pública indevida: ${action.text}`); return false; }
               if (technicalHref.test(action.href)) { console.error(`${label}: endpoint técnico exposto: ${action.href}`); return false; }
@@ -136,7 +140,7 @@ jobs:
                   const action = await page.locator('.controlled-search-shell').getAttribute('action');
                   if (action !== 'sources.html') { console.error(`Home deve abrir exploração ampla: ${action}`); failed=true; }
                   if (await page.locator('#home-product-areas a[href^="sources.html?q="]').count() < 10) { console.error('Atalhos temáticos não apontam à exploração'); failed=true; }
-                  if (/autoridade P1|gates P1|núcleo histórico|rota correta|papel A|papéis A/i.test(await page.locator('body').innerText())) { console.error('Linguagem interna exposta na Home'); failed=true; }
+                  if (/autoridade P1|gates P1|núcleo histórico|rota correta|papel A|papéis A|termos controlados|busca textual livre|API\s*\/\s*serviço/i.test(await page.locator('body').innerText())) { console.error('Linguagem interna exposta na Home'); failed=true; }
                 }
 
                 if (name === 'products') {
@@ -179,11 +183,12 @@ jobs:
                   for (const selector of ['#coverage','#information','#access-role']) {
                     if (await page.locator(selector).evaluate(el => el.tagName) !== 'SELECT') { console.error(`Filtro principal não controlado: ${selector}`); failed=true; }
                   }
-                  if (await page.locator('#list .provenance-line').count() < 1) { console.error('Proveniência visível ausente nos cards'); failed=true; }
+                  if (await page.locator('#list .provenance-line').count() < 1) { console.error('Responsável visível ausente nos cards'); failed=true; }
+                  if (await page.locator('#list .verification-line').count() < 1) { console.error('Data de verificação visível ausente nos cards'); failed=true; }
                   if (await page.locator('#list .semantic-role-line:visible, #list .semantic-scope-note:visible').count()) { console.error('Classificação estrutural interna visível nas fontes'); failed=true; }
                   if (!await validatePublicActions(page, '#list .card-actions a:visible', 'Explorar dados')) failed=true;
                   const sourceText = await page.locator('body').innerText();
-                  if (/Os temas são aplicados aos campos científicos|correspondência sem distinção|listas são derivadas|recalculadas conforme/i.test(sourceText)) { console.error('Explicação de implementação exposta na exploração'); failed=true; }
+                  if (/Os temas são aplicados aos campos científicos|correspondência sem distinção|listas são derivadas|recalculadas conforme|termos controlados|núcleo de 51 registros|busca textual livre|API\s*\/\s*serviço/i.test(sourceText)) { console.error('Explicação de implementação exposta na exploração'); failed=true; }
                   const options = theme.locator('option');
                   if (await options.count() > 1) {
                     await theme.selectOption(await options.nth(1).getAttribute('value'));
