@@ -5,7 +5,7 @@
 
 ## Estado global
 
-A fase ativa é a **QA/QC, consolidação semântica e funcional da Vitrine Ciência estática com o núcleo DR0001–DR0051**, antes de qualquer mudança para Data Service/federação.
+A **fase ativa de QA/QC e manutenção** é a consolidação semântica e funcional da Vitrine Ciência estática com o núcleo DR0001–DR0051, antes de qualquer mudança para Data Service/federação.
 
 A expansão geral permanece pausada. O trabalho corrente recertifica os 51 registros, reduz carga cognitiva, orienta a descoberta por tema científico e corrige a semântica de dados, produtos, rotas e proveniência.
 
@@ -15,7 +15,7 @@ A expansão geral permanece pausada. O trabalho corrente recertifica os 51 regis
 - Na terminologia física exigida pelo schema/validador legado, isso corresponde a **51 fontes, 11 produtos e 19 distribuições**; esses rótulos não definem a ontologia pública.
 - O PR `#267` foi incorporado em `main` em 3 de setembro de 2026 e não é mais uma frente ativa.
 - O workflow principal de publicação e o smoke test público pós-deploy passaram para o estado estático 51/11/19.
-- A release científica `v1.0.0`, sua tag, DOI `10.5281/zenodo.22130831` e snapshot histórico permanecem imutáveis.
+- A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130831` e snapshot histórico permanecem imutáveis.
 - A expansão histórica 135/843/876 permanece preservada em `data/quarantine/v1.0.0-expanded/` e fora do catálogo vivo.
 - Os 51 DR podem representar tipos distintos de entidade. `DR####` é identificador legado e não implica que a entrada seja dataset, provedor ou plataforma.
 
