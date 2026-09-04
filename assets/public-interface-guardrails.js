@@ -18,6 +18,11 @@
     return anchor;
   }
 
+  function formatDate(value) {
+    const match = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    return match ? `${match[3]}/${match[2]}/${match[1]}` : String(value || "");
+  }
+
   function cleanTechnicalDetails(card) {
     card.querySelectorAll(".status-badge, .detail").forEach(node => {
       if (/\bapi\b|acesso automatizado|protocolos e ferramentas/i.test(node.textContent || "")) node.remove();
@@ -32,11 +37,18 @@
     return expected;
   }
 
+  function visibleLabel(anchor) {
+    const clone = anchor.cloneNode(true);
+    clone.querySelectorAll(".sr-only").forEach(node => node.remove());
+    return (clone.textContent || "").replace(/↗/g, "").trim();
+  }
+
   function actionsMatch(actions, expected) {
+    if (!actions) return expected.length === 0;
     const anchors = [...actions.querySelectorAll("a[href]")];
     if (anchors.length !== expected.length) return false;
     return anchors.every((anchor, index) => {
-      const label = (anchor.textContent || "").replace(/↗/g, "").trim();
+      const label = visibleLabel(anchor);
       return PUBLIC_ACTIONS.has(label) && label === expected[index].label && normUrl(anchor.href) === normUrl(expected[index].url) && !technicalAccess(anchor.href, label);
     });
   }
@@ -50,6 +62,33 @@
     });
   }
 
+  function ensureSourceEvidence(card, auditItem, publicLabel) {
+    const provenance = card.querySelector(".provenance-line");
+    const provenanceLabel = provenance?.querySelector("strong");
+    if (provenanceLabel && provenanceLabel.textContent !== "Responsável: ") provenanceLabel.textContent = "Responsável: ";
+
+    card.querySelectorAll(".discovery-facts > div").forEach(row => {
+      const dt = row.querySelector("dt");
+      const dd = row.querySelector("dd");
+      if (!dt || !dd) return;
+      if (/Distribuição\s*\/\s*acesso|Como acessar/i.test(dt.textContent || "")) {
+        dt.textContent = "Como acessar";
+        dd.textContent = publicLabel;
+      }
+    });
+
+    const verified = formatDate(auditItem?.source_last_verified);
+    if (verified) {
+      let line = card.querySelector(".verification-line");
+      if (!line) {
+        line = document.createElement("p");
+        line.className = "verification-line";
+        (provenance || card.querySelector(".description"))?.insertAdjacentElement("afterend", line);
+      }
+      if (line.textContent !== `Acesso verificado em ${verified}`) line.textContent = `Acesso verificado em ${verified}`;
+    }
+  }
+
   async function protectSources() {
     const list = document.querySelector("#list");
     if (!list) return;
@@ -58,14 +97,14 @@
         fetch("data/static_core_51_access_audit.json", {cache: "no-store"}).then(r => r.ok ? r.json() : Promise.reject()),
         fetch("data/data_resources.json", {cache: "no-store"}).then(r => r.ok ? r.json() : Promise.reject())
       ]);
-      const accessById = new Map((audit.records || []).map(item => [item.resource_id, item.access_role]));
+      const auditById = new Map((audit.records || []).map(item => [item.resource_id, item]));
       const resourceById = new Map((resources || []).map(item => [item.resource_id, item]));
       const publicAccessLabel = {
-        A: "Download de dados",
+        A: "Dados para download",
         B: "Página para obter dados",
         C: "Acesso pelo site",
         D: "Visualização / site",
-        E: "Site / acesso a confirmar"
+        E: "Acesso a confirmar"
       };
 
       const apply = () => {
@@ -82,10 +121,12 @@
         list.querySelectorAll(".card[data-resource-id]").forEach(card => {
           const resource = resourceById.get(card.dataset.resourceId);
           if (!resource) return;
-          const role = accessById.get(resource.resource_id) || "E";
-          const publicLabel = publicAccessLabel[role] || "Acessar site";
+          const auditItem = auditById.get(resource.resource_id) || {};
+          const role = auditItem.access_role || "E";
+          const publicLabel = publicAccessLabel[role] || "Acesso a confirmar";
           const fact = card.querySelector("[data-access-authority]");
           if (fact && fact.textContent !== publicLabel) fact.textContent = publicLabel;
+          ensureSourceEvidence(card, auditItem, publicLabel);
 
           const dataUrl = ["A", "B"].includes(role) && https(resource.data_access_url) && !technicalAccess(resource.data_access_url, `${resource.access_protocols || ""} ${resource.access_documentation_url || ""}`)
             ? resource.data_access_url : "";
@@ -129,6 +170,8 @@
         list.querySelectorAll(".product-card[data-product-id]").forEach(card => {
           const product = productById.get(card.dataset.productId);
           if (!product) return;
+          const provenanceLabel = card.querySelector(".provenance-line strong");
+          if (provenanceLabel && provenanceLabel.textContent !== "Responsável: ") provenanceLabel.textContent = "Responsável: ";
           const dataRoute = safeDataRoute(product);
           const dataUrl = dataRoute?.distribution?.access_url || "";
           const siteUrl = https(product.product_page_url) && !technicalAccess(product.product_page_url)
