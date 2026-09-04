@@ -46,6 +46,8 @@ jobs:
           fetch "$SITE/about.html" "$tmp/about.html"
           fetch "$SITE/assets/discovery-guardrails.js" "$tmp/discovery-guardrails.js"
           fetch "$SITE/assets/static-catalog-51.js" "$tmp/static-catalog-51.js"
+          fetch "$SITE/assets/source-discovery-v2.js" "$tmp/source-discovery-v2.js"
+          fetch "$SITE/assets/product-filter-ux.js" "$tmp/product-filter-ux.js"
           fetch "$SITE/assets/home.js" "$tmp/home.js"
           fetch "$SITE/data/data_resources.json" "$tmp/resources.json"
           fetch "$SITE/data/data_products.json" "$tmp/products.json"
@@ -57,21 +59,25 @@ jobs:
           grep -q 'Da pergunta ao dado em três decisões' "$tmp/index.html"
           grep -q 'applied_priority_gate.json' "$tmp/home.js"
 
+          grep -q 'Encontre o dado certo a partir da sua pergunta' "$tmp/sources.html"
           grep -q 'id="source-theme-shortcut"' "$tmp/sources.html"
           grep -q 'id="coverage"' "$tmp/sources.html"
           grep -q 'id="information"' "$tmp/sources.html"
           grep -q 'id="access-role"' "$tmp/sources.html"
-          grep -q 'Dado/produto' "$tmp/sources.html"
-          grep -q 'distribuição' "$tmp/sources.html"
+          grep -q 'Tipo de informação' "$tmp/sources.html"
+          grep -q 'Forma de acesso' "$tmp/sources.html"
           grep -q 'proveniência' "$tmp/sources.html"
+          grep -q 'static_core_51_access_audit.json' "$tmp/source-discovery-v2.js"
+          grep -q 'normalize("NFD")' "$tmp/source-discovery-v2.js"
 
-          grep -q 'Subconjunto detalhado' "$tmp/products.html"
-          grep -q '11 itens semanticamente distintos' "$tmp/products.html"
-          grep -q '19 rotas de acesso' "$tmp/products.html"
+          grep -q 'Subconjunto de 11 itens descritos em detalhe' "$tmp/products.html"
+          grep -q '19 rotas associadas' "$tmp/products.html"
           grep -q 'id="product-theme"' "$tmp/products.html"
           grep -q 'id="product-coverage"' "$tmp/products.html"
           grep -q 'id="product-kind"' "$tmp/products.html"
           grep -q 'id="product-access"' "$tmp/products.html"
+          grep -q 'disabled = unavailable' "$tmp/product-filter-ux.js"
+          grep -q 'hidden = unavailable' "$tmp/product-filter-ux.js"
 
           ! grep -E -q 'arquitetura científica interna|Fonte → Produto → Distribuição|snapshot candidato|Decisão arquitetural|Direção experimental' \
             "$tmp/index.html" "$tmp/products.html" "$tmp/sources.html" "$tmp/about.html"
@@ -97,5 +103,5 @@ jobs:
           assert all(item.get('access_role') in {'A', 'B', 'C', 'D', 'E'} for item in items)
           assert all(str(item.get('access_url') or '').startswith('https://') for item in items)
 
-          print('OK: Vitrine pública 51 registros / 11 itens detalhados / 19 rotas; P1–P6 publicados com papéis A–E explícitos')
+          print('OK: Vitrine pública 51 registros / 11 itens detalhados / 19 rotas; descoberta-first e P1–P6 preservados')
           PY
