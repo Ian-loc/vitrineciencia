@@ -18,7 +18,7 @@ Dentro do repositório, a hierarquia corrente é:
 
 A Vitrine está no fechamento da **consolidação semântica e funcional do núcleo estático DR0001–DR0051**, antes de qualquer mudança para Data Service/federação.
 
-A expansão geral permanece pausada. A recertificação semântica 51/51 está concluída e a frente ativa é QA funcional, publicação e sincronização documental.
+A expansão geral permanece pausada. A recertificação semântica 51/51 está concluída e a **fase ativa é QA/QC funcional**, publicação e sincronização documental.
 
 ## Estado material
 
