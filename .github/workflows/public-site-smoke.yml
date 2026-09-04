@@ -46,13 +46,16 @@ jobs:
           fetch "$SITE/about.html" "$tmp/about.html"
           fetch "$SITE/assets/discovery-guardrails.js" "$tmp/discovery-guardrails.js"
           fetch "$SITE/assets/static-catalog-51.js" "$tmp/static-catalog-51.js"
+          fetch "$SITE/assets/home.js" "$tmp/home.js"
           fetch "$SITE/data/data_resources.json" "$tmp/resources.json"
           fetch "$SITE/data/data_products.json" "$tmp/products.json"
+          fetch "$SITE/data/applied_priority_gate.json" "$tmp/applied-priority.json"
 
           grep -q 'Que fenômeno ou processo você quer investigar?' "$tmp/index.html"
           grep -q 'action="sources.html"' "$tmp/index.html"
           grep -q 'núcleo de 51 registros' "$tmp/index.html"
           grep -q 'Da pergunta ao dado em três decisões' "$tmp/index.html"
+          grep -q 'applied_priority_gate.json' "$tmp/home.js"
 
           grep -q 'id="source-theme-shortcut"' "$tmp/sources.html"
           grep -q 'id="coverage"' "$tmp/sources.html"
@@ -63,7 +66,8 @@ jobs:
           grep -q 'proveniência' "$tmp/sources.html"
 
           grep -q 'Subconjunto detalhado' "$tmp/products.html"
-          grep -q '11 itens com 19 rotas de acesso detalhadas' "$tmp/products.html"
+          grep -q '11 itens semanticamente distintos' "$tmp/products.html"
+          grep -q '19 rotas de acesso' "$tmp/products.html"
           grep -q 'id="product-theme"' "$tmp/products.html"
           grep -q 'id="product-coverage"' "$tmp/products.html"
           grep -q 'id="product-kind"' "$tmp/products.html"
@@ -74,14 +78,24 @@ jobs:
           ! grep -E -q 'data/quarantine|v1.0.0-expanded' \
             "$tmp/index.html" "$tmp/products.html" "$tmp/sources.html" "$tmp/about.html"
 
-          python3 - "$tmp/resources.json" "$tmp/products.json" <<'PY'
+          python3 - "$tmp/resources.json" "$tmp/products.json" "$tmp/applied-priority.json" <<'PY'
           import json, sys
           resources = json.load(open(sys.argv[1], encoding='utf-8'))
           products = json.load(open(sys.argv[2], encoding='utf-8'))
+          priority = json.load(open(sys.argv[3], encoding='utf-8'))
+
           assert len(resources) == 51, len(resources)
           assert len(products) == 11, len(products)
           assert len({p['resource_id'] for p in products}) <= len(resources)
           distributions = sum(len(p.get('distributions', [])) for p in products)
           assert distributions == 19, distributions
-          print('OK: Vitrine pública 51 registros / 11 itens detalhados / 19 rotas de acesso')
+
+          items = priority.get('items') or []
+          gates = [str(item.get('gate') or '') for item in items]
+          assert set(gates) == {'P1', 'P2', 'P3', 'P4', 'P5', 'P6'}, gates
+          assert gates.count('P5') >= 2, gates
+          assert all(item.get('access_role') in {'A', 'B', 'C', 'D', 'E'} for item in items)
+          assert all(str(item.get('access_url') or '').startswith('https://') for item in items)
+
+          print('OK: Vitrine pública 51 registros / 11 itens detalhados / 19 rotas; P1–P6 publicados com papéis A–E explícitos')
           PY
