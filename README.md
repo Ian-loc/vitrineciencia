@@ -5,13 +5,15 @@
 ## Estado atual — 4 de setembro de 2026
 
 - **Autoridade canônica:** o repositório `Ian-loc/vitrineciencia`; `main` é o estado público corrente. Worktrees locais, Drive, handoffs e chats são auxiliares e não substituem o que está materializado no GitHub.
-- O catálogo vivo usa o núcleo estático de **51 registros legados DR0001–DR0051**.
-- Na estrutura física legada, o estado público contém **51 registros DR, 11 itens detalhados e 19 distribuições**. Os 11/19 são um subconjunto detalhado, não toda a cobertura científica dos 51.
+- O marco estático do núcleo **DR0001–DR0051 está consolidado**: `VITRINE_STATIC_51_STABLE`.
+- O runtime público validado é o commit **`495bfe6a968176670461662869d1a3773797baf3`**.
+- Nesse runtime, os três gates finais passaram: build/deploy (`33906109623`), QA visual/responsivo (`33906109551`) e smoke pós-deploy (`33906157842`).
+- O catálogo vivo usa **51 registros DR, 11 itens detalhados e 19 distribuições**. Os 11/19 são um subconjunto detalhado, não toda a cobertura científica dos 51.
 - A expansão histórica **135/843/876** permanece preservada em `data/quarantine/v1.0.0-expanded/` e fora do catálogo vivo.
 - A recertificação semântica está concluída em **51/51**; `DR####` é identificador legado de entrada, não classe ontológica.
 - A matriz canônica de acesso registra **A=1, B=38, C=0, D=10, E=2**. Os dois E (`DR0014` e `DR0039`) são limitações deliberadamente documentadas, não pendências silenciosas.
 - O gate aplicado P1–P6 está materializado para AdaptaBrasil, MapBiomas Municípios, IEDE-MG/FJP, BDMG, SICAR/CAR + SIGEF/INCRA e IBGE Cidades e Estados.
-- O fechamento corrente é **QA funcional e sincronização documental** antes de declarar `VITRINE_STATIC_51_STABLE`.
+- O artefato público fecha suas dependências locais e separa explicitamente a autoridade de tipagem semântica da autoridade A–E de acesso.
 
 ## Direção pública
 
@@ -46,21 +48,19 @@ Quando aplicável, devem permanecer distintos: Provider/Institution, Program/Ini
 
 Somente A–C podem ser apresentados como acesso confirmado a dados. HTTP 200 isolado não comprova acesso científico.
 
-## Fase operacional
+## Estado operacional
 
-A Fase I de reconciliação e a recertificação semântica 51/51 estão concluídas. A Fase II de reorganização estática está materializada. A frente ativa é o **fechamento da Fase III**:
+As três fases do marco estático estão concluídas:
 
-1. manter Home, `sources.html` e `products.html` coerentes com a tipologia e a classificação A–E;
-2. confirmar filtros controlados, parâmetros de URL, teclado/acessibilidade e responsividade;
-3. garantir zero botão de dados/download/API apontando silenciosamente para viewer/PDF/documentação/homepage genérica;
-4. obter CI principal, QA visual e smoke público verdes no SHA final;
-5. sincronizar README, `docs/PROJECT_STATE.md`, `WORKFLOW_STATUS.md` e checkpoint final.
+1. **Fase I — reconciliação e recertificação:** 51/51 semanticamente tipados e com A–E justificado.
+2. **Fase II — representação estática:** Home tema-first, `sources.html` para os 51, `products.html` para o subconjunto 11/19 e P1–P6 integrado.
+3. **Fase III — consolidação funcional:** filtros controlados, runtime dos cards, papéis semânticos, fechamento de dependências, responsividade, deploy e smoke público validados.
 
-Somente então declarar `VITRINE_STATIC_51_STABLE`.
+A **fase ativa de QA/QC e manutenção** passa a ser manutenção do marco estável e correção de regressões; não significa recertificação pendente.
 
-## Federação por APIs
+## Próximo milestone
 
-Federação permanece **fora deste marco**. Até `VITRINE_STATIC_51_STABLE`, não iniciar Integration Registry, conectores STAC/CKAN/OGC/REST/GraphQL, harvesting, PostgreSQL/backend próprio ou reentrada da expansão. Nenhum recurso descoberto por API entra automaticamente na superfície pública.
+Federação por APIs/Data Services é um **novo milestone**, separado do marco estático e ainda não ativado automaticamente. Integration Registry, conectores STAC/CKAN/OGC/REST/GraphQL, harvesting, PostgreSQL/backend próprio ou reentrada da expansão exigem autorização e escopo próprios. Nenhum recurso descoberto por API entra automaticamente na superfície pública.
 
 ## Release científica v1.0.0
 
@@ -75,6 +75,7 @@ A release histórica permanece imutável e reproduzível:
 
 - estado corrente: `docs/PROJECT_STATE.md`;
 - execução e gates: `WORKFLOW_STATUS.md`;
+- checkpoint do marco: `docs/CHECKPOINT_STATIC_51_2026-09-04.md`;
 - direção científica: `docs/PROJECT_SCIENTIFIC_DIRECTION.md`;
 - contrato legado/transitório: `docs/VITRINE_CANONICAL_DATA_CONTRACT.md`;
 - matriz de acesso: `data/static_core_51_access_audit.json`;
