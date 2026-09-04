@@ -1,10 +1,6 @@
 (() => {
   "use strict";
-
-  const norm = value => String(value || "")
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase().trim();
-  const https = value => /^https:\/\//i.test(String(value || ""));
+  const norm = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 
   function addText(parent, tag, text, className) {
     const node = document.createElement(tag);
@@ -15,13 +11,12 @@
   }
 
   function publicAccess(item) {
-    if (["A", "B"].includes(item.access_role) && https(item.access_url)) return {label: "Acessar dados / download", url: item.access_url, primary: true};
-    if (item.access_role === "C") {
-      const site = https(item.documentation_url) ? item.documentation_url : "";
-      return site ? {label: "Acessar site", url: site, primary: false} : null;
+    if ((item.access_role === "A" || item.access_role === "B") && /^https:\/\//i.test(String(item.access_url || ""))) {
+      return {label:"Acessar dados / download", url:item.access_url, primary:true};
     }
-    const site = https(item.access_url) ? item.access_url : (https(item.documentation_url) ? item.documentation_url : "");
-    return site ? {label: "Acessar site", url: site, primary: false} : null;
+    const site = /^https:\/\//i.test(String(item.documentation_url || "")) ? item.documentation_url
+      : /^https:\/\//i.test(String(item.access_url || "")) ? item.access_url : "";
+    return site ? {label:"Acessar site", url:site, primary:false} : null;
   }
 
   function card(item) {
@@ -38,7 +33,10 @@
 
     const facts = document.createElement("dl");
     facts.className = "priority-facts";
-    [["Território", item.territory], ["Proveniência", item.provenance]].forEach(([label, value]) => {
+    [
+      ["Território", item.territory],
+      ["Responsável", item.provenance]
+    ].forEach(([label, value]) => {
       const row = document.createElement("div");
       addText(row, "dt", label);
       addText(row, "dd", value);
@@ -80,15 +78,19 @@
           : items;
         list.replaceChildren(...visible.map(card));
         list.hidden = visible.length === 0;
-        if (status) status.textContent = query ? `${visible.length} exemplo(s) relacionado(s) ao tema selecionado.` : `${items.length} exemplos disponíveis.`;
+        if (status) {
+          status.textContent = query
+            ? `${visible.length} exemplo(s) relacionado(s) ao tema selecionado.`
+            : `${items.length} exemplos de acesso rápido disponíveis.`;
+        }
       };
 
       q?.addEventListener("input", render);
       render();
     } catch (error) {
       list.hidden = true;
-      if (status) status.textContent = "Exemplos temporariamente indisponíveis.";
-      console.error("Falha ao carregar exemplos prioritários", error);
+      if (status) status.textContent = "Os exemplos de acesso rápido estão temporariamente indisponíveis.";
+      console.error("Falha ao carregar exemplos de acesso rápido", error);
     }
   }
 
