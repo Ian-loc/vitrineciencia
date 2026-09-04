@@ -37,8 +37,11 @@
           const dt = row.querySelector("dt");
           const dd = row.querySelector("dd");
           if (dt?.textContent.trim() === "Distribuição / acesso" && dd) {
-            dd.textContent = `${accessRole} · ${ACCESS[accessRole] || "Acesso não classificado"}`;
-            dd.dataset.accessAuthority = "static_core_51_access_audit";
+            const expected = `${accessRole} · ${ACCESS[accessRole] || "Acesso não classificado"}`;
+            if (dd.textContent !== expected) dd.textContent = expected;
+            if (dd.dataset.accessAuthority !== "static_core_51_access_audit") {
+              dd.dataset.accessAuthority = "static_core_51_access_audit";
+            }
           }
         });
       }
@@ -70,7 +73,7 @@
       const list = document.querySelector("#list");
       if (!list) return;
       decorate();
-      new MutationObserver(decorate).observe(list, {childList:true, subtree:true});
+      new MutationObserver(decorate).observe(list, {childList:true});
     } catch (error) {
       console.error("Falha ao carregar as camadas semântica e de acesso verificadas", error);
     }
