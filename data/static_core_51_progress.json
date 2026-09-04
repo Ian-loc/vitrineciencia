@@ -5,31 +5,31 @@
   "authority": "main + current official-source evidence",
   "cursor": {
     "phase": "I",
-    "priority": "D_semantic_typing_then_remaining_core",
-    "next_batch": ["DR0001", "DR0002", "DR0003", "DR0006", "DR0007", "DR0010", "DR0035", "DR0044", "DR0047", "DR0051"]
+    "priority": "remaining_core_semantic_typing",
+    "next_batch": ["DR0004", "DR0005", "DR0008", "DR0009", "DR0011", "DR0012", "DR0013", "DR0014", "DR0015", "DR0016", "DR0017", "DR0018", "DR0019", "DR0020", "DR0021"]
   },
   "state_contract": ["PENDING", "IN_REVIEW", "VERIFIED", "VERIFIED_WITH_LIMITATION", "EXTERNAL_BLOCKED"],
   "component_rule": "Access verification and semantic/entity typing are tracked independently; a verified access route does not imply completed entity typing.",
   "summary": {
     "records_total": 51,
     "access_roles": {"A": 1, "B": 38, "C": 0, "D": 10, "E": 2},
-    "semantic_typing_complete": 1,
-    "semantic_typing_pending": 50,
+    "semantic_typing_complete": 11,
+    "semantic_typing_pending": 40,
     "current_source_recertified": ["DR0004", "DR0011", "DR0014", "DR0015", "DR0031", "DR0032", "DR0039", "DR0045"],
     "remaining_access_review": [],
     "intentional_E_verified_limitation": ["DR0014", "DR0039"]
   },
   "records": [
-    {"resource_id":"DR0001","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED_WITH_LIMITATION"},
-    {"resource_id":"DR0002","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED_WITH_LIMITATION"},
-    {"resource_id":"DR0003","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED_WITH_LIMITATION"},
+    {"resource_id":"DR0001","overall_state":"VERIFIED_WITH_LIMITATION","semantic_state":"VERIFIED","access_state":"VERIFIED_WITH_LIMITATION","entity_type":"PLATFORM","note":"Clima Gerais integrates territorial climate-vulnerability indicators and visualization; current canonical route is viewer-oriented."},
+    {"resource_id":"DR0002","overall_state":"VERIFIED_WITH_LIMITATION","semantic_state":"VERIFIED","access_state":"VERIFIED_WITH_LIMITATION","entity_type":"SPATIAL_DATA_INFRASTRUCTURE","note":"IDE-SISEMA is a state spatial-data infrastructure/catalog-viewer; dataset identity remains layer-specific."},
+    {"resource_id":"DR0003","overall_state":"VERIFIED_WITH_LIMITATION","semantic_state":"VERIFIED","access_state":"VERIFIED_WITH_LIMITATION","entity_type":"INFORMATION_SYSTEM","note":"AdaptaBrasil is a national climate-impact information and analysis system; indicators are the scientific data objects, while the canonical route is primarily interactive."},
     {"resource_id":"DR0004","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0005","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
-    {"resource_id":"DR0006","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED_WITH_LIMITATION"},
-    {"resource_id":"DR0007","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED_WITH_LIMITATION"},
+    {"resource_id":"DR0006","overall_state":"VERIFIED_WITH_LIMITATION","semantic_state":"VERIFIED","access_state":"VERIFIED_WITH_LIMITATION","entity_type":"SPATIAL_DATA_INFRASTRUCTURE","note":"PANORAMA/CENSIPAM integrates Amazon territorial monitoring, geospatial data and services; access varies by product/service."},
+    {"resource_id":"DR0007","overall_state":"VERIFIED_WITH_LIMITATION","semantic_state":"VERIFIED","access_state":"VERIFIED_WITH_LIMITATION","entity_type":"PLATFORM","note":"UrbVerde is an academic territorial-intelligence platform exposing derived urban socioenvironmental indicators primarily through web visualization/reports."},
     {"resource_id":"DR0008","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0009","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
-    {"resource_id":"DR0010","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED_WITH_LIMITATION"},
+    {"resource_id":"DR0010","overall_state":"VERIFIED_WITH_LIMITATION","semantic_state":"VERIFIED","access_state":"VERIFIED_WITH_LIMITATION","entity_type":"DATA_PRODUCTION_INITIATIVE","note":"MapBiomas Brasil is a collaborative data-production initiative/network with multiple scientific data families and platform routes; it is not a single dataset."},
     {"resource_id":"DR0011","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0012","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0013","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
@@ -54,7 +54,7 @@
     {"resource_id":"DR0032","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0033","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0034","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
-    {"resource_id":"DR0035","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED_WITH_LIMITATION"},
+    {"resource_id":"DR0035","overall_state":"VERIFIED_WITH_LIMITATION","semantic_state":"VERIFIED","access_state":"VERIFIED_WITH_LIMITATION","entity_type":"CURATED_DATA_GUIDE","note":"Climate Data Guide curates expert descriptions/evaluations and links to climate datasets; it normally does not host the underlying datasets."},
     {"resource_id":"DR0036","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0037","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0038","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
@@ -63,13 +63,13 @@
     {"resource_id":"DR0041","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0042","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0043","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
-    {"resource_id":"DR0044","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED_WITH_LIMITATION"},
+    {"resource_id":"DR0044","overall_state":"VERIFIED_WITH_LIMITATION","semantic_state":"VERIFIED","access_state":"VERIFIED_WITH_LIMITATION","entity_type":"DATA_PLATFORM","note":"Global Forest Watch is a monitoring/data platform aggregating layers from multiple providers; provenance remains layer-specific."},
     {"resource_id":"DR0045","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0046","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
-    {"resource_id":"DR0047","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED_WITH_LIMITATION"},
+    {"resource_id":"DR0047","overall_state":"VERIFIED_WITH_LIMITATION","semantic_state":"VERIFIED","access_state":"VERIFIED_WITH_LIMITATION","entity_type":"DATA_INFRASTRUCTURE","note":"Copernicus Data Space Ecosystem is an access/processing infrastructure exposing many mission datasets and services, not one dataset."},
     {"resource_id":"DR0048","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0049","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0050","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
-    {"resource_id":"DR0051","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED_WITH_LIMITATION"}
+    {"resource_id":"DR0051","overall_state":"VERIFIED_WITH_LIMITATION","semantic_state":"VERIFIED","access_state":"VERIFIED_WITH_LIMITATION","entity_type":"BIBLIOMETRIC_DATABASE","note":"Project COSMOS is a bibliometric climate-research database with public analytical products but no open full-database download."}
   ]
 }
