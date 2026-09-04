@@ -5,7 +5,7 @@
 
 ## Estado global
 
-A fase ativa é a **consolidação semântica e funcional da Vitrine Ciência estática com o núcleo DR0001–DR0051**, antes de qualquer mudança para Data Service/federação.
+A fase ativa é a **QA/QC, consolidação semântica e funcional da Vitrine Ciência estática com o núcleo DR0001–DR0051**, antes de qualquer mudança para Data Service/federação.
 
 A expansão geral permanece pausada. O trabalho corrente recertifica os 51 registros, reduz carga cognitiva, orienta a descoberta por tema científico e corrige a semântica de dados, produtos, rotas e proveniência.
 
