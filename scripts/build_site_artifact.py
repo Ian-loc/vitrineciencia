@@ -17,7 +17,7 @@ REQUIRED_FILES = (
     "assets/app.js", "assets/ptbr.js", "assets/products.js", "assets/product-index.js", "assets/product-ui-fixes.js",
     "assets/product-label-fix.js", "assets/home.js", "assets/navigation.js", "assets/analytics.js", "assets/analytics-products.js",
     "assets/export-selective.js", "assets/source-comparison.js", "assets/discovery-guardrails.js", "assets/static-catalog-51.js",
-    "data/data_resources.json", "data/data_products.json", "data/brazil_scope_priorities.json",
+    "data/data_resources.json", "data/data_products.json", "data/brazil_scope_priorities.json", "data/applied_priority_gate.json",
 )
 
 OPTIONAL_FILES = ("404.html", "CNAME", "favicon.ico", "favicon.svg")
