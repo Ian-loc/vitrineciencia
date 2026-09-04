@@ -5,19 +5,19 @@
   "authority": "main + current official-source evidence",
   "cursor": {
     "phase": "I",
-    "priority": "remaining_E_then_D",
-    "next_batch": ["DR0014", "DR0031", "DR0001", "DR0002", "DR0003", "DR0006", "DR0007", "DR0010", "DR0035", "DR0044", "DR0047", "DR0051"]
+    "priority": "D_semantic_typing_then_remaining_core",
+    "next_batch": ["DR0001", "DR0002", "DR0003", "DR0006", "DR0007", "DR0010", "DR0035", "DR0044", "DR0047", "DR0051"]
   },
   "state_contract": ["PENDING", "IN_REVIEW", "VERIFIED", "VERIFIED_WITH_LIMITATION", "EXTERNAL_BLOCKED"],
   "component_rule": "Access verification and semantic/entity typing are tracked independently; a verified access route does not imply completed entity typing.",
   "summary": {
     "records_total": 51,
-    "access_roles": {"A": 1, "B": 37, "C": 0, "D": 10, "E": 3},
-    "semantic_typing_complete": 0,
-    "semantic_typing_pending": 51,
-    "current_source_recertified": ["DR0004", "DR0011", "DR0015", "DR0032", "DR0039", "DR0045"],
-    "remaining_access_review": ["DR0014", "DR0031"],
-    "intentional_E_verified_limitation": ["DR0039"]
+    "access_roles": {"A": 1, "B": 38, "C": 0, "D": 10, "E": 2},
+    "semantic_typing_complete": 1,
+    "semantic_typing_pending": 50,
+    "current_source_recertified": ["DR0004", "DR0011", "DR0014", "DR0015", "DR0031", "DR0032", "DR0039", "DR0045"],
+    "remaining_access_review": [],
+    "intentional_E_verified_limitation": ["DR0014", "DR0039"]
   },
   "records": [
     {"resource_id":"DR0001","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED_WITH_LIMITATION"},
@@ -33,7 +33,7 @@
     {"resource_id":"DR0011","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0012","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0013","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
-    {"resource_id":"DR0014","overall_state":"IN_REVIEW","semantic_state":"PENDING","access_state":"IN_REVIEW"},
+    {"resource_id":"DR0014","overall_state":"VERIFIED_WITH_LIMITATION","semantic_state":"PENDING","access_state":"VERIFIED_WITH_LIMITATION","note":"SiBBr role is verified as national biodiversity data infrastructure, but canonical DR route remains a generic homepage; retain E until a specific aggregate acquisition route is demonstrated."},
     {"resource_id":"DR0015","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0016","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0017","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
@@ -50,7 +50,7 @@
     {"resource_id":"DR0028","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0029","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0030","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
-    {"resource_id":"DR0031","overall_state":"IN_REVIEW","semantic_state":"PENDING","access_state":"IN_REVIEW"},
+    {"resource_id":"DR0031","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0032","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0033","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
     {"resource_id":"DR0034","overall_state":"PENDING","semantic_state":"PENDING","access_state":"VERIFIED"},
