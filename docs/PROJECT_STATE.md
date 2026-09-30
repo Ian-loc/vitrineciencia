@@ -1,11 +1,13 @@
 # Estado canônico — Vitrine Ciência
 
-**Data de referência:** 4 de setembro de 2026  
+**Data de referência:** 30 de setembro de 2026  
 **Fuso:** `America/Sao_Paulo`
 
 ## Autoridade
 
 O repositório `Ian-loc/vitrineciencia` é a **autoridade canônica do projeto**. `main` representa o estado público corrente. Worktrees locais, Google Drive, handoffs e chats são auxiliares de trabalho ou espelhos documentais; não substituem o estado materializado no GitHub.
+
+Em 30/09/2026 houve uma **instrução humana explícita** para incorporar a REDEMET. Essa inclusão é tratada como adição pós-core isolada; não reabre nem altera a auditoria fechada de DR0001–DR0051 e não autoriza reentrada geral da expansão histórica.
 
 Dentro do repositório, a hierarquia corrente é:
 
@@ -30,11 +32,11 @@ A expansão geral permanece pausada. A recertificação semântica 51/51 está c
 
 ## Estado material
 
-- `main` publica o núcleo estático de **51 registros DR / 11 itens detalhados / 19 distribuições**.
-- Na terminologia física exigida pelo schema/validador legado, isso corresponde a **51 fontes, 11 produtos e 19 distribuições**; esses rótulos não definem a ontologia pública.
+- `main` publica **52 registros DR / 11 itens detalhados / 19 distribuições**: o núcleo estático DR0001–DR0051 permanece fechado e `DR0136` (REDEMET) é uma adição pós-core explicitamente autorizada.
+- Na terminologia física exigida pelo schema/validador legado, isso corresponde a **52 fontes, 11 produtos e 19 distribuições**; esses rótulos não definem a ontologia pública.
 - Os 11/19 são um subconjunto detalhado, não toda a cobertura científica dos 51.
-- A expansão histórica 135/843/876 permanece preservada em `data/quarantine/v1.0.0-expanded/` e fora do catálogo vivo.
-- `data/static_core_51_progress.json` registra **51/51 com tipagem semântica concluída**, sem pendências de tipagem.
+- A expansão histórica 135/843/876 permanece preservada em `data/quarantine/v1.0.0-expanded/` e fora do catálogo vivo. Seus IDs DR0052–DR0135 continuam reservados às identidades daquele snapshot; por isso a nova REDEMET usa `DR0136`.
+- `data/static_core_51_progress.json` registra **51/51 com tipagem semântica concluída**, sem pendências de tipagem. Esse arquivo continua deliberadamente restrito ao núcleo histórico e não deve ser reinterpretado como auditoria da REDEMET.
 - `data/static_core_51_access_audit.json` registra **A=1, B=38, C=0, D=10, E=2**.
 - Os dois E são limitações deliberadas e documentadas: `DR0014` (SiBBr, rota canônica genérica) e `DR0039` (GBIF IPT, software de publicação e não rota agregada de obtenção).
 - O gate P1–P6 está materializado em `data/applied_priority_gate.json`.
@@ -121,6 +123,14 @@ Devem permanecer representados por objeto informacional real, proveniência expl
 - P4 BDMG com dado público verificável;
 - P5 SICAR/CAR e SIGEF/INCRA separados;
 - P6 IBGE Cidades e Estados com indicador municipal real.
+
+## Adição pós-core — REDEMET (30/09/2026)
+
+- `DR0136` representa a **Rede de Meteorologia do Comando da Aeronáutica (REDEMET)** como fonte/plataforma, não como dataset único.
+- Não foram criados produtos nem distribuições para a REDEMET nesta rodada, porque a rota pública ainda não foi recertificada como download, API ou página específica de dataset.
+- A interface deve, portanto, tratar seu acesso de forma conservadora como **E — acesso a confirmar**, sem CTA que apresente a homepage como download de dados.
+- A revisão material e os pontos ainda não comprovados estão em `docs/audits/REDEMET_SOURCE_REVIEW_2026-09-30.md`.
+- A alocação `DR0136` evita colisão com DR0052–DR0135 preservados no snapshot histórico v1.0.0.
 
 ## Manutenção após o marco
 
