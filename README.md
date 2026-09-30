@@ -2,13 +2,13 @@
 
 **Catálogo público e citável para descobrir e acessar dados científicos relevantes ao Brasil.**
 
-## Estado atual — 4 de setembro de 2026
+## Estado atual — 30 de setembro de 2026
 
 - **Autoridade canônica:** o repositório `Ian-loc/vitrineciencia`; `main` é o estado público corrente. Worktrees locais, Drive, handoffs e chats são auxiliares e não substituem o que está materializado no GitHub.
 - O marco estático do núcleo **DR0001–DR0051 está consolidado**: `VITRINE_STATIC_51_STABLE`.
 - O runtime público validado é o commit **`495bfe6a968176670461662869d1a3773797baf3`**.
 - Nesse runtime, os três gates finais passaram: build/deploy (`33906109623`), QA visual/responsivo (`33906109551`) e smoke pós-deploy (`33906157842`).
-- O catálogo vivo usa **51 registros DR, 11 itens detalhados e 19 distribuições**. Os 11/19 são um subconjunto detalhado, não toda a cobertura científica dos 51.
+- O catálogo vivo usa **52 registros DR, 11 itens detalhados e 19 distribuições**. O núcleo DR0001–DR0051 permanece congelado; `DR0136` (REDEMET) é uma adição pós-core isolada autorizada em 30/09/2026. Os 11/19 são um subconjunto detalhado, não toda a cobertura científica.
 - A expansão histórica **135/843/876** permanece preservada em `data/quarantine/v1.0.0-expanded/` e fora do catálogo vivo.
 - A recertificação semântica está concluída em **51/51**; `DR####` é identificador legado de entrada, não classe ontológica.
 - A matriz canônica de acesso registra **A=1, B=38, C=0, D=10, E=2**. Os dois E (`DR0014` e `DR0039`) são limitações deliberadamente documentadas, não pendências silenciosas.
