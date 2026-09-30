@@ -113,7 +113,7 @@ def load_json(relative_path: str):
 
 def validate_counts() -> None:
     live = {
-        "data/data_resources.csv": 51,
+        "data/data_resources.csv": 52,
         "data/data_products.csv": 11,
         "data/product_distributions.csv": 19,
     }
@@ -269,4 +269,4 @@ for page in PUBLIC_PAGES: validate_page(page)
 validate_identity()
 validate_functional_contracts()
 validate_required_assets()
-print("OK: Vitrine estática 51/11/19 validada com tema-first, A–E 51/51 e gate aplicado P1–P6")
+print("OK: Vitrine validada — 52 fontes públicas (núcleo estático 51 preservado), 11 produtos, 19 distribuições; A–E 51/51 no núcleo e gate P1–P6")
