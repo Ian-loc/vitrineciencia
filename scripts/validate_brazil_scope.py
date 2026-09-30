@@ -69,9 +69,13 @@ if len(rows) < MINIMUM_BASELINE_SOURCES:
 canonical = {row["resource_id"].strip(): row for row in rows}
 if len(canonical) != len(rows):
     fail("resource_id duplicado no CSV canônico")
-expected_ids = [f"DR{i:04d}" for i in range(1, len(rows) + 1)]
-if [row["resource_id"].strip() for row in rows] != expected_ids:
-    fail("resource_ids devem permanecer únicos, sequenciais e ordenados")
+ordered_ids = [row["resource_id"].strip() for row in rows]
+core_ids = [f"DR{i:04d}" for i in range(1, MINIMUM_BASELINE_SOURCES + 1)]
+if ordered_ids[:MINIMUM_BASELINE_SOURCES] != core_ids:
+    fail("o núcleo histórico deve preservar DR0001–DR0051 nas primeiras 51 linhas")
+numeric_ids = [int(resource_id[2:]) for resource_id in ordered_ids]
+if numeric_ids != sorted(numeric_ids):
+    fail("resource_ids devem permanecer únicos e ordenados; lacunas pós-core são permitidas para preservar identidades históricas")
 
 registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
 if registry.get("registry_version") != "1.0.0":
