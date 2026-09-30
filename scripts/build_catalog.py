@@ -167,9 +167,31 @@ for line, row in enumerate(rows, start=2):
     except ValueError:
         fail(f"linha {line}: last_verified não é uma data válida")
 
-expected_ids = [f"DR{i:04d}" for i in range(1, len(rows) + 1)]
-if sorted(seen_ids) != expected_ids:
-    fail("IDs devem ser contínuos de DR0001 até o último registro")
+# DR0001–DR0051 form the frozen static core. IDs DR0052–DR0135 already
+# exist in the immutable v1.0.0 expanded snapshot and must not be silently
+# reassigned to a different scientific entity. Post-core additions may use
+# later IDs while controlled re-entry may reuse a frozen ID only for the same
+# resource identity.
+ordered_ids = [row["resource_id"].strip() for row in rows]
+core_ids = [f"DR{i:04d}" for i in range(1, 52)]
+if ordered_ids[:51] != core_ids:
+    fail("o núcleo estático deve preservar DR0001–DR0051 nas primeiras 51 linhas")
+
+numeric_ids = [int(resource_id[2:]) for resource_id in ordered_ids]
+if numeric_ids != sorted(numeric_ids):
+    fail("resource_id deve permanecer em ordem numérica crescente")
+
+frozen_source_path = ROOT / "data" / "quarantine" / "v1.0.0-expanded" / "data_resources.csv"
+if frozen_source_path.exists():
+    frozen_rows = read_rows(frozen_source_path)
+    frozen_by_id = {row["resource_id"].strip(): row for row in frozen_rows}
+    for row in rows[51:]:
+        frozen = frozen_by_id.get(row["resource_id"].strip())
+        if frozen and frozen["resource_name"].strip() != row["resource_name"].strip():
+            fail(
+                f"{row['resource_id']}: ID já pertence a outra fonte no snapshot v1.0.0 "
+                f"({frozen['resource_name']})"
+            )
 
 JSON_PATH.write_text(
     json.dumps(rows, ensure_ascii=False, indent=2) + "\n",

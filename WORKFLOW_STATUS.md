@@ -1,6 +1,6 @@
 # Estado do workflow — Vitrine Ciência
 
-Atualização: **2026-09-04** (`America/Sao_Paulo`)
+Atualização: **2026-09-30** (`America/Sao_Paulo`)
 
 ## Autoridade operacional
 
@@ -31,9 +31,9 @@ Evidência de fechamento no mesmo runtime:
 
 A **fase ativa de QA/QC e manutenção** agora é manutenção do estado estável e detecção de regressões. Não há recertificação 51 pendente.
 
-A expansão geral permanece **pausada**. O estado público usa **51 registros DR, 11 itens detalhados e 19 distribuições**; os 11/19 são subconjunto detalhado. Na terminologia física do schema legado, isso corresponde a **51 fontes, 11 produtos e 19 distribuições**. A expansão histórica 135/843/876 permanece em quarentena e não retorna ao catálogo vivo sem instrução humana explícita.
+A expansão geral permanece **pausada**. Por instrução humana explícita de 30/09/2026, foi aberta uma exceção isolada para incorporar `DR0136` — REDEMET. O estado público passa a usar **52 registros DR, 11 itens detalhados e 19 distribuições**; os 11/19 são subconjunto detalhado. Na terminologia física do schema legado, isso corresponde a **52 fontes, 11 produtos e 19 distribuições**. A expansão histórica 135/843/876 permanece em quarentena e não retorna ao catálogo vivo automaticamente.
 
-A recertificação semântica está concluída em **51/51**. A matriz corrente de acesso é **A=1, B=38, C=0, D=10, E=2**; `DR0014` e `DR0039` permanecem E de forma deliberada e documentada.
+A recertificação semântica do núcleo permanece concluída em **51/51**. A matriz `static_core_51_access_audit.json` continua restrita ao núcleo e preserva **A=1, B=38, C=0, D=10, E=2**. A nova REDEMET ainda não possui acesso A–C recertificado e é apresentada conservadoramente como **E — acesso a confirmar**.
 
 ## Contrato operacional
 
@@ -86,7 +86,7 @@ P1 AdaptaBrasil MCTI; P2 MapBiomas Municípios; P3 IEDE-MG/FJP; P4 BDMG com dado
 
 O marco foi fechado com:
 
-- `main` pública no núcleo 51, com expansão histórica fora do catálogo vivo;
+- núcleo estático 51 preservado e catálogo público com 52 registros após a adição pós-core isolada da REDEMET; expansão histórica permanece fora do catálogo vivo;
 - 51/51 com tipo/papel factual;
 - 51/51 com fenômeno/processo, território, tipo de informação, proveniência e A–E sustentados;
 - dataset/família como objeto científico central quando identificável, sem invenção;
@@ -100,6 +100,13 @@ O marco foi fechado com:
 - checkpoint final em `docs/CHECKPOINT_STATIC_51_2026-09-04.md`.
 
 `VITRINE_STATIC_51_STABLE`
+
+## Exceção pós-core autorizada — REDEMET
+
+- `DR0136` foi reservado para a REDEMET porque `DR0052–DR0135` já pertencem a identidades preservadas no snapshot v1.0.0.
+- A inclusão é no nível de **fonte/plataforma**. Nenhum dataset, produto, distribuição, API, formato ou licença foi inferido além do que a evidência disponível nesta rodada sustenta.
+- Até recertificação operacional da rota, a interface não deve chamar a homepage de download nem de API.
+- A expansão geral continua pausada; esta exceção não muda essa regra.
 
 ## Regra de manutenção
 
