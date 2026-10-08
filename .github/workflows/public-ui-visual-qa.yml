@@ -133,7 +133,7 @@ jobs:
                 }
 
                 if (name === 'home') {
-                  await page.waitForFunction(() => document.querySelector('#home-products')?.textContent.trim() === '11' && document.querySelector('#home-sources')?.textContent.trim() === '54');
+                  await page.waitForFunction(() => document.querySelector('#home-products')?.textContent.trim() === '11' && document.querySelector('#home-sources')?.textContent.trim() === '58');
                   const theme = page.locator('#home-theme[name="q"]');
                   if (await theme.count() !== 1 || await theme.evaluate(el => el.tagName) !== 'SELECT') { console.error('Seleção controlada de fenômeno ausente'); failed=true; }
                   if (await page.locator('#home-product-areas .process-card').count() < 10) { console.error('Atalhos socioecológicos insuficientes'); failed=true; }
