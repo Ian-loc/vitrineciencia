@@ -93,11 +93,12 @@
     const list = document.querySelector("#list");
     if (!list) return;
     try {
-      const [audit, resources] = await Promise.all([
+      const [audit, postCoreAudit, resources] = await Promise.all([
         fetch("data/static_core_51_access_audit.json", {cache: "no-store"}).then(r => r.ok ? r.json() : Promise.reject()),
+        fetch("data/post_core_access_audit.json", {cache: "no-store"}).then(r => r.ok ? r.json() : Promise.reject()),
         fetch("data/data_resources.json", {cache: "no-store"}).then(r => r.ok ? r.json() : Promise.reject())
       ]);
-      const auditById = new Map((audit.records || []).map(item => [item.resource_id, item]));
+      const auditById = new Map([...(audit.records || []), ...(postCoreAudit.records || [])].map(item => [item.resource_id, item]));
       const resourceById = new Map((resources || []).map(item => [item.resource_id, item]));
       const publicAccessLabel = {
         A: "Dados para download",
@@ -128,7 +129,7 @@
           if (fact && fact.textContent !== publicLabel) fact.textContent = publicLabel;
           ensureSourceEvidence(card, auditItem, publicLabel);
 
-          const dataUrl = ["A", "B"].includes(role) && https(resource.data_access_url) && !technicalAccess(resource.data_access_url, `${resource.access_protocols || ""} ${resource.access_documentation_url || ""}`)
+          const dataUrl = ["A", "B"].includes(role) && https(resource.data_access_url) && !technicalAccess(resource.data_access_url)
             ? resource.data_access_url : "";
           const siteUrl = https(resource.homepage_url) && !technicalAccess(resource.homepage_url) ? resource.homepage_url : "";
           syncActions(card.querySelector(".card-actions"), expectedActions(dataUrl, siteUrl));
