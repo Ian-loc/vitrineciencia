@@ -1,6 +1,6 @@
 # Estado canônico — Vitrine Ciência
 
-**Data de referência:** 30 de setembro de 2026  
+**Data de referência:** 8 de outubro de 2026  
 **Fuso:** `America/Sao_Paulo`
 
 ## Autoridade
@@ -32,8 +32,8 @@ A expansão geral permanece pausada. A recertificação semântica 51/51 está c
 
 ## Estado material
 
-- `main` publica **52 registros DR / 11 itens detalhados / 19 distribuições**: o núcleo estático DR0001–DR0051 permanece fechado e `DR0136` (REDEMET) é uma adição pós-core explicitamente autorizada.
-- Na terminologia física exigida pelo schema/validador legado, isso corresponde a **52 fontes, 11 produtos e 19 distribuições**; esses rótulos não definem a ontologia pública.
+- `main` publica **54 registros DR / 11 itens detalhados / 19 distribuições**: o núcleo estático DR0001–DR0051 permanece fechado; adições pós-core: `DR0136` (REDEMET), `DR0137` (RESOLVE Ecoregions 2017) e `DR0138` (Global Safety Net GSN3.1), sem alterar o núcleo.
+- Na terminologia física exigida pelo schema/validador legado, isso corresponde a **54 fontes, 11 produtos e 19 distribuições**; esses rótulos não definem a ontologia pública.
 - Os 11/19 são um subconjunto detalhado, não toda a cobertura científica dos 51.
 - A expansão histórica 135/843/876 permanece preservada em `data/quarantine/v1.0.0-expanded/` e fora do catálogo vivo. Seus IDs DR0052–DR0135 continuam reservados às identidades daquele snapshot; por isso a nova REDEMET usa `DR0136`.
 - `data/static_core_51_progress.json` registra **51/51 com tipagem semântica concluída**, sem pendências de tipagem. Esse arquivo continua deliberadamente restrito ao núcleo histórico e não deve ser reinterpretado como auditoria da REDEMET.
@@ -50,6 +50,7 @@ A expansão geral permanece pausada. A recertificação semântica 51/51 está c
 - `data/data_products.csv`;
 - `data/product_distributions.csv`;
 - `data/static_core_51_access_audit.json`;
+- `data/post_core_access_audit.json`;
 - `data/static_core_51_progress.json`;
 - `data/product_distribution_roles.json`;
 - `data/applied_priority_gate.json`.
