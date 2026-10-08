@@ -17,16 +17,18 @@
 
   async function init() {
     try {
-      const [semanticResponse, accessResponse] = await Promise.all([
+      const [semanticResponse, accessResponse, postCoreResponse] = await Promise.all([
         fetch("data/static_core_51_progress.json", {cache:"no-store"}),
-        fetch("data/static_core_51_access_audit.json", {cache:"no-store"})
+        fetch("data/static_core_51_access_audit.json", {cache:"no-store"}),
+        fetch("data/post_core_access_audit.json", {cache:"no-store"})
       ]);
       if (!semanticResponse.ok) throw new Error(`semantic HTTP ${semanticResponse.status}`);
-      if (!accessResponse.ok) throw new Error(`access HTTP ${accessResponse.status}`);
+      if (!accessResponse.ok || !postCoreResponse.ok) throw new Error("Matrizes de acesso indisponíveis");
       const semanticPayload = await semanticResponse.json();
       const accessPayload = await accessResponse.json();
+      const postCorePayload = await postCoreResponse.json();
       registry = new Map((semanticPayload.records || []).map(item => [item.resource_id, item]));
-      accessRegistry = new Map((accessPayload.records || []).map(item => [item.resource_id, item.access_role]));
+      accessRegistry = new Map([...accessPayload.records, ...postCorePayload.records].map(item => [item.resource_id, item.access_role]));
       const list = document.querySelector("#list");
       if (!list) return;
       decorate();

@@ -107,7 +107,7 @@ jobs:
           products = json.load(open(sys.argv[2], encoding='utf-8'))
           priority = json.load(open(sys.argv[3], encoding='utf-8'))
 
-          assert len(resources) == 51, len(resources)
+          assert len(resources) == 54, len(resources)
           assert len(products) == 11, len(products)
           assert len({p['resource_id'] for p in products}) <= len(resources)
           distributions = sum(len(p.get('distributions', [])) for p in products)
@@ -120,5 +120,5 @@ jobs:
           assert all(item.get('access_role') in {'A', 'B', 'C', 'D', 'E'} for item in items)
           assert all(str(item.get('access_url') or '').startswith('https://') for item in items)
 
-          print('OK: Vitrine pública 51 registros / 11 itens detalhados / 19 rotas; descoberta orientada à pergunta e curadoria preservadas')
+          print('OK: Vitrine pública 54 registros (51 do núcleo + 3 pós-core) / 11 itens detalhados / 19 rotas')
           PY

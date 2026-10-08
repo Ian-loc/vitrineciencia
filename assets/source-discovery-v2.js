@@ -140,7 +140,7 @@
         const dd = document.createElement("dd");
         dt.textContent = label;
         dd.textContent = value;
-        if (label === "Distribuição / acesso") dd.dataset.accessAuthority = "static_core_51_access_audit";
+        if (label === "Distribuição / acesso") dd.dataset.accessAuthority = "verified_access_registries";
         item.append(dt, dd);
         facts.appendChild(item);
       });
@@ -234,10 +234,11 @@
 
   async function loadVerifiedAccess() {
     try {
-      const response = await fetch("data/static_core_51_access_audit.json", {cache:"no-store"});
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const payload = await response.json();
-      verifiedAccess = new Map((payload.records || []).map(item => [item.resource_id, item.access_role]));
+      const urls = ["data/static_core_51_access_audit.json", "data/post_core_access_audit.json"];
+      const responses = await Promise.all(urls.map(url => fetch(url, {cache:"no-store"})));
+      if (responses.some(response => !response.ok)) throw new Error("Matriz de acesso indisponível");
+      const payloads = await Promise.all(responses.map(response => response.json()));
+      verifiedAccess = new Map(payloads.flatMap(payload => payload.records || []).map(item => [item.resource_id, item.access_role]));
     } catch (error) {
       verifiedAccess = new Map();
       console.error("Falha ao carregar a matriz auditada de acesso; classificação conservadora E aplicada", error);
