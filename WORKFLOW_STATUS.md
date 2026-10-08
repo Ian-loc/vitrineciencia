@@ -1,6 +1,6 @@
 # Estado do workflow — Vitrine Ciência
 
-Atualização: **2026-09-30** (`America/Sao_Paulo`)
+Atualização: **2026-10-08** (`America/Sao_Paulo`)
 
 ## Autoridade operacional
 
@@ -10,6 +10,7 @@ Arquivos/matrizes que controlam o marco estático:
 
 - `data/data_resources.csv`, `data/data_products.csv`, `data/product_distributions.csv`;
 - `data/static_core_51_access_audit.json`;
+- `data/post_core_access_audit.json`;
 - `data/static_core_51_progress.json`;
 - `data/product_distribution_roles.json`;
 - `data/applied_priority_gate.json`;
@@ -31,7 +32,7 @@ Evidência de fechamento no mesmo runtime:
 
 A **fase ativa de QA/QC e manutenção** agora é manutenção do estado estável e detecção de regressões. Não há recertificação 51 pendente.
 
-A expansão geral permanece **pausada**. Por instrução humana explícita de 30/09/2026, foi aberta uma exceção isolada para incorporar `DR0136` — REDEMET. O estado público passa a usar **52 registros DR, 11 itens detalhados e 19 distribuições**; os 11/19 são subconjunto detalhado. Na terminologia física do schema legado, isso corresponde a **52 fontes, 11 produtos e 19 distribuições**. A expansão histórica 135/843/876 permanece em quarentena e não retorna ao catálogo vivo automaticamente.
+A expansão geral permanece **pausada**. Por instrução humana explícita de 30/09/2026, foi aberta uma exceção isolada para incorporar `DR0136` — REDEMET. Também entraram `DR0137` (RESOLVE Ecoregions 2017) e `DR0138` (GSN3.1) como adições isoladas. O estado público passa a usar **54 registros DR, 11 itens detalhados e 19 distribuições**; os 11/19 são subconjunto detalhado. Na terminologia física do schema legado, isso corresponde a **54 fontes, 11 produtos e 19 distribuições**. A expansão histórica 135/843/876 permanece em quarentena e não retorna ao catálogo vivo automaticamente.
 
 A recertificação semântica do núcleo permanece concluída em **51/51**. A matriz `static_core_51_access_audit.json` continua restrita ao núcleo e preserva **A=1, B=38, C=0, D=10, E=2**. A nova REDEMET ainda não possui acesso A–C recertificado e é apresentada conservadoramente como **E — acesso a confirmar**.
 
@@ -86,7 +87,7 @@ P1 AdaptaBrasil MCTI; P2 MapBiomas Municípios; P3 IEDE-MG/FJP; P4 BDMG com dado
 
 O marco foi fechado com:
 
-- núcleo estático 51 preservado e catálogo público com 52 registros após a adição pós-core isolada da REDEMET; expansão histórica permanece fora do catálogo vivo;
+- núcleo estático 51 preservado e catálogo público com 54 registros após a adição pós-core isolada da REDEMET; expansão histórica permanece fora do catálogo vivo;
 - 51/51 com tipo/papel factual;
 - 51/51 com fenômeno/processo, território, tipo de informação, proveniência e A–E sustentados;
 - dataset/família como objeto científico central quando identificável, sem invenção;
