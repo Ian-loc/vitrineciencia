@@ -65,7 +65,10 @@
         "DR0047",
         "DR0048",
         "DR0137",
-        "DR0138"
+        "DR0138",
+        "DR0139",
+        "DR0140",
+        "DR0141"
       ]
     },
     {
@@ -100,7 +103,8 @@
       "inclusion_role": "comparativa",
       "description": "Recursos mantidos apenas por valor metodológico, comparativo ou de infraestrutura; não devem dominar a expansão do catálogo.",
       "resource_ids": [
-        "DR0029"
+        "DR0029",
+        "DR0142"
       ]
     }
   ],
