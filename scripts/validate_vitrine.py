@@ -113,7 +113,7 @@ def load_json(relative_path: str):
 
 def validate_counts() -> None:
     live = {
-        "data/data_resources.csv": 54,
+        "data/data_resources.csv": 58,
         "data/data_products.csv": 11,
         "data/product_distributions.csv": 19,
     }
@@ -136,9 +136,9 @@ def validate_counts() -> None:
 def validate_post_core_access_audit() -> None:
     payload = load_json("data/post_core_access_audit.json")
     records = payload.get("records") or []
-    expected = {"DR0136": "E", "DR0137": "A", "DR0138": "D"}
+    expected = {"DR0136": "E", "DR0137": "A", "DR0138": "D", "DR0139": "D", "DR0140": "B", "DR0141": "D", "DR0142": "D"}
     actual = {item.get("resource_id"): item.get("access_role") for item in records}
-    if len(records) != 3 or actual != expected:
+    if len(records) != 7 or actual != expected:
         fail("post_core_access_audit.json: identificadores e funções A/E/D divergentes")
     if any(not item.get("reason") or not item.get("source_last_verified") for item in records):
         fail("post_core_access_audit.json: ausência de justificativa/data")
@@ -281,4 +281,4 @@ for page in PUBLIC_PAGES: validate_page(page)
 validate_identity()
 validate_functional_contracts()
 validate_required_assets()
-print("OK: Vitrine validada — 54 registros públicos (51 do núcleo preservados + 3 pós-core), 11 produtos, 19 distribuições; A–E 51/51 no núcleo e gate P1–P6")
+print("OK: Vitrine validada — 58 registros públicos (51 do núcleo preservados + 7 pós-core), 11 produtos, 19 distribuições; A–E 51/51 no núcleo e gate P1–P6")
