@@ -8,7 +8,7 @@
 - O marco estático do núcleo **DR0001–DR0051 está consolidado**: `VITRINE_STATIC_51_STABLE`.
 - O runtime público validado é o commit **`495bfe6a968176670461662869d1a3773797baf3`**.
 - Nesse runtime, os três gates finais passaram: build/deploy (`33906109623`), QA visual/responsivo (`33906109551`) e smoke pós-deploy (`33906157842`).
-- O catálogo vivo usa **54 registros DR, 11 itens detalhados e 19 distribuições**. O núcleo DR0001–DR0051 permanece congelado; `DR0136` (REDEMET) foi adicionada em 30/09/2026; `DR0137` (RESOLVE Ecoregions 2017) e `DR0138` (Global Safety Net GSN3.1) são novas entradas pós-core incorporadas em 08/10/2026, sem alterar os 51 registros originais. Os 11/19 são um subconjunto detalhado, não toda a cobertura científica.
+- O catálogo vivo usa **58 registros DR, 11 itens detalhados e 19 distribuições**. O núcleo DR0001–DR0051 permanece congelado; `DR0136` (REDEMET) foi adicionada em 30/09/2026; `DR0137` (RESOLVE Ecoregions 2017) e `DR0138` (Global Safety Net GSN3.1), `DR0139` (Carbon Mapper), `DR0140` (Global Human Modification v3), `DR0141` (Planet Forest Carbon) e `DR0142` (Climate Finance Tracker) são entradas pós-core de 08/10/2026; Climate Finance Tracker é referência comparativa sem dados do Brasil. O núcleo 51 permanece preservado. Os 11/19 são um subconjunto detalhado, não toda a cobertura científica.
 - A expansão histórica **135/843/876** permanece preservada em `data/quarantine/v1.0.0-expanded/` e fora do catálogo vivo.
 - A recertificação semântica está concluída em **51/51**; `DR####` é identificador legado de entrada, não classe ontológica.
 - A matriz canônica de acesso registra **A=1, B=38, C=0, D=10, E=2**. Os dois E (`DR0014` e `DR0039`) são limitações deliberadamente documentadas, não pendências silenciosas.
