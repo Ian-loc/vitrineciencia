@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "scope": "post_core_access_audit",
   "audit_date": "2026-10-08",
-  "notes": "Registro separado da matriz 51/51 histórica; classifica apenas as rotas públicas principais de DR0136–DR0138.",
+  "notes": "Matriz de acesso específica para adições pós-core DR0136–DR0142; núcleo histórico 51/51 permanece imutável.",
   "records": [
     {
       "resource_id": "DR0136",
@@ -24,6 +24,34 @@
       "source_last_verified": "2026-10-08",
       "disposition": "conservative_post_core",
       "reason": "Rota principal é visualizador GSN3.1 com exportação de estatísticas CSV pela interface; não equivale a distribuição geoespacial completa ou API pública documentada."
+    },
+    {
+      "resource_id": "DR0139",
+      "access_role": "D",
+      "source_last_verified": "2026-10-08",
+      "disposition": "curated_post_core",
+      "reason": "A rota principal é o visualizador Carbon Mapper (D). A plataforma possui APIs REST e STAC documentadas (capacidade C secundária), porém o acesso e a redistribuição dependem dos Termos Carbon Mapper; não confundir viewer com endpoint API."
+    },
+    {
+      "resource_id": "DR0140",
+      "access_role": "B",
+      "source_last_verified": "2026-10-08",
+      "disposition": "verified_from_zenodo_data_page",
+      "reason": "Depósito específico Zenodo 1990–2020 com COG GeoTIFF disponíveis para download (B) e depósito separado para snapshot 2022; serviços Earth Engine complementares."
+    },
+    {
+      "resource_id": "DR0141",
+      "access_role": "D",
+      "source_last_verified": "2026-10-08",
+      "disposition": "curated_restricted_secondary",
+      "reason": "URL principal leva à documentação Planet Forest Carbon (D); produtos espaciais existem, mas descarga requer autorização contratual e Planet Subscriptions API, não download público."
+    },
+    {
+      "resource_id": "DR0142",
+      "access_role": "D",
+      "source_last_verified": "2026-10-08",
+      "disposition": "curated_comparative_no_brazil",
+      "reason": "Visualização pública (D) de organizações dos EUA; FAQ confirma ausência de exportação de dados brutos por restrições Crunchbase/Candid; referência comparativa sem dados Brasil."
     }
   ]
 }
