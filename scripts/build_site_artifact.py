@@ -22,7 +22,7 @@ REQUIRED_FILES = (
     "assets/discovery-guardrails.js", "assets/static-catalog-51.js", "assets/source-discovery-v2.js",
     "assets/semantic-roles.js", "assets/applied-priority.js", "assets/public-interface-guardrails.js",
     "data/data_resources.json", "data/data_products.json", "data/brazil_scope_priorities.json",
-    "data/static_core_51_access_audit.json", "data/static_core_51_progress.json",
+    "data/static_core_51_access_audit.json", "data/static_core_51_progress.json", "data/post_core_access_audit.json",
     "data/applied_priority_gate.json", "data/product_distribution_roles.json",
 )
 
