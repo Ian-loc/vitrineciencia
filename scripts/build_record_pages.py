@@ -184,15 +184,28 @@ def build_routes(resource: dict[str, str], audit: dict, schema: dict) -> list[di
     verified = str(audit.get("source_last_verified") or resource.get("last_verified") or "")
     routes_by_url: dict[str, dict] = {}
 
-    merge_route(
-        routes_by_url,
-        url=resource.get("data_access_url", ""),
-        role=primary_role,
-        label=route_types[primary_role]["label"],
-        primary=True,
-        access_class=access_class,
-        verified_at=verified,
-    )
+    primary_url = str(resource.get("data_access_url", "") or "").strip()
+    if primary_url.startswith("https://"):
+        merge_route(
+            routes_by_url,
+            url=primary_url,
+            role=primary_role,
+            label=route_types[primary_role]["label"],
+            primary=True,
+            access_class=access_class,
+            verified_at=verified,
+        )
+    else:
+        routes_by_url["__primary_without_url__"] = {
+            "url": None,
+            "roles": [primary_role],
+            "labels": [route_types[primary_role]["label"]],
+            "label": route_types[primary_role]["label"],
+            "primary": True,
+            "access_class": access_class,
+            "verified_at": verified or None,
+            "note": resource.get("data_access_url") or "Rota externa não informada",
+        }
     merge_route(
         routes_by_url,
         url=resource.get("homepage_url", ""),
@@ -223,7 +236,7 @@ def build_routes(resource: dict[str, str], audit: dict, schema: dict) -> list[di
     )
 
     routes = list(routes_by_url.values())
-    routes.sort(key=lambda item: (not item["primary"], "official_site" not in item["roles"], item["url"]))
+    routes.sort(key=lambda item: (not item["primary"], "official_site" not in item["roles"], item.get("url") or ""))
     for index, route in enumerate(routes, start=1):
         route["route_id"] = f"{resource['resource_id']}-R{index:02d}"
     return routes
