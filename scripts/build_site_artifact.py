@@ -7,6 +7,8 @@ import shutil
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from build_record_pages import build as build_record_pages
+
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "_site"
 
@@ -15,7 +17,7 @@ REQUIRED_FILES = (
     "LICENSE", "LICENSE-DATA.md", "robots.txt", "sitemap.xml",
     "assets/style.css", "assets/accessibility.css", "assets/brazil-scope.css", "assets/products.css",
     "assets/visual-refinement.css", "assets/export-selective.css", "assets/ux-v2.css", "assets/ux-v3.css", "assets/ux-simple.css",
-    "assets/product-card-refinement.css", "assets/product-index.css", "assets/discovery-guardrails.css",
+    "assets/product-card-refinement.css", "assets/product-index.css", "assets/discovery-guardrails.css", "assets/record-page.css",
     "assets/app.js", "assets/ptbr.js", "assets/products.js", "assets/product-filter-ux.js", "assets/product-index.js", "assets/product-ui-fixes.js",
     "assets/product-label-fix.js", "assets/product-distribution-roles.js", "assets/home.js", "assets/navigation.js",
     "assets/analytics.js", "assets/analytics-products.js", "assets/export-selective.js", "assets/source-comparison.js",
@@ -50,7 +52,7 @@ def copy_file(relative_path: str, *, required: bool) -> None:
     shutil.copy2(source, destination)
 
 
-def local_target(ref: str, *, document_relative: bool) -> Path | None:
+def local_target(ref: str, *, base_dir: Path) -> Path | None:
     value = ref.strip()
     if not value or value.startswith(("#", "mailto:", "tel:", "data:")):
         return None
@@ -58,27 +60,35 @@ def local_target(ref: str, *, document_relative: bool) -> Path | None:
     if parsed.scheme or parsed.netloc:
         return None
     path = parsed.path
-    if not path or path.endswith("/"):
+    if not path:
         return None
     if path.startswith("/"):
-        path = path.lstrip("/")
-    return OUTPUT / path if document_relative else OUTPUT / path
+        target = OUTPUT / path.lstrip("/")
+    else:
+        target = base_dir / path
+    if path.endswith("/"):
+        target = target / "index.html"
+    target = target.resolve()
+    output_root = OUTPUT.resolve()
+    if target != output_root and output_root not in target.parents:
+        raise SystemExit(f"ERRO: referência local escapa do artefato: {ref}")
+    return target
 
 
 def validate_runtime_closure() -> None:
     missing: set[str] = set()
 
-    for page in OUTPUT.glob("*.html"):
+    for page in OUTPUT.rglob("*.html"):
         content = page.read_text(encoding="utf-8")
         for ref in HTML_REF_RE.findall(content):
-            target = local_target(ref, document_relative=True)
+            target = local_target(ref, base_dir=page.parent)
             if target is not None and not target.exists():
-                missing.add(f"{page.name} -> {ref}")
+                missing.add(f"{page.relative_to(OUTPUT)} -> {ref}")
 
     for script in (OUTPUT / "assets").glob("*.js"):
         content = script.read_text(encoding="utf-8")
         for ref in FETCH_REF_RE.findall(content):
-            target = local_target(ref, document_relative=False)
+            target = local_target(ref, base_dir=OUTPUT)
             if target is not None and not target.exists():
                 missing.add(f"{script.relative_to(OUTPUT)} fetch -> {ref}")
 
@@ -95,6 +105,7 @@ def main() -> None:
     for relative_path in OPTIONAL_FILES:
         copy_file(relative_path, required=False)
     (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
+    build_record_pages(OUTPUT)
 
     leaked = [name for name in FORBIDDEN_PUBLIC_PATHS if (OUTPUT / name).exists()]
     if leaked:
