@@ -93,7 +93,7 @@ jobs:
           grep -q 'static_core_51_access_audit.json' "$tmp/source-discovery-v2.js"
           grep -q 'normalize("NFD")' "$tmp/source-discovery-v2.js"
           grep -q 'Iniciativa ou programa de dados' "$tmp/dr0010.html"
-          grep -q 'Produtos, coleções e releases descritos em detalhe' "$tmp/dr0011.html"
+          grep -q 'Produtos, coleções e versões descritos em detalhe' "$tmp/dr0011.html"
           grep -q 'Carbon Mapper' "$tmp/dr0139.html"
           grep -q 'Condições de uso e licença' "$tmp/dr0141.html"
 
