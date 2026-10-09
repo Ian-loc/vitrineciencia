@@ -151,7 +151,7 @@ for record in records:
         fail(f"{rid}: seções públicas ausentes: {missing}")
     for token in (
         "Sobre este registro", "Como acessar", "O que você encontra aqui",
-        "Produtos, coleções e releases", "Cuidados e limitações",
+        "Produtos, coleções e versões", "Cuidados e limitações",
         "Condições de uso e licença", "Curadoria da Vitrine",
     ):
         if token not in content:
