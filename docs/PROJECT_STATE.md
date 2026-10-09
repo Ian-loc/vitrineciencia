@@ -1,6 +1,6 @@
 # Estado canônico — Vitrine Ciência
 
-**Data de referência:** 8 de outubro de 2026  
+**Data de referência:** 9 de outubro de 2026  
 **Fuso:** `America/Sao_Paulo`
 
 ## Autoridade
@@ -34,13 +34,13 @@ A expansão geral permanece pausada. A recertificação semântica 51/51 está c
 
 - `main` publica **58 registros DR / 11 itens detalhados / 19 distribuições**: o núcleo estático DR0001–DR0051 permanece fechado; adições pós-core: `DR0136` (REDEMET), `DR0137` (RESOLVE Ecoregions 2017) e `DR0138` (Global Safety Net GSN3.1), `DR0139` (Carbon Mapper), `DR0140` (Global Human Modification v3), `DR0141` (Planet Forest Carbon) e `DR0142` (Climate Finance Tracker, referência comparativa sem Brasil), sem alterar o núcleo.
 - Na terminologia física exigida pelo schema/validador legado, isso corresponde a **58 fontes, 11 produtos e 19 distribuições**; esses rótulos não definem a ontologia pública.
-- Os 11/19 são um subconjunto detalhado, não toda a cobertura científica dos 51.
+- Os 11/19 são um subconjunto detalhado, não toda a cobertura científica dos 58 registros.
 - A expansão histórica 135/843/876 permanece preservada em `data/quarantine/v1.0.0-expanded/` e fora do catálogo vivo. Seus IDs DR0052–DR0135 continuam reservados às identidades daquele snapshot; por isso a nova REDEMET usa `DR0136`.
 - `data/static_core_51_progress.json` registra **51/51 com tipagem semântica concluída**, sem pendências de tipagem. Esse arquivo continua deliberadamente restrito ao núcleo histórico e não deve ser reinterpretado como auditoria da REDEMET.
 - `data/static_core_51_access_audit.json` registra **A=1, B=38, C=0, D=10, E=2**.
 - Os dois E são limitações deliberadas e documentadas: `DR0014` (SiBBr, rota canônica genérica) e `DR0039` (GBIF IPT, software de publicação e não rota agregada de obtenção).
 - O gate P1–P6 está materializado em `data/applied_priority_gate.json`.
-- O artefato público fecha as dependências locais necessárias à interface e valida referências HTML e `fetch()` literais durante o build.
+- O artefato público fecha as dependências locais necessárias à interface e valida referências HTML e `fetch()` literais durante o build.\n- A unidade individual de navegação pública é o **registro da Vitrine** (`DR####`), materializado em 58 páginas `/registros/dr####/`; produtos, coleções, releases, distribuições, serviços e documentos permanecem subordinados à página do registro.\n- O build também publica `data/public_records.json` e um JSON individual por registro como read model estático compatível com uma futura API.
 - Tipagem semântica e classificação de acesso são autoridades distintas: `static_core_51_progress.json` não substitui `static_core_51_access_audit.json`.
 - A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130831` e snapshot histórico permanecem imutáveis.
 
@@ -61,7 +61,7 @@ JSONs públicos, páginas e `_site` são derivados. Mudanças de classificação
 
 A navegação deve seguir:
 
-**pergunta científica → fenômeno/processo → território/tempo/escala → dataset/família de dados → produto científico quando necessário → distribuição/rota de acesso ou DataService → provedor/proveniência → documentação**.
+**pergunta científica → fenômeno/processo/território/tipo de informação → registro da Vitrine → produto/coleção/release quando descrito → distribuição/rota de acesso, DataService ou visualizador → provedor/proveniência → documentação**.
 
 A estrutura física histórica `DR → DP → DD` permanece apenas para compatibilidade e rastreabilidade.
 
@@ -100,7 +100,7 @@ Somente A–C podem ser apresentados como acesso confirmado a dados. HTTP 200 is
 **Fase II — reorganizar a representação estática: CONCLUÍDA**
 
 - Home orientada por pergunta/tema;
-- `sources.html` como superfície ampla dos 51;
+- `sources.html` como superfície ampla dos 58 registros;\n- uma página persistente por registro em `/registros/dr####/`, com produtos e rotas subordinados;
 - `products.html` como subconjunto detalhado 11/19 com tipologia explícita;
 - rotas de acesso separadas por função;
 - P1–P6 integrado à superfície pública.
@@ -141,7 +141,7 @@ A partir de `VITRINE_STATIC_51_STABLE`:
 - mudanças de conteúdo continuam começando na autoridade canônica adequada;
 - regressões devem ser corrigidas e verificadas pelos mesmos gates proporcionais;
 - a expansão histórica não retorna automaticamente ao catálogo vivo;
-- uma nova frente de federação/Data Service deve ser tratada como milestone independente.
+- uma nova frente de federação/Data Service deve ser tratada como milestone independente.\n- a futura atualização sob demanda deve seguir `static-first / stale-while-revalidate`: página/JSON estáticos respondem primeiro; refresh de API ocorre de forma assíncrona e passa por staging/validação antes de substituir o estado público.
 
 ## Próximo milestone — não ativado automaticamente
 
