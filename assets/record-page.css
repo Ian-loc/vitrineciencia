@@ -1,0 +1,40 @@
+.record-page .record-hero{padding:2.5rem 0 1.6rem}
+.record-page .record-breadcrumbs{font-size:.92rem;margin:0 0 1rem;color:#4b5c55}
+.record-page .record-breadcrumbs a{color:inherit}
+.record-page .record-kicker{display:flex;flex-wrap:wrap;gap:.55rem;align-items:center;margin:0 0 .8rem}
+.record-page .record-id,.record-page .record-type,.record-page .record-scope{display:inline-flex;align-items:center;border:1px solid #c8d5cf;border-radius:999px;padding:.32rem .62rem;font-size:.82rem;line-height:1.2;background:#f7faf8}
+.record-page .record-hero h1{max-width:980px;margin:.25rem 0 .55rem}
+.record-page .record-identity{max-width:980px;font-size:1.05rem;font-weight:600;color:#31463d}
+.record-page .record-lead{max-width:980px;font-size:1.08rem;line-height:1.65}
+.record-page .record-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:2rem;align-items:start}
+.record-page .record-nav{position:sticky;top:1rem;border:1px solid #dce5e1;border-radius:14px;padding:1rem;background:#fff}
+.record-page .record-nav strong{display:block;margin-bottom:.55rem}
+.record-page .record-nav a{display:block;padding:.35rem 0;color:#244b3d;text-decoration:none}
+.record-page .record-nav a:hover{text-decoration:underline}
+.record-page .record-section{padding:1.15rem 0 1.45rem;border-top:1px solid #e1e8e4;scroll-margin-top:1rem}
+.record-page .record-section:first-child{border-top:0}
+.record-page .record-section h2{margin:.1rem 0 .85rem}
+.record-page .record-section h3{margin:1rem 0 .55rem}
+.record-page .record-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.record-page .record-fact{border:1px solid #e0e8e4;border-radius:12px;padding:.85rem 1rem;background:#fff}
+.record-page .record-fact dt{font-weight:700;margin-bottom:.28rem}
+.record-page .record-fact dd{margin:0;line-height:1.5}
+.record-page .tag-list{display:flex;flex-wrap:wrap;gap:.45rem;padding:0;margin:.7rem 0;list-style:none}
+.record-page .tag-list li{border-radius:999px;background:#eef4f1;padding:.35rem .62rem;font-size:.9rem}
+.record-page .route-list{display:grid;gap:.75rem}
+.record-page .route-card{border:1px solid #d6e2dc;border-radius:12px;padding:1rem;background:#fff}
+.record-page .route-card.primary-route{border-width:2px;border-color:#527966}
+.record-page .route-meta{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem;font-size:.86rem;color:#52645c}
+.record-page .route-meta span{background:#f3f7f5;border-radius:999px;padding:.2rem .5rem}
+.record-page .route-actions{margin-top:.7rem}
+.record-page .route-actions a,.record-page .record-primary-link{display:inline-flex;align-items:center;gap:.25rem;font-weight:700}
+.record-page .product-list{display:grid;gap:1rem}
+.record-page .record-product{border:1px solid #dce5e1;border-radius:14px;padding:1rem;background:#fff}
+.record-page .distribution-list{display:grid;gap:.65rem;margin-top:.8rem}
+.record-page .distribution{border-left:3px solid #b9cbc2;padding:.45rem 0 .45rem .8rem}
+.record-page .notice{border-left:4px solid #8ba79a;background:#f4f8f6;padding:.8rem 1rem;border-radius:0 10px 10px 0}
+.record-page .record-reference{border:1px solid #e0e8e4;border-radius:12px;padding:1rem;background:#fff}
+.record-page .record-meta-note{font-size:.93rem;color:#52645c}
+.record-page .record-footer-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin:1rem 0 0}
+@media (max-width:900px){.record-page .record-layout{grid-template-columns:1fr}.record-page .record-nav{position:static}.record-page .record-grid{grid-template-columns:1fr}}
+@media (max-width:600px){.record-page .record-hero{padding-top:1.5rem}.record-page .record-kicker{gap:.4rem}.record-page .record-grid{gap:.6rem}}
