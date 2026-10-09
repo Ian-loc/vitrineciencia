@@ -534,7 +534,7 @@ def render_record_page(record: dict) -> str:
         '<div class="product-list">' + "".join(product_html(item) for item in products) + "</div>"
         if products
         else (
-            '<p class="notice">A Vitrine ainda não enumera produtos, coleções ou releases deste registro como itens detalhados. '
+            '<p class="notice">A Vitrine ainda não enumera produtos, coleções ou versões deste registro como itens detalhados. '
             'O resumo abaixo descreve o que foi verificado no nível do registro; novas entidades poderão ser vinculadas aqui sem criar outra página pública.</p>'
         )
     )
@@ -558,7 +558,7 @@ def render_record_page(record: dict) -> str:
             nav_link("acesso", "Como acessar"),
             nav_link("conteudos", "Conteúdos"),
             nav_link("cobertura", "Cobertura"),
-            nav_link("produtos", "Produtos e releases"),
+            nav_link("produtos", "Produtos e versões"),
             nav_link("uso-em-pesquisa", "Uso em pesquisa"),
             nav_link("limitacoes", "Cuidados e limitações"),
             nav_link("proveniencia", "Proveniência"),
@@ -645,7 +645,7 @@ def render_record_page(record: dict) -> str:
 <p class="record-meta-note">Quando um produto detalhado possui informação espacial ou temporal mais específica, ela prevalece sobre este resumo geral do registro.</p>
 </section>
 
-<section class="record-section" id="produtos"><h2>Produtos, coleções e releases descritos em detalhe</h2>
+<section class="record-section" id="produtos"><h2>Produtos, coleções e versões descritos em detalhe</h2>
 {product_section}{product_compare}
 </section>
 
