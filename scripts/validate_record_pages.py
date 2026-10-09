@@ -104,8 +104,12 @@ for record in records:
     if sum(bool(item.get("primary")) for item in routes) != 1:
         fail(f"{rid}: deve existir exatamente uma rota principal")
     for route in routes:
-        if not str(route.get("url") or "").startswith("https://"):
-            fail(f"{rid}: rota não HTTPS: {route.get('url')}")
+        route_url = str(route.get("url") or "")
+        if route_url:
+            if not route_url.startswith("https://"):
+                fail(f"{rid}: rota não HTTPS: {route.get('url')}")
+        elif not (route.get("primary") and route.get("access_class") == "E"):
+            fail(f"{rid}: rota sem URL só é permitida para acesso principal E")
         if not route.get("roles"):
             fail(f"{rid}: rota sem papel declarado")
         if not route.get("label"):
