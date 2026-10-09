@@ -92,7 +92,6 @@ jobs:
           grep -q 'PUBLIC_ACTIONS' "$tmp/public-interface-guardrails.js"
           grep -q 'static_core_51_access_audit.json' "$tmp/source-discovery-v2.js"
           grep -q 'normalize("NFD")' "$tmp/source-discovery-v2.js"
-          grep -q 'Ver registro completo na Vitrine' "$SITE" >/dev/null 2>&1 || true
           grep -q 'Iniciativa ou programa de dados' "$tmp/dr0010.html"
           grep -q 'Produtos, coleções e releases descritos em detalhe' "$tmp/dr0011.html"
           grep -q 'Carbon Mapper' "$tmp/dr0139.html"
