@@ -63,6 +63,7 @@ const formats = resource => [...new Set(split(resource.data_formats).map(value =
 const searchText = resource => norm(SEARCH_FIELDS.map(key => resource[key]).join(" "));
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const domId = value => String(value || "resource").replace(/[^a-zA-Z0-9_-]/g, "-");
+const recordUrl = resource => `registros/${String(resource?.resource_id || "").toLowerCase()}/`;
 
 function buildScopeIndex(registry) {
   const index = new Map();
@@ -225,7 +226,7 @@ function card(resource) {
 
   return `<article class="card" data-resource-id="${esc(resource.resource_id)}" role="listitem" aria-labelledby="${cardId}" aria-describedby="${descriptionId}">
     <header class="card-header">
-      <div class="card-title"><div class="scope-line">${scopeBadge(resource)}</div><div class="title-line"><h3 id="${cardId}">${esc(resource.resource_name)}</h3>${acronym}</div><p class="identity">${esc(resource.official_identity)}</p></div>
+      <div class="card-title"><div class="scope-line">${scopeBadge(resource)}</div><div class="title-line"><h3 id="${cardId}"><a href="${recordUrl(resource)}">${esc(resource.resource_name)}</a></h3>${acronym}</div><p class="identity">${esc(resource.official_identity)}</p></div>
     </header>
     <p class="description" id="${descriptionId}">${esc(resource.description)}</p>
     <div class="chips" aria-label="Áreas de pesquisa">${areaChips}</div>
@@ -238,6 +239,7 @@ function card(resource) {
       ${actionLink("Acessar dados", resource.data_access_url, "action-primary")}
       ${actionLink("Site oficial", resource.homepage_url)}
     </div>
+    <div class="record-detail-actions"><a class="action-secondary" href="${recordUrl(resource)}">Ver registro completo na Vitrine →</a></div>
     <details class="card-details">
       <summary aria-label="Ver detalhes técnicos e documentação de ${esc(resource.resource_name)}">Ver detalhes técnicos e documentação</summary>
       <div class="detail-groups">${accessGroup}${coverageGroup}${productsGroup}${documentationGroup}</div>

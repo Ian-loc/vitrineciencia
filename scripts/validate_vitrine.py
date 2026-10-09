@@ -245,6 +245,7 @@ def validate_functional_contracts() -> None:
     discovery = (ROOT / "assets/source-discovery-v2.js").read_text(encoding="utf-8")
     priority = (ROOT / "assets/applied-priority.js").read_text(encoding="utf-8")
     if "const PAGE_SIZE = 12;" not in app or "filtered.slice(0, visibleCount)" not in app: fail("assets/app.js: divulgação progressiva ausente")
+    if "recordUrl" not in app or "Ver registro completo na Vitrine" not in app: fail("assets/app.js: navegação para páginas individuais de registro ausente")
     for token in ("const PAGE_SIZE = 18;", "THEME_GROUPS", "productAccessCategories", "parseQuery"):
         if token not in products: fail(f"assets/products.js: contrato ausente: {token}")
     for token in ("Página do provedor", "API / documentação", "Dados / download", "access-review-note"):
@@ -260,14 +261,14 @@ def validate_functional_contracts() -> None:
 def validate_required_assets() -> None:
     required = (
         "assets/style.css", "assets/accessibility.css", "assets/brazil-scope.css", "assets/products.css",
-        "assets/visual-refinement.css", "assets/ux-v2.css", "assets/ux-simple.css", "assets/product-card-refinement.css",
+        "assets/visual-refinement.css", "assets/ux-v2.css", "assets/ux-simple.css", "assets/product-card-refinement.css", "assets/record-page.css",
         "assets/discovery-guardrails.css", "assets/app.js", "assets/ptbr.js", "assets/products.js", "assets/home.js",
         "assets/navigation.js", "assets/analytics.js", "assets/analytics-products.js", "assets/export-selective.js",
         "assets/source-comparison.js", "assets/discovery-guardrails.js", "assets/static-catalog-51.js",
         "assets/source-discovery-v2.js", "assets/applied-priority.js",
         "data/data_resources.csv", "data/data_resources.json", "data/data_products.csv", "data/data_products.json",
         "data/product_distributions.csv", "data/brazil_scope_priorities.json", "data/static_core_51_access_audit.json",
-        "data/applied_priority_gate.json",
+        "data/applied_priority_gate.json", "schema/public-record-v1.json", "scripts/build_record_pages.py", "scripts/validate_record_pages.py",
     )
     missing = [name for name in required if not (ROOT / name).exists() or (ROOT / name).stat().st_size == 0]
     if missing: fail("artefatos obrigatórios ausentes: " + ", ".join(missing))

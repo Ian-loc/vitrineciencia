@@ -1,0 +1,154 @@
+{
+  "schema_version": "public-record-v1",
+  "status": "stable_public_presentation_contract",
+  "purpose": "Definir a unidade pública de navegação da Vitrine Ciência sem confundir registro, fonte institucional, plataforma, dataset, produto, distribuição, serviço ou documento.",
+  "public_unit": {
+    "canonical_name": "registro da Vitrine",
+    "route_pattern": "registros/{resource_id_lower}/",
+    "identity_key": "resource_id",
+    "semantics": "Um registro é uma unidade pública agregadora e persistente. Pode representar, conforme a evidência, uma iniciativa, plataforma, catálogo, infraestrutura, base/coleção, rede/observatório ou referência. Produtos, releases, distribuições, serviços, visualizadores e documentos vinculados não geram páginas públicas independentes por padrão.",
+    "non_goals": [
+      "não declarar todo DR como dataset",
+      "não criar página pública por arquivo, asset, cena, release ou distribuição",
+      "não substituir a ontologia científica futura"
+    ]
+  },
+  "public_record_types": {
+    "initiative_program": {
+      "label": "Iniciativa ou programa de dados",
+      "description": "Iniciativa, programa ou esforço organizado que produz ou coordena famílias de dados."
+    },
+    "platform_system": {
+      "label": "Plataforma ou sistema de informação",
+      "description": "Plataforma, sistema ou ambiente de consulta, análise ou visualização de informações."
+    },
+    "catalog_repository": {
+      "label": "Catálogo ou repositório de dados",
+      "description": "Catálogo, repositório, arquivo ou federação que organiza e publica conjuntos de dados e metadados."
+    },
+    "infrastructure_service": {
+      "label": "Infraestrutura ou serviço de dados",
+      "description": "Infraestrutura técnica, serviço de extração, publicação ou interoperabilidade de dados."
+    },
+    "database_collection": {
+      "label": "Base ou coleção de dados",
+      "description": "Base temática, coleção, registro de observações ou família de dados com conteúdo científico próprio."
+    },
+    "network_observatory": {
+      "label": "Rede ou observatório",
+      "description": "Rede, observatório, centro ou sistema distribuído de monitoramento e observação."
+    },
+    "register_reference": {
+      "label": "Registro, guia ou referência",
+      "description": "Registro oficial, guia curado ou recurso de referência para descoberta e interpretação."
+    }
+  },
+  "entity_type_mapping": {
+    "PLATFORM": "platform_system",
+    "SPATIAL_DATA_INFRASTRUCTURE": "infrastructure_service",
+    "INFORMATION_SYSTEM": "platform_system",
+    "MONITORING_CENTER": "network_observatory",
+    "DATA_CATALOG": "catalog_repository",
+    "DATA_INFRASTRUCTURE": "infrastructure_service",
+    "DATA_PRODUCTION_INITIATIVE": "initiative_program",
+    "DATA_PLATFORM": "platform_system",
+    "MONITORING_PROGRAM": "initiative_program",
+    "BIODIVERSITY_DATA_NETWORK": "network_observatory",
+    "THEMATIC_DATABASE": "database_collection",
+    "OFFICIAL_REGISTER": "register_reference",
+    "OBSERVATIONAL_DATABASE": "database_collection",
+    "DATA_CATALOG_AND_PROCESSING_PLATFORM": "catalog_repository",
+    "DATA_EXTRACTION_SERVICE": "infrastructure_service",
+    "DATA_CATALOG_AND_SERVICE": "catalog_repository",
+    "CLIMATE_DATASET_COLLECTION": "database_collection",
+    "CONSERVATION_DATA_PLATFORM": "platform_system",
+    "SPECIES_ASSESSMENT_DATABASE": "database_collection",
+    "BIODIVERSITY_DATA_INFRASTRUCTURE": "infrastructure_service",
+    "CITIZEN_SCIENCE_DATA_PLATFORM": "platform_system",
+    "RESEARCH_DATA_REPOSITORY_AND_PLATFORM": "catalog_repository",
+    "ECOLOGICAL_OBSERVATORY": "network_observatory",
+    "DATA_REPOSITORY_FEDERATION": "catalog_repository",
+    "RESEARCH_DATA_REPOSITORY": "catalog_repository",
+    "RESEARCH_DATA_REPOSITORY_AND_PUBLISHER": "catalog_repository",
+    "CITIZEN_SCIENCE_PLATFORM": "platform_system",
+    "CURATED_DATA_GUIDE": "register_reference",
+    "MODELED_SOIL_DATA_SYSTEM": "database_collection",
+    "SOIL_PROFILE_DATABASE_AND_SERVICE": "database_collection",
+    "PUBLISHING_SOFTWARE": "infrastructure_service",
+    "INTEGRATED_BIODIVERSITY_DATABASE": "database_collection",
+    "OBSERVATION_NETWORK": "network_observatory",
+    "OBSERVATION_NETWORK_AND_DATA_COLLECTION": "network_observatory",
+    "DATA_VISUALIZATION_PLATFORM": "platform_system",
+    "EMISSIONS_DATABASE": "database_collection",
+    "FEDERATED_DATA_INFRASTRUCTURE": "infrastructure_service",
+    "RESEARCH_NETWORK_AND_METADATA_INFRASTRUCTURE": "network_observatory",
+    "RESEARCH_DATA_ARCHIVE": "catalog_repository",
+    "BIBLIOMETRIC_DATABASE": "database_collection"
+  },
+  "curated_overrides": {
+    "DR0136": "network_observatory",
+    "DR0137": "database_collection",
+    "DR0138": "platform_system",
+    "DR0139": "platform_system",
+    "DR0140": "database_collection",
+    "DR0141": "database_collection",
+    "DR0142": "platform_system"
+  },
+  "access_route_types": {
+    "direct_data": {
+      "label": "Acessar dados",
+      "access_class": "A"
+    },
+    "data_page": {
+      "label": "Ir para a página de dados",
+      "access_class": "B"
+    },
+    "data_service": {
+      "label": "Abrir serviço de dados",
+      "access_class": "C"
+    },
+    "viewer": {
+      "label": "Abrir visualizador ou página de consulta",
+      "access_class": "D"
+    },
+    "unconfirmed_access": {
+      "label": "Ver acesso informado",
+      "access_class": "E"
+    },
+    "official_site": {
+      "label": "Abrir site oficial"
+    },
+    "access_documentation": {
+      "label": "Ver documentação de acesso"
+    },
+    "scientific_reference": {
+      "label": "Ver referência científica ou técnica"
+    },
+    "verification_source": {
+      "label": "Ver fonte usada na verificação"
+    }
+  },
+  "page_sections": [
+    "sobre",
+    "acesso",
+    "conteudos",
+    "cobertura",
+    "produtos",
+    "uso-em-pesquisa",
+    "limitacoes",
+    "proveniencia",
+    "condicoes-de-uso",
+    "referencias",
+    "curadoria"
+  ],
+  "language": {
+    "public_locale": "pt-BR",
+    "unknown_label": "Não confirmado",
+    "not_applicable_label": "Não se aplica"
+  },
+  "future_api_contract": {
+    "principle": "static_first_stale_while_revalidate",
+    "rule": "A página pública e o JSON estático permanecem disponíveis independentemente das APIs externas. Uma consulta futura pode solicitar atualização assíncrona; resultados novos entram em staging/validação antes de substituir o snapshot público.",
+    "recommended_endpoint": "GET /api/v1/records/{resource_id}"
+  }
+}

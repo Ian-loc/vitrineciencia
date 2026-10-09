@@ -66,6 +66,12 @@ jobs:
           fetch "$SITE/data/data_resources.json?v=$TARGET_SHA" "$tmp/resources.json"
           fetch "$SITE/data/data_products.json?v=$TARGET_SHA" "$tmp/products.json"
           fetch "$SITE/data/applied_priority_gate.json?v=$TARGET_SHA" "$tmp/applied-priority.json"
+          fetch "$SITE/data/public_records.json?v=$TARGET_SHA" "$tmp/public-records.json"
+          fetch "$SITE/registros/dr0010/?v=$TARGET_SHA" "$tmp/dr0010.html"
+          fetch "$SITE/registros/dr0011/?v=$TARGET_SHA" "$tmp/dr0011.html"
+          fetch "$SITE/registros/dr0139/?v=$TARGET_SHA" "$tmp/dr0139.html"
+          fetch "$SITE/registros/dr0141/?v=$TARGET_SHA" "$tmp/dr0141.html"
+          fetch "$SITE/data/registros/dr0139.json?v=$TARGET_SHA" "$tmp/dr0139.json"
 
           grep -q 'Que fenômeno ou processo você quer investigar?' "$tmp/index.html"
           grep -q 'action="sources.html"' "$tmp/index.html"
@@ -86,6 +92,10 @@ jobs:
           grep -q 'PUBLIC_ACTIONS' "$tmp/public-interface-guardrails.js"
           grep -q 'static_core_51_access_audit.json' "$tmp/source-discovery-v2.js"
           grep -q 'normalize("NFD")' "$tmp/source-discovery-v2.js"
+          grep -q 'Iniciativa ou programa de dados' "$tmp/dr0010.html"
+          grep -q 'Produtos, coleções e versões descritos em detalhe' "$tmp/dr0011.html"
+          grep -q 'Carbon Mapper' "$tmp/dr0139.html"
+          grep -q 'Condições de uso e licença' "$tmp/dr0141.html"
 
           grep -q 'Subconjunto de 11 itens descritos em detalhe' "$tmp/products.html"
           grep -q '19 rotas associadas' "$tmp/products.html"
@@ -101,14 +111,21 @@ jobs:
           ! grep -E -q 'data/quarantine|v1.0.0-expanded' \
             "$tmp/index.html" "$tmp/products.html" "$tmp/sources.html" "$tmp/about.html"
 
-          python3 - "$tmp/resources.json" "$tmp/products.json" "$tmp/applied-priority.json" <<'PY'
+          python3 - "$tmp/resources.json" "$tmp/products.json" "$tmp/applied-priority.json" "$tmp/public-records.json" "$tmp/dr0139.json" <<'PY'
           import json, sys
           resources = json.load(open(sys.argv[1], encoding='utf-8'))
           products = json.load(open(sys.argv[2], encoding='utf-8'))
           priority = json.load(open(sys.argv[3], encoding='utf-8'))
+          public_records = json.load(open(sys.argv[4], encoding='utf-8'))
+          carbon = json.load(open(sys.argv[5], encoding='utf-8'))
 
           assert len(resources) == 58, len(resources)
           assert len(products) == 11, len(products)
+          assert len(public_records) == 58, len(public_records)
+          assert {r["resource_id"] for r in public_records} == {r["resource_id"] for r in resources}
+          assert all(sum(bool(x.get("primary")) for x in r["access"]["routes"]) == 1 for r in public_records)
+          assert carbon["resource_id"] == "DR0139"
+          assert carbon["url"].endswith("/registros/dr0139/")
           assert len({p['resource_id'] for p in products}) <= len(resources)
           distributions = sum(len(p.get('distributions', [])) for p in products)
           assert distributions == 19, distributions
@@ -120,5 +137,5 @@ jobs:
           assert all(item.get('access_role') in {'A', 'B', 'C', 'D', 'E'} for item in items)
           assert all(str(item.get('access_url') or '').startswith('https://') for item in items)
 
-          print('OK: Vitrine pública 58 registros (51 do núcleo + 7 pós-core) / 11 itens detalhados / 19 rotas')
+          print('OK: Vitrine pública 58 registros + 58 páginas individuais / 11 itens detalhados / 19 distribuições')
           PY

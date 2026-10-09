@@ -61,8 +61,9 @@ jobs:
 
       - name: Construir artefato público isolado
         run: |
-          python3 -m py_compile scripts/build_site_artifact.py
+          python3 -m py_compile scripts/build_site_artifact.py scripts/build_record_pages.py scripts/validate_record_pages.py
           python3 scripts/build_site_artifact.py
+          python3 scripts/validate_record_pages.py
 
       - name: Confirmar fronteira pública
         run: |
@@ -76,6 +77,12 @@ jobs:
           test -s _site/assets/discovery-guardrails.css
           test -s _site/assets/static-catalog-51.js
           test -s _site/assets/public-interface-guardrails.js
+          test -s _site/assets/record-page.css
+          test -s _site/data/public_records.json
+          test "$(find _site/registros -mindepth 2 -maxdepth 2 -name index.html | wc -l)" -eq 58
+          test "$(find _site/data/registros -maxdepth 1 -name "dr*.json" | wc -l)" -eq 58
+          test -s _site/registros/dr0010/index.html
+          test -s _site/registros/dr0139/index.html
           test -s _site/data/data_resources.json
           test -s _site/data/data_products.json
           test -s _site/data/brazil_scope_priorities.json

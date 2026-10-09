@@ -2,7 +2,7 @@
 
 **Catálogo público e citável para descobrir e acessar dados científicos relevantes ao Brasil.**
 
-## Estado atual — 30 de setembro de 2026
+## Estado atual — 9 de outubro de 2026
 
 - **Autoridade canônica:** o repositório `Ian-loc/vitrineciencia`; `main` é o estado público corrente. Worktrees locais, Drive, handoffs e chats são auxiliares e não substituem o que está materializado no GitHub.
 - O marco estático do núcleo **DR0001–DR0051 está consolidado**: `VITRINE_STATIC_51_STABLE`.
@@ -13,13 +13,13 @@
 - A recertificação semântica está concluída em **51/51**; `DR####` é identificador legado de entrada, não classe ontológica.
 - A matriz canônica de acesso registra **A=1, B=38, C=0, D=10, E=2**. Os dois E (`DR0014` e `DR0039`) são limitações deliberadamente documentadas, não pendências silenciosas.
 - O gate aplicado P1–P6 está materializado para AdaptaBrasil, MapBiomas Municípios, IEDE-MG/FJP, BDMG, SICAR/CAR + SIGEF/INCRA e IBGE Cidades e Estados.
-- O artefato público fecha suas dependências locais e separa explicitamente a autoridade de tipagem semântica da autoridade A–E de acesso.
+- O artefato público fecha suas dependências locais e separa explicitamente a autoridade de tipagem semântica da autoridade A–E de acesso.\n- Cada `DR####` possui uma página pública agregadora e um JSON estático individual; produtos, releases, distribuições e serviços vinculados permanecem dentro desse registro em vez de gerar centenas de páginas.
 
 ## Direção pública
 
 A experiência deve seguir:
 
-**pergunta científica → fenômeno/processo → território/tempo/escala → dataset/família de dados → produto científico quando necessário → distribuição/rota de acesso ou DataService → provedor/proveniência → documentação**.
+**pergunta científica → fenômeno/processo/território/tipo de informação → registro da Vitrine → produto/coleção/release quando descrito → distribuição/rota de acesso, DataService ou visualizador → provedor/proveniência → documentação**.
 
 Busca livre não é o mecanismo principal. A interface privilegia filtros controlados e encaminhamento a rotas cuja função foi classificada explicitamente.
 
@@ -53,14 +53,14 @@ Somente A–C podem ser apresentados como acesso confirmado a dados. HTTP 200 is
 As três fases do marco estático estão concluídas:
 
 1. **Fase I — reconciliação e recertificação:** 51/51 semanticamente tipados e com A–E justificado.
-2. **Fase II — representação estática:** Home tema-first, `sources.html` para os 51, `products.html` para o subconjunto 11/19 e P1–P6 integrado.
+2. **Fase II — representação estática:** Home tema-first, `sources.html` para os 58 registros, 58 páginas individuais `/registros/dr####/`, `products.html` para o subconjunto 11/19 e P1–P6 integrado.
 3. **Fase III — consolidação funcional:** filtros controlados, runtime dos cards, papéis semânticos, fechamento de dependências, responsividade, deploy e smoke público validados.
 
 A **fase ativa de QA/QC e manutenção** passa a ser manutenção do marco estável e correção de regressões; não significa recertificação pendente.
 
 ## Próximo milestone
 
-Federação por APIs/Data Services é um **novo milestone**, separado do marco estático e ainda não ativado automaticamente. Integration Registry, conectores STAC/CKAN/OGC/REST/GraphQL, harvesting, PostgreSQL/backend próprio ou reentrada da expansão exigem autorização e escopo próprios. Nenhum recurso descoberto por API entra automaticamente na superfície pública.
+Federação por APIs/Data Services é um **novo milestone**, separado do marco estático e ainda não ativado automaticamente. A camada pública já foi preparada para `static-first / stale-while-revalidate`: uma API futura poderá atualizar um registro de forma assíncrona sem tornar a página dependente da disponibilidade do provedor. Integration Registry, conectores STAC/CKAN/OGC/REST/GraphQL, harvesting, PostgreSQL/backend próprio ou reentrada da expansão exigem autorização e escopo próprios. Nenhum recurso descoberto por API entra automaticamente na superfície pública.
 
 ## Release científica v1.0.0
 
@@ -77,7 +77,7 @@ A release histórica permanece imutável e reproduzível:
 - execução e gates: `WORKFLOW_STATUS.md`;
 - checkpoint do marco: `docs/CHECKPOINT_STATIC_51_2026-09-04.md`;
 - direção científica: `docs/PROJECT_SCIENTIFIC_DIRECTION.md`;
-- contrato legado/transitório: `docs/VITRINE_CANONICAL_DATA_CONTRACT.md`;
+- contrato legado/transitório: `docs/VITRINE_CANONICAL_DATA_CONTRACT.md`;\n- contrato das páginas públicas: `docs/PUBLIC_RECORD_PAGES_V1.md`;\n- schema público: `schema/public-record-v1.json`;
 - matriz de acesso: `data/static_core_51_access_audit.json`;
 - recertificação semântica: `data/static_core_51_progress.json`;
 - gate aplicado: `data/applied_priority_gate.json`;
