@@ -16,7 +16,10 @@ on:
       - "scripts/build_catalog.py"
       - "scripts/build_public_discovery.py"
       - "scripts/build_site_artifact.py"
+      - "scripts/build_record_pages.py"
+      - "scripts/validate_record_pages.py"
       - "scripts/validate_vitrine.py"
+      - "schema/public-record-v1.json"
   pull_request:
     branches: [main]
     paths:
@@ -32,7 +35,10 @@ on:
       - "scripts/build_catalog.py"
       - "scripts/build_public_discovery.py"
       - "scripts/build_site_artifact.py"
+      - "scripts/build_record_pages.py"
+      - "scripts/validate_record_pages.py"
       - "scripts/validate_vitrine.py"
+      - "schema/public-record-v1.json"
   workflow_dispatch:
 
 permissions:
@@ -54,6 +60,7 @@ jobs:
           python3 scripts/build_public_discovery.py
           python3 scripts/validate_vitrine.py
           python3 scripts/build_site_artifact.py
+          python3 scripts/validate_record_pages.py
           python3 -m http.server 8000 --directory _site > /tmp/vitrine-http.log 2>&1 &
           for attempt in {1..20}; do
             if curl -fsS http://127.0.0.1:8000/ >/dev/null; then exit 0; fi
@@ -76,7 +83,7 @@ jobs:
           const { chromium } = require('playwright');
           const fs = require('fs');
           const base = process.env.CANDIDATE_URL;
-          const pages = [['home',''],['products','products.html'],['product-index','products-list.html'],['sources','sources.html'],['about','about.html'],['catalog-overview','analytics.html']];
+          const pages = [['home',''],['products','products.html'],['product-index','products-list.html'],['sources','sources.html'],['about','about.html'],['catalog-overview','analytics.html'],['record-mapbiomas','registros/dr0010/'],['record-terrabrasilis','registros/dr0011/'],['record-gee','registros/dr0019/'],['record-carbon-mapper','registros/dr0139/'],['record-planet-carbon','registros/dr0141/']];
           const viewports = [['desktop',{width:1440,height:1100}],['tablet',{width:820,height:1180}],['mobile',{width:390,height:844}]];
           const allowedActions = new Set(['Acessar site','Acessar dados / download']);
           const technicalHref = /(?:\/api(?:\/|$)|graphql|opendap|\bwms\b|\bwfs\b|\bwcs\b|wmts|stac|csw|swagger|openapi)/i;
@@ -174,6 +181,20 @@ jobs:
                   const rows = page.locator('#product-index-list .product-index-row');
                   if (await rows.count() !== 11) { console.error(`Lista deve conter 11 itens: ${await rows.count()}`); failed=true; }
                   if (!await validatePublicActions(page, '#product-index-list .index-actions a:visible', 'Lista de dados')) failed=true;
+                }
+
+                if (name.startsWith('record-')) {
+                  if (await page.locator('.record-type').count() !== 1) { console.error(`Tipo público ausente em ${name}`); failed=true; }
+                  if (await page.locator('.record-nav a').count() < 8) { console.error(`Navegação interna insuficiente em ${name}`); failed=true; }
+                  for (const selector of ['#sobre','#acesso','#conteudos','#cobertura','#produtos','#limitacoes','#proveniencia','#referencias','#curadoria']) {
+                    if (await page.locator(selector).count() !== 1) { console.error(`Seção ausente ${selector} em ${name}`); failed=true; }
+                  }
+                  if (await page.locator('.record-primary-link').count()) { console.error(`Classe legada inesperada em ${name}`); failed=true; }
+                  const body = await page.locator('body').innerText();
+                  if (/entity_type|source_origin|access_role|dataset_page|DIRECT_DATA|BROKEN_UNCERTAIN/i.test(body)) { console.error(`Vocabulário interno exposto em ${name}`); failed=true; }
+                  if (name === 'record-terrabrasilis' && await page.locator('.record-product').count() !== 7) { console.error('TerraBrasilis deve exibir 7 produtos detalhados'); failed=true; }
+                  if (name === 'record-gee' && await page.locator('.record-product').count() !== 4) { console.error('GEE deve exibir 4 produtos detalhados'); failed=true; }
+                  if (name === 'record-mapbiomas' && await page.locator('.record-product').count() !== 0) { console.error('MapBiomas não deve inventar produtos detalhados'); failed=true; }
                 }
 
                 if (name === 'sources') {
