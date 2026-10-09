@@ -165,3 +165,17 @@ Regras operacionais prioritárias:
 A interface pública usa uma camada derivada definida em `schema/public-discovery-v0.1.json`. Ela **não substitui nem apaga** os valores detalhados dos CSVs canônicos.
 
 As categorias e normalizações públicas permanecem compatíveis com o frontend corrente enquanto a ontologia é auditada. Nenhuma delas deve ser usada como evidência para reclassificar automaticamente um DR.
+## 12. Registro público e páginas individuais
+
+A unidade pública de navegação individual é o **registro da Vitrine** (`DR####`). O registro não é sinônimo de dataset, provedor ou plataforma; ele é uma unidade agregadora persistente que pode relacionar produtos, coleções, releases, distribuições, serviços, visualizadores e documentos.
+
+A representação pública é definida em `schema/public-record-v1.json` e materializada no build como:
+
+- `/registros/dr####/` — HTML público;
+- `/data/registros/dr####.json` — representação individual estruturada;
+- `/data/public_records.json` — índice completo dos registros públicos.
+
+Produtos `DP` e distribuições `DD` permanecem subordinados ao registro. Eles não geram novas páginas públicas por padrão. A estrutura foi desenhada para servir como fallback estático de uma futura API `/api/v1/records/{resource_id}`, usando atualização assíncrona e curadoria antes de substituir o snapshot público.
+
+A documentação operacional dessa decisão está em `docs/PUBLIC_RECORD_PAGES_V1.md`.
+
