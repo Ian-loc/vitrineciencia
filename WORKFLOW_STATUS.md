@@ -1,6 +1,6 @@
 # Estado do workflow — Vitrine Ciência
 
-Atualização: **2026-10-08** (`America/Sao_Paulo`)
+Atualização: **2026-10-09** (`America/Sao_Paulo`)
 
 ## Autoridade operacional
 
@@ -42,7 +42,7 @@ A recertificação semântica do núcleo permanece concluída em **51/51**. A ma
 
 A experiência pública deve seguir:
 
-**pergunta científica → fenômeno/processo → território/tempo/escala → dataset/família de dados → produto científico quando necessário → distribuição/rota de acesso ou DataService → provedor/proveniência → documentação**.
+**pergunta científica → fenômeno/processo/território/tipo de informação → registro da Vitrine → produto/coleção/release quando descrito → distribuição/rota de acesso, DataService ou visualizador → provedor/proveniência → documentação**.
 
 Devem permanecer distintos quando aplicável: Provider/Institution, Program/Initiative, Platform/Catalog/Data Infrastructure, Dataset/Collection, Product, Distribution, DataService, Portal/Viewer e Documentation/Publication.
 
@@ -55,7 +55,7 @@ Devem permanecer distintos quando aplicável: Provider/Institution, Program/Init
 
 2. **Fase II — reorganizar a representação estática: CONCLUÍDA**
    - Home orientada por pergunta/tema;
-   - `sources.html` como descoberta ampla dos 51;
+   - `sources.html` como descoberta ampla dos 58 registros;\n   - `/registros/dr####/` como página individual agregadora; produtos, coleções, releases e rotas ficam subordinados;
    - `products.html` como subconjunto detalhado 11/19;
    - Baixar dados / Página do conjunto / API-serviço / Viewer / Documentação / Provedor separados por função;
    - P1–P6 materializado na superfície pública.
@@ -87,7 +87,7 @@ P1 AdaptaBrasil MCTI; P2 MapBiomas Municípios; P3 IEDE-MG/FJP; P4 BDMG com dado
 
 O marco foi fechado com:
 
-- núcleo estático 51 preservado e catálogo público com 54 registros após a adição pós-core isolada da REDEMET; expansão histórica permanece fora do catálogo vivo;
+- núcleo estático 51 preservado e catálogo público com 58 registros após as adições pós-core autorizadas; expansão histórica permanece fora do catálogo vivo;
 - 51/51 com tipo/papel factual;
 - 51/51 com fenômeno/processo, território, tipo de informação, proveniência e A–E sustentados;
 - dataset/família como objeto científico central quando identificável, sem invenção;
@@ -114,7 +114,7 @@ O marco foi fechado com:
 - não reabrir caso fechado sem nova evidência, conflito ou regressão;
 - mudança factual começa na autoridade canônica apropriada e é propagada pelo build;
 - não corrigir classificação apenas no HTML/JavaScript;
-- regressões de interface devem preservar os gates automatizados atuais;
+- regressões de interface devem preservar os gates automatizados atuais;\n- páginas individuais são geradas do estado canônico; não editar HTML de registro manualmente;\n- futura atualização por API deve manter fallback estático e só promover metadados externos após staging/validação;
 - o Drive permanece espelho documental;
 - a execução específica de fechamento do marco estático deve permanecer desativada após esta declaração.
 
