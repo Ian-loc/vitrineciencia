@@ -377,7 +377,7 @@ function productCard(product) {
     ? `<span class="limitation-flag">Limitação registrada</span>` : "";
   return `<article class="card product-card" data-product-id="${esc(product.product_id)}" role="listitem" aria-labelledby="${cardId}" aria-describedby="${descriptionId}">
     <header class="product-card-head">
-      <p class="product-source">${esc(product.source?.resource_name || "Fonte não informada")}</p>
+      <p class="product-source">${product.source?.resource_id ? `<a href="registros/${esc(String(product.source.resource_id).toLowerCase())}/">${esc(product.source?.resource_name || "Fonte não informada")}</a>` : esc(product.source?.resource_name || "Fonte não informada")}</p>
       <h3 id="${cardId}">${esc(product.product_name)}</h3>
       <p class="identity">${esc(product.product_family || KIND_LABELS[product.product_kind] || "Produto de dados")}</p>
     </header>
