@@ -165,6 +165,8 @@ Separar:
 
 HTTP 200 não comprova acesso.
 
+A autoridade estrutural atual das rotas é `data/access_routes.json`. Os campos legados abaixo permanecem sincronizados durante a migração, mas o read model v2 não precisa mais inferir o papel de cada URL a partir deles.
+
 No schema físico legado, os dois papéis mínimos continuam documentados explicitamente:
 
 - **Site oficial** (`homepage_url`) — identidade institucional ou página oficial principal do recurso;

@@ -40,7 +40,8 @@
       "semantics": "Estados de versão/coleção. Nesta migração, entradas podem ser derivadas do campo legado version_or_collection e são marcadas como resumo legado, não como identificadores científicos canônicos."
     },
     "access_routes": {
-      "semantics": "Rotas funcionais para recurso ou oferta. Rotas do recurso são derivadas do v1; distribuições DD tornam-se rotas direcionadas às ofertas sem perder seus IDs."
+      "semantics": "Rotas funcionais canônicas provenientes de data/access_routes.json. Referências/evidências permanecem em references; distribuições DD são rotas direcionadas às offerings.",
+      "authority": "data/access_routes.json"
     },
     "agents": {
       "semantics": "Agentes associados ao recurso. O campo legado owner_or_manager é migrado conservadoramente para o papel responsible_or_maintainer até curadoria posterior."
@@ -108,7 +109,8 @@
     "nenhum DP ou DD é inventado durante a migração",
     "todo DD existente é preservado como access_route de uma offering",
     "desconhecido não é convertido em não",
-    "falha de API externa não é necessária para gerar ou servir este modelo"
+    "falha de API externa não é necessária para gerar ou servir este modelo",
+    "access_routes são idênticas à autoridade data/access_routes.json"
   ],
   "future_api_contract": {
     "principle": "static_first_stale_while_revalidate",

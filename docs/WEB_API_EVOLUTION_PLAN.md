@@ -73,11 +73,9 @@ Correção: introduzir `record` e `resource` separados.
 
 `public-interface-guardrails.js` deixou de limpar a estrutura dos cards de fontes. Ele permanece como camada conservadora para registrar data de verificação e limitar ações externas a destinos públicos seguros.
 
-### 4.4 Rotas derivadas
+### 4.4 Rotas derivadas — resolvido
 
-Papéis de links ainda são inferidos de campos gerais e auditorias.
-
-Correção: criar uma coleção canônica `access_routes`.
+A autoridade passou a ser `data/access_routes.json`, validada por `scripts/validate_access_routes.py`. O read model v2 consome esses objetos diretamente. Campos legados permanecem temporariamente sincronizados apenas para compatibilidade.
 
 ### 4.5 Versão não é entidade própria
 
@@ -374,9 +372,9 @@ Concluído: read model v2, separação `record → resource`, crosswalk determin
 
 Descoberta simplificada e página individual reorganizada no renderer v2.
 
-### M3 — rotas canônicas — PRÓXIMO
+### M3 — rotas canônicas — CONCLUÍDO
 
-Transformar links em objetos explícitos e mover sua autoridade para uma fonte canônica.
+`access-routes-v1` materializa destinos, papéis, avaliação principal, condições e distribuições como objetos explícitos. Referências/evidências foram excluídas dessa coleção e permanecem em `references`.
 
 Transformar links em objetos explícitos.
 

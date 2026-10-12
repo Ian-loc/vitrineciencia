@@ -1,0 +1,100 @@
+{
+  "schema_version": "access-routes-v1",
+  "status": "stable_canonical_route_contract",
+  "authority": "data/access_routes.json",
+  "purpose": "Definir a autoridade explícita das rotas de acesso da Vitrine Ciência, separando acesso/distribuição de referências, evidências e documentação científica.",
+  "unit": {
+    "canonical_name": "rota de acesso",
+    "identity_key": "route_id",
+    "semantics": "Uma rota representa um destino concreto ou um estado explícito de acesso ligado a um recurso catalogado ou a uma offering. A mesma URL pode acumular múltiplos papéis no mesmo objeto.",
+    "non_goals": [
+      "não transformar API, viewer ou documento em produto científico",
+      "não duplicar a mesma URL para representar papéis coexistentes",
+      "não armazenar referências científicas ou fontes de verificação como rotas de acesso",
+      "não substituir a avaliação curatorial A–E por inferência automática"
+    ]
+  },
+  "target_types": {
+    "resource": "Rota ligada ao recurso catalogado descrito por um DR.",
+    "offering": "Rota ligada a uma offering/produto detalhado."
+  },
+  "route_types": {
+    "direct_data": {
+      "label": "Acessar dados",
+      "primary_access_class": "A"
+    },
+    "data_page": {
+      "label": "Ir para a página de dados",
+      "primary_access_class": "B"
+    },
+    "data_service": {
+      "label": "Abrir serviço de dados",
+      "primary_access_class": "C"
+    },
+    "viewer": {
+      "label": "Abrir visualizador ou página de consulta",
+      "primary_access_class": "D"
+    },
+    "unconfirmed_access": {
+      "label": "Ver acesso informado",
+      "primary_access_class": "E"
+    },
+    "official_site": {
+      "label": "Abrir site oficial"
+    },
+    "access_documentation": {
+      "label": "Ver documentação de acesso"
+    },
+    "distribution": {
+      "label": "Distribuição de uma offering"
+    }
+  },
+  "fields": {
+    "route_id": "Identificador estável da rota. Distribuições preservam DD######.",
+    "record_id": "DR ao qual a rota pertence.",
+    "target_type": "resource ou offering.",
+    "target_id": "Chave do recurso no read model ou DP da offering.",
+    "route_type": "Função principal da rota.",
+    "roles": "Papéis adicionais que a mesma URL também cumpre.",
+    "label": "Rótulo público recomendado.",
+    "url": "URL HTTPS ou null quando a rota principal E é não aplicável/não confirmada.",
+    "primary": "Indica a única rota principal no nível do recurso.",
+    "access_assessment": "Classe A–E apenas para a rota principal do recurso.",
+    "protocol": "Protocolo quando materialmente documentado.",
+    "format": "Formato quando materialmente documentado.",
+    "tool": "Ferramenta/cliente quando aplicável.",
+    "free_download": "Estado de download gratuito no nível da rota quando conhecido.",
+    "authentication_required": "Estado de autenticação no nível da rota.",
+    "access_conditions": "Condições específicas da rota.",
+    "license": "Licença/termos no nível mais específico conhecido.",
+    "attribution_required": "Exigência de atribuição quando conhecida.",
+    "subset_support": "Capacidade de recorte/subconjunto.",
+    "notes": "Observações curatoriais específicas da rota.",
+    "verified_at": "Data de verificação factual.",
+    "status": "active, unconfirmed ou not_applicable.",
+    "source": "Proveniência da criação/migração da rota."
+  },
+  "invariants": [
+    "cada DR vivo possui exatamente uma rota principal no nível resource",
+    "access_assessment da rota principal coincide com a auditoria A–E vigente",
+    "uma URL de recurso aparece no máximo uma vez por DR e pode acumular roles",
+    "rotas DD apontam para offerings existentes e preservam seus IDs",
+    "referências científicas e verification sources pertencem a references, não access_routes",
+    "URL presente deve ser HTTPS",
+    "rota principal sem URL só é permitida para avaliação E",
+    "desconhecido não é convertido em negativo"
+  ],
+  "migration": {
+    "established_at": "2026-10-12",
+    "baseline_source": [
+      "data/data_resources.csv",
+      "data/product_distributions.csv",
+      "data/static_core_51_access_audit.json",
+      "data/post_core_access_audit.json"
+    ],
+    "rule": "O arquivo inicial foi derivado uma única vez do legado. Após o gate de migração, data/access_routes.json passa a ser a autoridade e os campos legados permanecem apenas como compatibilidade até sua retirada planejada."
+  },
+  "future_integration_registry": {
+    "rule": "Integration Registry descreve como atualizar uma rota/provedor; access_routes descreve a rota pública curada. Os dois objetos não são equivalentes."
+  }
+}

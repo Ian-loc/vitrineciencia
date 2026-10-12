@@ -48,7 +48,7 @@ Concluído no ciclo WEB v2:
 - informação científica do recurso separada visualmente da curadoria;
 - renderer migrado para o modelo público v2 sem alterar URLs.
 
-Próxima correção WEB/contrato: rotas de acesso canônicas.
+Rotas de acesso canônicas: **concluídas** em `data/access_routes.json`. Próxima frente: versões/coleções e proveniência estruturada.
 
 ### B. Modelo público v2 — MILESTONE ATIVO
 
@@ -92,6 +92,21 @@ Critérios de aceite:
 - proveniência com papéis;
 - nenhuma regressão nas 58 URLs;
 - geração HTML/JSON do mesmo objeto.
+
+### B2. Rotas de acesso canônicas — CONCLUÍDO
+
+Autoridade: `data/access_routes.json`.
+
+Contrato: `schema/access-routes-v1.json`.
+
+Estado material:
+
+- 58 recursos com exatamente uma rota principal;
+- A=2/B=39/C=0/D=14/E=3;
+- 135 rotas no nível dos recursos;
+- 19 distribuições preservadas como DD;
+- referências/evidências separadas de access routes;
+- read model v2 consome a autoridade sem inferência no renderer.
 
 ### C. Integration Registry — DEPOIS DO MODELO V2
 
@@ -149,8 +164,8 @@ Atualização sob demanda deverá ser assíncrona e limitada por freshness/TTL, 
 2. read model `public-record-v2` paralelo — **concluído**;
 3. renderer v2 e estrutura de cinco blocos — **concluído**;
 4. simplificar cards e eliminar redundância/guardrails desnecessários — **concluído**;
-5. rotas de acesso canônicas — **próxima ação**;
-6. versões e proveniência estruturadas;
+5. rotas de acesso canônicas — **concluído**;
+6. versões e proveniência estruturadas — **próxima ação**;
 7. Integration Registry;
 8. pilotos de conectores;
 9. pipeline de harvesting;

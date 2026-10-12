@@ -183,7 +183,19 @@ Produtos `DP` e distribuições `DD` permanecem subordinados ao registro. Eles n
 
 A documentação corrente está em `docs/PUBLIC_RECORD_V2_MIGRATION.md`; `docs/PUBLIC_RECORD_PAGES_V1.md` documenta a camada anterior de compatibilidade.
 
-## 13. API, rotas e integração futura
+## 13. Rotas de acesso canônicas
+
+A autoridade corrente de rotas é `data/access_routes.json`, sob o contrato `schema/access-routes-v1.json`.
+
+Cada DR possui exatamente uma rota principal no nível do recurso. A avaliação A–E pertence a essa rota principal e continua sendo uma decisão curatorial, não um tipo ontológico.
+
+A mesma URL pode cumprir múltiplos papéis em um único objeto. Distribuições `DD######` preservam seus identificadores e aparecem como rotas direcionadas às offerings correspondentes.
+
+Referências científicas e fontes de verificação **não** são access routes; pertencem a `references[]` no read model.
+
+A documentação completa está em `docs/ACCESS_ROUTES_V1.md`.
+
+## 14. API, rotas e integração futura
 
 A API da Vitrine ainda não existe como serviço público. O que existe hoje é o read model estático que deverá ser servido pela API futura.
 

@@ -13,6 +13,7 @@ V2_PATH = SITE / "data" / "v2" / "public_records.json"
 V2_INDIVIDUAL = SITE / "data" / "v2" / "registros"
 CANONICAL = ROOT / "data" / "data_resources.csv"
 SCHEMA = ROOT / "schema" / "public-record-v2.json"
+ACCESS_ROUTES = ROOT / "data" / "access_routes.json"
 
 
 def fail(message: str) -> None:
@@ -31,6 +32,11 @@ def canonical_ids() -> list[str]:
 
 
 schema = read_json(SCHEMA)
+canonical_routes_payload = read_json(ACCESS_ROUTES)
+canonical_routes_by_record = {}
+for route in canonical_routes_payload.get("routes") or []:
+    canonical_routes_by_record.setdefault(route["record_id"], []).append(route)
+
 v1_records = read_json(V1_PATH)
 v2_records = read_json(V2_PATH)
 ids = canonical_ids()
@@ -121,17 +127,21 @@ for rid in ids:
     total_offerings += len(offerings)
 
     routes = v2.get("access_routes") or []
+    expected_routes = canonical_routes_by_record.get(rid) or []
+    if routes != expected_routes:
+        fail(f"{rid}: access_routes do read model divergem da autoridade data/access_routes.json")
+
     resource_routes = [item for item in routes if item.get("target_type") == "resource"]
     distribution_routes = [item for item in routes if item.get("route_type") == "distribution"]
     total_distribution_routes += len(distribution_routes)
 
-    if len(resource_routes) != len(v1_access.get("routes") or []):
-        fail(f"{rid}: rotas do recurso não preservadas")
     if sum(bool(item.get("primary")) for item in resource_routes) != 1:
         fail(f"{rid}: deve haver exatamente uma rota primária do recurso")
     for route in resource_routes:
         if route.get("target_id") != resource.get("local_id"):
             fail(f"{rid}: rota do recurso aponta para alvo incorreto")
+    if (v2.get("curation") or {}).get("access_route_authority") != "data/access_routes.json":
+        fail(f"{rid}: autoridade de access_routes não declarada no read model")
 
     for pid, product in v1_product_by_id.items():
         offering = offering_by_id[pid]
@@ -195,5 +205,5 @@ print(
     "OK public-record-v2: "
     f"{len(v2_records)} registros; {total_offerings} offerings; "
     f"{total_versions} resumos de versão; {total_distribution_routes} distribuições preservadas; "
-    "URLs públicas e conteúdo material compatíveis com v1"
+    "URLs/conteúdo compatíveis com v1 e access_routes idênticas à autoridade canônica"
 )

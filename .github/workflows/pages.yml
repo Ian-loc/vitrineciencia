@@ -30,6 +30,7 @@ jobs:
           python3 scripts/build_public_discovery.py
           python3 scripts/report_normalization_coverage.py
           python3 scripts/audit_link_roles.py --write
+          python3 scripts/validate_access_routes.py
           python3 scripts/validate_active_documentation.py
           python3 scripts/validate_doi_readiness.py
           git diff --check
@@ -61,7 +62,7 @@ jobs:
 
       - name: Construir artefato público isolado
         run: |
-          python3 -m py_compile scripts/build_site_artifact.py scripts/build_record_pages.py scripts/build_public_records_v2.py scripts/build_record_pages_v2.py scripts/validate_record_pages.py scripts/validate_public_records_v2.py
+          python3 -m py_compile scripts/build_site_artifact.py scripts/build_record_pages.py scripts/build_public_records_v2.py scripts/build_record_pages_v2.py scripts/validate_access_routes.py scripts/validate_record_pages.py scripts/validate_public_records_v2.py
           python3 scripts/build_site_artifact.py
           python3 scripts/validate_record_pages.py
           python3 scripts/validate_public_records_v2.py

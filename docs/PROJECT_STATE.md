@@ -95,6 +95,8 @@ O v2 é publicado como:
 
 O v2 separa `record` e `resource`, preserva as URLs, migra os produtos atuais para `offerings` e preserva as distribuições como rotas direcionadas às ofertas. O v1 continua publicado em JSON como camada de compatibilidade e regressão durante a transição.
 
+As rotas de acesso do v2 possuem autoridade canônica própria em `data/access_routes.json`, sob o contrato `schema/access-routes-v1.json`. O baseline contém 135 rotas no nível dos recursos e 19 distribuições, totalizando 154 objetos. Referências científicas e fontes de verificação permanecem separadas em `references`.
+
 A página de um registro agrega, quando disponíveis:
 
 - identidade e descrição;
@@ -144,8 +146,7 @@ Características atuais:
 
 Dívidas técnicas reconhecidas:
 
-- as rotas públicas ainda são majoritariamente derivadas de campos de URL e auditorias, não uma entidade canônica própria;
-- versões/coleções ainda estão embutidas no produto;
+- versões/coleções ainda estão parcialmente derivadas do campo legado de produto;
 - proveniência ainda é simplificada em campos como `owner_or_manager`;
 - datas de revisão da Vitrine e atualização informada pelo provedor ainda não estão plenamente separadas.
 
@@ -225,7 +226,7 @@ A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130
 
 O marco **`VITRINE_PUBLIC_MODEL_V2`** está em execução.
 
-O read model v2, o renderer das páginas individuais e a simplificação dos cards de descoberta estão implementados. O próximo passo é tornar as rotas de acesso uma fonte canônica explícita, reduzindo a dependência de inferência a partir dos campos legados.
+O read model v2, o renderer das páginas individuais, a simplificação dos cards e as rotas de acesso canônicas estão implementados. O próximo passo é estruturar versões/coleções e papéis de proveniência nos casos em que essas distinções são materialmente necessárias.
 
 A sequência semântica alvo permanece:
 
