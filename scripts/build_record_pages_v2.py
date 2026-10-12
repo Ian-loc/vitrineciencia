@@ -304,12 +304,15 @@ def render_record_page(record: dict) -> str:
         if offerings else ""
     )
 
+    provenance = record.get("provenance") or {}
     agents = record.get("agents") or []
-    responsible = " · ".join(
-        str(agent.get("name") or "").strip()
-        for agent in agents
-        if str(agent.get("name") or "").strip()
-    ) or "Não informado"
+    responsible = str(provenance.get("responsibility_statement") or "").strip()
+    if not responsible:
+        responsible = " · ".join(
+            str(agent.get("name") or "").strip()
+            for agent in agents
+            if str(agent.get("name") or "").strip()
+        ) or "Não informado"
 
     nav = "".join(
         [
