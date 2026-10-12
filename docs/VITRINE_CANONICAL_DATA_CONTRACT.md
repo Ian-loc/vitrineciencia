@@ -116,9 +116,9 @@ Nem toda entidade precisa virar tabela imediatamente.
 
 ## 8. Rotas de acesso
 
-No estado atual, rotas são derivadas de URLs e auditorias.
+As rotas são representadas explicitamente em `data/access_routes.json`, sob `schema/access-routes-v1.json`.
 
-A evolução deverá representar rotas explicitamente, com pelo menos:
+Cada objeto registra, conforme aplicável:
 
 - alvo;
 - tipo;
@@ -132,6 +132,10 @@ A evolução deverá representar rotas explicitamente, com pelo menos:
 - estado operacional.
 
 A classificação A–E é uma avaliação de acesso e não deve ser confundida com o tipo da rota.
+
+Durante a transição, `homepage_url`, `data_access_url` e as tabelas DD permanecem sincronizados e são usados por QA de compatibilidade. O read model v2, porém, consome `data/access_routes.json` diretamente.
+
+Referências científicas e fontes de verificação são excluídas dessa autoridade e representadas em `references`.
 
 ## 9. Relação com API/federação
 
