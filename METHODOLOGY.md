@@ -1,159 +1,259 @@
 # Metodologia de curadoria — Vitrine Ciência
 
-**Status atual:** modelo físico legado preservado para compatibilidade; ontologia em auditoria desde 2026-09-01. As definições `Fonte → Produto → Distribuição` abaixo descrevem o schema histórico e não antecipam a ontologia final. Estado corrente: `docs/PROJECT_STATE.md`; workflow: `WORKFLOW_STATUS.md`.
+**Status:** vigente  
+**Atualização:** 12 de outubro de 2026
 
 ## 1. Escopo
 
-A Vitrine Ciência é um catálogo público de descoberta de fontes e produtos de dados relevantes ao Brasil. A curadoria organiza **fonte → produto → distribuição**, registra evidências e limitações e aponta para o provedor original. Não hospeda por padrão cópias integrais dos datasets.
+A Vitrine Ciência é um catálogo científico curado de descoberta e acesso a dados relevantes ao Brasil.
 
-## 2. Unidades de registro
+Ela organiza informação suficiente para que o usuário compreenda:
 
-### Fonte
+- o que é o recurso;
+- que dados/produtos oferece;
+- onde e quando se aplicam;
+- como acessá-los;
+- quem os produz, mantém ou publica;
+- quais limitações e condições de uso precisam ser consideradas.
 
-Plataforma, portal, repositório, catálogo, programa, rede, observatório ou infraestrutura que permite descobrir ou acessar informação.
+A Vitrine não hospeda, por padrão, cópias integrais dos datasets externos.
 
-### Produto
+## 2. Unidade pública e unidade descrita
 
-Oferta materialmente distinta dentro de uma fonte por conteúdo, finalidade, método, cobertura, suporte/resolução, coleção/versão ou condição de acesso.
+A unidade persistente da interface é o **Registro da Vitrine** (`DR####`).
+
+O registro descreve um **Recurso catalogado** externo.
+
+O recurso pode ser iniciativa, programa, plataforma, catálogo, infraestrutura, base, coleção, rede, observatório, guia ou outro objeto justificável pela evidência.
+
+Essa distinção deverá ser explicitada estruturalmente no modelo público v2.
+
+## 3. Produtos, versões e distribuições
+
+### Produto/oferta científica
+
+É uma oferta materialmente distinta por significado, finalidade, método, cobertura, variável, série ou condição científica relevante.
+
+### Versão/coleção
+
+É um estado distinguível quando a mudança importa para citação, comparação ou reprodutibilidade.
 
 ### Distribuição
 
-Rota concreta para acessar o produto: download, API, serviço geoespacial, catálogo, aplicação ou mecanismo equivalente.
+É uma forma concreta de entrega do conteúdo.
 
-## 3. Elegibilidade territorial
+### Serviço de dados
 
-O Brasil é a prioridade. São elegíveis:
+É um mecanismo de consulta, extração ou processamento. Não é automaticamente um novo produto.
 
-- fontes brasileiras com utilidade científica, técnica ou educacional;
-- fontes internacionais com cobertura sistemática ou parcial do Brasil;
-- excepcionalmente, referências sem cobertura brasileira direta quando houver valor metodológico/comparativo claro.
+### Viewer/documentação
 
-A classificação P0–P3 organiza prioridade de curadoria e não mede qualidade.
+São superfícies de visualização ou explicação e não devem ser confundidas com distribuição sem evidência.
 
-## 4. Evidência
+## 4. Princípio de granularidade mínima suficiente
 
-Prioridade:
+Criar nova entidade apenas quando a distinção melhora materialmente:
+
+- descoberta;
+- interpretação;
+- proveniência;
+- versionamento;
+- reprodutibilidade;
+- acesso.
+
+Formato, arquivo, tile, banda, endpoint ou página alternativa não criam produto por conveniência.
+
+## 5. Elegibilidade territorial
+
+O Brasil é a prioridade.
+
+São elegíveis:
+
+- recursos brasileiros;
+- recursos internacionais com cobertura sistemática;
+- recursos com cobertura parcial relevante;
+- referências comparativas excepcionalmente justificadas.
+
+A classificação P0–P3 organiza cobertura/prioridade, não qualidade.
+
+## 6. Evidência
+
+Ordem preferencial:
 
 1. página oficial do produtor;
 2. documentação/metadados oficiais;
-3. API ou catálogo oficial;
+3. API/catálogo oficial;
 4. metodologia técnica;
 5. licença/termos;
-6. publicação científica primária quando necessária;
-7. documentação técnica institucional;
+6. publicação científica primária;
+7. documentação institucional;
 8. fonte secundária apenas como apoio.
 
-Cada evidência sustenta somente a afirmação que efetivamente contém. Homepage não comprova resolução; página de download não comprova licença; zoom não comprova resolução científica; atualização do portal não define periodicidade do dado.
+Cada evidência sustenta somente a afirmação que efetivamente demonstra.
 
-## 5. Identificação do objeto
+## 7. Identificação antes do registro
 
-Antes de registrar:
+Antes de criar ou alterar uma entrada:
 
-1. identificar a fonte/provedor responsável;
-2. decidir se o objeto é fonte, produto ou distribuição;
-3. verificar se já existe entidade semanticamente equivalente;
-4. determinar cobertura brasileira;
-5. definir `enumeration_scope` apropriado;
-6. registrar apenas propriedades sustentadas.
+1. identificar o objeto real;
+2. identificar agentes e papéis;
+3. verificar duplicação;
+4. determinar relevância territorial;
+5. identificar ofertas científicas relevantes;
+6. separar versões e formas de acesso;
+7. registrar somente propriedades sustentadas;
+8. escolher a granularidade mínima suficiente.
 
-Catálogo ou API podem ser produtos na Vitrine quando constituem uma oferta materialmente distinta de descoberta/acesso e se enquadram em `product_kind`; isso não os transforma em observações científicas.
+## 8. Natureza da informação
 
-> **Regra transitória 2026-09-01:** os passos 1–2 acima são regras do schema legado. Para `DR0001–DR0051`, a classificação ontológica atual deve primeiro determinar o tipo real da entidade e registrar crosswalk antes de qualquer migração.
-
-## 6. Natureza da informação
-
-Sempre que relevante, descrição e limitações devem distinguir:
+Distinguir, quando relevante:
 
 - observação/medição;
 - registro administrativo;
 - levantamento/censo;
 - estimativa/modelagem;
 - classificação;
-- interpolação/agregação;
-- índice/indicador derivado;
+- interpolação;
+- índice/indicador;
 - previsão;
-- serviço ou agregador.
+- agregação;
+- serviço.
 
-Não converter diferenças metodológicas em equivalência sem evidência.
+Não converter diferenças metodológicas em equivalência.
 
-## 7. Espaço
+## 9. Espaço
 
-Registrar cobertura, suporte e resolução no nível mais específico disponível. Distinguir:
+Distinguir:
 
-- ponto, parcela, estação, município, bacia, polígono, célula raster etc.;
-- suporte espacial do fenômeno;
-- resolução nominal;
+- cobertura;
+- suporte espacial;
+- resolução;
 - escala cartográfica;
-- precisão de coordenada;
-- nível de zoom/visualização.
+- precisão;
+- zoom/visualização.
 
-Zoom e tamanho de tile não são resolução científica.
+Zoom e tile não são resolução científica.
 
-## 8. Tempo
+## 10. Tempo
 
 Distinguir:
 
 - cobertura temporal;
 - resolução temporal;
-- janela de observação/agregação;
+- janela de observação;
 - frequência de atualização;
-- data de verificação do registro.
+- data de emissão/versão;
+- atualização informada pelo provedor;
+- verificação pela Vitrine;
+- alteração do registro interno.
 
-Produto previsto, observado, reanalisado e atualizado administrativamente não são equivalentes.
+Essas datas não são equivalentes.
 
-## 9. Acesso e licença
+## 11. Acesso
 
 Separar:
 
-- **Site oficial** — identidade institucional ou página oficial principal da fonte (`homepage_url`);
-- **Acessar dados** — página onde os dados podem ser pesquisados, visualizados, solicitados ou baixados (`data_access_url`);
-- página do produto;
-- acesso aos dados;
+- site oficial;
+- página de dados;
+- download direto;
+- API/DataService;
+- visualizador;
+- catálogo;
 - metodologia;
-- documentação da API;
-- distribuição/endpoint;
+- documentação de acesso;
 - licença/termos.
 
-A existência de API não implica gratuidade nem ausência de autenticação. Licença geral do site não é automaticamente licença de cada produto. Quando a licença varia, registrar a variabilidade ou orientar verificação no nível do produto/distribuição.
+HTTP 200 não comprova acesso.
 
-## 10. Estratégia de enumeração
+A existência de API não implica gratuidade, autorização para harvesting ou licença de redistribuição.
 
-- `complete` — conjunto relevante enumerado;
-- `family_level` — aprofundamento por família;
-- `external_index` — catálogo integral permanece externo;
-- `representative_sample` — amostra explicitamente incompleta.
+## 12. Licença e atribuição
 
-A estratégia evita falsa impressão de completude e impede cópia indiscriminada de megacatálogos.
+Licença deve ser registrada no nível mais específico conhecido.
 
-## 11. Qualidade e incerteza
+Condições do site, produto, distribuição e serviço podem divergir.
 
-`desconhecido` não equivale a `ausente`. A curadoria deve explicitar, quando relevante:
+Quando a licença varia, declarar a variabilidade e orientar o usuário ao nível correto.
 
-- incerteza de acesso/licença;
+## 13. Proveniência
+
+Evitar reduzir proveniência a um único “responsável”.
+
+Papéis relevantes incluem:
+
+- produtor;
+- mantenedor;
+- publicador;
+- host;
+- distribuidor;
+- responsável metodológico.
+
+Esses papéis deverão ser estruturados progressivamente.
+
+## 14. Estratégia de enumeração
+
+- `complete`;
+- `family_level`;
+- `external_index`;
+- `representative_sample`.
+
+O objetivo é evitar falsa completude e a cópia indiscriminada de megacatálogos.
+
+## 15. Qualidade e incerteza
+
+`desconhecido` não equivale a `não`.
+
+A curadoria deve explicitar:
+
+- incerteza de acesso;
 - variação entre produtos;
+- limitações metodológicas;
 - vieses de cobertura;
-- limites de representatividade;
-- diferenças entre observação e derivação;
-- risco de interpretação incorreta.
+- comparabilidade entre versões;
+- licenças variáveis;
+- restrições de autenticação.
 
-`data/data_quality_report.json` resume preenchimento e lacunas; não é certificado de qualidade dos datasets externos.
+## 16. Auditoria
 
-## 12. Auditoria
+Fluxo mínimo de alteração factual:
 
-Para cada alteração factual:
-
-`registro atual → evidência oficial/primária → decisão campo a campo → alteração mínima → validação estrutural → diff audit → publicação/verificação quando aplicável`
+`estado atual → evidência → decisão → alteração mínima → validação → diff → publicação/verificação`
 
 “Verificado” significa confrontado com evidência na data indicada. Não garante disponibilidade futura.
 
-## 13. Publicação
+## 17. Publicação
 
-Os três CSVs são canônicos no schema físico vigente. JSONs e site são derivados deterministicamente. O build público exclui documentação operacional, scripts internos, auditorias e materiais históricos do Simbiotrama.
+Os CSVs e matrizes de auditoria permanecem canônicos no schema físico atual.
 
-## 14. Relação com o Simbiotrama
+HTML e JSON são derivados.
 
-PostgreSQL/PostGIS, releases relacionais, variáveis normalizadas, ativos e Instâncias 1–3 pertencem à história pré-separação ou ao projeto Simbiotrama. Não são etapas obrigatórias da metodologia ativa da Vitrine.
+A página pública não deve ser corrigida manualmente em desacordo com a fonte canônica.
 
-## 15. Princípio de suficiência
+## 18. Federação futura
 
-A Vitrine deve melhorar continuamente, mas não exige completude absoluta para publicar um snapshot tecnicamente defensável. Lacunas não críticas podem permanecer explícitas; auditoria é proporcional ao risco e deve servir à qualidade do produto, não substituir sua entrega.
+Automação deve seguir:
+
+`fetch → raw/staging → normalize → deduplicate → classify → verify → diff → curation gate → publish`
+
+Nenhum resultado bruto de API é publicado diretamente.
+
+O catálogo público continua legível se o provedor estiver indisponível.
+
+## 19. Revalidação
+
+A futura revalidação sob demanda deve respeitar freshness/TTL, cooldown, autenticação e rate limits.
+
+Abrir uma página não implica uma requisição externa obrigatória.
+
+## 20. Princípio de suficiência
+
+A Vitrine não exige completude absoluta para publicar um registro defensável.
+
+É preferível explicitar uma lacuna do que inventar precisão.
+
+Referências operacionais:
+
+- `docs/PROJECT_STATE.md`;
+- `WORKFLOW_STATUS.md`;
+- `CODEBOOK.md`;
+- `docs/WEB_API_EVOLUTION_PLAN.md`.
