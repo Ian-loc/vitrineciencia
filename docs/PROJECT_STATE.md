@@ -138,12 +138,12 @@ Características atuais:
 - `sources.html` como superfície principal de descoberta;
 - `products.html` como subconjunto detalhado;
 - uma página por registro;
-- JSONs públicos derivados do mesmo read model.
+- JSONs públicos derivados do mesmo read model;
+- cards de descoberta reduzidos a identidade, descrição, responsável, temas, três fatos comparáveis e CTA para o registro completo;
+- ficha técnica removida dos cards; `public-interface-guardrails.js` permanece apenas como proteção para evidência de verificação e ações externas seguras.
 
 Dívidas técnicas reconhecidas:
 
-- cards de descoberta ainda contêm detalhes extensos que se tornaram redundantes após a criação das páginas individuais;
-- `public-interface-guardrails.js` remove parte do conteúdo técnico após renderização; a solução futura deve simplificar o card na origem;
 - as rotas públicas ainda são majoritariamente derivadas de campos de URL e auditorias, não uma entidade canônica própria;
 - versões/coleções ainda estão embutidas no produto;
 - proveniência ainda é simplificada em campos como `owner_or_manager`;
@@ -225,7 +225,7 @@ A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130
 
 O marco **`VITRINE_PUBLIC_MODEL_V2`** está em execução.
 
-O read model v2 e o renderer das páginas individuais estão implementados. O próximo passo é simplificar os cards de descoberta e reduzir a redundância entre `sources.html` e as páginas completas, preservando os testes dos arquétipos.
+O read model v2, o renderer das páginas individuais e a simplificação dos cards de descoberta estão implementados. O próximo passo é tornar as rotas de acesso uma fonte canônica explícita, reduzindo a dependência de inferência a partir dos campos legados.
 
 A sequência semântica alvo permanece:
 
