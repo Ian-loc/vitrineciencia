@@ -54,9 +54,9 @@ Concluído no ciclo WEB v2:
 
 Rotas de acesso canônicas: **concluídas** em `data/access_routes.json`.
 
-Versões/coleções e proveniência estruturada: **baseline canônico implementado** em `data/product_versions.json` e `data/provenance_assertions.json`. Próxima frente: curadoria seletiva dos papéis e identidades que hoje permanecem agrupados.
+Versões/coleções e proveniência estruturada: **baseline canônico implementado** em `data/offering_versions.json` e `data/provenance_statements.json`. Próxima frente: curadoria seletiva dos papéis e identidades que hoje permanecem agrupados.
 
-### B. Modelo público v2 — MILESTONE ATIVO
+### B. Modelo público v2 — BASELINE CONCLUÍDO
 
 Status: **read model v2 e renderer HTML v2 implementados; v1 preservado como compatibilidade temporária**.
 
@@ -67,8 +67,8 @@ Concluído nesta primeira etapa:
 - `record` e `resource` separados;
 - 11 produtos migrados para `offerings`;
 - 19 distribuições preservadas como `access_routes`;
-- versões legadas explicitamente marcadas como derivadas;
-- agente legado migrado conservadoramente;
+- uma versão promovida (Dynamic World V1) e dez resumos preservados sem promoção automática;
+- 58 declarações de responsabilidade preservadas; agentes ainda não individualizados;
 - validador de compatibilidade v1/v2;
 - publicação paralela dos JSONs v2;
 - renderer HTML baseado no v2;
@@ -114,7 +114,15 @@ Estado material:
 - referências/evidências separadas de access routes;
 - read model v2 consome a autoridade sem inferência no renderer.
 
-### C. Integration Registry — DEPOIS DO MODELO V2
+### B3. Versões e proveniência — BASELINE CONCLUÍDO
+
+- resumos legados de versão não geram automaticamente entidades Version;
+- versões promovidas possuem autoridade em `data/offering_versions.json`;
+- proveniência textual possui autoridade em `data/provenance_statements.json`;
+- cadeias institucionais não são convertidas automaticamente em Agents;
+- `agents[]` fica reservado à resolução curatorial de identidade e papel.
+
+### C. Integration Registry — PRÓXIMO MILESTONE
 
 Status: planejado; não iniciado em `main`.
 
@@ -171,9 +179,8 @@ Atualização sob demanda deverá ser assíncrona e limitada por freshness/TTL, 
 3. renderer v2 e estrutura de cinco blocos — **concluído**;
 4. simplificar cards e eliminar redundância/guardrails desnecessários — **concluído**;
 5. rotas de acesso canônicas — **concluído**;
-6. baseline canônico de versões e proveniência — **concluído**;
-7. curadoria seletiva de versões/papéis em casos prioritários — **próxima ação**;
-8. Integration Registry;
+6. versões e proveniência estruturadas — **concluído no nível conservador de baseline**;
+7. Integration Registry — **próxima ação**;
 8. pilotos de conectores;
 9. pipeline de harvesting;
 10. API de leitura;

@@ -60,6 +60,8 @@ As principais autoridades materiais são:
 - `data/brazil_scope_priorities.json` — papel territorial;
 - `data/applied_priority_gate.json` — casos aplicados P1–P6;
 - `data/access_routes.json` — autoridade canônica de rotas de acesso e distribuições;
+- `data/offering_versions.json` — versões/coleções explicitamente promovidas;
+- `data/provenance_statements.json` — declarações de responsabilidade preservadas sem parsing automático;
 - scripts de build e validação.
 
 No conjunto vivo de 58 registros, a classificação da rota principal é atualmente **A=2, B=39, C=0, D=14, E=3**. Isso não mede qualidade científica; descreve o tipo de acesso principal verificado. Serviços programáticos secundários podem existir mesmo quando a rota principal é B ou D.
@@ -86,6 +88,8 @@ As superfícies principais são:
 - `/registros/dr####/` — página persistente de cada registro;
 - `analytics.html` e páginas auxiliares — composição e método do acervo.
 
+A impressão das fichas preserva destinos de acesso, documentação e referências com suas URLs. As explicações de proveniência e curadoria também permanecem disponíveis no PDF.
+
 Os cards de resultados funcionam como instrumentos de descoberta e triagem. A ficha técnica foi removida deles; a página individual concentra interpretação, produtos, limitações e acesso.
 
 ## Evolução planejada: modelo público v2 e API
@@ -96,7 +100,7 @@ O modelo público v2 e o renderer das páginas individuais já estão implementa
 
 com proveniência, evidência e curadoria como dimensões transversais.
 
-As rotas de acesso já possuem autoridade explícita em `data/access_routes.json`. A próxima etapa do modelo é estruturar versões/coleções e papéis de proveniência onde isso melhora materialmente interpretação e reprodutibilidade. A federação seguirá o princípio:
+As rotas de acesso possuem autoridade em `data/access_routes.json`. Versões promovidas e declarações de proveniência também foram separadas em autoridades próprias, sem transformar automaticamente resumos ou cadeias institucionais em entidades. O próximo milestone é o Integration Registry. A federação seguirá o princípio:
 
 **federado na origem; indexado localmente na descoberta; descentralizado no acesso aos dados**.
 

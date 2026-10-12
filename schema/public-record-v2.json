@@ -37,22 +37,26 @@
       "semantics": "Ofertas científicas materialmente distintas derivadas dos produtos DP existentes. Não equivalem a arquivos, endpoints ou formatos."
     },
     "versions": {
-      "semantics": "Versões, coleções e estados de oferta provenientes da autoridade data/product_versions.json; descrições de estado não são promovidas automaticamente a versões citáveis.",
-      "authority": "data/product_versions.json"
+      "semantics": "Entidades de versão/coleção promovidas explicitamente a partir de data/offering_versions.json. O texto legado version_or_collection permanece como resumo na offering quando ainda não justifica uma entidade.",
+      "authority": "data/offering_versions.json"
     },
     "access_routes": {
       "semantics": "Rotas funcionais canônicas provenientes de data/access_routes.json. Referências/evidências permanecem em references; distribuições DD são rotas direcionadas às offerings.",
       "authority": "data/access_routes.json"
     },
     "agents": {
-      "semantics": "Agentes/proveniência provenientes de data/provenance_assertions.json. Rótulos legados compostos permanecem não resolvidos até curadoria com evidência.",
-      "authority": "data/provenance_assertions.json"
+      "semantics": "Agentes individualizados somente quando identidade e papel foram resolvidos por curadoria. Pode permanecer vazio quando a proveniência é uma declaração composta não resolvida.",
+      "authority_status": "curated_only_no_automatic_parsing"
     },
     "references": {
       "semantics": "Referências científicas/técnicas e fontes de verificação, deduplicadas por URL quando uma página cumpre mais de um papel."
     },
     "curation": {
       "semantics": "Metadados sobre a curadoria da Vitrine, separados das propriedades do recurso externo."
+    },
+    "provenance": {
+      "semantics": "Declaração estruturada de responsabilidade/proveniência proveniente de data/provenance_statements.json. Preserva textos compostos sem convertê-los automaticamente em Agents.",
+      "authority": "data/provenance_statements.json"
     }
   },
   "resource_types": {
@@ -91,13 +95,13 @@
     "distribution"
   ],
   "agent_roles": [
-    "responsible_or_maintainer",
     "producer",
     "maintainer",
     "publisher",
     "host",
     "distributor",
-    "methodological_responsibility"
+    "methodological_responsibility",
+    "other_curated_role"
   ],
   "offering_kinds": [
     "dataset",
@@ -119,8 +123,10 @@
     "desconhecido não é convertido em não",
     "falha de API externa não é necessária para gerar ou servir este modelo",
     "access_routes são idênticas à autoridade data/access_routes.json",
-    "versions são idênticas à autoridade data/product_versions.json por registro",
-    "agents são derivados da autoridade data/provenance_assertions.json sem dividir rótulos compostos automaticamente"
+    "versions são promovidas apenas pela autoridade data/offering_versions.json",
+    "resumo legado de versão não cria automaticamente uma entidade version",
+    "proveniência composta não é convertida automaticamente em Agent",
+    "agents só contém entidades e papéis resolvidos por curadoria"
   ],
   "future_api_contract": {
     "principle": "static_first_stale_while_revalidate",

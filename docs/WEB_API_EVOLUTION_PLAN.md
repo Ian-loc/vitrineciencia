@@ -77,17 +77,13 @@ Correção: introduzir `record` e `resource` separados.
 
 A autoridade passou a ser `data/access_routes.json`, validada por `scripts/validate_access_routes.py`. O read model v2 consome esses objetos diretamente. Campos legados permanecem temporariamente sincronizados apenas para compatibilidade.
 
-### 4.5 Versão não é entidade própria
+### 4.5 Versão — baseline resolvido
 
-`version_or_collection` está embutido no produto.
+`version_or_collection` continua preservado como resumo, mas só informações promovidas por curadoria entram em `versions[]`. A autoridade é `data/offering_versions.json`.
 
-Correção: modelar versões/coleções quando necessárias à reprodutibilidade.
+### 4.6 Proveniência — baseline resolvido sem parsing automático
 
-### 4.6 Proveniência simplificada
-
-`owner_or_manager` comprime vários papéis.
-
-Correção: agentes + papéis, como produtor, mantenedor, publicador, host e distribuidor.
+`owner_or_manager` é preservado como `responsibility_statement` em `data/provenance_statements.json`. Cadeias compostas não são tratadas como um único Agent. Agents individualizados exigem curadoria de identidade e papel.
 
 ### 4.7 Datas ambíguas
 
@@ -388,20 +384,11 @@ A estratégia permanece: a riqueza semântica fica no modelo; a interface mostra
 
 Transformar links em objetos explícitos.
 
-### M4 — versões e proveniência — EM EXECUÇÃO
+### M4 — versões e proveniência — BASELINE CONCLUÍDO
 
-Baseline canônico implementado:
+Versões foram separadas de resumos legados e proveniência textual foi separada de Agents. Resolução fina de papéis continua incremental.
 
-- `data/product_versions.json`;
-- `schema/product-versions-v1.json`;
-- `data/provenance_assertions.json`;
-- `schema/provenance-assertions-v1.json`.
-
-O read model v2 passou a consumir essas autoridades. A primeira migração é conservadora: estados descritivos não são promovidos a versões citáveis e rótulos institucionais compostos não são divididos automaticamente.
-
-Próxima etapa M4: curadoria seletiva de versões e papéis de proveniência nos casos prioritários antes de iniciar o Integration Registry.
-
-### M5 — Integration Registry
+### M5 — Integration Registry — PRÓXIMO
 
 Classificar integrações dos registros prioritários.
 

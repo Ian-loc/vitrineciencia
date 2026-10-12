@@ -195,17 +195,17 @@ Referências científicas e fontes de verificação **não** são access routes;
 
 A documentação completa está em `docs/ACCESS_ROUTES_V1.md`.
 
-## 14. Versões e proveniência canônicas
+## 14. Versões e proveniência
 
-A autoridade de versões/coleções é `data/product_versions.json`, sob `schema/product-versions-v1.json`.
+A autoridade de versões promovidas é `data/offering_versions.json`.
 
-O objeto de versão distingue `kind` e `identity_status` para impedir que expressões como “catálogo corrente”, “serviços correntes” ou “acesso via projetos Google Cloud” sejam tratadas como versões científicas citáveis.
+`version_or_collection_summary` preserva o texto legado no nível da offering, mas não cria automaticamente uma entidade `Version`. A promoção exige semântica suficientemente clara para citação, comparação ou reprodutibilidade.
 
-A autoridade de proveniência é `data/provenance_assertions.json`, sob `schema/provenance-assertions-v1.json`.
+A autoridade de declarações de responsabilidade é `data/provenance_statements.json`.
 
-O baseline preserva literalmente `owner_or_manager` como uma afirmação `legacy_grouped_statement` com papel `responsible_or_maintainer`. Rótulos compostos só são divididos em agentes e papéis específicos após curadoria com evidência.
+`responsibility_statement` não é sinônimo de `Agent`. Textos compostos permanecem não resolvidos até que identidades e papéis sejam curados. `agents[]` é reservado a entidades individualizadas.
 
-Documentação: `docs/VERSIONS_PROVENANCE_V1.md`.
+Detalhamento: `docs/VERSION_PROVENANCE_V1.md`.
 
 ## 15. API, rotas e integração futura
 

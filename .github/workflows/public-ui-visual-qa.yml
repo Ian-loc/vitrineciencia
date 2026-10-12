@@ -215,6 +215,12 @@ jobs:
                   await page.emulateMedia({media:'print'});
                   if (await page.locator('.site-nav').evaluate(el => getComputedStyle(el).display) !== 'none') { console.error(`Navegação aparece na impressão de ${name}`); failed=true; }
                   if (await page.locator('.record-nav').evaluate(el => getComputedStyle(el).display) !== 'none') { console.error(`Índice sticky aparece na impressão de ${name}`); failed=true; }
+                  if (!(await page.locator('#acesso .route-actions a').isVisible())) { console.error(`Link principal desaparece na impressão de ${name}`); failed=true; }
+                  const primaryUrl = await page.locator('#acesso .route-actions a').getAttribute('href');
+                  const printedUrl = await page.locator('#acesso .route-actions a').evaluate(el => getComputedStyle(el, '::after').content);
+                  if (!printedUrl.includes(primaryUrl)) { console.error(`URL principal ausente na impressão de ${name}`); failed=true; }
+                  if (!(await page.locator('.record-reference a').first().isVisible())) { console.error(`Referência desaparece na impressão de ${name}`); failed=true; }
+
                   await page.emulateMedia({media:'screen'});
                 }
 

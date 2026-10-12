@@ -1,0 +1,24 @@
+{
+  "schema_version": "provenance-v1",
+  "status": "stable_canonical_statement_contract",
+  "authority": "data/provenance_statements.json",
+  "purpose": "Separar uma declaração textual de responsabilidade de uma entidade Agent e impedir parsing/inferência automática de organizações e papéis.",
+  "fields": {
+    "provenance_id": "Identificador da declaração de proveniência.",
+    "record_id": "Registro da Vitrine ao qual se aplica.",
+    "responsibility_statement": "Texto curado/legado que descreve responsáveis, mantenedores ou relações institucionais sem decomposição automática.",
+    "institutional_status_summary": "Resumo institucional no nível do recurso.",
+    "agent_resolution_status": "Estado da resolução em agentes individualizados.",
+    "role_resolution_status": "Estado da resolução dos papéis de cada agente.",
+    "source_field": "Campo de origem durante a migração.",
+    "verified_at": "Data de revisão factual disponível."
+  },
+  "agent_rule": "Somente entidades individualizadas e papéis sustentados por evidência podem entrar em agents[]. Uma cadeia textual composta não deve ser tratada como um único agente.",
+  "invariants": [
+    "cada DR vivo possui exatamente uma declaração de responsabilidade nesta camada inicial",
+    "responsibility_statement preserva owner_or_manager durante a migração",
+    "não dividir automaticamente textos por barras, ponto e vírgula, conectivos ou outros separadores",
+    "não inferir produtor, host, publicador ou distribuidor apenas pela ordem dos nomes",
+    "agents[] pode permanecer vazio até a resolução curatorial"
+  ]
+}

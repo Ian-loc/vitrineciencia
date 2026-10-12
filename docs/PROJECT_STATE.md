@@ -97,12 +97,11 @@ O v2 separa `record` e `resource`, preserva as URLs, migra os produtos atuais pa
 
 As rotas de acesso do v2 possuem autoridade canônica própria em `data/access_routes.json`, sob o contrato `schema/access-routes-v1.json`. O baseline contém 135 rotas no nível dos recursos e 19 distribuições, totalizando 154 objetos. Referências científicas e fontes de verificação permanecem separadas em `references`.
 
-Versões/coleções e proveniência também possuem autoridades próprias:
+Versões e proveniência também receberam semântica explícita:
 
-- `data/product_versions.json` + `schema/product-versions-v1.json`;
-- `data/provenance_assertions.json` + `schema/provenance-assertions-v1.json`.
-
-O baseline de versões preserva os 11 valores atualmente registrados em `version_or_collection`, mas distingue versão nomeada, edição e estados descritivos. A proveniência preserva 58 afirmações legadas sem dividir automaticamente rótulos institucionais compostos.
+- `data/offering_versions.json` contém somente versões promovidas por curadoria; textos legados ambíguos permanecem como resumo da offering;
+- `data/provenance_statements.json` preserva as declarações de responsabilidade sem converter cadeias institucionais automaticamente em Agents;
+- `agents[]` fica reservado a identidades e papéis efetivamente resolvidos.
 
 A página de um registro agrega, quando disponíveis:
 
@@ -158,8 +157,7 @@ Características atuais:
 
 Dívidas técnicas reconhecidas:
 
-- versões/coleções ainda estão parcialmente derivadas do campo legado de produto;
-- proveniência ainda é simplificada em campos como `owner_or_manager`;
+- agentes e papéis institucionais detalhados ainda exigem curadoria caso a caso;
 - datas de revisão da Vitrine e atualização informada pelo provedor ainda não estão plenamente separadas.
 
 ## 7. Estado da via API/federação
@@ -236,9 +234,9 @@ A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130
 
 ## 11. Próximo marco
 
-O marco **`VITRINE_PUBLIC_MODEL_V2`** está em execução.
+O baseline **`VITRINE_PUBLIC_MODEL_V2`** está concluído; a curadoria seletiva de versões e papéis continua incremental.
 
-O read model v2, o renderer das páginas individuais, a simplificação dos cards, as rotas de acesso canônicas e a primeira camada canônica de versões/proveniência estão implementados. O próximo passo é aprofundar seletivamente papéis de proveniência e versões nos registros em que essas distinções são materialmente necessárias.
+O read model v2, o renderer, os cards resumidos, as rotas canônicas e a separação conservadora entre versões, resumos e declarações de proveniência estão implementados. O próximo passo é criar o Integration Registry para os primeiros provedores integráveis, sem iniciar harvesting automático.
 
 A sequência semântica alvo permanece:
 

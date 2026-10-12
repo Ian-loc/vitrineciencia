@@ -253,13 +253,10 @@ def offering_html(record: dict, offering: dict) -> str:
     versions = offering_versions(record, offering["offering_id"])
     if versions:
         for version in versions:
-            kind = str(version.get("kind") or "descriptive_state")
-            label = VERSION_KIND_LABELS.get(kind, "Estado informado")
-            meta.append(f"<span>{esc(label)}: {esc(version.get('label') or '')}</span>")
-    elif offering.get("version_or_collection_summary"):
-        meta.append(
-            f"<span>Estado informado: {esc(offering['version_or_collection_summary'])}</span>"
-        )
+            label = "Coleção" if version.get("version_kind") == "collection" else "Versão"
+            meta.append(f"<span>{esc(label)}: {esc(version.get('version_label') or '')}</span>")
+    if offering.get("version_or_collection_summary"):
+        meta.append(f"<span>Versão/coleção informada: {esc(offering['version_or_collection_summary'])}</span>")
 
     coverage = offering.get("coverage") or {}
     facts = "".join(
@@ -378,13 +375,14 @@ def render_record_page(record: dict) -> str:
         if offerings else ""
     )
 
+    provenance = record.get("provenance") or {}
     agents = record.get("agents") or []
-    responsible = " · ".join(
+    responsible = str(provenance.get("responsibility_statement") or "").strip() or " · ".join(
         str(agent.get("name") or "").strip()
         for agent in agents
         if str(agent.get("name") or "").strip()
     ) or "Não informado"
-    unresolved_provenance = any(
+    unresolved_provenance = provenance.get("role_resolution_status") == "unresolved_legacy_statement" or any(
         agent.get("identity_status") == "unresolved_label"
         for agent in agents
     )

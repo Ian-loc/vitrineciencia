@@ -270,7 +270,7 @@ def validate_required_assets() -> None:
         "assets/source-discovery-v2.js", "assets/applied-priority.js",
         "data/data_resources.csv", "data/data_resources.json", "data/data_products.csv", "data/data_products.json",
         "data/product_distributions.csv", "data/brazil_scope_priorities.json", "data/static_core_51_access_audit.json",
-        "data/applied_priority_gate.json", "data/access_routes.json", "data/product_versions.json", "data/provenance_assertions.json", "schema/public-record-v1.json", "schema/public-record-v2.json", "schema/access-routes-v1.json", "schema/product-versions-v1.json", "schema/provenance-assertions-v1.json", "scripts/build_record_pages.py", "scripts/validate_record_pages.py", "scripts/build_public_records_v2.py", "scripts/build_record_pages_v2.py", "scripts/validate_access_routes.py", "scripts/validate_versions_provenance.py", "scripts/validate_public_records_v2.py",
+        "data/applied_priority_gate.json", "data/access_routes.json", "data/offering_versions.json", "data/provenance_statements.json", "schema/public-record-v1.json", "schema/public-record-v2.json", "schema/access-routes-v1.json", "schema/offering-versions-v1.json", "schema/provenance-v1.json", "scripts/build_record_pages.py", "scripts/validate_record_pages.py", "scripts/build_public_records_v2.py", "scripts/build_record_pages_v2.py", "scripts/validate_access_routes.py", "scripts/validate_version_provenance.py", "scripts/validate_public_records_v2.py",
     )
     missing = [name for name in required if not (ROOT / name).exists() or (ROOT / name).stat().st_size == 0]
     if missing: fail("artefatos obrigatórios ausentes: " + ", ".join(missing))

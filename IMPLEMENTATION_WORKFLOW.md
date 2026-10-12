@@ -1,11 +1,11 @@
 # Workflow de implementação — Vitrine Ciência
 
-**Estado operacional:** QA/QC do catálogo público 58, manutenção do cliente GitHub Pages e preparação do modelo público v2.  
+**Estado operacional:** QA/QC do catálogo público 58, manutenção do cliente GitHub Pages e do modelo público v2 implementado.
 A expansão de novas fontes, produtos e distribuições permanece **pausada** como processo automático/em lote e só pode avançar por **instrução humana explícita** e decisão curatorial documentada.
 
 ## Objetivo atual
 
-Preservar o runtime público estável enquanto a arquitetura evolui de um catálogo estático v1 para um modelo público v2 compatível com futura API/federação.
+Preservar o runtime público estável com o modelo público v2 e o renderer já ativos, preparando a futura API/federação.
 
 O objetivo imediato **não** é implantar harvesting ou backend. É tornar o modelo público suficientemente preciso para que a automação futura tenha alvos semânticos estáveis.
 
@@ -82,6 +82,6 @@ Se houver conflito, `docs/PROJECT_STATE.md` + `WORKFLOW_STATUS.md` governam o mi
 
 ## Próximo marco
 
-`VITRINE_PUBLIC_MODEL_V2`
+`VITRINE_INTEGRATION_REGISTRY`
 
-Critério: modelo record/resource validado contra todos os 58 registros, sem regressão de URL/ID e com HTML/JSON derivados do mesmo objeto.
+O baseline `VITRINE_PUBLIC_MODEL_V2` foi concluído: 58 registros, HTML/JSON derivados do mesmo objeto, rotas canônicas, uma versão explicitamente promovida e 58 declarações de proveniência. A próxima etapa documenta perfis de integração; a curadoria seletiva de versões e papéis continua incremental, sem harvesting automático.

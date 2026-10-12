@@ -68,8 +68,8 @@ jobs:
           fetch "$SITE/data/applied_priority_gate.json?v=$TARGET_SHA" "$tmp/applied-priority.json"
           fetch "$SITE/data/public_records.json?v=$TARGET_SHA" "$tmp/public-records.json"
           fetch "$SITE/data/v2/public_records.json?v=$TARGET_SHA" "$tmp/public-records-v2.json"
-          fetch "$SITE/data/product_versions.json?v=$TARGET_SHA" "$tmp/product-versions.json"
-          fetch "$SITE/data/provenance_assertions.json?v=$TARGET_SHA" "$tmp/provenance.json"
+          fetch "$SITE/data/offering_versions.json?v=$TARGET_SHA" "$tmp/product-versions.json"
+          fetch "$SITE/data/provenance_statements.json?v=$TARGET_SHA" "$tmp/provenance.json"
           fetch "$SITE/data/v2/registros/dr0139.json?v=$TARGET_SHA" "$tmp/dr0139-v2.json"
           fetch "$SITE/registros/dr0010/?v=$TARGET_SHA" "$tmp/dr0010.html"
           fetch "$SITE/registros/dr0011/?v=$TARGET_SHA" "$tmp/dr0011.html"
@@ -102,7 +102,7 @@ jobs:
           grep -q 'Acesso principal' "$tmp/dr0010.html"
           grep -q 'Como a Vitrine verifica este registro' "$tmp/dr0010.html"
           grep -q 'Dados e produtos disponíveis' "$tmp/dr0011.html"
-          grep -q 'Atualização: atualização publicada em 2026-03-03' "$tmp/dr0011.html"
+          grep -q 'Versão/coleção informada: atualização publicada em 2026-03-03' "$tmp/dr0011.html"
           grep -q 'Como interpretar' "$tmp/dr0139.html"
           grep -q 'Carbon Mapper' "$tmp/dr0139.html"
           grep -q 'Responsabilidade e proveniência' "$tmp/dr0139.html"
@@ -154,12 +154,14 @@ jobs:
           assert carbon_v2["record"]["public_url"].endswith("/registros/dr0139/")
           assert carbon_v2["resource"]["name"] == carbon["title"]
           assert carbon_v2["curation"]["access_route_authority"] == "data/access_routes.json"
-          assert carbon_v2["curation"]["version_authority"] == "data/product_versions.json"
-          assert carbon_v2["curation"]["provenance_authority"] == "data/provenance_assertions.json"
-          assert product_versions["schema_version"] == "product-versions-v1"
-          assert product_versions["count"] == 11
-          assert provenance["schema_version"] == "provenance-assertions-v1"
-          assert provenance["count"] == 58
+          assert carbon_v2["curation"]["version_authority"] == "data/offering_versions.json"
+          assert carbon_v2["curation"]["provenance_authority"] == "data/provenance_statements.json"
+          assert carbon_v2["provenance"]["responsibility_statement"]
+          assert carbon_v2["provenance"]["agent_resolution_status"] == "unresolved_legacy_statement"
+          assert carbon_v2["agents"] == []
+          assert len(product_versions["versions"]) == 1
+          assert len(product_versions["unresolved_legacy_summaries"]) == 10
+          assert len(provenance["statements"]) == 58
           assert sum(bool(r.get("primary")) for r in carbon_v2["access_routes"] if r.get("target_type") == "resource") == 1
           assert not any({"scientific_reference", "verification_source"} & set(r.get("roles") or []) for r in carbon_v2["access_routes"])
           assert len({p['resource_id'] for p in products}) <= len(resources)
