@@ -1,0 +1,589 @@
+{
+  "schema_version": "provenance-v1",
+  "status": "canonical_statement_layer",
+  "authority": "data/provenance_statements.json",
+  "established_at": "2026-10-12",
+  "purpose": "Preservar declarações de responsabilidade/proveniência do catálogo sem transformar automaticamente textos compostos em agentes ou papéis institucionais que não foram curados individualmente.",
+  "statements": [
+    {
+      "provenance_id": "DR0001-P01",
+      "record_id": "DR0001",
+      "responsibility_statement": "FEAM / SISEMA / Governo de Minas Gerais",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0002-P01",
+      "record_id": "DR0002",
+      "responsibility_statement": "SISEMA / Governo de Minas Gerais",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0003-P01",
+      "record_id": "DR0003",
+      "responsibility_statement": "MCTI / INPE / RNP",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0004-P01",
+      "record_id": "DR0004",
+      "responsibility_statement": "MCTI",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0005-P01",
+      "record_id": "DR0005",
+      "responsibility_statement": "CEMADEN / MCTI",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0006-P01",
+      "record_id": "DR0006",
+      "responsibility_statement": "CENSIPAM / Ministério da Defesa",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0007-P01",
+      "record_id": "DR0007",
+      "responsibility_statement": "IAU / Universidade de São Paulo",
+      "institutional_status_summary": "acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0008-P01",
+      "record_id": "DR0008",
+      "responsibility_statement": "Governo Federal do Brasil",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0009-P01",
+      "record_id": "DR0009",
+      "responsibility_statement": "GBIF Secretariat e rede de participantes",
+      "institutional_status_summary": "consórcio",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0010-P01",
+      "record_id": "DR0010",
+      "responsibility_statement": "Rede MapBiomas",
+      "institutional_status_summary": "consórcio",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0011-P01",
+      "record_id": "DR0011",
+      "responsibility_statement": "INPE / MCTI",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0012-P01",
+      "record_id": "DR0012",
+      "responsibility_statement": "INPE / MCTI",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0013-P01",
+      "record_id": "DR0013",
+      "responsibility_statement": "CRIA e rede de coleções",
+      "institutional_status_summary": "consórcio acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0014-P01",
+      "record_id": "DR0014",
+      "responsibility_statement": "MCTI / Governo Federal",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0015-P01",
+      "record_id": "DR0015",
+      "responsibility_statement": "IBGE",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0016-P01",
+      "record_id": "DR0016",
+      "responsibility_statement": "MMA e órgãos gestores do SNUC",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0017-P01",
+      "record_id": "DR0017",
+      "responsibility_statement": "Agência Nacional de Águas e Saneamento Básico",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0018-P01",
+      "record_id": "DR0018",
+      "responsibility_statement": "INMET",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0019-P01",
+      "record_id": "DR0019",
+      "responsibility_statement": "Google e provedores dos datasets",
+      "institutional_status_summary": "privado",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0020-P01",
+      "record_id": "DR0020",
+      "responsibility_statement": "NASA LP DAAC",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0021-P01",
+      "record_id": "DR0021",
+      "responsibility_statement": "Copernicus Climate Change Service / ECMWF",
+      "institutional_status_summary": "público internacional",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0022-P01",
+      "record_id": "DR0022",
+      "responsibility_statement": "WorldClim / University of California, Davis",
+      "institutional_status_summary": "acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0023-P01",
+      "record_id": "DR0023",
+      "responsibility_statement": "CHELSA Climate",
+      "institutional_status_summary": "acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0024-P01",
+      "record_id": "DR0024",
+      "responsibility_statement": "UNEP-WCMC / IUCN",
+      "institutional_status_summary": "consórcio internacional",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0025-P01",
+      "record_id": "DR0025",
+      "responsibility_statement": "IUCN",
+      "institutional_status_summary": "consórcio internacional",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0026-P01",
+      "record_id": "DR0026",
+      "responsibility_statement": "UNESCO-IOC / OBIS",
+      "institutional_status_summary": "consórcio internacional",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0027-P01",
+      "record_id": "DR0027",
+      "responsibility_statement": "Cornell Lab of Ornithology",
+      "institutional_status_summary": "acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0028-P01",
+      "record_id": "DR0028",
+      "responsibility_statement": "Max Planck Institute of Animal Behavior",
+      "institutional_status_summary": "acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0029-P01",
+      "record_id": "DR0029",
+      "responsibility_statement": "Battelle / National Science Foundation",
+      "institutional_status_summary": "público-acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0030-P01",
+      "record_id": "DR0030",
+      "responsibility_statement": "DataONE e repositórios membros",
+      "institutional_status_summary": "consórcio",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0031-P01",
+      "record_id": "DR0031",
+      "responsibility_statement": "National Center for Ecological Analysis and Synthesis",
+      "institutional_status_summary": "acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0032-P01",
+      "record_id": "DR0032",
+      "responsibility_statement": "Alfred Wegener Institute / MARUM",
+      "institutional_status_summary": "acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0033-P01",
+      "record_id": "DR0033",
+      "responsibility_statement": "Dryad",
+      "institutional_status_summary": "acadêmico sem fins lucrativos",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0034-P01",
+      "record_id": "DR0034",
+      "responsibility_statement": "iNaturalist",
+      "institutional_status_summary": "organização sem fins lucrativos",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0035-P01",
+      "record_id": "DR0035",
+      "responsibility_statement": "NCAR / UCAR",
+      "institutional_status_summary": "acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0036-P01",
+      "record_id": "DR0036",
+      "responsibility_statement": "Oak Ridge National Laboratory",
+      "institutional_status_summary": "público-acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0037-P01",
+      "record_id": "DR0037",
+      "responsibility_statement": "ISRIC — World Soil Information",
+      "institutional_status_summary": "organização sem fins lucrativos",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0038-P01",
+      "record_id": "DR0038",
+      "responsibility_statement": "ISRIC — World Soil Information",
+      "institutional_status_summary": "organização sem fins lucrativos",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0039-P01",
+      "record_id": "DR0039",
+      "responsibility_statement": "GBIF e instituições hospedeiras",
+      "institutional_status_summary": "consórcio",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0040-P01",
+      "record_id": "DR0040",
+      "responsibility_statement": "TRY Consortium / Max Planck Institute for Biogeochemistry",
+      "institutional_status_summary": "consórcio acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0041-P01",
+      "record_id": "DR0041",
+      "responsibility_statement": "BIEN Working Group / NCEAS",
+      "institutional_status_summary": "consórcio acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0042-P01",
+      "record_id": "DR0042",
+      "responsibility_statement": "AmeriFlux Management Project / Lawrence Berkeley National Laboratory",
+      "institutional_status_summary": "consórcio acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0043-P01",
+      "record_id": "DR0043",
+      "responsibility_statement": "FLUXNET community",
+      "institutional_status_summary": "consórcio acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0044-P01",
+      "record_id": "DR0044",
+      "responsibility_statement": "World Resources Institute e parceiros",
+      "institutional_status_summary": "organização sem fins lucrativos",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0045-P01",
+      "record_id": "DR0045",
+      "responsibility_statement": "Global Carbon Project",
+      "institutional_status_summary": "consórcio acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0046-P01",
+      "record_id": "DR0046",
+      "responsibility_statement": "European Commission Joint Research Centre",
+      "institutional_status_summary": "público internacional",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0047-P01",
+      "record_id": "DR0047",
+      "responsibility_statement": "European Commission / ESA e operadores",
+      "institutional_status_summary": "público internacional",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0048-P01",
+      "record_id": "DR0048",
+      "responsibility_statement": "ESGF partners / DOE",
+      "institutional_status_summary": "consórcio internacional",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0049-P01",
+      "record_id": "DR0049",
+      "responsibility_statement": "ILTER e redes nacionais",
+      "institutional_status_summary": "consórcio acadêmico",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0050-P01",
+      "record_id": "DR0050",
+      "responsibility_statement": "NASA / Oak Ridge National Laboratory",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0051-P01",
+      "record_id": "DR0051",
+      "responsibility_statement": "Carbon Brief Ltd",
+      "institutional_status_summary": "empresa de comunicação científica",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-08-10"
+    },
+    {
+      "provenance_id": "DR0136-P01",
+      "record_id": "DR0136",
+      "responsibility_statement": "Departamento de Controle do Espaço Aéreo (DECEA) / Comando da Aeronáutica",
+      "institutional_status_summary": "público",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-09-30"
+    },
+    {
+      "provenance_id": "DR0137-P01",
+      "record_id": "DR0137",
+      "responsibility_statement": "RESOLVE Biodiversity and Wildlife Solutions; distribuição também pelo Google Earth Engine",
+      "institutional_status_summary": "iniciativa científica e de conservação",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-10-08"
+    },
+    {
+      "provenance_id": "DR0138-P01",
+      "record_id": "DR0138",
+      "responsibility_statement": "Global Safety Net / One Earth / Nature Data Lab; proveniência varia por camada",
+      "institutional_status_summary": "iniciativa científica internacional",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-10-08"
+    },
+    {
+      "provenance_id": "DR0139-P01",
+      "record_id": "DR0139",
+      "responsibility_statement": "Carbon Mapper, Inc.; produtos de diferentes provedores e sensores",
+      "institutional_status_summary": "organização sem fins lucrativos",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-10-08"
+    },
+    {
+      "provenance_id": "DR0140-P01",
+      "record_id": "DR0140",
+      "responsibility_statement": "The Nature Conservancy; David M. Theobald e colaboradores; distribuição Zenodo e Google Earth Engine",
+      "institutional_status_summary": "iniciativa científica",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-10-08"
+    },
+    {
+      "provenance_id": "DR0141-P01",
+      "record_id": "DR0141",
+      "responsibility_statement": "Planet Labs PBC; insumos de parceiros científicos e fontes externas",
+      "institutional_status_summary": "empresa privada",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-10-08"
+    },
+    {
+      "provenance_id": "DR0142-P01",
+      "record_id": "DR0142",
+      "responsibility_statement": "Vibrant Data Labs; One Earth; bases de Crunchbase e Candid",
+      "institutional_status_summary": "iniciativa de análise e visualização",
+      "agent_resolution_status": "unresolved_legacy_statement",
+      "role_resolution_status": "unresolved_legacy_statement",
+      "source_field": "owner_or_manager",
+      "verified_at": "2026-10-08"
+    }
+  ]
+}
