@@ -58,7 +58,6 @@ const IGNORED_FORMATS = new Set(["formatos variados", "varia", "visualização w
 const split = value => String(value || "").split("|").map(item => item.trim()).filter(Boolean);
 const norm = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const esc = value => String(value || "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]));
-const validUrl = value => /^https:\/\//.test(String(value || ""));
 const formats = resource => [...new Set(split(resource.data_formats).map(value => value.split(";")[0].trim()).filter(value => value && !IGNORED_FORMATS.has(value.toLowerCase())))];
 const searchText = resource => norm(SEARCH_FIELDS.map(key => resource[key]).join(" "));
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -96,47 +95,12 @@ function attachScope(resources, registry) {
   });
 }
 
-function detail(label, value) {
-  return `<div class="detail"><strong>${esc(label)}</strong><span>${esc(value || "Não informado")}</span></div>`;
-}
-
-function actionLink(label, url, className = "action-secondary") {
-  return validUrl(url) ? `<a class="${className}" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)} <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>` : "";
-}
-
-function statusClass(value) {
-  const key = norm(value);
-  if (key === "sim") return "status-yes";
-  if (key === "parcial") return "status-partial";
-  if (key === "nao") return "status-no";
-  if (key === "nao se aplica") return "status-na";
-  return "status-unknown";
-}
-
-function statusSymbol(value) {
-  const key = norm(value);
-  if (key === "sim") return "✓";
-  if (key === "parcial") return "◐";
-  if (key === "nao") return "—";
-  if (key === "nao se aplica") return "·";
-  return "?";
-}
-
-function statusBadge(label, value) {
-  const readable = ENUM_LABELS[value] || value || "Desconhecido";
-  return `<div class="status-badge ${statusClass(value)}" role="group" aria-label="${esc(label)}: ${esc(readable)}"><span class="status-symbol" aria-hidden="true">${statusSymbol(value)}</span><span><small>${esc(label)}</small><strong>${esc(readable)}</strong></span></div>`;
-}
-
 function scopePublicLabel(resource) {
   return SCOPE_LABELS[resource._scope.brazil_scope_class] || resource._scope.display_label || "Cobertura não classificada";
 }
 
 function scopeBadge(resource) {
   return `<span class="scope-badge scope-${esc(resource._scope.priority_tier.toLowerCase())}">${esc(scopePublicLabel(resource))}</span>`;
-}
-
-function detailGroup(title, content, links = "") {
-  return `<section class="detail-group"><h4>${esc(title)}</h4><div class="detail-grid">${content}</div>${links ? `<div class="detail-links">${links}</div>` : ""}</section>`;
 }
 
 function countValues(values) {
@@ -178,72 +142,26 @@ function optionLabel(element) {
 function card(resource) {
   const cardId = `resource-${domId(resource.resource_id)}`;
   const descriptionId = `${cardId}-description`;
-  const acronym = resource.acronym && resource.acronym !== resource.resource_name ? `<span class="acronym">${esc(resource.acronym)}</span>` : "";
+  const acronym = resource.acronym && resource.acronym !== resource.resource_name
+    ? `<span class="acronym">${esc(resource.acronym)}</span>`
+    : "";
   const areas = split(resource.research_areas);
   const areaChips = areas.map(area => `<span class="chip">${esc(area)}</span>`).join("");
 
-  const accessGroup = detailGroup(
-    "Acesso",
-    detail("Download gratuito", resource.free_download) +
-    detail("Condições de acesso", resource.access_conditions) +
-    detail("API ou acesso automatizado", resource.programmatic_access) +
-    detail("Protocolos e ferramentas", resource.access_protocols) +
-    detail("Autenticação", resource.authentication_required),
-    actionLink("Documentação de acesso", resource.access_documentation_url)
-  );
-
-  const coverageGroup = detailGroup(
-    "Cobertura",
-    detail("Tipo de cobertura", scopePublicLabel(resource)) +
-    detail("Cobertura geográfica", resource.geographic_coverage) +
-    detail("Dados para o Brasil", resource.covers_brazil) +
-    detail("Resolução espacial", resource.spatial_resolution) +
-    detail("Cobertura temporal", resource.temporal_coverage) +
-    detail("Resolução temporal", resource.temporal_resolution)
-  );
-
-  const productsGroup = detailGroup(
-    "Produtos e dados",
-    detail("Produtos", resource.data_product_types) +
-    detail("Formatos", resource.data_formats) +
-    detail("Visualizações", resource.visualization_types) +
-    detail("Origem dos dados", resource.data_sources)
-  );
-
-  const documentationGroup = detailGroup(
-    "Uso, documentação e limitações",
-    detail("Uso em pesquisa", resource.academic_uses) +
-    detail("Palavras-chave", resource.keywords) +
-    detail("Tipo de documentação", resource.academic_evidence_type) +
-    detail("Limitações", resource.limitations) +
-    detail("Responsável", resource.owner_or_manager) +
-    detail("Tipo de instituição", resource.institutional_status) +
-    detail("Licença", resource.license) +
-    detail("Registro revisado em", resource.last_verified),
-    actionLink("Referência acadêmica ou técnica", resource.academic_evidence_url) +
-    actionLink("Documentação oficial", resource.verification_url)
-  );
-
   return `<article class="card" data-resource-id="${esc(resource.resource_id)}" role="listitem" aria-labelledby="${cardId}" aria-describedby="${descriptionId}">
     <header class="card-header">
-      <div class="card-title"><div class="scope-line">${scopeBadge(resource)}</div><div class="title-line"><h3 id="${cardId}"><a href="${recordUrl(resource)}">${esc(resource.resource_name)}</a></h3>${acronym}</div><p class="identity">${esc(resource.official_identity)}</p></div>
+      <div class="card-title">
+        <div class="scope-line">${scopeBadge(resource)}</div>
+        <div class="title-line"><h3 id="${cardId}"><a href="${recordUrl(resource)}">${esc(resource.resource_name)}</a></h3>${acronym}</div>
+        <p class="identity">${esc(resource.official_identity)}</p>
+      </div>
     </header>
     <p class="description" id="${descriptionId}">${esc(resource.description)}</p>
     <div class="chips" aria-label="Áreas de pesquisa">${areaChips}</div>
-    <div class="status-grid" aria-label="Resumo de acesso">
-      ${statusBadge("Download gratuito", resource.free_download)}
-      ${statusBadge("API ou acesso automatizado", resource.programmatic_access)}
-      ${statusBadge("Dados para o Brasil", resource.covers_brazil)}
+    <div class="record-detail-actions">
+      <a class="action-primary" href="${recordUrl(resource)}">Ver registro na Vitrine →</a>
     </div>
-    <div class="card-actions">
-      ${actionLink("Acessar dados", resource.data_access_url, "action-primary")}
-      ${actionLink("Site oficial", resource.homepage_url)}
-    </div>
-    <div class="record-detail-actions"><a class="action-secondary" href="${recordUrl(resource)}">Ver registro completo na Vitrine →</a></div>
-    <details class="card-details">
-      <summary aria-label="Ver detalhes técnicos e documentação de ${esc(resource.resource_name)}">Ver detalhes técnicos e documentação</summary>
-      <div class="detail-groups">${accessGroup}${coverageGroup}${productsGroup}${documentationGroup}</div>
-    </details>
+    <div class="card-actions" aria-label="Atalhos externos"></div>
   </article>`;
 }
 
