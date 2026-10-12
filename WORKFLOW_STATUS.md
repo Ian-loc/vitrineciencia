@@ -46,7 +46,11 @@ Concluído no ciclo WEB v2:
 - redundância entre card e página individual reduzida;
 - página do registro organizada em cinco blocos;
 - informação científica do recurso separada visualmente da curadoria;
-- renderer migrado para o modelo público v2 sem alterar URLs.
+- renderer migrado para o modelo público v2 sem alterar URLs;
+- fichas individuais compactadas em acesso, proveniência e curadoria;
+- cards detalhados simplificados para triagem;
+- comparador convertido em matriz de diferenças;
+- impressão/PDF normalizada por stylesheet dedicado.
 
 Rotas de acesso canônicas: **concluídas** em `data/access_routes.json`.
 

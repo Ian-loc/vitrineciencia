@@ -1,0 +1,116 @@
+/* Vitrine Ciência — impressão e PDF
+   Mantém conteúdo científico; remove navegação, controles interativos e elementos sticky. */
+
+@media print {
+  @page { margin: 14mm 12mm 16mm; }
+
+  html { scroll-behavior:auto !important; }
+  body {
+    background:#fff !important;
+    color:#111 !important;
+    font-size:10.5pt;
+    line-height:1.45;
+  }
+
+  .site-nav,
+  .skip,
+  .nav-toggle,
+  .record-nav,
+  .compare-bar,
+  dialog,
+  .catalog-tools,
+  .product-filters,
+  .active-filters,
+  .result-insights,
+  .results-more,
+  .card-actions,
+  .compare-toggle,
+  .record-footer-actions,
+  .route-actions,
+  .detailed-subset-note .actions,
+  button {
+    display:none !important;
+  }
+
+  .wrap,
+  .record-layout,
+  .record-content,
+  .catalog,
+  .product-catalog {
+    width:100% !important;
+    max-width:none !important;
+    margin:0 !important;
+    padding-left:0 !important;
+    padding-right:0 !important;
+  }
+
+  .record-layout { display:block !important; }
+  .record-hero { padding:0 0 8mm !important; }
+  .record-section { break-inside:auto; }
+  .record-section h2,
+  .record-section h3,
+  .record-product h3 { break-after:avoid-page; }
+
+  .record-fact,
+  .record-product,
+  .record-reference,
+  .access-panel,
+  .distribution,
+  .product-card,
+  .triage-strip > div {
+    break-inside:avoid;
+    box-shadow:none !important;
+  }
+
+  .record-grid,
+  .access-facts {
+    gap:5mm !important;
+  }
+
+  .route-meta span,
+  .tag-list li,
+  .chip {
+    border:1px solid #bbb !important;
+    background:#fff !important;
+  }
+
+  .compact-product-cards {
+    display:block !important;
+  }
+
+  .compact-product-cards .product-card {
+    min-height:0 !important;
+    margin:0 0 7mm !important;
+    page-break-inside:avoid;
+  }
+
+  .hero,
+  .discovery-hero,
+  .stats {
+    background:#fff !important;
+    color:#111 !important;
+  }
+
+  .hero *,
+  .discovery-hero *,
+  .stats * {
+    color:#111 !important;
+  }
+
+  a { color:#111 !important; text-decoration:underline; }
+
+  .record-page .route-actions a[href]::after,
+  .record-page .record-footer-actions a[href]::after {
+    content:" (" attr(href) ")";
+    font-size:8pt;
+    font-weight:400;
+    text-decoration:none;
+  }
+
+  footer {
+    margin-top:8mm !important;
+    padding-top:4mm !important;
+    border-top:1px solid #aaa;
+    font-size:8.5pt;
+  }
+}

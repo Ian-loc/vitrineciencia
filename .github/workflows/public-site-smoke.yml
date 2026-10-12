@@ -99,12 +99,15 @@ jobs:
           grep -q 'Iniciativa ou programa de dados' "$tmp/dr0010.html"
           grep -q 'data-public-record-schema="public-record-v2"' "$tmp/dr0010.html"
           grep -q 'Visão geral' "$tmp/dr0010.html"
+          grep -q 'Acesso principal' "$tmp/dr0010.html"
+          grep -q 'Como a Vitrine verifica este registro' "$tmp/dr0010.html"
           grep -q 'Dados e produtos disponíveis' "$tmp/dr0011.html"
           grep -q 'Atualização: atualização publicada em 2026-03-03' "$tmp/dr0011.html"
           grep -q 'Como interpretar' "$tmp/dr0139.html"
           grep -q 'Carbon Mapper' "$tmp/dr0139.html"
           grep -q 'Responsabilidade e proveniência' "$tmp/dr0139.html"
-          grep -q 'A proveniência institucional ainda preserva' "$tmp/dr0139.html"
+          grep -q 'Papéis institucionais ainda não discriminados pela Vitrine' "$tmp/dr0139.html"
+          grep -q 'Entender esta proveniência' "$tmp/dr0139.html"
           grep -q 'Condições de uso e licença' "$tmp/dr0141.html"
 
           grep -q 'Subconjunto de 11 itens descritos em detalhe' "$tmp/products.html"
@@ -115,6 +118,8 @@ jobs:
           grep -q 'id="product-access"' "$tmp/products.html"
           grep -q 'disabled = unavailable' "$tmp/product-filter-ux.js"
           grep -q 'hidden = unavailable' "$tmp/product-filter-ux.js"
+          grep -q 'assets/print.css' "$tmp/products.html"
+          ! grep -q 'Detalhes científicos e acesso' "$tmp/products.html"
 
           ! grep -E -q 'arquitetura científica interna|Fonte → Produto → Distribuição|snapshot candidato|Decisão arquitetural|Direção experimental|termos controlados|busca textual livre' \
             "$tmp/index.html" "$tmp/products.html" "$tmp/sources.html" "$tmp/about.html"

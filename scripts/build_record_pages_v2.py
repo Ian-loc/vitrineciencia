@@ -134,31 +134,79 @@ def offering_versions(record: dict, offering_id: str) -> list[dict]:
     ]
 
 
-def route_cards(record: dict) -> str:
-    blocks: list[str] = []
-    for route in resource_routes(record):
-        roles = [role for role in (route.get("roles") or []) if role in ACCESS_ROLES]
-        if not roles:
-            continue
-        classes = "route-card primary-route" if route.get("primary") else "route-card"
-        role_labels = [
-            ROUTE_ROLE_LABELS[role] for role in roles if role in ROUTE_ROLE_LABELS
-        ]
-        action = external_link(route.get("label") or "Abrir recurso", route.get("url"))
-        note = ""
-        if not action and route.get("notes"):
-            note = f'<p class="record-meta-note">{esc(route["notes"])}</p>'
-        blocks.append(
-            f'<article class="{classes}">'
-            f'<strong>{esc(route.get("label") or "Forma de acesso")}</strong>'
-            f'<div class="route-meta">{"".join(f"<span>{esc(item)}</span>" for item in role_labels)}</div>'
-            f'{note}'
-            f'<div class="route-actions">{action}</div>'
-            '</article>'
-        )
-    if not blocks:
+def access_routes_html(record: dict) -> str:
+    routes = [
+        route for route in resource_routes(record)
+        if any(role in ACCESS_ROLES for role in (route.get("roles") or []))
+    ]
+    if not routes:
         return '<p class="notice">A Vitrine ainda não possui uma rota externa confirmada para este recurso.</p>'
-    return '<div class="route-list">' + "".join(blocks) + "</div>"
+
+    primary = next((route for route in routes if route.get("primary")), routes[0])
+    secondary = [route for route in routes if route is not primary]
+
+    primary_roles = [
+        ROUTE_ROLE_LABELS[role]
+        for role in (primary.get("roles") or [])
+        if role in ROUTE_ROLE_LABELS
+    ]
+    primary_action = external_link(
+        primary.get("label") or "Abrir recurso",
+        primary.get("url"),
+        "access-primary-action",
+    )
+    if not primary_action:
+        primary_action = (
+            f'<p class="record-meta-note">{esc(primary.get("notes") or "A rota principal está registrada, mas não possui um link externo confirmado.")}</p>'
+        )
+
+    secondary_links: list[str] = []
+    for route in secondary:
+        action = external_link(route.get("label") or "Abrir recurso", route.get("url"))
+        if action:
+            secondary_links.append(f"<li>{action}</li>")
+        elif route.get("notes"):
+            secondary_links.append(
+                f'<li><span>{esc(route.get("label") or "Forma de acesso")}: {esc(route["notes"])}</span></li>'
+            )
+
+    secondary_html = ""
+    if secondary_links:
+        secondary_html = (
+            '<div class="access-secondary">'
+            '<strong>Outras formas de acesso</strong>'
+            f'<ul>{"".join(secondary_links)}</ul>'
+            '</div>'
+        )
+
+    return (
+        '<div class="access-panel">'
+        '<div class="access-primary">'
+        '<span class="access-eyebrow">Acesso principal</span>'
+        f'<strong>{esc(primary.get("label") or "Forma de acesso")}</strong>'
+        f'<div class="route-meta">{"".join(f"<span>{esc(item)}</span>" for item in primary_roles)}</div>'
+        f'<div class="route-actions">{primary_action}</div>'
+        '</div>'
+        f'{secondary_html}'
+        '</div>'
+    )
+
+
+def access_facts_html(access: dict) -> str:
+    items = [
+        ("Download", display_status(access.get("free_download"))),
+        ("Acesso automatizado", display_status(access.get("programmatic_access"))),
+        ("Credencial", display_status(access.get("authentication_required"))),
+        ("Formas técnicas", " · ".join(access.get("protocols") or []) or "Não documentado"),
+    ]
+    return (
+        '<dl class="access-facts">'
+        + "".join(
+            f'<div><dt>{esc(label)}</dt><dd>{esc(value)}</dd></div>'
+            for label, value in items
+        )
+        + "</dl>"
+    )
 
 
 def distribution_html(route: dict) -> str:
@@ -341,7 +389,10 @@ def render_record_page(record: dict) -> str:
         for agent in agents
     )
     provenance_note = (
-        '<p class="record-meta-note">A proveniência institucional ainda preserva o rótulo curado do catálogo sem separar automaticamente papéis de produção, manutenção, publicação, hospedagem ou distribuição quando a evidência não os distingue.</p>'
+        '<p class="provenance-status">Papéis institucionais ainda não discriminados pela Vitrine.</p>'
+        '<details class="provenance-details"><summary>Entender esta proveniência</summary>'
+        '<p>A Vitrine preserva o rótulo curado do catálogo e só separa produção, manutenção, publicação, hospedagem ou distribuição quando há evidência suficiente para distinguir esses papéis.</p>'
+        '</details>'
         if unresolved_provenance else ""
     )
 
@@ -379,6 +430,7 @@ def render_record_page(record: dict) -> str:
 <link rel="stylesheet" href="../../assets/ux-v2.css">
 <link rel="stylesheet" href="../../assets/ux-simple.css">
 <link rel="stylesheet" href="../../assets/record-page.css">
+<link rel="stylesheet" href="../../assets/print.css" media="print">
 <script type="application/ld+json">{json_ld}</script>
 </head>
 <body class="record-page" data-public-record-schema="public-record-v2">
@@ -427,15 +479,10 @@ def render_record_page(record: dict) -> str:
 
 <section class="record-section" id="acesso">
 <h2>Como acessar</h2>
-<p><strong>Situação da rota principal:</strong> {esc(access.get("primary_status") or "Não informado")}</p>
-{route_cards(record)}
-<div class="record-grid">
-{fact("Download gratuito", display_status(access.get("free_download")))}
-{fact("Acesso automatizado", display_status(access.get("programmatic_access")))}
-{fact("Cadastro ou credencial", display_status(access.get("authentication_required")))}
-{fact("Formas técnicas de acesso", " · ".join(access.get("protocols") or []) or "Não documentado")}
-</div>
-<p><strong>Condições de acesso:</strong> {esc(access.get("conditions") or "Não informado")}</p>
+<p class="access-status"><strong>Situação:</strong> {esc(access.get("primary_status") or "Não informado")}</p>
+{access_routes_html(record)}
+{access_facts_html(access)}
+<p class="access-conditions"><strong>Condições:</strong> {esc(access.get("conditions") or "Não informado")}</p>
 </section>
 
 <section class="record-section" id="interpretacao">
@@ -463,14 +510,13 @@ def render_record_page(record: dict) -> str:
 
 <div class="record-curation" id="curadoria">
 <h3>Sobre este registro na Vitrine</h3>
-<div class="record-grid">
-{fact("Identificador do registro", rid)}
-{fact("Tipo do recurso catalogado", type_info.get("label"))}
-{fact("Registro revisado em", (record.get("curation") or {}).get("last_verified"))}
-{fact("Acesso verificado em", (record.get("curation") or {}).get("access_last_verified") or "Não informado")}
-</div>
-<p class="record-meta-note">“Não confirmado” significa que a Vitrine não encontrou evidência suficiente na revisão registrada; não significa que o recurso inexista.</p>
-<p class="record-meta-note">Esta página usa um snapshot estático curado. Uma futura integração por API poderá solicitar atualização assíncrona sem tornar a disponibilidade da página dependente do provedor externo.</p>
+<p class="curation-summary"><strong>{esc(rid)}</strong> · revisado em {esc((record.get("curation") or {}).get("last_verified") or "data não informada")} · acesso verificado em {esc((record.get("curation") or {}).get("access_last_verified") or "data não informada")}</p>
+<details class="curation-details">
+<summary>Como a Vitrine verifica este registro</summary>
+<p><strong>Tipo catalogado:</strong> {esc(type_info.get("label") or "Não informado")}</p>
+<p>“Não confirmado” significa que a Vitrine não encontrou evidência suficiente na revisão registrada; não significa que o recurso inexista.</p>
+<p>Esta página usa um snapshot estático curado. Atualizações futuras por API poderão ocorrer de forma assíncrona sem tornar a página dependente do provedor externo.</p>
+</details>
 </div>
 </section>
 
