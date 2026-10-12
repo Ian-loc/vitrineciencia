@@ -108,7 +108,15 @@ Estado material:
 - referências/evidências separadas de access routes;
 - read model v2 consome a autoridade sem inferência no renderer.
 
-### C. Integration Registry — DEPOIS DO MODELO V2
+### B3. Versões e proveniência — BASELINE CONCLUÍDO
+
+- resumos legados de versão não geram automaticamente entidades Version;
+- versões promovidas possuem autoridade em `data/offering_versions.json`;
+- proveniência textual possui autoridade em `data/provenance_statements.json`;
+- cadeias institucionais não são convertidas automaticamente em Agents;
+- `agents[]` fica reservado à resolução curatorial de identidade e papel.
+
+### C. Integration Registry — PRÓXIMO MILESTONE
 
 Status: planejado; não iniciado em `main`.
 
@@ -165,8 +173,8 @@ Atualização sob demanda deverá ser assíncrona e limitada por freshness/TTL, 
 3. renderer v2 e estrutura de cinco blocos — **concluído**;
 4. simplificar cards e eliminar redundância/guardrails desnecessários — **concluído**;
 5. rotas de acesso canônicas — **concluído**;
-6. versões e proveniência estruturadas — **próxima ação**;
-7. Integration Registry;
+6. versões e proveniência estruturadas — **concluído no nível conservador de baseline**;
+7. Integration Registry — **próxima ação**;
 8. pilotos de conectores;
 9. pipeline de harvesting;
 10. API de leitura;
