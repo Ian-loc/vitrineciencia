@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Constrói o read model público v2 da Vitrine Ciência.
 
-O v2 combina:
-- conteúdo científico/curatorial ainda migrado deterministicamente do v1;
-- rotas de acesso canônicas em data/access_routes.json.
+Autoridades usadas pelo v2:
+- conteúdo científico ainda compatível com o public-record-v1;
+- rotas: data/access_routes.json;
+- versões promovidas: data/offering_versions.json;
+- declarações de proveniência: data/provenance_statements.json.
 
-O renderer e os JSONs públicos consomem este mesmo read model.
+Resumos legados continuam preservados quando sua semântica ainda não justifica
+criar uma entidade estruturada.
 """
 from __future__ import annotations
 
@@ -20,6 +23,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "_site"
 SCHEMA_PATH = ROOT / "schema" / "public-record-v2.json"
 ACCESS_ROUTES_PATH = ROOT / "data" / "access_routes.json"
+VERSIONS_PATH = ROOT / "data" / "offering_versions.json"
+PROVENANCE_PATH = ROOT / "data" / "provenance_statements.json"
 
 ACCESS_STATUS_LABELS = {
     "A": "Dados disponíveis diretamente",
@@ -38,26 +43,14 @@ def derived_resource_id(record_id: str) -> str:
     return f"{record_id}::resource"
 
 
-def offering_from_product(product: dict, route_ids: list[str]) -> tuple[dict, list[dict]]:
-    offering_id = product["product_id"]
-    versions: list[dict] = []
+def offering_from_product(
+    product: dict,
+    route_ids: list[str],
+    version_ids: list[str],
+) -> dict:
     version_summary = str(product.get("version_or_collection") or "").strip()
-    if version_summary:
-        versions.append(
-            {
-                "version_id": f"{offering_id}::legacy-version",
-                "offering_id": offering_id,
-                "identifier_status": "derived_migration_key",
-                "label": version_summary,
-                "issued": None,
-                "relation": None,
-                "status": "legacy_summary",
-                "source_field": "version_or_collection",
-            }
-        )
-
-    offering = {
-        "offering_id": offering_id,
+    return {
+        "offering_id": product["product_id"],
         "name": product["name"],
         "acronym": product.get("acronym"),
         "family": product.get("family"),
@@ -89,11 +82,10 @@ def offering_from_product(product: dict, route_ids: list[str]) -> tuple[dict, li
         },
         "limitations": product.get("limitations") or "",
         "verified_at": product.get("last_verified") or None,
-        "version_ids": [item["version_id"] for item in versions],
+        "version_ids": list(version_ids),
         "access_route_ids": list(route_ids),
         "source": "legacy-product",
     }
-    return offering, versions
 
 
 def references_from_v1(record: dict) -> list[dict]:
@@ -150,7 +142,30 @@ def canonical_routes_by_record() -> dict[str, list[dict]]:
     return grouped
 
 
-def transform_record(record: dict, schema: dict, routes: list[dict]) -> dict:
+def canonical_versions_by_offering() -> dict[str, list[dict]]:
+    payload = read_json(VERSIONS_PATH)
+    if payload.get("schema_version") != "offering-versions-v1" or payload.get("status") != "canonical":
+        raise SystemExit("ERRO: data/offering_versions.json não é uma autoridade de versões válida")
+    grouped: dict[str, list[dict]] = defaultdict(list)
+    for version in payload.get("versions") or []:
+        grouped[version["offering_id"]].append(dict(version))
+    return grouped
+
+
+def canonical_provenance_by_record() -> dict[str, dict]:
+    payload = read_json(PROVENANCE_PATH)
+    if payload.get("schema_version") != "provenance-v1" or payload.get("status") != "canonical_statement_layer":
+        raise SystemExit("ERRO: data/provenance_statements.json não é uma camada de proveniência válida")
+    return {item["record_id"]: dict(item) for item in payload.get("statements") or []}
+
+
+def transform_record(
+    record: dict,
+    schema: dict,
+    routes: list[dict],
+    versions_by_offering: dict[str, list[dict]],
+    provenance_statement: dict,
+) -> dict:
     rid = record["resource_id"]
     resource_local_id = derived_resource_id(rid)
 
@@ -169,27 +184,28 @@ def transform_record(record: dict, schema: dict, routes: list[dict]) -> dict:
     offerings: list[dict] = []
     versions: list[dict] = []
     for product in record.get("products") or []:
-        offering, product_versions = offering_from_product(
-            product,
-            offering_route_ids.get(product["product_id"], []),
+        pid = product["product_id"]
+        product_versions = versions_by_offering.get(pid, [])
+        offerings.append(
+            offering_from_product(
+                product,
+                offering_route_ids.get(pid, []),
+                [item["version_id"] for item in product_versions],
+            )
         )
-        offerings.append(offering)
-        versions.extend(product_versions)
-
-    owner = (record.get("provenance") or {}).get("owner_or_manager") or ""
-    agents = []
-    if str(owner).strip():
-        agents.append(
-            {
-                "agent_id": f"{rid}-A01",
-                "name": owner,
-                "roles": ["responsible_or_maintainer"],
-                "institutional_status": (record.get("provenance") or {}).get("institutional_status") or "",
-                "source": "legacy-owner_or_manager",
-            }
-        )
+        versions.extend(dict(item) for item in product_versions)
 
     legacy_access = record.get("access") or {}
+    provenance = {
+        "provenance_id": provenance_statement["provenance_id"],
+        "responsibility_statement": provenance_statement["responsibility_statement"],
+        "institutional_status_summary": provenance_statement["institutional_status_summary"],
+        "agent_resolution_status": provenance_statement["agent_resolution_status"],
+        "role_resolution_status": provenance_statement["role_resolution_status"],
+        "verified_at": provenance_statement.get("verified_at"),
+        "authority": "data/provenance_statements.json",
+    }
+
     return {
         "schema_version": schema["schema_version"],
         "record": {
@@ -227,13 +243,14 @@ def transform_record(record: dict, schema: dict, routes: list[dict]) -> dict:
                 "protocols": list(legacy_access.get("protocols") or []),
             },
             "use_and_limits": dict(record.get("use_and_limits") or {}),
-            "institutional_status": (record.get("provenance") or {}).get("institutional_status") or "",
+            "institutional_status": provenance_statement["institutional_status_summary"],
             "data_sources": list((record.get("content") or {}).get("data_sources") or []),
         },
         "offerings": offerings,
         "versions": versions,
         "access_routes": [dict(item) for item in routes],
-        "agents": agents,
+        "provenance": provenance,
+        "agents": [],
         "references": references_from_v1(record),
         "curation": {
             "last_verified": (record.get("curation") or {}).get("last_verified"),
@@ -241,7 +258,9 @@ def transform_record(record: dict, schema: dict, routes: list[dict]) -> dict:
             "access_reason": (record.get("curation") or {}).get("access_reason"),
             "migration_source_schema": record.get("schema_version"),
             "access_route_authority": "data/access_routes.json",
-            "migration_mode": "v2_content_transform_with_canonical_access_routes",
+            "version_authority": "data/offering_versions.json",
+            "provenance_authority": "data/provenance_statements.json",
+            "migration_mode": "v2_content_transform_with_canonical_relations",
         },
     }
 
@@ -249,12 +268,25 @@ def transform_record(record: dict, schema: dict, routes: list[dict]) -> dict:
 def build_public_records_v2() -> list[dict]:
     schema = read_json(SCHEMA_PATH)
     routes_by_record = canonical_routes_by_record()
+    versions_by_offering = canonical_versions_by_offering()
+    provenance_by_record = canonical_provenance_by_record()
+
     records = []
     for record in build_v1_records():
         rid = record["resource_id"]
         if rid not in routes_by_record:
             raise SystemExit(f"ERRO: {rid}: sem rotas canônicas")
-        records.append(transform_record(record, schema, routes_by_record[rid]))
+        if rid not in provenance_by_record:
+            raise SystemExit(f"ERRO: {rid}: sem declaração de proveniência")
+        records.append(
+            transform_record(
+                record,
+                schema,
+                routes_by_record[rid],
+                versions_by_offering,
+                provenance_by_record[rid],
+            )
+        )
     return records
 
 
@@ -277,7 +309,7 @@ def build(output: Path = DEFAULT_OUTPUT) -> list[dict]:
 
     print(
         f"OK: {len(records)} registros public-record-v2 gerados em "
-        f"{target.relative_to(output)} com access_routes canônicas"
+        f"{target.relative_to(output)} com relações canônicas"
     )
     return records
 
