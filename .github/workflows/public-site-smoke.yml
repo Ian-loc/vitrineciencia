@@ -68,6 +68,8 @@ jobs:
           fetch "$SITE/data/applied_priority_gate.json?v=$TARGET_SHA" "$tmp/applied-priority.json"
           fetch "$SITE/data/public_records.json?v=$TARGET_SHA" "$tmp/public-records.json"
           fetch "$SITE/data/v2/public_records.json?v=$TARGET_SHA" "$tmp/public-records-v2.json"
+          fetch "$SITE/data/product_versions.json?v=$TARGET_SHA" "$tmp/product-versions.json"
+          fetch "$SITE/data/provenance_assertions.json?v=$TARGET_SHA" "$tmp/provenance.json"
           fetch "$SITE/data/v2/registros/dr0139.json?v=$TARGET_SHA" "$tmp/dr0139-v2.json"
           fetch "$SITE/registros/dr0010/?v=$TARGET_SHA" "$tmp/dr0010.html"
           fetch "$SITE/registros/dr0011/?v=$TARGET_SHA" "$tmp/dr0011.html"
@@ -98,8 +100,11 @@ jobs:
           grep -q 'data-public-record-schema="public-record-v2"' "$tmp/dr0010.html"
           grep -q 'Visão geral' "$tmp/dr0010.html"
           grep -q 'Dados e produtos disponíveis' "$tmp/dr0011.html"
+          grep -q 'Atualização: atualização publicada em 2026-03-03' "$tmp/dr0011.html"
           grep -q 'Como interpretar' "$tmp/dr0139.html"
           grep -q 'Carbon Mapper' "$tmp/dr0139.html"
+          grep -q 'Responsabilidade e proveniência' "$tmp/dr0139.html"
+          grep -q 'A proveniência institucional ainda preserva' "$tmp/dr0139.html"
           grep -q 'Condições de uso e licença' "$tmp/dr0141.html"
 
           grep -q 'Subconjunto de 11 itens descritos em detalhe' "$tmp/products.html"
@@ -116,7 +121,7 @@ jobs:
           ! grep -E -q 'data/quarantine|v1.0.0-expanded' \
             "$tmp/index.html" "$tmp/products.html" "$tmp/sources.html" "$tmp/about.html"
 
-          python3 - "$tmp/resources.json" "$tmp/products.json" "$tmp/applied-priority.json" "$tmp/public-records.json" "$tmp/dr0139.json" "$tmp/public-records-v2.json" "$tmp/dr0139-v2.json" <<'PY'
+          python3 - "$tmp/resources.json" "$tmp/products.json" "$tmp/applied-priority.json" "$tmp/public-records.json" "$tmp/dr0139.json" "$tmp/public-records-v2.json" "$tmp/dr0139-v2.json" "$tmp/product-versions.json" "$tmp/provenance.json" <<'PY'
           import json, sys
           resources = json.load(open(sys.argv[1], encoding='utf-8'))
           products = json.load(open(sys.argv[2], encoding='utf-8'))
@@ -125,6 +130,8 @@ jobs:
           carbon = json.load(open(sys.argv[5], encoding='utf-8'))
           public_records_v2 = json.load(open(sys.argv[6], encoding='utf-8'))
           carbon_v2 = json.load(open(sys.argv[7], encoding='utf-8'))
+          product_versions = json.load(open(sys.argv[8], encoding='utf-8'))
+          provenance = json.load(open(sys.argv[9], encoding='utf-8'))
 
           assert len(resources) == 58, len(resources)
           assert len(products) == 11, len(products)
@@ -142,6 +149,12 @@ jobs:
           assert carbon_v2["record"]["public_url"].endswith("/registros/dr0139/")
           assert carbon_v2["resource"]["name"] == carbon["title"]
           assert carbon_v2["curation"]["access_route_authority"] == "data/access_routes.json"
+          assert carbon_v2["curation"]["version_authority"] == "data/product_versions.json"
+          assert carbon_v2["curation"]["provenance_authority"] == "data/provenance_assertions.json"
+          assert product_versions["schema_version"] == "product-versions-v1"
+          assert product_versions["count"] == 11
+          assert provenance["schema_version"] == "provenance-assertions-v1"
+          assert provenance["count"] == 58
           assert sum(bool(r.get("primary")) for r in carbon_v2["access_routes"] if r.get("target_type") == "resource") == 1
           assert not any({"scientific_reference", "verification_source"} & set(r.get("roles") or []) for r in carbon_v2["access_routes"])
           assert len({p['resource_id'] for p in products}) <= len(resources)
@@ -155,5 +168,5 @@ jobs:
           assert all(item.get('access_role') in {'A', 'B', 'C', 'D', 'E'} for item in items)
           assert all(str(item.get('access_url') or '').startswith('https://') for item in items)
 
-          print('OK: Vitrine pública 58 registros + v1/v2 read models / 58 páginas individuais / 11 itens detalhados / 19 distribuições')
+          print('OK: Vitrine pública 58 registros + v2 com rotas, versões e proveniência canônicas / 58 páginas / 11 offerings / 19 distribuições')
           PY
