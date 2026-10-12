@@ -174,6 +174,17 @@ curation
 
 Esse é um modelo lógico; não implica imediatamente novas tabelas relacionais.
 
+## 5.1 Estado material da migração
+
+A implementação inicial gera, em paralelo:
+
+- `/data/v2/public_records.json`;
+- `/data/v2/registros/dr####.json`.
+
+O HTML continua no v1 até que a equivalência funcional e os novos blocos públicos sejam validados.
+
+O crosswalk e seus invariantes estão em `docs/PUBLIC_RECORD_V2_MIGRATION.md`.
+
 ## 6. Interface após o v2
 
 ### Cards
@@ -355,13 +366,15 @@ Ideias reaproveitáveis:
 
 ## 15. Ordem de implementação
 
-### M0 — documentação e baseline
+### M0 — documentação e baseline — CONCLUÍDO
 
-Atualizar documentação ao runtime 58 e congelar checkpoint factual.
+Documentação sincronizada ao runtime 58 e checkpoint factual registrado.
 
-### M1 — `public-record-v2`
+### M1 — `public-record-v2` — EM EXECUÇÃO
 
-Separar CatalogRecord e recurso.
+Primeira etapa concluída: read model v2 paralelo ao v1, com separação `record → resource`, crosswalk determinístico e validação de compatibilidade.
+
+Próxima etapa M1: migrar o renderer HTML para consumir o v2, mantendo v1 temporariamente como referência de regressão.
 
 ### M2 — cards e página individual
 
