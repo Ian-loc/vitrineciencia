@@ -372,6 +372,16 @@ Concluído: read model v2, separação `record → resource`, crosswalk determin
 
 Descoberta simplificada e página individual reorganizada no renderer v2.
 
+Refinamento posterior baseado em comparação visual com os materiais de uso:
+
+- cards detalhados mantêm somente informação decisória;
+- página individual compacta rotas e condições de acesso sem reduzir a riqueza do read model;
+- proveniência e curadoria usam progressive disclosure;
+- comparação destaca diferenças numa matriz;
+- impressão/PDF possui apresentação própria, sem controles de navegação e elementos sticky.
+
+A estratégia permanece: a riqueza semântica fica no modelo; a interface mostra somente o nível necessário para a decisão do usuário.
+
 ### M3 — rotas canônicas — CONCLUÍDO
 
 `access-routes-v1` materializa destinos, papéis, avaliação principal, condições e distribuições como objetos explícitos. Referências/evidências foram excluídas dessa coleção e permanecem em `references`.
