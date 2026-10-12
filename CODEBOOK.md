@@ -10,7 +10,7 @@ A Vitrine usa três tabelas CSV canônicas no schema físico vigente:
 - `data/data_products.csv` — produtos;
 - `data/product_distributions.csv` — distribuições.
 
-O snapshot histórico `v1.0.0` contém **135 fontes, 843 produtos e 876 distribuições**. Os identificadores chegam a `DR0135`, `DP000861` e `DD000894`. No PR draft #267, o branch candidato usa 51 DR / 11 produtos / 19 distribuições e preserva a expansão em quarentena. Os JSONs e o site são derivados. O Drive é espelho/histórico derivado.
+O catálogo vivo corrente contém **58 registros DR, 11 produtos detalhados e 19 distribuições**. O núcleo `DR0001–DR0051` permanece preservado e as sete entradas pós-core ocupam `DR0136–DR0142`. O snapshot histórico `v1.0.0` contém **135 fontes, 843 produtos e 876 distribuições** e permanece preservado em `data/quarantine/v1.0.0-expanded/`; seus IDs `DR0052–DR0135` não são reciclados. JSONs públicos e site são derivados. O Drive é espelho/histórico derivado.
 
 ## 2. Fontes — 34 campos
 
@@ -142,9 +142,9 @@ URLs podem coincidir quando uma página realmente cumpre mais de um papel, mas a
 
 ## 9. Autoridade e histórico
 
-PostgreSQL/PostGIS, releases relacionais, variáveis normalizadas e entidades adicionais descritas em documentos antigos pertencem ao histórico do Simbiotrama. Não fazem parte do codebook ativo da Vitrine.
+PostgreSQL/PostGIS, releases relacionais, variáveis normalizadas e entidades adicionais descritas em documentos antigos pertencem ao histórico do Simbiotrama. Não fazem parte do runtime ativo da Vitrine.
 
-O contrato executável físico vigente é `schema/product-catalog-v0.1.json`; a especificação transitória é `docs/VITRINE_CANONICAL_DATA_CONTRACT.md`. O novo schema canônico só será congelado após G0–G4 PASS.
+O contrato físico vigente é `schema/product-catalog-v0.1.json`. A camada pública implementada é `schema/public-record-v1.json`, materializada como HTML e JSON por registro. O próximo contrato público deverá separar explicitamente o Registro da Vitrine do Recurso catalogado, sem invalidar os IDs físicos existentes. A evolução é descrita em `docs/WEB_API_EVOLUTION_PLAN.md`.
 
 ## 10. Contrato dos campos descritivos e comparabilidade
 
@@ -167,7 +167,7 @@ A interface pública usa uma camada derivada definida em `schema/public-discover
 As categorias e normalizações públicas permanecem compatíveis com o frontend corrente enquanto a ontologia é auditada. Nenhuma delas deve ser usada como evidência para reclassificar automaticamente um DR.
 ## 12. Registro público e páginas individuais
 
-A unidade pública de navegação individual é o **registro da Vitrine** (`DR####`). O registro não é sinônimo de dataset, provedor ou plataforma; ele é uma unidade agregadora persistente que pode relacionar produtos, coleções, releases, distribuições, serviços, visualizadores e documentos.
+A unidade pública de navegação individual é o **Registro da Vitrine** (`DR####`). O registro não é sinônimo de dataset, provedor ou plataforma; ele é a unidade catalográfica persistente mantida pela Vitrine. No contrato v1, o recurso externo descrito ainda aparece parcialmente fundido a esse objeto; o modelo v2 deverá representar explicitamente `record → resource`.
 
 A representação pública é definida em `schema/public-record-v1.json` e materializada no build como:
 
@@ -175,7 +175,24 @@ A representação pública é definida em `schema/public-record-v1.json` e mater
 - `/data/registros/dr####.json` — representação individual estruturada;
 - `/data/public_records.json` — índice completo dos registros públicos.
 
-Produtos `DP` e distribuições `DD` permanecem subordinados ao registro. Eles não geram novas páginas públicas por padrão. A estrutura foi desenhada para servir como fallback estático de uma futura API `/api/v1/records/{resource_id}`, usando atualização assíncrona e curadoria antes de substituir o snapshot público.
+Produtos `DP` e distribuições `DD` permanecem subordinados ao registro. Eles não geram novas páginas públicas por padrão. A estrutura foi desenhada para servir como snapshot resiliente de uma futura API `/api/v1/records/{resource_id}`, usando atualização assíncrona e curadoria antes de substituir o estado público.
 
 A documentação operacional dessa decisão está em `docs/PUBLIC_RECORD_PAGES_V1.md`.
+
+## 13. API, rotas e integração futura
+
+A API da Vitrine ainda não existe como serviço público. O que existe hoje é o read model estático que deverá ser servido pela API futura.
+
+A evolução prevista inclui:
+
+- `public-record-v2`, separando registro e recurso;
+- rotas de acesso como objetos canônicos;
+- versões/coleções estruturadas quando materialmente relevantes;
+- proveniência com agentes e papéis;
+- Integration Registry antes de qualquer harvesting;
+- conectores STAC/CKAN/OGC/ArcGIS/REST/GraphQL conforme o provedor;
+- pipeline com staging, normalização, deduplicação, validação, diff e gate de curadoria;
+- comportamento `static-first / stale-while-revalidate`.
+
+Nenhum resultado bruto de API deve ser promovido diretamente ao catálogo público.
 
