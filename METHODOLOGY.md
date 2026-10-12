@@ -165,6 +165,11 @@ Separar:
 
 HTTP 200 não comprova acesso.
 
+No schema físico legado, os dois papéis mínimos continuam documentados explicitamente:
+
+- **Site oficial** (`homepage_url`) — identidade institucional ou página oficial principal do recurso;
+- **Acessar dados** (`data_access_url`) — melhor rota cadastrada para descobrir, consultar, solicitar ou obter os dados, cuja função concreta é qualificada pela auditoria de acesso.
+
 A existência de API não implica gratuidade, autorização para harvesting ou licença de redistribuição.
 
 ## 12. Licença e atribuição
