@@ -37,20 +37,26 @@
       "semantics": "Ofertas científicas materialmente distintas derivadas dos produtos DP existentes. Não equivalem a arquivos, endpoints ou formatos."
     },
     "versions": {
-      "semantics": "Estados de versão/coleção. Nesta migração, entradas podem ser derivadas do campo legado version_or_collection e são marcadas como resumo legado, não como identificadores científicos canônicos."
+      "semantics": "Entidades de versão/coleção promovidas explicitamente a partir de data/offering_versions.json. O texto legado version_or_collection permanece como resumo na offering quando ainda não justifica uma entidade.",
+      "authority": "data/offering_versions.json"
     },
     "access_routes": {
       "semantics": "Rotas funcionais canônicas provenientes de data/access_routes.json. Referências/evidências permanecem em references; distribuições DD são rotas direcionadas às offerings.",
       "authority": "data/access_routes.json"
     },
     "agents": {
-      "semantics": "Agentes associados ao recurso. O campo legado owner_or_manager é migrado conservadoramente para o papel responsible_or_maintainer até curadoria posterior."
+      "semantics": "Agentes individualizados somente quando identidade e papel foram resolvidos por curadoria. Pode permanecer vazio quando a proveniência é uma declaração composta não resolvida.",
+      "authority_status": "curated_only_no_automatic_parsing"
     },
     "references": {
       "semantics": "Referências científicas/técnicas e fontes de verificação, deduplicadas por URL quando uma página cumpre mais de um papel."
     },
     "curation": {
       "semantics": "Metadados sobre a curadoria da Vitrine, separados das propriedades do recurso externo."
+    },
+    "provenance": {
+      "semantics": "Declaração estruturada de responsabilidade/proveniência proveniente de data/provenance_statements.json. Preserva textos compostos sem convertê-los automaticamente em Agents.",
+      "authority": "data/provenance_statements.json"
     }
   },
   "resource_types": {
@@ -89,7 +95,13 @@
     "distribution"
   ],
   "agent_roles": [
-    "responsible_or_maintainer"
+    "producer",
+    "maintainer",
+    "publisher",
+    "host",
+    "distributor",
+    "methodological_responsibility",
+    "other_curated_role"
   ],
   "offering_kinds": [
     "dataset",
@@ -110,7 +122,11 @@
     "todo DD existente é preservado como access_route de uma offering",
     "desconhecido não é convertido em não",
     "falha de API externa não é necessária para gerar ou servir este modelo",
-    "access_routes são idênticas à autoridade data/access_routes.json"
+    "access_routes são idênticas à autoridade data/access_routes.json",
+    "versions são promovidas apenas pela autoridade data/offering_versions.json",
+    "resumo legado de versão não cria automaticamente uma entidade version",
+    "proveniência composta não é convertida automaticamente em Agent",
+    "agents só contém entidades e papéis resolvidos por curadoria"
   ],
   "future_api_contract": {
     "principle": "static_first_stale_while_revalidate",
