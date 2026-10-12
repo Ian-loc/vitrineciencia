@@ -21,6 +21,8 @@ Gates desse runtime:
 
 Não há uma migração de backend em andamento no estado público. O site continua sendo um artefato estático publicado por GitHub Pages.
 
+A fase corrente é de **QA/QC, manutenção do runtime 58 e desenho do modelo público v2**. A expansão automática ou em lote permanece **pausada**; novas entradas só podem ser incorporadas por decisão curatorial e instrução humana explícita.
+
 ## 2. Catálogo vivo
 
 O estado vivo contém:
