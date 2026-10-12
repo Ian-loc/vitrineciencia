@@ -1,0 +1,33 @@
+{
+  "schema_version": "offering-versions-v1",
+  "status": "stable_canonical_version_contract",
+  "authority": "data/offering_versions.json",
+  "purpose": "Distinguir entidades de versão/coleção realmente curadas de resumos legados heterogêneos.",
+  "version_fields": {
+    "version_id": "Identificador estável da versão na Vitrine.",
+    "offering_id": "Offering à qual a versão pertence.",
+    "version_label": "Rótulo científico/técnico da versão.",
+    "version_kind": "version, collection, edition ou release quando curado.",
+    "external_identifier": "Identificador oficial do provedor quando explicitamente conhecido.",
+    "issued": "Data de emissão quando conhecida.",
+    "relation": "Relação da versão com a offering.",
+    "status": "Estado curatorial da versão.",
+    "source_summary": "Texto legado que motivou ou suporta a promoção.",
+    "evidence_source": "Fonte usada para a promoção.",
+    "verified_at": "Data de verificação."
+  },
+  "unresolved_summary_fields": {
+    "offering_id": "Offering cujo campo legado ainda não foi resolvido semanticamente.",
+    "summary": "Texto preservado do campo version_or_collection.",
+    "resolution_status": "Estado explícito de não promoção.",
+    "reason": "Razão para não transformar automaticamente o resumo em entidade.",
+    "verified_at": "Data de revisão disponível."
+  },
+  "invariants": [
+    "uma offering não pode estar simultaneamente em versions e unresolved_legacy_summaries para o mesmo resumo legado",
+    "version_id é único",
+    "offering_id deve existir no catálogo de produtos detalhados",
+    "resumo legado não é prova automática de versão",
+    "versões não são inventadas a partir de palavras como corrente, experimental, acesso ou atualização"
+  ]
+}
