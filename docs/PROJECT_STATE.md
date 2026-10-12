@@ -21,7 +21,7 @@ Gates desse runtime:
 
 Não há uma migração de backend em andamento no estado público. O site continua sendo um artefato estático publicado por GitHub Pages.
 
-A fase corrente é de **QA/QC, manutenção do runtime 58 e desenho do modelo público v2**. A expansão automática ou em lote permanece **pausada**; novas entradas só podem ser incorporadas por decisão curatorial e instrução humana explícita.
+A **fase ativa de QA/QC e manutenção** continua vigente para o runtime 58, em paralelo ao desenho do modelo público v2. A expansão automática ou em lote permanece **pausada**; novas entradas só podem ser incorporadas por decisão curatorial e instrução humana explícita.
 
 ## 2. Catálogo vivo
 
@@ -223,7 +223,7 @@ Ideias reutilizáveis, como manifesto de proveniência e registro explícito de 
 
 ## 10. Release histórica
 
-A release científica `v1.0.0`, sua tag, DOI `10.5281/zenodo.22130831` e snapshot permanecem imutáveis.
+A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130831` e snapshot permanecem imutáveis.
 
 ## 11. Próximo marco
 
