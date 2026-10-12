@@ -1,59 +1,145 @@
 # Política de seleção e cobertura — Vitrine Ciência
 
-**Status:** TRANSITÓRIA / SEM NOVA INGESTÃO  
-**Atualização:** 2026-09-01
+**Status:** vigente  
+**Atualização:** 12 de outubro de 2026
 
-A expansão de novas fontes, produtos e distribuições está **pausada durante a fase atual de QA/QC** e só pode ser retomada mediante **instrução humana explícita**. `Fonte/produto/distribuição` são termos do schema legado; não devem ser usados para antecipar a ontologia final.
+## 1. Escopo
 
-## Prioridade científica e territorial
+A Vitrine prioriza dados ecológicos, ambientais e socioecológicos relevantes ao Brasil, além de informação territorial/contextual necessária à interpretação.
 
-O Brasil permanece o escopo territorial central. Priorizar informação:
+Origem brasileira ou internacional não é uma nota de qualidade.
 
-1. ecológica;
-2. ambiental;
-3. socioecológica;
-4. territorial/contextual quando necessária para interpretar ou localizar os dados.
+## 2. Estado do catálogo
 
-Origem brasileira ou internacional não é nota de qualidade. O critério é utilidade, cobertura, proveniência e acesso defensável.
+O catálogo vivo possui 58 registros.
 
-## Regra atual para DR0001–DR0051
+O núcleo histórico `DR0001–DR0051` permanece preservado. As sete entradas `DR0136–DR0142` foram incorporadas por decisões curatoriais explícitas.
 
-Nenhum DR entra, sai, é dividido ou fundido apenas por seu nome ou posição histórica. Primeiro determinar:
+A expansão histórica 135/843/876 permanece em quarentena.
 
-- o tipo real da entidade;
-- o responsável/provedor;
-- quais datasets/coleções efetivamente existem;
-- quais serviços e formas de acesso existem;
-- qual papel é útil na Vitrine;
-- qual evidência oficial sustenta a decisão.
+Isso significa que a antiga regra “sem nova ingestão” não descreve mais corretamente o projeto. A regra vigente é **expansão controlada e explícita**.
 
-Duplicidade deve ser avaliada por identidade e função, não por semelhança de URL ou nome.
+## 3. Critério para nova entrada
 
-## Acesso
+Um novo registro de alto nível só deve ser criado quando existir um recurso catalogável materialmente distinto e útil para descoberta.
 
-Distinguir:
+Antes de criar um DR, determinar:
+
+- identidade real do recurso;
+- tipo do recurso;
+- provedor e papéis institucionais;
+- relevância territorial;
+- dados/produtos que oferece;
+- acesso real disponível;
+- licença/condições conhecidas;
+- evidência oficial;
+- risco de duplicação com registro existente.
+
+Não criar novo DR apenas por:
+
+- novo arquivo;
+- novo formato;
+- novo endpoint;
+- nova página de documentação;
+- camada do mesmo produto;
+- asset STAC;
+- cena;
+- pluma;
+- download alternativo.
+
+## 4. Granularidade científica
+
+Uma distinção justifica nova entidade subordinada quando muda de forma material:
+
+- significado científico;
+- variável/fenômeno;
+- método;
+- população/unidade observada;
+- cobertura;
+- versão citável;
+- licença;
+- interpretação;
+- reprodutibilidade.
+
+Diferenças apenas de entrega pertencem normalmente à distribuição ou rota de acesso.
+
+## 5. Prioridade territorial
+
+A classificação corrente usa:
+
+- **P0** — fonte brasileira;
+- **P1** — cobertura sistemática do Brasil;
+- **P2** — cobertura parcial ou indireta;
+- **P3** — referência comparativa.
+
+Estado atual: P0=18, P1=24, P2=14, P3=2.
+
+A classificação territorial orienta descoberta e prioridade de curadoria; não mede qualidade científica.
+
+## 6. Acesso
+
+Distinguir sempre:
 
 - download direto;
-- landing page específica com acesso a dados;
-- API/serviço de extração;
-- catálogo/repositório;
-- visualização/documentação;
-- acesso restrito, indisponível ou incerto.
+- página específica de dados;
+- serviço/API;
+- catálogo;
+- visualizador;
+- documentação;
+- acesso restrito;
+- acesso não confirmado.
 
-HTTP 200 não comprova acesso a dados. PDF, mapa estático ou viewer não são classificados como distribuição de dados sem evidência adequada.
+HTTP 200 não comprova acesso a dados.
 
-## Quarentena
+Uma rota principal pode ser D mesmo quando existe API secundária.
 
-A expansão preservada de `v1.0.0` permanece fora da superfície candidata até revisão explícita. Volume bruto não constitui critério de reentrada.
+## 7. Produtos e versões
 
-## Retomada de expansão
+Produtos não devem ser enumerados apenas para aumentar cobertura.
 
-Somente depois de:
+Priorizar produtos/famílias que ajudam a responder:
 
-1. G0–G4 PASS;
-2. novo modelo canônico validado;
-3. Integration Registry 51/51;
-4. pipeline e gates de curadoria funcionando;
-5. instrução humana explícita para ampliar o escopo.
+- o que o recurso oferece;
+- que fenômeno representa;
+- onde e quando se aplica;
+- em que escala/resolução;
+- qual versão deve ser citada;
+- como acessar.
 
-Estado corrente: `docs/PROJECT_STATE.md`. Limite da tarefa: `WORKFLOW_STATUS.md`.
+Versões devem ser estruturadas quando forem necessárias à comparação e reprodutibilidade, mas não recebem página pública automaticamente.
+
+## 8. Quarentena
+
+Resultados provenientes de:
+
+- expansão histórica;
+- harvesting;
+- conectores;
+- importações em lote;
+- fontes com evidência incompleta;
+
+não entram diretamente na superfície pública.
+
+O caminho é:
+
+`candidate/raw → evidence → normalization → classification → QA/curation → accept or quarantine`.
+
+## 9. Federação e seleção
+
+A futura federação não altera o critério científico de entrada.
+
+Uma API pode descobrir centenas de objetos; somente os objetos relevantes e adequadamente classificados entram no catálogo público.
+
+O Integration Registry registra capacidade técnica; ele não é uma lista automática de conteúdo publicado.
+
+## 10. Revisão e remoção
+
+Um registro pode ser corrigido, dividido, fundido, descontinuado ou mantido como histórico quando houver evidência para isso.
+
+IDs não devem ser reciclados.
+
+Mudanças devem preservar rastreabilidade e, quando possível, redirecionamento ou relação explícita entre estados.
+
+Estado factual: `docs/PROJECT_STATE.md`.  
+Execução: `WORKFLOW_STATUS.md`.  
+Plano de evolução: `docs/WEB_API_EVOLUTION_PLAN.md`.
