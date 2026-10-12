@@ -1,0 +1,43 @@
+{
+  "schema_version": "provenance-assertions-v1",
+  "status": "canonical_contract",
+  "purpose": "Representar proveniência e responsabilidade como afirmações estruturadas sem decompor automaticamente rótulos institucionais compostos.",
+  "authority": "data/provenance_assertions.json",
+  "source_compatibility": "data/data_resources.csv:owner_or_manager",
+  "required_fields": [
+    "provenance_id",
+    "record_id",
+    "target_type",
+    "target_id",
+    "agent_id",
+    "agent_label",
+    "agent_identity_status",
+    "roles",
+    "assertion_status",
+    "source_field",
+    "verified_at"
+  ],
+  "roles": {
+    "responsible_or_maintainer": "Responsável ou mantenedor conforme o campo legado; não implica automaticamente produção, publicação, hospedagem ou distribuição.",
+    "producer": "Produtor do recurso ou dado.",
+    "maintainer": "Mantenedor do recurso.",
+    "publisher": "Publicador.",
+    "host": "Hospedeiro técnico.",
+    "distributor": "Distribuidor.",
+    "methodological_responsibility": "Responsável metodológico."
+  },
+  "agent_identity_status_values": [
+    "unresolved_label",
+    "resolved_agent"
+  ],
+  "assertion_status_values": [
+    "legacy_grouped_statement",
+    "curated_role_assertion"
+  ],
+  "invariants": [
+    "o baseline legado preserva literalmente owner_or_manager",
+    "rótulos compostos não são divididos automaticamente em múltiplos agentes",
+    "papéis específicos exigem evidência e curadoria posterior",
+    "proveniência não altera por si só a hierarquia pública do registro"
+  ]
+}

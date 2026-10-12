@@ -197,6 +197,10 @@ Papéis relevantes incluem:
 
 Esses papéis deverão ser estruturados progressivamente.
 
+A autoridade inicial é `data/provenance_assertions.json`. O baseline preserva `owner_or_manager` como afirmação agrupada e não separa automaticamente organizações a partir de barras, ponto e vírgula ou conjunções. Papéis mais específicos exigem evidência.
+
+A autoridade inicial de versões/coleções é `data/product_versions.json`. O modelo distingue versão explicitamente nomeada, edição/ano e estados descritivos como catálogo corrente, serviço corrente ou configuração de acesso; estes últimos não devem ser apresentados como versões citáveis.
+
 ## 14. Estratégia de enumeração
 
 - `complete`;

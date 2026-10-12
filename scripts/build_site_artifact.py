@@ -27,7 +27,8 @@ REQUIRED_FILES = (
     "assets/semantic-roles.js", "assets/applied-priority.js", "assets/public-interface-guardrails.js",
     "data/data_resources.json", "data/data_products.json", "data/brazil_scope_priorities.json",
     "data/static_core_51_access_audit.json", "data/static_core_51_progress.json", "data/post_core_access_audit.json",
-    "data/applied_priority_gate.json", "data/product_distribution_roles.json",
+    "data/applied_priority_gate.json", "data/product_distribution_roles.json", "data/access_routes.json",
+    "data/product_versions.json", "data/provenance_assertions.json",
 )
 
 OPTIONAL_FILES = ("404.html", "CNAME", "favicon.ico", "favicon.svg")

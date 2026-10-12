@@ -55,6 +55,19 @@ ACCESS_ROLES = {
     "distribution",
 }
 
+VERSION_KIND_LABELS = {
+    "named_version": "Versão",
+    "edition_or_year": "Edição",
+    "provider_update": "Atualização",
+    "current_collection_state": "Coleção",
+    "collection_group": "Coleções",
+    "service_state": "Estado do serviço",
+    "catalog_state": "Estado do catálogo",
+    "access_configuration": "Configuração de acesso",
+    "experimental_state": "Estado",
+    "descriptive_state": "Estado informado",
+}
+
 
 def fail(message: str) -> None:
     raise SystemExit(f"ERRO: {message}")
@@ -111,6 +124,13 @@ def offering_routes(record: dict, offering_id: str) -> list[dict]:
         route for route in (record.get("access_routes") or [])
         if route.get("target_type") == "offering"
         and route.get("target_id") == offering_id
+    ]
+
+
+def offering_versions(record: dict, offering_id: str) -> list[dict]:
+    return [
+        version for version in (record.get("versions") or [])
+        if version.get("offering_id") == offering_id
     ]
 
 
@@ -182,9 +202,15 @@ def offering_html(record: dict, offering: dict) -> str:
     )
     if nature:
         meta.append(f"<span>{esc(nature)}</span>")
-    if offering.get("version_or_collection_summary"):
+    versions = offering_versions(record, offering["offering_id"])
+    if versions:
+        for version in versions:
+            kind = str(version.get("kind") or "descriptive_state")
+            label = VERSION_KIND_LABELS.get(kind, "Estado informado")
+            meta.append(f"<span>{esc(label)}: {esc(version.get('label') or '')}</span>")
+    elif offering.get("version_or_collection_summary"):
         meta.append(
-            f"<span>Versão/coleção: {esc(offering['version_or_collection_summary'])}</span>"
+            f"<span>Estado informado: {esc(offering['version_or_collection_summary'])}</span>"
         )
 
     coverage = offering.get("coverage") or {}
@@ -310,6 +336,14 @@ def render_record_page(record: dict) -> str:
         for agent in agents
         if str(agent.get("name") or "").strip()
     ) or "Não informado"
+    unresolved_provenance = any(
+        agent.get("identity_status") == "unresolved_label"
+        for agent in agents
+    )
+    provenance_note = (
+        '<p class="record-meta-note">A proveniência institucional ainda preserva o rótulo curado do catálogo sem separar automaticamente papéis de produção, manutenção, publicação, hospedagem ou distribuição quando a evidência não os distingue.</p>'
+        if unresolved_provenance else ""
+    )
 
     nav = "".join(
         [
@@ -416,9 +450,10 @@ def render_record_page(record: dict) -> str:
 <section class="record-section" id="proveniencia-referencias">
 <h2>Proveniência, condições e referências</h2>
 <div class="record-grid">
-{fact("Responsável ou mantenedor", responsible)}
+{fact("Responsabilidade e proveniência", responsible)}
 {fact("Natureza institucional", resource.get("institutional_status"))}
 </div>
+{provenance_note}
 <h3>Principais fontes e insumos</h3>{tags(resource.get("data_sources"))}
 <h3>Condições de uso e licença</h3>
 <p>{esc(use_and_limits.get("license") or "Não informado")}</p>

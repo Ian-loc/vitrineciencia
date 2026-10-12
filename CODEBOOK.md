@@ -195,7 +195,19 @@ Referências científicas e fontes de verificação **não** são access routes;
 
 A documentação completa está em `docs/ACCESS_ROUTES_V1.md`.
 
-## 14. API, rotas e integração futura
+## 14. Versões e proveniência canônicas
+
+A autoridade de versões/coleções é `data/product_versions.json`, sob `schema/product-versions-v1.json`.
+
+O objeto de versão distingue `kind` e `identity_status` para impedir que expressões como “catálogo corrente”, “serviços correntes” ou “acesso via projetos Google Cloud” sejam tratadas como versões científicas citáveis.
+
+A autoridade de proveniência é `data/provenance_assertions.json`, sob `schema/provenance-assertions-v1.json`.
+
+O baseline preserva literalmente `owner_or_manager` como uma afirmação `legacy_grouped_statement` com papel `responsible_or_maintainer`. Rótulos compostos só são divididos em agentes e papéis específicos após curadoria com evidência.
+
+Documentação: `docs/VERSIONS_PROVENANCE_V1.md`.
+
+## 15. API, rotas e integração futura
 
 A API da Vitrine ainda não existe como serviço público. O que existe hoje é o read model estático que deverá ser servido pela API futura.
 

@@ -1,0 +1,141 @@
+{
+  "schema_version": "product-versions-v1",
+  "status": "canonical",
+  "purpose": "Estruturar versões, coleções e estados de produto sem promover descrições legadas a identificadores científicos não comprovados.",
+  "generated_from": "data/data_products.csv",
+  "count": 11,
+  "versions": [
+    {
+      "version_id": "DP000001-V01",
+      "record_id": "DR0011",
+      "offering_id": "DP000001",
+      "label": "atualização publicada em 2026-03-03",
+      "kind": "provider_update",
+      "identity_status": "descriptive_state",
+      "relation": "describes_current_or_relevant_state",
+      "status": "ativo",
+      "source_field": "version_or_collection",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "version_id": "DP000002-V01",
+      "record_id": "DR0011",
+      "offering_id": "DP000002",
+      "label": "coleção corrente",
+      "kind": "current_collection_state",
+      "identity_status": "descriptive_state",
+      "relation": "describes_current_or_relevant_state",
+      "status": "ativo",
+      "source_field": "version_or_collection",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "version_id": "DP000003-V01",
+      "record_id": "DR0011",
+      "offering_id": "DP000003",
+      "label": "coleção corrente",
+      "kind": "current_collection_state",
+      "identity_status": "descriptive_state",
+      "relation": "describes_current_or_relevant_state",
+      "status": "ativo",
+      "source_field": "version_or_collection",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "version_id": "DP000004-V01",
+      "record_id": "DR0011",
+      "offering_id": "DP000004",
+      "label": "produto experimental desde 2023",
+      "kind": "experimental_state",
+      "identity_status": "descriptive_state",
+      "relation": "describes_current_or_relevant_state",
+      "status": "experimental",
+      "source_field": "version_or_collection",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "version_id": "DP000005-V01",
+      "record_id": "DR0011",
+      "offering_id": "DP000005",
+      "label": "2020",
+      "kind": "edition_or_year",
+      "identity_status": "edition_label",
+      "relation": "describes_current_or_relevant_state",
+      "status": "ativo",
+      "source_field": "version_or_collection",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "version_id": "DP000006-V01",
+      "record_id": "DR0011",
+      "offering_id": "DP000006",
+      "label": "coleções por bioma",
+      "kind": "collection_group",
+      "identity_status": "descriptive_state",
+      "relation": "describes_current_or_relevant_state",
+      "status": "ativo",
+      "source_field": "version_or_collection",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "version_id": "DP000007-V01",
+      "record_id": "DR0011",
+      "offering_id": "DP000007",
+      "label": "serviços correntes",
+      "kind": "service_state",
+      "identity_status": "descriptive_state",
+      "relation": "describes_current_or_relevant_state",
+      "status": "ativo",
+      "source_field": "version_or_collection",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "version_id": "DP000008-V01",
+      "record_id": "DR0019",
+      "offering_id": "DP000008",
+      "label": "catálogo corrente",
+      "kind": "catalog_state",
+      "identity_status": "descriptive_state",
+      "relation": "describes_current_or_relevant_state",
+      "status": "ativo",
+      "source_field": "version_or_collection",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "version_id": "DP000009-V01",
+      "record_id": "DR0019",
+      "offering_id": "DP000009",
+      "label": "catálogos correntes",
+      "kind": "catalog_state",
+      "identity_status": "descriptive_state",
+      "relation": "describes_current_or_relevant_state",
+      "status": "ativo",
+      "source_field": "version_or_collection",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "version_id": "DP000010-V01",
+      "record_id": "DR0019",
+      "offering_id": "DP000010",
+      "label": "acesso via projetos Google Cloud",
+      "kind": "access_configuration",
+      "identity_status": "descriptive_state",
+      "relation": "describes_current_or_relevant_state",
+      "status": "ativo",
+      "source_field": "version_or_collection",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "version_id": "DP000011-V01",
+      "record_id": "DR0019",
+      "offering_id": "DP000011",
+      "label": "V1 | asset GOOGLE/DYNAMICWORLD/V1",
+      "kind": "named_version",
+      "identity_status": "explicit_version_label",
+      "relation": "describes_current_or_relevant_state",
+      "status": "ativo",
+      "source_field": "version_or_collection",
+      "verified_at": "2026-08-03"
+    }
+  ]
+}

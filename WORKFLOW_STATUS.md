@@ -48,7 +48,9 @@ Concluído no ciclo WEB v2:
 - informação científica do recurso separada visualmente da curadoria;
 - renderer migrado para o modelo público v2 sem alterar URLs.
 
-Rotas de acesso canônicas: **concluídas** em `data/access_routes.json`. Próxima frente: versões/coleções e proveniência estruturada.
+Rotas de acesso canônicas: **concluídas** em `data/access_routes.json`.
+
+Versões/coleções e proveniência estruturada: **baseline canônico implementado** em `data/product_versions.json` e `data/provenance_assertions.json`. Próxima frente: curadoria seletiva dos papéis e identidades que hoje permanecem agrupados.
 
 ### B. Modelo público v2 — MILESTONE ATIVO
 
@@ -165,8 +167,9 @@ Atualização sob demanda deverá ser assíncrona e limitada por freshness/TTL, 
 3. renderer v2 e estrutura de cinco blocos — **concluído**;
 4. simplificar cards e eliminar redundância/guardrails desnecessários — **concluído**;
 5. rotas de acesso canônicas — **concluído**;
-6. versões e proveniência estruturadas — **próxima ação**;
-7. Integration Registry;
+6. baseline canônico de versões e proveniência — **concluído**;
+7. curadoria seletiva de versões/papéis em casos prioritários — **próxima ação**;
+8. Integration Registry;
 8. pilotos de conectores;
 9. pipeline de harvesting;
 10. API de leitura;
