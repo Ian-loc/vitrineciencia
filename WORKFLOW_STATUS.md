@@ -56,9 +56,21 @@ Próximas correções WEB:
 4. separar visualmente informação científica do recurso e curadoria da Vitrine;
 5. migrar o renderer para o modelo público v2 sem alterar URLs.
 
-### B. Modelo público v2 — PRÓXIMO MILESTONE
+### B. Modelo público v2 — MILESTONE ATIVO
 
-Status: planejado; não implementado.
+Status: **read model v2 implementado em paralelo ao v1; HTML ainda no v1**.
+
+Concluído nesta primeira etapa:
+
+- `schema/public-record-v2.json`;
+- transformação determinística v1→v2;
+- `record` e `resource` separados;
+- 11 produtos migrados para `offerings`;
+- 19 distribuições preservadas como `access_routes`;
+- versões legadas explicitamente marcadas como derivadas;
+- agente legado migrado conservadoramente;
+- validador de compatibilidade v1/v2;
+- publicação paralela dos JSONs v2.
 
 Contrato alvo:
 
@@ -136,10 +148,11 @@ Atualização sob demanda deverá ser assíncrona e limitada por freshness/TTL, 
 
 ## Ordem de execução recomendada
 
-1. documentação e estado canônico — **esta atualização**;
-2. `public-record-v2`;
-3. simplificação dos cards e redesign das páginas;
-4. rotas de acesso canônicas;
+1. documentação e estado canônico — **concluído**;
+2. read model `public-record-v2` paralelo — **concluído**;
+3. migrar renderer das páginas para v2 e validar arquétipos — **próxima ação**;
+4. simplificar cards e eliminar redundância/guardrails desnecessários;
+5. rotas de acesso canônicas;
 5. versões e proveniência estruturadas;
 6. Integration Registry;
 7. pilotos de conectores;

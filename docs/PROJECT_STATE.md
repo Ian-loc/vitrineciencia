@@ -93,7 +93,14 @@ DR#### 1 ─── N DP###### 1 ─── N DD######
 
 Ele existe para compatibilidade, IDs e rastreabilidade; não é a ontologia final.
 
-O modelo público implementado atualmente usa `schema/public-record-v1.json` e mantém `DR####` como unidade de navegação persistente.
+O HTML público implementado atualmente ainda usa `schema/public-record-v1.json` e mantém `DR####` como unidade de navegação persistente.
+
+O read model experimental `public-record-v2` também é gerado **em paralelo**, sem alterar ainda o HTML:
+
+- `/data/v2/public_records.json`;
+- `/data/v2/registros/dr####.json`.
+
+O v2 separa `record` e `resource`, preserva as URLs, migra os produtos atuais para `offerings` e preserva as distribuições como rotas direcionadas às ofertas. Sua migração é validada registro a registro contra o v1.
 
 A página de um registro agrega, quando disponíveis:
 
@@ -227,14 +234,16 @@ A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130
 
 ## 11. Próximo marco
 
-O próximo marco recomendado é **`VITRINE_PUBLIC_MODEL_V2`**.
+O marco **`VITRINE_PUBLIC_MODEL_V2`** está em execução.
 
-Seu objetivo é estabilizar:
+A primeira etapa — read model paralelo e transformação determinística v1→v2 — está implementada. O próximo passo é migrar o renderer das páginas para o v2 e testar os arquétipos sem alterar as 58 URLs.
+
+A sequência semântica alvo permanece:
 
 `Registro da Vitrine → Recurso catalogado → oferta científica → versão/coleção → forma de acesso`
 
 com proveniência, evidência e curadoria transversais.
 
-Somente depois desse contrato deve ser promovida a implementação do Integration Registry e dos conectores.
+Integration Registry e conectores continuam posteriores à estabilização da interface e das rotas canônicas.
 
 Plano: `docs/WEB_API_EVOLUTION_PLAN.md`.
