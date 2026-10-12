@@ -1,180 +1,164 @@
 # Páginas públicas de registro — contrato v1
 
-**Status:** decisão arquitetural implementada na camada pública estática  
-**Unidade pública:** `registro da Vitrine` (`DR####`)  
+**Status:** implementado e publicado; contrato de transição para o modelo público v2  
+**Atualização:** 12 de outubro de 2026  
+**Unidade persistente:** Registro da Vitrine (`DR####`)  
 **Rota:** `/registros/<resource_id em minúsculas>/`
 
-## 1. Decisão
+## 1. O que está implementado
 
-A Vitrine Ciência publica uma página persistente por **registro**, e não uma página por dataset, arquivo, produto, release, asset, camada, cena ou endpoint.
+A Vitrine publica uma página persistente para cada um dos 58 registros vivos.
 
-O registro é a unidade agregadora da navegação pública. Ele preserva a identidade histórica `DR####` e pode representar, conforme a evidência, uma iniciativa, plataforma, catálogo, infraestrutura, base/coleção, rede/observatório ou referência.
+O build gera:
 
-Elementos subordinados podem ser descritos dentro da página:
+- `/registros/dr####/` — HTML;
+- `/data/registros/dr####.json` — read model individual;
+- `/data/public_records.json` — índice público completo.
 
-- produtos e famílias de dados;
-- coleções e versões/releases;
-- distribuições e arquivos;
-- serviços de dados e APIs;
-- visualizadores;
-- metodologia e documentação;
-- publicações e evidências.
+HTML e JSON derivam do mesmo objeto.
 
-Esses elementos **não criam páginas públicas independentes por padrão**. A granularidade pode aumentar no modelo de dados sem aumentar a profundidade da navegação.
+Produtos, coleções, versões, distribuições, serviços, visualizadores e documentos ficam subordinados ao registro e não geram página própria por padrão.
 
-## 2. Hierarquia pública
+## 2. Decisão que permanece válida
 
-A experiência pública segue:
+Não criar uma página pública para cada:
+
+- dataset técnico;
+- arquivo;
+- formato;
+- endpoint;
+- versão;
+- asset;
+- cena;
+- camada;
+- pluma;
+- documento.
+
+A página do registro é uma superfície agregadora estável da curadoria da Vitrine.
+
+## 3. Refinamento conceitual posterior ao v1
+
+O v1 usa tipos públicos como “Iniciativa”, “Plataforma” ou “Base” diretamente no objeto do registro.
+
+A análise posterior mostrou que é mais preciso separar:
 
 ```
-pergunta científica
-  → exploração dos registros
-    → página do registro
-      → produto/coleção/release (quando descrito)
-        → distribuição, serviço ou visualizador
-          → provedor original
+Registro da Vitrine
+        │ descreve
+        ▼
+Recurso catalogado
 ```
 
-A navegação pública usa o termo **registro** porque `DR####` não representa uma única classe ontológica.
+O `DR####` é o registro catalográfico mantido pela Vitrine.
 
-## 3. Tipos públicos de registro
+O recurso externo pode ser uma iniciativa, plataforma, catálogo, infraestrutura, base, rede, observatório ou outro objeto científico/institucional.
 
-Os tipos públicos são deliberadamente mais amplos que a tipagem semântica interna:
+Essa correção é alvo de `public-record-v2`.
 
-1. **Iniciativa ou programa de dados**
-2. **Plataforma ou sistema de informação**
-3. **Catálogo ou repositório de dados**
-4. **Infraestrutura ou serviço de dados**
-5. **Base ou coleção de dados**
-6. **Rede ou observatório**
-7. **Registro, guia ou referência**
+**As URLs atuais não devem mudar.**
 
-A tipagem detalhada permanece preservada para curadoria. O mapeamento para a interface está em `schema/public-record-v1.json`.
+## 4. Estrutura atual das páginas
 
-Exemplo: MapBiomas Brasil é tratado publicamente como **Iniciativa ou programa de dados**; suas famílias de mapas, tabelas e produtos podem ser enriquecidas dentro do mesmo registro sem gerar novas páginas de alto nível.
+A versão v1 contém:
 
-## 4. Estrutura das páginas
+- Sobre este registro;
+- Como acessar;
+- O que você encontra aqui;
+- Cobertura espacial e temporal;
+- Produtos, coleções e versões;
+- Possibilidades de uso em pesquisa;
+- Cuidados e limitações;
+- Proveniência;
+- Condições de uso e licença;
+- Referências e documentação;
+- Curadoria da Vitrine.
 
-Cada página é gerada automaticamente e contém blocos condicionais:
+Essa estrutura é funcional, mas ainda reflete parcialmente o esquema físico.
 
-- Sobre este registro
-- Como acessar
-- O que você encontra aqui
-- Cobertura espacial e temporal
-- Produtos, coleções e releases descritos em detalhe
-- Possibilidades de uso em pesquisa
-- Cuidados e limitações
-- Proveniência
-- Condições de uso e licença
-- Referências e documentação
-- Curadoria da Vitrine
+## 5. Estrutura desejada na próxima revisão
 
-A ausência de um produto detalhado não é preenchida artificialmente. O usuário é informado de que a Vitrine ainda não enumerou itens nesse nível.
+A página deverá convergir para cinco blocos:
 
-## 5. Rotas de acesso
+1. **Visão geral** — o que é o recurso, para que serve, temas e abrangência;
+2. **Dados e produtos disponíveis** — ofertas científicas reais, sem confundir arquivos e serviços;
+3. **Como acessar** — download, página de dados, API, Earth Engine, viewer, catálogo ou documentação;
+4. **Como interpretar** — cobertura, escala, temporalidade, metodologia, comparabilidade e limitações;
+5. **Proveniência, condições e referências** — produtores, mantenedores, licenças, documentação e evidência.
 
-Links deixam de ser tratados apenas como campos soltos. A representação pública constrói objetos de rota com:
+“Sobre este registro na Vitrine” permanece ao final como bloco discreto de curadoria.
 
-- identificador da rota;
-- URL;
-- papel(is);
-- rótulo em português;
-- indicação de rota principal;
-- classe de acesso A–E quando aplicável;
-- data de verificação.
+## 6. Cards e páginas
 
-Papéis atuais:
+Com a existência das páginas individuais, os cards de `sources.html` não precisam repetir toda a ficha técnica.
 
-- dado direto;
-- página de dados;
-- serviço de dados;
-- visualizador/página de consulta;
-- acesso ainda não confirmado;
-- site oficial;
-- documentação de acesso;
-- referência científica/técnica;
-- fonte usada na verificação.
+Próxima mudança esperada:
 
-Se a mesma URL cumprir mais de um papel, ela permanece uma única rota com múltiplos papéis.
+- card = descoberta e triagem;
+- página individual = compreensão e acesso;
+- provedor externo = dado/documentação original.
 
-## 6. Relação com produtos e distribuições
+O acordeão técnico dos cards deverá ser simplificado na origem em vez de depender de limpeza posterior por guardrails.
 
-O modelo físico continua preservando `DR → DP → DD` por compatibilidade.
+## 7. Rotas de acesso
 
-Nas páginas públicas:
+No v1, as rotas são construídas principalmente a partir de:
 
-- `DR` define a página agregadora;
-- `DP` aparece como produto/coleção/release subordinado;
-- `DD` aparece como forma de acesso do produto;
-- serviços, viewers e documentos são apresentados de acordo com sua função real.
+- `homepage_url`;
+- `data_access_url`;
+- `access_documentation_url`;
+- evidências;
+- classificação A–E.
 
-Atualmente os 11 produtos detalhados pertencem a apenas dois registros. Isso não impede a geração das demais páginas.
+A próxima etapa deve transformar rotas em objetos canônicos próprios, permitindo múltiplas formas de acesso sem inferência no renderer.
 
-## 7. Representação estática para futura API
+A classe A–E continuará sendo uma **avaliação de acesso**, e não deve ser confundida com a ação principal da interface.
 
-O build produz:
+## 8. Produtos, versões e distribuições
 
-- `/data/public_records.json` — índice completo da camada pública;
-- `/data/registros/dr####.json` — representação individual;
-- `/registros/dr####/` — representação HTML.
+O modelo físico `DR → DP → DD` permanece por compatibilidade.
 
-HTML e JSON são derivados do mesmo objeto público.
+No futuro:
 
-Isso cria o contrato necessário para uma API futura sem tornar a página dependente de APIs externas.
+- produto/oferta científica representa significado;
+- versão/coleção representa estado citável/reprodutível;
+- distribuição representa entrega concreta;
+- DataService representa serviço de consulta/processamento;
+- viewer e documentação mantêm papéis próprios.
 
-### Estratégia futura
+Nada disso implica páginas adicionais por padrão.
 
-O comportamento planejado é **static-first / stale-while-revalidate**:
+## 9. Relação com a futura API
 
-1. a página HTML e o JSON estático respondem imediatamente;
-2. uma camada futura pode avaliar se o registro está vencido;
-3. o acesso do usuário pode disparar uma atualização assíncrona na origem;
-4. falhas da API externa não impedem a consulta ao snapshot;
-5. respostas novas entram em staging, validação e curadoria;
-6. somente dados aceitos substituem o snapshot público.
+O v1 já materializa um read model estático.
+
+O padrão planejado é `static-first / stale-while-revalidate`:
+
+1. servir snapshot;
+2. verificar freshness;
+3. solicitar refresh assíncrono quando necessário;
+4. validar mudanças;
+5. promover estado aceito.
 
 Endpoint conceitual futuro:
 
 `GET /api/v1/records/{resource_id}`
 
-O motor de atualização não deve escrever diretamente no estado público apenas porque um usuário abriu uma página.
+Ele ainda não existe como serviço em produção.
 
-## 8. Lições de plataformas externas
+## 10. Persistência e QA
 
-A decisão acompanha padrões observados em infraestruturas maduras:
+Devem permanecer invariantes:
 
-- Planet distingue **coleções, itens e assets**, mantendo produtos e formas de entrega subordinados à organização superior do catálogo: https://docs.planet.com/develop/apis/data/
-- STAC distingue **Collection, Item e Asset**, permitindo navegação hierárquica sem transformar cada asset em coleção: https://stacspec.org/
-- GBIF separa **dataset**, organização, registros de ocorrência e downloads derivados; páginas de dataset são alimentadas pelo Registry API, enquanto downloads possuem identidade própria: https://techdocs.gbif.org/en/openapi/v1/registry-principal-methods
+- uma página por DR vivo;
+- canonical próprio;
+- conteúdo primário disponível sem API externa;
+- sitemap completo;
+- JSON individual;
+- build reprodutível;
+- desconhecido nunca convertido em negativo;
+- produtos apenas quando materialmente registrados;
+- falha do provedor não indisponibiliza a página.
 
-A Vitrine adota a mesma ideia estrutural, mas preserva `DR####` como unidade pública transitória e persistente até a ontologia canônica futura estar estabilizada.
+O contrato v2 deverá preservar essas propriedades.
 
-## 9. Regras de idioma
-
-A interface usa português brasileiro.
-
-Rótulos públicos não expõem nomes internos como `entity_type`, `source_origin`, `access_role` ou `dataset_page`.
-
-Termos técnicos consolidados permanecem quando necessários, por exemplo: API REST, STAC, WFS, GeoTIFF, Shapefile, NetCDF e Google Earth Engine.
-
-Estados públicos:
-
-- `sim` → **Sim**
-- `não` → **Não**
-- `parcial` → **Parcial**
-- `desconhecido` → **Não confirmado**
-- `não se aplica` → **Não se aplica**
-
-## 10. QA e persistência
-
-A publicação só é válida quando:
-
-- o conjunto das páginas é exatamente igual ao conjunto dos IDs canônicos vivos;
-- cada registro possui exatamente uma página e um JSON individual;
-- cada página possui canonical próprio, um `h1`, um `main` e seções obrigatórias;
-- cada registro possui exatamente uma rota principal;
-- produtos e distribuições subordinados preservam as contagens canônicas;
-- o sitemap contém todas as páginas;
-- o artefato continua funcional sem consultar APIs externas.
-
-A página `/registros/dr####/` deve sobreviver à futura decomposição ontológica do registro em Provider, Platform, Dataset, Distribution, DataService etc. Ela é uma superfície pública persistente da curadoria da Vitrine, não a ontologia em si.
+Plano de evolução: `docs/WEB_API_EVOLUTION_PLAN.md`.
