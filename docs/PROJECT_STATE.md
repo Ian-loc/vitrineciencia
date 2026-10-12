@@ -30,6 +30,8 @@ O estado vivo contém:
 - **58 registros `DR####`**;
 - **11 produtos detalhados `DP######`**;
 - **19 distribuições `DD######`**;
+
+Na terminologia física usada pelos validadores, o catálogo corrente corresponde a **58 fontes, 11 produtos e 19 distribuições**; “fonte” é um rótulo legado do schema físico.
 - 58 páginas individuais em `/registros/dr####/`;
 - `data/public_records.json`;
 - 58 JSONs individuais em `data/registros/dr####.json`.
