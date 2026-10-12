@@ -1,0 +1,118 @@
+{
+  "schema_version": "public-record-v2",
+  "status": "experimental_migration_contract",
+  "purpose": "Separar explicitamente o Registro da Vitrine do Recurso catalogado, preservando URLs e IDs públicos e preparando o mesmo read model para HTML, JSON e futura API.",
+  "compatibility": {
+    "previous_schema": "public-record-v1",
+    "public_url_policy": "preserve",
+    "record_identity": "DR#### permanece identificador estável do registro catalográfico",
+    "migration_rule": "v1 -> v2 deve ser determinística e sem perda material de informação",
+    "html_migration_status": "não ativada neste milestone"
+  },
+  "model": {
+    "record": {
+      "semantics": "Entrada catalográfica mantida pela Vitrine Ciência.",
+      "required": [
+        "id",
+        "status",
+        "public_url",
+        "resource_ref",
+        "verified_at"
+      ]
+    },
+    "resource": {
+      "semantics": "Recurso externo descrito pelo registro. Seu tipo pode ser iniciativa, plataforma, catálogo, infraestrutura, base, rede ou referência.",
+      "required": [
+        "local_id",
+        "identifier_status",
+        "name",
+        "type",
+        "description",
+        "themes",
+        "scope",
+        "coverage"
+      ]
+    },
+    "offerings": {
+      "semantics": "Ofertas científicas materialmente distintas derivadas dos produtos DP existentes. Não equivalem a arquivos, endpoints ou formatos."
+    },
+    "versions": {
+      "semantics": "Estados de versão/coleção. Nesta migração, entradas podem ser derivadas do campo legado version_or_collection e são marcadas como resumo legado, não como identificadores científicos canônicos."
+    },
+    "access_routes": {
+      "semantics": "Rotas funcionais para recurso ou oferta. Rotas do recurso são derivadas do v1; distribuições DD tornam-se rotas direcionadas às ofertas sem perder seus IDs."
+    },
+    "agents": {
+      "semantics": "Agentes associados ao recurso. O campo legado owner_or_manager é migrado conservadoramente para o papel responsible_or_maintainer até curadoria posterior."
+    },
+    "references": {
+      "semantics": "Referências científicas/técnicas e fontes de verificação, deduplicadas por URL quando uma página cumpre mais de um papel."
+    },
+    "curation": {
+      "semantics": "Metadados sobre a curadoria da Vitrine, separados das propriedades do recurso externo."
+    }
+  },
+  "resource_types": {
+    "initiative_program": {
+      "label": "Iniciativa ou programa de dados"
+    },
+    "platform_system": {
+      "label": "Plataforma ou sistema de informação"
+    },
+    "catalog_repository": {
+      "label": "Catálogo ou repositório de dados"
+    },
+    "infrastructure_service": {
+      "label": "Infraestrutura ou serviço de dados"
+    },
+    "database_collection": {
+      "label": "Base ou coleção de dados"
+    },
+    "network_observatory": {
+      "label": "Rede ou observatório"
+    },
+    "register_reference": {
+      "label": "Registro, guia ou referência"
+    }
+  },
+  "access_route_roles": [
+    "direct_data",
+    "data_page",
+    "data_service",
+    "viewer",
+    "unconfirmed_access",
+    "official_site",
+    "access_documentation",
+    "scientific_reference",
+    "verification_source",
+    "distribution"
+  ],
+  "agent_roles": [
+    "responsible_or_maintainer"
+  ],
+  "offering_kinds": [
+    "dataset",
+    "dataset_series",
+    "catalog",
+    "federated_catalog",
+    "data_service",
+    "indicator_family",
+    "map_layer_collection",
+    "software_output"
+  ],
+  "invariants": [
+    "record.id preserva o DR canônico",
+    "record e resource são objetos distintos",
+    "resource.local_id não é um identificador científico externo; é chave derivada do read model",
+    "URLs públicas /registros/dr####/ não mudam",
+    "nenhum DP ou DD é inventado durante a migração",
+    "todo DD existente é preservado como access_route de uma offering",
+    "desconhecido não é convertido em não",
+    "falha de API externa não é necessária para gerar ou servir este modelo"
+  ],
+  "future_api_contract": {
+    "principle": "static_first_stale_while_revalidate",
+    "recommended_read_endpoint": "GET /api/v1/records/{resource_id}",
+    "note": "A numeração da API não precisa coincidir com a versão interna do read model; o endpoint deve declarar schema_version na resposta."
+  }
+}
