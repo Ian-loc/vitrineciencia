@@ -1,0 +1,94 @@
+{
+  "schema_version": "offering-versions-v1",
+  "status": "canonical",
+  "authority": "data/offering_versions.json",
+  "established_at": "2026-10-12",
+  "purpose": "Representar apenas versões/coleções que foram promovidas a entidades explícitas após curadoria, mantendo resumos legados separados quando sua semântica ainda não justifica uma entidade de versão.",
+  "versions": [
+    {
+      "version_id": "DP000011-V1",
+      "offering_id": "DP000011",
+      "version_label": "V1",
+      "version_kind": "version",
+      "external_identifier": "GOOGLE/DYNAMICWORLD/V1",
+      "issued": null,
+      "relation": "version_of",
+      "status": "documented",
+      "source_summary": "V1 | asset GOOGLE/DYNAMICWORLD/V1",
+      "evidence_source": "data/data_products.csv",
+      "verified_at": "2026-08-03"
+    }
+  ],
+  "unresolved_legacy_summaries": [
+    {
+      "offering_id": "DP000001",
+      "summary": "atualização publicada em 2026-03-03",
+      "resolution_status": "not_promoted_to_version_entity",
+      "reason": "O campo legado é preservado como resumo, mas não é promovido automaticamente a versão/coleção sem curadoria específica.",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "offering_id": "DP000002",
+      "summary": "coleção corrente",
+      "resolution_status": "not_promoted_to_version_entity",
+      "reason": "O campo legado é preservado como resumo, mas não é promovido automaticamente a versão/coleção sem curadoria específica.",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "offering_id": "DP000003",
+      "summary": "coleção corrente",
+      "resolution_status": "not_promoted_to_version_entity",
+      "reason": "O campo legado é preservado como resumo, mas não é promovido automaticamente a versão/coleção sem curadoria específica.",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "offering_id": "DP000004",
+      "summary": "produto experimental desde 2023",
+      "resolution_status": "not_promoted_to_version_entity",
+      "reason": "O campo legado é preservado como resumo, mas não é promovido automaticamente a versão/coleção sem curadoria específica.",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "offering_id": "DP000005",
+      "summary": "2020",
+      "resolution_status": "not_promoted_to_version_entity",
+      "reason": "O campo legado é preservado como resumo, mas não é promovido automaticamente a versão/coleção sem curadoria específica.",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "offering_id": "DP000006",
+      "summary": "coleções por bioma",
+      "resolution_status": "not_promoted_to_version_entity",
+      "reason": "O campo legado é preservado como resumo, mas não é promovido automaticamente a versão/coleção sem curadoria específica.",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "offering_id": "DP000007",
+      "summary": "serviços correntes",
+      "resolution_status": "not_promoted_to_version_entity",
+      "reason": "O campo legado é preservado como resumo, mas não é promovido automaticamente a versão/coleção sem curadoria específica.",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "offering_id": "DP000008",
+      "summary": "catálogo corrente",
+      "resolution_status": "not_promoted_to_version_entity",
+      "reason": "O campo legado é preservado como resumo, mas não é promovido automaticamente a versão/coleção sem curadoria específica.",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "offering_id": "DP000009",
+      "summary": "catálogos correntes",
+      "resolution_status": "not_promoted_to_version_entity",
+      "reason": "O campo legado é preservado como resumo, mas não é promovido automaticamente a versão/coleção sem curadoria específica.",
+      "verified_at": "2026-07-22"
+    },
+    {
+      "offering_id": "DP000010",
+      "summary": "acesso via projetos Google Cloud",
+      "resolution_status": "not_promoted_to_version_entity",
+      "reason": "O campo legado é preservado como resumo, mas não é promovido automaticamente a versão/coleção sem curadoria específica.",
+      "verified_at": "2026-07-22"
+    }
+  ]
+}
