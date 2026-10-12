@@ -1,66 +1,118 @@
 # Vitrine Ciência
 
-**Catálogo público e citável para descobrir e acessar dados científicos relevantes ao Brasil.**
+**Catálogo científico curado para descobrir, compreender e acessar dados relevantes aos socioecossistemas brasileiros.**
 
-## Estado atual — 9 de outubro de 2026
+## Estado público atual — 12 de outubro de 2026
 
-- **Autoridade canônica:** o repositório `Ian-loc/vitrineciencia`; `main` é o estado público corrente. Worktrees locais, Drive, handoffs e chats são auxiliares e não substituem o que está materializado no GitHub.
-- O marco estático do núcleo **DR0001–DR0051 está consolidado**: `VITRINE_STATIC_51_STABLE`.
-- O runtime público validado é o commit **`495bfe6a968176670461662869d1a3773797baf3`**.
-- Nesse runtime, os três gates finais passaram: build/deploy (`33906109623`), QA visual/responsivo (`33906109551`) e smoke pós-deploy (`33906157842`).
-- O catálogo vivo usa **58 registros DR, 11 itens detalhados e 19 distribuições**. O núcleo DR0001–DR0051 permanece congelado; `DR0136` (REDEMET) foi adicionada em 30/09/2026; `DR0137` (RESOLVE Ecoregions 2017) e `DR0138` (Global Safety Net GSN3.1), `DR0139` (Carbon Mapper), `DR0140` (Global Human Modification v3), `DR0141` (Planet Forest Carbon) e `DR0142` (Climate Finance Tracker) são entradas pós-core de 08/10/2026; Climate Finance Tracker é referência comparativa sem dados do Brasil. O núcleo 51 permanece preservado. Os 11/19 são um subconjunto detalhado, não toda a cobertura científica.
-- A expansão histórica **135/843/876** permanece preservada em `data/quarantine/v1.0.0-expanded/` e fora do catálogo vivo.
-- A recertificação semântica está concluída em **51/51**; `DR####` é identificador legado de entrada, não classe ontológica.
-- A matriz canônica de acesso registra **A=1, B=38, C=0, D=10, E=2**. Os dois E (`DR0014` e `DR0039`) são limitações deliberadamente documentadas, não pendências silenciosas.
-- O gate aplicado P1–P6 está materializado para AdaptaBrasil, MapBiomas Municípios, IEDE-MG/FJP, BDMG, SICAR/CAR + SIGEF/INCRA e IBGE Cidades e Estados.
-- O artefato público fecha suas dependências locais e separa explicitamente a autoridade de tipagem semântica da autoridade A–E de acesso.\n- Cada `DR####` possui uma página pública agregadora e um JSON estático individual; produtos, releases, distribuições e serviços vinculados permanecem dentro desse registro em vez de gerar centenas de páginas.
+A autoridade canônica é o repositório `Ian-loc/vitrineciencia`; a branch `main` representa o estado público corrente. Planilhas, Drive, worktrees, documentos externos e conversas são auxiliares ou espelhos e não substituem o estado materializado no GitHub.
 
-## Direção pública
+O estado público mais recente está no commit **`378e3d43c71988f3c7966e33f3d4f5cb879b1443`**, incorporado pelo PR #277 em 09/10/2026.
 
-A experiência deve seguir:
+Esse estado contém:
 
-**pergunta científica → fenômeno/processo/território/tipo de informação → registro da Vitrine → produto/coleção/release quando descrito → distribuição/rota de acesso, DataService ou visualizador → provedor/proveniência → documentação**.
+- **58 registros públicos `DR####`**;
+- **11 produtos detalhados `DP######`**;
+- **19 distribuições `DD######`**;
+- **58 páginas individuais** em `/registros/dr####/`;
+- `/data/public_records.json` e um JSON individual por registro;
+- descoberta pública por fenômeno/processo, território, tipo de informação e forma de acesso;
+- build estático, QA visual e smoke pós-deploy automatizados.
 
-Busca livre não é o mecanismo principal. A interface privilegia filtros controlados e encaminhamento a rotas cuja função foi classificada explicitamente.
+Os três gates do runtime atual passaram:
 
-## Modelo e autoridade dos dados
+- build/validação/deploy: workflow `37957241426` — PASS;
+- QA visual/responsivo: workflow `37957241480` — PASS;
+- smoke do site publicado: workflow `37957322300` — PASS.
 
-A estrutura histórica `Fonte (DR) → Produto (DP) → Distribuição (DD)` permanece para **compatibilidade, IDs e rastreabilidade**; ela não é tratada como ontologia final.
+O núcleo histórico `DR0001–DR0051` permanece preservado e semanticamente auditado. As sete entradas pós-core atuais são `DR0136–DR0142`. A expansão histórica **135/843/876** continua preservada em `data/quarantine/v1.0.0-expanded/` e não retorna automaticamente à superfície pública.
 
-As autoridades materiais do estado estático são:
+## O que a Vitrine é hoje
 
-- `data/data_resources.csv`, `data/data_products.csv`, `data/product_distributions.csv` — estrutura física canônica legada;
-- `data/static_core_51_access_audit.json` — classificação factual da rota principal A–E;
-- `data/static_core_51_progress.json` — recertificação semântica/tipagem 51/51;
-- `data/applied_priority_gate.json` — gate aplicado P1–P6;
-- scripts de build/validação — regras de materialização e QA;
-- JSONs públicos, HTML e artefato `_site` — **derivados**, não fontes independentes de verdade.
+A Vitrine é uma **camada de descoberta, curadoria e encaminhamento**. Ela não pretende copiar integralmente os catálogos externos nem hospedar todos os arquivos científicos.
 
-Quando aplicável, devem permanecer distintos: Provider/Institution, Program/Initiative, Platform/Catalog/Data Infrastructure, Dataset/Collection, Product, Distribution, DataService, Portal/Viewer e Documentation/Publication. Formato, arquivo, API, viewer ou documentação não criam produto científico por conveniência. Proveniência é transversal ao objeto de dados.
+A experiência pública segue, em termos funcionais:
 
-## Classificação de acesso
+**pergunta científica → fenômeno/processo/território/tipo de informação → registro da Vitrine → dados/produtos descritos quando existentes → forma de acesso → provedor/proveniência → documentação**
 
-- **A DIRECT_DATA** — arquivo, diretório ou endpoint que entrega dados;
-- **B DATASET_PAGE** — página específica com mecanismo explícito de obtenção;
-- **C API_SERVICE** — API/OGC/STAC/CKAN/GraphQL ou serviço de consulta/extração como rota principal;
-- **D VIEWER_DOC** — viewer, mapa, dashboard ou documentação sem acesso de dados demonstrado na rota principal;
-- **E BROKEN_UNCERTAIN** — rota genérica, inadequada como acesso agregado ou não demonstrada para obtenção de dados.
+A unidade pública persistente é o **Registro da Vitrine** (`DR####`). Cada registro agrega as informações que a Vitrine conhece sobre um recurso externo, seus produtos, coleções, versões, distribuições, serviços, visualizadores e documentos, sem criar automaticamente uma nova página para cada item técnico.
 
-Somente A–C podem ser apresentados como acesso confirmado a dados. HTTP 200 isolado não comprova acesso científico.
+O contrato implementado atualmente é `schema/public-record-v1.json`. Ele é estável como **read model público v1**, mas ainda é uma etapa de transição: o próximo modelo deverá separar explicitamente o **registro catalográfico** da Vitrine do **recurso catalogado** que esse registro descreve.
 
-## Estado operacional
+## Dados e autoridades materiais
 
-As três fases do marco estático estão concluídas:
+O schema físico legado permanece:
 
-1. **Fase I — reconciliação e recertificação:** 51/51 semanticamente tipados e com A–E justificado.
-2. **Fase II — representação estática:** Home tema-first, `sources.html` para os 58 registros, 58 páginas individuais `/registros/dr####/`, `products.html` para o subconjunto 11/19 e P1–P6 integrado.
-3. **Fase III — consolidação funcional:** filtros controlados, runtime dos cards, papéis semânticos, fechamento de dependências, responsividade, deploy e smoke público validados.
+```
+DR####  →  DP######  →  DD######
+registro    produto      distribuição
+```
 
-A **fase ativa de QA/QC e manutenção** passa a ser manutenção do marco estável e correção de regressões; não significa recertificação pendente.
+Esse arranjo existe para compatibilidade, rastreabilidade e reprodução; não é a ontologia final do projeto.
 
-## Próximo milestone
+As principais autoridades materiais são:
 
-Federação por APIs/Data Services é um **novo milestone**, separado do marco estático e ainda não ativado automaticamente. A camada pública já foi preparada para `static-first / stale-while-revalidate`: uma API futura poderá atualizar um registro de forma assíncrona sem tornar a página dependente da disponibilidade do provedor. Integration Registry, conectores STAC/CKAN/OGC/REST/GraphQL, harvesting, PostgreSQL/backend próprio ou reentrada da expansão exigem autorização e escopo próprios. Nenhum recurso descoberto por API entra automaticamente na superfície pública.
+- `data/data_resources.csv`;
+- `data/data_products.csv`;
+- `data/product_distributions.csv`;
+- `data/static_core_51_progress.json` — tipagem semântica do núcleo 51;
+- `data/static_core_51_access_audit.json` — acesso A–E do núcleo;
+- `data/post_core_access_audit.json` — acesso A–E das sete entradas pós-core;
+- `data/brazil_scope_priorities.json` — papel territorial;
+- `data/applied_priority_gate.json` — casos aplicados P1–P6;
+- scripts de build e validação.
+
+No conjunto vivo de 58 registros, a classificação da rota principal é atualmente **A=2, B=39, C=0, D=14, E=3**. Isso não mede qualidade científica; descreve o tipo de acesso principal verificado. Serviços programáticos secundários podem existir mesmo quando a rota principal é B ou D.
+
+A prioridade territorial corrente é **P0=18, P1=24, P2=14, P3=2**.
+
+## Cliente web atual
+
+O cliente público é deliberadamente simples:
+
+- HTML, CSS e JavaScript estáticos;
+- geração e validação em Python;
+- publicação por GitHub Pages;
+- GitHub Actions para build, QA visual e smoke;
+- sem framework frontend obrigatório;
+- sem backend necessário para leitura;
+- conteúdo essencial das páginas de registro disponível sem depender de APIs externas.
+
+As superfícies principais são:
+
+- `index.html` — entrada e orientação temática;
+- `sources.html` — descoberta dos 58 registros;
+- `products.html` — subconjunto de 11 itens detalhados e 19 distribuições;
+- `/registros/dr####/` — página persistente de cada registro;
+- `analytics.html` e páginas auxiliares — composição e método do acervo.
+
+A existência das páginas individuais torna desnecessário manter toda a ficha técnica dentro dos cards de resultados. A simplificação desses cards é parte do próximo ciclo de interface.
+
+## Evolução planejada: modelo público v2 e API
+
+A próxima evolução não é substituir imediatamente o GitHub Pages por um backend. Primeiro será estabilizado um modelo público mais preciso:
+
+**CatalogRecord da Vitrine → Recurso catalogado → oferta científica → versão/coleção → forma de acesso**
+
+com proveniência, evidência e curadoria como dimensões transversais.
+
+Depois disso, a federação deverá seguir o princípio:
+
+**federado na origem; indexado localmente na descoberta; descentralizado no acesso aos dados**.
+
+O comportamento planejado é **static-first / stale-while-revalidate**:
+
+1. HTML e JSON estáticos respondem imediatamente;
+2. uma camada futura avalia a atualidade do registro;
+3. se necessário, agenda atualização assíncrona no provedor;
+4. respostas externas entram em staging e normalização;
+5. validação, comparação e curadoria antecedem qualquer promoção;
+6. falha externa nunca impede a leitura do snapshot público.
+
+Um endpoint futuro conceitual é `GET /api/v1/records/{resource_id}`. Ele **não está implementado em produção**.
+
+Também não estão implementados em `main`: Integration Registry executável, harvesting automático, conectores STAC/CKAN/OGC/REST/GraphQL, fila de refresh, `HarvestRun`, `AccessCheck`, `CurationDecision`, backend serverless ou PostgreSQL.
+
+O planejamento corrente está consolidado em `docs/WEB_API_EVOLUTION_PLAN.md`.
 
 ## Release científica v1.0.0
 
@@ -71,18 +123,19 @@ A release histórica permanece imutável e reproduzível:
 - DOI: https://doi.org/10.5281/zenodo.22130831
 - commit congelado: `27c545554f406b940662777e3f053e939ef3588c`
 
-## Autoridade operacional
+A release histórica não representa automaticamente o catálogo vivo atual.
 
-- estado corrente: `docs/PROJECT_STATE.md`;
-- execução e gates: `WORKFLOW_STATUS.md`;
-- checkpoint do marco: `docs/CHECKPOINT_STATIC_51_2026-09-04.md`;
+## Documentação canônica
+
+- estado material: `docs/PROJECT_STATE.md`;
+- execução e próximos gates: `WORKFLOW_STATUS.md`;
+- modelo operacional: `docs/VITRINE_OPERATING_MODEL.md`;
 - direção científica: `docs/PROJECT_SCIENTIFIC_DIRECTION.md`;
-- contrato legado/transitório: `docs/VITRINE_CANONICAL_DATA_CONTRACT.md`;\n- contrato das páginas públicas: `docs/PUBLIC_RECORD_PAGES_V1.md`;\n- schema público: `schema/public-record-v1.json`;
-- matriz de acesso: `data/static_core_51_access_audit.json`;
-- recertificação semântica: `data/static_core_51_progress.json`;
-- gate aplicado: `data/applied_priority_gate.json`;
-- repositório: https://github.com/Ian-loc/vitrineciencia;
-- site: https://ian-loc.github.io/vitrineciencia/.
+- política de seleção: `SELECTION_AND_COVERAGE_POLICY.md`;
+- páginas públicas v1: `docs/PUBLIC_RECORD_PAGES_V1.md`;
+- evolução WEB/API: `docs/WEB_API_EVOLUTION_PLAN.md`;
+- checkpoint público atual: `docs/CHECKPOINT_PUBLIC_58_2026-10-09.md`;
+- dicionário de dados: `CODEBOOK.md`.
 
 Código: MIT. Metadados e curadoria original: CC BY 4.0.
 
