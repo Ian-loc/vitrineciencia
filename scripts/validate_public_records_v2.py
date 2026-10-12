@@ -65,7 +65,7 @@ if len(v2_by_id) != len(v2_records):
     fail("public-record-v2 contém IDs de registro duplicados")
 
 allowed_types = set(schema["resource_types"])
-forbidden_top_level = {"resource_id", "title", "public_record_type", "products", "access", "provenance", "evidence"}
+forbidden_top_level = {"resource_id", "title", "public_record_type", "products", "access", "evidence"}
 
 total_offerings = 0
 total_distribution_routes = 0
