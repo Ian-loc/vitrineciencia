@@ -5,6 +5,14 @@
 Site público: https://ian-loc.github.io/vitrineciencia/  
 Repositório canônico: https://github.com/Ian-loc/vitrineciencia
 
+## Instituições vinculadas ao projeto
+
+<p><img src="assets/institutions/ufla.png" alt="Universidade Federal de Lavras" height="80"> &nbsp; <img src="assets/institutions/ppg-ecologia-aplicada-ufla.png" alt="Programa de Pós-Graduação em Ecologia Aplicada da UFLA" height="80"> &nbsp; <img src="assets/institutions/fapemig.png" alt="FAPEMIG" height="80"></p>
+
+UFLA · Programa de Pós-Graduação em Ecologia Aplicada da UFLA · FAPEMIG.
+
+Aplicação dos logos: [identidade institucional](docs/INSTITUTIONAL_IDENTITY.md).
+
 ## Estado público atual — 12 de outubro de 2026
 
 A autoridade canônica é o repositório `Ian-loc/vitrineciencia`; a branch `main` representa o estado público corrente. Planilhas, Drive, worktrees, documentos externos e conversas são auxiliares ou espelhos e não substituem o estado materializado no GitHub.

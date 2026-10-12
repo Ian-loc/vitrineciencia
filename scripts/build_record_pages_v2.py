@@ -521,7 +521,7 @@ def render_record_page(record: dict) -> str:
 </div>
 <aside class="record-nav" aria-label="Nesta página"><strong>Nesta página</strong>{nav}</aside>
 </main>
-<footer class="wrap"><p><strong>Vitrine Ciência</strong> · <a href="../../sources.html">Explorar dados</a> · <a href="../../products.html">Dados detalhados</a> · <a href="../../about.html">Sobre</a></p><p>Brasil · Registro curado pela Vitrine Ciência</p></footer>
+<footer class="wrap"><p><strong>Vitrine Ciência</strong> · <a href="../../sources.html">Explorar dados</a> · <a href="../../products.html">Dados detalhados</a> · <a href="../../about.html">Sobre</a></p><p>Brasil · Registro curado pela Vitrine Ciência</p><div class="institutional-support" aria-label="Instituições vinculadas ao projeto"><p class="institutional-support-label">Instituições vinculadas ao projeto</p><div class="institutional-logos"><img src="../../assets/institutions/ufla.png" alt="Universidade Federal de Lavras" width="229" height="103" loading="lazy" decoding="async"><img src="../../assets/institutions/ppg-ecologia-aplicada-ufla.png" alt="Programa de Pós-Graduação em Ecologia Aplicada da UFLA" width="121" height="118" loading="lazy" decoding="async"><img src="../../assets/institutions/fapemig.png" alt="FAPEMIG" width="140" height="117" loading="lazy" decoding="async"></div></div></footer>
 <script src="../../assets/navigation.js" defer></script>
 </body></html>
 '''

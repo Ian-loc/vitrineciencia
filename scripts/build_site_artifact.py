@@ -17,6 +17,7 @@ OUTPUT = ROOT / "_site"
 REQUIRED_FILES = (
     "index.html", "products.html", "products-list.html", "sources.html", "analytics.html", "analytics-products.html", "about.html",
     "LICENSE", "LICENSE-DATA.md", "robots.txt", "sitemap.xml",
+    "assets/institutions/ufla.png", "assets/institutions/ppg-ecologia-aplicada-ufla.png", "assets/institutions/fapemig.png",
     "assets/style.css", "assets/accessibility.css", "assets/brazil-scope.css", "assets/products.css",
     "assets/visual-refinement.css", "assets/export-selective.css", "assets/ux-v2.css", "assets/ux-v3.css", "assets/ux-simple.css",
     "assets/product-card-refinement.css", "assets/product-index.css", "assets/discovery-guardrails.css", "assets/record-page.css", "assets/print.css",

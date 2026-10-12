@@ -15,6 +15,10 @@
 - Acesso principal no catálogo completo: A=2, B=39, C=0, D=14, E=3.
 - Release histórica v1.0.0 e DOI `10.5281/zenodo.22130831` preservados.
 
+## Instituições vinculadas ao projeto
+
+UFLA, Programa de Pós-Graduação em Ecologia Aplicada da UFLA e FAPEMIG. Os logos estão nas páginas públicas, no README e no documento `Instituições vinculadas à Vitrine Ciência`, em `00_governanca`.
+
 ## Organização e arquivos vigentes
 
 | Local | Arquivos e interpretação |
