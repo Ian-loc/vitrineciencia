@@ -378,9 +378,18 @@ Descoberta simplificada e página individual reorganizada no renderer v2.
 
 Transformar links em objetos explícitos.
 
-### M4 — versões e proveniência
+### M4 — versões e proveniência — EM EXECUÇÃO
 
-Estruturar versão/coleção e agentes/papéis.
+Baseline canônico implementado:
+
+- `data/product_versions.json`;
+- `schema/product-versions-v1.json`;
+- `data/provenance_assertions.json`;
+- `schema/provenance-assertions-v1.json`.
+
+O read model v2 passou a consumir essas autoridades. A primeira migração é conservadora: estados descritivos não são promovidos a versões citáveis e rótulos institucionais compostos não são divididos automaticamente.
+
+Próxima etapa M4: curadoria seletiva de versões e papéis de proveniência nos casos prioritários antes de iniciar o Integration Registry.
 
 ### M5 — Integration Registry
 
