@@ -97,6 +97,13 @@ O v2 separa `record` e `resource`, preserva as URLs, migra os produtos atuais pa
 
 As rotas de acesso do v2 possuem autoridade canônica própria em `data/access_routes.json`, sob o contrato `schema/access-routes-v1.json`. O baseline contém 135 rotas no nível dos recursos e 19 distribuições, totalizando 154 objetos. Referências científicas e fontes de verificação permanecem separadas em `references`.
 
+Versões/coleções e proveniência também possuem autoridades próprias:
+
+- `data/product_versions.json` + `schema/product-versions-v1.json`;
+- `data/provenance_assertions.json` + `schema/provenance-assertions-v1.json`.
+
+O baseline de versões preserva os 11 valores atualmente registrados em `version_or_collection`, mas distingue versão nomeada, edição e estados descritivos. A proveniência preserva 58 afirmações legadas sem dividir automaticamente rótulos institucionais compostos.
+
 A página de um registro agrega, quando disponíveis:
 
 - identidade e descrição;
@@ -226,7 +233,7 @@ A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130
 
 O marco **`VITRINE_PUBLIC_MODEL_V2`** está em execução.
 
-O read model v2, o renderer das páginas individuais, a simplificação dos cards e as rotas de acesso canônicas estão implementados. O próximo passo é estruturar versões/coleções e papéis de proveniência nos casos em que essas distinções são materialmente necessárias.
+O read model v2, o renderer das páginas individuais, a simplificação dos cards, as rotas de acesso canônicas e a primeira camada canônica de versões/proveniência estão implementados. O próximo passo é aprofundar seletivamente papéis de proveniência e versões nos registros em que essas distinções são materialmente necessárias.
 
 A sequência semântica alvo permanece:
 
