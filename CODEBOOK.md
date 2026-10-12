@@ -195,7 +195,19 @@ Referências científicas e fontes de verificação **não** são access routes;
 
 A documentação completa está em `docs/ACCESS_ROUTES_V1.md`.
 
-## 14. API, rotas e integração futura
+## 14. Versões e proveniência
+
+A autoridade de versões promovidas é `data/offering_versions.json`.
+
+`version_or_collection_summary` preserva o texto legado no nível da offering, mas não cria automaticamente uma entidade `Version`. A promoção exige semântica suficientemente clara para citação, comparação ou reprodutibilidade.
+
+A autoridade de declarações de responsabilidade é `data/provenance_statements.json`.
+
+`responsibility_statement` não é sinônimo de `Agent`. Textos compostos permanecem não resolvidos até que identidades e papéis sejam curados. `agents[]` é reservado a entidades individualizadas.
+
+Detalhamento: `docs/VERSION_PROVENANCE_V1.md`.
+
+## 15. API, rotas e integração futura
 
 A API da Vitrine ainda não existe como serviço público. O que existe hoje é o read model estático que deverá ser servido pela API futura.
 
