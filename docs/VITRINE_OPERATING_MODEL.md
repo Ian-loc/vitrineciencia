@@ -35,6 +35,8 @@ Runtime validado: `378e3d43c71988f3c7966e33f3d4f5cb879b1443`.
 
 Não há backend obrigatório para servir o catálogo atual.
 
+A fase corrente é de **QA/QC, manutenção e desenho do modelo público v2**. A expansão de novas fontes, produtos e distribuições está **pausada** como processo automático/em lote; adições pontuais exigem **instrução humana explícita** e curadoria documentada.
+
 ## 3. Arquitetura pública corrente
 
 A descoberta prioriza:
