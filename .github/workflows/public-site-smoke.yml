@@ -68,6 +68,8 @@ jobs:
           fetch "$SITE/data/applied_priority_gate.json?v=$TARGET_SHA" "$tmp/applied-priority.json"
           fetch "$SITE/data/public_records.json?v=$TARGET_SHA" "$tmp/public-records.json"
           fetch "$SITE/data/v2/public_records.json?v=$TARGET_SHA" "$tmp/public-records-v2.json"
+          fetch "$SITE/data/offering_versions.json?v=$TARGET_SHA" "$tmp/product-versions.json"
+          fetch "$SITE/data/provenance_statements.json?v=$TARGET_SHA" "$tmp/provenance.json"
           fetch "$SITE/data/v2/registros/dr0139.json?v=$TARGET_SHA" "$tmp/dr0139-v2.json"
           fetch "$SITE/registros/dr0010/?v=$TARGET_SHA" "$tmp/dr0010.html"
           fetch "$SITE/registros/dr0011/?v=$TARGET_SHA" "$tmp/dr0011.html"
@@ -97,9 +99,15 @@ jobs:
           grep -q 'Iniciativa ou programa de dados' "$tmp/dr0010.html"
           grep -q 'data-public-record-schema="public-record-v2"' "$tmp/dr0010.html"
           grep -q 'Visão geral' "$tmp/dr0010.html"
+          grep -q 'Acesso principal' "$tmp/dr0010.html"
+          grep -q 'Como a Vitrine verifica este registro' "$tmp/dr0010.html"
           grep -q 'Dados e produtos disponíveis' "$tmp/dr0011.html"
+          grep -q 'Versão/coleção informada: atualização publicada em 2026-03-03' "$tmp/dr0011.html"
           grep -q 'Como interpretar' "$tmp/dr0139.html"
           grep -q 'Carbon Mapper' "$tmp/dr0139.html"
+          grep -q 'Responsabilidade e proveniência' "$tmp/dr0139.html"
+          grep -q 'Papéis institucionais ainda não discriminados pela Vitrine' "$tmp/dr0139.html"
+          grep -q 'Entender esta proveniência' "$tmp/dr0139.html"
           grep -q 'Condições de uso e licença' "$tmp/dr0141.html"
 
           grep -q 'Subconjunto de 11 itens descritos em detalhe' "$tmp/products.html"
@@ -110,13 +118,15 @@ jobs:
           grep -q 'id="product-access"' "$tmp/products.html"
           grep -q 'disabled = unavailable' "$tmp/product-filter-ux.js"
           grep -q 'hidden = unavailable' "$tmp/product-filter-ux.js"
+          grep -q 'assets/print.css' "$tmp/products.html"
+          ! grep -q 'Detalhes científicos e acesso' "$tmp/products.html"
 
           ! grep -E -q 'arquitetura científica interna|Fonte → Produto → Distribuição|snapshot candidato|Decisão arquitetural|Direção experimental|termos controlados|busca textual livre' \
             "$tmp/index.html" "$tmp/products.html" "$tmp/sources.html" "$tmp/about.html"
           ! grep -E -q 'data/quarantine|v1.0.0-expanded' \
             "$tmp/index.html" "$tmp/products.html" "$tmp/sources.html" "$tmp/about.html"
 
-          python3 - "$tmp/resources.json" "$tmp/products.json" "$tmp/applied-priority.json" "$tmp/public-records.json" "$tmp/dr0139.json" "$tmp/public-records-v2.json" "$tmp/dr0139-v2.json" <<'PY'
+          python3 - "$tmp/resources.json" "$tmp/products.json" "$tmp/applied-priority.json" "$tmp/public-records.json" "$tmp/dr0139.json" "$tmp/public-records-v2.json" "$tmp/dr0139-v2.json" "$tmp/product-versions.json" "$tmp/provenance.json" <<'PY'
           import json, sys
           resources = json.load(open(sys.argv[1], encoding='utf-8'))
           products = json.load(open(sys.argv[2], encoding='utf-8'))
@@ -125,6 +135,8 @@ jobs:
           carbon = json.load(open(sys.argv[5], encoding='utf-8'))
           public_records_v2 = json.load(open(sys.argv[6], encoding='utf-8'))
           carbon_v2 = json.load(open(sys.argv[7], encoding='utf-8'))
+          product_versions = json.load(open(sys.argv[8], encoding='utf-8'))
+          provenance = json.load(open(sys.argv[9], encoding='utf-8'))
 
           assert len(resources) == 58, len(resources)
           assert len(products) == 11, len(products)
@@ -147,6 +159,9 @@ jobs:
           assert carbon_v2["provenance"]["responsibility_statement"]
           assert carbon_v2["provenance"]["agent_resolution_status"] == "unresolved_legacy_statement"
           assert carbon_v2["agents"] == []
+          assert len(product_versions["versions"]) == 1
+          assert len(product_versions["unresolved_legacy_summaries"]) == 10
+          assert len(provenance["statements"]) == 58
           assert sum(bool(r.get("primary")) for r in carbon_v2["access_routes"] if r.get("target_type") == "resource") == 1
           assert not any({"scientific_reference", "verification_source"} & set(r.get("roles") or []) for r in carbon_v2["access_routes"])
           assert len({p['resource_id'] for p in products}) <= len(resources)
@@ -160,5 +175,5 @@ jobs:
           assert all(item.get('access_role') in {'A', 'B', 'C', 'D', 'E'} for item in items)
           assert all(str(item.get('access_url') or '').startswith('https://') for item in items)
 
-          print('OK: Vitrine pública 58 registros + v1/v2 read models / 58 páginas individuais / 11 itens detalhados / 19 distribuições')
+          print('OK: Vitrine pública 58 registros + v2 com rotas, versões e proveniência canônicas / 58 páginas / 11 offerings / 19 distribuições')
           PY

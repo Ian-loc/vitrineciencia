@@ -83,6 +83,8 @@ jobs:
           test -s _site/assets/record-page.css
           test -s _site/data/public_records.json
           test -s _site/data/v2/public_records.json
+          test -s _site/data/offering_versions.json
+          test -s _site/data/provenance_statements.json
           test "$(find _site/data/v2/registros -maxdepth 1 -name "dr*.json" | wc -l)" -eq 58
           test "$(find _site/registros -mindepth 2 -maxdepth 2 -name index.html | wc -l)" -eq 58
           test "$(find _site/data/registros -maxdepth 1 -name "dr*.json" | wc -l)" -eq 58

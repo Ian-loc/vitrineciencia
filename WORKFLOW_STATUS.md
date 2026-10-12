@@ -46,11 +46,17 @@ Concluído no ciclo WEB v2:
 - redundância entre card e página individual reduzida;
 - página do registro organizada em cinco blocos;
 - informação científica do recurso separada visualmente da curadoria;
-- renderer migrado para o modelo público v2 sem alterar URLs.
+- renderer migrado para o modelo público v2 sem alterar URLs;
+- fichas individuais compactadas em acesso, proveniência e curadoria;
+- cards detalhados simplificados para triagem;
+- comparador convertido em matriz de diferenças;
+- impressão/PDF normalizada por stylesheet dedicado.
 
-Rotas de acesso canônicas: **concluídas** em `data/access_routes.json`. Próxima frente: versões/coleções e proveniência estruturada.
+Rotas de acesso canônicas: **concluídas** em `data/access_routes.json`.
 
-### B. Modelo público v2 — MILESTONE ATIVO
+Versões/coleções e proveniência estruturada: **baseline canônico implementado** em `data/offering_versions.json` e `data/provenance_statements.json`. Próxima frente: curadoria seletiva dos papéis e identidades que hoje permanecem agrupados.
+
+### B. Modelo público v2 — BASELINE CONCLUÍDO
 
 Status: **read model v2 e renderer HTML v2 implementados; v1 preservado como compatibilidade temporária**.
 
@@ -61,8 +67,8 @@ Concluído nesta primeira etapa:
 - `record` e `resource` separados;
 - 11 produtos migrados para `offerings`;
 - 19 distribuições preservadas como `access_routes`;
-- versões legadas explicitamente marcadas como derivadas;
-- agente legado migrado conservadoramente;
+- uma versão promovida (Dynamic World V1) e dez resumos preservados sem promoção automática;
+- 58 declarações de responsabilidade preservadas; agentes ainda não individualizados;
 - validador de compatibilidade v1/v2;
 - publicação paralela dos JSONs v2;
 - renderer HTML baseado no v2;

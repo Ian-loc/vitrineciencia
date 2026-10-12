@@ -179,7 +179,14 @@ jobs:
                   await page.locator('#compare-open').click();
                   await page.locator('#compare-dialog[open]').waitFor({state:'visible'});
                   if (await page.locator('#compare-content [data-remove-compare]').count() !== 3) { console.error('Comparação não contém 3 itens'); failed=true; }
+                  if (await page.locator('#compare-content .compare-table').count() !== 1) { console.error('Comparação não usa matriz tabular'); failed=true; }
+                  if (await page.locator('#compare-content .comparison-diff').count() < 1) { console.error('Comparação não destaca diferenças'); failed=true; }
+                  if (await page.locator('#product-list .card-details').count()) { console.error('Cards detalhados ainda carregam ficha expansível redundante'); failed=true; }
                   await page.locator('#compare-close').click();
+                  await page.emulateMedia({media:'print'});
+                  if (await page.locator('.site-nav').evaluate(el => getComputedStyle(el).display) !== 'none') { console.error('Navegação aparece na impressão de produtos'); failed=true; }
+                  if (await page.locator('.product-filters').evaluate(el => getComputedStyle(el).display) !== 'none') { console.error('Filtros aparecem na impressão de produtos'); failed=true; }
+                  await page.emulateMedia({media:'screen'});
                 }
 
                 if (name === 'product-index') {
@@ -197,11 +204,24 @@ jobs:
                   }
                   if (await page.locator('section.record-section').count() !== 5) { console.error(`Página deve ter cinco blocos públicos em ${name}`); failed=true; }
                   if (await page.locator('.record-primary-link').count()) { console.error(`Classe legada inesperada em ${name}`); failed=true; }
+                  if (await page.locator('#acesso .access-panel').count() !== 1 || await page.locator('#acesso .route-card').count()) { console.error(`Acesso ainda não está compacto em ${name}`); failed=true; }
+                  if (await page.locator('#curadoria .curation-summary').count() !== 1 || await page.locator('#curadoria .record-grid').count()) { console.error(`Curadoria ainda ocupa grade extensa em ${name}`); failed=true; }
                   const body = await page.locator('body').innerText();
                   if (/entity_type|source_origin|access_role|dataset_page|DIRECT_DATA|BROKEN_UNCERTAIN/i.test(body)) { console.error(`Vocabulário interno exposto em ${name}`); failed=true; }
                   if (name === 'record-terrabrasilis' && await page.locator('.record-product').count() !== 7) { console.error('TerraBrasilis deve exibir 7 produtos detalhados'); failed=true; }
                   if (name === 'record-gee' && await page.locator('.record-product').count() !== 4) { console.error('GEE deve exibir 4 produtos detalhados'); failed=true; }
                   if (name === 'record-mapbiomas' && await page.locator('.record-product').count() !== 0) { console.error('MapBiomas não deve inventar produtos detalhados'); failed=true; }
+                  if (name === 'record-mapbiomas' && await page.locator('.provenance-details').count() !== 1) { console.error('MapBiomas deve explicitar proveniência não discriminada por disclosure'); failed=true; }
+                  await page.emulateMedia({media:'print'});
+                  if (await page.locator('.site-nav').evaluate(el => getComputedStyle(el).display) !== 'none') { console.error(`Navegação aparece na impressão de ${name}`); failed=true; }
+                  if (await page.locator('.record-nav').evaluate(el => getComputedStyle(el).display) !== 'none') { console.error(`Índice sticky aparece na impressão de ${name}`); failed=true; }
+                  if (!(await page.locator('#acesso .route-actions a').isVisible())) { console.error(`Link principal desaparece na impressão de ${name}`); failed=true; }
+                  const primaryUrl = await page.locator('#acesso .route-actions a').getAttribute('href');
+                  const printedUrl = await page.locator('#acesso .route-actions a').evaluate(el => getComputedStyle(el, '::after').content);
+                  if (!printedUrl.includes(primaryUrl)) { console.error(`URL principal ausente na impressão de ${name}`); failed=true; }
+                  if (!(await page.locator('.record-reference a').first().isVisible())) { console.error(`Referência desaparece na impressão de ${name}`); failed=true; }
+
+                  await page.emulateMedia({media:'screen'});
                 }
 
                 if (name === 'sources') {

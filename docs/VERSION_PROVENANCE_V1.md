@@ -1,8 +1,8 @@
 # Versões e proveniência no modelo público v2
 
-**Status:** contrato conservador ativo  
-**Autoridades:** `data/offering_versions.json` e `data/provenance_statements.json`  
-**Schemas:** `schema/offering-versions-v1.json` e `schema/provenance-v1.json`  
+**Status:** contrato conservador ativo
+**Autoridades:** `data/offering_versions.json` e `data/provenance_statements.json`
+**Schemas:** `schema/offering-versions-v1.json` e `schema/provenance-v1.json`
 **Data:** 12 de outubro de 2026
 
 ## 1. Motivo da revisão

@@ -148,7 +148,12 @@ Características atuais:
 - uma página por registro;
 - JSONs públicos derivados do mesmo read model;
 - cards de descoberta reduzidos a identidade, descrição, responsável, temas, três fatos comparáveis e CTA para o registro completo;
-- ficha técnica removida dos cards; `public-interface-guardrails.js` permanece apenas como proteção para evidência de verificação e ações externas seguras.
+- ficha técnica removida dos cards de descoberta;
+- cards de dados detalhados reduzidos à triagem decisória (nome, descrição, temas, território, período, escala, acesso e alerta crítico);
+- comparador de produtos em matriz com destaque apenas para dimensões divergentes;
+- páginas de registro com acesso principal compacto, rotas secundárias, proveniência progressiva e curadoria recolhida;
+- stylesheet de impressão/PDF remove navegação, filtros, skip links e elementos sticky;
+- `public-interface-guardrails.js` permanece como proteção conservadora para evidência de verificação e ações externas seguras.
 
 Dívidas técnicas reconhecidas:
 
@@ -229,7 +234,7 @@ A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130
 
 ## 11. Próximo marco
 
-O marco **`VITRINE_PUBLIC_MODEL_V2`** está em execução.
+O baseline **`VITRINE_PUBLIC_MODEL_V2`** está concluído; a curadoria seletiva de versões e papéis continua incremental.
 
 O read model v2, o renderer, os cards resumidos, as rotas canônicas e a separação conservadora entre versões, resumos e declarações de proveniência estão implementados. O próximo passo é criar o Integration Registry para os primeiros provedores integráveis, sem iniciar harvesting automático.
 

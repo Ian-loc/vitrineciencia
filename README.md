@@ -88,6 +88,8 @@ As superfícies principais são:
 - `/registros/dr####/` — página persistente de cada registro;
 - `analytics.html` e páginas auxiliares — composição e método do acervo.
 
+A impressão das fichas preserva destinos de acesso, documentação e referências com suas URLs. As explicações de proveniência e curadoria também permanecem disponíveis no PDF.
+
 Os cards de resultados funcionam como instrumentos de descoberta e triagem. A ficha técnica foi removida deles; a página individual concentra interpretação, produtos, limitações e acesso.
 
 ## Evolução planejada: modelo público v2 e API

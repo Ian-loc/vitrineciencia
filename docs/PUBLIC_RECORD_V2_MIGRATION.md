@@ -84,7 +84,7 @@ Esses objetos recebem:
 - `status = legacy_summary`;
 - `source_field = version_or_collection`.
 
-Eles são mecanismos de migração e não IDs científicos permanentes. O desenho definitivo de versões será tratado em milestone próprio.
+A autoridade corrente passou a ser `data/product_versions.json`. O campo legado continua sincronizado como fonte de compatibilidade, mas a semântica pública agora distingue versão nomeada, edição e estados descritivos. Estados descritivos não são tratados como IDs científicos permanentes.
 
 ## 7. Rotas de acesso
 
@@ -103,9 +103,11 @@ Os campos legados continuam sincronizados temporariamente e são usados como gat
 
 O campo `owner_or_manager` mistura papéis. A migração não tenta decidir automaticamente se uma organização é produtora, mantenedora, publicadora ou host.
 
-Por isso, o primeiro crosswalk usa apenas:
+Por isso, a autoridade `data/provenance_assertions.json` preserva inicialmente o papel:
 
-`responsible_or_maintainer`.
+`responsible_or_maintainer`
+
+com `agent_identity_status = unresolved_label` e `assertion_status = legacy_grouped_statement`.
 
 Papéis mais específicos dependem de curadoria posterior.
 
@@ -159,7 +161,9 @@ Após o renderer v2:
 2. simplificar os cards de descoberta na origem;
 3. reduzir a responsabilidade de `public-interface-guardrails.js`;
 4. manter `access-routes-v1` validado como autoridade;
-5. estruturar versões e proveniência mais específicas.
+5. aprofundar seletivamente versões e proveniência nos casos prioritários.
+
+Contrato detalhado: `docs/VERSIONS_PROVENANCE_V1.md`.
 
 Referências:
 

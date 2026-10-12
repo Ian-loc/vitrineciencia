@@ -263,7 +263,7 @@ def validate_functional_contracts() -> None:
 def validate_required_assets() -> None:
     required = (
         "assets/style.css", "assets/accessibility.css", "assets/brazil-scope.css", "assets/products.css",
-        "assets/visual-refinement.css", "assets/ux-v2.css", "assets/ux-simple.css", "assets/product-card-refinement.css", "assets/record-page.css",
+        "assets/visual-refinement.css", "assets/ux-v2.css", "assets/ux-simple.css", "assets/product-card-refinement.css", "assets/record-page.css", "assets/print.css",
         "assets/discovery-guardrails.css", "assets/app.js", "assets/ptbr.js", "assets/products.js", "assets/home.js",
         "assets/navigation.js", "assets/analytics.js", "assets/analytics-products.js", "assets/export-selective.js",
         "assets/source-comparison.js", "assets/discovery-guardrails.js", "assets/static-catalog-51.js",
