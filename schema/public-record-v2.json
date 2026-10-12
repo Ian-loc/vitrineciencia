@@ -37,14 +37,16 @@
       "semantics": "Ofertas científicas materialmente distintas derivadas dos produtos DP existentes. Não equivalem a arquivos, endpoints ou formatos."
     },
     "versions": {
-      "semantics": "Estados de versão/coleção. Nesta migração, entradas podem ser derivadas do campo legado version_or_collection e são marcadas como resumo legado, não como identificadores científicos canônicos."
+      "semantics": "Versões, coleções e estados de oferta provenientes da autoridade data/product_versions.json; descrições de estado não são promovidas automaticamente a versões citáveis.",
+      "authority": "data/product_versions.json"
     },
     "access_routes": {
       "semantics": "Rotas funcionais canônicas provenientes de data/access_routes.json. Referências/evidências permanecem em references; distribuições DD são rotas direcionadas às offerings.",
       "authority": "data/access_routes.json"
     },
     "agents": {
-      "semantics": "Agentes associados ao recurso. O campo legado owner_or_manager é migrado conservadoramente para o papel responsible_or_maintainer até curadoria posterior."
+      "semantics": "Agentes/proveniência provenientes de data/provenance_assertions.json. Rótulos legados compostos permanecem não resolvidos até curadoria com evidência.",
+      "authority": "data/provenance_assertions.json"
     },
     "references": {
       "semantics": "Referências científicas/técnicas e fontes de verificação, deduplicadas por URL quando uma página cumpre mais de um papel."
@@ -89,7 +91,13 @@
     "distribution"
   ],
   "agent_roles": [
-    "responsible_or_maintainer"
+    "responsible_or_maintainer",
+    "producer",
+    "maintainer",
+    "publisher",
+    "host",
+    "distributor",
+    "methodological_responsibility"
   ],
   "offering_kinds": [
     "dataset",
@@ -110,7 +118,9 @@
     "todo DD existente é preservado como access_route de uma offering",
     "desconhecido não é convertido em não",
     "falha de API externa não é necessária para gerar ou servir este modelo",
-    "access_routes são idênticas à autoridade data/access_routes.json"
+    "access_routes são idênticas à autoridade data/access_routes.json",
+    "versions são idênticas à autoridade data/product_versions.json por registro",
+    "agents são derivados da autoridade data/provenance_assertions.json sem dividir rótulos compostos automaticamente"
   ],
   "future_api_contract": {
     "principle": "static_first_stale_while_revalidate",
