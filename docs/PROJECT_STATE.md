@@ -1,160 +1,236 @@
 # Estado canônico — Vitrine Ciência
 
-**Data de referência:** 9 de outubro de 2026  
+**Data de referência:** 12 de outubro de 2026  
 **Fuso:** `America/Sao_Paulo`
 
-## Autoridade
+## 1. Autoridade e estado material
 
-O repositório `Ian-loc/vitrineciencia` é a **autoridade canônica do projeto**. `main` representa o estado público corrente. Worktrees locais, Google Drive, handoffs e chats são auxiliares de trabalho ou espelhos documentais; não substituem o estado materializado no GitHub.
+O repositório `Ian-loc/vitrineciencia` é a autoridade canônica. A branch `main` representa o estado público corrente. Drive, planilhas, worktrees, handoffs e conversas são auxiliares ou espelhos e não substituem o que está materializado e validado no GitHub.
 
-Em 30/09/2026 houve uma **instrução humana explícita** para incorporar a REDEMET. Essa inclusão é tratada como adição pós-core isolada; não reabre nem altera a auditoria fechada de DR0001–DR0051 e não autoriza reentrada geral da expansão histórica.
+O runtime público corrente é o commit:
 
-Dentro do repositório, a hierarquia corrente é:
+`378e3d43c71988f3c7966e33f3d4f5cb879b1443`
 
-1. arquivos de dados e matrizes de auditoria canônicas;
-2. scripts de build e validação;
-3. artefatos públicos derivados (JSON/HTML/`_site`);
-4. documentação de estado, que deve descrever o material e nunca contradizê-lo.
+incorporado pelo PR #277 em 09/10/2026.
 
-## Estado global
+Gates desse runtime:
 
-O marco de **consolidação semântica e funcional do núcleo estático DR0001–DR0051 está concluído**.
+- `Validar e publicar Vitrine` — run `37957241426` — PASS;
+- `Capturar QA visual da Vitrine publicada` — run `37957241480` — PASS;
+- `Verificar Vitrine publicada` — run `37957322300` — PASS.
 
-`VITRINE_STATIC_51_STABLE`
+Não há uma migração de backend em andamento no estado público. O site continua sendo um artefato estático publicado por GitHub Pages.
 
-O runtime público que satisfez simultaneamente os gates finais é **`495bfe6a968176670461662869d1a3773797baf3`**:
+## 2. Catálogo vivo
 
-- build/validação/deploy: workflow `33906109623` — PASS;
-- QA visual e responsivo: workflow `33906109551` — PASS;
-- smoke pós-deploy sobre o site publicado: workflow `33906157842` — PASS.
+O estado vivo contém:
 
-A expansão geral permanece pausada. A recertificação semântica 51/51 está concluída. A **fase ativa de QA/QC e manutenção** passa a significar preservação do marco estável e correção de regressões, não recertificação pendente.
+- **58 registros `DR####`**;
+- **11 produtos detalhados `DP######`**;
+- **19 distribuições `DD######`**;
+- 58 páginas individuais em `/registros/dr####/`;
+- `data/public_records.json`;
+- 58 JSONs individuais em `data/registros/dr####.json`.
 
-## Estado material
+O núcleo histórico `DR0001–DR0051` permanece preservado. As entradas pós-core são:
 
-- `main` publica **58 registros DR / 11 itens detalhados / 19 distribuições**: o núcleo estático DR0001–DR0051 permanece fechado; adições pós-core: `DR0136` (REDEMET), `DR0137` (RESOLVE Ecoregions 2017) e `DR0138` (Global Safety Net GSN3.1), `DR0139` (Carbon Mapper), `DR0140` (Global Human Modification v3), `DR0141` (Planet Forest Carbon) e `DR0142` (Climate Finance Tracker, referência comparativa sem Brasil), sem alterar o núcleo.
-- Na terminologia física exigida pelo schema/validador legado, isso corresponde a **58 fontes, 11 produtos e 19 distribuições**; esses rótulos não definem a ontologia pública.
-- Os 11/19 são um subconjunto detalhado, não toda a cobertura científica dos 58 registros.
-- A expansão histórica 135/843/876 permanece preservada em `data/quarantine/v1.0.0-expanded/` e fora do catálogo vivo. Seus IDs DR0052–DR0135 continuam reservados às identidades daquele snapshot; por isso a nova REDEMET usa `DR0136`.
-- `data/static_core_51_progress.json` registra **51/51 com tipagem semântica concluída**, sem pendências de tipagem. Esse arquivo continua deliberadamente restrito ao núcleo histórico e não deve ser reinterpretado como auditoria da REDEMET.
-- `data/static_core_51_access_audit.json` registra **A=1, B=38, C=0, D=10, E=2**.
-- Os dois E são limitações deliberadas e documentadas: `DR0014` (SiBBr, rota canônica genérica) e `DR0039` (GBIF IPT, software de publicação e não rota agregada de obtenção).
-- O gate P1–P6 está materializado em `data/applied_priority_gate.json`.
-- O artefato público fecha as dependências locais necessárias à interface e valida referências HTML e `fetch()` literais durante o build.\n- A unidade individual de navegação pública é o **registro da Vitrine** (`DR####`), materializado em 58 páginas `/registros/dr####/`; produtos, coleções, releases, distribuições, serviços e documentos permanecem subordinados à página do registro.\n- O build também publica `data/public_records.json` e um JSON individual por registro como read model estático compatível com uma futura API.
-- Tipagem semântica e classificação de acesso são autoridades distintas: `static_core_51_progress.json` não substitui `static_core_51_access_audit.json`.
-- A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130831` e snapshot histórico permanecem imutáveis.
+- `DR0136` — REDEMET;
+- `DR0137` — RESOLVE Ecoregions 2017;
+- `DR0138` — Global Safety Net GSN3.1;
+- `DR0139` — Carbon Mapper;
+- `DR0140` — Global Human Modification v3;
+- `DR0141` — Planet Forest Carbon;
+- `DR0142` — Climate Finance Tracker, mantido como referência comparativa sem cobertura brasileira.
 
-## Fontes materiais de verdade no marco estático
+Os IDs `DR0052–DR0135` permanecem associados ao snapshot histórico v1.0.0 em quarentena e não devem ser reciclados.
 
-- `data/data_resources.csv`;
-- `data/data_products.csv`;
-- `data/product_distributions.csv`;
-- `data/static_core_51_access_audit.json`;
-- `data/post_core_access_audit.json`;
-- `data/static_core_51_progress.json`;
-- `data/product_distribution_roles.json`;
-- `data/applied_priority_gate.json`.
+A expansão histórica **135/843/876** está em `data/quarantine/v1.0.0-expanded/` e não faz parte do catálogo vivo.
 
-JSONs públicos, páginas e `_site` são derivados. Mudanças de classificação ou significado devem começar nas fontes canônicas correspondentes e ser propagadas pelo build/validação; não devem ser corrigidas apenas na UI.
+## 3. Auditorias e cobertura
 
-## Modelo público corrente
+A tipagem semântica detalhada do núcleo está em `data/static_core_51_progress.json` e cobre 51/51 registros históricos.
 
-A navegação deve seguir:
+A classificação da rota principal do núcleo é:
 
-**pergunta científica → fenômeno/processo/território/tipo de informação → registro da Vitrine → produto/coleção/release quando descrito → distribuição/rota de acesso, DataService ou visualizador → provedor/proveniência → documentação**.
+- A=1;
+- B=38;
+- C=0;
+- D=10;
+- E=2.
 
-A estrutura física histórica `DR → DP → DD` permanece apenas para compatibilidade e rastreabilidade.
+A auditoria pós-core, em `data/post_core_access_audit.json`, registra:
 
-A interface e a recertificação distinguem, quando aplicável:
+- A=1;
+- B=1;
+- C=0;
+- D=4;
+- E=1.
 
-- Provider/Institution;
-- Program/Initiative;
-- Platform/Catalog/Data Infrastructure;
-- Dataset/Collection;
-- Product, somente quando materialmente distinto;
-- Distribution;
-- DataService/API;
-- Portal/Viewer;
-- Documentation/Publication.
+No catálogo vivo completo de 58 registros, portanto:
 
-Proveniência é transversal: produzir, publicar, manter, hospedar/expor e documentar são relações diferentes. Formato, arquivo, API, viewer e documentação não criam produto científico por si sós.
+**A=2, B=39, C=0, D=14, E=3.**
 
-## Classificação de acesso
+A classe descreve a rota principal verificada e não exclui serviços técnicos secundários. Carbon Mapper, por exemplo, pode ter visualizador como rota pública principal e REST/STAC como capacidades complementares.
 
-- `A DIRECT_DATA` — arquivo/download/endpoint que entrega dados;
-- `B DATASET_PAGE` — página específica com mecanismo explícito de obtenção;
-- `C API_SERVICE` — API/OGC/STAC/CKAN/GraphQL ou serviço de consulta/extração como rota principal;
-- `D VIEWER_DOC` — viewer/dashboard/mapa/documentação/PDF sem acesso de dados demonstrado na rota principal;
-- `E BROKEN_UNCERTAIN` — rota genérica, inadequada como acesso agregado ou sem obtenção demonstrada.
+A classificação territorial corrente em `data/brazil_scope_priorities.json` é:
 
-Somente A–C podem ser apresentados como acesso confirmado a dados. HTTP 200 isolado não comprova acesso.
+- P0 — fonte brasileira: 18;
+- P1 — cobertura sistemática do Brasil: 24;
+- P2 — cobertura parcial/indireta: 14;
+- P3 — referência comparativa: 2.
 
-## Estado das fases
+## 4. Modelo físico e modelo público
 
-**Fase I — reconciliar e fixar o estado real: CONCLUÍDA**
+O modelo físico legado permanece:
 
-- 51/51 semanticamente tipados;
-- 51/51 com classificação A–E e justificativa;
-- dois E preservados explicitamente como limitações verificadas.
+```
+DR#### 1 ─── N DP###### 1 ─── N DD######
+```
 
-**Fase II — reorganizar a representação estática: CONCLUÍDA**
+Ele existe para compatibilidade, IDs e rastreabilidade; não é a ontologia final.
 
-- Home orientada por pergunta/tema;
-- `sources.html` como superfície ampla dos 58 registros;\n- uma página persistente por registro em `/registros/dr####/`, com produtos e rotas subordinados;
-- `products.html` como subconjunto detalhado 11/19 com tipologia explícita;
-- rotas de acesso separadas por função;
-- P1–P6 integrado à superfície pública.
+O modelo público implementado atualmente usa `schema/public-record-v1.json` e mantém `DR####` como unidade de navegação persistente.
 
-**Fase III — consolidação funcional: CONCLUÍDA**
+A página de um registro agrega, quando disponíveis:
 
-- QA semântico, estrutural, científico e de navegação;
-- filtros controlados, URL params, teclado, desktop/tablet/mobile;
-- regressões de runtime nos observadores de Produtos e Fontes corrigidas sem relaxar o QA;
-- fechamento das dependências do artefato público validado;
-- CI principal, QA visual e smoke público verdes no runtime `495bfe6a968176670461662869d1a3773797baf3`;
-- documentação e checkpoint sincronizados com o estado material.
+- identidade e descrição;
+- temas;
+- cobertura;
+- condições de acesso;
+- rotas;
+- produtos;
+- distribuições;
+- limitações;
+- proveniência;
+- licença;
+- referências;
+- dados de curadoria.
 
-## Gate P1–P6
+A decisão de não criar página para cada arquivo, endpoint, asset ou versão permanece vigente.
 
-Devem permanecer representados por objeto informacional real, proveniência explícita e acesso corretamente rotulado:
+## 5. Limitação conceitual conhecida do v1
 
-- P1 AdaptaBrasil MCTI;
-- P2 MapBiomas Municípios;
-- P3 IEDE-MG/FJP, distinta de IDE-Sisema;
-- P4 BDMG com dado público verificável;
-- P5 SICAR/CAR e SIGEF/INCRA separados;
-- P6 IBGE Cidades e Estados com indicador municipal real.
+O contrato v1 ainda associa diretamente tipos como “Iniciativa”, “Plataforma” ou “Base” ao objeto público do registro.
 
-## Adição pós-core — REDEMET (30/09/2026)
+A próxima revisão deve separar formalmente:
 
-- `DR0136` representa a **Rede de Meteorologia do Comando da Aeronáutica (REDEMET)** como fonte/plataforma, não como dataset único.
-- Não foram criados produtos nem distribuições para a REDEMET nesta rodada, porque a rota pública ainda não foi recertificada como download, API ou página específica de dataset.
-- A interface deve, portanto, tratar seu acesso de forma conservadora como **E — acesso a confirmar**, sem CTA que apresente a homepage como download de dados.
-- A revisão material e os pontos ainda não comprovados estão em `docs/audits/REDEMET_SOURCE_REVIEW_2026-09-30.md`.
-- A alocação `DR0136` evita colisão com DR0052–DR0135 preservados no snapshot histórico v1.0.0.
+```
+Registro da Vitrine (CatalogRecord)
+        │ descreve
+        ▼
+Recurso catalogado
+```
 
-## Manutenção após o marco
+O tipo “iniciativa”, “plataforma”, “catálogo”, “base”, “rede” etc. pertence ao recurso catalogado, enquanto `DR####` identifica o registro mantido pela Vitrine.
 
-A partir de `VITRINE_STATIC_51_STABLE`:
+Essa mudança deverá preservar as 58 URLs atuais.
 
-- o núcleo 51 não deve ser reaberto sem nova evidência, conflito factual ou regressão;
-- mudanças de conteúdo continuam começando na autoridade canônica adequada;
-- regressões devem ser corrigidas e verificadas pelos mesmos gates proporcionais;
-- a expansão histórica não retorna automaticamente ao catálogo vivo;
-- uma nova frente de federação/Data Service deve ser tratada como milestone independente.\n- a futura atualização sob demanda deve seguir `static-first / stale-while-revalidate`: página/JSON estáticos respondem primeiro; refresh de API ocorre de forma assíncrona e passa por staging/validação antes de substituir o estado público.
+## 6. Cliente web
 
-## Próximo milestone — não ativado automaticamente
+O cliente público corrente usa HTML, CSS e JavaScript estáticos e é montado por scripts Python.
 
-Permanecem fora do marco estático concluído e exigem autorização/escopo próprios:
+Características atuais:
 
-- ontologia 2.0 exaustiva;
-- Integration Registry federado;
-- conectores STAC/CKAN/OGC/REST/GraphQL;
-- harvesting;
-- PostgreSQL/backend próprio;
-- reentrada da expansão;
-- nova release/DOI.
+- GitHub Pages como hosting;
+- GitHub Actions para validação e publicação;
+- conteúdo essencial das páginas de registro pré-renderizado;
+- JavaScript usado para filtros, refinamentos e melhoria progressiva;
+- `sources.html` como superfície principal de descoberta;
+- `products.html` como subconjunto detalhado;
+- uma página por registro;
+- JSONs públicos derivados do mesmo read model.
 
-## Checkpoint
+Dívidas técnicas reconhecidas:
 
-O checkpoint factual do fechamento está em `docs/CHECKPOINT_STATIC_51_2026-09-04.md`.
+- cards de descoberta ainda contêm detalhes extensos que se tornaram redundantes após a criação das páginas individuais;
+- `public-interface-guardrails.js` remove parte do conteúdo técnico após renderização; a solução futura deve simplificar o card na origem;
+- as rotas públicas ainda são majoritariamente derivadas de campos de URL e auditorias, não uma entidade canônica própria;
+- versões/coleções ainda estão embutidas no produto;
+- proveniência ainda é simplificada em campos como `owner_or_manager`;
+- datas de revisão da Vitrine e atualização informada pelo provedor ainda não estão plenamente separadas.
+
+## 7. Estado da via API/federação
+
+A federação é **planejada, mas não implementada em produção**.
+
+Já está materializado:
+
+- read model JSON por registro;
+- contrato de persistência das URLs;
+- princípio `static-first / stale-while-revalidate`;
+- documentação de pipeline futuro;
+- casos de estudo com REST/STAC, acesso contratado, visualizadores e downloads;
+- planejamento no Linear, principalmente `MEI-18`.
+
+Ainda não existe em `main`:
+
+- API pública da Vitrine;
+- Integration Registry executável;
+- conectores ativos;
+- harvesting automático;
+- refresh acionado por visita;
+- fila/worker;
+- staging operacional;
+- `HarvestRun`, `AccessCheck` ou `CurationDecision` executáveis;
+- banco de dados próprio necessário ao runtime.
+
+O endpoint `GET /api/v1/records/{resource_id}` é uma proposta de contrato, não um endpoint disponível.
+
+## 8. Arquitetura alvo
+
+A evolução deverá manter o site estático como superfície resiliente e introduzir automação por etapas:
+
+```
+provedores externos
+        ↓
+Integration Registry
+        ↓
+conectores / harvesting
+        ↓
+raw + staging
+        ↓
+normalização
+        ↓
+deduplicação + classificação
+        ↓
+validação / diff / curadoria
+        ↓
+snapshot público
+        ↓
+JSON + HTML estático
+        ↓
+usuário
+```
+
+Uma API futura pode servir o mesmo read model e solicitar revalidação assíncrona, mas a leitura pública nunca deve depender de uma chamada em tempo real ao provedor externo.
+
+## 9. Branch experimental antiga
+
+A branch `agent/federated-explorer-mvp` contém um protótipo cartográfico de composição visual WMS/WMTS com MapLibre.
+
+Ela não representa a arquitetura atual:
+
+- divergiu profundamente de `main`;
+- usa estrutura e identidade antigas do projeto;
+- implementa composição visual, não uma API federada;
+- não deve ser incorporada por merge.
+
+Ideias reutilizáveis, como manifesto de proveniência e registro explícito de falhas externas, podem ser reimplementadas futuramente sobre o estado atual.
+
+## 10. Release histórica
+
+A release científica `v1.0.0`, sua tag, DOI `10.5281/zenodo.22130831` e snapshot permanecem imutáveis.
+
+## 11. Próximo marco
+
+O próximo marco recomendado é **`VITRINE_PUBLIC_MODEL_V2`**.
+
+Seu objetivo é estabilizar:
+
+`Registro da Vitrine → Recurso catalogado → oferta científica → versão/coleção → forma de acesso`
+
+com proveniência, evidência e curadoria transversais.
+
+Somente depois desse contrato deve ser promovida a implementação do Integration Registry e dos conectores.
+
+Plano: `docs/WEB_API_EVOLUTION_PLAN.md`.
