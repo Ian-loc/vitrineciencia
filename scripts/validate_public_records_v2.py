@@ -14,6 +14,8 @@ V2_INDIVIDUAL = SITE / "data" / "v2" / "registros"
 CANONICAL = ROOT / "data" / "data_resources.csv"
 SCHEMA = ROOT / "schema" / "public-record-v2.json"
 ACCESS_ROUTES = ROOT / "data" / "access_routes.json"
+OFFERING_VERSIONS = ROOT / "data" / "offering_versions.json"
+PROVENANCE = ROOT / "data" / "provenance_statements.json"
 
 
 def fail(message: str) -> None:
@@ -36,6 +38,16 @@ canonical_routes_payload = read_json(ACCESS_ROUTES)
 canonical_routes_by_record = {}
 for route in canonical_routes_payload.get("routes") or []:
     canonical_routes_by_record.setdefault(route["record_id"], []).append(route)
+
+version_payload = read_json(OFFERING_VERSIONS)
+canonical_versions_by_offering = {}
+for version in version_payload.get("versions") or []:
+    canonical_versions_by_offering.setdefault(version["offering_id"], []).append(version)
+
+provenance_payload = read_json(PROVENANCE)
+canonical_provenance_by_record = {
+    item["record_id"]: item for item in provenance_payload.get("statements") or []
+}
 
 v1_records = read_json(V1_PATH)
 v2_records = read_json(V2_PATH)
@@ -167,25 +179,45 @@ for rid in ids:
             fail(f"{rid}/{pid}: distribuições não preservadas como access_routes")
 
     versions = v2.get("versions") or []
-    expected_version_products = {
-        item["product_id"]
-        for item in v1_products
-        if str(item.get("version_or_collection") or "").strip()
-    }
-    actual_version_products = {item.get("offering_id") for item in versions}
-    if expected_version_products != actual_version_products:
-        fail(f"{rid}: versões derivadas não correspondem aos campos legados")
-    for item in versions:
-        if item.get("status") != "legacy_summary" or item.get("identifier_status") != "derived_migration_key":
-            fail(f"{rid}: versão derivada não está marcada como resumo legado")
+    expected_versions = [
+        version
+        for product in v1_products
+        for version in canonical_versions_by_offering.get(product["product_id"], [])
+    ]
+    if versions != expected_versions:
+        fail(f"{rid}: versions divergem de data/offering_versions.json")
     total_versions += len(versions)
 
-    owner = (v1.get("provenance") or {}).get("owner_or_manager") or ""
-    agents = v2.get("agents") or []
-    if bool(str(owner).strip()) != bool(agents):
-        fail(f"{rid}: migração de responsável/mantenedor inconsistente")
-    if agents and agents[0].get("name") != owner:
-        fail(f"{rid}: nome do responsável/mantenedor não preservado")
+    for pid, offering in offering_by_id.items():
+        expected_version_ids = [
+            item["version_id"] for item in canonical_versions_by_offering.get(pid, [])
+        ]
+        if offering.get("version_ids") != expected_version_ids:
+            fail(f"{rid}/{pid}: version_ids divergem da autoridade canônica")
+
+    provenance_source = canonical_provenance_by_record.get(rid)
+    provenance = v2.get("provenance") or {}
+    if not provenance_source:
+        fail(f"{rid}: declaração canônica de proveniência ausente")
+    expected_provenance = {
+        "provenance_id": provenance_source["provenance_id"],
+        "responsibility_statement": provenance_source["responsibility_statement"],
+        "institutional_status_summary": provenance_source["institutional_status_summary"],
+        "agent_resolution_status": provenance_source["agent_resolution_status"],
+        "role_resolution_status": provenance_source["role_resolution_status"],
+        "verified_at": provenance_source.get("verified_at"),
+        "authority": "data/provenance_statements.json",
+    }
+    if provenance != expected_provenance:
+        fail(f"{rid}: provenance diverge de data/provenance_statements.json")
+    if provenance_source.get("agent_resolution_status") == "unresolved_legacy_statement" and (v2.get("agents") or []):
+        fail(f"{rid}: texto de proveniência não resolvido foi convertido indevidamente em Agent")
+
+    curation = v2.get("curation") or {}
+    if curation.get("version_authority") != "data/offering_versions.json":
+        fail(f"{rid}: version_authority não declarada")
+    if curation.get("provenance_authority") != "data/provenance_statements.json":
+        fail(f"{rid}: provenance_authority não declarada")
 
     individual = V2_INDIVIDUAL / f"{rid.lower()}.json"
     payload = read_json(individual)
@@ -194,6 +226,8 @@ for rid in ids:
 
 if total_offerings != sum(len(item.get("products") or []) for item in v1_records):
     fail("contagem total de offerings diverge do v1")
+if total_versions != len(version_payload.get("versions") or []):
+    fail("contagem de versões do read model diverge da autoridade canônica")
 if total_distribution_routes != sum(
     len(product.get("distributions") or [])
     for record in v1_records
@@ -204,6 +238,6 @@ if total_distribution_routes != sum(
 print(
     "OK public-record-v2: "
     f"{len(v2_records)} registros; {total_offerings} offerings; "
-    f"{total_versions} resumos de versão; {total_distribution_routes} distribuições preservadas; "
-    "URLs/conteúdo compatíveis com v1 e access_routes idênticas à autoridade canônica"
+    f"{total_versions} versão(ões) promovida(s); {total_distribution_routes} distribuições preservadas; "
+    "relações canônicas de acesso, versão e proveniência validadas"
 )
