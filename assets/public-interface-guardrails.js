@@ -30,9 +30,9 @@
     card.querySelectorAll(".card-details .detail-links a, article.distribution a, .distribution-semantic-role, .entity-role-badge, .semantic-role-line, .semantic-scope-note").forEach(node => node.remove());
   }
 
-  function expectedActions(dataUrl, siteUrl) {
+  function expectedActions(dataUrl, siteUrl, dataClassName = "action-primary") {
     const expected = [];
-    if (https(dataUrl) && !technicalAccess(dataUrl)) expected.push({label:"Acessar dados / download", url:dataUrl, className:"action-primary"});
+    if (https(dataUrl) && !technicalAccess(dataUrl)) expected.push({label:"Acessar dados / download", url:dataUrl, className:dataClassName});
     if (https(siteUrl) && !technicalAccess(siteUrl) && !sameUrl(siteUrl, dataUrl)) expected.push({label:"Acessar site", url:siteUrl, className:"action-secondary"});
     return expected;
   }
@@ -93,7 +93,7 @@
       const publicAccessLabel = {
         A: "Dados para download",
         B: "Página para obter dados",
-        C: "Acesso pelo site",
+        C: "Serviço de dados",
         D: "Visualização / site",
         E: "Acesso a confirmar"
       };
@@ -122,7 +122,7 @@
           const dataUrl = ["A", "B"].includes(role) && https(resource.data_access_url) && !technicalAccess(resource.data_access_url)
             ? resource.data_access_url : "";
           const siteUrl = https(resource.homepage_url) && !technicalAccess(resource.homepage_url) ? resource.homepage_url : "";
-          syncActions(card.querySelector(".card-actions"), expectedActions(dataUrl, siteUrl));
+          syncActions(card.querySelector(".card-actions"), expectedActions(dataUrl, siteUrl, "action-secondary"));
           card.dataset.publicActions = "1";
         });
       };
