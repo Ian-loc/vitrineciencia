@@ -2,6 +2,9 @@
 
 **Catálogo científico curado para descobrir, compreender e acessar dados relevantes aos socioecossistemas brasileiros.**
 
+Site público: https://ian-loc.github.io/vitrineciencia/  
+Repositório canônico: https://github.com/Ian-loc/vitrineciencia
+
 ## Estado público atual — 12 de outubro de 2026
 
 A autoridade canônica é o repositório `Ian-loc/vitrineciencia`; a branch `main` representa o estado público corrente. Planilhas, Drive, worktrees, documentos externos e conversas são auxiliares ou espelhos e não substituem o estado materializado no GitHub.
