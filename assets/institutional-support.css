@@ -1,0 +1,9 @@
+
+/* Instituições vinculadas: cores e proporções preservadas em fundo branco. */
+footer.wrap { flex-wrap:wrap; }
+.institutional-support { flex:0 0 100%; width:100%; box-sizing:border-box; margin-top:1.5rem; padding:1.25rem; background:#fff; border-radius:8px; color:#334155; }
+.institutional-support-label { margin:0 0 1rem; font-size:.875rem; font-weight:600; }
+.institutional-logos { display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-start; gap:1.5rem 2.5rem; }
+.institutional-logos img { display:block; width:auto; height:72px; max-width:210px; object-fit:contain; }
+@media (max-width:480px) { .institutional-support { padding:1rem; } .institutional-logos { gap:1.25rem; } .institutional-logos img { height:58px; max-width:165px; } }
+@media print { .institutional-support { break-inside:avoid; border-radius:0; padding:5mm 0 0; } .institutional-logos { gap:8mm; } .institutional-logos img { height:18mm; max-width:55mm; } }

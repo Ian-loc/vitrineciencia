@@ -430,7 +430,7 @@ def render_record_page(record: dict) -> str:
 <link rel="stylesheet" href="../../assets/record-page.css">
 <link rel="stylesheet" href="../../assets/print.css" media="print">
 <script type="application/ld+json">{json_ld}</script>
-</head>
+<link rel="stylesheet" href="../../assets/institutional-support.css?v=20261012"></head>
 <body class="record-page" data-public-record-schema="public-record-v2">
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 <nav class="site-nav" aria-label="Navegação principal"><div class="wrap nav-inner">
