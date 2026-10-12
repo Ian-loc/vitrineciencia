@@ -1,13 +1,16 @@
 # Direção científica — Vitrine Ciência
 
 **Status:** vigente  
-**Atualização:** 12 de outubro de 2026
+**Atualização:** 12 de outubro de 2026  
+**Fase operacional:** QA/QC do catálogo público 58, manutenção do cliente estático e desenho do modelo público v2. Estado factual: `docs/PROJECT_STATE.md`; execução: `WORKFLOW_STATUS.md`.
 
 ## Missão
 
 A Vitrine Ciência deve reduzir o caminho entre uma pergunta científica e um conjunto de dados adequado, compreensível e acessível para pesquisa sobre sistemas ambientais, ecológicos e socioecológicos relevantes ao Brasil.
 
 A Vitrine não é, por padrão, um repositório integral nem uma réplica dos catálogos externos. Ela é uma camada de **descoberta, curadoria, interpretação e encaminhamento**.
+
+A expansão de novas fontes, produtos e distribuições está **pausada** como processo automático/em lote. Novas entradas exigem **instrução humana explícita**, evidência e decisão curatorial; isso não impede correções nem adições pontuais formalmente autorizadas.
 
 ## Unidade de valor
 
