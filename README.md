@@ -59,6 +59,7 @@ As principais autoridades materiais são:
 - `data/post_core_access_audit.json` — acesso A–E das sete entradas pós-core;
 - `data/brazil_scope_priorities.json` — papel territorial;
 - `data/applied_priority_gate.json` — casos aplicados P1–P6;
+- `data/access_routes.json` — autoridade canônica de rotas de acesso e distribuições;
 - scripts de build e validação.
 
 No conjunto vivo de 58 registros, a classificação da rota principal é atualmente **A=2, B=39, C=0, D=14, E=3**. Isso não mede qualidade científica; descreve o tipo de acesso principal verificado. Serviços programáticos secundários podem existir mesmo quando a rota principal é B ou D.
@@ -95,7 +96,7 @@ O modelo público v2 e o renderer das páginas individuais já estão implementa
 
 com proveniência, evidência e curadoria como dimensões transversais.
 
-A próxima etapa estrutural da WEB é tornar as rotas de acesso canônicas e explícitas. A federação seguirá o princípio:
+As rotas de acesso já possuem autoridade explícita em `data/access_routes.json`. A próxima etapa do modelo é estruturar versões/coleções e papéis de proveniência onde isso melhora materialmente interpretação e reprodutibilidade. A federação seguirá o princípio:
 
 **federado na origem; indexado localmente na descoberta; descentralizado no acesso aos dados**.
 
