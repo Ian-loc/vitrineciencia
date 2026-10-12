@@ -1,9 +1,11 @@
 # Páginas públicas de registro — contrato v1
 
-**Status:** implementado e publicado; contrato de transição para o modelo público v2  
+**Status:** legado de compatibilidade; o HTML público já é renderizado pelo modelo v2  
 **Atualização:** 12 de outubro de 2026  
 **Unidade persistente:** Registro da Vitrine (`DR####`)  
 **Rota:** `/registros/<resource_id em minúsculas>/`
+
+O contrato v1 continua publicado em JSON para compatibilidade e comparação durante a migração. Desde a ativação do renderer v2, as páginas `/registros/dr####/` não são mais geradas diretamente deste contrato. A documentação corrente da migração está em `docs/PUBLIC_RECORD_V2_MIGRATION.md`.
 
 ## 1. O que está implementado
 
