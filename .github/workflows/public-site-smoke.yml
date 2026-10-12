@@ -142,6 +142,11 @@ jobs:
           assert carbon_v2["record"]["public_url"].endswith("/registros/dr0139/")
           assert carbon_v2["resource"]["name"] == carbon["title"]
           assert carbon_v2["curation"]["access_route_authority"] == "data/access_routes.json"
+          assert carbon_v2["curation"]["version_authority"] == "data/offering_versions.json"
+          assert carbon_v2["curation"]["provenance_authority"] == "data/provenance_statements.json"
+          assert carbon_v2["provenance"]["responsibility_statement"]
+          assert carbon_v2["provenance"]["agent_resolution_status"] == "unresolved_legacy_statement"
+          assert carbon_v2["agents"] == []
           assert sum(bool(r.get("primary")) for r in carbon_v2["access_routes"] if r.get("target_type") == "resource") == 1
           assert not any({"scientific_reference", "verification_source"} & set(r.get("roles") or []) for r in carbon_v2["access_routes"])
           assert len({p['resource_id'] for p in products}) <= len(resources)
