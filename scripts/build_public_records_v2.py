@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Constrói o read model público v2 a partir do public-record-v1.
 
-Este milestone é deliberadamente uma migração determinística:
+A transformação é deliberadamente determinística:
 - não recataloga os 58 registros;
 - não altera URLs públicas;
 - não cria novos produtos;
 - não transforma inferências em fatos novos.
 
-O objetivo é separar CatalogRecord e Recurso catalogado e testar a nova
-estrutura antes de migrar o HTML.
+O objetivo é separar Registro da Vitrine e Recurso catalogado e fornecer
+o read model usado tanto pelos JSONs públicos quanto pelo renderer HTML v2.
 """
 from __future__ import annotations
 
@@ -300,7 +300,7 @@ def build(output: Path = DEFAULT_OUTPUT) -> list[dict]:
 
     print(
         f"OK: {len(records)} registros public-record-v2 gerados em "
-        f"{target.relative_to(output)} sem alterar o HTML v1"
+        f"{target.relative_to(output)}"
     )
     return records
 
