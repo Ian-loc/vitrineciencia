@@ -67,6 +67,8 @@ jobs:
           fetch "$SITE/data/data_products.json?v=$TARGET_SHA" "$tmp/products.json"
           fetch "$SITE/data/applied_priority_gate.json?v=$TARGET_SHA" "$tmp/applied-priority.json"
           fetch "$SITE/data/public_records.json?v=$TARGET_SHA" "$tmp/public-records.json"
+          fetch "$SITE/data/v2/public_records.json?v=$TARGET_SHA" "$tmp/public-records-v2.json"
+          fetch "$SITE/data/v2/registros/dr0139.json?v=$TARGET_SHA" "$tmp/dr0139-v2.json"
           fetch "$SITE/registros/dr0010/?v=$TARGET_SHA" "$tmp/dr0010.html"
           fetch "$SITE/registros/dr0011/?v=$TARGET_SHA" "$tmp/dr0011.html"
           fetch "$SITE/registros/dr0139/?v=$TARGET_SHA" "$tmp/dr0139.html"
@@ -111,13 +113,15 @@ jobs:
           ! grep -E -q 'data/quarantine|v1.0.0-expanded' \
             "$tmp/index.html" "$tmp/products.html" "$tmp/sources.html" "$tmp/about.html"
 
-          python3 - "$tmp/resources.json" "$tmp/products.json" "$tmp/applied-priority.json" "$tmp/public-records.json" "$tmp/dr0139.json" <<'PY'
+          python3 - "$tmp/resources.json" "$tmp/products.json" "$tmp/applied-priority.json" "$tmp/public-records.json" "$tmp/dr0139.json" "$tmp/public-records-v2.json" "$tmp/dr0139-v2.json" <<'PY'
           import json, sys
           resources = json.load(open(sys.argv[1], encoding='utf-8'))
           products = json.load(open(sys.argv[2], encoding='utf-8'))
           priority = json.load(open(sys.argv[3], encoding='utf-8'))
           public_records = json.load(open(sys.argv[4], encoding='utf-8'))
           carbon = json.load(open(sys.argv[5], encoding='utf-8'))
+          public_records_v2 = json.load(open(sys.argv[6], encoding='utf-8'))
+          carbon_v2 = json.load(open(sys.argv[7], encoding='utf-8'))
 
           assert len(resources) == 58, len(resources)
           assert len(products) == 11, len(products)
@@ -126,6 +130,14 @@ jobs:
           assert all(sum(bool(x.get("primary")) for x in r["access"]["routes"]) == 1 for r in public_records)
           assert carbon["resource_id"] == "DR0139"
           assert carbon["url"].endswith("/registros/dr0139/")
+          assert len(public_records_v2) == 58, len(public_records_v2)
+          assert {r["record"]["id"] for r in public_records_v2} == {r["resource_id"] for r in resources}
+          assert all(r["record"]["resource_ref"] == r["resource"]["local_id"] for r in public_records_v2)
+          assert all(r["record"]["id"] != r["resource"]["local_id"] for r in public_records_v2)
+          assert carbon_v2["schema_version"] == "public-record-v2"
+          assert carbon_v2["record"]["id"] == "DR0139"
+          assert carbon_v2["record"]["public_url"].endswith("/registros/dr0139/")
+          assert carbon_v2["resource"]["name"] == "Carbon Mapper"
           assert len({p['resource_id'] for p in products}) <= len(resources)
           distributions = sum(len(p.get('distributions', [])) for p in products)
           assert distributions == 19, distributions
@@ -137,5 +149,5 @@ jobs:
           assert all(item.get('access_role') in {'A', 'B', 'C', 'D', 'E'} for item in items)
           assert all(str(item.get('access_url') or '').startswith('https://') for item in items)
 
-          print('OK: Vitrine pública 58 registros + 58 páginas individuais / 11 itens detalhados / 19 distribuições')
+          print('OK: Vitrine pública 58 registros + v1/v2 read models / 58 páginas individuais / 11 itens detalhados / 19 distribuições')
           PY
