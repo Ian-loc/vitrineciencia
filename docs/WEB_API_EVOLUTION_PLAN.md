@@ -77,17 +77,13 @@ Correção: introduzir `record` e `resource` separados.
 
 A autoridade passou a ser `data/access_routes.json`, validada por `scripts/validate_access_routes.py`. O read model v2 consome esses objetos diretamente. Campos legados permanecem temporariamente sincronizados apenas para compatibilidade.
 
-### 4.5 Versão não é entidade própria
+### 4.5 Versão — baseline resolvido
 
-`version_or_collection` está embutido no produto.
+`version_or_collection` continua preservado como resumo, mas só informações promovidas por curadoria entram em `versions[]`. A autoridade é `data/offering_versions.json`.
 
-Correção: modelar versões/coleções quando necessárias à reprodutibilidade.
+### 4.6 Proveniência — baseline resolvido sem parsing automático
 
-### 4.6 Proveniência simplificada
-
-`owner_or_manager` comprime vários papéis.
-
-Correção: agentes + papéis, como produtor, mantenedor, publicador, host e distribuidor.
+`owner_or_manager` é preservado como `responsibility_statement` em `data/provenance_statements.json`. Cadeias compostas não são tratadas como um único Agent. Agents individualizados exigem curadoria de identidade e papel.
 
 ### 4.7 Datas ambíguas
 
@@ -378,11 +374,11 @@ Descoberta simplificada e página individual reorganizada no renderer v2.
 
 Transformar links em objetos explícitos.
 
-### M4 — versões e proveniência
+### M4 — versões e proveniência — BASELINE CONCLUÍDO
 
-Estruturar versão/coleção e agentes/papéis.
+Versões foram separadas de resumos legados e proveniência textual foi separada de Agents. Resolução fina de papéis continua incremental.
 
-### M5 — Integration Registry
+### M5 — Integration Registry — PRÓXIMO
 
 Classificar integrações dos registros prioritários.
 
