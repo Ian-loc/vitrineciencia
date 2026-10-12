@@ -141,6 +141,8 @@ A release histórica não representa automaticamente o catálogo vivo atual.
 - evolução WEB/API: `docs/WEB_API_EVOLUTION_PLAN.md`;
 - checkpoint público atual: `docs/CHECKPOINT_PUBLIC_58_2026-10-09.md`;
 - dicionário de dados: `CODEBOOK.md`.
+- espelho documental no Drive: `DRIVE_MIRROR_CONTRACT.md`;
+- última comparação integral do Drive: `docs/audits/DRIVE_SYNC_2026-10-12.md`.
 
 Código: MIT. Metadados e curadoria original: CC BY 4.0.
 

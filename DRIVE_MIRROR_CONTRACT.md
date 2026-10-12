@@ -85,6 +85,15 @@ Um espelho só é **sincronizado** quando a comparação contra o commit-fonte c
 
 O Drive **não é requisito** para release ou DOI. Para preservação científica, a prioridade é um snapshot reproduzível a partir de uma tag Git e depósito no repositório de preservação adotado. Um espelho pode ser gerado antes ou depois quando trouxer utilidade, sem bloquear o encerramento de uma release correta.
 
-## Histórico
+## Registro das verificações
+
+O índice destinado à pasta do Drive é mantido em `docs/drive/indice_projeto.md`.
+Comparações datadas e seu escopo ficam em `docs/audits/DRIVE_SYNC_*.md` e `.json`.
+Uma comparação das três tabelas físicas não certifica automaticamente o espelho
+das autoridades auxiliares do modelo público v2 (rotas, versões e proveniência).
+Documentos administrativos antigos devem ser identificados como históricos quando
+novas cópias de `docs/PROJECT_STATE.md` e `WORKFLOW_STATUS.md` forem disponibilizadas.
+
+## Origem histórica
 
 O contrato surgiu quando a Vitrine possuía 51 fontes e existiam planilhas com estruturas divergentes. Contagens como 51 ou versões como 0.7.0 são marcos históricos, não requisitos atuais. Desde a separação da Vitrine e do Simbiotrama, o GitHub é a autoridade operacional independente da Vitrine.

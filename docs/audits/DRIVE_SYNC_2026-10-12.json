@@ -1,0 +1,127 @@
+{
+  "verified_at": "2026-10-12",
+  "timezone": "America/Sao_Paulo",
+  "source_repository": "Ian-loc/vitrineciencia",
+  "source_branch": "main",
+  "source_commit": "bb7c21b13585c94dc57e37efdc3af45eeabf6178",
+  "drive_folder_id": "1QTJTG1ErnxeHKgC86ZYGHb7vqgbNL7jq",
+  "spreadsheet_id": "1NHgAg-zumOrAwFt8e1tbAN_1Q9yPmtBaNhE74loUTHA",
+  "spreadsheet_snapshot_commit": "ae1d662b612127b0682827ee0813ed30422226d9",
+  "spreadsheet_snapshot_date": "2026-10-08",
+  "spreadsheet_comparison": "PASS",
+  "tables": [
+    {
+      "path": "data/data_resources.csv",
+      "rows": 58,
+      "columns": 34,
+      "sha256": "460237bb4d9d12cda556881fbc6f802765ba76d79b8900e3124758e9aa0d5ea1",
+      "comparison": "identical_headers_ids_and_all_values"
+    },
+    {
+      "path": "data/data_products.csv",
+      "rows": 11,
+      "columns": 24,
+      "sha256": "77a62e351ea5d540393aa74bd30c16013453f428a45b0db036707763d42fb1b3",
+      "comparison": "identical_headers_ids_and_all_values"
+    },
+    {
+      "path": "data/product_distributions.csv",
+      "rows": 19,
+      "columns": 15,
+      "sha256": "4f33e22aa650c92d79881fe9cda7e5dfa22ed75dcc4f882c4ad45edca6a3b6ea",
+      "comparison": "identical_headers_ids_and_all_values"
+    }
+  ],
+  "source_commit_gates": {
+    "build_deploy": 38294913997,
+    "visual_qa": 38294913959,
+    "post_deploy_smoke": 38294967916
+  },
+  "source_commit_gate_conclusions": "success",
+  "scope": "Derived mirror; canonical CSV tables match. The workbook is not a complete mirror of public-record-v2 auxiliary authorities.",
+  "historical_preservation": "Preserve expanded 135/843/876 files, static-51 checkpoint, release v1.0.0 and DOI unchanged.",
+  "drive_operations": [
+    {
+      "operation": "update",
+      "file_id": "1TCC7MOPX2dUtH5zPGZ9bLbmDYmn9qyL-",
+      "name": "indice_projeto.md",
+      "url": "https://drive.google.com/file/d/1TCC7MOPX2dUtH5zPGZ9bLbmDYmn9qyL-/view?usp=drivesdk",
+      "success": true
+    },
+    {
+      "operation": "update",
+      "file_id": "1QeqBEtZRXERiiPr1CQBEkRTP_sTXvyPP",
+      "name": "historico_carta_projeto_2026-08-20.docx",
+      "url": "https://docs.google.com/document/d/1QeqBEtZRXERiiPr1CQBEkRTP_sTXvyPP/edit?usp=drivesdk&ouid=114279701690163824157&rtpof=true&sd=true",
+      "success": true
+    },
+    {
+      "operation": "update",
+      "file_id": "1ywdETmondmitvQNaw71m_Bhl_FI5bmn5",
+      "name": "historico_plano_operacional_2026-08-20.docx",
+      "url": "https://docs.google.com/document/d/1ywdETmondmitvQNaw71m_Bhl_FI5bmn5/edit?usp=drivesdk&ouid=114279701690163824157&rtpof=true&sd=true",
+      "success": true
+    },
+    {
+      "operation": "upload",
+      "file_id": "13rj6J_EZ9h9P_4gGtaZkNk9aJJmaivB0",
+      "name": "estado_projeto_2026-10-12.md",
+      "url": "https://drive.google.com/file/d/13rj6J_EZ9h9P_4gGtaZkNk9aJJmaivB0/view?usp=drivesdk",
+      "success": true
+    },
+    {
+      "operation": "upload",
+      "file_id": "1ae52dKyPx-eI__mNpljko1pBBficW6vC",
+      "name": "workflow_status_2026-10-12.md",
+      "url": "https://drive.google.com/file/d/1ae52dKyPx-eI__mNpljko1pBBficW6vC/view?usp=drivesdk",
+      "success": true
+    },
+    {
+      "operation": "upload",
+      "file_id": "1AFHYKmx8raYrBuFaqMt5A6j4QYeXNMzl",
+      "name": "data_resources.csv",
+      "url": "https://drive.google.com/file/d/1AFHYKmx8raYrBuFaqMt5A6j4QYeXNMzl/view?usp=drivesdk",
+      "success": true
+    },
+    {
+      "operation": "upload",
+      "file_id": "1Hqtzs-rr72kN5-6Vh_m776z-YO3D2UYL",
+      "name": "data_products.csv",
+      "url": "https://drive.google.com/file/d/1Hqtzs-rr72kN5-6Vh_m776z-YO3D2UYL/view?usp=drivesdk",
+      "success": true
+    },
+    {
+      "operation": "upload",
+      "file_id": "1YrmWSiMTnQERW6YL8cYWROFg0fHcDjWm",
+      "name": "product_distributions.csv",
+      "url": "https://drive.google.com/file/d/1YrmWSiMTnQERW6YL8cYWROFg0fHcDjWm/view?usp=drivesdk",
+      "success": true
+    },
+    {
+      "operation": "upload",
+      "file_id": "1FJy5MhxT7yVuccdgT2cxKTsToRfS7PkG",
+      "name": "auditoria_drive_2026-10-12.md",
+      "url": "https://drive.google.com/file/d/1FJy5MhxT7yVuccdgT2cxKTsToRfS7PkG/view?usp=drivesdk",
+      "success": true
+    },
+    {
+      "operation": "upload",
+      "file_id": "17UZVjpXhYMSN33v0-UjlCeupEu3DYDsA",
+      "name": "auditoria_drive_2026-10-12.json",
+      "url": "https://drive.google.com/file/d/17UZVjpXhYMSN33v0-UjlCeupEu3DYDsA/view?usp=drivesdk",
+      "success": true
+    }
+  ],
+  "drive_readback": "PASS: index content and destination folder listings verified",
+  "local_validation": [
+    "validate_active_documentation",
+    "validate_access_routes",
+    "validate_version_provenance",
+    "build_catalog",
+    "build_public_discovery",
+    "build_site_artifact",
+    "validate_record_pages",
+    "validate_public_records_v2",
+    "git diff --check"
+  ]
+}
