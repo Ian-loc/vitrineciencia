@@ -40,13 +40,15 @@ Concluído:
 - QA estrutural e visual;
 - smoke do deploy.
 
-Próximas correções WEB:
+Concluído no ciclo WEB v2:
 
-1. simplificar os cards de `sources.html` na origem;
-2. reduzir redundância entre card e página individual;
-3. reorganizar a página do registro em blocos orientados ao usuário;
-4. separar visualmente informação científica do recurso e curadoria da Vitrine;
-5. migrar o renderer para o modelo público v2 sem alterar URLs.
+- cards de `sources.html` simplificados na origem;
+- redundância entre card e página individual reduzida;
+- página do registro organizada em cinco blocos;
+- informação científica do recurso separada visualmente da curadoria;
+- renderer migrado para o modelo público v2 sem alterar URLs.
+
+Próxima correção WEB/contrato: rotas de acesso canônicas.
 
 ### B. Modelo público v2 — MILESTONE ATIVO
 
@@ -146,8 +148,8 @@ Atualização sob demanda deverá ser assíncrona e limitada por freshness/TTL, 
 1. documentação e estado canônico — **concluído**;
 2. read model `public-record-v2` paralelo — **concluído**;
 3. renderer v2 e estrutura de cinco blocos — **concluído**;
-4. simplificar cards e eliminar redundância/guardrails desnecessários — **próxima ação**;
-5. rotas de acesso canônicas;
+4. simplificar cards e eliminar redundância/guardrails desnecessários — **concluído**;
+5. rotas de acesso canônicas — **próxima ação**;
 6. versões e proveniência estruturadas;
 7. Integration Registry;
 8. pilotos de conectores;

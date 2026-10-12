@@ -85,7 +85,7 @@ As superfícies principais são:
 - `/registros/dr####/` — página persistente de cada registro;
 - `analytics.html` e páginas auxiliares — composição e método do acervo.
 
-A existência das páginas individuais torna desnecessário manter toda a ficha técnica dentro dos cards de resultados. A simplificação desses cards é parte do próximo ciclo de interface.
+Os cards de resultados funcionam como instrumentos de descoberta e triagem. A ficha técnica foi removida deles; a página individual concentra interpretação, produtos, limitações e acesso.
 
 ## Evolução planejada: modelo público v2 e API
 
@@ -95,7 +95,7 @@ O modelo público v2 e o renderer das páginas individuais já estão implementa
 
 com proveniência, evidência e curadoria como dimensões transversais.
 
-A próxima etapa da WEB é simplificar os cards de descoberta e, depois, tornar as rotas de acesso canônicas. A federação seguirá o princípio:
+A próxima etapa estrutural da WEB é tornar as rotas de acesso canônicas e explícitas. A federação seguirá o princípio:
 
 **federado na origem; indexado localmente na descoberta; descentralizado no acesso aos dados**.
 

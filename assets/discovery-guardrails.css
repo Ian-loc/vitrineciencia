@@ -36,9 +36,6 @@ body:has(#source-theme-shortcut) .scope-shortcuts{display:none}
 .discovery-facts dd{margin:0;font-size:.86rem;line-height:1.35;font-weight:650;overflow-wrap:anywhere}
 .sources-page .access-review-note{display:block;font-size:.8rem;line-height:1.35;padding:.45rem .55rem;margin:.45rem 0 .6rem;background:#fff}
 .sources-page .card-actions{margin-top:.15rem}
-.sources-page .card-details{margin-top:.55rem}
-.sources-page .card-details>summary{font-size:.86rem;font-weight:700}
-.sources-page .detail-group h4{font-size:.95rem}
 
 /* Applied territorial layer: specific data objects, explicitly outside the 51-count. */
 .applied-priority-section{margin-top:2rem;margin-bottom:1.4rem;padding-top:1.3rem;border-top:1px solid var(--border,#d7dfda)}
@@ -61,5 +58,5 @@ body:has(#source-theme-shortcut) .scope-shortcuts{display:none}
 
 @media(max-width:900px){#product-filters .product-primary-grid.simple-primary,#filters .source-filter-primary{grid-template-columns:repeat(2,minmax(0,1fr))}.discovery-facts{grid-template-columns:1fr 1fr}.discovery-facts>div:last-child{grid-column:1/-1}.priority-data-grid{grid-template-columns:1fr}}
 @media(max-width:720px){.controlled-search-shell .search-row,.theme-shortcut-grid{display:grid;grid-template-columns:1fr}.controlled-search-shell button{width:100%}.theme-shortcut-grid p{border-left:0;border-top:3px solid var(--border,#cfdad4)}#product-filters .product-primary-grid.simple-primary,#filters .source-filter-primary{grid-template-columns:1fr}.controlled-filter-panel .filter-footer{align-items:stretch;flex-direction:column}.controlled-filter-panel .filter-footer button{width:100%}.discovery-facts{grid-template-columns:1fr}.discovery-facts>div:last-child{grid-column:auto}.priority-facts>div{grid-template-columns:1fr;gap:.12rem}.priority-data-card{padding:.85rem}}
-.record-detail-actions{margin-top:.7rem}.record-detail-actions .action-secondary{display:inline-flex;align-items:center;gap:.25rem}
+.record-detail-actions{margin:.2rem 0 .55rem}.record-detail-actions .action-primary{display:inline-flex;align-items:center;gap:.25rem;min-height:40px;padding:.55rem .8rem;border-radius:8px;font-weight:800}
 .product-source a{color:inherit;text-decoration-thickness:.08em;text-underline-offset:.14em}

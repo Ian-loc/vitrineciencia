@@ -65,17 +65,13 @@ Isso significa que a futura API não precisa inventar uma representação totalm
 
 Correção: introduzir `record` e `resource` separados.
 
-### 4.2 Cards excessivamente detalhados
+### 4.2 Cards de descoberta — resolvido
 
-`sources.html` ainda renderiza detalhes técnicos extensos.
+`sources.html` agora renderiza cards de triagem: identidade, descrição, responsável, temas, fatos comparáveis e CTA principal para o registro completo. A ficha técnica duplicada foi removida.
 
-Correção: cards devem orientar descoberta e enviar o usuário à página individual.
+### 4.3 Guardrails pós-renderização — reduzido
 
-### 4.3 Guardrails pós-renderização
-
-`public-interface-guardrails.js` remove informações e links técnicos depois que o card foi construído.
-
-Correção: gerar diretamente a interface pública correta.
+`public-interface-guardrails.js` deixou de limpar a estrutura dos cards de fontes. Ele permanece como camada conservadora para registrar data de verificação e limitar ações externas a destinos públicos seguros.
 
 ### 4.4 Rotas derivadas
 
@@ -374,11 +370,13 @@ Documentação sincronizada ao runtime 58 e checkpoint factual registrado.
 
 Concluído: read model v2, separação `record → resource`, crosswalk determinístico, validação de compatibilidade e renderer HTML v2 nas 58 páginas. O v1 permanece temporariamente como referência de regressão.
 
-### M2 — cards e página individual
+### M2 — cards e página individual — CONCLUÍDO
 
-Simplificar descoberta e reorganizar ficha.
+Descoberta simplificada e página individual reorganizada no renderer v2.
 
-### M3 — rotas canônicas
+### M3 — rotas canônicas — PRÓXIMO
+
+Transformar links em objetos explícitos e mover sua autoridade para uma fonte canônica.
 
 Transformar links em objetos explícitos.
 

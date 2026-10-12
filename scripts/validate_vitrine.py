@@ -245,14 +245,16 @@ def validate_functional_contracts() -> None:
     discovery = (ROOT / "assets/source-discovery-v2.js").read_text(encoding="utf-8")
     priority = (ROOT / "assets/applied-priority.js").read_text(encoding="utf-8")
     if "const PAGE_SIZE = 12;" not in app or "filtered.slice(0, visibleCount)" not in app: fail("assets/app.js: divulgação progressiva ausente")
-    if "recordUrl" not in app or "Ver registro completo na Vitrine" not in app: fail("assets/app.js: navegação para páginas individuais de registro ausente")
+    if "recordUrl" not in app or "Ver registro na Vitrine" not in app: fail("assets/app.js: navegação principal para páginas individuais de registro ausente")
+    for legacy in ("card-details", "detail-groups", "status-grid"):
+        if legacy in app: fail(f"assets/app.js: ficha técnica redundante ainda gerada nos cards: {legacy}")
     for token in ("const PAGE_SIZE = 18;", "THEME_GROUPS", "productAccessCategories", "parseQuery"):
         if token not in products: fail(f"assets/products.js: contrato ausente: {token}")
     for token in ("Página do provedor", "API / documentação", "Dados / download", "access-review-note"):
         if token not in guardrails: fail(f"discovery-guardrails.js: semântica de acesso ausente: {token}")
     for token in ("source-theme-shortcut", "URLSearchParams", "sources.html"):
         if token not in theme: fail(f"static-catalog-51.js: contrato temático ausente: {token}")
-    for token in ("information", "access-role", "discovery-facts", "Distribuição / acesso"):
+    for token in ("information", "access-role", "discovery-facts", "Como acessar", "Responsável: "):
         if token not in discovery: fail(f"source-discovery-v2.js: contrato de descoberta ausente: {token}")
     for token in ("applied_priority_gate.json", "priority-applied-list", "access_role"):
         if token not in priority: fail(f"applied-priority.js: contrato aplicado ausente: {token}")

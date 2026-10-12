@@ -3,11 +3,11 @@
 
   const ACCESS_ORDER = ["A", "B", "C", "D", "E"];
   const ACCESS_LABELS = {
-    A: "Download / arquivo de dados",
-    B: "Página específica para obter dados",
-    C: "API / serviço de dados",
-    D: "Visualização ou documentação",
-    E: "Acesso em revisão"
+    A: "Dados para download",
+    B: "Página para obter dados",
+    C: "Serviço de dados",
+    D: "Visualização / site",
+    E: "Acesso a confirmar"
   };
 
   const THEMES = [
@@ -116,14 +116,14 @@
       if (!resource) return;
       const description = card.querySelector(".description");
       const actions = card.querySelector(".card-actions");
+      const recordAction = card.querySelector(".record-detail-actions");
       const chips = card.querySelector(".chips");
-      const status = card.querySelector(".status-grid");
       const provenance = resource.owner_or_manager || resource.official_identity || "Não informada";
       if (!card.querySelector(".provenance-line") && description) {
         const line = document.createElement("p");
         line.className = "provenance-line";
         const strong = document.createElement("strong");
-        strong.textContent = "Proveniência: ";
+        strong.textContent = "Responsável: ";
         line.append(strong, document.createTextNode(provenance));
         description.insertAdjacentElement("afterend", line);
       }
@@ -133,21 +133,19 @@
       [
         ["O que oferece", resource.data_product_types || "Não informado"],
         ["Território", resource.geographic_coverage || "Não informado"],
-        ["Distribuição / acesso", `${accessRole(resource)} · ${ACCESS_LABELS[accessRole(resource)]}`]
+        ["Como acessar", ACCESS_LABELS[accessRole(resource)] || "Acesso a confirmar"]
       ].forEach(([label, value]) => {
         const item = document.createElement("div");
         const dt = document.createElement("dt");
         const dd = document.createElement("dd");
         dt.textContent = label;
         dd.textContent = value;
-        if (label === "Distribuição / acesso") dd.dataset.accessAuthority = "verified_access_registries";
+        if (label === "Como acessar") dd.dataset.accessAuthority = "verified_access_registries";
         item.append(dt, dd);
         facts.appendChild(item);
       });
-      if (actions) actions.insertAdjacentElement("beforebegin", facts);
-      if (status) status.hidden = true;
-      const summary = card.querySelector(".card-details summary");
-      if (summary) summary.textContent = "Detalhes científicos, técnicos e documentação";
+      if (recordAction) recordAction.insertAdjacentElement("beforebegin", facts);
+      else if (actions) actions.insertAdjacentElement("beforebegin", facts);
     });
   }
 
