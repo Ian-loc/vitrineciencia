@@ -137,7 +137,7 @@ jobs:
           assert carbon_v2["schema_version"] == "public-record-v2"
           assert carbon_v2["record"]["id"] == "DR0139"
           assert carbon_v2["record"]["public_url"].endswith("/registros/dr0139/")
-          assert carbon_v2["resource"]["name"] == "Carbon Mapper"
+          assert carbon_v2["resource"]["name"] == carbon["title"]
           assert len({p['resource_id'] for p in products}) <= len(resources)
           distributions = sum(len(p.get('distributions', [])) for p in products)
           assert distributions == 19, distributions
