@@ -88,14 +88,16 @@ Eles são mecanismos de migração e não IDs científicos permanentes. O desenh
 
 ## 7. Rotas de acesso
 
-O read model v2 unifica a representação estrutural de rotas, mas ainda não cria a fonte canônica `access_routes`.
+O read model v2 consome a autoridade canônica `data/access_routes.json`.
 
 Existem dois grupos:
 
-1. rotas do recurso, derivadas do v1;
+1. rotas do recurso, com uma única rota principal A–E e rotas secundárias explícitas;
 2. distribuições existentes, preservadas com seus IDs DD e direcionadas à offering correspondente.
 
-A futura canonicalização das rotas deverá migrar a autoridade dos campos legados para uma fonte explícita, sem quebrar este contrato de leitura.
+Referências científicas e fontes de verificação deixaram de compartilhar o mesmo array: elas permanecem em `references[]`.
+
+Os campos legados continuam sincronizados temporariamente e são usados como gate de compatibilidade, mas não são mais a fonte da qual o v2 infere os papéis das URLs.
 
 ## 8. Agentes e proveniência
 
@@ -156,8 +158,8 @@ Após o renderer v2:
 1. concluir QA dos arquétipos MapBiomas, TerraBrasilis, GEE, GBIF, REDEMET, RESOLVE, Carbon Mapper e Planet Forest Carbon;
 2. simplificar os cards de descoberta na origem;
 3. reduzir a responsabilidade de `public-interface-guardrails.js`;
-4. tornar rotas de acesso uma fonte canônica explícita;
-5. depois estruturar versões e proveniência mais específicas.
+4. manter `access-routes-v1` validado como autoridade;
+5. estruturar versões e proveniência mais específicas.
 
 Referências:
 
