@@ -1,6 +1,6 @@
 # Public Record v2 — migração e compatibilidade
 
-**Status:** implementação inicial em paralelo ao v1  
+**Status:** read model v2 e renderer HTML v2 implementados; v1 preservado como compatibilidade  
 **Milestone:** `VITRINE_PUBLIC_MODEL_V2`  
 **Data:** 12 de outubro de 2026
 
@@ -26,7 +26,7 @@ O v2 é publicado em paralelo:
 - v2 agregado: `/data/v2/public_records.json`;
 - v2 individual: `/data/v2/registros/dr####.json`.
 
-As páginas `/registros/dr####/` continuam sendo renderizadas pelo v1 até a migração de interface ser validada.
+As páginas `/registros/dr####/` são renderizadas pelo v2. O v1 continua publicado em JSON para comparação, regressão e compatibilidade durante a transição.
 
 ## 3. Crosswalk principal
 
@@ -127,14 +127,21 @@ O validador v2 exige:
 - nenhuma conversão de desconhecido em negativo;
 - JSON individual idêntico ao objeto correspondente do índice agregado.
 
-## 11. O que ainda não mudou
+## 11. Estado após a migração do renderer
 
-Este milestone não altera:
+Já mudou:
 
-- HTML das páginas;
+- o HTML das 58 páginas agora consome o read model v2;
+- a ficha pública foi reduzida a cinco blocos;
+- “tipo” é apresentado como propriedade do recurso catalogado;
+- produtos detalhados aparecem como ofertas científicas subordinadas;
+- curadoria ficou secundária no último bloco.
+
+Ainda não mudou:
+
 - cards de `sources.html`;
 - `public-interface-guardrails.js`;
-- arquivos canônicos de rotas;
+- a fonte canônica das rotas de acesso;
 - schema físico DR/DP/DD;
 - Integration Registry;
 - conectores;
@@ -144,13 +151,13 @@ Este milestone não altera:
 
 ## 12. Próxima etapa
 
-Após estabilização do v2 em `main`:
+Após o renderer v2:
 
-1. criar renderer de página baseado no v2;
-2. validar os arquétipos MapBiomas, TerraBrasilis, GEE, GBIF, REDEMET, RESOLVE, Carbon Mapper e Planet Forest Carbon;
-3. reorganizar a página nos cinco blocos públicos;
-4. simplificar os cards de descoberta;
-5. somente então avançar para rotas canônicas.
+1. concluir QA dos arquétipos MapBiomas, TerraBrasilis, GEE, GBIF, REDEMET, RESOLVE, Carbon Mapper e Planet Forest Carbon;
+2. simplificar os cards de descoberta na origem;
+3. reduzir a responsabilidade de `public-interface-guardrails.js`;
+4. tornar rotas de acesso uma fonte canônica explícita;
+5. depois estruturar versões e proveniência mais específicas.
 
 Referências:
 

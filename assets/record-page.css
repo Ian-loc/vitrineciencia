@@ -38,3 +38,9 @@
 .record-page .record-footer-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin:1rem 0 0}
 @media (max-width:900px){.record-page .record-layout{grid-template-columns:1fr}.record-page .record-nav{position:static}.record-page .record-grid{grid-template-columns:1fr}}
 @media (max-width:600px){.record-page .record-hero{padding-top:1.5rem}.record-page .record-kicker{gap:.4rem}.record-page .record-grid{gap:.6rem}}
+
+.record-page .record-summary-block{margin:0 0 1.1rem;padding:1rem;border:1px solid #e0e8e4;border-radius:12px;background:#f8faf9}
+.record-page .record-summary-block h3{margin-top:0}
+.record-page .record-reference-list{display:grid;gap:.75rem}
+.record-page .record-curation{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid #d8e2dd}
+.record-page .record-curation h3{margin-top:0}

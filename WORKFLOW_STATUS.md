@@ -6,15 +6,7 @@
 
 `main` no GitHub é a autoridade canônica do estado público.
 
-Runtime corrente:
-
-`378e3d43c71988f3c7966e33f3d4f5cb879b1443`
-
-Gates do runtime:
-
-- build/validação/deploy `37957241426` — PASS;
-- QA visual `37957241480` — PASS;
-- smoke pós-deploy `37957322300` — PASS.
+Runtime corrente: `HEAD` validado de `main`. O checkpoint público 58 anterior ao v2 está preservado em `docs/CHECKPOINT_PUBLIC_58_2026-10-09.md`.
 
 ## Estado publicado
 
@@ -58,7 +50,7 @@ Próximas correções WEB:
 
 ### B. Modelo público v2 — MILESTONE ATIVO
 
-Status: **read model v2 implementado em paralelo ao v1; HTML ainda no v1**.
+Status: **read model v2 e renderer HTML v2 implementados; v1 preservado como compatibilidade temporária**.
 
 Concluído nesta primeira etapa:
 
@@ -70,7 +62,10 @@ Concluído nesta primeira etapa:
 - versões legadas explicitamente marcadas como derivadas;
 - agente legado migrado conservadoramente;
 - validador de compatibilidade v1/v2;
-- publicação paralela dos JSONs v2.
+- publicação paralela dos JSONs v2;
+- renderer HTML baseado no v2;
+- cinco blocos públicos nas 58 páginas;
+- tipo público atribuído explicitamente ao recurso, não ao DR.
 
 Contrato alvo:
 
@@ -150,15 +145,15 @@ Atualização sob demanda deverá ser assíncrona e limitada por freshness/TTL, 
 
 1. documentação e estado canônico — **concluído**;
 2. read model `public-record-v2` paralelo — **concluído**;
-3. migrar renderer das páginas para v2 e validar arquétipos — **próxima ação**;
-4. simplificar cards e eliminar redundância/guardrails desnecessários;
+3. renderer v2 e estrutura de cinco blocos — **concluído**;
+4. simplificar cards e eliminar redundância/guardrails desnecessários — **próxima ação**;
 5. rotas de acesso canônicas;
-5. versões e proveniência estruturadas;
-6. Integration Registry;
-7. pilotos de conectores;
-8. pipeline de harvesting;
-9. API de leitura;
-10. revalidação assíncrona e observabilidade.
+6. versões e proveniência estruturadas;
+7. Integration Registry;
+8. pilotos de conectores;
+9. pipeline de harvesting;
+10. API de leitura;
+11. revalidação assíncrona e observabilidade.
 
 ## Regras que não mudam
 

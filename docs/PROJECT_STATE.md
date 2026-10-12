@@ -7,17 +7,9 @@
 
 O repositório `Ian-loc/vitrineciencia` é a autoridade canônica. A branch `main` representa o estado público corrente. Drive, planilhas, worktrees, handoffs e conversas são auxiliares ou espelhos e não substituem o que está materializado e validado no GitHub.
 
-O runtime público corrente é o commit:
+O runtime público corrente é sempre o `HEAD` validado da branch `main`. O checkpoint factual anterior ao modelo v2 permanece registrado em `docs/CHECKPOINT_PUBLIC_58_2026-10-09.md`; SHAs de checkpoints não devem ser confundidos com o head móvel do projeto.
 
-`378e3d43c71988f3c7966e33f3d4f5cb879b1443`
-
-incorporado pelo PR #277 em 09/10/2026.
-
-Gates desse runtime:
-
-- `Validar e publicar Vitrine` — run `37957241426` — PASS;
-- `Capturar QA visual da Vitrine publicada` — run `37957241480` — PASS;
-- `Verificar Vitrine publicada` — run `37957322300` — PASS.
+Toda mudança de interface precisa passar por build/validação, QA visual quando aplicável e smoke pós-deploy.
 
 Não há uma migração de backend em andamento no estado público. O site continua sendo um artefato estático publicado por GitHub Pages.
 
@@ -93,14 +85,15 @@ DR#### 1 ─── N DP###### 1 ─── N DD######
 
 Ele existe para compatibilidade, IDs e rastreabilidade; não é a ontologia final.
 
-O HTML público implementado atualmente ainda usa `schema/public-record-v1.json` e mantém `DR####` como unidade de navegação persistente.
+O HTML das páginas individuais é gerado pelo `public-record-v2`, mantendo `DR####` como unidade de navegação persistente.
 
-O read model experimental `public-record-v2` também é gerado **em paralelo**, sem alterar ainda o HTML:
+O v2 é publicado como:
 
 - `/data/v2/public_records.json`;
-- `/data/v2/registros/dr####.json`.
+- `/data/v2/registros/dr####.json`;
+- `/registros/dr####/` — representação HTML humana do mesmo modelo.
 
-O v2 separa `record` e `resource`, preserva as URLs, migra os produtos atuais para `offerings` e preserva as distribuições como rotas direcionadas às ofertas. Sua migração é validada registro a registro contra o v1.
+O v2 separa `record` e `resource`, preserva as URLs, migra os produtos atuais para `offerings` e preserva as distribuições como rotas direcionadas às ofertas. O v1 continua publicado em JSON como camada de compatibilidade e regressão durante a transição.
 
 A página de um registro agrega, quando disponíveis:
 
@@ -119,22 +112,18 @@ A página de um registro agrega, quando disponíveis:
 
 A decisão de não criar página para cada arquivo, endpoint, asset ou versão permanece vigente.
 
-## 5. Limitação conceitual conhecida do v1
+## 5. Separação registro–recurso
 
-O contrato v1 ainda associa diretamente tipos como “Iniciativa”, “Plataforma” ou “Base” ao objeto público do registro.
-
-A próxima revisão deve separar formalmente:
+O v2 materializa:
 
 ```
-Registro da Vitrine (CatalogRecord)
+Registro da Vitrine
         │ descreve
         ▼
 Recurso catalogado
 ```
 
-O tipo “iniciativa”, “plataforma”, “catálogo”, “base”, “rede” etc. pertence ao recurso catalogado, enquanto `DR####` identifica o registro mantido pela Vitrine.
-
-Essa mudança deverá preservar as 58 URLs atuais.
+`DR####` identifica o registro mantido pela Vitrine. Tipos como iniciativa, plataforma, catálogo, base ou rede pertencem ao recurso catalogado. As 58 URLs foram preservadas.
 
 ## 6. Cliente web
 
@@ -236,7 +225,7 @@ A **release científica `v1.0.0` publicada**, sua tag, DOI `10.5281/zenodo.22130
 
 O marco **`VITRINE_PUBLIC_MODEL_V2`** está em execução.
 
-A primeira etapa — read model paralelo e transformação determinística v1→v2 — está implementada. O próximo passo é migrar o renderer das páginas para o v2 e testar os arquétipos sem alterar as 58 URLs.
+O read model v2 e o renderer das páginas individuais estão implementados. O próximo passo é simplificar os cards de descoberta e reduzir a redundância entre `sources.html` e as páginas completas, preservando os testes dos arquétipos.
 
 A sequência semântica alvo permanece:
 
