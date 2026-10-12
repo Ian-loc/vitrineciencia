@@ -141,6 +141,9 @@ jobs:
           assert carbon_v2["record"]["id"] == "DR0139"
           assert carbon_v2["record"]["public_url"].endswith("/registros/dr0139/")
           assert carbon_v2["resource"]["name"] == carbon["title"]
+          assert carbon_v2["curation"]["access_route_authority"] == "data/access_routes.json"
+          assert sum(bool(r.get("primary")) for r in carbon_v2["access_routes"] if r.get("target_type") == "resource") == 1
+          assert not any({"scientific_reference", "verification_source"} & set(r.get("roles") or []) for r in carbon_v2["access_routes"])
           assert len({p['resource_id'] for p in products}) <= len(resources)
           distributions = sum(len(p.get('distributions', [])) for p in products)
           assert distributions == 19, distributions
