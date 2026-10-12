@@ -167,17 +167,21 @@ A interface pública usa uma camada derivada definida em `schema/public-discover
 As categorias e normalizações públicas permanecem compatíveis com o frontend corrente enquanto a ontologia é auditada. Nenhuma delas deve ser usada como evidência para reclassificar automaticamente um DR.
 ## 12. Registro público e páginas individuais
 
-A unidade pública de navegação individual é o **Registro da Vitrine** (`DR####`). O registro não é sinônimo de dataset, provedor ou plataforma; ele é a unidade catalográfica persistente mantida pela Vitrine. No contrato v1, o recurso externo descrito ainda aparece parcialmente fundido a esse objeto; o modelo v2 deverá representar explicitamente `record → resource`.
+A unidade pública de navegação individual é o **Registro da Vitrine** (`DR####`). O registro não é sinônimo de dataset, provedor ou plataforma; ele é a unidade catalográfica persistente mantida pela Vitrine.
 
-A representação pública é definida em `schema/public-record-v1.json` e materializada no build como:
+O contrato público corrente é `schema/public-record-v2.json`, que representa explicitamente `record → resource`.
 
-- `/registros/dr####/` — HTML público;
-- `/data/registros/dr####.json` — representação individual estruturada;
-- `/data/public_records.json` — índice completo dos registros públicos.
+A representação pública é materializada no build como:
+
+- `/registros/dr####/` — HTML público renderizado a partir do v2;
+- `/data/v2/registros/dr####.json` — representação individual v2;
+- `/data/v2/public_records.json` — índice completo v2.
+
+O v1 continua publicado temporariamente em `/data/registros/` e `/data/public_records.json` para compatibilidade e comparação durante a transição.
 
 Produtos `DP` e distribuições `DD` permanecem subordinados ao registro. Eles não geram novas páginas públicas por padrão. A estrutura foi desenhada para servir como snapshot resiliente de uma futura API `/api/v1/records/{resource_id}`, usando atualização assíncrona e curadoria antes de substituir o estado público.
 
-A documentação operacional dessa decisão está em `docs/PUBLIC_RECORD_PAGES_V1.md`.
+A documentação corrente está em `docs/PUBLIC_RECORD_V2_MIGRATION.md`; `docs/PUBLIC_RECORD_PAGES_V1.md` documenta a camada anterior de compatibilidade.
 
 ## 13. API, rotas e integração futura
 
@@ -185,7 +189,8 @@ A API da Vitrine ainda não existe como serviço público. O que existe hoje é 
 
 A evolução prevista inclui:
 
-- `public-record-v2`, separando registro e recurso;
+- `public-record-v2` já implementado, separando registro e recurso;
+- simplificação dos cards de descoberta;
 - rotas de acesso como objetos canônicos;
 - versões/coleções estruturadas quando materialmente relevantes;
 - proveniência com agentes e papéis;
