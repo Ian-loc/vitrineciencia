@@ -389,33 +389,11 @@ function productCard(product) {
       <div><dt>Escala?</dt><dd>${esc(displayScale(product))}</dd></div>
       <div><dt>Acesso?</dt><dd>${esc(displayAccess(product))}</dd></div>
     </dl>
-    <div class="product-card-bottom">${limitation}<span class="product-verified">Revisado: ${esc(product.last_verified || "não informado")}</span></div>
+    <div class="product-card-bottom">${limitation}</div>
     <div class="card-actions compact-actions">
-      ${actionLink("Acessar", product.product_page_url, "action-primary")}
+      ${actionLink("Abrir", product.product_page_url, "action-primary")}
       <label class="compare-toggle compact-compare"><input type="checkbox" data-compare="${esc(product.product_id)}"${checked}><span>Comparar</span></label>
     </div>
-    <details class="card-details">
-      <summary>Detalhes científicos e acesso</summary>
-      <div class="detail-groups">
-        <section class="detail-group"><h4>Produto</h4><div class="detail-grid">
-          ${detail("Versão ou coleção", product.version_or_collection)}
-          ${detail("Estado", product.product_status)}
-          ${detail("Origem", ORIGIN_LABELS[product.primary_or_derived] || product.primary_or_derived)}
-          ${detail("Cobertura geográfica", product.geographic_coverage)}
-          ${detail("Cobertura temporal", product.temporal_coverage)}
-          ${detail("Suporte espacial", product.spatial_support)}
-          ${detail("Resolução espacial", product.spatial_resolution)}
-          ${detail("Resolução temporal", product.temporal_resolution)}
-          ${detail("Frequência de atualização", product.update_frequency)}
-          ${detail("Licença(s)", licenses(product))}
-          ${detail("Palavras-chave", product.keywords)}
-          ${detail("Limitações", product.limitations)}
-          ${detail("Provedor", product.source?.official_identity || product.source?.resource_name)}
-          ${detail("Registro revisado em", product.last_verified)}
-        </div><div class="detail-links">${actionLink("Metodologia", product.methodology_url)}${actionLink("Página do produto", product.product_page_url)}</div></section>
-        <section class="detail-group"><h4>Formas de acesso</h4><div class="product-distributions">${(product.distributions || []).map(distribution => `<article class="distribution"><header><h5>${esc(distribution.distribution_name || "Acesso")}</h5>${actionLink("Abrir", distribution.access_url)}</header><div class="distribution-grid">${detail("Formato", distribution.format)}${detail("Protocolo", distribution.access_protocol)}${detail("Ferramenta", distribution.access_tool)}${detail("Download gratuito", ENUM_LABELS[distribution.free_download] || distribution.free_download)}${detail("Autenticação", ENUM_LABELS[distribution.authentication_required] || distribution.authentication_required)}${detail("Licença", distribution.license)}</div></article>`).join("")}</div></section>
-      </div>
-    </details>
   </article>`;
 }
 
@@ -634,17 +612,38 @@ function renderCompareBar() {
 }
 function comparisonValue(product,key) {
   const values = {
-    where:product.geographic_coverage, when:product.temporal_coverage, scale:displayScale(product), access:displayAccess(product),
-    source:product.source?.resource_name, version:product.version_or_collection, license:licenses(product),
-    limitations:product.limitations, methodology:product.methodology_url ? "Disponível" : "Não localizada", verified:product.last_verified
+    where:product.geographic_coverage,
+    when:product.temporal_coverage,
+    scale:displayScale(product),
+    temporal:product.temporal_resolution,
+    update:product.update_frequency,
+    access:displayAccess(product),
+    formats:productFormatsRaw(product).join(" | "),
+    source:product.source?.resource_name,
+    version:product.version_or_collection,
+    license:licenses(product),
+    limitations:product.limitations,
+    methodology:product.methodology_url ? "Disponível" : "Não localizada",
+    verified:product.last_verified
   };
   return values[key] || "Não informado";
 }
 function renderComparison() {
   const products = [...selected].map(id => all.find(product => product.product_id === id)).filter(Boolean);
   if (products.length < 2) return false;
-  const rows = [["Onde?","where"],["Quando?","when"],["Escala","scale"],["Acesso","access"],["Fonte / provedor","source"],["Versão / coleção","version"],["Licença(s)","license"],["Metodologia","methodology"],["Limitações","limitations"],["Registro revisado em","verified"]];
-  els.compareContent.innerHTML = `<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th scope="col">Dimensão</th>${products.map(product => `<th scope="col"><div class="compare-product-head"><span>${esc(product.product_name)}</span><button type="button" data-remove-compare="${esc(product.product_id)}" aria-label="Remover ${esc(product.product_name)} da comparação">Remover</button></div></th>`).join("")}</tr></thead><tbody>${rows.map(([label,key]) => `<tr><th scope="row">${label}</th>${products.map(product => `<td>${esc(comparisonValue(product,key))}</td>`).join("")}</tr>`).join("")}</tbody></table></div><p class="export-note">A comparação organiza metadados catalogados para triagem. Confirme versão, método e condições de uso no provedor original.</p>`;
+  const rows = [
+    ["Território","where"],["Período","when"],["Escala espacial","scale"],["Resolução temporal","temporal"],
+    ["Atualização","update"],["Acesso","access"],["Formatos","formats"],["Fonte / provedor","source"],
+    ["Versão / coleção","version"],["Licença(s)","license"],["Metodologia","methodology"],
+    ["Limitações","limitations"],["Registro revisado em","verified"]
+  ];
+  const body = rows.map(([label,key]) => {
+    const values = products.map(product => comparisonValue(product,key));
+    const normalized = values.map(value => norm(value || "Não informado"));
+    const differs = new Set(normalized).size > 1;
+    return `<tr class="${differs ? "comparison-diff" : "comparison-same"}"><th scope="row">${label}${differs ? '<span class="diff-marker">difere</span>' : ""}</th>${values.map(value => `<td${differs ? ' class="comparison-diff-cell"' : ""}>${esc(value)}</td>`).join("")}</tr>`;
+  }).join("");
+  els.compareContent.innerHTML = `<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th scope="col">Dimensão</th>${products.map(product => `<th scope="col"><div class="compare-product-head"><span>${esc(product.product_name)}</span><button type="button" data-remove-compare="${esc(product.product_id)}" aria-label="Remover ${esc(product.product_name)} da comparação">Remover</button></div></th>`).join("")}</tr></thead><tbody>${body}</tbody></table></div><p class="export-note">Diferenças são destacadas para facilitar a triagem. Confirme versão, método e condições de uso no provedor original antes da análise.</p>`;
   els.compareContent.querySelectorAll("[data-remove-compare]").forEach(button => button.addEventListener("click", () => {
     selected.delete(button.dataset.removeCompare);
     syncCompareCheckboxes();
