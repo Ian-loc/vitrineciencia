@@ -9,7 +9,7 @@ Repositório canônico: https://github.com/Ian-loc/vitrineciencia
 
 A autoridade canônica é o repositório `Ian-loc/vitrineciencia`; a branch `main` representa o estado público corrente. Planilhas, Drive, worktrees, documentos externos e conversas são auxiliares ou espelhos e não substituem o estado materializado no GitHub.
 
-O estado público mais recente está no commit **`378e3d43c71988f3c7966e33f3d4f5cb879b1443`**, incorporado pelo PR #277 em 09/10/2026.
+O estado público corrente é o `HEAD` validado de `main`. Checkpoints históricos preservam SHAs específicos; o README não fixa o head móvel do projeto.
 
 Esse estado contém:
 
@@ -17,15 +17,12 @@ Esse estado contém:
 - **11 produtos detalhados `DP######`**;
 - **19 distribuições `DD######`**;
 - **58 páginas individuais** em `/registros/dr####/`;
-- `/data/public_records.json` e um JSON individual por registro;
+- read model v2 em `/data/v2/public_records.json` e JSON individual por registro;
+- read model v1 mantido temporariamente em `/data/public_records.json` para compatibilidade;
 - descoberta pública por fenômeno/processo, território, tipo de informação e forma de acesso;
 - build estático, QA visual e smoke pós-deploy automatizados.
 
-Os três gates do runtime atual passaram:
-
-- build/validação/deploy: workflow `37957241426` — PASS;
-- QA visual/responsivo: workflow `37957241480` — PASS;
-- smoke do site publicado: workflow `37957322300` — PASS.
+Mudanças públicas são aceitas somente após build/validação, QA visual quando aplicável e smoke pós-deploy. O checkpoint anterior ao modelo v2 está em `docs/CHECKPOINT_PUBLIC_58_2026-10-09.md`.
 
 O núcleo histórico `DR0001–DR0051` permanece preservado e semanticamente auditado. As sete entradas pós-core atuais são `DR0136–DR0142`. A expansão histórica **135/843/876** continua preservada em `data/quarantine/v1.0.0-expanded/` e não retorna automaticamente à superfície pública.
 
@@ -39,7 +36,7 @@ A experiência pública segue, em termos funcionais:
 
 A unidade pública persistente é o **Registro da Vitrine** (`DR####`). Cada registro agrega as informações que a Vitrine conhece sobre um recurso externo, seus produtos, coleções, versões, distribuições, serviços, visualizadores e documentos, sem criar automaticamente uma nova página para cada item técnico.
 
-O contrato implementado atualmente é `schema/public-record-v1.json`. Ele é estável como **read model público v1**, mas ainda é uma etapa de transição: o próximo modelo deverá separar explicitamente o **registro catalográfico** da Vitrine do **recurso catalogado** que esse registro descreve.
+O contrato público corrente é `schema/public-record-v2.json`. Ele separa explicitamente o **Registro da Vitrine** do **Recurso catalogado** descrito por esse registro. O v1 permanece temporariamente publicado como camada de compatibilidade e regressão.
 
 ## Dados e autoridades materiais
 
@@ -92,13 +89,13 @@ A existência das páginas individuais torna desnecessário manter toda a ficha 
 
 ## Evolução planejada: modelo público v2 e API
 
-A próxima evolução não é substituir imediatamente o GitHub Pages por um backend. Primeiro será estabilizado um modelo público mais preciso:
+O modelo público v2 e o renderer das páginas individuais já estão implementados. A estrutura lógica corrente é:
 
-**CatalogRecord da Vitrine → Recurso catalogado → oferta científica → versão/coleção → forma de acesso**
+**Registro da Vitrine → Recurso catalogado → oferta científica → versão/coleção → forma de acesso**
 
 com proveniência, evidência e curadoria como dimensões transversais.
 
-Depois disso, a federação deverá seguir o princípio:
+A próxima etapa da WEB é simplificar os cards de descoberta e, depois, tornar as rotas de acesso canônicas. A federação seguirá o princípio:
 
 **federado na origem; indexado localmente na descoberta; descentralizado no acesso aos dados**.
 
