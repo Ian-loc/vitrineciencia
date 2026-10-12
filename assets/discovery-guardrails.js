@@ -76,14 +76,6 @@
       const distribution = bestDistribution(product);
       const action = card.querySelector(".card-actions a.action-primary");
       const actions = card.querySelector(".card-actions");
-      const head = card.querySelector(".product-card-head");
-      const badge = document.createElement("span");
-      badge.className = "entity-role-badge";
-      badge.textContent = isDataset ? "Dado científico" : "Serviço/catálogo — infraestrutura";
-      if (head) head.insertAdjacentElement("afterend", badge);
-
-      addProvenance(card, product.source?.owner_or_manager || product.source?.resource_name || "");
-
       let primaryUrl = "";
       if (!isDataset) {
         addNote(card, "Este item é infraestrutura de acesso ou descoberta; não deve ser interpretado como um dataset equivalente aos demais.");
@@ -103,18 +95,6 @@
           action.textContent = kind === "download" ? "Dados / download ↗" : kind === "api" ? "Dados / API ↗" : kind === "context" ? "Abrir visualização/documentação ↗" : "Dados / página de acesso ↗";
         }
         if (kind === "context") addNote(card, "A melhor rota registrada é visualização ou documentação; não a trate como download de dados.", "review");
-      }
-
-      const apiDistribution = findApiDistribution(product, primaryUrl);
-      if (apiDistribution) appendUniqueAction(actions, "API / serviço", apiDistribution.access_url, "action-secondary access-role-api");
-
-      if (https(product.product_page_url) && !sameUrl(product.product_page_url, primaryUrl)) {
-        appendUniqueAction(actions, isDataset ? "Página do conjunto" : "Página do item", product.product_page_url, "action-secondary access-role-dataset-page");
-      }
-
-      const providerUrl = product.source?.homepage_url;
-      if (https(providerUrl) && !sameUrl(providerUrl, primaryUrl) && !sameUrl(providerUrl, product.product_page_url)) {
-        appendUniqueAction(actions, "Página do provedor", providerUrl, "action-secondary access-role-provider");
       }
 
       card.dataset.accessReviewed = "1";
