@@ -17,7 +17,11 @@ O núcleo histórico `DR0001–DR0051` permanece preservado. As sete entradas `D
 
 A expansão histórica 135/843/876 permanece em quarentena.
 
-Isso significa que a antiga regra “sem nova ingestão” não descreve mais corretamente o projeto. A regra vigente é **expansão controlada e explícita**.
+Isso significa que “sem nova ingestão” não deve ser lido como proibição absoluta de qualquer adição pontual. A regra vigente é:
+
+> **A expansão de novas fontes, produtos e distribuições está pausada como processo automático ou em lote e só pode ser retomada por instrução humana explícita. Adições pontuais podem ser aprovadas por decisão curatorial documentada.**
+
+Portanto, a expansão continua controlada e explícita, sem reabrir a ingestão indiscriminada.
 
 ## 3. Critério para nova entrada
 
