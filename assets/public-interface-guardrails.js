@@ -54,7 +54,9 @@
   }
 
   function syncActions(actions, expected, before = null) {
-    if (!actions || actionsMatch(actions, expected)) return;
+    if (!actions) return;
+    actions.hidden = expected.length === 0;
+    if (actionsMatch(actions, expected)) return;
     actions.querySelectorAll("a[href]").forEach(anchor => anchor.remove());
     expected.forEach(item => {
       const anchor = link(item.label, item.url, item.className);
@@ -62,30 +64,18 @@
     });
   }
 
-  function ensureSourceEvidence(card, auditItem, publicLabel) {
-    const provenance = card.querySelector(".provenance-line");
-    const provenanceLabel = provenance?.querySelector("strong");
-    if (provenanceLabel && provenanceLabel.textContent !== "Responsável: ") provenanceLabel.textContent = "Responsável: ";
-
-    card.querySelectorAll(".discovery-facts > div").forEach(row => {
-      const dt = row.querySelector("dt");
-      const dd = row.querySelector("dd");
-      if (!dt || !dd) return;
-      if (/Distribuição\s*\/\s*acesso|Como acessar/i.test(dt.textContent || "")) {
-        dt.textContent = "Como acessar";
-        dd.textContent = publicLabel;
-      }
-    });
-
+  function ensureSourceEvidence(card, auditItem) {
     const verified = formatDate(auditItem?.source_last_verified);
-    if (verified) {
-      let line = card.querySelector(".verification-line");
-      if (!line) {
-        line = document.createElement("p");
-        line.className = "verification-line";
-        (provenance || card.querySelector(".description"))?.insertAdjacentElement("afterend", line);
-      }
-      if (line.textContent !== `Acesso verificado em ${verified}`) line.textContent = `Acesso verificado em ${verified}`;
+    if (!verified) return;
+    let line = card.querySelector(".verification-line");
+    if (!line) {
+      line = document.createElement("p");
+      line.className = "verification-line";
+      const provenance = card.querySelector(".provenance-line");
+      (provenance || card.querySelector(".description"))?.insertAdjacentElement("afterend", line);
+    }
+    if (line.textContent !== `Acesso verificado em ${verified}`) {
+      line.textContent = `Acesso verificado em ${verified}`;
     }
   }
 
@@ -127,13 +117,12 @@
           const publicLabel = publicAccessLabel[role] || "Acesso a confirmar";
           const fact = card.querySelector("[data-access-authority]");
           if (fact && fact.textContent !== publicLabel) fact.textContent = publicLabel;
-          ensureSourceEvidence(card, auditItem, publicLabel);
+          ensureSourceEvidence(card, auditItem);
 
           const dataUrl = ["A", "B"].includes(role) && https(resource.data_access_url) && !technicalAccess(resource.data_access_url)
             ? resource.data_access_url : "";
           const siteUrl = https(resource.homepage_url) && !technicalAccess(resource.homepage_url) ? resource.homepage_url : "";
           syncActions(card.querySelector(".card-actions"), expectedActions(dataUrl, siteUrl));
-          cleanTechnicalDetails(card);
           card.dataset.publicActions = "1";
         });
       };
