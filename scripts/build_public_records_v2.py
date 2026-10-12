@@ -1,19 +1,17 @@
 #!/usr/bin/env python3
-"""Constrói o read model público v2 a partir do public-record-v1.
+"""Constrói o read model público v2 da Vitrine Ciência.
 
-A transformação é deliberadamente determinística:
-- não recataloga os 58 registros;
-- não altera URLs públicas;
-- não cria novos produtos;
-- não transforma inferências em fatos novos.
+O v2 combina:
+- conteúdo científico/curatorial ainda migrado deterministicamente do v1;
+- rotas de acesso canônicas em data/access_routes.json.
 
-O objetivo é separar Registro da Vitrine e Recurso catalogado e fornecer
-o read model usado tanto pelos JSONs públicos quanto pelo renderer HTML v2.
+O renderer e os JSONs públicos consomem este mesmo read model.
 """
 from __future__ import annotations
 
 import json
 import sys
+from collections import defaultdict
 from pathlib import Path
 
 from build_record_pages import build_public_records as build_v1_records
@@ -21,6 +19,15 @@ from build_record_pages import build_public_records as build_v1_records
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "_site"
 SCHEMA_PATH = ROOT / "schema" / "public-record-v2.json"
+ACCESS_ROUTES_PATH = ROOT / "data" / "access_routes.json"
+
+ACCESS_STATUS_LABELS = {
+    "A": "Dados disponíveis diretamente",
+    "B": "Página específica para obtenção de dados",
+    "C": "Serviço de dados como acesso principal",
+    "D": "Visualização ou página de consulta",
+    "E": "Acesso ainda não confirmado",
+}
 
 
 def read_json(path: Path):
@@ -31,66 +38,8 @@ def derived_resource_id(record_id: str) -> str:
     return f"{record_id}::resource"
 
 
-def resource_route(route: dict, record_id: str) -> dict:
-    return {
-        "route_id": route["route_id"],
-        "target_type": "resource",
-        "target_id": derived_resource_id(record_id),
-        "route_type": "resource_access",
-        "roles": list(route.get("roles") or []),
-        "label": route.get("label") or "",
-        "url": route.get("url"),
-        "primary": bool(route.get("primary")),
-        "access_assessment": route.get("access_class"),
-        "protocol": None,
-        "format": None,
-        "tool": None,
-        "free_download": None,
-        "authentication_required": None,
-        "access_conditions": None,
-        "license": None,
-        "attribution_required": None,
-        "subset_support": None,
-        "notes": route.get("note"),
-        "verified_at": route.get("verified_at"),
-        "source": "public-record-v1-derived",
-    }
-
-
-def distribution_route(distribution: dict, offering_id: str) -> dict:
-    return {
-        "route_id": distribution["distribution_id"],
-        "target_type": "offering",
-        "target_id": offering_id,
-        "route_type": "distribution",
-        "roles": ["distribution"],
-        "label": distribution.get("name") or "Forma de acesso",
-        "url": distribution.get("url") or None,
-        "primary": False,
-        "access_assessment": None,
-        "protocol": distribution.get("protocol") or None,
-        "format": distribution.get("format") or None,
-        "tool": distribution.get("tool") or None,
-        "free_download": distribution.get("free_download") or None,
-        "authentication_required": distribution.get("authentication_required") or None,
-        "access_conditions": distribution.get("access_conditions") or None,
-        "license": distribution.get("license") or None,
-        "attribution_required": distribution.get("attribution_required") or None,
-        "subset_support": distribution.get("subset_support") or None,
-        "notes": distribution.get("notes") or None,
-        "verified_at": distribution.get("last_verified") or None,
-        "source": "legacy-distribution",
-    }
-
-
-def offering_from_product(product: dict) -> tuple[dict, list[dict], list[dict]]:
+def offering_from_product(product: dict, route_ids: list[str]) -> tuple[dict, list[dict]]:
     offering_id = product["product_id"]
-    access_routes = [
-        distribution_route(item, offering_id)
-        for item in product.get("distributions") or []
-    ]
-    distribution_ids = [item["route_id"] for item in access_routes]
-
     versions: list[dict] = []
     version_summary = str(product.get("version_or_collection") or "").strip()
     if version_summary:
@@ -141,10 +90,10 @@ def offering_from_product(product: dict) -> tuple[dict, list[dict], list[dict]]:
         "limitations": product.get("limitations") or "",
         "verified_at": product.get("last_verified") or None,
         "version_ids": [item["version_id"] for item in versions],
-        "access_route_ids": distribution_ids,
+        "access_route_ids": list(route_ids),
         "source": "legacy-product",
     }
-    return offering, versions, access_routes
+    return offering, versions
 
 
 def references_from_v1(record: dict) -> list[dict]:
@@ -191,22 +140,41 @@ def references_from_v1(record: dict) -> list[dict]:
     return refs
 
 
-def transform_record(record: dict, schema: dict) -> dict:
+def canonical_routes_by_record() -> dict[str, list[dict]]:
+    payload = read_json(ACCESS_ROUTES_PATH)
+    if payload.get("schema_version") != "access-routes-v1" or payload.get("status") != "canonical":
+        raise SystemExit("ERRO: data/access_routes.json não é uma autoridade access-routes-v1 válida")
+    grouped: dict[str, list[dict]] = defaultdict(list)
+    for route in payload.get("routes") or []:
+        grouped[route["record_id"]].append(dict(route))
+    return grouped
+
+
+def transform_record(record: dict, schema: dict, routes: list[dict]) -> dict:
     rid = record["resource_id"]
     resource_local_id = derived_resource_id(rid)
 
+    resource_routes = [item for item in routes if item.get("target_type") == "resource"]
+    primary_routes = [item for item in resource_routes if item.get("primary")]
+    if len(primary_routes) != 1:
+        raise SystemExit(f"ERRO: {rid}: access_routes canônico deve ter uma rota principal")
+    primary = primary_routes[0]
+    access_class = primary.get("access_assessment") or "E"
+
+    offering_route_ids: dict[str, list[str]] = defaultdict(list)
+    for route in routes:
+        if route.get("target_type") == "offering":
+            offering_route_ids[route["target_id"]].append(route["route_id"])
+
     offerings: list[dict] = []
     versions: list[dict] = []
-    access_routes = [
-        resource_route(route, rid)
-        for route in (record.get("access") or {}).get("routes") or []
-    ]
-
     for product in record.get("products") or []:
-        offering, product_versions, product_routes = offering_from_product(product)
+        offering, product_versions = offering_from_product(
+            product,
+            offering_route_ids.get(product["product_id"], []),
+        )
         offerings.append(offering)
         versions.extend(product_versions)
-        access_routes.extend(product_routes)
 
     owner = (record.get("provenance") or {}).get("owner_or_manager") or ""
     agents = []
@@ -221,6 +189,7 @@ def transform_record(record: dict, schema: dict) -> dict:
             }
         )
 
+    legacy_access = record.get("access") or {}
     return {
         "schema_version": schema["schema_version"],
         "record": {
@@ -230,7 +199,7 @@ def transform_record(record: dict, schema: dict) -> dict:
             "public_url": record["url"],
             "resource_ref": resource_local_id,
             "verified_at": (record.get("curation") or {}).get("last_verified"),
-            "access_verified_at": (record.get("curation") or {}).get("access_last_verified"),
+            "access_verified_at": primary.get("verified_at"),
         },
         "resource": {
             "local_id": resource_local_id,
@@ -249,13 +218,13 @@ def transform_record(record: dict, schema: dict) -> dict:
             "content_summary": dict(record.get("content") or {}),
             "coverage": dict(record.get("coverage") or {}),
             "access_summary": {
-                "primary_class": (record.get("access") or {}).get("primary_class"),
-                "primary_status": (record.get("access") or {}).get("primary_status"),
-                "free_download": (record.get("access") or {}).get("free_download"),
-                "programmatic_access": (record.get("access") or {}).get("programmatic_access"),
-                "authentication_required": (record.get("access") or {}).get("authentication_required"),
-                "conditions": (record.get("access") or {}).get("conditions"),
-                "protocols": list((record.get("access") or {}).get("protocols") or []),
+                "primary_class": access_class,
+                "primary_status": ACCESS_STATUS_LABELS.get(access_class, "Acesso em revisão"),
+                "free_download": primary.get("free_download"),
+                "programmatic_access": legacy_access.get("programmatic_access"),
+                "authentication_required": primary.get("authentication_required"),
+                "conditions": primary.get("access_conditions"),
+                "protocols": list(legacy_access.get("protocols") or []),
             },
             "use_and_limits": dict(record.get("use_and_limits") or {}),
             "institutional_status": (record.get("provenance") or {}).get("institutional_status") or "",
@@ -263,22 +232,30 @@ def transform_record(record: dict, schema: dict) -> dict:
         },
         "offerings": offerings,
         "versions": versions,
-        "access_routes": access_routes,
+        "access_routes": [dict(item) for item in routes],
         "agents": agents,
         "references": references_from_v1(record),
         "curation": {
             "last_verified": (record.get("curation") or {}).get("last_verified"),
-            "access_last_verified": (record.get("curation") or {}).get("access_last_verified"),
+            "access_last_verified": primary.get("verified_at"),
             "access_reason": (record.get("curation") or {}).get("access_reason"),
             "migration_source_schema": record.get("schema_version"),
-            "migration_mode": "deterministic_read_model_transform",
+            "access_route_authority": "data/access_routes.json",
+            "migration_mode": "v2_content_transform_with_canonical_access_routes",
         },
     }
 
 
 def build_public_records_v2() -> list[dict]:
     schema = read_json(SCHEMA_PATH)
-    return [transform_record(record, schema) for record in build_v1_records()]
+    routes_by_record = canonical_routes_by_record()
+    records = []
+    for record in build_v1_records():
+        rid = record["resource_id"]
+        if rid not in routes_by_record:
+            raise SystemExit(f"ERRO: {rid}: sem rotas canônicas")
+        records.append(transform_record(record, schema, routes_by_record[rid]))
+    return records
 
 
 def build(output: Path = DEFAULT_OUTPUT) -> list[dict]:
@@ -300,7 +277,7 @@ def build(output: Path = DEFAULT_OUTPUT) -> list[dict]:
 
     print(
         f"OK: {len(records)} registros public-record-v2 gerados em "
-        f"{target.relative_to(output)}"
+        f"{target.relative_to(output)} com access_routes canônicas"
     )
     return records
 
