@@ -21,12 +21,15 @@ Gates do runtime:
 - 58 registros `DR`;
 - 11 produtos detalhados `DP`;
 - 19 distribuições `DD`;
+- na terminologia física dos validadores: **58 fontes, 11 produtos e 19 distribuições**;
 - 58 páginas individuais;
 - read model público agregado e JSON individual por registro;
 - descoberta temática/facetada;
 - expansão histórica 135/843/876 preservada em quarentena.
 
 O marco histórico `VITRINE_STATIC_51_STABLE` continua válido como checkpoint do núcleo 51, mas **não é mais a descrição suficiente do runtime público atual**. O estado público vigente é o catálogo 58 com páginas individuais.
+
+A fase ativa é de **QA/QC e manutenção do catálogo publicado**, combinada ao desenho do modelo v2. A expansão automática/em lote permanece **pausada**; inclusões pontuais exigem instrução humana explícita e gate curatorial.
 
 ## Estado das frentes
 
