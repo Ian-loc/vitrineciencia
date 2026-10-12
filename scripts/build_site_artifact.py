@@ -9,6 +9,7 @@ from urllib.parse import urlsplit
 
 from build_record_pages import build as build_record_pages
 from build_public_records_v2 import build as build_public_records_v2
+from build_record_pages_v2 import build as build_record_pages_v2
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "_site"
@@ -108,6 +109,7 @@ def main() -> None:
     (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
     build_record_pages(OUTPUT)
     build_public_records_v2(OUTPUT)
+    build_record_pages_v2(OUTPUT)
 
     leaked = [name for name in FORBIDDEN_PUBLIC_PATHS if (OUTPUT / name).exists()]
     if leaked:
