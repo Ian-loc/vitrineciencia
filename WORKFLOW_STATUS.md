@@ -1,133 +1,165 @@
 # Estado do workflow — Vitrine Ciência
 
-Atualização: **2026-10-09** (`America/Sao_Paulo`)
+**Atualização:** 12 de outubro de 2026 (`America/Sao_Paulo`)
 
 ## Autoridade operacional
 
-O GitHub é a autoridade canônica. `main` representa o estado público corrente; Drive, worktrees locais, handoffs e chats não substituem o que está materializado e validado no repositório.
+`main` no GitHub é a autoridade canônica do estado público.
 
-Arquivos/matrizes que controlam o marco estático:
+Runtime corrente:
 
-- `data/data_resources.csv`, `data/data_products.csv`, `data/product_distributions.csv`;
-- `data/static_core_51_access_audit.json`;
-- `data/post_core_access_audit.json`;
-- `data/static_core_51_progress.json`;
-- `data/product_distribution_roles.json`;
-- `data/applied_priority_gate.json`;
-- scripts de build e validação.
+`378e3d43c71988f3c7966e33f3d4f5cb879b1443`
 
-Artefatos públicos são derivados dessas autoridades.
+Gates do runtime:
 
-## Marco estático
+- build/validação/deploy `37957241426` — PASS;
+- QA visual `37957241480` — PASS;
+- smoke pós-deploy `37957322300` — PASS.
 
-**Status: CONCLUÍDO — `VITRINE_STATIC_51_STABLE`.**
+## Estado publicado
 
-Runtime público validado: **`495bfe6a968176670461662869d1a3773797baf3`**.
+- 58 registros `DR`;
+- 11 produtos detalhados `DP`;
+- 19 distribuições `DD`;
+- 58 páginas individuais;
+- read model público agregado e JSON individual por registro;
+- descoberta temática/facetada;
+- expansão histórica 135/843/876 preservada em quarentena.
 
-Evidência de fechamento no mesmo runtime:
+O marco histórico `VITRINE_STATIC_51_STABLE` continua válido como checkpoint do núcleo 51, mas **não é mais a descrição suficiente do runtime público atual**. O estado público vigente é o catálogo 58 com páginas individuais.
 
-- `Validar e publicar Vitrine` — run `33906109623` — PASS;
-- `Capturar QA visual da Vitrine publicada` — run `33906109551` — PASS;
-- `Verificar Vitrine publicada` — run `33906157842` — PASS.
+## Estado das frentes
 
-A **fase ativa de QA/QC e manutenção** agora é manutenção do estado estável e detecção de regressões. Não há recertificação 51 pendente.
+### A. WEB estática — OPERACIONAL
 
-A expansão geral permanece **pausada**. Por instrução humana explícita de 30/09/2026, foi aberta uma exceção isolada para incorporar `DR0136` — REDEMET. Também entraram `DR0137` (RESOLVE Ecoregions 2017) e `DR0138` (GSN3.1), seguidas de `DR0139` (Carbon Mapper), `DR0140` (GHM v3), `DR0141` (Planet Forest Carbon) e `DR0142` (Climate Finance Tracker; referência comparativa), como adições isoladas. O estado público passa a usar **58 registros DR, 11 itens detalhados e 19 distribuições**; os 11/19 são subconjunto detalhado. Na terminologia física do schema legado, isso corresponde a **58 fontes, 11 produtos e 19 distribuições**. A expansão histórica 135/843/876 permanece em quarentena e não retorna ao catálogo vivo automaticamente.
+Objetivo: manter um catálogo público estável, compreensível e independente da disponibilidade de APIs externas.
 
-A recertificação semântica do núcleo permanece concluída em **51/51**. A matriz `static_core_51_access_audit.json` continua restrita ao núcleo e preserva **A=1, B=38, C=0, D=10, E=2**. A nova REDEMET ainda não possui acesso A–C recertificado e é apresentada conservadoramente como **E — acesso a confirmar**.
+Concluído:
 
-## Contrato operacional
+- descoberta tema-first;
+- filtros controlados;
+- distinção de papéis de acesso;
+- 58 páginas de registro;
+- JSONs públicos;
+- canonical/sitemap;
+- QA estrutural e visual;
+- smoke do deploy.
 
-`DR####` é identificador legado de entrada, não classe ontológica. A estrutura `Fonte → Produto → Distribuição` permanece apenas para compatibilidade e rastreabilidade.
+Próximas correções WEB:
 
-A experiência pública deve seguir:
+1. simplificar os cards de `sources.html` na origem;
+2. reduzir redundância entre card e página individual;
+3. reorganizar a página do registro em blocos orientados ao usuário;
+4. separar visualmente informação científica do recurso e curadoria da Vitrine;
+5. migrar o renderer para o modelo público v2 sem alterar URLs.
 
-**pergunta científica → fenômeno/processo/território/tipo de informação → registro da Vitrine → produto/coleção/release quando descrito → distribuição/rota de acesso, DataService ou visualizador → provedor/proveniência → documentação**.
+### B. Modelo público v2 — PRÓXIMO MILESTONE
 
-Devem permanecer distintos quando aplicável: Provider/Institution, Program/Initiative, Platform/Catalog/Data Infrastructure, Dataset/Collection, Product, Distribution, DataService, Portal/Viewer e Documentation/Publication.
+Status: planejado; não implementado.
 
-## Estado das fases
+Contrato alvo:
 
-1. **Fase I — reconciliar e fixar o estado real: CONCLUÍDA**
-   - 51/51 com tipagem semântica factual;
-   - 51/51 com rota A–E e justificativa;
-   - dois E preservados como limitações verificadas, não pendências ocultas.
+```
+CatalogRecord
+  └── resource
+        ├── offerings
+        ├── versions
+        ├── access_routes
+        ├── agents/provenance
+        └── references
+```
 
-2. **Fase II — reorganizar a representação estática: CONCLUÍDA**
-   - Home orientada por pergunta/tema;
-   - `sources.html` como descoberta ampla dos 58 registros;\n   - `/registros/dr####/` como página individual agregadora; produtos, coleções, releases e rotas ficam subordinados;
-   - `products.html` como subconjunto detalhado 11/19;
-   - Baixar dados / Página do conjunto / API-serviço / Viewer / Documentação / Provedor separados por função;
-   - P1–P6 materializado na superfície pública.
+A página `/registros/dr####/` permanece persistente.
 
-3. **Fase III — consolidação funcional: CONCLUÍDA**
-   - QA estrutural, semântico, científico e de navegação;
-   - filtros controlados, URL params, teclado/acessibilidade básica, desktop/tablet/mobile;
-   - zero CTA de dados/download/API apontando silenciosamente para viewer/PDF/documentação/homepage genérica no contrato validado;
-   - dependências locais do artefato público fechadas e verificadas;
-   - loops de `MutationObserver` encontrados pelo QA em Produtos e Fontes eliminados na origem;
-   - CI principal, QA visual e smoke público PASS no runtime final validado;
-   - documentação e checkpoint sincronizados.
+Critérios de aceite:
 
-## Classificação de acesso
+- registro e recurso separados semanticamente;
+- tipo público atribuído ao recurso;
+- rotas de acesso explicitamente tipadas;
+- versões distinguíveis quando materialmente relevantes;
+- proveniência com papéis;
+- nenhuma regressão nas 58 URLs;
+- geração HTML/JSON do mesmo objeto.
 
-- **A DIRECT_DATA** — arquivo/download/endpoint que entrega dados.
-- **B DATASET_PAGE** — página específica com mecanismo explícito de obtenção.
-- **C API_SERVICE** — API/OGC/STAC/CKAN/GraphQL ou serviço de consulta/extração como rota principal.
-- **D VIEWER_DOC** — viewer, mapa, dashboard, documentação ou PDF sem acesso de dados demonstrado na rota principal.
-- **E BROKEN_UNCERTAIN** — rota genérica, inadequada como acesso agregado ou sem obtenção demonstrada.
+### C. Integration Registry — DEPOIS DO MODELO V2
 
-Somente A–C podem ser apresentados como acesso confirmado a dados. HTTP 200 isolado não é prova de acesso.
+Status: planejado; não iniciado em `main`.
 
-## Gate P1–P6
+Deverá registrar por integração:
 
-P1 AdaptaBrasil MCTI; P2 MapBiomas Municípios; P3 IEDE-MG/FJP; P4 BDMG com dado público verificável; P5 SICAR/CAR e SIGEF/INCRA separados; P6 IBGE Cidades e Estados. Todos permanecem sustentados por objeto informacional real, proveniência e acesso corretamente rotulado.
+- provedor/recurso;
+- tecnologia;
+- endpoint;
+- autenticação;
+- licença e restrições;
+- forma de paginação;
+- identificadores externos;
+- frequência/TTL;
+- estado operacional;
+- prioridade de automação.
 
-## Definition of Done — atingida
+Casos piloto prioritários já estudados incluem Carbon Mapper REST/STAC, RESOLVE/Earth Engine, GSN e produtos com acesso contratado.
 
-O marco foi fechado com:
+### D. Conectores e harvesting — FUTURO CONTROLADO
 
-- núcleo estático 51 preservado e catálogo público com 58 registros após as adições pós-core autorizadas; expansão histórica permanece fora do catálogo vivo;
-- 51/51 com tipo/papel factual;
-- 51/51 com fenômeno/processo, território, tipo de informação, proveniência e A–E sustentados;
-- dataset/família como objeto científico central quando identificável, sem invenção;
-- zero microproduto criado apenas por formato/protocolo/interface;
-- Distribution, DataService, Viewer, Documentation e Provider/Provenance semanticamente distintos;
-- P1–P6 factuais;
-- filtros controlados e busca livre não principal;
-- 11/19 explicitamente subconjunto;
-- percurso tema → entrada/dataset → rota útil implementado nos casos representativos;
-- CI principal + QA visual + smoke público PASS no runtime `495bfe6a968176670461662869d1a3773797baf3`;
-- checkpoint final em `docs/CHECKPOINT_STATIC_51_2026-09-04.md`.
+Status: não implementado.
 
-`VITRINE_STATIC_51_STABLE`
+Ordem recomendada de conectores:
 
-## Exceção pós-core autorizada — REDEMET
+1. STAC/STAC API;
+2. CKAN;
+3. OGC API e serviços OGC relevantes;
+4. ArcGIS REST;
+5. REST/GraphQL específicos;
+6. fluxos manuais quando não houver API adequada.
 
-- `DR0136` foi reservado para a REDEMET porque `DR0052–DR0135` já pertencem a identidades preservadas no snapshot v1.0.0.
-- A inclusão é no nível de **fonte/plataforma**. Nenhum dataset, produto, distribuição, API, formato ou licença foi inferido além do que a evidência disponível nesta rodada sustenta.
-- Até recertificação operacional da rota, a interface não deve chamar a homepage de download nem de API.
-- A expansão geral continua pausada; esta exceção não muda essa regra.
+Todo pipeline deverá seguir:
 
-## Regra de manutenção
+`fetch → raw/staging → normalize → deduplicate → classify → validate → diff → curation gate → publish`
 
-- não reabrir caso fechado sem nova evidência, conflito ou regressão;
-- mudança factual começa na autoridade canônica apropriada e é propagada pelo build;
-- não corrigir classificação apenas no HTML/JavaScript;
-- regressões de interface devem preservar os gates automatizados atuais;\n- páginas individuais são geradas do estado canônico; não editar HTML de registro manualmente;\n- futura atualização por API deve manter fallback estático e só promover metadados externos após staging/validação;
-- o Drive permanece espelho documental;
-- a execução específica de fechamento do marco estático deve permanecer desativada após esta declaração.
+Nenhum item descoberto por API entra automaticamente no catálogo público.
 
-## Próximo milestone — fora deste fechamento
+### E. API Vitrine — FUTURO
 
-Não iniciar automaticamente:
+Status: contrato conceitual apenas.
 
-- ontologia 2.0 exaustiva;
-- Integration Registry;
-- conectores federados;
-- harvesting;
-- PostgreSQL/backend próprio;
-- reentrada da expansão;
-- nova release/DOI.
+Primeiro endpoint de leitura proposto:
 
-Federação/Data Service exige autorização e escopo próprios.
+`GET /api/v1/records/{resource_id}`
+
+A API deve servir o mesmo modelo que alimenta o HTML/JSON estático.
+
+Atualização sob demanda deverá ser assíncrona e limitada por freshness/TTL, cooldown e rate limits. Abrir uma página não deve equivaler a uma chamada obrigatória ao provedor.
+
+## Ordem de execução recomendada
+
+1. documentação e estado canônico — **esta atualização**;
+2. `public-record-v2`;
+3. simplificação dos cards e redesign das páginas;
+4. rotas de acesso canônicas;
+5. versões e proveniência estruturadas;
+6. Integration Registry;
+7. pilotos de conectores;
+8. pipeline de harvesting;
+9. API de leitura;
+10. revalidação assíncrona e observabilidade.
+
+## Regras que não mudam
+
+- dados científicos permanecem, em regra, no provedor;
+- a Vitrine não cria página por arquivo/asset;
+- API, viewer e documentação não são automaticamente produtos científicos;
+- HTTP 200 não comprova acesso a dados;
+- ausência de evidência não vira “não”;
+- release histórica não é reescrita;
+- harvesting não publica automaticamente;
+- falha externa não derruba a superfície pública.
+
+## Documentos operacionais
+
+- estado: `docs/PROJECT_STATE.md`;
+- arquitetura WEB/API: `docs/WEB_API_EVOLUTION_PLAN.md`;
+- páginas v1: `docs/PUBLIC_RECORD_PAGES_V1.md`;
+- direção científica: `docs/PROJECT_SCIENTIFIC_DIRECTION.md`;
+- seleção: `SELECTION_AND_COVERAGE_POLICY.md`;
+- checkpoint atual: `docs/CHECKPOINT_PUBLIC_58_2026-10-09.md`.
