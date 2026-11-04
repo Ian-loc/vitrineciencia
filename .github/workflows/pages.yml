@@ -47,6 +47,7 @@ jobs:
           node --check assets/product-label-fix.js
           node --check assets/product-distribution-roles.js
           node --check assets/navigation.js
+          node --check assets/public-access.js
           node --check assets/home.js
           node --check assets/source-discovery-v2.js
           node --check assets/semantic-roles.js
@@ -67,6 +68,7 @@ jobs:
           python3 scripts/build_site_artifact.py
           python3 scripts/validate_record_pages.py
           python3 scripts/validate_public_records_v2.py
+          node scripts/validate_discovery_quality.cjs
 
       - name: Confirmar fronteira pública
         run: |

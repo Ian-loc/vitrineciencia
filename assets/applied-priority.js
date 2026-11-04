@@ -10,14 +10,7 @@
     return node;
   }
 
-  function publicAccess(item) {
-    if ((item.access_role === "A" || item.access_role === "B") && /^https:\/\//i.test(String(item.access_url || ""))) {
-      return {label:"Acessar dados / download", url:item.access_url, primary:true};
-    }
-    const site = /^https:\/\//i.test(String(item.documentation_url || "")) ? item.documentation_url
-      : /^https:\/\//i.test(String(item.access_url || "")) ? item.access_url : "";
-    return site ? {label:"Acessar site", url:site, primary:false} : null;
-  }
+  const publicAccess = item => window.VitrinePublicAccess(item);
 
   function card(item) {
     const article = document.createElement("article");

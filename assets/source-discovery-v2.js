@@ -53,6 +53,45 @@
     return theme.terms.some(term => flexibleContains(text, term));
   };
 
+  // Agrupamentos de descoberta; descrições e ressalvas originais ficam nos cards.
+  const COVERAGE_LABELS = {
+    global: "Global", brasil: "Brasil — nacional", mg: "Minas Gerais", amazonia: "Amazônia",
+    americas: "Américas / América do Sul", eua: "Estados Unidos", outro: "Outros territórios"
+  };
+  const INFORMATION_GROUPS = [
+    ["mapas", "Mapas e camadas geoespaciais", /mapa|camada|raster|vetoria|poligono|mosaico|geometr/],
+    ["imagens", "Imagens e produtos de sensoriamento", /imagem|imagens|dossel|missoes/],
+    ["series", "Séries e medições", /serie|medic|observa|fluxo|telemetria|meteorolog|climatolog/],
+    ["indicadores", "Indicadores e estatísticas", /indicador|estatistic|ranking|tendencia|visualizacao interativa de financiamento/],
+    ["inventarios", "Inventários, cadastros e registros", /inventario|cadastro|registro|ocorrencia|checklist|lista|especie|taxonomia|amostra|parcela|horizonte|perfil|traits|abundancia/],
+    ["alertas", "Alertas e detecções", /alerta|detecc|foco|risco de fogo/],
+    ["modelos", "Modelos, projeções e simulações", /modelo|projec|simulac|reanalise|trajetoria|variaveis bioclimaticas/],
+    ["catalogos", "Catálogos, metadados e arquivos", /metadado|dataset|arquivo|pacote|repositorio|link|software/],
+    ["relatorios", "Relatórios e documentação", /relatorio|estudo|bibliograf|citac|metodolog|descric/],
+    ["paineis", "Painéis e consultas", /painel|grafico|visualiza|consulta/]
+  ];
+  const INFORMATION_LABELS = Object.fromEntries(INFORMATION_GROUPS.map(([key, label]) => [key, label]));
+  INFORMATION_LABELS.outros = "Outras informações";
+  const coverageCategory = resource => {
+    const text = flexNorm(resource.geographic_coverage);
+    if (text.includes("global")) return "global";
+    if (text.includes("minas gerais")) return "mg";
+    if (text.includes("estados unidos")) return "eua";
+    if (text.includes("america")) return "americas";
+    if (text.startsWith("regional") && text.includes("amazonia")) return "amazonia";
+    if (text.includes("brasil") || text.includes("brazil")) return "brasil";
+    return "outro";
+  };
+  const informationCategories = resource => [...new Set(splitValues(resource.data_product_types).map(value => {
+    const text = flexNorm(value);
+    return INFORMATION_GROUPS.find(([, , pattern]) => pattern.test(text))?.[0] || "outros";
+  }))];
+  const coverageMatches = (resource, value) => !value || (COVERAGE_LABELS[value]
+    ? coverageCategory(resource) === value : resource.geographic_coverage === value);
+  const informationMatches = (resource, value) => !value || (INFORMATION_LABELS[value]
+    ? informationCategories(resource).includes(value) : splitValues(resource.data_product_types).includes(value));
+  window.VitrineSourceFacets = {coverageCategory, informationCategories, coverageMatches, informationMatches};
+
   let verifiedAccess = new Map();
   let informationSelect = null;
   let accessSelect = null;
@@ -162,24 +201,24 @@
     const theme = themeForQuery(rawQuery);
     const queryMatch = !rawQuery || (theme ? themeMatches(resource, theme.key) : flexibleContains(searchText(resource), rawQuery));
     return queryMatch &&
-      (exclude === "coverage" || !els.coverage.value || resource.geographic_coverage === els.coverage.value) &&
-      (exclude === "information" || !informationSelect.value || splitValues(resource.data_product_types).includes(informationSelect.value)) &&
+      (exclude === "coverage" || coverageMatches(resource, els.coverage.value)) &&
+      (exclude === "information" || informationMatches(resource, informationSelect.value)) &&
       (exclude === "access" || !accessSelect.value || accessRole(resource) === accessSelect.value);
   }
 
   function refreshPrimaryFacets() {
     const coverageCounts = new Map();
     all.filter(resource => baseMatches(resource, "coverage")).forEach(resource => {
-      const value = resource.geographic_coverage;
+      const value = coverageCategory(resource);
       if (value) coverageCounts.set(value, (coverageCounts.get(value) || 0) + 1);
     });
-    populateDerivedSelect(els.coverage, [...coverageCounts.entries()], "Todos os territórios");
+    populateDerivedSelect(els.coverage, [...coverageCounts.entries()], "Todos os territórios", COVERAGE_LABELS);
 
     const informationCounts = new Map();
-    all.filter(resource => baseMatches(resource, "information")).flatMap(resource => splitValues(resource.data_product_types)).forEach(value => {
+    all.filter(resource => baseMatches(resource, "information")).flatMap(resource => informationCategories(resource)).forEach(value => {
       informationCounts.set(value, (informationCounts.get(value) || 0) + 1);
     });
-    populateDerivedSelect(informationSelect, [...informationCounts.entries()], "Todos os tipos de informação");
+    populateDerivedSelect(informationSelect, [...informationCounts.entries()], "Todos os tipos de informação", INFORMATION_LABELS);
 
     const accessCounts = new Map();
     all.filter(resource => baseMatches(resource, "access")).forEach(resource => {
@@ -192,8 +231,8 @@
       const current = themeSelect.value;
       const themeCounts = THEMES.map(theme => [theme, all.filter(resource => {
         if (!themeMatches(resource, theme.key)) return false;
-        return (!els.coverage.value || resource.geographic_coverage === els.coverage.value) &&
-          (!informationSelect.value || splitValues(resource.data_product_types).includes(informationSelect.value)) &&
+        return (coverageMatches(resource, els.coverage.value)) &&
+          (informationMatches(resource, informationSelect.value)) &&
           (!accessSelect.value || accessRole(resource) === accessSelect.value);
       }).length]);
       themeSelect.innerHTML = '<option value="">Todos os temas</option>';
@@ -213,8 +252,8 @@
     const theme = themeForQuery(rawQuery);
     filtered = all.filter(resource =>
       (!rawQuery || (theme ? themeMatches(resource, theme.key) : flexibleContains(searchText(resource), rawQuery))) &&
-      (!els.coverage.value || resource.geographic_coverage === els.coverage.value) &&
-      (!informationSelect.value || splitValues(resource.data_product_types).includes(informationSelect.value)) &&
+      (coverageMatches(resource, els.coverage.value)) &&
+      (informationMatches(resource, informationSelect.value)) &&
       (!accessSelect.value || accessRole(resource) === accessSelect.value)
     );
     sortResults(flexNorm(rawQuery));
@@ -255,8 +294,8 @@
     await loadVerifiedAccess();
 
     const informationCounts = new Map();
-    all.flatMap(resource => splitValues(resource.data_product_types)).forEach(value => informationCounts.set(value, (informationCounts.get(value) || 0) + 1));
-    populateDerivedSelect(informationSelect, [...informationCounts.entries()], "Todos os tipos de informação");
+    all.flatMap(resource => informationCategories(resource)).forEach(value => informationCounts.set(value, (informationCounts.get(value) || 0) + 1));
+    populateDerivedSelect(informationSelect, [...informationCounts.entries()], "Todos os tipos de informação", INFORMATION_LABELS);
     const accessCounts = new Map();
     all.forEach(resource => {
       const value = accessRole(resource);
@@ -264,11 +303,20 @@
     });
     populateDerivedSelect(accessSelect, [...accessCounts.entries()], "Todas as formas de acesso", ACCESS_LABELS);
 
+    refreshPrimaryFacets();
     const params = new URLSearchParams(location.search);
+    const legacyInformation = params.get("information");
+    if (legacyInformation && !INFORMATION_LABELS[legacyInformation] && all.some(resource => splitValues(resource.data_product_types).includes(legacyInformation))) {
+      informationSelect.add(new Option(legacyInformation, legacyInformation));
+    }
+    if ([...els.coverage.options].some(option => option.value === params.get("coverage"))) els.coverage.value = params.get("coverage") || "";
     if ([...informationSelect.options].some(option => option.value === params.get("information"))) informationSelect.value = params.get("information") || "";
     if ([...accessSelect.options].some(option => option.value === params.get("access"))) accessSelect.value = params.get("access") || "";
 
-    [informationSelect, accessSelect, els.coverage].forEach(element => element.addEventListener("change", () => window.setTimeout(() => apply(), 0)));
+    [informationSelect, accessSelect, els.coverage, els.sort].forEach(element => element.addEventListener("change", () => window.setTimeout(() => apply(), 0)));
+    els.activeFilters.addEventListener("click", event => {
+      if (event.target.closest("[data-remove]")) window.setTimeout(() => apply(), 0);
+    });
     els.q.addEventListener("input", () => window.setTimeout(() => apply(), 0));
     document.querySelector("#clear")?.addEventListener("click", () => window.setTimeout(() => apply(), 0));
     window.addEventListener("popstate", () => window.setTimeout(() => {

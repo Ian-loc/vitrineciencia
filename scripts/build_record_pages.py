@@ -686,7 +686,7 @@ def render_record_page(record: dict) -> str:
 </div>
 <aside class="record-nav" aria-label="Nesta página"><strong>Nesta página</strong>{nav}</aside>
 </main>
-<footer class="wrap"><p><strong>Vitrine Ciência</strong> · <a href="../../sources.html">Explorar dados</a> · <a href="../../products.html">Dados detalhados</a> · <a href="../../about.html">Sobre</a></p><p>Brasil · Registro curado pela Vitrine Ciência</p></footer>
+<footer class="wrap"><p><strong>Vitrine Ciência</strong> · <a href="../../sources.html">Explorar dados</a> · <a href="../../products.html">Dados detalhados</a> · <a href="../../about.html">Sobre a Vitrine</a></p><p>Brasil · Registro curado pela Vitrine Ciência</p></footer>
 <script src="../../assets/navigation.js" defer></script>
 </body></html>
 '''

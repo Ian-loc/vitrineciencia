@@ -6,15 +6,7 @@
   const escapeHtml = value => String(value || "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]));
   const https = value => /^https:\/\//i.test(String(value || ""));
 
-  function publicAccess(item) {
-    if (["A", "B"].includes(item.access_role) && https(item.access_url)) return {label: "Acessar dados / download", url: item.access_url};
-    if (item.access_role === "C") {
-      const site = https(item.documentation_url) ? item.documentation_url : "";
-      return site ? {label: "Acessar site", url: site} : null;
-    }
-    const site = https(item.access_url) ? item.access_url : (https(item.documentation_url) ? item.documentation_url : "");
-    return site ? {label: "Acessar site", url: site} : null;
-  }
+  const publicAccess = item => window.VitrinePublicAccess(item);
 
   const renderPriorityGate = payload => {
     const items = Array.isArray(payload?.items) ? payload.items : [];
@@ -54,14 +46,15 @@
     fetch("data/data_products.json").then(response => response.ok ? response.json() : Promise.reject()),
     fetch("data/data_resources.json").then(response => response.ok ? response.json() : Promise.reject()),
     fetch("data/applied_priority_gate.json", {cache: "no-store"}).then(response => response.ok ? response.json() : Promise.reject()),
-    fetch("data/static_core_51_access_audit.json", {cache: "no-store"}).then(response => response.ok ? response.json() : Promise.reject())
+    fetch("data/access_routes.json", {cache: "no-store"}).then(response => response.ok ? response.json() : Promise.reject())
   ])
     .then(([products, resources, priorityGate, accessAudit]) => {
-      const confirmedDataAccess = (accessAudit.records || []).filter(item => item.access_role === "A" || item.access_role === "B").length;
+      const confirmedDataAccess = new Set((accessAudit.routes || []).filter(item => item.target_type === "resource" && item.primary && ["A", "B"].includes(item.access_assessment) && resources.some(resource => resource.resource_id === item.record_id)).map(item => item.record_id)).size;
       const freeCount = products.filter(product => product.distributions?.some(distribution => distribution.free_download === "sim")).length;
       set("home-products", products.length);
       set("home-all-products", products.length);
       set("home-sources", resources.length);
+      set("home-all-sources", resources.length);
       set("home-access", confirmedDataAccess);
       set("home-free", freeCount);
       renderPriorityGate(priorityGate);
