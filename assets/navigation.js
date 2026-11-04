@@ -1,6 +1,9 @@
 (() => {
   "use strict";
 
+  const assetBase = new URL(".", document.currentScript.src);
+  const assetUrl = name => new URL(name, assetBase).href;
+
   const ensureStylesheet = (href) => {
     if ([...document.styleSheets].some(sheet => String(sheet.href || "").includes(href))) return;
     const link = document.createElement("link");
@@ -8,11 +11,11 @@
     link.href = href;
     document.head.appendChild(link);
   };
-  ensureStylesheet("assets/ux-v3.css?v=20260827-3");
+  ensureStylesheet(assetUrl("ux-v3.css?v=20260827-3"));
 
   if (document.querySelector("#product-catalog") && !document.querySelector('script[src*="product-ui-fixes.js"]')) {
     const script = document.createElement("script");
-    script.src = "assets/product-ui-fixes.js?v=20260827-1";
+    script.src = assetUrl("product-ui-fixes.js?v=20260827-1");
     script.defer = true;
     document.body.appendChild(script);
   }

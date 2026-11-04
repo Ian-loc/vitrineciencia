@@ -134,6 +134,7 @@ jobs:
 
                 const metrics = await page.evaluate(() => ({title:document.title,viewportWidth:window.innerWidth,documentWidth:document.documentElement.scrollWidth,h1:(document.querySelector('h1')?.textContent||'').trim(),hasMain:Boolean(document.querySelector('main')),visibleFreeSearch:[...document.querySelectorAll('input[type="search"],input[type="text"]')].filter(el=>{const s=getComputedStyle(el); return s.display!=='none'&&s.visibility!=='hidden'&&el.getClientRects().length;}).length}));
                 report.push({mode,page:name,...metrics,browserErrors});
+                if (browserErrors.length) { console.error(`Erros de navegador em ${mode}/${name}: ${browserErrors.join(" | ")}`); failed=true; }
                 if (!metrics.hasMain || !metrics.h1) failed=true;
                 if (metrics.documentWidth > metrics.viewportWidth + 2) { console.error(`Overflow horizontal: ${mode}/${name}`); failed=true; }
                 if (metrics.visibleFreeSearch !== 0) { console.error(`Busca livre visível em ${mode}/${name}`); failed=true; }

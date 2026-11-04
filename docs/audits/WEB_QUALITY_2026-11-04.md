@@ -11,6 +11,7 @@ Escopo: correções do cliente estático e clareza documental. PR: https://githu
 - Inicial e catálogo usam a mesma escolha do destino de acesso rápido. Documentação não substitui uma rota de acesso existente; a FJP deixa de apontar ao PDF de evidência como se fosse o site de acesso.
 - Limitações dos itens detalhados podem ser abertas no próprio card. O subconjunto explicita suas duas origens e a presença de conjuntos, catálogos e serviços.
 - O panorama distingue gratuidade e existência de uma rota para obter dados.
+- Inspeção visual complementar: botões do cabeçalho usam a classe de contraste existente, o link do catálogo preserva espaçamento e a navegação resolve CSS relativamente ao próprio script, inclusive nas fichas aninhadas. O QA passa a falhar se houver erros de navegador.
 
 ## Verificação
 
