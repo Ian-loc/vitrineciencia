@@ -305,7 +305,7 @@ function filter(syncUrl = true) {
     (!els.brazil.value || resource.covers_brazil === els.brazil.value) &&
     (!els.download.value || resource.free_download === els.download.value) &&
     (!els.programmatic.value || resource.programmatic_access === els.programmatic.value) &&
-    (!els.coverage.value || resource.geographic_coverage === els.coverage.value) &&
+    (window.VitrineSourceFacets ? window.VitrineSourceFacets.coverageMatches(resource, els.coverage.value) : (!els.coverage.value || resource.geographic_coverage === els.coverage.value)) &&
     (!els.format.value || formats(resource).includes(els.format.value)) &&
     (!els.evidence.value || resource.academic_evidence_type === els.evidence.value)
   );

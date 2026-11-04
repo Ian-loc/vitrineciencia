@@ -4,6 +4,12 @@
 **Autoridade:** [GitHub, branch main](https://github.com/Ian-loc/vitrineciencia). Este Drive contém documentação derivada e snapshots históricos.
 **Commit-fonte verificado:** `bb7c21b13585c94dc57e37efdc3af45eeabf6178` (PR #284). Este SHA identifica a comparação desta data; o estado vivo continua sendo o HEAD validado de main.
 
+## Manutenção da interface — 04/11/2026
+
+[PR #287 — correções de qualidade](https://github.com/Ian-loc/vitrineciencia/pull/287): contagens da inicial derivadas do catálogo completo e das rotas canônicas; navegação padronizada; filtros territoriais e de informação agrupados; destinos dos atalhos unificados; limitações consultáveis nos cards; alcance dos dados detalhados e critérios dos indicadores explicitados.
+
+Esta manutenção não modifica as três tabelas científicas, a planilha de 08/10 nem a release. A comparação integral documentada abaixo continua sendo a auditoria de 12/10; não deve ser interpretada como nova certificação dos provedores externos em novembro. O estado publicado deve ser confirmado pelo status do PR e dos workflows associados.
+
 ## Estado material verificado
 
 - 58 registros, 11 produtos detalhados e 19 distribuições.

@@ -146,6 +146,7 @@ jobs:
 
                 if (name === 'home') {
                   await page.waitForFunction(() => document.querySelector('#home-products')?.textContent.trim() === '11' && document.querySelector('#home-sources')?.textContent.trim() === '58');
+                  if (await page.locator('#home-all-sources').innerText() !== '58' || await page.locator('#home-access').innerText() !== '41') { console.error('Contagens da inicial divergentes do catálogo completo'); failed=true; }
                   const theme = page.locator('#home-theme[name="q"]');
                   if (await theme.count() !== 1 || await theme.evaluate(el => el.tagName) !== 'SELECT') { console.error('Seleção controlada de fenômeno ausente'); failed=true; }
                   if (await page.locator('#home-product-areas .process-card').count() < 10) { console.error('Atalhos socioecológicos insuficientes'); failed=true; }
@@ -174,6 +175,10 @@ jobs:
                   }
                   if (!await validatePublicActions(page, '#product-list .card-actions a:visible', 'Dados detalhados')) failed=true;
                   if (await page.locator('#product-list .entity-role-badge:visible, #product-list .distribution-semantic-role:visible').count()) { console.error('Rótulo estrutural interno visível nos dados detalhados'); failed=true; }
+                  const limitation = page.locator('.product-limitation').first();
+                  await limitation.locator('summary').click();
+                  if (!(await limitation.locator('p').isVisible()) || !(await limitation.locator('p').innerText()).trim()) { console.error('Limitação não pode ser consultada no card'); failed=true; }
+                  await limitation.locator('summary').click();
                   const compareInputs = page.locator('[data-compare]');
                   for (let i=0;i<3;i++) await compareInputs.nth(i).check();
                   await page.locator('#compare-open').click();
@@ -244,6 +249,18 @@ jobs:
                   if (!await validatePublicActions(page, '#list .card-actions a:visible', 'Explorar dados')) failed=true;
                   const sourceText = await page.locator('body').innerText();
                   if (/Os temas são aplicados aos campos científicos|correspondência sem distinção|listas são derivadas|recalculadas conforme|termos controlados|núcleo de 51 registros|busca textual livre|Detalhes científicos, técnicos|API\s*\/\s*serviço/i.test(sourceText)) { console.error('Explicação de implementação exposta na exploração'); failed=true; }
+                  await page.locator('#coverage').selectOption('mg');
+                  await page.waitForTimeout(150);
+                  if (await page.locator('#list .card').count() !== 2) { console.error('Filtro Minas Gerais deve retornar 2 fontes'); failed=true; }
+                  await page.locator('#information').selectOption('mapas');
+                  await page.waitForTimeout(150);
+                  const filteredUrl = page.url();
+                  await page.reload();
+                  await page.waitForTimeout(300);
+                  if (await page.locator('#coverage').inputValue() !== 'mg' || await page.locator('#information').inputValue() !== 'mapas' || await page.locator('#list .card').count() !== 2) { console.error(`Filtros não sobrevivem à recarga: ${filteredUrl}`); failed=true; }
+                  await page.locator('#clear').click();
+                  await page.waitForTimeout(150);
+                  if (await page.locator('#list .card').count() !== 12) { console.error('Limpar filtros não restaurou o catálogo'); failed=true; }
                   const options = theme.locator('option');
                   if (await options.count() > 1) {
                     await theme.selectOption(await options.nth(1).getAttribute('value'));

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import json
 import shutil
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -22,7 +23,7 @@ REQUIRED_FILES = (
     "assets/style.css", "assets/accessibility.css", "assets/brazil-scope.css", "assets/products.css",
     "assets/visual-refinement.css", "assets/export-selective.css", "assets/ux-v2.css", "assets/ux-v3.css", "assets/ux-simple.css",
     "assets/product-card-refinement.css", "assets/product-index.css", "assets/discovery-guardrails.css", "assets/record-page.css", "assets/print.css",
-    "assets/app.js", "assets/ptbr.js", "assets/products.js", "assets/product-filter-ux.js", "assets/product-index.js", "assets/product-ui-fixes.js",
+    "assets/public-access.js", "assets/app.js", "assets/ptbr.js", "assets/products.js", "assets/product-filter-ux.js", "assets/product-index.js", "assets/product-ui-fixes.js",
     "assets/product-label-fix.js", "assets/product-distribution-roles.js", "assets/home.js", "assets/navigation.js",
     "assets/analytics.js", "assets/analytics-products.js", "assets/export-selective.js", "assets/source-comparison.js",
     "assets/discovery-guardrails.js", "assets/static-catalog-51.js", "assets/source-discovery-v2.js",
@@ -101,6 +102,26 @@ def validate_runtime_closure() -> None:
         raise SystemExit("ERRO: artefato público com dependências locais ausentes: " + "; ".join(sorted(missing)))
 
 
+def stamp_home_counts() -> None:
+    resources = json.loads((OUTPUT / "data/data_resources.json").read_text())
+    products = json.loads((OUTPUT / "data/data_products.json").read_text())
+    routes = json.loads((OUTPUT / "data/access_routes.json").read_text())["routes"]
+    ids = {item["resource_id"] for item in resources}
+    accessible = {route["record_id"] for route in routes if route.get("target_type") == "resource"
+                  and route.get("primary") and route.get("access_assessment") in ("A", "B")
+                  and route["record_id"] in ids}
+    values = {"home-sources": len(resources), "home-all-sources": len(resources),
+              "home-products": len(products), "home-access": len(accessible),
+              "home-free": sum(any(d.get("free_download") == "sim" for d in p.get("distributions", [])) for p in products)}
+    page = OUTPUT / "index.html"
+    text = page.read_text(encoding="utf-8")
+    for key, value in values.items():
+        text, count = re.subn(rf'(id="{key}">)[^<]*', rf'\g<1>{value}', text)
+        if count != 1:
+            raise SystemExit(f"ERRO: contador ausente ou duplicado: {key}")
+    page.write_text(text, encoding="utf-8")
+
+
 def main() -> None:
     if OUTPUT.exists():
         shutil.rmtree(OUTPUT)
@@ -110,6 +131,7 @@ def main() -> None:
     for relative_path in OPTIONAL_FILES:
         copy_file(relative_path, required=False)
     (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
+    stamp_home_counts()
     build_record_pages(OUTPUT)
     build_public_records_v2(OUTPUT)
     build_record_pages_v2(OUTPUT)

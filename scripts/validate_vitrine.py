@@ -213,10 +213,10 @@ def validate_page(filename: str) -> None:
     if filename == "index.html":
         if '"@type":"DataCatalog"' not in content or '"@context":"https://schema.org"' not in content: fail("index.html: metadados DataCatalog ausentes")
         if "https://orcid.org/0000-0003-1164-9318" not in content: fail("index.html: ORCID ausente")
-        if not any(form.get("action") == "sources.html" for form in parser.forms): fail("index.html: descoberta principal deve abrir o núcleo de 51 registros")
+        if not any(form.get("action") == "sources.html" for form in parser.forms): fail("index.html: descoberta principal deve abrir o catálogo público")
         if 'id="home-theme"' not in content or 'name="q"' not in content: fail("index.html: seletor temático controlado ausente")
         if any((item.get("type") or "text").lower() in {"text", "search"} for item in parser.inputs): fail("index.html: busca textual livre não pode ser instrumento principal")
-        if "51 registros para descoberta" not in content: fail("index.html: relação entre núcleo 51 e subconjunto detalhado não está explícita")
+        if "home-all-sources" not in content: fail("index.html: contador de acesso ao catálogo completo ausente")
     elif filename == "sources.html":
         for asset in ("assets/static-catalog-51.js", "assets/source-discovery-v2.js", "assets/applied-priority.js"):
             if asset not in content: fail(f"sources.html: controlador ausente: {asset}")
@@ -224,7 +224,7 @@ def validate_page(filename: str) -> None:
         if any((item.get("type") or "text").lower() in {"text", "search"} and item.get("id") == "q" for item in parser.inputs): fail("sources.html: q deve permanecer oculto, não busca livre")
     elif filename == "products.html":
         if "assets/products.js" not in content: fail("products.html: controlador canônico ausente")
-        if "subconjunto" not in content.lower() or "51 registros" not in content: fail("products.html: escopo 11/19 como subconjunto do núcleo 51 deve estar explícito")
+        if "subconjunto" not in content.lower() or "TerraBrasilis e Google Earth Engine" not in content: fail("products.html: escopo e origens do subconjunto detalhado devem estar explícitos")
 
 
 def validate_identity() -> None:
@@ -256,7 +256,7 @@ def validate_functional_contracts() -> None:
         if token not in theme: fail(f"static-catalog-51.js: contrato temático ausente: {token}")
     for token in ("information", "access-role", "discovery-facts", "Como acessar", "Responsável: "):
         if token not in discovery: fail(f"source-discovery-v2.js: contrato de descoberta ausente: {token}")
-    for token in ("applied_priority_gate.json", "priority-applied-list", "access_role"):
+    for token in ("applied_priority_gate.json", "priority-applied-list", "VitrinePublicAccess"):
         if token not in priority: fail(f"applied-priority.js: contrato aplicado ausente: {token}")
 
 

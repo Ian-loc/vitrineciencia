@@ -79,9 +79,9 @@ jobs:
 
           grep -q 'Que fenômeno ou processo você quer investigar?' "$tmp/index.html"
           grep -q 'action="sources.html"' "$tmp/index.html"
-          grep -q '51 registros para descoberta' "$tmp/index.html"
+          grep -q 'id="home-all-sources">58' "$tmp/index.html"
           grep -q 'Da pergunta ao dado em três decisões' "$tmp/index.html"
-          grep -q 'fontes com dados/download localizados' "$tmp/index.html"
+          grep -q 'fontes com rota para obter dados' "$tmp/index.html"
           grep -q 'applied_priority_gate.json' "$tmp/home.js"
 
           grep -q 'Encontre o dado certo a partir da sua pergunta' "$tmp/sources.html"

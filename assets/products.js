@@ -374,7 +374,7 @@ function productCard(product) {
   const descriptionId = `${cardId}-description`;
   const checked = selected.has(product.product_id) ? " checked" : "";
   const limitation = product.limitations && !/desconhe|nao inform|não inform/i.test(product.limitations)
-    ? `<span class="limitation-flag">Limitação registrada</span>` : "";
+    ? `<details class="product-limitation"><summary class="limitation-flag">Ver limitação</summary><p>${esc(product.limitations)}</p></details>` : "";
   return `<article class="card product-card" data-product-id="${esc(product.product_id)}" role="listitem" aria-labelledby="${cardId}" aria-describedby="${descriptionId}">
     <header class="product-card-head">
       <p class="product-source">${product.source?.resource_id ? `<a href="registros/${esc(String(product.source.resource_id).toLowerCase())}/">${esc(product.source?.resource_name || "Fonte não informada")}</a>` : esc(product.source?.resource_name || "Fonte não informada")}</p>

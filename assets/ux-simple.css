@@ -97,3 +97,7 @@
 @media(max-width:460px){
   .product-primary-grid.simple-primary .filter-pair,.triage-strip{grid-template-columns:1fr}
 }
+
+.product-limitation { width:100%; }
+.product-limitation summary { cursor:pointer; font-size:.78rem; }
+.product-limitation p { margin:.6rem 0; font-size:.9rem; line-height:1.5; color:var(--ink,#173f32); }
