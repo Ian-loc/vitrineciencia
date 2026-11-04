@@ -110,8 +110,8 @@ jobs:
           grep -q 'Entender esta proveniência' "$tmp/dr0139.html"
           grep -q 'Condições de uso e licença' "$tmp/dr0141.html"
 
-          grep -q 'Subconjunto de 11 itens descritos em detalhe' "$tmp/products.html"
-          grep -q '19 rotas associadas' "$tmp/products.html"
+          grep -q 'Este subconjunto reúne conjuntos de dados, catálogos e serviços' "$tmp/products.html"
+          grep -q 'TerraBrasilis e Google Earth Engine' "$tmp/products.html"
           grep -q 'id="product-theme"' "$tmp/products.html"
           grep -q 'id="product-coverage"' "$tmp/products.html"
           grep -q 'id="product-kind"' "$tmp/products.html"
