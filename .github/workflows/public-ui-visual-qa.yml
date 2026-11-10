@@ -137,7 +137,8 @@ jobs:
                 if (browserErrors.length) { console.error(`Erros de navegador em ${mode}/${name}: ${browserErrors.join(" | ")}`); failed=true; }
                 if (!metrics.hasMain || !metrics.h1) failed=true;
                 if (metrics.documentWidth > metrics.viewportWidth + 2) { console.error(`Overflow horizontal: ${mode}/${name}`); failed=true; }
-                if (metrics.visibleFreeSearch !== 0) { console.error(`Busca livre visível em ${mode}/${name}`); failed=true; }
+                const expectedSearch = ['home', 'sources', 'products'].includes(name) ? 1 : 0;
+                if (metrics.visibleFreeSearch !== expectedSearch) { console.error(`Quantidade inesperada de campos de busca em ${mode}/${name}`); failed=true; }
 
                 if (mode !== 'desktop') {
                   const toggle = page.locator('.nav-toggle');

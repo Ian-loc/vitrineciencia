@@ -24,11 +24,18 @@
 <h1>Que fenômeno ou processo você quer investigar?</h1>
 <p class="lead">Comece pelo tema científico. Compare cobertura, responsável e acesso e vá direto ao site oficial ou aos dados disponíveis.</p>
 </div>
-<form class="home-search main-search-instrument controlled-search-shell" action="sources.html" method="get" aria-label="Escolher fenômeno ou processo">
+<div class="main-search-instrument">
+<form action="sources.html#catalogo" method="get" role="search">
+<label for="home-q">Busca livre</label>
+<div class="search-row"><input id="home-q" name="q" type="search" placeholder="Ex.: MapBiomas, carbono ou precipitação"><button type="submit">Buscar</button></div>
+<p class="search-help">Busque por nome, sigla ou palavras-chave.</p>
+</form>
+<form class="home-search controlled-search-shell" action="sources.html" method="get" aria-label="Escolher fenômeno ou processo">
 <label for="home-theme">Fenômeno ou processo</label>
 <div class="search-row"><select id="home-theme" name="q"><option value="">Explorar todas as fontes e dados</option><option value="clima">Clima e mudanças climáticas</option><option value="hidrologia">Água e hidrologia</option><option value="fogo">Fogo e queimadas</option><option value="uso da terra">Uso e cobertura da terra</option><option value="desmatamento">Desmatamento e degradação</option><option value="vegetação">Vegetação e florestas</option><option value="restauração">Restauração e regeneração</option><option value="biodiversidade">Biodiversidade e espécies</option><option value="carbono">Carbono e emissões</option><option value="solo">Solos</option><option value="agricultura">Agricultura e pecuária</option><option value="territorial">Território e sociedade</option><option value="geoinformação">Bases territoriais e geoespaciais</option></select><button type="submit">Explorar</button></div>
 <p class="search-help">Escolha um tema e refine depois por território, tipo de informação e acesso.</p>
 </form>
+</div>
 </div></header>
 <section class="stats" aria-label="Resumo do acervo"><div class="wrap stats-grid">
 <div><strong id="home-sources">—</strong><span>fontes e plataformas</span></div>

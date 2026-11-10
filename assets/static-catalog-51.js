@@ -27,7 +27,7 @@
 
   const heading = document.querySelector("#catalog-heading");
   const themeStatus = document.querySelector("#source-theme-status");
-  const hiddenQuery = document.querySelector("#q");
+  const searchInput = document.querySelector("#q");
   const catalog = document.querySelector("#catalogo");
 
   function renderThemeState(value) {
@@ -45,9 +45,9 @@
     select.value = controlledValue;
     renderThemeState(controlledValue);
 
-    if (hiddenQuery) {
-      hiddenQuery.value = controlledValue;
-      hiddenQuery.dispatchEvent(new Event("input", {bubbles: true}));
+    if (searchInput) {
+      searchInput.value = controlledValue;
+      searchInput.dispatchEvent(new Event("input", {bubbles: true}));
     } else {
       const next = new URLSearchParams(window.location.search);
       if (controlledValue) next.set("q", controlledValue);
@@ -65,6 +65,15 @@
   select.addEventListener("change", () => applyTheme(select.value));
   renderThemeState(current);
 
+  function syncThemeFromSearch() {
+    const value = searchInput?.value.trim().toLowerCase() || "";
+    const theme = THEMES.has(value) ? value : "";
+    select.value = theme;
+    renderThemeState(theme);
+  }
+
+  searchInput?.addEventListener("input", syncThemeFromSearch);
+
   const clear = document.querySelector("#clear");
   if (clear) clear.addEventListener("click", () => {
     select.value = "";
@@ -74,6 +83,8 @@
   const activeFilters = document.querySelector("#active-filters");
   if (activeFilters) {
     const relabel = () => {
+      syncThemeFromSearch();
+      if (!THEMES.has(searchInput?.value.trim().toLowerCase())) return;
       activeFilters.querySelectorAll("button, span").forEach(element => {
         if (element.childElementCount === 0 && element.textContent.trim().startsWith("Busca:")) {
           element.textContent = element.textContent.replace(/^Busca:/, "Tema:");

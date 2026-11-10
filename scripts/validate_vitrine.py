@@ -215,14 +215,15 @@ def validate_page(filename: str) -> None:
         if "https://orcid.org/0000-0003-1164-9318" not in content: fail("index.html: ORCID ausente")
         if not any(form.get("action") == "sources.html" for form in parser.forms): fail("index.html: descoberta principal deve abrir o catálogo público")
         if 'id="home-theme"' not in content or 'name="q"' not in content: fail("index.html: seletor temático controlado ausente")
-        if any((item.get("type") or "text").lower() in {"text", "search"} for item in parser.inputs): fail("index.html: busca textual livre não pode ser instrumento principal")
+        if not any(item.get("type") == "search" and item.get("id") == "home-q" and "hidden" not in item for item in parser.inputs): fail("index.html: campo de busca livre ausente")
         if "home-all-sources" not in content: fail("index.html: contador de acesso ao catálogo completo ausente")
     elif filename == "sources.html":
         for asset in ("assets/static-catalog-51.js", "assets/source-discovery-v2.js", "assets/applied-priority.js"):
             if asset not in content: fail(f"sources.html: controlador ausente: {asset}")
         if "source-theme-shortcut" not in content: fail("sources.html: filtro temático controlado ausente")
-        if any((item.get("type") or "text").lower() in {"text", "search"} and item.get("id") == "q" for item in parser.inputs): fail("sources.html: q deve permanecer oculto, não busca livre")
+        if not any(item.get("type") == "search" and item.get("id") == "q" and "hidden" not in item for item in parser.inputs): fail("sources.html: campo de busca livre ausente")
     elif filename == "products.html":
+        if not any(item.get("type") == "search" and item.get("id") == "product-q" and "hidden" not in item for item in parser.inputs): fail("products.html: campo de busca livre ausente")
         if "assets/products.js" not in content: fail("products.html: controlador canônico ausente")
         if "subconjunto" not in content.lower() or "TerraBrasilis e Google Earth Engine" not in content: fail("products.html: escopo e origens do subconjunto detalhado devem estar explícitos")
 
