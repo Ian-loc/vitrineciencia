@@ -90,7 +90,7 @@ jobs:
           const base = process.env.CANDIDATE_URL;
           const pages = [['home',''],['products','products.html'],['product-index','products-list.html'],['sources','sources.html'],['about','about.html'],['catalog-overview','analytics.html'],['record-mapbiomas','registros/dr0010/'],['record-terrabrasilis','registros/dr0011/'],['record-gee','registros/dr0019/'],['record-carbon-mapper','registros/dr0139/'],['record-planet-carbon','registros/dr0141/']];
           const viewports = [['desktop',{width:1440,height:1100}],['tablet',{width:820,height:1180}],['mobile',{width:390,height:844}]];
-          const allowedActions = new Set(['Acessar site','Acessar dados / download']);
+          const allowedActions = new Set(['Acessar site','Acessar dados']);
           const technicalHref = /(?:\/api(?:\/|$)|graphql|opendap|\bwms\b|\bwfs\b|\bwcs\b|wmts|stac|csw|swagger|openapi)/i;
 
           async function validatePublicActions(page, selector, label) {

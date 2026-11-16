@@ -52,6 +52,7 @@ FORBIDDEN_PUBLIC_COPY = (
     "A arquitetura científica interna", "arquitetura científica interna", "arquitetura interna",
     "Decisão arquitetural", "Direção experimental", "snapshot candidato", "Snapshot candidato",
     "produto principal preservado", "MVP", "teto de inferência",
+    "sem interpretar a estrutura da Vitrine", "snapshot científico estável", "interface viva",
 )
 
 
@@ -225,7 +226,7 @@ def validate_page(filename: str) -> None:
     elif filename == "products.html":
         if not any(item.get("type") == "search" and item.get("id") == "product-q" and "hidden" not in item for item in parser.inputs): fail("products.html: campo de busca livre ausente")
         if "assets/products.js" not in content: fail("products.html: controlador canônico ausente")
-        if "subconjunto" not in content.lower() or "TerraBrasilis e Google Earth Engine" not in content: fail("products.html: escopo e origens do subconjunto detalhado devem estar explícitos")
+        if 'id="subset-note-heading"' not in content or "TerraBrasilis e do Google Earth Engine" not in content: fail("products.html: escopo e origens do subconjunto detalhado devem estar explícitos")
 
 
 def validate_identity() -> None:
@@ -246,7 +247,7 @@ def validate_functional_contracts() -> None:
     discovery = (ROOT / "assets/source-discovery-v2.js").read_text(encoding="utf-8")
     priority = (ROOT / "assets/applied-priority.js").read_text(encoding="utf-8")
     if "const PAGE_SIZE = 12;" not in app or "filtered.slice(0, visibleCount)" not in app: fail("assets/app.js: divulgação progressiva ausente")
-    if "recordUrl" not in app or "Ver registro na Vitrine" not in app: fail("assets/app.js: navegação principal para páginas individuais de registro ausente")
+    if "recordUrl" not in app or "Ver ficha da fonte" not in app: fail("assets/app.js: navegação principal para páginas individuais de registro ausente")
     for legacy in ("card-details", "detail-groups", "status-grid"):
         if legacy in app: fail(f"assets/app.js: ficha técnica redundante ainda gerada nos cards: {legacy}")
     for token in ("const PAGE_SIZE = 18;", "THEME_GROUPS", "productAccessCategories", "parseQuery"):

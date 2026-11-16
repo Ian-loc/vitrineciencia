@@ -20,8 +20,7 @@
     section.setAttribute("aria-labelledby", "applied-priority-heading");
     section.innerHTML = `
       <div class="section-heading">
-        <div><p class="eyebrow">Acesso rápido</p><h2 id="applied-priority-heading">Exemplos para chegar aos dados</h2></div>
-        <p>Alguns caminhos úteis para perguntas recorrentes.</p>
+        <div><p class="eyebrow">Acesso rápido</p><h2 id="applied-priority-heading">Exemplos de dados</h2></div>
       </div>
       <div class="product-area-grid process-grid" data-priority-grid></div>`;
 
@@ -32,7 +31,7 @@
       const access = publicAccess(item);
       card.innerHTML = `
         <strong>${escapeHtml(item.platform)}</strong>
-        <span class="area-examples"><b>Fenômeno/processo:</b> ${escapeHtml(item.theme)}</span>
+        <span class="area-examples"><b>Tema:</b> ${escapeHtml(item.theme)}</span>
         <span class="area-examples"><b>Dado:</b> ${escapeHtml(item.data_object)}</span>
         <span class="area-examples"><b>Território:</b> ${escapeHtml(item.territory)}</span>
         <span class="area-examples"><b>Responsável:</b> ${escapeHtml(item.provenance)}</span>

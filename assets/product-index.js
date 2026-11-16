@@ -35,7 +35,7 @@
       const distribution = primaryDataAccess(product);
       const site = https(product.product_page_url) ? product.product_page_url : (https(product.source?.homepage_url) ? product.source.homepage_url : "");
       const href = distribution?.access_url || site;
-      const action = distribution ? "Acessar dados / download" : "Acessar site";
+      const action = distribution ? "Acessar dados" : "Acessar site";
       return `<article class="product-index-row" data-product-id="${esc(product.product_id)}" role="listitem"><div><h3>${esc(product.product_name)}</h3><p class="index-source">${esc(source)}</p></div><div class="index-kind">${esc(kind)}</div><div class="index-actions">${href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(action)} <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>` : "Acesso em revisão"}</div></article>`;
     }).join("");
     list.setAttribute("aria-busy", "false");
@@ -46,5 +46,5 @@
   fetch("data/data_products.json")
     .then(response => { if (!response.ok) throw new Error("Não foi possível carregar os dados."); return response.json(); })
     .then(data => { products = [...data].sort((a,b) => String(a.product_name || "").localeCompare(String(b.product_name || ""), "pt-BR")); render(); query.addEventListener("input", render); })
-    .catch(error => { list.setAttribute("aria-busy", "false"); count.textContent = "Falha ao carregar dados"; list.innerHTML = `<div class="empty"><h3>Falha ao carregar a lista</h3><p>${esc(error.message)}</p></div>`; });
+    .catch(error => { list.setAttribute("aria-busy", "false"); count.textContent = "Falha ao carregar dados"; list.innerHTML = `<div class="empty"><h3>Falha ao carregar a lista</h3><p>Atualize a página para tentar novamente.</p></div>`; });
 })();

@@ -83,7 +83,7 @@
     ["Autenticação", "authentication", "controlled"],
     ["Condições de acesso", "conditions", "structured"],
     ["Licença", "license", "controlled"],
-    ["Uso e evidência", null, "section"],
+    ["Usos e documentação", null, "section"],
     ["Tipo de documentação", "evidence", "controlled"],
     ["Uso em pesquisa", "uses", "narrative"],
     ["Limitações", "limitations", "narrative"],
@@ -104,7 +104,7 @@
     const actions = bar.querySelector(".source-export-actions");
     const status = bar.querySelector("div:first-child span");
     bar.setAttribute("aria-label", "Fontes selecionadas para comparação e exportação");
-    if (status) status.textContent = "Compare duas ou três fontes ou exporte os registros selecionados.";
+    if (status) status.textContent = "Selecione duas ou três fontes para comparar. Para baixar a seleção em CSV, use Exportar.";
 
     const compareButton = document.createElement("button");
     compareButton.type = "button";
@@ -139,12 +139,12 @@
       });
       const count = selected.size;
       compareButton.disabled = count < 2 || count > 3;
-      compareButton.title = count > 3 ? "A comparação aceita até três fontes; a exportação pode incluir mais." : "";
+      compareButton.title = count > 3 ? "Selecione até três fontes para comparar. O CSV pode incluir mais fontes." : "";
       if (status) {
-        if (count === 0) status.textContent = "Compare duas ou três fontes ou exporte os registros selecionados.";
+        if (count === 0) status.textContent = "Selecione duas ou três fontes para comparar. Para baixar a seleção em CSV, use Exportar.";
         else if (count === 1) status.textContent = "Selecione mais uma fonte para comparar.";
-        else if (count <= 3) status.textContent = "Comparação pronta; a seleção também pode ser exportada.";
-        else status.textContent = "Para comparar, mantenha duas ou três fontes selecionadas; a exportação aceita mais.";
+        else if (count <= 3) status.textContent = "Você pode comparar as fontes ou baixar a seleção em CSV.";
+        else status.textContent = "Selecione até três fontes para comparar. O CSV pode incluir mais fontes.";
       }
     }
 

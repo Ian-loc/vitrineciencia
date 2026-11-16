@@ -61,7 +61,7 @@
     if (!description) return;
     const line = document.createElement("p");
     line.className = "provenance-line";
-    line.innerHTML = `<strong>Proveniência:</strong> ${String(text).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]))}`;
+    line.innerHTML = `<strong>Responsável:</strong> ${String(text).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]))}`;
     description.insertAdjacentElement("afterend", line);
   }
 
@@ -78,13 +78,12 @@
       const actions = card.querySelector(".card-actions");
       let primaryUrl = "";
       if (!isDataset) {
-        addNote(card, "Este item é infraestrutura de acesso ou descoberta; não deve ser interpretado como um dataset equivalente aos demais.");
         if (action) {
           action.textContent = product.product_kind.includes("catalog") ? "Abrir catálogo ↗" : "Abrir serviço ↗";
           primaryUrl = action.href;
         }
       } else if (!distribution) {
-        addNote(card, "Acesso em revisão: não há uma distribuição HTTPS suficiente registrada para este item.", "review");
+        addNote(card, "Link para obter os dados não confirmado.", "review");
         if (action) action.textContent = "Ver página informada ↗";
         primaryUrl = action?.href || "";
       } else {
@@ -94,7 +93,6 @@
           action.href = distribution.access_url;
           action.textContent = kind === "download" ? "Dados / download ↗" : kind === "api" ? "Dados / API ↗" : kind === "context" ? "Abrir visualização/documentação ↗" : "Dados / página de acesso ↗";
         }
-        if (kind === "context") addNote(card, "A melhor rota registrada é visualização ou documentação; não a trate como download de dados.", "review");
       }
 
       card.dataset.accessReviewed = "1";
@@ -138,16 +136,16 @@
       if (providerAction) providerAction.textContent = "Página do provedor ↗";
 
       if (role === "context") {
-        addNote(card, "Revisar acesso: o destino informado é um PDF/documento, não uma rota de dados demonstrada.", "review");
+        addNote(card, "Consulte a documentação da fonte para saber como obter os dados.", "review");
         if (action) action.textContent = "Documentação informada ↗";
       } else if (role === "review") {
-        addNote(card, "Revisar acesso: não há uma URL HTTPS de dados demonstrada para este registro.", "review");
-        if (action) action.textContent = "Acesso em revisão";
+        addNote(card, "Link para obter os dados não confirmado.", "review");
+        if (action) action.textContent = "Acesso não confirmado";
       } else if (same) {
-        addNote(card, "O acesso informado coincide com a página do provedor; confirme no destino onde os dados podem ser obtidos.", "review");
+        addNote(card, "Consulte o site da fonte para saber como obter os dados.", "review");
         if (action) action.textContent = "Página / acesso informado ↗";
       } else if (uncertain) {
-        addNote(card, "Acesso parcialmente documentado: download e acesso automatizado ainda não estão esclarecidos no registro.", "review");
+        addNote(card, "Disponibilidade de download e de acesso automatizado não confirmada.", "review");
         if (action) action.textContent = role === "viewer" ? "Abrir visualizador ↗" : "Dados / portal informado ↗";
       } else if (action) {
         action.textContent = role === "api" ? "API / serviço ↗" : role === "viewer" ? "Abrir visualizador ↗" : role === "data" ? "Dados / download ↗" : "Dados / portal ↗";

@@ -54,7 +54,7 @@ async function init() {
   } catch (error) {
     $("#summary").setAttribute("aria-busy", "false");
     chartTargets.forEach(target => $(target).setAttribute("aria-busy", "false"));
-    $("#analise").insertAdjacentHTML("afterbegin", `<div class="empty" role="alert"><h2>Falha ao carregar a análise</h2><p>${esc(error.message)}</p></div>`);
+    $("#analise").insertAdjacentHTML("afterbegin", `<div class="empty" role="alert"><h2>Falha ao carregar a análise</h2><p>Atualize a página para tentar novamente.</p></div>`);
   }
 }
 

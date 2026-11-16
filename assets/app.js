@@ -159,9 +159,9 @@ function card(resource) {
     <p class="description" id="${descriptionId}">${esc(resource.description)}</p>
     <div class="chips" aria-label="Áreas de pesquisa">${areaChips}</div>
     <div class="record-detail-actions">
-      <a class="action-primary" href="${recordUrl(resource)}">Ver registro na Vitrine →</a>
+      <a class="action-primary" href="${recordUrl(resource)}">Ver ficha da fonte →</a>
     </div>
-    <div class="card-actions" aria-label="Atalhos externos"></div>
+    <div class="card-actions" aria-label="Links da fonte"></div>
   </article>`;
 }
 
@@ -403,7 +403,7 @@ async function init() {
     els.areaLinks.setAttribute("aria-busy", "false");
     els.list.setAttribute("aria-busy", "false");
     els.count.textContent = "Falha ao carregar o catálogo";
-    els.list.innerHTML = `<div class="empty"><h3>Falha ao carregar o catálogo</h3><p>${esc(error.message)}</p></div>`;
+    els.list.innerHTML = `<div class="empty"><h3>Falha ao carregar o catálogo</h3><p>Atualize a página para tentar novamente.</p></div>`;
     els.resultsMore.hidden = true;
   }
 }

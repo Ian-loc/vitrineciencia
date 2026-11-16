@@ -1518,7 +1518,7 @@
       "license": "varia por dataset e provedor",
       "attribution_required": "sim",
       "subset_support": "busca e categorias",
-      "notes": "O catálogo é o índice autoritativo; a base local registra famílias ou produtos selecionados, não uma cópia integral.",
+      "notes": "Consulte o catálogo oficial para ver a lista completa de conjuntos de dados.",
       "verified_at": "2026-07-22",
       "status": "active",
       "source": "migration_from_product_distributions_2026-10-12"
@@ -1545,7 +1545,7 @@
       "license": "varia por publicador e dataset",
       "attribution_required": "sim",
       "subset_support": "por publicador",
-      "notes": "Registrar o publicador como provedor primário.",
+      "notes": "O catálogo agrupa os dados por organização publicadora.",
       "verified_at": "2026-07-22",
       "status": "active",
       "source": "migration_from_product_distributions_2026-10-12"
@@ -3766,7 +3766,7 @@
       "tool": null,
       "free_download": "desconhecido",
       "authentication_required": "desconhecido",
-      "access_conditions": "condições de consulta, exportação e reutilização precisam de recertificação por produto",
+      "access_conditions": "Consulte o portal oficial para verificar as condições de acesso e reutilização de cada produto.",
       "license": "não localizada",
       "attribution_required": null,
       "subset_support": null,

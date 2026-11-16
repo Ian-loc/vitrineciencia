@@ -12,7 +12,7 @@ const access = context.window.VitrinePublicAccess;
 const items = json('data/applied_priority_gate.json').items;
 for (const item of items) {
   assert.equal(access(item).url, item.access_url);
-  assert.equal(access(item).label, ['A','B'].includes(item.access_role) ? 'Acessar dados / download' : 'Acessar site');
+  assert.equal(access(item).label, ['A','B'].includes(item.access_role) ? 'Acessar dados' : 'Acessar site');
 }
 assert.equal(access({access_role:'B',access_url:'javascript:alert(1)'}), null);
 assert.equal(access({access_role:'B',documentation_url:'https://example.org/'}).label, 'Acessar site');

@@ -98,9 +98,9 @@ required_labels = (
     "Visão geral",
     "Dados e produtos disponíveis",
     "Como acessar",
-    "Como interpretar",
-    "Proveniência, condições e referências",
-    "Sobre este registro na Vitrine",
+    "Usos e limitações",
+    "Responsáveis, licenças e referências",
+    "Verificação da ficha",
 )
 
 html_ids: set[str] = set()
@@ -159,6 +159,16 @@ for item in records:
     json_ids.add(rid)
 
     content = page.read_text(encoding="utf-8")
+    for phrase in (
+        "snapshot estático curado",
+        "Atualizações futuras por API",
+        "Papéis institucionais ainda não discriminados",
+        "sem inventar produtos",
+        "Ainda falta auditoria",
+        "pendentes de recertificação",
+    ):
+        if phrase.casefold() in content.casefold():
+            fail(f"{rid}: linguagem de desenvolvimento na ficha pública: {phrase}")
     parser = Parser()
     parser.feed(content)
 

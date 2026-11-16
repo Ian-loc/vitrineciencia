@@ -32,11 +32,11 @@
 
   function renderThemeState(value) {
     const label = THEMES.get(value);
-    if (heading) heading.textContent = label ? `Fontes relacionadas a ${label}` : "Fontes e dados disponíveis";
+    if (heading) heading.textContent = label ? `Fontes sobre ${label.toLocaleLowerCase("pt-BR")}` : "Fontes e dados disponíveis";
     if (themeStatus) {
       themeStatus.textContent = label
-        ? `${label}: veja abaixo as opções disponíveis e refine por território, tipo de informação ou acesso.`
-        : "Escolha um tema para começar e refine os resultados conforme a sua pergunta.";
+        ? `Use os filtros dos resultados para escolher território, tipo de informação ou forma de acesso.`
+        : "Escolha um tema para filtrar as fontes.";
     }
   }
 

@@ -5,7 +5,7 @@
   const normUrl = value => String(value || "").trim().replace(/\/$/, "").toLowerCase();
   const sameUrl = (a, b) => https(a) && https(b) && normUrl(a) === normUrl(b);
   const technicalAccess = (url, text = "") => /(?:\bapi\b|graphql|opendap|\bwms\b|\bwfs\b|\bwcs\b|wmts|stac|csw|swagger|openapi|earth engine|client librar|endpoint|\brest\b)/i.test(`${url || ""} ${text || ""}`);
-  const PUBLIC_ACTIONS = new Set(["Acessar site", "Acessar dados / download"]);
+  const PUBLIC_ACTIONS = new Set(["Acessar site", "Acessar dados"]);
 
   function link(label, url, className) {
     if (!https(url)) return null;
@@ -32,7 +32,7 @@
 
   function expectedActions(dataUrl, siteUrl, dataClassName = "action-primary") {
     const expected = [];
-    if (https(dataUrl) && !technicalAccess(dataUrl)) expected.push({label:"Acessar dados / download", url:dataUrl, className:dataClassName});
+    if (https(dataUrl) && !technicalAccess(dataUrl)) expected.push({label:"Acessar dados", url:dataUrl, className:dataClassName});
     if (https(siteUrl) && !technicalAccess(siteUrl) && !sameUrl(siteUrl, dataUrl)) expected.push({label:"Acessar site", url:siteUrl, className:"action-secondary"});
     return expected;
   }

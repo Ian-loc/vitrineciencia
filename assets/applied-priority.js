@@ -73,7 +73,7 @@
         list.hidden = visible.length === 0;
         if (status) {
           status.textContent = query
-            ? `${visible.length} exemplo(s) relacionado(s) ao tema selecionado.`
+            ? `${visible.length} ${visible.length === 1 ? "exemplo relacionado à busca" : "exemplos relacionados à busca"}.`
             : `${items.length} exemplos de acesso rápido disponíveis.`;
         }
       };

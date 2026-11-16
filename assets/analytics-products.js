@@ -70,7 +70,7 @@ async function init() {
   } catch (error) {
     $("#product-summary").setAttribute("aria-busy", "false");
     chartTargets.forEach(target => $(target).setAttribute("aria-busy", "false"));
-    $("#analise-produtos").insertAdjacentHTML("afterbegin", `<div class="empty" role="alert"><h2>Falha ao carregar o panorama</h2><p>${esc(error.message)}</p></div>`);
+    $("#analise-produtos").insertAdjacentHTML("afterbegin", `<div class="empty" role="alert"><h2>Falha ao carregar o panorama</h2><p>Atualize a página para tentar novamente.</p></div>`);
   }
 }
 

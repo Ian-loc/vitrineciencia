@@ -383,7 +383,7 @@ function productCard(product) {
     </header>
     <p class="description product-description" id="${descriptionId}">${esc(product.product_description)}</p>
     <div class="chips product-area-chips" aria-label="Áreas de pesquisa">${areaChips(product)}</div>
-    <dl class="triage-strip" aria-label="Triagem científica rápida">
+    <dl class="triage-strip" aria-label="Cobertura, período, escala e acesso">
       <div><dt>Onde?</dt><dd>${esc(product.geographic_coverage || "Não informado")}</dd></div>
       <div><dt>Quando?</dt><dd>${esc(product.temporal_coverage || "Não informado")}</dd></div>
       <div><dt>Escala?</dt><dd>${esc(displayScale(product))}</dd></div>
@@ -490,7 +490,7 @@ function sortResults(parsed) {
 function renderInterpreted(parsed) {
   if (!els.interpreted) return;
   els.interpreted.hidden = !parsed.labels.length;
-  els.interpreted.innerHTML = parsed.labels.length ? `<strong>Busca interpretada:</strong> ${parsed.labels.map(label => `<span>${esc(label)}</span>`).join("")}` : "";
+  els.interpreted.innerHTML = parsed.labels.length ? `<strong>Termos identificados na busca:</strong> ${parsed.labels.map(label => `<span>${esc(label)}</span>`).join("")}` : "";
 }
 function topCount(values) {
   const counts = countBy(values);
@@ -512,7 +512,7 @@ function renderInsights() {
   const accessLabels = {arquivo:"download",api:"API",ogc:"WMS/WFS/OGC",gee:"Earth Engine",banco:"banco/consulta",web:"consulta web"};
   if (access) items.push({label:`${access[1]} com ${accessLabels[access[0]] || access[0]}`, type:"access", value:access[0]});
   els.insights.hidden = !items.length;
-  els.insights.innerHTML = items.length ? `<span>Perfil do resultado:</span>${items.map(item => `<button type="button" data-insight-type="${item.type}" data-insight-value="${item.value}">${esc(item.label)}</button>`).join("")}` : "";
+  els.insights.innerHTML = items.length ? `<span>Filtros rápidos:</span>${items.map(item => `<button type="button" data-insight-type="${item.type}" data-insight-value="${item.value}">${esc(item.label)}</button>`).join("")}` : "";
   els.insights.querySelectorAll("button").forEach(button => button.addEventListener("click", () => {
     const target = {brazil:els.brazil, temporal:els.temporal, format:els.format, access:els.access}[button.dataset.insightType];
     if (target) { target.value = button.dataset.insightValue; filter(); target.focus(); }
@@ -534,7 +534,7 @@ function render() {
   const shown = filtered.slice(0,visibleCount);
   els.list.innerHTML = shown.map(productCard).join("");
   els.empty.hidden = filtered.length > 0;
-  els.count.textContent = `${filtered.length} ${filtered.length === 1 ? "produto compatível" : "produtos compatíveis"} · ${all.length} no catálogo`;
+  els.count.textContent = `${filtered.length} ${filtered.length === 1 ? "item encontrado" : "itens encontrados"} · ${all.length} no catálogo`;
   const hasMore = shown.length < filtered.length;
   els.resultsMore.hidden = !hasMore;
   els.shownCount.textContent = hasMore ? `${shown.length} de ${filtered.length} exibidos` : `${shown.length} exibidos`;
@@ -643,7 +643,7 @@ function renderComparison() {
     const differs = new Set(normalized).size > 1;
     return `<tr class="${differs ? "comparison-diff" : "comparison-same"}"><th scope="row">${label}${differs ? '<span class="diff-marker">difere</span>' : ""}</th>${values.map(value => `<td${differs ? ' class="comparison-diff-cell"' : ""}>${esc(value)}</td>`).join("")}</tr>`;
   }).join("");
-  els.compareContent.innerHTML = `<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th scope="col">Dimensão</th>${products.map(product => `<th scope="col"><div class="compare-product-head"><span>${esc(product.product_name)}</span><button type="button" data-remove-compare="${esc(product.product_id)}" aria-label="Remover ${esc(product.product_name)} da comparação">Remover</button></div></th>`).join("")}</tr></thead><tbody>${body}</tbody></table></div><p class="export-note">Diferenças são destacadas para facilitar a triagem. Confirme versão, método e condições de uso no provedor original antes da análise.</p>`;
+  els.compareContent.innerHTML = `<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th scope="col">Dimensão</th>${products.map(product => `<th scope="col"><div class="compare-product-head"><span>${esc(product.product_name)}</span><button type="button" data-remove-compare="${esc(product.product_id)}" aria-label="Remover ${esc(product.product_name)} da comparação">Remover</button></div></th>`).join("")}</tr></thead><tbody>${body}</tbody></table></div><p class="export-note">Confira a versão, o método e as condições de uso na documentação de cada item.</p>`;
   els.compareContent.querySelectorAll("[data-remove-compare]").forEach(button => button.addEventListener("click", () => {
     selected.delete(button.dataset.removeCompare);
     syncCompareCheckboxes();
@@ -701,7 +701,7 @@ async function init() {
     filter(false);
   } catch (error) {
     els.count.textContent = "Falha ao carregar produtos";
-    els.list.innerHTML = `<div class="empty"><h3>Falha ao carregar os produtos</h3><p>${esc(error.message)}</p></div>`;
+    els.list.innerHTML = `<div class="empty"><h3>Falha ao carregar os produtos</h3><p>Atualize a página para tentar novamente.</p></div>`;
     els.resultsMore.hidden = true;
   }
 }

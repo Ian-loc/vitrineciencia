@@ -38,7 +38,7 @@ ROUTE_ROLE_LABELS = {
     "data_page": "Página de dados",
     "data_service": "Serviço de dados",
     "viewer": "Visualização",
-    "unconfirmed_access": "Acesso em revisão",
+    "unconfirmed_access": "Acesso não confirmado",
     "official_site": "Site oficial",
     "access_documentation": "Documentação de acesso",
     "distribution": "Distribuição",
@@ -140,7 +140,7 @@ def access_routes_html(record: dict) -> str:
         if any(role in ACCESS_ROLES for role in (route.get("roles") or []))
     ]
     if not routes:
-        return '<p class="notice">A Vitrine ainda não possui uma rota externa confirmada para este recurso.</p>'
+        return '<p class="notice">Acesso externo não confirmado.</p>'
 
     primary = next((route for route in routes if route.get("primary")), routes[0])
     secondary = [route for route in routes if route is not primary]
@@ -157,7 +157,7 @@ def access_routes_html(record: dict) -> str:
     )
     if not primary_action:
         primary_action = (
-            f'<p class="record-meta-note">{esc(primary.get("notes") or "A rota principal está registrada, mas não possui um link externo confirmado.")}</p>'
+            f'<p class="record-meta-note">{esc(primary.get("notes") or "Link de acesso não confirmado.")}</p>'
         )
 
     secondary_links: list[str] = []
@@ -194,10 +194,10 @@ def access_routes_html(record: dict) -> str:
 
 def access_facts_html(access: dict) -> str:
     items = [
-        ("Download", display_status(access.get("free_download"))),
+        ("Download gratuito", display_status(access.get("free_download"))),
         ("Acesso automatizado", display_status(access.get("programmatic_access"))),
-        ("Credencial", display_status(access.get("authentication_required"))),
-        ("Formas técnicas", " · ".join(access.get("protocols") or []) or "Não documentado"),
+        ("Exige conta ou credencial", display_status(access.get("authentication_required"))),
+        ("Protocolos de acesso", " · ".join(access.get("protocols") or []) or "Não documentado"),
     ]
     return (
         '<dl class="access-facts">'
@@ -234,7 +234,7 @@ def distribution_html(route: dict) -> str:
         f'<strong>{esc(route.get("label") or "Forma de acesso")}</strong>'
         f'<div class="route-meta">{"".join(facts)}</div>'
         f'{notes}'
-        f'<div class="route-actions">{external_link("Acessar esta distribuição", route.get("url"))}</div>'
+        f'<div class="route-actions">{external_link("Abrir link", route.get("url"))}</div>'
         '</div>'
     )
 
@@ -256,7 +256,7 @@ def offering_html(record: dict, offering: dict) -> str:
             label = "Coleção" if version.get("version_kind") == "collection" else "Versão"
             meta.append(f"<span>{esc(label)}: {esc(version.get('version_label') or '')}</span>")
     if offering.get("version_or_collection_summary"):
-        meta.append(f"<span>Versão/coleção informada: {esc(offering['version_or_collection_summary'])}</span>")
+        meta.append(f"<span>Versão ou coleção: {esc(offering['version_or_collection_summary'])}</span>")
 
     coverage = offering.get("coverage") or {}
     facts = "".join(
@@ -295,7 +295,7 @@ def offering_html(record: dict, offering: dict) -> str:
         )
         + (f'<div class="record-footer-actions">{action_links}</div>' if action_links else "")
         + (
-            f'<div class="distribution-list"><h4>Formas de acesso registradas</h4>{distributions}</div>'
+            f'<div class="distribution-list"><h4>Formas de acesso</h4>{distributions}</div>'
             if distributions else ""
         )
         + '</article>'
@@ -307,7 +307,7 @@ def references_html(record: dict) -> str:
     for ref in record.get("references") or []:
         roles = set(ref.get("roles") or [])
         if {"scientific_or_technical_evidence", "verification_source"}.issubset(roles):
-            label = "Referência científica/técnica e fonte de verificação"
+            label = "Referência científica ou técnica usada na verificação"
         elif "scientific_or_technical_evidence" in roles:
             label = "Referência científica ou técnica"
         elif "verification_source" in roles:
@@ -324,7 +324,7 @@ def references_html(record: dict) -> str:
             '</article>'
         )
     if not blocks:
-        return '<p class="record-meta-note">Nenhuma referência externa adicional foi registrada.</p>'
+        return '<p class="record-meta-note">Nenhuma referência adicional disponível nesta ficha.</p>'
     return '<div class="record-reference-list">' + "".join(blocks) + "</div>"
 
 
@@ -366,12 +366,11 @@ def render_record_page(record: dict) -> str:
         '<div class="product-list">' + "".join(offering_html(record, item) for item in offerings) + "</div>"
         if offerings
         else (
-            '<p class="notice">A Vitrine ainda não detalhou conjuntos, produtos, séries ou coleções deste recurso como itens separados. '
-            'O resumo desta página permanece no nível do recurso catalogado, sem inventar produtos que não foram curados.</p>'
+            '<p class="notice">Consulte as opções em <a href="#acesso">Como acessar</a> para encontrar os dados desta fonte.</p>'
         )
     )
     compare_link = (
-        f'<p><a href="../../products.html?source={quote(title)}">Comparar estes itens na visão detalhada da Vitrine →</a></p>'
+        f'<p><a href="../../products.html?source={quote(title)}">Comparar itens desta fonte →</a></p>'
         if offerings else ""
     )
 
@@ -387,10 +386,7 @@ def render_record_page(record: dict) -> str:
         for agent in agents
     )
     provenance_note = (
-        '<p class="provenance-status">Papéis institucionais ainda não discriminados pela Vitrine.</p>'
-        '<details class="provenance-details"><summary>Entender esta proveniência</summary>'
-        '<p>A Vitrine preserva o rótulo curado do catálogo e só separa produção, manutenção, publicação, hospedagem ou distribuição quando há evidência suficiente para distinguir esses papéis.</p>'
-        '</details>'
+        '<p class="provenance-status">Para identificar quem produziu ou publicou um conjunto de dados específico, consulte a documentação desse conjunto.</p>'
         if unresolved_provenance else ""
     )
 
@@ -399,8 +395,8 @@ def render_record_page(record: dict) -> str:
             nav_link("visao-geral", "Visão geral"),
             nav_link("dados-produtos", "Dados e produtos"),
             nav_link("acesso", "Como acessar"),
-            nav_link("interpretacao", "Como interpretar"),
-            nav_link("proveniencia-referencias", "Proveniência e referências"),
+            nav_link("interpretacao", "Usos e limitações"),
+            nav_link("proveniencia-referencias", "Responsáveis e referências"),
         ]
     )
 
@@ -453,7 +449,7 @@ def render_record_page(record: dict) -> str:
 <h2>Visão geral</h2>
 <div class="record-grid">
 {fact("Tipo do recurso", type_info.get("label"))}
-{fact("Abrangência na Vitrine", scope.get("label"))}
+{fact("Relação com o Brasil", scope.get("label"))}
 {fact("Cobertura geográfica", coverage.get("geographic"))}
 {fact("Dados sobre o Brasil", display_status(coverage.get("covers_brazil")))}
 {fact("Resolução ou escala espacial", coverage.get("spatial_resolution"))}
@@ -469,7 +465,7 @@ def render_record_page(record: dict) -> str:
 <div class="record-summary-block">
 <h3>Resumo do conteúdo</h3>
 <p><strong>Tipos de conteúdo:</strong></p>{tags(content.get("product_types"))}
-<p><strong>Formatos descritos:</strong></p>{tags(content.get("formats"))}
+<p><strong>Formatos:</strong></p>{tags(content.get("formats"))}
 <p><strong>Formas de visualização:</strong></p>{tags(content.get("visualizations"))}
 </div>
 {offering_section}{compare_link}
@@ -484,44 +480,39 @@ def render_record_page(record: dict) -> str:
 </section>
 
 <section class="record-section" id="interpretacao">
-<h2>Como interpretar</h2>
-<h3>Possibilidades de uso em pesquisa</h3>
+<h2>Usos e limitações</h2>
+<h3>Usos em pesquisa</h3>
 <p>{esc(use_and_limits.get("academic_uses") or "Não informado")}</p>
 <h3>Cuidados e limitações</h3>
 <p>{esc(use_and_limits.get("limitations") or "Não informado")}</p>
-<p class="record-meta-note">Quando uma oferta detalhada possui cobertura, resolução, versão, licença ou limitação mais específica, a informação desse nível prevalece sobre o resumo geral do recurso.</p>
+<p class="record-meta-note">Antes de usar os dados, confira a cobertura, a resolução e a versão do conjunto que você escolheu.</p>
 </section>
 
 <section class="record-section" id="proveniencia-referencias">
-<h2>Proveniência, condições e referências</h2>
+<h2>Responsáveis, licenças e referências</h2>
 <div class="record-grid">
-{fact("Responsabilidade e proveniência", responsible)}
+{fact("Instituição ou organização responsável", responsible)}
 {fact("Natureza institucional", resource.get("institutional_status"))}
 </div>
 {provenance_note}
-<h3>Principais fontes e insumos</h3>{tags(resource.get("data_sources"))}
+<h3>Fontes dos dados</h3>{tags(resource.get("data_sources"))}
 <h3>Condições de uso e licença</h3>
 <p>{esc(use_and_limits.get("license") or "Não informado")}</p>
-<p class="record-meta-note">A licença acima é um resumo no nível do recurso. Ofertas e distribuições podem possuir condições próprias e, quando verificadas, essas condições específicas prevalecem.</p>
+<p class="record-meta-note">Confira a licença do conjunto de dados ou serviço que você pretende usar.</p>
 <h3>Referências e documentação</h3>
 {references_html(record)}
 
 <div class="record-curation" id="curadoria">
-<h3>Sobre este registro na Vitrine</h3>
+<h3>Verificação da ficha</h3>
 <p class="curation-summary"><strong>{esc(rid)}</strong> · revisado em {esc((record.get("curation") or {}).get("last_verified") or "data não informada")} · acesso verificado em {esc((record.get("curation") or {}).get("access_last_verified") or "data não informada")}</p>
-<details class="curation-details">
-<summary>Como a Vitrine verifica este registro</summary>
-<p><strong>Tipo catalogado:</strong> {esc(type_info.get("label") or "Não informado")}</p>
-<p>“Não confirmado” significa que a Vitrine não encontrou evidência suficiente na revisão registrada; não significa que o recurso inexista.</p>
-<p>Esta página usa um snapshot estático curado. Atualizações futuras por API poderão ocorrer de forma assíncrona sem tornar a página dependente do provedor externo.</p>
-</details>
+<p><a href="../../about.html#verificacao">Como a Vitrine verifica as informações</a></p>
 </div>
 </section>
 
 </div>
 <aside class="record-nav" aria-label="Nesta página"><strong>Nesta página</strong>{nav}</aside>
 </main>
-<footer class="wrap"><p><strong>Vitrine Ciência</strong> · <a href="../../sources.html">Explorar dados</a> · <a href="../../products.html">Dados detalhados</a> · <a href="../../about.html">Sobre a Vitrine</a></p><p>Brasil · Registro curado pela Vitrine Ciência</p><div class="institutional-support" aria-label="Instituições vinculadas ao projeto"><p class="institutional-support-label">Instituições vinculadas ao projeto</p><div class="institutional-logos"><img src="../../assets/institutions/ufla.png" alt="Universidade Federal de Lavras" width="229" height="103" loading="lazy" decoding="async"><img src="../../assets/institutions/ppg-ecologia-aplicada-ufla.png" alt="Programa de Pós-Graduação em Ecologia Aplicada da UFLA" width="121" height="118" loading="lazy" decoding="async"><img src="../../assets/institutions/fapemig.png" alt="FAPEMIG" width="140" height="117" loading="lazy" decoding="async"></div></div></footer>
+<footer class="wrap"><p><strong>Vitrine Ciência</strong> · <a href="../../sources.html">Explorar dados</a> · <a href="../../products.html">Dados detalhados</a> · <a href="../../about.html">Sobre a Vitrine</a></p><div class="institutional-support" aria-label="Instituições vinculadas ao projeto"><p class="institutional-support-label">Instituições vinculadas ao projeto</p><div class="institutional-logos"><img src="../../assets/institutions/ufla.png" alt="Universidade Federal de Lavras" width="229" height="103" loading="lazy" decoding="async"><img src="../../assets/institutions/ppg-ecologia-aplicada-ufla.png" alt="Programa de Pós-Graduação em Ecologia Aplicada da UFLA" width="121" height="118" loading="lazy" decoding="async"><img src="../../assets/institutions/fapemig.png" alt="FAPEMIG" width="140" height="117" loading="lazy" decoding="async"></div></div></footer>
 <script src="../../assets/navigation.js" defer></script>
 </body></html>
 '''
