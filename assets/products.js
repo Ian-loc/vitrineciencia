@@ -24,15 +24,17 @@ const els = {
   list: $("#product-list"),
   empty: $("#product-empty"),
   count: $("#product-count"),
+  scope: $("#product-scope"),
   activeFilters: $("#product-active-filters"),
   advancedFilters: $("#product-advanced-filters"),
+  technicalFilters: $("#product-technical-filters"),
   advancedCount: $("#product-advanced-count"),
+  clear: $("#product-clear"),
   searchForm: $("#product-search"),
   catalogHeading: $("#product-catalog-heading"),
   resultsMore: $("#product-results-more"),
   showMore: $("#product-show-more"),
   shownCount: $("#product-shown-count"),
-  insights: $("#product-result-insights"),
   interpreted: $("#interpreted-query"),
   compareBar: $("#compare-bar"),
   compareCount: $("#compare-count"),
@@ -47,6 +49,7 @@ const CURRENT_YEAR = 2026;
 let all = [];
 let filtered = [];
 let visibleCount = PAGE_SIZE;
+let distributionRoles = {};
 const selected = new Set();
 
 const ENUM_ORDER = ["sim", "parcial", "não", "desconhecido", "não se aplica"];
@@ -64,6 +67,17 @@ const ORIGIN_LABELS = {
   primário: "Primário", derivado: "Derivado", agregador: "Agregador",
   serviço: "Serviço", misto: "Misto", desconhecido: "Desconhecido"
 };
+const ACCESS_LABELS = {
+  arquivo:"Download de dados", api:"API ou acesso programático", ogc:"Serviços WMS, WFS ou OGC",
+  gee:"Google Earth Engine", banco:"Banco de dados", web:"Catálogo ou visualização na web", outro:"Outra forma de acesso"
+};
+const COVERAGE_GROUPS = [
+  ["brasil", "Brasil"], ["amazonia", "Amazônia"], ["cerrado", "Cerrado"],
+  ["mata atlantica", "Mata Atlântica"], ["caatinga", "Caatinga"], ["pantanal", "Pantanal"],
+  ["pampa", "Pampa"], ["global", "Global"], ["variavel", "Variável conforme conjunto ou camada"]
+];
+const TECHNICAL_FILTERS = ["area", "auth", "status", "origin", "brazil"];
+const ADDITIONAL_FILTERS = ["source", "format", "free", "yearStart", "yearEnd", "temporal", "support", "spatial", "license", ...TECHNICAL_FILTERS];
 
 const THEME_GROUPS = [
   {key:"carbono", label:"Carbono", terms:["carbono","carbon","carbon stock","carbon cycle","emission","emissions","co2"]},
@@ -144,6 +158,7 @@ function biomeMatches(product, key) {
 function temporalBucket(product) {
   const text = norm(product.temporal_resolution);
   if (!text || /desconhe|nao inform|variav/.test(text)) return "desconhecida";
+  if (/instantane|snapshot/.test(text)) return "instantanea";
   if (/minut|hour|hora|3-hour|subdiar|sub-di/.test(text)) return "subdiaria";
   if (/daily|diari|dia\b/.test(text)) return "diaria";
   if (/week|seman/.test(text)) return "semanal";
@@ -192,16 +207,24 @@ function spatialBucket(product) {
   return "mais10km";
 }
 
+function dataDownloads(product) {
+  return (product.distributions || []).filter(distribution => window.VitrineIsDataDownload(distribution, distributionRoles));
+}
+function downloadStatus(product) {
+  const downloads = dataDownloads(product);
+  return downloads.length ? aggregateEnum(downloads.map(distribution => distribution.free_download)) : "não se aplica";
+}
 function productAccessCategories(product) {
-  const text = norm((product.distributions || []).flatMap(d => [d.access_protocol,d.access_tool,d.format,d.access_conditions,d.distribution_name]).join(" "));
+  const distributions = product.distributions || [];
+  const text = norm(distributions.flatMap(d => [d.access_protocol, d.access_tool]).join(" "));
   const out = [];
-  if (/google earth engine|\bgee\b/.test(text)) out.push("gee");
+  if (dataDownloads(product).length) out.push("arquivo");
+  if (/earth engine|\bgee\b/.test(text)) out.push("gee");
   if (/\bapi\b|rest|graphql|opendap/.test(text)) out.push("api");
   if (/\bwms\b|\bwfs\b|wmts|ogc/.test(text)) out.push("ogc");
   if (/sql|database|banco de dados|bigquery|duckdb/.test(text)) out.push("banco");
-  if (/download|baixar|arquivo|file|csv|geotiff|tiff|shapefile|netcdf|parquet|xlsx|zip/.test(text)) out.push("arquivo");
-  if (/web|portal|viewer|visualizador|consulta|dashboard|painel|mapa/.test(text)) out.push("web");
-  return unique(out.length ? out : ["outro"]);
+  if (distributions.some(distribution => ["CATALOG", "VIEWER_PORTAL"].includes(distributionRoles[distribution.distribution_name]?.role))) out.push("web");
+  return out.length ? out : ["outro"];
 }
 
 function productFormatCategories(product) {
@@ -351,13 +374,10 @@ function licenses(product) {
   return unique((product.distributions || []).map(d => d.license)).join(" | ") || "Não informado";
 }
 function displayAccess(product) {
-  const tools = unique((product.distributions || []).flatMap(d => [d.access_tool, d.access_protocol]).filter(Boolean));
-  const formats = productFormatsRaw(product);
-  const free = aggregateEnum((product.distributions || []).map(d => d.free_download));
-  const parts = unique([...formats.slice(0,2), ...tools.slice(0,2)]).slice(0,3);
-  if (free === "sim") parts.push("gratuito");
-  else if (free === "parcial") parts.push("gratuito em parte");
-  return parts.join(" · ") || "ver formas de acesso";
+  return productAccessCategories(product)
+    .filter(value => value !== "outro")
+    .map(value => value === "arquivo" && downloadStatus(product) === "sim" ? "Download gratuito de dados" : ACCESS_LABELS[value])
+    .join(" · ") || "Consulte a fonte";
 }
 function displayScale(product) {
   const spatial = product.spatial_resolution && !/desconhe/i.test(product.spatial_resolution) ? product.spatial_resolution : product.spatial_support;
@@ -416,17 +436,21 @@ function populateFilters() {
   const themeCounts = new Map(THEME_GROUPS.map(group => [group.key, all.filter(p => themeMatches(p, group.key)).length]));
   populateSelect(els.theme, THEME_GROUPS.map(group => [group.key, group.label, themeCounts.get(group.key)]).filter(x => x[2] > 0), "Todos os temas");
 
-  const temporalLabels = {subdiaria:"Subdiária",diaria:"Diária",semanal:"Semanal",mensal:"Mensal",trimestral:"Trimestral",sazonal:"Sazonal",anual:"Anual",continua:"Contínua / tempo real",outra:"Outra / irregular",desconhecida:"Não informada"};
+  const coverageEntries = COVERAGE_GROUPS.map(([value, label]) => [
+    value, label, all.filter(product => norm(product.geographic_coverage).includes(value)).length
+  ]).filter(([, , count]) => count > 0);
+  populateSelect(els.coverage, coverageEntries, "Qualquer território");
+
+  const temporalLabels = {subdiaria:"Subdiária",diaria:"Diária",semanal:"Semanal",mensal:"Mensal",trimestral:"Trimestral",sazonal:"Sazonal",anual:"Anual",instantanea:"Retrato de um período",continua:"Contínua / tempo real",outra:"Outra / irregular",desconhecida:"Não informada"};
   populateSelect(els.temporal, sortedEntries(countBy(all.map(temporalBucket)), value => temporalLabels[value] || value), "Qualquer resolução temporal");
   const supportLabels = {ponto:"Ponto / estação / parcela",grade:"Pixel / grade / raster",administrativo:"Unidade administrativa",bacia:"Bacia hidrográfica",poligono:"Polígono / feição",regiao:"Região / zona / território",nacional_global:"Nacional / país / global",tabular:"Sem suporte espacial explícito",outro:"Outro",desconhecido:"Não informado"};
   populateSelect(els.support, sortedEntries(countBy(all.map(supportBucket)), value => supportLabels[value] || value), "Qualquer suporte espacial");
   const spatialLabels = {ate10m:"≤ 10 m", "10a30m":"> 10–30 m", "30a100m":"> 30–100 m", "100m1km":"> 100 m–1 km", "1a10km":"> 1–10 km", mais10km:"> 10 km", administrativa:"Administrativa / agregada", variavel:"Variável", outra:"Outra", desconhecida:"Não informada"};
   populateSelect(els.spatial, sortedEntries(countBy(all.map(spatialBucket)), value => spatialLabels[value] || value), "Qualquer resolução espacial");
-  const accessLabels = {arquivo:"Download de arquivo",api:"API / acesso programático",ogc:"WMS/WFS/OGC",gee:"Google Earth Engine",banco:"Banco / consulta estruturada",web:"Consulta web / portal",outro:"Outro"};
-  populateSelect(els.access, sortedEntries(countBy(all.flatMap(productAccessCategories)), value => accessLabels[value] || value), "Qualquer forma de acesso");
+  populateSelect(els.access, sortedEntries(countBy(all.flatMap(productAccessCategories)), value => ACCESS_LABELS[value]), "Qualquer forma de acesso");
   const formatLabels = {geotiff:"GeoTIFF/TIFF",csv:"CSV",shapefile:"Shapefile",geojson:"GeoJSON",netcdf:"NetCDF",parquet:"Parquet",json:"JSON",kml:"KML/KMZ",excel:"Excel",raster:"Raster",vetor:"Vetor",outro:"Outro / não padronizado"};
   populateSelect(els.format, sortedEntries(countBy(all.flatMap(productFormatCategories)), value => formatLabels[value] || value), "Qualquer formato");
-  populateSelect(els.free, sortedEntries(countBy(all.map(p => aggregateEnum((p.distributions || []).map(d => d.free_download)))), value => ENUM_LABELS[value] || value), "Qualquer condição de gratuidade");
+  populateSelect(els.free, sortedEntries(countBy(all.map(downloadStatus)), value => value === "não se aplica" ? "Sem download de dados listado" : ENUM_LABELS[value] || value), "Qualquer condição");
   const licenseLabels = {aberta:"Licença aberta identificada",outros_termos:"Outros termos declarados",nao_informada:"Licença não informada"};
   populateSelect(els.license, sortedEntries(countBy(all.map(productLicenseCategory)), value => licenseLabels[value] || value), "Qualquer licença");
 
@@ -459,7 +483,7 @@ function productMatches(product, f) {
     (!f.spatial || spatialBucket(product) === f.spatial) &&
     (!f.access || productAccessCategories(product).includes(f.access)) &&
     (!f.format || productFormatCategories(product).includes(f.format)) &&
-    (!f.free || aggregateEnum((product.distributions || []).map(d => d.free_download)) === f.free) &&
+    (!f.free || downloadStatus(product) === f.free) &&
     (!f.license || productLicenseCategory(product) === f.license) &&
     (!f.area || split(product.research_areas).includes(f.area)) &&
     (!f.source || product.source?.resource_name === f.source) &&
@@ -492,33 +516,6 @@ function renderInterpreted(parsed) {
   els.interpreted.hidden = !parsed.labels.length;
   els.interpreted.innerHTML = parsed.labels.length ? `<strong>Termos identificados na busca:</strong> ${parsed.labels.map(label => `<span>${esc(label)}</span>`).join("")}` : "";
 }
-function topCount(values) {
-  const counts = countBy(values);
-  return [...counts.entries()].sort((a,b) => b[1]-a[1])[0] || null;
-}
-function renderInsights() {
-  if (!els.insights) return;
-  if (!filtered.length) { els.insights.hidden = true; els.insights.innerHTML = ""; return; }
-  const items = [];
-  const br = filtered.filter(p => p.covers_brazil === "sim").length;
-  if (br) items.push({label:`${br} com dados para o Brasil`, type:"brazil", value:"sim"});
-  const temporal = topCount(filtered.map(temporalBucket).filter(v => !["desconhecida","outra"].includes(v)));
-  const temporalLabels = {subdiaria:"subdiários",diaria:"diários",semanal:"semanais",mensal:"mensais",trimestral:"trimestrais",sazonal:"sazonais",anual:"anuais",continua:"contínuos"};
-  if (temporal) items.push({label:`${temporal[1]} ${temporalLabels[temporal[0]] || temporal[0]}`, type:"temporal", value:temporal[0]});
-  const format = topCount(filtered.flatMap(productFormatCategories).filter(v => v !== "outro"));
-  const formatLabels = {geotiff:"GeoTIFF/TIFF",csv:"CSV",shapefile:"Shapefile",geojson:"GeoJSON",netcdf:"NetCDF",parquet:"Parquet",json:"JSON",kml:"KML/KMZ",excel:"Excel",raster:"raster",vetor:"vetor"};
-  if (format) items.push({label:`${format[1]} em ${formatLabels[format[0]] || format[0]}`, type:"format", value:format[0]});
-  const access = topCount(filtered.flatMap(productAccessCategories).filter(v => v !== "outro"));
-  const accessLabels = {arquivo:"download",api:"API",ogc:"WMS/WFS/OGC",gee:"Earth Engine",banco:"banco/consulta",web:"consulta web"};
-  if (access) items.push({label:`${access[1]} com ${accessLabels[access[0]] || access[0]}`, type:"access", value:access[0]});
-  els.insights.hidden = !items.length;
-  els.insights.innerHTML = items.length ? `<span>Filtros rápidos:</span>${items.map(item => `<button type="button" data-insight-type="${item.type}" data-insight-value="${item.value}">${esc(item.label)}</button>`).join("")}` : "";
-  els.insights.querySelectorAll("button").forEach(button => button.addEventListener("click", () => {
-    const target = {brazil:els.brazil, temporal:els.temporal, format:els.format, access:els.access}[button.dataset.insightType];
-    if (target) { target.value = button.dataset.insightValue; filter(); target.focus(); }
-  }));
-}
-
 function filter(syncUrl = true) {
   const f = currentFilters();
   filtered = all.filter(product => productMatches(product,f));
@@ -527,14 +524,17 @@ function filter(syncUrl = true) {
   render();
   renderInterpreted(f.parsed);
   renderActiveFilters(f);
-  renderInsights();
+  document.dispatchEvent(new Event("vitrine:products-filtered"));
   if (syncUrl) writeUrl();
 }
 function render() {
   const shown = filtered.slice(0,visibleCount);
   els.list.innerHTML = shown.map(productCard).join("");
+  els.list.setAttribute("aria-busy", "false");
   els.empty.hidden = filtered.length > 0;
-  els.count.textContent = `${filtered.length} ${filtered.length === 1 ? "item encontrado" : "itens encontrados"} · ${all.length} no catálogo`;
+  els.count.textContent = filtered.length < all.length
+    ? `${filtered.length} de ${all.length} ${all.length === 1 ? "item" : "itens"}`
+    : `${filtered.length} ${filtered.length === 1 ? "item encontrado" : "itens encontrados"}`;
   const hasMore = shown.length < filtered.length;
   els.resultsMore.hidden = !hasMore;
   els.shownCount.textContent = hasMore ? `${shown.length} de ${filtered.length} exibidos` : `${shown.length} exibidos`;
@@ -547,25 +547,30 @@ function renderActiveFilters(f) {
   if (f.parsed.raw) items.push({key:"q",label:`Busca: ${els.q.value.trim()}`});
   [
     activeItem("theme","Tema",f.theme,els.theme),
-    f.coverage ? {key:"coverage",label:`Geografia: ${els.coverage.value.trim()}`} : null,
+    activeItem("coverage","Território",f.coverage,els.coverage),
     f.yearStart ? {key:"yearStart",label:`De: ${f.yearStart}`} : null,
     f.yearEnd ? {key:"yearEnd",label:`Até: ${f.yearEnd}`} : null,
-    activeItem("temporal","Tempo",f.temporal,els.temporal), activeItem("support","Suporte",f.support,els.support),
+    activeItem("temporal","Resolução temporal",f.temporal,els.temporal), activeItem("support","Suporte",f.support,els.support),
     activeItem("spatial","Resolução",f.spatial,els.spatial), activeItem("access","Acesso",f.access,els.access),
-    activeItem("format","Formato",f.format,els.format), activeItem("free","Gratuidade",f.free,els.free), activeItem("license","Licença",f.license,els.license),
+    activeItem("format","Formato ou exportação",f.format,els.format), activeItem("free","Download gratuito de dados",f.free,els.free), activeItem("license","Licença",f.license,els.license),
     activeItem("area","Área",f.area,els.area), activeItem("source","Fonte",f.source,els.source), activeItem("kind","Tipo",f.kind,els.kind),
     activeItem("auth","Autenticação",f.auth,els.auth), activeItem("status","Estado",f.status,els.status), activeItem("origin","Origem",f.origin,els.origin), activeItem("brazil","Brasil",f.brazil,els.brazil)
   ].filter(Boolean).forEach(item => items.push(item));
-  const advancedKeys = ["area","source","kind","auth","status","origin","brazil"];
-  const advancedActive = items.filter(item => advancedKeys.includes(item.key)).length;
+  const advancedActive = items.filter(item => ADDITIONAL_FILTERS.includes(item.key)).length;
   els.advancedCount.textContent = advancedActive ? `(${advancedActive} ${advancedActive === 1 ? "ativo" : "ativos"})` : "";
-  if (advancedActive) els.advancedFilters.open = true;
+  els.clear.hidden = !items.length;
   els.activeFilters.hidden = !items.length;
   els.activeFilters.innerHTML = items.length ? `<span>Filtros ativos:</span>${items.map(item => `<button type="button" data-remove="${item.key}">${esc(item.label)} <b aria-hidden="true">×</b></button>`).join("")}` : "";
   els.activeFilters.querySelectorAll("[data-remove]").forEach(button => button.addEventListener("click", () => {
     const key = button.dataset.remove;
     const target = {q:els.q, theme:els.theme, coverage:els.coverage, yearStart:els.yearStart, yearEnd:els.yearEnd, temporal:els.temporal, support:els.support, spatial:els.spatial, access:els.access, format:els.format, free:els.free, license:els.license, area:els.area, source:els.source, kind:els.kind, auth:els.auth, status:els.status, origin:els.origin, brazil:els.brazil}[key];
-    if (target) { target.value = ""; filter(); target.focus(); }
+    if (target) {
+      if (ADDITIONAL_FILTERS.includes(key)) els.advancedFilters.open = true;
+      if (TECHNICAL_FILTERS.includes(key)) els.technicalFilters.open = true;
+      target.value = "";
+      filter();
+      target.focus();
+    }
   }));
 }
 
@@ -575,15 +580,28 @@ function writeUrl() {
   Object.entries(values).forEach(([key,value]) => { if (value) params.set(key,value); });
   history.replaceState(null,"",`${location.pathname}${params.toString() ? `?${params}` : ""}${location.hash}`);
 }
-function setFromParam(element,value) { if (!element || !value) return; if (element.tagName === "SELECT" && ![...element.options].some(o => o.value === value)) return; element.value = value; }
+function setFromParam(element, value) {
+  if (element.tagName === "SELECT") {
+    element.value = [...element.options].some(option => option.value === value) ? value : element.options[0].value;
+  } else {
+    element.value = value || "";
+  }
+}
 function readUrl() {
   const p = new URLSearchParams(location.search);
-  setFromParam(els.q,p.get("q")); setFromParam(els.theme,p.get("theme")); setFromParam(els.coverage,p.get("coverage"));
+  const coverage = p.get("coverage");
+  if (coverage && ![...els.coverage.options].some(option => option.value === coverage)) {
+    const product = all.find(item => norm(item.geographic_coverage) === norm(coverage));
+    if (product) els.coverage.add(new Option(product.geographic_coverage, coverage));
+  }
+  setFromParam(els.q,p.get("q")); setFromParam(els.theme,p.get("theme")); setFromParam(els.coverage,coverage);
   setFromParam(els.yearStart,p.get("from")); setFromParam(els.yearEnd,p.get("to")); setFromParam(els.temporal,p.get("temporal"));
   setFromParam(els.support,p.get("support")); setFromParam(els.spatial,p.get("spatial")); setFromParam(els.access,p.get("access"));
   setFromParam(els.format,p.get("format")); setFromParam(els.free,p.get("free")); setFromParam(els.license,p.get("license"));
   setFromParam(els.area,p.get("area")); setFromParam(els.source,p.get("source")); setFromParam(els.kind,p.get("kind"));
   setFromParam(els.auth,p.get("auth")); setFromParam(els.status,p.get("status")); setFromParam(els.origin,p.get("origin")); setFromParam(els.brazil,p.get("brazil")); setFromParam(els.sort,p.get("sort"));
+  els.advancedFilters.open = ADDITIONAL_FILTERS.some(key => els[key].value);
+  els.technicalFilters.open = TECHNICAL_FILTERS.some(key => els[key].value);
 }
 
 function goToCatalog() {
@@ -671,8 +689,14 @@ function bind() {
   controls.forEach(element => element.addEventListener(element === els.q || element === els.coverage || element === els.yearStart || element === els.yearEnd ? "input" : "change", () => filter()));
   els.searchForm.addEventListener("submit", event => { event.preventDefault(); filter(); goToCatalog(); });
   els.showMore.addEventListener("click", () => { visibleCount = Math.min(filtered.length,visibleCount + PAGE_SIZE); render(); });
-  $("#product-clear").addEventListener("click", () => {
-    $("#product-filters").reset(); els.q.value=""; els.sort.value="relevance"; els.advancedFilters.open=false; filter(); els.q.focus();
+  els.clear.addEventListener("click", () => {
+    $("#product-filters").reset();
+    els.q.value = "";
+    els.sort.value = "relevance";
+    els.advancedFilters.open = false;
+    els.technicalFilters.open = false;
+    filter();
+    els.q.focus();
   });
   $("#compare-open").addEventListener("click", openComparison);
   $("#compare-clear").addEventListener("click", resetComparison);
@@ -684,9 +708,13 @@ function bind() {
 
 async function init() {
   try {
-    const response = await fetch("data/data_products.json");
-    if (!response.ok) throw new Error("Não foi possível carregar o catálogo de produtos.");
+    const [response, rolesResponse] = await Promise.all([
+      fetch("data/data_products.json"),
+      fetch("data/product_distribution_roles.json")
+    ]);
+    if (!response.ok || !rolesResponse.ok) throw new Error("Não foi possível carregar os dados e suas formas de acesso.");
     all = await response.json();
+    distributionRoles = (await rolesResponse.json()).routes;
     all.forEach(product => {
       product._search = productSearchBase(product);
       product._temporalRange = temporalRange(product);
@@ -694,16 +722,19 @@ async function init() {
     populateFilters();
     readUrl();
     bind();
-    $("#p-total").textContent = all.length;
-    $("#p-sources").textContent = new Set(all.map(product => product.resource_id)).size;
-    $("#p-free").textContent = all.filter(product => (product.distributions || []).some(item => item.free_download === "sim")).length;
-    $("#p-formats").textContent = new Set(all.flatMap(productFormatsRaw)).size;
+    const sources = new Set(all.map(product => product.resource_id)).size;
+    const names = unique(all.map(product => product.source?.resource_name));
+    if (all.length && names.length) {
+      const scope = `${all.length} ${all.length === 1 ? "item" : "itens"} de ${sources} ${sources === 1 ? "fonte" : "fontes"}`;
+      els.scope.textContent = `${scope} (${new Intl.ListFormat("pt-BR").format(names)}).`;
+    }
     filter(false);
   } catch (error) {
     els.count.textContent = "Falha ao carregar produtos";
     els.list.innerHTML = `<div class="empty"><h3>Falha ao carregar os produtos</h3><p>Atualize a página para tentar novamente.</p></div>`;
+    els.list.setAttribute("aria-busy", "false");
     els.resultsMore.hidden = true;
   }
 }
 
-init();
+document.addEventListener("DOMContentLoaded", init, {once:true});

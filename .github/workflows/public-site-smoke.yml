@@ -109,12 +109,18 @@ jobs:
           grep -q 'consulte a documentação desse conjunto' "$tmp/dr0139.html"
           grep -q 'Condições de uso e licença' "$tmp/dr0141.html"
 
-          grep -q 'Esta página reúne conjuntos de dados, catálogos e serviços' "$tmp/products.html"
-          grep -q 'Dados do TerraBrasilis e do Google Earth Engine' "$tmp/products.html"
+          grep -q 'id="product-scope"' "$tmp/products.html"
+          grep -q 'Conjuntos de dados, catálogos e serviços do TerraBrasilis e do Google Earth Engine' "$tmp/products.html"
           grep -q 'id="product-theme"' "$tmp/products.html"
           grep -q 'id="product-coverage"' "$tmp/products.html"
           grep -q 'id="product-kind"' "$tmp/products.html"
           grep -q 'id="product-access"' "$tmp/products.html"
+          grep -q 'id="product-advanced-filters"' "$tmp/products.html"
+          grep -q 'id="home-free">6' "$tmp/index.html"
+          if grep -Eq 'id="p-(distributions|formats|free)"|id="product-result-insights"' "$tmp/products.html"; then
+            echo "ERRO: indicadores substituídos ainda presentes nos dados detalhados"
+            exit 1
+          fi
           grep -q 'disabled = unavailable' "$tmp/product-filter-ux.js"
           grep -q 'hidden = unavailable' "$tmp/product-filter-ux.js"
           grep -q 'assets/print.css' "$tmp/products.html"

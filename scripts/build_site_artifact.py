@@ -106,13 +106,23 @@ def stamp_home_counts() -> None:
     resources = json.loads((OUTPUT / "data/data_resources.json").read_text())
     products = json.loads((OUTPUT / "data/data_products.json").read_text())
     routes = json.loads((OUTPUT / "data/access_routes.json").read_text())["routes"]
+    distribution_roles = json.loads((OUTPUT / "data/product_distribution_roles.json").read_text())["routes"]
     ids = {item["resource_id"] for item in resources}
     accessible = {route["record_id"] for route in routes if route.get("target_type") == "resource"
                   and route.get("primary") and route.get("access_assessment") in ("A", "B")
                   and route["record_id"] in ids}
+    free_downloads = sum(
+        any(
+            distribution.get("free_download") == "sim"
+            and (distribution.get("access_url") or "").lower().startswith("https://")
+            and distribution_roles.get(distribution["distribution_name"], {}).get("access_class") == "A"
+            for distribution in product.get("distributions", [])
+        )
+        for product in products
+    )
     values = {"home-sources": len(resources), "home-all-sources": len(resources),
               "home-products": len(products), "home-access": len(accessible),
-              "home-free": sum(any(d.get("free_download") == "sim" for d in p.get("distributions", [])) for p in products)}
+              "home-free": free_downloads}
     page = OUTPUT / "index.html"
     text = page.read_text(encoding="utf-8")
     for key, value in values.items():

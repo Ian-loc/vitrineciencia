@@ -45,11 +45,14 @@
     fetch("data/data_products.json").then(response => response.ok ? response.json() : Promise.reject()),
     fetch("data/data_resources.json").then(response => response.ok ? response.json() : Promise.reject()),
     fetch("data/applied_priority_gate.json", {cache: "no-store"}).then(response => response.ok ? response.json() : Promise.reject()),
-    fetch("data/access_routes.json", {cache: "no-store"}).then(response => response.ok ? response.json() : Promise.reject())
+    fetch("data/access_routes.json", {cache: "no-store"}).then(response => response.ok ? response.json() : Promise.reject()),
+    fetch("data/product_distribution_roles.json").then(response => response.ok ? response.json() : Promise.reject())
   ])
-    .then(([products, resources, priorityGate, accessAudit]) => {
+    .then(([products, resources, priorityGate, accessAudit, distributionRoles]) => {
       const confirmedDataAccess = new Set((accessAudit.routes || []).filter(item => item.target_type === "resource" && item.primary && ["A", "B"].includes(item.access_assessment) && resources.some(resource => resource.resource_id === item.record_id)).map(item => item.record_id)).size;
-      const freeCount = products.filter(product => product.distributions?.some(distribution => distribution.free_download === "sim")).length;
+      const freeCount = products.filter(product => product.distributions?.some(distribution =>
+        distribution.free_download === "sim" && window.VitrineIsDataDownload(distribution, distributionRoles.routes)
+      )).length;
       set("home-products", products.length);
       set("home-all-products", products.length);
       set("home-sources", resources.length);

@@ -7,4 +7,6 @@
     const primary = ["A", "B"].includes(item.access_role) && url === item.access_url;
     return {url, primary, label: primary ? "Acessar dados" : "Acessar site"};
   };
+  window.VitrineIsDataDownload = (distribution, roles) =>
+    https(distribution.access_url) && roles[distribution.distribution_name]?.access_class === "A";
 })();

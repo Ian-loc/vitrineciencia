@@ -30,7 +30,7 @@ REQUIRED_IDS = {
         "product-access", "product-format", "product-free", "product-license", "product-area", "product-source",
         "product-kind", "product-auth", "product-status", "product-origin", "product-brazil", "product-sort",
         "product-clear", "product-list", "product-count", "product-results-more", "product-show-more",
-        "product-shown-count", "product-result-insights", "interpreted-query", "compare-bar", "compare-dialog"
+        "product-shown-count", "product-scope", "product-advanced-filters", "interpreted-query", "compare-bar", "compare-dialog"
     },
     "sources.html": {
         "conteudo", "catalogo", "hero-search", "q", "source-theme-shortcut", "source-theme-status", "filters",
@@ -226,7 +226,7 @@ def validate_page(filename: str) -> None:
     elif filename == "products.html":
         if not any(item.get("type") == "search" and item.get("id") == "product-q" and "hidden" not in item for item in parser.inputs): fail("products.html: campo de busca livre ausente")
         if "assets/products.js" not in content: fail("products.html: controlador canônico ausente")
-        if 'id="subset-note-heading"' not in content or "TerraBrasilis e do Google Earth Engine" not in content: fail("products.html: escopo e origens do subconjunto detalhado devem estar explícitos")
+        if 'id="product-scope"' not in content or "TerraBrasilis e do Google Earth Engine" not in content: fail("products.html: escopo e origens do subconjunto detalhado devem estar explícitos")
 
 
 def validate_identity() -> None:
