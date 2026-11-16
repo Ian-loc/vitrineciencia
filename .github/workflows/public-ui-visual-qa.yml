@@ -246,7 +246,12 @@ jobs:
                   if (/entity_type|source_origin|access_role|dataset_page|DIRECT_DATA|BROKEN_UNCERTAIN/i.test(body)) { console.error(`Vocabulário interno exposto em ${name}`); failed=true; }
                   if (name === 'record-terrabrasilis' && await page.locator('.record-product').count() !== 7) { console.error('TerraBrasilis deve exibir 7 produtos detalhados'); failed=true; }
                   if (name === 'record-gee' && await page.locator('.record-product').count() !== 4) { console.error('GEE deve exibir 4 produtos detalhados'); failed=true; }
-                  if (name === 'record-mapbiomas' && await page.locator('.record-product').count() !== 0) { console.error('MapBiomas não deve inventar produtos detalhados'); failed=true; }
+                  if (name === 'record-mapbiomas') {
+                    const mapbiomasProducts = await page.locator('.record-product').evaluateAll(items => items.map(item => item.id).sort());
+                    if (mapbiomasProducts.join(',') !== 'dp000862,dp000863') { console.error('Produtos de cobertura e fogo ausentes na ficha MapBiomas'); failed=true; }
+                    const fireRoutes = page.locator('#dp000863 .distribution .route-actions a');
+                    if (await fireRoutes.count() !== 2 || !(await fireRoutes.allTextContents()).some(text => text.includes('visualização de área queimada anual'))) { console.error('Caminhos de acesso sem rótulo específico na ficha de fogo'); failed=true; }
+                  }
                   if (name === 'record-mapbiomas' && !await page.locator('.provenance-status').isVisible()) { console.error('Orientação para consultar o produtor do dado ausente na ficha MapBiomas'); failed=true; }
                   await page.emulateMedia({media:'print'});
                   if (await page.locator('.site-nav').evaluate(el => getComputedStyle(el).display) !== 'none') { console.error(`Navegação aparece na impressão de ${name}`); failed=true; }

@@ -199,12 +199,14 @@ def distribution_html(route: dict) -> str:
         )
         if value
     )
+    label = route.get("label") or "Forma de acesso"
+    action = external_link(label, route.get("url"))
+    title = f'<div class="route-actions">{action}</div>' if action else f'<strong>{esc(label)}</strong>'
     return (
         '<div class="distribution">'
-        f'<strong>{esc(route.get("label") or "Forma de acesso")}</strong>'
+        f'{title}'
         f'<div class="route-meta">{"".join(facts)}</div>'
         f'{notes}'
-        f'<div class="route-actions">{external_link("Abrir link", route.get("url"))}</div>'
         '</div>'
     )
 
