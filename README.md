@@ -72,7 +72,7 @@ As principais autoridades materiais são:
 - `data/provenance_statements.json` — declarações de responsabilidade preservadas sem parsing automático;
 - scripts de build e validação.
 
-No conjunto vivo de 58 registros, a classificação da rota principal é atualmente **A=2, B=39, C=0, D=14, E=3**. Isso não mede qualidade científica; descreve o tipo de acesso principal verificado. Serviços programáticos secundários podem existir mesmo quando a rota principal é B ou D.
+No conjunto vivo de 58 registros, a classificação da rota principal é atualmente **A=2, B=39, C=0, D=14, E=3**. Isso não mede qualidade científica; descreve o tipo de acesso principal verificado. Serviços programáticos secundários podem existir mesmo quando a rota principal é B ou D. Em Explorar dados, cada fonte é encontrada por todas as formas de acesso documentadas em suas rotas de recurso ativas. A contagem da página inicial considera fontes únicas com arquivos ou página de dados.
 
 A prioridade territorial corrente é **P0=18, P1=24, P2=14, P3=2**.
 

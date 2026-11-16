@@ -3,10 +3,10 @@
 
   const ACCESS_ORDER = ["A", "B", "C", "D", "E"];
   const ACCESS_LABELS = {
-    A: "Dados para download",
-    B: "Página para obter dados",
-    C: "Serviço de dados",
-    D: "Visualização / site",
+    A: "Arquivos para baixar",
+    B: "Página de dados",
+    C: "API ou serviço de dados",
+    D: "Visualização ou consulta",
     E: "Acesso a confirmar"
   };
 
@@ -92,13 +92,58 @@
     ? informationCategories(resource).includes(value) : splitValues(resource.data_product_types).includes(value));
   window.VitrineSourceFacets = {coverageCategory, informationCategories, coverageMatches, informationMatches};
 
-  let verifiedAccess = new Map();
+  const sourceAccess = window.VitrineSourceAccess;
+  let verifiedRoutes = null;
   let informationSelect = null;
   let accessSelect = null;
   let themeSelect = null;
 
-  function accessRole(resource) {
-    return verifiedAccess.get(resource.resource_id) || "E";
+  const routesFor = resource => verifiedRoutes?.get(resource.resource_id) || [];
+  const accessModes = resource => sourceAccess.modes(routesFor(resource));
+  const accessMatches = resource => !accessSelect.value || accessModes(resource).includes(accessSelect.value);
+
+  function addAccessLink(container, label, url, external = true) {
+    const link = document.createElement("a");
+    link.className = "action-secondary";
+    link.href = url;
+    link.textContent = label;
+    if (external) {
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    }
+    container.appendChild(link);
+  }
+
+  function decorateAccess(card, resource) {
+    const routes = routesFor(resource);
+    const modes = accessModes(resource);
+    const actions = card.querySelector(".card-actions");
+    const labels = {
+      A: "Arquivos para baixar",
+      B: "Abrir página de dados",
+      C: "Ver API ou serviço",
+      D: "Abrir visualização ou consulta"
+    };
+    const urls = new Set();
+    for (const mode of modes) {
+      if (mode === "E") continue;
+      const route = sourceAccess.destination(routes, mode);
+      const url = mode === "C" ? `${recordUrl(resource)}#acesso-tecnico` : route.url;
+      if (urls.has(url)) continue;
+      const customLabel = ["A", "D"].includes(mode) &&
+        !["Acessar dados", "Abrir visualizador ou página de consulta"].includes(route.label) ? route.label : null;
+      addAccessLink(actions, customLabel || labels[mode], url, mode !== "C");
+      urls.add(url);
+    }
+
+    if (!actions.children.length) {
+      const site = routes.find(route => route.status === "active" && route.roles.includes("official_site") && /^https:\/\//i.test(route.url || ""));
+      if (site) addAccessLink(actions, "Abrir site oficial", site.url);
+    }
+    actions.hidden = !actions.children.length;
+
+    if (modes.length) return modes.map(mode => ACCESS_LABELS[mode]).join(" · ");
+    return verifiedRoutes ? "Acesso ainda não descrito" : "Informação de acesso indisponível";
   }
 
   function populateDerivedSelect(select, entries, emptyLabel, labels = {}) {
@@ -123,6 +168,20 @@
       select.add(option);
     }
     select.value = current;
+  }
+
+  function restoreAccessFilter(value) {
+    if (!verifiedRoutes || !Object.hasOwn(ACCESS_LABELS, value)) {
+      accessSelect.value = "";
+      return;
+    }
+    if (![...accessSelect.options].some(option => option.value === value)) {
+      const label = ACCESS_LABELS[value];
+      const option = new Option(`${label} (0)`, value);
+      option.dataset.label = label;
+      accessSelect.add(option);
+    }
+    accessSelect.value = value;
   }
 
   function addDerivedActiveFilters(information, access) {
@@ -172,14 +231,13 @@
       [
         ["O que oferece", resource.data_product_types || "Não informado"],
         ["Território", resource.geographic_coverage || "Não informado"],
-        ["Como acessar", ACCESS_LABELS[accessRole(resource)] || "Acesso a confirmar"]
+        ["Como acessar", decorateAccess(card, resource)]
       ].forEach(([label, value]) => {
         const item = document.createElement("div");
         const dt = document.createElement("dt");
         const dd = document.createElement("dd");
         dt.textContent = label;
         dd.textContent = value;
-        if (label === "Como acessar") dd.dataset.accessAuthority = "verified_access_registries";
         item.append(dt, dd);
         facts.appendChild(item);
       });
@@ -203,7 +261,7 @@
     return queryMatch &&
       (exclude === "coverage" || coverageMatches(resource, els.coverage.value)) &&
       (exclude === "information" || informationMatches(resource, informationSelect.value)) &&
-      (exclude === "access" || !accessSelect.value || accessRole(resource) === accessSelect.value);
+      (exclude === "access" || accessMatches(resource));
   }
 
   function refreshPrimaryFacets() {
@@ -222,8 +280,9 @@
 
     const accessCounts = new Map();
     all.filter(resource => baseMatches(resource, "access")).forEach(resource => {
-      const value = accessRole(resource);
-      accessCounts.set(value, (accessCounts.get(value) || 0) + 1);
+      for (const mode of accessModes(resource)) {
+        accessCounts.set(mode, (accessCounts.get(mode) || 0) + 1);
+      }
     });
     populateDerivedSelect(accessSelect, [...accessCounts.entries()], "Todas as formas de acesso", ACCESS_LABELS);
 
@@ -233,7 +292,7 @@
         if (!themeMatches(resource, theme.key)) return false;
         return (coverageMatches(resource, els.coverage.value)) &&
           (informationMatches(resource, informationSelect.value)) &&
-          (!accessSelect.value || accessRole(resource) === accessSelect.value);
+          accessMatches(resource);
       }).length]);
       themeSelect.innerHTML = '<option value="">Todos os temas</option>';
       themeCounts.filter(([, count]) => count > 0).forEach(([theme, count]) => themeSelect.add(new Option(`${theme.label} (${count})`, theme.key)));
@@ -254,7 +313,7 @@
       (!rawQuery || (theme ? themeMatches(resource, theme.key) : flexibleContains(searchText(resource), rawQuery))) &&
       (coverageMatches(resource, els.coverage.value)) &&
       (informationMatches(resource, informationSelect.value)) &&
-      (!accessSelect.value || accessRole(resource) === accessSelect.value)
+      accessMatches(resource)
     );
     sortResults(flexNorm(rawQuery));
     visibleCount = PAGE_SIZE;
@@ -271,14 +330,12 @@
 
   async function loadVerifiedAccess() {
     try {
-      const urls = ["data/static_core_51_access_audit.json", "data/post_core_access_audit.json"];
-      const responses = await Promise.all(urls.map(url => fetch(url, {cache:"no-store"})));
-      if (responses.some(response => !response.ok)) throw new Error("Matriz de acesso indisponível");
-      const payloads = await Promise.all(responses.map(response => response.json()));
-      verifiedAccess = new Map(payloads.flatMap(payload => payload.records || []).map(item => [item.resource_id, item.access_role]));
+      const response = await fetch("data/access_routes.json");
+      if (!response.ok) throw new Error("Rotas de acesso indisponíveis");
+      verifiedRoutes = sourceAccess.index((await response.json()).routes);
     } catch (error) {
-      verifiedAccess = new Map();
-      console.error("Falha ao carregar a matriz auditada de acesso; classificação conservadora E aplicada", error);
+      accessSelect.disabled = true;
+      console.error("Falha ao carregar as rotas de acesso", error);
     }
   }
 
@@ -293,16 +350,6 @@
 
     await loadVerifiedAccess();
 
-    const informationCounts = new Map();
-    all.flatMap(resource => informationCategories(resource)).forEach(value => informationCounts.set(value, (informationCounts.get(value) || 0) + 1));
-    populateDerivedSelect(informationSelect, [...informationCounts.entries()], "Todos os tipos de informação", INFORMATION_LABELS);
-    const accessCounts = new Map();
-    all.forEach(resource => {
-      const value = accessRole(resource);
-      accessCounts.set(value, (accessCounts.get(value) || 0) + 1);
-    });
-    populateDerivedSelect(accessSelect, [...accessCounts.entries()], "Todas as formas de acesso", ACCESS_LABELS);
-
     refreshPrimaryFacets();
     const params = new URLSearchParams(location.search);
     const legacyInformation = params.get("information");
@@ -311,7 +358,7 @@
     }
     if ([...els.coverage.options].some(option => option.value === params.get("coverage"))) els.coverage.value = params.get("coverage") || "";
     if ([...informationSelect.options].some(option => option.value === params.get("information"))) informationSelect.value = params.get("information") || "";
-    if ([...accessSelect.options].some(option => option.value === params.get("access"))) accessSelect.value = params.get("access") || "";
+    restoreAccessFilter(params.get("access"));
 
     [informationSelect, accessSelect, els.coverage, els.sort].forEach(element => element.addEventListener("change", () => window.setTimeout(() => apply(), 0)));
     els.activeFilters.addEventListener("click", event => {
@@ -322,7 +369,7 @@
     window.addEventListener("popstate", () => window.setTimeout(() => {
       const current = new URLSearchParams(location.search);
       informationSelect.value = [...informationSelect.options].some(option => option.value === current.get("information")) ? (current.get("information") || "") : "";
-      accessSelect.value = [...accessSelect.options].some(option => option.value === current.get("access")) ? (current.get("access") || "") : "";
+      restoreAccessFilter(current.get("access"));
       apply(false);
     }, 0));
 

@@ -43,7 +43,7 @@ jobs:
 
           ready=0
           for attempt in {1..20}; do
-            if fetch "$SITE/?v=$TARGET_SHA-$attempt" "$tmp/index.html" && grep -q 'id="home-free">6<' "$tmp/index.html"; then
+            if fetch "$SITE/?v=$TARGET_SHA-$attempt" "$tmp/index.html" && grep -q 'id="home-access">42<' "$tmp/index.html"; then
               ready=1
               break
             fi
@@ -81,7 +81,7 @@ jobs:
           grep -q 'action="sources.html"' "$tmp/index.html"
           grep -q 'id="home-all-sources">58' "$tmp/index.html"
           grep -q 'Como usar a Vitrine' "$tmp/index.html"
-          grep -q 'fontes com link para obter dados' "$tmp/index.html"
+          grep -q 'fontes com arquivos ou página de dados' "$tmp/index.html"
           grep -q 'applied_priority_gate.json' "$tmp/home.js"
 
           grep -q 'Explore fontes de dados científicos' "$tmp/sources.html"
@@ -91,15 +91,18 @@ jobs:
           grep -q 'id="access-role"' "$tmp/sources.html"
           grep -q 'Tipo de informação' "$tmp/sources.html"
           grep -q 'Forma de acesso' "$tmp/sources.html"
-          grep -q 'quando o acesso foi verificado' "$tmp/sources.html"
-          grep -q 'verification-line' "$tmp/public-interface-guardrails.js"
+          grep -q 'Uma fonte pode oferecer mais de uma forma de acesso' "$tmp/sources.html"
           grep -q 'PUBLIC_ACTIONS' "$tmp/public-interface-guardrails.js"
-          grep -q 'static_core_51_access_audit.json' "$tmp/source-discovery-v2.js"
+          grep -q 'data/access_routes.json' "$tmp/source-discovery-v2.js"
           grep -q 'normalize("NFD")' "$tmp/source-discovery-v2.js"
           grep -q 'Iniciativa ou programa de dados' "$tmp/dr0010.html"
           grep -q 'data-public-record-schema="public-record-v2"' "$tmp/dr0010.html"
           grep -q 'Visão geral' "$tmp/dr0010.html"
-          grep -q 'Acesso principal' "$tmp/dr0010.html"
+          grep -q 'id="acesso-dados"' "$tmp/dr0010.html"
+          grep -q 'id="acesso-tecnico"' "$tmp/dr0010.html"
+          grep -q 'id="acesso-visualizacao"' "$tmp/dr0010.html"
+          grep -q 'https://terrabrasilis.dpi.inpe.br/downloads/' "$tmp/dr0011.html"
+          grep -q 'id="acesso-tecnico"' "$tmp/dr0139.html"
           grep -q 'Como a Vitrine verifica as informações' "$tmp/dr0010.html"
           grep -q 'Dados e produtos disponíveis' "$tmp/dr0011.html"
           grep -q 'Versão ou coleção: atualização publicada em 2026-03-03' "$tmp/dr0011.html"

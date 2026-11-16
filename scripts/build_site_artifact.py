@@ -108,9 +108,14 @@ def stamp_home_counts() -> None:
     routes = json.loads((OUTPUT / "data/access_routes.json").read_text())["routes"]
     distribution_roles = json.loads((OUTPUT / "data/product_distribution_roles.json").read_text())["routes"]
     ids = {item["resource_id"] for item in resources}
-    accessible = {route["record_id"] for route in routes if route.get("target_type") == "resource"
-                  and route.get("primary") and route.get("access_assessment") in ("A", "B")
-                  and route["record_id"] in ids}
+    accessible = {
+        route["record_id"] for route in routes
+        if route.get("target_type") == "resource"
+        and route.get("status") == "active"
+        and (route.get("url") or "").lower().startswith("https://")
+        and {"direct_data", "data_page"}.intersection(route["roles"])
+        and route["record_id"] in ids
+    }
     free_downloads = sum(
         any(
             distribution.get("free_download") == "sim"

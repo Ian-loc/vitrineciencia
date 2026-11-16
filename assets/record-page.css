@@ -45,19 +45,13 @@
 .record-page .record-curation{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid #d8e2dd}
 .record-page .record-curation h3{margin-top:0}
 
-/* Refinamento pós-análise visual: acesso compacto e curadoria progressiva. */
-.record-page .access-status{margin:.1rem 0 .65rem;color:#40564f}
-.record-page .access-panel{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(220px,.65fr);gap:.8rem;margin:.55rem 0 .8rem}
-.record-page .access-primary,.record-page .access-secondary{border:1px solid #d6e2dc;border-radius:12px;background:#fff}
-.record-page .access-primary{padding:1rem;border-width:2px;border-color:#527966}
-.record-page .access-eyebrow{display:block;margin-bottom:.3rem;color:#60756d;font-size:.72rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
-.record-page .access-primary>strong{display:block;font-size:1.02rem}
-.record-page .access-primary-action{display:inline-flex;align-items:center;min-height:40px;padding:.48rem .7rem;border-radius:8px;background:#1f6a52;color:#fff;text-decoration:none}
-.record-page .access-primary-action:hover{background:#195842}
-.record-page .access-secondary{padding:.85rem 1rem}
-.record-page .access-secondary>strong{display:block;margin-bottom:.35rem}
-.record-page .access-secondary ul{display:grid;gap:.32rem;margin:0;padding:0;list-style:none}
-.record-page .access-secondary a{font-weight:650}
+.record-page .access-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:.55rem 0 .95rem}
+.record-page .access-group{min-width:0;padding:.9rem 1rem;border:1px solid #d6e2dc;border-radius:12px;background:#fff}
+.record-page .access-group h3{margin:0 0 .5rem;font-size:1rem}
+.record-page .access-group .route-actions{display:grid;gap:.55rem;margin:0;padding:0;list-style:none}
+.record-page .access-group a{display:inline;overflow-wrap:anywhere}
+.record-page .access-link-note{margin:.24rem 0 0;color:#52645c;font-size:.84rem}
+.record-page #acesso-tecnico{scroll-margin-top:5rem}
 .record-page .access-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin:.65rem 0;padding:.65rem .75rem;border:1px solid #e0e8e4;border-radius:10px;background:#f8faf9}
 .record-page .access-facts div{min-width:0}
 .record-page .access-facts dt{margin:0 0 .18rem;color:#61756d;font-size:.72rem;font-weight:750}

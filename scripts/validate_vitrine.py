@@ -252,11 +252,11 @@ def validate_functional_contracts() -> None:
         if legacy in app: fail(f"assets/app.js: ficha técnica redundante ainda gerada nos cards: {legacy}")
     for token in ("const PAGE_SIZE = 18;", "THEME_GROUPS", "productAccessCategories", "parseQuery"):
         if token not in products: fail(f"assets/products.js: contrato ausente: {token}")
-    for token in ("Página do provedor", "API / documentação", "Dados / download", "access-review-note"):
+    for token in ("Dados / download", "access-review-note"):
         if token not in guardrails: fail(f"discovery-guardrails.js: semântica de acesso ausente: {token}")
     for token in ("source-theme-shortcut", "URLSearchParams", "sources.html"):
         if token not in theme: fail(f"static-catalog-51.js: contrato temático ausente: {token}")
-    for token in ("information", "access-role", "discovery-facts", "Como acessar", "Responsável: "):
+    for token in ("information", "access-role", "data/access_routes.json", "discovery-facts", "Como acessar", "Responsável: "):
         if token not in discovery: fail(f"source-discovery-v2.js: contrato de descoberta ausente: {token}")
     for token in ("applied_priority_gate.json", "priority-applied-list", "VitrinePublicAccess"):
         if token not in priority: fail(f"applied-priority.js: contrato aplicado ausente: {token}")

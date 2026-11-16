@@ -18,11 +18,6 @@
     return anchor;
   }
 
-  function formatDate(value) {
-    const match = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
-    return match ? `${match[3]}/${match[2]}/${match[1]}` : String(value || "");
-  }
-
   function cleanTechnicalDetails(card) {
     card.querySelectorAll(".status-badge, .detail").forEach(node => {
       if (/\bapi\b|acesso automatizado|protocolos e ferramentas/i.test(node.textContent || "")) node.remove();
@@ -62,81 +57,6 @@
       const anchor = link(item.label, item.url, item.className);
       if (anchor) actions.insertBefore(anchor, before);
     });
-  }
-
-  function ensureSourceEvidence(card, auditItem) {
-    const verified = formatDate(auditItem?.source_last_verified);
-    if (!verified) return;
-    let line = card.querySelector(".verification-line");
-    if (!line) {
-      line = document.createElement("p");
-      line.className = "verification-line";
-      const provenance = card.querySelector(".provenance-line");
-      (provenance || card.querySelector(".description"))?.insertAdjacentElement("afterend", line);
-    }
-    if (line.textContent !== `Acesso verificado em ${verified}`) {
-      line.textContent = `Acesso verificado em ${verified}`;
-    }
-  }
-
-  async function protectSources() {
-    const list = document.querySelector("#list");
-    if (!list) return;
-    try {
-      const [audit, postCoreAudit, resources] = await Promise.all([
-        fetch("data/static_core_51_access_audit.json", {cache: "no-store"}).then(r => r.ok ? r.json() : Promise.reject()),
-        fetch("data/post_core_access_audit.json", {cache: "no-store"}).then(r => r.ok ? r.json() : Promise.reject()),
-        fetch("data/data_resources.json", {cache: "no-store"}).then(r => r.ok ? r.json() : Promise.reject())
-      ]);
-      const auditById = new Map([...(audit.records || []), ...(postCoreAudit.records || [])].map(item => [item.resource_id, item]));
-      const resourceById = new Map((resources || []).map(item => [item.resource_id, item]));
-      const publicAccessLabel = {
-        A: "Dados para download",
-        B: "Página para obter dados",
-        C: "Serviço de dados",
-        D: "Visualização / site",
-        E: "Acesso a confirmar"
-      };
-
-      const apply = () => {
-        const accessSelect = document.querySelector("#access-role");
-        if (accessSelect) [...accessSelect.options].forEach(option => {
-          const label = publicAccessLabel[option.value];
-          if (!label) return;
-          const count = (option.textContent.match(/\(\d+\)\s*$/) || [""])[0];
-          const text = `${label}${count ? ` ${count}` : ""}`;
-          if (option.textContent !== text) option.textContent = text;
-          if (option.dataset.label !== label) option.dataset.label = label;
-        });
-
-        list.querySelectorAll(".card[data-resource-id]").forEach(card => {
-          const resource = resourceById.get(card.dataset.resourceId);
-          if (!resource) return;
-          const auditItem = auditById.get(resource.resource_id) || {};
-          const role = auditItem.access_role || "E";
-          const publicLabel = publicAccessLabel[role] || "Acesso a confirmar";
-          const fact = card.querySelector("[data-access-authority]");
-          if (fact && fact.textContent !== publicLabel) fact.textContent = publicLabel;
-          ensureSourceEvidence(card, auditItem);
-
-          const dataUrl = ["A", "B"].includes(role) && https(resource.data_access_url) && !technicalAccess(resource.data_access_url)
-            ? resource.data_access_url : "";
-          const siteUrl = https(resource.homepage_url) && !technicalAccess(resource.homepage_url) ? resource.homepage_url : "";
-          syncActions(card.querySelector(".card-actions"), expectedActions(dataUrl, siteUrl, "action-secondary"));
-          card.dataset.publicActions = "1";
-        });
-      };
-
-      let scheduled = false;
-      const scheduleApply = () => {
-        if (scheduled) return;
-        scheduled = true;
-        setTimeout(() => { scheduled = false; apply(); }, 0);
-      };
-      apply();
-      new MutationObserver(scheduleApply).observe(list, {childList: true, subtree: true});
-      document.querySelector("#filters")?.addEventListener("change", scheduleApply);
-    } catch (_) {}
   }
 
   async function protectProducts() {
@@ -189,7 +109,6 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    protectSources();
     protectProducts();
   }, {once: true});
 })();

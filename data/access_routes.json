@@ -14,7 +14,7 @@
   "route_types": {
     "direct_data": "Entrega direta de dados.",
     "data_page": "Página específica com mecanismo explícito de obtenção.",
-    "data_service": "Serviço/API como forma principal de acesso.",
+    "data_service": "Serviço ou API com um caminho documentado para acessar os dados.",
     "viewer": "Visualizador ou página de consulta.",
     "unconfirmed_access": "Acesso não confirmado, genérico ou não aplicável.",
     "official_site": "Site oficial do recurso.",
@@ -25,8 +25,8 @@
     "resources": 58,
     "offerings": 11,
     "distributions": 19,
-    "resource_routes": 135,
-    "total_routes": 154,
+    "resource_routes": 140,
+    "total_routes": 159,
     "note": "Arquivo inicial derivado uma única vez dos campos legados e auditorias atuais; após a migração, este arquivo passa a ser a autoridade de rotas."
   },
   "routes": [
@@ -631,11 +631,12 @@
       "record_id": "DR0010",
       "target_type": "resource",
       "target_id": "DR0010::resource",
-      "route_type": "access_documentation",
+      "route_type": "data_page",
       "roles": [
+        "data_page",
         "access_documentation"
       ],
-      "label": "Ver documentação de acesso",
+      "label": "Obter dados do MapBiomas",
       "url": "https://brasil.mapbiomas.org/downloads/",
       "primary": false,
       "access_assessment": null,
@@ -648,10 +649,10 @@
       "license": null,
       "attribution_required": null,
       "subset_support": null,
-      "notes": null,
-      "verified_at": "2026-08-10",
+      "notes": "A página reúne estatísticas, pontos de validação e instruções para acessar os mapas pelo Google Earth Engine.",
+      "verified_at": "2026-11-16",
       "status": "active",
-      "source": "migration_from_legacy_fields_2026-10-12"
+      "source": "official_access_review_2026-11-16"
     },
     {
       "route_id": "DR0010-SITE",
@@ -679,6 +680,33 @@
       "verified_at": "2026-08-10",
       "status": "active",
       "source": "migration_from_legacy_fields_2026-10-12"
+    },
+    {
+      "route_id": "DR0010-EARTH-ENGINE",
+      "record_id": "DR0010",
+      "target_type": "resource",
+      "target_id": "DR0010::resource",
+      "route_type": "data_service",
+      "roles": [
+        "data_service"
+      ],
+      "label": "Usar os dados do MapBiomas no Earth Engine",
+      "url": "https://brasil.mapbiomas.org/downloads/assets-no-google-earth-engine/",
+      "primary": false,
+      "access_assessment": null,
+      "protocol": "Google Earth Engine",
+      "format": null,
+      "tool": null,
+      "free_download": null,
+      "authentication_required": "sim",
+      "access_conditions": "Requer conta para usar o Google Earth Engine.",
+      "license": null,
+      "attribution_required": null,
+      "subset_support": null,
+      "notes": null,
+      "verified_at": "2026-11-16",
+      "status": "active",
+      "source": "official_access_review_2026-11-16"
     },
     {
       "route_id": "DR0011-ACCESS",
@@ -734,6 +762,60 @@
       "verified_at": "2026-09-03",
       "status": "active",
       "source": "migration_from_legacy_fields_2026-10-12"
+    },
+    {
+      "route_id": "DR0011-DOWNLOADS",
+      "record_id": "DR0011",
+      "target_type": "resource",
+      "target_id": "DR0011::resource",
+      "route_type": "data_page",
+      "roles": [
+        "data_page"
+      ],
+      "label": "Abrir a página de downloads do TerraBrasilis",
+      "url": "https://terrabrasilis.dpi.inpe.br/downloads/",
+      "primary": false,
+      "access_assessment": null,
+      "protocol": null,
+      "format": null,
+      "tool": null,
+      "free_download": null,
+      "authentication_required": null,
+      "access_conditions": null,
+      "license": null,
+      "attribution_required": null,
+      "subset_support": null,
+      "notes": "Selecione o projeto, o território e o arquivo na página de downloads do INPE.",
+      "verified_at": "2026-11-16",
+      "status": "active",
+      "source": "official_access_review_2026-11-16"
+    },
+    {
+      "route_id": "DR0011-OGC-SERVICES",
+      "record_id": "DR0011",
+      "target_type": "resource",
+      "target_id": "DR0011::resource",
+      "route_type": "data_service",
+      "roles": [
+        "data_service"
+      ],
+      "label": "Consultar os serviços geoespaciais do TerraBrasilis",
+      "url": "https://terrabrasilis.dpi.inpe.br/en/about/",
+      "primary": false,
+      "access_assessment": null,
+      "protocol": "WFS | WCS",
+      "format": null,
+      "tool": null,
+      "free_download": null,
+      "authentication_required": null,
+      "access_conditions": null,
+      "license": null,
+      "attribution_required": null,
+      "subset_support": null,
+      "notes": "O INPE documenta serviços de acesso a feições e coberturas. Consulte os produtos detalhados para os links por serviço.",
+      "verified_at": "2026-11-16",
+      "status": "active",
+      "source": "official_access_review_2026-11-16"
     },
     {
       "route_id": "DD000001",
@@ -1474,27 +1556,28 @@
       "record_id": "DR0019",
       "target_type": "resource",
       "target_id": "DR0019::resource",
-      "route_type": "access_documentation",
+      "route_type": "data_service",
       "roles": [
+        "data_service",
         "access_documentation"
       ],
-      "label": "Ver documentação de acesso",
+      "label": "Consultar a API do Google Earth Engine",
       "url": "https://developers.google.com/earth-engine/reference/rest",
       "primary": false,
       "access_assessment": null,
-      "protocol": null,
+      "protocol": "REST",
       "format": null,
       "tool": null,
       "free_download": null,
-      "authentication_required": null,
+      "authentication_required": "sim",
       "access_conditions": null,
       "license": null,
       "attribution_required": null,
       "subset_support": null,
-      "notes": null,
-      "verified_at": "2026-08-10",
+      "notes": "A documentação descreve operações sobre imagens, tabelas e outros dados no Earth Engine.",
+      "verified_at": "2026-11-16",
       "status": "active",
-      "source": "migration_from_legacy_fields_2026-10-12"
+      "source": "official_access_review_2026-11-16"
     },
     {
       "route_id": "DD000012",
@@ -2753,7 +2836,7 @@
         "viewer",
         "official_site"
       ],
-      "label": "Abrir visualizador ou página de consulta",
+      "label": "Consultar o guia de dados climáticos",
       "url": "https://climatedataguide.ucar.edu/",
       "primary": true,
       "access_assessment": "D",
@@ -2835,7 +2918,7 @@
       "roles": [
         "direct_data"
       ],
-      "label": "Acessar dados",
+      "label": "Abrir o diretório de arquivos SoilGrids",
       "url": "https://files.isric.org/soilgrids/latest/data/",
       "primary": true,
       "access_assessment": "A",
@@ -2906,6 +2989,33 @@
       "verified_at": "2026-08-10",
       "status": "active",
       "source": "migration_from_legacy_fields_2026-10-12"
+    },
+    {
+      "route_id": "DR0037-WCS",
+      "record_id": "DR0037",
+      "target_type": "resource",
+      "target_id": "DR0037::resource",
+      "route_type": "data_service",
+      "roles": [
+        "data_service"
+      ],
+      "label": "Consultar o acesso SoilGrids por WCS",
+      "url": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_02.html",
+      "primary": false,
+      "access_assessment": null,
+      "protocol": "WCS",
+      "format": null,
+      "tool": null,
+      "free_download": null,
+      "authentication_required": null,
+      "access_conditions": null,
+      "license": null,
+      "attribution_required": null,
+      "subset_support": null,
+      "notes": "A documentação orienta como obter recortes dos mapas e fornece exemplos de uso.",
+      "verified_at": "2026-11-16",
+      "status": "active",
+      "source": "official_access_review_2026-11-16"
     },
     {
       "route_id": "DR0038-ACCESS",
@@ -3504,6 +3614,33 @@
       "source": "migration_from_legacy_fields_2026-10-12"
     },
     {
+      "route_id": "DR0047-ODATA",
+      "record_id": "DR0047",
+      "target_type": "resource",
+      "target_id": "DR0047::resource",
+      "route_type": "data_service",
+      "roles": [
+        "data_service"
+      ],
+      "label": "Consultar a API OData do Copernicus",
+      "url": "https://documentation.dataspace.copernicus.eu/APIs/OData.html",
+      "primary": false,
+      "access_assessment": null,
+      "protocol": "OData",
+      "format": null,
+      "tool": null,
+      "free_download": null,
+      "authentication_required": "sim",
+      "access_conditions": "O download por API requer autenticação no Copernicus Data Space Ecosystem.",
+      "license": null,
+      "attribution_required": null,
+      "subset_support": null,
+      "notes": null,
+      "verified_at": "2026-11-16",
+      "status": "active",
+      "source": "official_access_review_2026-11-16"
+    },
+    {
       "route_id": "DR0048-ACCESS",
       "record_id": "DR0048",
       "target_type": "resource",
@@ -3784,7 +3921,7 @@
       "roles": [
         "direct_data"
       ],
-      "label": "Acessar dados",
+      "label": "Baixar o arquivo de ecorregiões (ZIP)",
       "url": "https://storage.googleapis.com/teow2016/Ecoregions2017.zip",
       "primary": true,
       "access_assessment": "A",
@@ -3970,15 +4107,16 @@
       "record_id": "DR0139",
       "target_type": "resource",
       "target_id": "DR0139::resource",
-      "route_type": "access_documentation",
+      "route_type": "data_service",
       "roles": [
+        "data_service",
         "access_documentation"
       ],
-      "label": "Ver documentação de acesso",
+      "label": "Consultar a API do Carbon Mapper",
       "url": "https://api.carbonmapper.org/api/v1/docs",
       "primary": false,
       "access_assessment": null,
-      "protocol": null,
+      "protocol": "REST | STAC",
       "format": null,
       "tool": null,
       "free_download": null,
@@ -3987,10 +4125,10 @@
       "license": null,
       "attribution_required": null,
       "subset_support": null,
-      "notes": null,
-      "verified_at": "2026-10-08",
+      "notes": "A documentação descreve como consultar os dados. Verifique os termos de acesso e reutilização no portal oficial.",
+      "verified_at": "2026-11-16",
       "status": "active",
-      "source": "migration_from_legacy_fields_2026-10-12"
+      "source": "official_access_review_2026-11-16"
     },
     {
       "route_id": "DR0140-ACCESS",
@@ -4082,7 +4220,7 @@
       "roles": [
         "viewer"
       ],
-      "label": "Abrir visualizador ou página de consulta",
+      "label": "Consultar a documentação do Planet Forest Carbon",
       "url": "https://docs.planet.com/data/planetary-variables/forest-carbon-monitoring/version/",
       "primary": true,
       "access_assessment": "D",

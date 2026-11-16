@@ -32,13 +32,22 @@ for (const resource of resources) {
 }
 const home = read('_site/index.html');
 const counts = {'home-sources':resources.length,'home-all-sources':resources.length,'home-products':json('data/data_products.json').length};
-const ids = new Set(resources.map(r => r.resource_id));
-counts['home-access'] = new Set(json('data/access_routes.json').routes.filter(r => r.primary && r.target_type === 'resource' && ids.has(r.record_id) && ['A','B'].includes(r.access_assessment)).map(r => r.record_id)).size;
+const sourceAccess = context.window.VitrineSourceAccess;
+const routesBySource = sourceAccess.index(json('data/access_routes.json').routes);
+const modes = id => Array.from(sourceAccess.modes(routesBySource.get(id) || []));
+assert.deepEqual(modes('DR0010'), ['B','C','D']);
+assert.deepEqual(modes('DR0139'), ['C','D']);
+assert.deepEqual(modes('DR0011'), ['B','C']);
+assert.deepEqual(modes('DR0136'), ['E']);
+assert.deepEqual(modes('ausente'), []);
+assert.equal(sourceAccess.destination(routesBySource.get('DR0011'), 'B').url, 'https://terrabrasilis.dpi.inpe.br/downloads/');
+assert.equal(resources.filter(resource => modes(resource.resource_id).includes('C')).length, 6);
+counts['home-access'] = resources.filter(resource => modes(resource.resource_id).some(mode => ['A','B'].includes(mode))).length;
 for (const [id,value] of Object.entries(counts)) assert(home.includes(`id="${id}">${value}<`), `Contador ${id}`);
-assert.equal(counts['home-access'], 41);
+assert.equal(counts['home-access'], 42);
 const labels = {'sources.html':'Explorar dados','products.html':'Dados detalhados','about.html':'Sobre a Vitrine','analytics.html':'Sobre o acervo'};
 for (const filename of ['index.html','sources.html','products.html','products-list.html','analytics.html','analytics-products.html','about.html']) {
   const nav = read(filename).match(/id="site-nav-links">([\s\S]*?)<\/nav>/)[1];
   for (const [href,label] of Object.entries(labels)) assert(new RegExp(`href="${href}"[^>]*>${label}</a>`).test(nav), `${filename}: ${label}`);
 }
-console.log(`OK: contagens ${resources.length}/11/41, destinos de acesso, vocabulário agrupado e navegação consistentes`);
+console.log(`OK: contagens ${resources.length}/11/${counts['home-access']}, destinos de acesso, vocabulário agrupado e navegação consistentes`);

@@ -49,7 +49,11 @@
     fetch("data/product_distribution_roles.json").then(response => response.ok ? response.json() : Promise.reject())
   ])
     .then(([products, resources, priorityGate, accessAudit, distributionRoles]) => {
-      const confirmedDataAccess = new Set((accessAudit.routes || []).filter(item => item.target_type === "resource" && item.primary && ["A", "B"].includes(item.access_assessment) && resources.some(resource => resource.resource_id === item.record_id)).map(item => item.record_id)).size;
+      const sourceAccess = window.VitrineSourceAccess;
+      const routesById = sourceAccess.index(accessAudit.routes);
+      const confirmedDataAccess = resources.filter(resource =>
+        sourceAccess.modes(routesById.get(resource.resource_id) || []).some(mode => mode === "A" || mode === "B")
+      ).length;
       const freeCount = products.filter(product => product.distributions?.some(distribution =>
         distribution.free_download === "sim" && window.VitrineIsDataDownload(distribution, distributionRoles.routes)
       )).length;

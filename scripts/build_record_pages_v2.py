@@ -33,27 +33,12 @@ PRIMARY_OR_DERIVED_LABELS = {
     "desconhecido": "Não confirmado",
 }
 
-ROUTE_ROLE_LABELS = {
-    "direct_data": "Dados",
-    "data_page": "Página de dados",
-    "data_service": "Serviço de dados",
-    "viewer": "Visualização",
-    "unconfirmed_access": "Acesso não confirmado",
-    "official_site": "Site oficial",
-    "access_documentation": "Documentação de acesso",
-    "distribution": "Distribuição",
-}
-
-ACCESS_ROLES = {
-    "direct_data",
-    "data_page",
-    "data_service",
-    "viewer",
-    "unconfirmed_access",
-    "official_site",
-    "access_documentation",
-    "distribution",
-}
+ACCESS_GROUPS = (
+    ("acesso-dados", "Obter dados", ("direct_data", "data_page")),
+    ("acesso-visualizacao", "Visualizar e consultar", ("viewer",)),
+    ("acesso-tecnico", "APIs e serviços de dados", ("data_service",)),
+    ("acesso-documentacao", "Site oficial e documentação", ("official_site", "access_documentation")),
+)
 
 VERSION_KIND_LABELS = {
     "named_version": "Versão",
@@ -135,61 +120,46 @@ def offering_versions(record: dict, offering_id: str) -> list[dict]:
 
 
 def access_routes_html(record: dict) -> str:
-    routes = [
-        route for route in resource_routes(record)
-        if any(role in ACCESS_ROLES for role in (route.get("roles") or []))
-    ]
-    if not routes:
-        return '<p class="notice">Acesso externo não confirmado.</p>'
-
-    primary = next((route for route in routes if route.get("primary")), routes[0])
-    secondary = [route for route in routes if route is not primary]
-
-    primary_roles = [
-        ROUTE_ROLE_LABELS[role]
-        for role in (primary.get("roles") or [])
-        if role in ROUTE_ROLE_LABELS
-    ]
-    primary_action = external_link(
-        primary.get("label") or "Abrir recurso",
-        primary.get("url"),
-        "access-primary-action",
+    all_routes = resource_routes(record)
+    routes = [route for route in all_routes if route.get("status") == "active" and route.get("url")]
+    has_data_page = any(
+        "data_page" in route["roles"] and "official_site" not in route["roles"] for route in routes
     )
-    if not primary_action:
-        primary_action = (
-            f'<p class="record-meta-note">{esc(primary.get("notes") or "Link de acesso não confirmado.")}</p>'
-        )
-
-    secondary_links: list[str] = []
-    for route in secondary:
-        action = external_link(route.get("label") or "Abrir recurso", route.get("url"))
-        if action:
-            secondary_links.append(f"<li>{action}</li>")
-        elif route.get("notes"):
-            secondary_links.append(
-                f'<li><span>{esc(route.get("label") or "Forma de acesso")}: {esc(route["notes"])}</span></li>'
+    inserted: set[str] = set()
+    groups: list[str] = []
+    has_access = False
+    for group_id, heading, roles in ACCESS_GROUPS:
+        links: list[str] = []
+        for route in sorted(routes, key=lambda item: item["route_type"] != "direct_data"):
+            if route["route_id"] in inserted or not any(role in route["roles"] for role in roles):
+                continue
+            portal = has_data_page and {"data_page", "official_site"}.issubset(route["roles"])
+            if portal and group_id == "acesso-dados":
+                continue
+            label = "Abrir site oficial" if portal else route["label"]
+            action = external_link(label, route["url"])
+            if not action:
+                continue
+            inserted.add(route["route_id"])
+            if group_id != "acesso-documentacao":
+                has_access = True
+            note = ""
+            if not route["primary"] and group_id != "acesso-documentacao":
+                context = " ".join(filter(None, (route.get("access_conditions"), route.get("notes"))))
+                if context:
+                    note = f'<p class="access-link-note">{esc(context)}</p>'
+            links.append(f"<li>{action}{note}</li>")
+        if links:
+            groups.append(
+                f'<div class="access-group" id="{group_id}">'
+                f'<h3>{heading}</h3><ul class="route-actions">{"".join(links)}</ul></div>'
             )
 
-    secondary_html = ""
-    if secondary_links:
-        secondary_html = (
-            '<div class="access-secondary">'
-            '<strong>Outras formas de acesso</strong>'
-            f'<ul>{"".join(secondary_links)}</ul>'
-            '</div>'
-        )
+    notice = ""
+    if not has_access and any(route.get("access_assessment") == "E" for route in all_routes):
+        notice = '<p class="notice">Link para obter dados ainda não confirmado.</p>'
 
-    return (
-        '<div class="access-panel">'
-        '<div class="access-primary">'
-        '<span class="access-eyebrow">Acesso principal</span>'
-        f'<strong>{esc(primary.get("label") or "Forma de acesso")}</strong>'
-        f'<div class="route-meta">{"".join(f"<span>{esc(item)}</span>" for item in primary_roles)}</div>'
-        f'<div class="route-actions">{primary_action}</div>'
-        '</div>'
-        f'{secondary_html}'
-        '</div>'
-    )
+    return notice + ('<div class="access-panel">' + "".join(groups) + '</div>' if groups else "")
 
 
 def access_facts_html(access: dict) -> str:
@@ -423,7 +393,7 @@ def render_record_page(record: dict) -> str:
 <link rel="stylesheet" href="../../assets/visual-refinement.css">
 <link rel="stylesheet" href="../../assets/ux-v2.css">
 <link rel="stylesheet" href="../../assets/ux-simple.css">
-<link rel="stylesheet" href="../../assets/record-page.css">
+<link rel="stylesheet" href="../../assets/record-page.css?v=20261116-4">
 <link rel="stylesheet" href="../../assets/print.css" media="print">
 <script type="application/ld+json">{json_ld}</script>
 <link rel="stylesheet" href="../../assets/institutional-support.css?v=20261012"></head>
@@ -473,8 +443,8 @@ def render_record_page(record: dict) -> str:
 
 <section class="record-section" id="acesso">
 <h2>Como acessar</h2>
-<p class="access-status"><strong>Situação:</strong> {esc(access.get("primary_status") or "Não informado")}</p>
 {access_routes_html(record)}
+<h3>Condições informadas pela fonte</h3>
 {access_facts_html(access)}
 <p class="access-conditions"><strong>Condições:</strong> {esc(access.get("conditions") or "Não informado")}</p>
 </section>
@@ -504,7 +474,7 @@ def render_record_page(record: dict) -> str:
 
 <div class="record-curation" id="curadoria">
 <h3>Verificação da ficha</h3>
-<p class="curation-summary"><strong>{esc(rid)}</strong> · revisado em {esc((record.get("curation") or {}).get("last_verified") or "data não informada")} · acesso verificado em {esc((record.get("curation") or {}).get("access_last_verified") or "data não informada")}</p>
+<p class="curation-summary"><strong>{esc(rid)}</strong> · revisado em {esc((record.get("curation") or {}).get("last_verified") or "data não informada")} · rota principal revisada em {esc((record.get("curation") or {}).get("access_last_verified") or "data não informada")}</p>
 <p><a href="../../about.html#verificacao">Como a Vitrine verifica as informações</a></p>
 </div>
 </section>
