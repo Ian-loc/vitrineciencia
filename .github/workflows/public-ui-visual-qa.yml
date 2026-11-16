@@ -136,6 +136,8 @@ jobs:
                 report.push({mode,page:name,...metrics,browserErrors});
                 if (browserErrors.length) { console.error(`Erros de navegador em ${mode}/${name}: ${browserErrors.join(" | ")}`); failed=true; }
                 if (!metrics.hasMain || !metrics.h1) failed=true;
+                const publicText = await page.locator('body').innerText();
+                if (/snapshot estático curado|atualizações futuras por API|sem inventar produtos|interface viva|ainda falta auditoria|revisar acesso/i.test(publicText)) { console.error(`Linguagem de desenvolvimento em ${mode}/${name}`); failed=true; }
                 if (metrics.documentWidth > metrics.viewportWidth + 2) { console.error(`Overflow horizontal: ${mode}/${name}`); failed=true; }
                 const expectedSearch = ['home', 'sources', 'products'].includes(name) ? 1 : 0;
                 if (metrics.visibleFreeSearch !== expectedSearch) { console.error(`Quantidade inesperada de campos de busca em ${mode}/${name}`); failed=true; }
@@ -218,7 +220,7 @@ jobs:
                   if (name === 'record-terrabrasilis' && await page.locator('.record-product').count() !== 7) { console.error('TerraBrasilis deve exibir 7 produtos detalhados'); failed=true; }
                   if (name === 'record-gee' && await page.locator('.record-product').count() !== 4) { console.error('GEE deve exibir 4 produtos detalhados'); failed=true; }
                   if (name === 'record-mapbiomas' && await page.locator('.record-product').count() !== 0) { console.error('MapBiomas não deve inventar produtos detalhados'); failed=true; }
-                  if (name === 'record-mapbiomas' && await page.locator('.provenance-details').count() !== 1) { console.error('MapBiomas deve explicitar proveniência não discriminada por disclosure'); failed=true; }
+                  if (name === 'record-mapbiomas' && !await page.locator('.provenance-status').isVisible()) { console.error('Orientação para consultar o produtor do dado ausente na ficha MapBiomas'); failed=true; }
                   await page.emulateMedia({media:'print'});
                   if (await page.locator('.site-nav').evaluate(el => getComputedStyle(el).display) !== 'none') { console.error(`Navegação aparece na impressão de ${name}`); failed=true; }
                   if (await page.locator('.record-nav').evaluate(el => getComputedStyle(el).display) !== 'none') { console.error(`Índice sticky aparece na impressão de ${name}`); failed=true; }
