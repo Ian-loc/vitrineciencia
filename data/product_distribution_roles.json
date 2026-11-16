@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "scope": "11 detailed items / 19 access routes",
+  "scope": "Live product access routes",
   "rule": "Distribution, DataService, viewer, metadata/documentation and software are distinct roles. Only A-C represent confirmed data access.",
   "routes": {
     "PRODES — arquivos para download": {"role":"DISTRIBUTION","access_class":"A","action":"Baixar dados"},
@@ -21,6 +21,17 @@
     "Dynamic World — ImageCollection no Earth Engine": {"role":"DATASERVICE","access_class":"C","action":"Consultar dataset"},
     "Dynamic World — registro no WRI Data Explorer": {"role":"DOCUMENTATION_METADATA","access_class":"D","action":"Ver registro"},
     "Dynamic World — explorador visual": {"role":"VIEWER_PORTAL","access_class":"D","action":"Explorar viewer"},
-    "Dynamic World — modelo e notebook de inferência": {"role":"SOFTWARE_DOCUMENTATION","access_class":"D","action":"Ver código e modelo"}
+    "Dynamic World — modelo e notebook de inferência": {"role":"SOFTWARE_DOCUMENTATION","access_class":"D","action":"Ver código e modelo"},
+    "MapBiomas Cobertura 30 m — catálogo de assets da Coleção 11": {"role":"DATASERVICE","access_class":"C","action":"Usar no Earth Engine"},
+    "MapBiomas Cobertura 30 m — mapa interativo": {"role":"VIEWER_PORTAL","access_class":"D","action":"Visualizar mapas"},
+    "MapBiomas Fogo — visualização de área queimada anual": {"role":"VIEWER_PORTAL","access_class":"D","action":"Visualizar mapas anuais"},
+    "MapBiomas Fogo 5.1 — mapas no Earth Engine": {"role":"DATASERVICE","access_class":"C","action":"Usar no Earth Engine"},
+    "INMET — arquivos anuais das estações automáticas": {"role":"DISTRIBUTION","access_class":"A","action":"Ver arquivos por ano"},
+    "SoilGrids SOC — arquivos por profundidade e estatística": {"role":"DISTRIBUTION","access_class":"A","action":"Ver arquivos SoilGrids"},
+    "SoilGrids SOC — serviço de recortes WCS": {"role":"DATASERVICE","access_class":"C","action":"Consultar serviço WCS"},
+    "RESOLVE 2017 — arquivo vetorial": {"role":"DISTRIBUTION","access_class":"A","action":"Baixar arquivo ZIP"},
+    "RESOLVE 2017 — coleção de feições no Earth Engine": {"role":"DATASERVICE","access_class":"C","action":"Usar no Earth Engine"},
+    "Carbon Mapper L4A — consulta e exportação pelo portal": {"role":"DATA_PAGE","access_class":"B","action":"Consultar e obter dados"},
+    "Carbon Mapper L4A — documentação da API de plumas": {"role":"DATASERVICE","access_class":"C","action":"Consultar documentação da API"}
   }
 }

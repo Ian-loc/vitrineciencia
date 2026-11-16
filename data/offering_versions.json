@@ -17,6 +17,58 @@
       "source_summary": "V1 | asset GOOGLE/DYNAMICWORLD/V1",
       "evidence_source": "data/data_products.csv",
       "verified_at": "2026-08-03"
+    },
+    {
+      "version_id": "DP000862-C11",
+      "offering_id": "DP000862",
+      "version_label": "Coleção 11",
+      "version_kind": "collection",
+      "external_identifier": null,
+      "issued": "2026-08-12",
+      "relation": "version_of",
+      "status": "documented",
+      "source_summary": "Coleção 11",
+      "evidence_source": "https://brasil.mapbiomas.org/iniciativas-e-produtos/cobertura-e-uso-da-terra/cobertura-30m/cobertura/",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "version_id": "DP000863-C51",
+      "offering_id": "DP000863",
+      "version_label": "Coleção 5.1",
+      "version_kind": "collection",
+      "external_identifier": "projects/mapbiomas-public/assets/brazil/fire/collection5_1/mapbiomas_fire_collection51_annual_burned_v1",
+      "issued": null,
+      "relation": "version_of",
+      "status": "documented",
+      "source_summary": "Coleção 5.1",
+      "evidence_source": "https://brasil.mapbiomas.org/iniciativas-e-produtos/fogo/mapeamento-anual/anual/",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "version_id": "DP000865-V2",
+      "offering_id": "DP000865",
+      "version_label": "SoilGrids 2.0",
+      "version_kind": "version",
+      "external_identifier": null,
+      "issued": null,
+      "relation": "version_of",
+      "status": "documented",
+      "source_summary": "SoilGrids 2.0",
+      "evidence_source": "https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs.html",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "version_id": "DP000866-2017",
+      "offering_id": "DP000866",
+      "version_label": "Edição de 2017",
+      "version_kind": "edition",
+      "external_identifier": "RESOLVE/ECOREGIONS/2017",
+      "issued": null,
+      "relation": "version_of",
+      "status": "documented",
+      "source_summary": "Edição de 2017",
+      "evidence_source": "https://developers.google.com/earth-engine/datasets/catalog/RESOLVE_ECOREGIONS_2017",
+      "verified_at": "2026-11-16"
     }
   ],
   "unresolved_legacy_summaries": [
@@ -89,6 +141,20 @@
       "resolution_status": "not_promoted_to_version_entity",
       "reason": "O campo legado é preservado como resumo, mas não é promovido automaticamente a versão/coleção sem curadoria específica.",
       "verified_at": "2026-07-22"
+    },
+    {
+      "offering_id": "DP000864",
+      "summary": "Pacotes anuais de dados históricos",
+      "resolution_status": "not_promoted_to_version_entity",
+      "reason": "Os arquivos são publicados por ano, sem edição única para a série.",
+      "verified_at": "2026-11-16"
+    },
+    {
+      "offering_id": "DP000867",
+      "summary": "Produto L4A, com versão de processamento por observação",
+      "resolution_status": "not_promoted_to_version_entity",
+      "reason": "L4A é um nível de processamento. Use a versão associada a cada observação.",
+      "verified_at": "2026-11-16"
     }
   ]
 }

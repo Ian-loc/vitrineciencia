@@ -10,6 +10,21 @@
   window.VitrineIsDataDownload = (distribution, roles) =>
     https(distribution.access_url) && roles[distribution.distribution_name]?.access_class === "A";
 
+  window.VitrineProductRecordLink = product => product.resource_id && product.product_id
+    ? `registros/${encodeURIComponent(product.resource_id.toLowerCase())}/#${encodeURIComponent(product.product_id.toLowerCase())}`
+    : "";
+
+  window.VitrineProductDataLink = (product, roles) => {
+    const technical = /(?:\bapi\b|graphql|opendap|\bwms\b|\bwfs\b|\bwcs\b|wmts|stac|csw|swagger|openapi|earth engine|client librar|endpoint|\brest\b)/i;
+    const candidates = (product.distributions || []).filter(distribution =>
+      https(distribution.access_url) && !technical.test(
+        [distribution.access_url, distribution.distribution_name, distribution.access_protocol, distribution.access_tool].join(" ")
+      )
+    );
+    return candidates.find(distribution => roles[distribution.distribution_name]?.access_class === "A")
+      || candidates.find(distribution => roles[distribution.distribution_name]?.access_class === "B");
+  };
+
   const sourceRoles = {A: "direct_data", B: "data_page", C: "data_service", D: "viewer"};
   const supports = (route, mode) =>
     route.status === "active" && https(route.url) && route.roles.includes(sourceRoles[mode]);

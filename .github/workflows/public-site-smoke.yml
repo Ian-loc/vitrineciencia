@@ -43,7 +43,7 @@ jobs:
 
           ready=0
           for attempt in {1..20}; do
-            if fetch "$SITE/?v=$TARGET_SHA-$attempt" "$tmp/index.html" && grep -q 'id="home-access">42<' "$tmp/index.html"; then
+            if fetch "$SITE/?v=$TARGET_SHA-$attempt" "$tmp/index.html" && grep -q 'id="home-products">17<' "$tmp/index.html"; then
               ready=1
               break
             fi
@@ -103,6 +103,9 @@ jobs:
           grep -q 'id="acesso-visualizacao"' "$tmp/dr0010.html"
           grep -q 'https://terrabrasilis.dpi.inpe.br/downloads/' "$tmp/dr0011.html"
           grep -q 'id="acesso-tecnico"' "$tmp/dr0139.html"
+          grep -q 'id="dp000862"' "$tmp/dr0010.html"
+          grep -q 'id="dp000863"' "$tmp/dr0010.html"
+          grep -q 'id="dp000867"' "$tmp/dr0139.html"
           grep -q 'Como a Vitrine verifica as informações' "$tmp/dr0010.html"
           grep -q 'Dados e produtos disponíveis' "$tmp/dr0011.html"
           grep -q 'Versão ou coleção: atualização publicada em 2026-03-03' "$tmp/dr0011.html"
@@ -113,13 +116,13 @@ jobs:
           grep -q 'Condições de uso e licença' "$tmp/dr0141.html"
 
           grep -q 'id="product-scope"' "$tmp/products.html"
-          grep -q 'Conjuntos de dados, catálogos e serviços do TerraBrasilis e do Google Earth Engine' "$tmp/products.html"
+          grep -q 'Conjuntos de dados, catálogos e serviços descritos na Vitrine' "$tmp/products.html"
           grep -q 'id="product-theme"' "$tmp/products.html"
           grep -q 'id="product-coverage"' "$tmp/products.html"
           grep -q 'id="product-kind"' "$tmp/products.html"
           grep -q 'id="product-access"' "$tmp/products.html"
           grep -q 'id="product-advanced-filters"' "$tmp/products.html"
-          grep -q 'id="home-free">6' "$tmp/index.html"
+          grep -q 'id="home-free">9' "$tmp/index.html"
           if grep -Eq 'id="p-(distributions|formats|free)"|id="product-result-insights"' "$tmp/products.html"; then
             echo "ERRO: indicadores substituídos ainda presentes nos dados detalhados"
             exit 1
@@ -147,7 +150,8 @@ jobs:
           provenance = json.load(open(sys.argv[9], encoding='utf-8'))
 
           assert len(resources) == 58, len(resources)
-          assert len(products) == 11, len(products)
+          assert len(products) == 17, len(products)
+          assert len({p["resource_id"] for p in products}) == 7
           assert len(public_records) == 58, len(public_records)
           assert {r["resource_id"] for r in public_records} == {r["resource_id"] for r in resources}
           assert all(sum(bool(x.get("primary")) for x in r["access"]["routes"]) == 1 for r in public_records)
@@ -167,14 +171,14 @@ jobs:
           assert carbon_v2["provenance"]["responsibility_statement"]
           assert carbon_v2["provenance"]["agent_resolution_status"] == "unresolved_legacy_statement"
           assert carbon_v2["agents"] == []
-          assert len(product_versions["versions"]) == 1
-          assert len(product_versions["unresolved_legacy_summaries"]) == 10
+          assert len(product_versions["versions"]) == 5
+          assert len(product_versions["unresolved_legacy_summaries"]) == 12
           assert len(provenance["statements"]) == 58
           assert sum(bool(r.get("primary")) for r in carbon_v2["access_routes"] if r.get("target_type") == "resource") == 1
           assert not any({"scientific_reference", "verification_source"} & set(r.get("roles") or []) for r in carbon_v2["access_routes"])
           assert len({p['resource_id'] for p in products}) <= len(resources)
           distributions = sum(len(p.get('distributions', [])) for p in products)
-          assert distributions == 19, distributions
+          assert distributions == 30, distributions
 
           items = priority.get('items') or []
           gates = [str(item.get('gate') or '') for item in items]
@@ -183,5 +187,5 @@ jobs:
           assert all(item.get('access_role') in {'A', 'B', 'C', 'D', 'E'} for item in items)
           assert all(str(item.get('access_url') or '').startswith('https://') for item in items)
 
-          print('OK: Vitrine pública 58 registros + v2 com rotas, versões e proveniência canônicas / 58 páginas / 11 offerings / 19 distribuições')
+          print('OK: Vitrine pública 58 registros + v2 com rotas, versões e proveniência canônicas / 58 páginas / 17 itens / 30 distribuições')
           PY

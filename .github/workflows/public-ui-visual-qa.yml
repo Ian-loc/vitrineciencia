@@ -150,8 +150,8 @@ jobs:
                 }
 
                 if (name === 'home') {
-                  await page.waitForFunction(() => document.querySelector('#home-products')?.textContent.trim() === '11' && document.querySelector('#home-sources')?.textContent.trim() === '58');
-                  if (await page.locator('#home-all-sources').innerText() !== '58' || await page.locator('#home-access').innerText() !== '42' || await page.locator('#home-free').innerText() !== '6') { console.error('Contagens da inicial divergentes do catálogo completo'); failed=true; }
+                  await page.waitForFunction(() => document.querySelector('#home-products')?.textContent.trim() === '17' && document.querySelector('#home-sources')?.textContent.trim() === '58');
+                  if (await page.locator('#home-all-sources').innerText() !== '58' || await page.locator('#home-access').innerText() !== '42' || await page.locator('#home-free').innerText() !== '9') { console.error('Contagens da inicial divergentes do catálogo completo'); failed=true; }
                   const theme = page.locator('#home-theme[name="q"]');
                   if (await theme.count() !== 1 || await theme.evaluate(el => el.tagName) !== 'SELECT') { console.error('Seleção controlada de fenômeno ausente'); failed=true; }
                   if (await page.locator('#home-product-areas .process-card').count() < 10) { console.error('Atalhos socioecológicos insuficientes'); failed=true; }
@@ -163,11 +163,11 @@ jobs:
 
                 if (name === 'products') {
                   const cards = page.locator('#product-list .product-card');
-                  if (await cards.count() !== 11) { console.error(`Visão detalhada deve exibir 11 itens: ${await cards.count()}`); failed=true; }
+                  if (await cards.count() !== 17) { console.error(`Visão detalhada deve exibir 17 itens: ${await cards.count()}`); failed=true; }
                   const count = page.locator('#product-count');
                   const clear = page.locator('#product-clear');
                   const moreFilters = page.locator('#product-advanced-filters');
-                  if (!(await page.locator('#product-scope').innerText()).startsWith('11 itens de 2 fontes') || await count.innerText() !== '11 itens encontrados' || await clear.isVisible()) { console.error('Resumo, contagem ou estado inicial dos filtros incorretos'); failed=true; }
+                  if (!(await page.locator('#product-scope').innerText()).startsWith('17 itens de 7 fontes') || await count.innerText() !== '17 itens encontrados' || await clear.isVisible()) { console.error('Resumo, contagem ou estado inicial dos filtros incorretos'); failed=true; }
                   if (await page.locator('.stats, #product-result-insights').count()) { console.error('Indicadores e atalhos substituídos continuam presentes'); failed=true; }
                   for (const selector of ['#product-theme','#product-coverage','#product-kind','#product-access']) {
                     const control = page.locator(selector); if (!await control.count() || await control.evaluate(el => el.tagName) !== 'SELECT') { console.error(`Filtro controlado ausente: ${selector}`); failed=true; }
@@ -179,18 +179,19 @@ jobs:
                     await theme.selectOption(value);
                     await page.waitForTimeout(120);
                     const filtered = await cards.count();
-                    if (!(filtered > 0 && filtered <= 11)) { console.error(`Filtro temático não funcionou: ${filtered}`); failed=true; }
+                    if (!(filtered > 0 && filtered <= 17)) { console.error(`Filtro temático não funcionou: ${filtered}`); failed=true; }
                     await page.locator('#product-clear').click();
                     await page.waitForTimeout(120);
                   }
                   await moreFilters.locator('summary').first().click();
                   await page.locator('#product-free').selectOption('sim');
-                  if (await cards.count() !== 6 || await count.innerText() !== '6 de 11 itens') { console.error('Download gratuito precisa retornar seis itens com dados para baixar'); failed=true; }
+                  if (await cards.count() !== 9 || await count.innerText() !== '9 de 17 itens') { console.error('Download gratuito precisa retornar nove itens com dados para baixar'); failed=true; }
                   await page.reload();
                   await page.waitForSelector('#product-list .product-card');
-                  if (await page.locator('#product-free').inputValue() !== 'sim' || !await page.locator('#product-free').isVisible() || await cards.count() !== 6) { console.error('Filtro de download gratuito perdeu o estado após recarregar'); failed=true; }
+                  if (await page.locator('#product-free').inputValue() !== 'sim' || !await page.locator('#product-free').isVisible() || await cards.count() !== 9) { console.error('Filtro de download gratuito perdeu o estado após recarregar'); failed=true; }
                   await clear.click();
                   await moreFilters.locator('summary').first().click();
+                  await page.locator('#product-source').selectOption('TerraBrasilis');
                   await page.locator('#product-temporal').selectOption('anual');
                   if (await cards.count() !== 1 || !(await cards.first().innerText()).includes('PRODES')) { console.error('Resolução anual confundiu retrato pontual com série anual'); failed=true; }
                   await clear.click();
@@ -224,7 +225,9 @@ jobs:
 
                 if (name === 'product-index') {
                   const rows = page.locator('#product-index-list .product-index-row');
-                  if (await rows.count() !== 11) { console.error(`Lista deve conter 11 itens: ${await rows.count()}`); failed=true; }
+                  if (await rows.count() !== 17) { console.error(`Lista deve conter 17 itens: ${await rows.count()}`); failed=true; }
+                  const inmet = rows.filter({hasText:'INMET — observações horárias'});
+                  if (await inmet.locator('.index-actions a').getAttribute('href') !== 'https://portal.inmet.gov.br/dadoshistoricos') { console.error('Arquivo anual do INMET ausente na lista'); failed=true; }
                   if (!await validatePublicActions(page, '#product-index-list .index-actions a:visible', 'Lista de dados')) failed=true;
                 }
 

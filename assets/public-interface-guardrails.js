@@ -70,20 +70,13 @@
       const productById = new Map((products || []).map(item => [item.product_id, item]));
       const routeRoles = rolePayload.routes || {};
 
-      const safeDataRoute = product => {
-        const candidates = (product.distributions || []).map(distribution => ({distribution, meta: routeRoles[distribution.distribution_name] || {}}))
-          .filter(({distribution, meta}) => ["A", "B"].includes(meta.access_class) && https(distribution.access_url) && !technicalAccess(distribution.access_url, `${distribution.distribution_name || ""} ${distribution.access_protocol || ""} ${distribution.access_tool || ""}`));
-        return candidates.find(({meta}) => meta.access_class === "A") || candidates.find(({meta}) => meta.access_class === "B") || null;
-      };
-
       const apply = () => {
         list.querySelectorAll(".product-card[data-product-id]").forEach(card => {
           const product = productById.get(card.dataset.productId);
           if (!product) return;
           const provenanceLabel = card.querySelector(".provenance-line strong");
           if (provenanceLabel && provenanceLabel.textContent !== "Responsável: ") provenanceLabel.textContent = "Responsável: ";
-          const dataRoute = safeDataRoute(product);
-          const dataUrl = dataRoute?.distribution?.access_url || "";
+          const dataUrl = window.VitrineProductDataLink(product, routeRoles)?.access_url || "";
           const siteUrl = https(product.product_page_url) && !technicalAccess(product.product_page_url)
             ? product.product_page_url
             : (https(product.source?.homepage_url) && !technicalAccess(product.source.homepage_url) ? product.source.homepage_url : "");

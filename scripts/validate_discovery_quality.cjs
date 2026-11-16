@@ -45,9 +45,21 @@ assert.equal(resources.filter(resource => modes(resource.resource_id).includes('
 counts['home-access'] = resources.filter(resource => modes(resource.resource_id).some(mode => ['A','B'].includes(mode))).length;
 for (const [id,value] of Object.entries(counts)) assert(home.includes(`id="${id}">${value}<`), `Contador ${id}`);
 assert.equal(counts['home-access'], 42);
+const products = json('data/data_products.json');
+const distributionRoles = json('data/product_distribution_roles.json').routes;
+const productLink = context.window.VitrineProductDataLink;
+assert.equal(productLink(products.find(p => p.product_id === 'DP000864'), distributionRoles).access_url, 'https://portal.inmet.gov.br/dadoshistoricos');
+assert.equal(productLink(products.find(p => p.product_id === 'DP000867'), distributionRoles).access_url, 'https://data.carbonmapper.org/');
+assert.equal(productLink(products.find(p => p.product_id === 'DP000862'), distributionRoles), undefined);
+for (const product of products) {
+  const [path, anchor] = context.window.VitrineProductRecordLink(product).split('#');
+  assert(read(`_site/${path}index.html`).includes(`id="${anchor}"`));
+  for (const distribution of product.distributions) assert(distributionRoles[distribution.distribution_name]);
+}
+
 const labels = {'sources.html':'Explorar dados','products.html':'Dados detalhados','about.html':'Sobre a Vitrine','analytics.html':'Sobre o acervo'};
 for (const filename of ['index.html','sources.html','products.html','products-list.html','analytics.html','analytics-products.html','about.html']) {
   const nav = read(filename).match(/id="site-nav-links">([\s\S]*?)<\/nav>/)[1];
   for (const [href,label] of Object.entries(labels)) assert(new RegExp(`href="${href}"[^>]*>${label}</a>`).test(nav), `${filename}: ${label}`);
 }
-console.log(`OK: contagens ${resources.length}/11/${counts['home-access']}, destinos de acesso, vocabulário agrupado e navegação consistentes`);
+console.log(`OK: contagens ${resources.length}/${products.length}/${counts['home-access']}, destinos de acesso, vocabulário agrupado e navegação consistentes`);

@@ -1,6 +1,7 @@
 # Estado canônico — Vitrine Ciência
 
-**Data de referência:** 12 de outubro de 2026  
+**Data de referência:** 16 de novembro de 2026
+
 **Fuso:** `America/Sao_Paulo`
 
 ## 1. Autoridade e estado material
@@ -20,10 +21,10 @@ A **fase ativa de QA/QC e manutenção** continua vigente para o runtime 58, em 
 O estado vivo contém:
 
 - **58 registros `DR####`**;
-- **11 produtos detalhados `DP######`**;
-- **19 distribuições `DD######`**;
+- **17 produtos detalhados `DP######`**;
+- **30 distribuições `DD######`**;
 
-Na terminologia física usada pelos validadores, o catálogo corrente corresponde a **58 fontes, 11 produtos e 19 distribuições**; “fonte” é um rótulo legado do schema físico.
+Na terminologia física usada pelos validadores, o catálogo corrente corresponde a **58 fontes, 17 produtos e 30 distribuições**; “fonte” é um rótulo legado do schema físico.
 - 58 páginas individuais em `/registros/dr####/`;
 - `data/public_records.json`;
 - 58 JSONs individuais em `data/registros/dr####.json`.
@@ -41,6 +42,20 @@ O núcleo histórico `DR0001–DR0051` permanece preservado. As entradas pós-co
 Os IDs `DR0052–DR0135` permanecem associados ao snapshot histórico v1.0.0 em quarentena e não devem ser reciclados.
 
 A expansão histórica **135/843/876** está em `data/quarantine/v1.0.0-expanded/` e não faz parte do catálogo vivo.
+
+### Rodada de 16 de novembro de 2026
+
+Após a instrução para expandir Dados detalhados, foram descritos seis produtos de cinco fontes que já integravam o catálogo. A seleção ampliou a cobertura temática com metadados verificáveis nos provedores oficiais. Os novos identificadores de produto e distribuição ficam além das faixas usadas na publicação histórica.
+
+| Produto | Fonte da descrição e do acesso |
+|---|---|
+| MapBiomas Cobertura 30 m, Coleção 11 | [Página da coleção](https://brasil.mapbiomas.org/iniciativas-e-produtos/cobertura-e-uso-da-terra/cobertura-30m/cobertura/) e [catálogo de assets](https://brasil.mapbiomas.org/downloads/assets-no-google-earth-engine/) |
+| MapBiomas Fogo, mapas anuais, Coleção 5.1 | [Documentação, visualizador e acesso via Earth Engine](https://brasil.mapbiomas.org/iniciativas-e-produtos/fogo/mapeamento-anual/anual/) |
+| INMET, observações horárias de estações automáticas | [Pacotes anuais](https://portal.inmet.gov.br/dadoshistoricos) e [documentação institucional](https://portal.inmet.gov.br/uploads/notastecnicas/V.5_Planejamento_Estrategico_INMET.pdf) |
+| SoilGrids 2.0, teor de carbono orgânico do solo | [Documentação ISRIC](https://docs.isric.org/globaldata/soilgrids/) e [arquivos SOC](https://files.isric.org/soilgrids/latest/data/soc/) |
+| RESOLVE, ecorregiões terrestres de 2017 | [Metadados, licença e citação](https://developers.google.com/earth-engine/datasets/catalog/RESOLVE_ECOREGIONS_2017) e [arquivo vetorial](https://storage.googleapis.com/teow2016/Ecoregions2017.zip) |
+| Carbon Mapper, taxa de emissão de metano por pluma (L4A) | [Guia do produto](https://carbonmapper.org/articles/product-guide), [portal](https://data.carbonmapper.org/) e [termos](https://carbonmapper.org/terms) |
+
 
 ## 3. Auditorias e cobertura
 
@@ -95,7 +110,7 @@ O v2 é publicado como:
 
 O v2 separa `record` e `resource`, preserva as URLs, migra os produtos atuais para `offerings` e preserva as distribuições como rotas direcionadas às ofertas. O v1 continua publicado em JSON como camada de compatibilidade e regressão durante a transição.
 
-As rotas de acesso do v2 possuem autoridade canônica própria em `data/access_routes.json`, sob o contrato `schema/access-routes-v1.json`. O baseline contém 135 rotas no nível dos recursos e 19 distribuições, totalizando 154 objetos. Referências científicas e fontes de verificação permanecem separadas em `references`.
+As rotas de acesso do v2 possuem autoridade canônica própria em `data/access_routes.json`, sob o contrato `schema/access-routes-v1.json`. O catálogo vivo contém 140 rotas no nível dos recursos e 30 distribuições, totalizando 170 objetos. Referências científicas e fontes de verificação permanecem separadas em `references`.
 
 Versões e proveniência também receberam semântica explícita:
 

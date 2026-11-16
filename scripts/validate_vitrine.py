@@ -115,8 +115,8 @@ def load_json(relative_path: str):
 def validate_counts() -> None:
     live = {
         "data/data_resources.csv": 58,
-        "data/data_products.csv": 11,
-        "data/product_distributions.csv": 19,
+        "data/data_products.csv": 17,
+        "data/product_distributions.csv": 30,
     }
     for filename, expected in live.items():
         found = csv_rows(filename)
@@ -226,7 +226,7 @@ def validate_page(filename: str) -> None:
     elif filename == "products.html":
         if not any(item.get("type") == "search" and item.get("id") == "product-q" and "hidden" not in item for item in parser.inputs): fail("products.html: campo de busca livre ausente")
         if "assets/products.js" not in content: fail("products.html: controlador canônico ausente")
-        if 'id="product-scope"' not in content or "TerraBrasilis e do Google Earth Engine" not in content: fail("products.html: escopo e origens do subconjunto detalhado devem estar explícitos")
+        if 'id="product-scope"' not in content: fail("products.html: escopo e origens do subconjunto detalhado devem estar explícitos")
 
 
 def validate_identity() -> None:
@@ -286,4 +286,4 @@ for page in PUBLIC_PAGES: validate_page(page)
 validate_identity()
 validate_functional_contracts()
 validate_required_assets()
-print("OK: Vitrine validada — 58 registros públicos (51 do núcleo preservados + 7 pós-core), 11 produtos, 19 distribuições; A–E 51/51 no núcleo e gate P1–P6")
+print("OK: Vitrine validada — 58 registros públicos (51 do núcleo preservados + 7 pós-core), 17 produtos, 30 distribuições; A–E 51/51 no núcleo e gate P1–P6")

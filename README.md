@@ -13,7 +13,7 @@ UFLA · Programa de Pós-Graduação em Ecologia Aplicada da UFLA · FAPEMIG.
 
 Aplicação dos logos: [identidade institucional](docs/INSTITUTIONAL_IDENTITY.md).
 
-## Estado público atual — 12 de outubro de 2026
+## Estado público atual — 16 de novembro de 2026
 
 A autoridade canônica é o repositório `Ian-loc/vitrineciencia`; a branch `main` representa o estado público corrente. Planilhas, Drive, worktrees, documentos externos e conversas são auxiliares ou espelhos e não substituem o estado materializado no GitHub.
 
@@ -22,8 +22,8 @@ O estado público corrente é o `HEAD` validado de `main`. Checkpoints históric
 Esse estado contém:
 
 - **58 registros públicos `DR####`**;
-- **11 produtos detalhados `DP######`**;
-- **19 distribuições `DD######`**;
+- **17 produtos detalhados `DP######`**;
+- **30 distribuições `DD######`**;
 - **58 páginas individuais** em `/registros/dr####/`;
 - read model v2 em `/data/v2/public_records.json` e JSON individual por registro;
 - read model v1 mantido temporariamente em `/data/public_records.json` para compatibilidade;
@@ -92,7 +92,7 @@ As superfícies principais são:
 
 - `index.html` — entrada e orientação temática;
 - `sources.html` — descoberta dos 58 registros;
-- `products.html` — subconjunto de 11 itens detalhados e 19 distribuições;
+- `products.html` — subconjunto de 17 itens detalhados e 30 distribuições;
 - `/registros/dr####/` — página persistente de cada registro;
 - `analytics.html` e páginas auxiliares — composição e método do acervo.
 

@@ -1,6 +1,6 @@
 # Estado do workflow — Vitrine Ciência
 
-**Atualização:** 12 de outubro de 2026 (`America/Sao_Paulo`)
+**Atualização:** 16 de novembro de 2026 (`America/Sao_Paulo`)
 
 ## Autoridade operacional
 
@@ -11,9 +11,9 @@ Runtime corrente: `HEAD` validado de `main`. O checkpoint público 58 anterior a
 ## Estado publicado
 
 - 58 registros `DR`;
-- 11 produtos detalhados `DP`;
-- 19 distribuições `DD`;
-- na terminologia física dos validadores: **58 fontes, 11 produtos e 19 distribuições**;
+- 17 produtos detalhados `DP`;
+- 30 distribuições `DD`;
+- na terminologia física dos validadores: **58 fontes, 17 produtos e 30 distribuições**;
 - 58 páginas individuais;
 - read model público agregado e JSON individual por registro;
 - descoberta temática/facetada;
@@ -109,8 +109,8 @@ Estado material:
 
 - 58 recursos com exatamente uma rota principal;
 - A=2/B=39/C=0/D=14/E=3;
-- 135 rotas no nível dos recursos;
-- 19 distribuições preservadas como DD;
+- 140 rotas no nível dos recursos;
+- 30 distribuições identificadas como DD;
 - referências/evidências separadas de access routes;
 - read model v2 consome a autoridade sem inferência no renderer.
 

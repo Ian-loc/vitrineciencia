@@ -188,7 +188,8 @@ for item in records:
     duplicates = {value for value in parser.ids if parser.ids.count(value) > 1}
     if duplicates:
         fail(f"{rid}: IDs HTML duplicados: {sorted(duplicates)}")
-    missing = required_sections - set(parser.ids)
+    expected_product_anchors = {value.lower() for value in offering_ids}
+    missing = (required_sections | expected_product_anchors) - set(parser.ids)
     if missing:
         fail(f"{rid}: seções públicas ausentes: {sorted(missing)}")
     for token in required_labels:
@@ -210,10 +211,14 @@ for item in records:
 
 if html_ids != set(ids) or json_ids != set(ids):
     fail("cobertura HTML/JSON v2 diverge dos IDs canônicos")
-if offering_count != 11:
-    fail(f"offerings detalhadas nas páginas: {offering_count}; esperado 11")
-if distribution_count != 19:
-    fail(f"distribuições nas páginas: {distribution_count}; esperado 19")
+for count, filename in (
+    (offering_count, "data_products.csv"),
+    (distribution_count, "product_distributions.csv"),
+):
+    with (ROOT / "data" / filename).open(encoding="utf-8-sig", newline="") as handle:
+        expected = sum(1 for _ in csv.DictReader(handle))
+    if count != expected:
+        fail(f"{filename}: {count} registros nas páginas; esperado {expected}")
 
 sitemap = (SITE / "sitemap.xml").read_text(encoding="utf-8")
 for item in records:

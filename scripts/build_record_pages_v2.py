@@ -254,7 +254,7 @@ def offering_html(record: dict, offering: dict) -> str:
     distributions = "".join(distribution_html(route) for route in routes)
 
     return (
-        '<article class="record-product record-offering">'
+        f'<article class="record-product record-offering" id="{esc(offering["offering_id"].lower())}">'
         f'<h3>{esc(offering["name"])}</h3>'
         f'<div class="route-meta">{"".join(meta)}</div>'
         f'<p>{esc(offering.get("description") or "")}</p>'
@@ -340,7 +340,8 @@ def render_record_page(record: dict) -> str:
         )
     )
     compare_link = (
-        f'<p><a href="../../products.html?source={quote(title)}">Comparar itens desta fonte →</a></p>'
+        f'<p><a href="../../products.html?source={quote(title)}">'
+        f'{"Comparar itens desta fonte" if len(offerings) > 1 else "Ver na busca de dados detalhados"} →</a></p>'
         if offerings else ""
     )
 
@@ -393,7 +394,7 @@ def render_record_page(record: dict) -> str:
 <link rel="stylesheet" href="../../assets/visual-refinement.css">
 <link rel="stylesheet" href="../../assets/ux-v2.css">
 <link rel="stylesheet" href="../../assets/ux-simple.css">
-<link rel="stylesheet" href="../../assets/record-page.css?v=20261116-4">
+<link rel="stylesheet" href="../../assets/record-page.css?v=20261116-5">
 <link rel="stylesheet" href="../../assets/print.css" media="print">
 <script type="application/ld+json">{json_ld}</script>
 <link rel="stylesheet" href="../../assets/institutional-support.css?v=20261012"></head>

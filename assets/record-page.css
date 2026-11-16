@@ -52,6 +52,7 @@
 .record-page .access-group a{display:inline;overflow-wrap:anywhere}
 .record-page .access-link-note{margin:.24rem 0 0;color:#52645c;font-size:.84rem}
 .record-page #acesso-tecnico{scroll-margin-top:5rem}
+.record-page .record-offering{scroll-margin-top:5rem}
 .record-page .access-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin:.65rem 0;padding:.65rem .75rem;border:1px solid #e0e8e4;border-radius:10px;background:#f8faf9}
 .record-page .access-facts div{min-width:0}
 .record-page .access-facts dt{margin:0 0 .18rem;color:#61756d;font-size:.72rem;font-weight:750}

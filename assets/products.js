@@ -69,7 +69,8 @@ const ORIGIN_LABELS = {
 };
 const ACCESS_LABELS = {
   arquivo:"Download de dados", api:"API ou acesso programático", ogc:"Serviços WMS, WFS ou OGC",
-  gee:"Google Earth Engine", banco:"Banco de dados", web:"Catálogo ou visualização na web", outro:"Outra forma de acesso"
+  gee:"Google Earth Engine", banco:"Banco de dados", pagina:"Página de dados",
+  web:"Catálogo ou visualização na web", outro:"Outra forma de acesso"
 };
 const COVERAGE_GROUPS = [
   ["brasil", "Brasil"], ["amazonia", "Amazônia"], ["cerrado", "Cerrado"],
@@ -158,6 +159,7 @@ function biomeMatches(product, key) {
 function temporalBucket(product) {
   const text = norm(product.temporal_resolution);
   if (!text || /desconhe|nao inform|variav/.test(text)) return "desconhecida";
+  if (/mapa estatico|static map/.test(text)) return "estatica";
   if (/instantane|snapshot/.test(text)) return "instantanea";
   if (/minut|hour|hora|3-hour|subdiar|sub-di/.test(text)) return "subdiaria";
   if (/daily|diari|dia\b/.test(text)) return "diaria";
@@ -219,6 +221,7 @@ function productAccessCategories(product) {
   const text = norm(distributions.flatMap(d => [d.access_protocol, d.access_tool]).join(" "));
   const out = [];
   if (dataDownloads(product).length) out.push("arquivo");
+  if (distributions.some(distribution => distributionRoles[distribution.distribution_name]?.role === "DATA_PAGE")) out.push("pagina");
   if (/earth engine|\bgee\b/.test(text)) out.push("gee");
   if (/\bapi\b|rest|graphql|opendap/.test(text)) out.push("api");
   if (/\bwms\b|\bwfs\b|wmts|ogc/.test(text)) out.push("ogc");
@@ -393,12 +396,14 @@ function productCard(product) {
   const cardId = `product-${domId(product.product_id)}`;
   const descriptionId = `${cardId}-description`;
   const checked = selected.has(product.product_id) ? " checked" : "";
+  const recordLink = window.VitrineProductRecordLink(product);
+  const title = esc(product.product_name);
   const limitation = product.limitations && !/desconhe|nao inform|não inform/i.test(product.limitations)
     ? `<details class="product-limitation"><summary class="limitation-flag">Ver limitação</summary><p>${esc(product.limitations)}</p></details>` : "";
   return `<article class="card product-card" data-product-id="${esc(product.product_id)}" role="listitem" aria-labelledby="${cardId}" aria-describedby="${descriptionId}">
     <header class="product-card-head">
       <p class="product-source">${product.source?.resource_id ? `<a href="registros/${esc(String(product.source.resource_id).toLowerCase())}/">${esc(product.source?.resource_name || "Fonte não informada")}</a>` : esc(product.source?.resource_name || "Fonte não informada")}</p>
-      <h3 id="${cardId}">${esc(product.product_name)}</h3>
+      <h3 id="${cardId}">${recordLink ? `<a href="${esc(recordLink)}">${title}</a>` : title}</h3>
       <p class="identity">${esc(product.product_family || KIND_LABELS[product.product_kind] || "Produto de dados")}</p>
     </header>
     <p class="description product-description" id="${descriptionId}">${esc(product.product_description)}</p>
@@ -441,7 +446,7 @@ function populateFilters() {
   ]).filter(([, , count]) => count > 0);
   populateSelect(els.coverage, coverageEntries, "Qualquer território");
 
-  const temporalLabels = {subdiaria:"Subdiária",diaria:"Diária",semanal:"Semanal",mensal:"Mensal",trimestral:"Trimestral",sazonal:"Sazonal",anual:"Anual",instantanea:"Retrato de um período",continua:"Contínua / tempo real",outra:"Outra / irregular",desconhecida:"Não informada"};
+  const temporalLabels = {subdiaria:"Subdiária",diaria:"Diária",semanal:"Semanal",mensal:"Mensal",trimestral:"Trimestral",sazonal:"Sazonal",anual:"Anual",estatica:"Mapa estático",instantanea:"Retrato de um período",continua:"Contínua / tempo real",outra:"Outra / irregular",desconhecida:"Não informada"};
   populateSelect(els.temporal, sortedEntries(countBy(all.map(temporalBucket)), value => temporalLabels[value] || value), "Qualquer resolução temporal");
   const supportLabels = {ponto:"Ponto / estação / parcela",grade:"Pixel / grade / raster",administrativo:"Unidade administrativa",bacia:"Bacia hidrográfica",poligono:"Polígono / feição",regiao:"Região / zona / território",nacional_global:"Nacional / país / global",tabular:"Sem suporte espacial explícito",outro:"Outro",desconhecido:"Não informado"};
   populateSelect(els.support, sortedEntries(countBy(all.map(supportBucket)), value => supportLabels[value] || value), "Qualquer suporte espacial");
@@ -723,10 +728,8 @@ async function init() {
     readUrl();
     bind();
     const sources = new Set(all.map(product => product.resource_id)).size;
-    const names = unique(all.map(product => product.source?.resource_name));
-    if (all.length && names.length) {
-      const scope = `${all.length} ${all.length === 1 ? "item" : "itens"} de ${sources} ${sources === 1 ? "fonte" : "fontes"}`;
-      els.scope.textContent = `${scope} (${new Intl.ListFormat("pt-BR").format(names)}).`;
+    if (all.length) {
+      els.scope.textContent = `${all.length} ${all.length === 1 ? "item" : "itens"} de ${sources} ${sources === 1 ? "fonte" : "fontes"}.`;
     }
     filter(false);
   } catch (error) {
