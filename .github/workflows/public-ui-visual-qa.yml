@@ -196,6 +196,8 @@ jobs:
                   const search = page.locator('#product-q');
                   await search.fill('DETER Pantanal');
                   const downloadOption = page.locator('#product-access option[value="arquivo"]');
+                  const seriesOption = page.locator('#product-kind option[value="dataset_series"]');
+                  if (await seriesOption.evaluate(option => option.label) !== 'Série de conjuntos de dados (1)') { console.error('O rótulo visível de tipo de item não acompanhou a contagem'); failed=true; }
                   if (await downloadOption.textContent() !== 'Download de dados (1)') { console.error('Contagem do filtro de acesso não acompanhou a busca livre'); failed=true; }
                   await clear.click();
                   if (!await validatePublicActions(page, '#product-list .card-actions a:visible', 'Dados detalhados')) failed=true;

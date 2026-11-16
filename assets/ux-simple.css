@@ -109,6 +109,7 @@
 .detailed-other-sources a{color:#fff;text-underline-offset:.2em}
 .product-filter-options{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.65rem;margin-top:.75rem;border-top:1px solid var(--line)}
 .product-filter-options .layered-filters{margin-top:0}
+.product-filter-options .layered-filters>summary{display:list-item;width:fit-content}
 .product-filter-options .product-secondary-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:.7rem}
 .product-filter-options button{align-self:start;margin-top:.7rem;border:0;background:none;color:var(--dark);padding:.4rem;font-size:.82rem;font-weight:780;cursor:pointer}
 .product-filter-options details[open]{grid-column:1/-1}
